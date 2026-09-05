@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zippy - Social Commerce</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .login-btn {
+      background: #00c853;
+      border: none;
+      color: white;
+      padding: 9px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #00c853, #00a844);
+      color: white;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .start-btn {
+      background: white;
+      color: #00a844;
+      border: none;
+      padding: 13px 25px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .section {
+      padding: 25px 18px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section h2 {
+      margin-bottom: 18px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .feed {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+    }
+
+    .post {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .post-media {
+      height: 220px;
+      background: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 45px;
+    }
+
+    .post-content {
+      padding: 15px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .actions button {
+      border: none;
+      background: #eee;
+      padding: 8px 12px;
+      border-radius: 18px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      justify-content: center;
+      align-items: center;
+      z-index: 20;
+      padding: 20px;
+    }
+
+    .modal-box {
+      background: white;
+      width: 100%;
+      max-width: 400px;
+      padding: 25px;
+      border-radius: 15px;
+    }
+
+    .modal-box h2 {
+      margin-bottom: 18px;
+    }
+
+    .modal-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .modal-box button {
+      width: 100%;
+      padding: 12px;
+      background: #00c853;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .close {
+      background: #ddd !important;
+      color: #222 !important;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Zippy</div>
+    <button class="login-btn" onclick="openLogin()">Log in</button>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Zippy</h1>
+    <p>Connect. Create. Watch. Buy. Sell.</p>
+    <button class="start-btn" onclick="openLogin()">Get Started</button>
+  </section>
+
+  <section class="section">
+    <h2>Everything in One Place</h2>
+
+    <div class="features">
+
+      <div class="card">
+        <h3>🎥 Watch Videos</h3>
+        <p>Discover entertaining videos and follow creators you love.</p>
+      </div>
+
+      <div class="card">
+        <h3>👥 Social Community</h3>
+        <p>Connect with people, follow users and interact with posts.</p>
+      </div>
+
+      <div class="card">
+        <h3>🛍️ Buy & Sell</h3>
+        <p>Discover products and give sellers a place to reach customers.</p>
+      </div>
+
+      <div class="card">
+        <h3>💰 Creator Opportunities</h3>
+        <p>Build an audience and create opportunities for future earnings.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Trending on Zippy</h2>
+
+    <div class="feed">
+
+      <div class="post">
+        <div class="post-media">▶️</div>
+        <div class="post-content">
+          <h3>Welcome to Zippy</h3>
+          <p>Discover what's happening on Zippy.</p>
+
+          <div class="actions">
+            <button onclick="likePost(this)">❤️ Like</button>
+            <button>💬 Comment</button>
+            <button>↗️ Share</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-media">🛍️</div>
+        <div class="post-content">
+          <h3>Marketplace</h3>
+          <p>Buy and sell products through Zippy.</p>
+
+          <div class="actions">
+            <button onclick="likePost(this)">❤️ Like</button>
+            <button>💬 Comment</button>
+            <button>↗️ Share</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-media">🎬</div>
+        <div class="post-content">
+          <h3>Creator Videos</h3>
+          <p>Share your creativity and grow your audience.</p>
+
+          <div class="actions">
+            <button onclick="likePost(this)">❤️ Like</button>
+            <button>💬 Comment</button>
+            <button>↗️ Share</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Zippy. All rights reserved.</p>
+    <p>Connect • Create • Watch • Buy • Sell</p>
+  </footer>
+
+  <div class="modal" id="loginModal">
+
+    <div class="modal-box">
+
+      <h2>Log in to Zippy</h2>
+
+      <input type="email" id="email" placeholder="Email address">
+
+      <input type="password" id="password" placeholder="Password">
+
+      <button onclick="login()">Log in</button>
+
+      <button class="close" onclick="closeLogin()">Cancel</button>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function openLogin() {
+      document.getElementById("loginModal").style.display = "flex";
+    }
+
+    function closeLogin() {
+      document.getElementById("loginModal").style.display = "none";
+    }
+
+    function login() {
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        alert("Please enter your email and password.");
+        return;
+      }
+
+      alert("Login system is ready for connection to the Zippy backend.");
+
+    }
+
+    function likePost(button) {
+
+      if (button.innerText.includes("❤️")) {
+        button.innerText = "❤️ Liked";
+      } else {
+        button.innerText = "❤️ Like";
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
