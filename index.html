@@ -3,668 +3,385 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZEEPY — Connect. Meet. Trade. Live.</title>
+<title>ZEEPY — Connect. Discover. Earn.</title>
 
 <style>
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
-}
-
-:root{
-  --orange:#ff7a00;
-  --orange2:#ff9800;
-  --dark:#120b05;
-  --dark2:#211309;
-  --white:#fff;
-  --muted:#8e8176;
-  --card:#1b120b;
-  --line:rgba(255,255,255,.09);
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f7f5f3;
-  color:#15120f;
+  background:#f6f7f9;
+  color:#171717;
 }
 
-/* HEADER */
 header{
   position:sticky;
   top:0;
   z-index:1000;
-  height:68px;
-  background:rgba(18,11,5,.97);
-  backdrop-filter:blur(15px);
+  background:#111;
+  color:white;
+  padding:14px 5%;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 18px;
-  border-bottom:1px solid var(--line);
+  box-shadow:0 3px 15px rgba(0,0,0,.25);
 }
 
 .logo{
-  color:#fff;
-  font-size:27px;
+  font-size:28px;
   font-weight:900;
   letter-spacing:-1px;
 }
 
 .logo span{
-  color:var(--orange);
+  color:#ff7a00;
 }
 
 .header-right{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
 }
 
 .bell{
-  color:#fff;
-  font-size:20px;
+  font-size:22px;
 }
 
-.login{
-  background:var(--orange);
-  color:#120b05;
+.login-btn{
+  background:#ff7a00;
+  color:white;
   border:0;
-  padding:10px 17px;
+  padding:10px 18px;
   border-radius:25px;
-  font-weight:800;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-/* HERO */
+nav{
+  background:white;
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:10px 5%;
+  border-bottom:1px solid #eee;
+}
+
+nav button{
+  border:0;
+  background:#f1f1f1;
+  padding:9px 14px;
+  border-radius:20px;
+  white-space:nowrap;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+nav button:hover{
+  background:#ff7a00;
+  color:white;
+}
+
 .hero{
-  min-height:460px;
-  background:
-    radial-gradient(circle at 80% 20%,rgba(255,122,0,.42),transparent 30%),
-    radial-gradient(circle at 20% 80%,rgba(255,152,0,.24),transparent 30%),
-    linear-gradient(135deg,#120b05,#29170a 55%,#120b05);
-  color:#fff;
-  padding:70px 20px 55px;
-  position:relative;
-  overflow:hidden;
-}
-
-.hero:after{
-  content:"";
-  position:absolute;
-  width:260px;
-  height:260px;
-  border-radius:50%;
-  background:rgba(255,122,0,.14);
-  right:-100px;
-  bottom:-100px;
-  filter:blur(8px);
+  margin:18px auto;
+  width:90%;
+  max-width:1100px;
+  min-height:330px;
+  border-radius:25px;
+  padding:45px 30px;
+  color:white;
+  background:linear-gradient(135deg,#111,#3a1900,#ff7a00);
+  display:flex;
+  align-items:center;
+  box-shadow:0 10px 35px rgba(0,0,0,.18);
 }
 
 .hero-content{
-  max-width:1100px;
-  margin:auto;
-  position:relative;
-  z-index:2;
-}
-
-.badge{
-  display:inline-block;
-  padding:8px 13px;
-  border:1px solid rgba(255,122,0,.45);
-  background:rgba(255,122,0,.12);
-  color:#ffbd80;
-  border-radius:30px;
-  font-size:13px;
-  margin-bottom:20px;
+  max-width:650px;
 }
 
 .hero h1{
-  font-size:clamp(42px,9vw,76px);
-  line-height:.95;
-  max-width:800px;
-  letter-spacing:-4px;
-  margin-bottom:22px;
+  font-size:clamp(40px,8vw,70px);
+  line-height:1;
+  margin-bottom:18px;
 }
 
 .hero h1 span{
-  color:var(--orange);
+  color:#ff9800;
 }
 
 .hero p{
-  max-width:650px;
-  color:#d3cbc4;
-  font-size:17px;
+  font-size:19px;
   line-height:1.6;
+  color:#eee;
+  margin-bottom:25px;
 }
 
-.hero-actions{
+.hero-buttons{
   display:flex;
-  flex-wrap:wrap;
   gap:12px;
-  margin-top:28px;
+  flex-wrap:wrap;
 }
 
 .primary{
-  background:var(--orange);
-  color:#120b05;
-  padding:14px 22px;
+  background:#ff7a00;
+  color:white;
   border:0;
-  border-radius:30px;
-  font-weight:900;
+  padding:13px 22px;
+  border-radius:28px;
+  font-weight:bold;
   cursor:pointer;
 }
 
 .secondary{
-  background:rgba(255,255,255,.08);
-  color:#fff;
-  padding:14px 22px;
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:30px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-/* NAV */
-.nav{
-  position:sticky;
-  top:68px;
-  z-index:900;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(15px);
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding:12px 15px;
-  border-bottom:1px solid #e7e1dc;
-}
-
-.nav button{
-  white-space:nowrap;
+  background:white;
+  color:#111;
   border:0;
-  padding:10px 15px;
-  border-radius:22px;
-  background:#f0ece8;
-  color:#332b25;
-  font-weight:700;
+  padding:13px 22px;
+  border-radius:28px;
+  font-weight:bold;
   cursor:pointer;
 }
 
-.nav button.active{
-  background:var(--orange);
-  color:#120b05;
+.container{
+  width:90%;
+  max-width:1100px;
+  margin:25px auto;
 }
 
-/* MAIN */
-main{
-  max-width:1150px;
-  margin:auto;
-  padding:35px 16px 80px;
-}
-
-.section{
-  display:none;
-  animation:fade .3s ease;
-}
-
-.section.active{
-  display:block;
-}
-
-@keyframes fade{
-  from{opacity:0;transform:translateY(8px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-.section-head{
-  margin-bottom:22px;
-}
-
-.section-head h2{
-  font-size:30px;
-  margin-bottom:7px;
-}
-
-.section-head p{
-  color:#746b64;
-}
-
-/* FEATURE GRID */
-.feature-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:16px;
-}
-
-.feature{
-  min-height:210px;
-  padding:22px;
-  border-radius:25px;
-  background:#fff;
-  border:1px solid #e8e1dc;
-  box-shadow:0 12px 35px rgba(0,0,0,.06);
-  transition:.25s;
-}
-
-.feature:hover{
-  transform:translateY(-5px);
-}
-
-.feature-icon{
-  width:52px;
-  height:52px;
-  border-radius:16px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fff0e2;
-  font-size:25px;
-  margin-bottom:20px;
-}
-
-.feature h3{
-  margin-bottom:8px;
-}
-
-.feature p{
-  color:#706860;
-  line-height:1.5;
-  font-size:14px;
-}
-
-.green-btn{
-  margin-top:15px;
-  border:0;
-  background:var(--orange);
-  color:#120b05;
-  padding:10px 15px;
-  border-radius:20px;
-  font-weight:800;
-  cursor:pointer;
-}
-
-.green-btn:hover,
-.primary:hover,
-.login:hover{
-  background:var(--orange2);
-}
-
-/* PROMO */
-.promo{
-  margin-top:25px;
-  background:linear-gradient(120deg,#180d05,#321a09);
-  color:#fff;
-  border-radius:28px;
-  padding:30px;
-  position:relative;
-  overflow:hidden;
-}
-
-.promo h2{
-  font-size:30px;
-  margin-bottom:10px;
-}
-
-.promo p{
-  color:#cfc3b9;
-  max-width:650px;
-  line-height:1.5;
-}
-
-/* PRODUCTS */
-.product-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:17px;
-}
-
-.product{
-  background:#fff;
-  border-radius:23px;
-  overflow:hidden;
-  border:1px solid #e8e1dc;
-  box-shadow:0 10px 30px rgba(0,0,0,.05);
-}
-
-.product-img{
-  height:180px;
-  background:linear-gradient(135deg,#fff0df,#fff9f3);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:70px;
-}
-
-.product-body{
-  padding:17px;
-}
-
-.product-body h3{
-  margin-bottom:7px;
-}
-
-.price{
-  color:#e86600;
-  font-size:20px;
-  font-weight:900;
-}
-
-/* MEET */
-.meet-panel{
-  background:linear-gradient(135deg,#180d05,#321a09);
-  color:#fff;
-  padding:30px;
-  border-radius:28px;
-  margin-bottom:20px;
-}
-
-.meet-panel p{
-  color:#cfc3b9;
-  margin-top:8px;
-  line-height:1.5;
-}
-
-.meeting-code{
-  margin-top:18px;
-  background:rgba(255,255,255,.08);
-  padding:15px;
-  border-radius:15px;
-  border:1px solid rgba(255,255,255,.1);
-}
-
-/* GROUPS */
-.group{
-  background:#fff;
-  padding:20px;
-  border-radius:22px;
-  border:1px solid #e7e0db;
-}
-
-.group-icon{
-  font-size:40px;
-  margin-bottom:10px;
-}
-
-/* LIVE */
-.live-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:17px;
-}
-
-.live{
-  height:240px;
-  border-radius:25px;
-  padding:18px;
-  color:#fff;
-  background:
-    linear-gradient(145deg,rgba(0,0,0,.2),rgba(0,0,0,.85)),
-    linear-gradient(135deg,#5b351d,#1a0d05);
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  position:relative;
-  overflow:hidden;
-}
-
-.live-badge{
-  position:absolute;
-  top:15px;
-  left:15px;
-  background:#ff3040;
-  padding:6px 10px;
-  border-radius:15px;
-  font-size:11px;
-  font-weight:900;
-}
-
-/* POSTS */
-.post{
-  background:#fff;
-  border-radius:23px;
-  padding:20px;
-  margin-bottom:16px;
-  border:1px solid #e8e1dc;
-}
-
-.user{
-  display:flex;
-  gap:12px;
-  align-items:center;
+.section-title{
+  font-size:28px;
   margin-bottom:15px;
 }
 
-.avatar{
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  background:#fff0df;
-  color:#e86600;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:900;
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
 }
 
-.post-text{
-  line-height:1.55;
-  color:#403a35;
+.card{
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.07);
+  border:1px solid #eee;
 }
 
-.post-actions{
-  margin-top:17px;
-  display:flex;
-  gap:22px;
-  color:#716860;
-}
-
-/* NEARBY */
-.location-box{
-  background:#fff;
-  padding:25px;
-  border-radius:25px;
-  border:1px solid #e8e1dc;
-}
-
-.location-status{
-  margin-top:12px;
-  color:#706860;
-  line-height:1.6;
-}
-
-.distance{
-  margin-top:10px;
-  color:#e86600;
-  font-weight:900;
-}
-
-/* PROFILE */
-.profile{
-  background:linear-gradient(135deg,#180d05,#321a09);
-  color:#fff;
-  border-radius:28px;
-  padding:30px;
-}
-
-.profile-avatar{
-  width:85px;
-  height:85px;
-  border-radius:50%;
-  background:var(--orange);
-  color:#120b05;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.card .icon{
   font-size:35px;
-  font-weight:900;
-  margin-bottom:18px;
+  margin-bottom:12px;
 }
 
-.stats{
-  display:flex;
-  gap:30px;
-  margin-top:22px;
-}
-
-.stats strong{
-  display:block;
-  font-size:23px;
-}
-
-.stats span{
-  color:#b6aaa0;
-  font-size:13px;
-}
-
-/* MONEY / EARNINGS */
-.wallet{
-  background:linear-gradient(135deg,#ff7a00,#ff9d32);
-  color:#120b05;
-  padding:28px;
-  border-radius:28px;
-  margin-bottom:20px;
-  box-shadow:0 15px 35px rgba(255,122,0,.22);
-}
-
-.wallet-label{
-  font-size:14px;
-  font-weight:700;
-  opacity:.75;
-}
-
-.wallet-balance{
-  font-size:40px;
-  font-weight:900;
-  margin:8px 0 18px;
-}
-
-.wallet button{
-  background:#120b05;
-  color:#fff;
-  border:0;
-  padding:12px 18px;
-  border-radius:22px;
-  font-weight:900;
-  cursor:pointer;
-}
-
-.earning-card{
-  background:#fff;
-  padding:24px;
-  border-radius:24px;
-  border:1px solid #e8e1dc;
-  margin-bottom:16px;
-}
-
-.earning-card h3{
+.card h3{
   margin-bottom:8px;
 }
 
-.earning-card p{
-  color:#706860;
+.card p{
+  color:#666;
   line-height:1.5;
 }
 
-.earning-amount{
-  font-size:24px;
-  font-weight:900;
-  color:#e86600;
-  margin-top:12px;
+.market-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
 }
 
-.revenue-box{
-  background:#18100a;
-  color:#fff;
+.product{
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+.product-img{
+  height:150px;
+  background:linear-gradient(135deg,#eee,#ddd);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
+}
+
+.product-info{
+  padding:15px;
+}
+
+.price{
+  color:#ff7a00;
+  font-size:20px;
+  font-weight:bold;
+  margin:8px 0;
+}
+
+.buy{
+  width:100%;
+  border:0;
+  background:#111;
+  color:white;
+  padding:10px;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+.earn-box{
+  background:linear-gradient(135deg,#111,#2b1600);
+  color:white;
+  border-radius:24px;
   padding:25px;
-  border-radius:25px;
   margin-top:20px;
 }
 
-.revenue-box p{
-  color:#c9bdb3;
-  line-height:1.5;
-  margin-top:8px;
-}
-
-/* LOGIN */
-.login-box{
-  max-width:440px;
-  margin:20px auto;
-  background:#fff;
-  padding:28px;
-  border-radius:25px;
-  border:1px solid #e8e1dc;
-  box-shadow:0 15px 40px rgba(0,0,0,.07);
-}
-
-.login-box h2{
-  font-size:28px;
-  margin-bottom:8px;
-}
-
-.login-box p{
-  color:#706860;
+.wallet{
+  background:#ff7a00;
+  border-radius:18px;
+  padding:22px;
   margin-bottom:18px;
 }
 
-.login-box input{
-  width:100%;
-  padding:14px;
-  margin-bottom:10px;
-  border:1px solid #ddd5cf;
-  border-radius:12px;
-  outline:none;
+.wallet small{
+  opacity:.9;
 }
 
-.login-box input:focus{
-  border-color:var(--orange);
-}
-
-.login-box button{
-  width:100%;
-  padding:14px;
-  border:0;
-  border-radius:12px;
-  background:var(--orange);
+.balance{
+  font-size:36px;
   font-weight:900;
-  cursor:pointer;
+  margin:8px 0;
 }
 
-/* FOOTER */
+.earn-buttons{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+}
+
+.earn-btn{
+  background:white;
+  color:#111;
+  border:0;
+  border-radius:15px;
+  padding:15px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.location{
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  margin-top:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.status{
+  margin-top:12px;
+  padding:12px;
+  background:#f2f2f2;
+  border-radius:12px;
+  color:#555;
+  word-break:break-word;
+}
+
+.profile{
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+
+.avatar{
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  background:#ff7a00;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:bold;
+}
+
 footer{
-  background:#120b05;
-  color:#fff;
-  padding:40px 20px;
+  margin-top:40px;
+  background:#111;
+  color:white;
+  padding:35px 5%;
   text-align:center;
 }
 
-footer .logo{
-  margin-bottom:8px;
+footer strong{
+  color:#ff7a00;
 }
 
-footer p{
-  color:#9e9187;
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  padding:20px;
 }
 
-/* MOBILE */
+.modal-box{
+  background:white;
+  width:100%;
+  max-width:420px;
+  border-radius:22px;
+  padding:25px;
+}
+
+.modal-box h2{
+  margin-bottom:18px;
+}
+
+.input{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  margin-bottom:12px;
+}
+
+.close{
+  float:right;
+  border:0;
+  background:#eee;
+  border-radius:50%;
+  width:32px;
+  height:32px;
+  cursor:pointer;
+}
+
+.hidden{
+  display:none;
+}
+
 @media(max-width:600px){
+  header{
+    padding:12px 4%;
+  }
+
+  .logo{
+    font-size:24px;
+  }
+
   .hero{
-    min-height:520px;
-    padding-top:55px;
+    padding:32px 22px;
+    min-height:360px;
   }
 
-  .hero h1{
-    letter-spacing:-2px;
+  .hero p{
+    font-size:16px;
   }
 
-  .stats{
-    gap:18px;
-  }
-
-  .promo,
-  .meet-panel,
-  .profile,
-  .wallet{
-    border-radius:22px;
+  .section-title{
+    font-size:24px;
   }
 }
 </style>
@@ -673,1223 +390,569 @@ footer p{
 <body>
 
 <header>
-
   <div class="logo">ZEE<span>PY</span></div>
 
   <div class="header-right">
     <div class="bell">🔔</div>
-
-    <button class="login" onclick="showSection('login')">
-      Log in
-    </button>
+    <button class="login-btn" onclick="openLogin()">Log in</button>
   </div>
-
 </header>
 
-
-<section class="hero">
-
-  <div class="hero-content">
-
-    <div class="badge">
-      🟠 One platform. Many possibilities.
-    </div>
-
-    <h1>
-      Connect.<br>
-      <span>Discover.</span><br>
-      Earn.
-    </h1>
-
-    <p>
-      ZEEPY brings people, products, communities, meetings,
-      media, live experiences and earning opportunities together
-      in one modern platform.
-    </p>
-
-    <div class="hero-actions">
-
-      <button class="primary"
-        onclick="showSection('market')">
-        🛒 Explore Market
-      </button>
-
-      <button class="secondary"
-        onclick="showSection('earn')">
-        💰 Start Earning
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<nav class="nav">
-
-  <button class="active"
-    onclick="showSection('home',this)">
-    🏠 Home
-  </button>
-
-  <button onclick="showSection('market',this)">
-    🛒 Market
-  </button>
-
-  <button onclick="showSection('meet',this)">
-    🤝 Meet
-  </button>
-
-  <button onclick="showSection('groups',this)">
-    👥 Groups
-  </button>
-
-  <button onclick="showSection('live',this)">
-    🔴 Live
-  </button>
-
-  <button onclick="showSection('messages',this)">
-    💬 Messages
-  </button>
-
-  <button onclick="showSection('nearby',this)">
-    📍 Nearby
-  </button>
-
-  <button onclick="showSection('media',this)">
-    🎬 Media
-  </button>
-
-  <button onclick="showSection('earn',this)">
-    💰 Earn
-  </button>
-
-  <button onclick="showSection('profile',this)">
-    👤 Profile
-  </button>
-
+<nav>
+  <button onclick="showSection('home')">🏠 Home</button>
+  <button onclick="showSection('market')">🛍️ Market</button>
+  <button onclick="showSection('meet')">🤝 Meet</button>
+  <button onclick="showSection('groups')">👥 Groups</button>
+  <button onclick="showSection('live')">🔴 Live</button>
+  <button onclick="showSection('messages')">💬 Messages</button>
+  <button onclick="showSection('nearby')">📍 Nearby</button>
+  <button onclick="showSection('media')">🎬 Media</button>
+  <button onclick="showSection('earn')">💰 Earn</button>
+  <button onclick="showSection('profile')">👤 Profile</button>
 </nav>
-
 
 <main>
 
+<section id="home">
 
-<!-- HOME -->
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Connect.<br>Discover.<br><span>Earn.</span></h1>
 
-<section id="home" class="section active">
+      <p>
+        Welcome to ZEEPY — a social-commerce platform where people
+        connect, discover products, meet others, create content,
+        sell, and build opportunities.
+      </p>
 
-  <div class="section-head">
+      <div class="hero-buttons">
+        <button class="primary" onclick="showSection('market')">
+          🛍️ Explore Market
+        </button>
 
-    <h2>Your ZEEPY World</h2>
-
-    <p>
-      Connect, create, trade and earn in one place.
-    </p>
-
+        <button class="secondary" onclick="openLogin()">
+          🚀 Join ZEEPY
+        </button>
+      </div>
+    </div>
   </div>
 
+  <div class="container">
+    <h2 class="section-title">Everything in one place</h2>
 
-  <div class="feature-grid">
+    <div class="cards">
 
-    <div class="feature">
+      <div class="card">
+        <div class="icon">🛍️</div>
+        <h3>Marketplace</h3>
+        <p>Discover products and give sellers a place to reach customers.</p>
+      </div>
 
-      <div class="feature-icon">🛒</div>
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>Meet People</h3>
+        <p>Connect with people and communities around you.</p>
+      </div>
 
-      <h3>Market</h3>
+      <div class="card">
+        <div class="icon">🎥</div>
+        <h3>Create & Watch</h3>
+        <p>Share videos, posts and creative content with the community.</p>
+      </div>
 
-      <p>
-        Buy and sell products while connecting directly
-        with people.
-      </p>
-
-      <button class="green-btn"
-        onclick="showSection('market')">
-        Explore
-      </button>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="feature-icon">🤝</div>
-
-      <h3>Meet</h3>
-
-      <p>
-        Meet people online through private or group meetings.
-      </p>
-
-      <button class="green-btn"
-        onclick="showSection('meet')">
-        Meet
-      </button>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="feature-icon">👥</div>
-
-      <h3>Groups</h3>
-
-      <p>
-        Create communities around interests, business,
-        school and more.
-      </p>
-
-      <button class="green-btn"
-        onclick="showSection('groups')">
-        Groups
-      </button>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="feature-icon">🔴</div>
-
-      <h3>Live</h3>
-
-      <p>
-        Watch live content and build an audience.
-      </p>
-
-      <button class="green-btn"
-        onclick="showSection('live')">
-        Go Live
-      </button>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="feature-icon">💰</div>
-
-      <h3>Earn</h3>
-
-      <p>
-        Creators, sellers and active users can participate
-        in ZEEPY earning opportunities.
-      </p>
-
-      <button class="green-btn"
-        onclick="showSection('earn')">
-        Earn
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="promo">
-
-    <h2>More than social.</h2>
-
-    <p>
-      ZEEPY is designed to give people a place to connect,
-      discover products, create content, build communities
-      and participate in the platform economy.
-    </p>
-
-    <button class="primary"
-      onclick="showSection('earn')">
-      💰 See Earning Opportunities
-    </button>
-
-  </div>
-
-
-  <br>
-
-
-  <div class="post">
-
-    <div class="user">
-
-      <div class="avatar">Z</div>
-
-      <div>
-        <strong>ZEEPY Community</strong>
-
-        <small style="display:block;color:#7b7068;">
-          Today
-        </small>
+      <div class="card">
+        <div class="icon">💰</div>
+        <h3>Earn</h3>
+        <p>Creators, sellers and active users can participate in reward programs.</p>
       </div>
 
     </div>
-
-
-    <div class="post-text">
-
-      Welcome to ZEEPY 🚀
-
-      A place to connect, discover, trade,
-      meet, create, share and earn.
-
-    </div>
-
-
-    <div class="post-actions">
-
-      <span>❤️ Like</span>
-      <span>💬 Comment</span>
-      <span>↗ Share</span>
-
-    </div>
-
   </div>
 
 </section>
 
 
+<section id="market" class="container hidden">
 
-<!-- MARKET -->
+  <h2 class="section-title">🛍️ ZEEPY Market</h2>
 
-<section id="market" class="section">
-
-  <div class="section-head">
-
-    <h2>🛒 ZEEPY Market</h2>
-
-    <p>
-      Discover products and connect with sellers.
-    </p>
-
-  </div>
-
-
-  <div class="product-grid">
-
+  <div class="market-grid">
 
     <div class="product">
-
       <div class="product-img">📱</div>
-
-      <div class="product-body">
-
+      <div class="product-info">
         <h3>Smartphone</h3>
-
-        <div class="price">
-          GH₵ 2,500
-        </div>
-
-        <button class="green-btn"
-          onclick="contactSeller('Smartphone')">
-          Contact Seller
-        </button>
-
+        <div class="price">GH₵ 2,500</div>
+        <button class="buy" onclick="buyProduct('Smartphone')">Contact Seller</button>
       </div>
-
     </div>
 
-
     <div class="product">
-
       <div class="product-img">💻</div>
-
-      <div class="product-body">
-
+      <div class="product-info">
         <h3>Laptop</h3>
-
-        <div class="price">
-          GH₵ 4,200
-        </div>
-
-        <button class="green-btn"
-          onclick="contactSeller('Laptop')">
-          Contact Seller
-        </button>
-
+        <div class="price">GH₵ 4,800</div>
+        <button class="buy" onclick="buyProduct('Laptop')">Contact Seller</button>
       </div>
-
     </div>
 
-
     <div class="product">
-
       <div class="product-img">👟</div>
-
-      <div class="product-body">
-
+      <div class="product-info">
         <h3>Fashion Shoes</h3>
-
-        <div class="price">
-          GH₵ 350
-        </div>
-
-        <button class="green-btn"
-          onclick="contactSeller('Fashion Shoes')">
-          Contact Seller
-        </button>
-
+        <div class="price">GH₵ 350</div>
+        <button class="buy" onclick="buyProduct('Fashion Shoes')">Contact Seller</button>
       </div>
-
     </div>
-
 
     <div class="product">
-
       <div class="product-img">🎧</div>
-
-      <div class="product-body">
-
+      <div class="product-info">
         <h3>Wireless Headphones</h3>
-
-        <div class="price">
-          GH₵ 280
-        </div>
-
-        <button class="green-btn"
-          onclick="contactSeller('Wireless Headphones')">
-          Contact Seller
-        </button>
-
+        <div class="price">GH₵ 280</div>
+        <button class="buy" onclick="buyProduct('Wireless Headphones')">Contact Seller</button>
       </div>
-
     </div>
 
   </div>
 
+</section>
 
-  <div class="promo">
 
-    <h2>Are you a seller?</h2>
+<section id="meet" class="container hidden">
 
+  <h2 class="section-title">🤝 Meet</h2>
+
+  <div class="card">
+    <h3>Create a meeting</h3>
+    <p>Start a ZEEPY meeting room and invite others.</p>
+    <br>
+    <button class="primary" onclick="createMeeting()">Create Meeting</button>
+    <div id="meetingResult" class="status"></div>
+  </div>
+
+</section>
+
+
+<section id="groups" class="container hidden">
+
+  <h2 class="section-title">👥 Groups</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="icon">📚</div>
+      <h3>Students</h3>
+      <p>Connect, learn and share opportunities.</p>
+      <button class="primary" onclick="joinGroup('Students')">Join</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🛒</div>
+      <h3>Business Owners</h3>
+      <p>Network with sellers and entrepreneurs.</p>
+      <button class="primary" onclick="joinGroup('Business Owners')">Join</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎨</div>
+      <h3>Creators</h3>
+      <p>Share ideas and grow your audience.</p>
+      <button class="primary" onclick="joinGroup('Creators')">Join</button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="live" class="container hidden">
+
+  <h2 class="section-title">🔴 ZEEPY Live</h2>
+
+  <div class="card">
+    <div class="icon">🔴</div>
+    <h3>Go Live</h3>
     <p>
-      List your products, reach customers and build your
-      business on ZEEPY. Future payment tools can process
-      real transactions securely.
+      Creators will eventually be able to broadcast live,
+      interact with viewers and participate in creator rewards.
     </p>
+    <br>
+    <button class="primary" onclick="goLive()">Start Live</button>
+  </div>
 
-    <button class="primary"
-      onclick="showSection('earn')">
-      💼 Become a ZEEPY Seller
+</section>
+
+
+<section id="messages" class="container hidden">
+
+  <h2 class="section-title">💬 Messages</h2>
+
+  <div class="card">
+    <h3>Your conversations</h3>
+    <p>No conversations yet.</p>
+    <br>
+    <button class="primary" onclick="alert('Messaging system will be connected to real user accounts next.')">
+      New Message
     </button>
-
   </div>
 
 </section>
 
 
+<section id="nearby" class="container hidden">
 
-<!-- MEET -->
+  <h2 class="section-title">📍 Nearby</h2>
 
-<section id="meet" class="section">
+  <div class="location">
 
-  <div class="section-head">
-
-    <h2>🤝 ZEEPY Meet</h2>
-
-    <p>
-      Meet people, friends, customers and communities online.
-    </p>
-
-  </div>
-
-
-  <div class="meet-panel">
-
-    <h2>Start a ZEEPY Meeting</h2>
+    <h3>Find your location</h3>
 
     <p>
-      Create a meeting room and invite people to join.
-    </p>
-
-    <button class="primary"
-      onclick="createMeeting()">
-      🎥 Create Meeting
-    </button>
-
-    <div id="meetingResult"></div>
-
-  </div>
-
-
-  <div class="feature-grid">
-
-    <div class="feature">
-
-      <div class="feature-icon">🎥</div>
-
-      <h3>Video Meeting</h3>
-
-      <p>
-        Meet face-to-face with people online.
-      </p>
-
-      <button class="green-btn">
-        Start
-      </button>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="feature-icon">🎙️</div>
-
-      <h3>Audio Meeting</h3>
-
-      <p>
-        Talk without turning on your camera.
-      </p>
-
-      <button class="green-btn">
-        Start
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- GROUPS -->
-
-<section id="groups" class="section">
-
-  <div class="section-head">
-
-    <h2>👥 ZEEPY Groups</h2>
-
-    <p>
-      Create communities and connect around shared interests.
-    </p>
-
-  </div>
-
-
-  <button class="green-btn"
-    onclick="createGroup()">
-    + Create Group
-  </button>
-
-
-  <br><br>
-
-
-  <div class="feature-grid">
-
-
-    <div class="group">
-
-      <div class="group-icon">📚</div>
-
-      <h3>Students Hub</h3>
-
-      <p>
-        Learn, study and share knowledge.
-      </p>
-
-      <button class="green-btn">
-        Join
-      </button>
-
-    </div>
-
-
-    <div class="group">
-
-      <div class="group-icon">💼</div>
-
-      <h3>Business Network</h3>
-
-      <p>
-        Connect entrepreneurs and businesses.
-      </p>
-
-      <button class="green-btn">
-        Join
-      </button>
-
-    </div>
-
-
-    <div class="group">
-
-      <div class="group-icon">⚽</div>
-
-      <h3>Sports Community</h3>
-
-      <p>
-        Talk about your favourite sports.
-      </p>
-
-      <button class="green-btn">
-        Join
-      </button>
-
-    </div>
-
-
-    <div class="group">
-
-      <div class="group-icon">🎮</div>
-
-      <h3>Gaming Community</h3>
-
-      <p>
-        Connect with other gamers.
-      </p>
-
-      <button class="green-btn">
-        Join
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- LIVE -->
-
-<section id="live" class="section">
-
-  <div class="section-head">
-
-    <h2>🔴 ZEEPY Live</h2>
-
-    <p>
-      Discover what's happening right now.
-    </p>
-
-  </div>
-
-
-  <div class="live-grid">
-
-
-    <div class="live">
-
-      <span class="live-badge">
-        ● LIVE
-      </span>
-
-      <h3>Community Talk</h3>
-
-      <p>245 viewers</p>
-
-      <button class="green-btn">
-        Watch
-      </button>
-
-    </div>
-
-
-    <div class="live">
-
-      <span class="live-badge">
-        ● LIVE
-      </span>
-
-      <h3>Product Showcase</h3>
-
-      <p>128 viewers</p>
-
-      <button class="green-btn">
-        Watch
-      </button>
-
-    </div>
-
-
-    <div class="live">
-
-      <span class="live-badge">
-        ● LIVE
-      </span>
-
-      <h3>Music Session</h3>
-
-      <p>96 viewers</p>
-
-      <button class="green-btn">
-        Watch
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <br>
-
-
-  <button class="green-btn"
-    onclick="startLive()">
-    🔴 Start My Live
-  </button>
-
-</section>
-
-
-
-<!-- MESSAGES -->
-
-<section id="messages" class="section">
-
-  <div class="section-head">
-
-    <h2>💬 Messages</h2>
-
-    <p>
-      Talk privately with people on ZEEPY.
-    </p>
-
-  </div>
-
-
-  <div class="feature-grid">
-
-
-    <div class="feature">
-
-      <div class="feature-icon">👤</div>
-
-      <h3>Seller</h3>
-
-      <p>
-        Chat about a product you are interested in.
-      </p>
-
-      <button class="green-btn">
-        Open Chat
-      </button>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="feature-icon">👥</div>
-
-      <h3>Community</h3>
-
-      <p>
-        Continue conversations with your groups.
-      </p>
-
-      <button class="green-btn">
-        Open Chat
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- NEARBY -->
-
-<section id="nearby" class="section">
-
-  <div class="section-head">
-
-    <h2>📍 ZEEPY Nearby</h2>
-
-    <p>
-      Discover people and products around you.
-    </p>
-
-  </div>
-
-
-  <div class="location-box">
-
-    <h3>📍 Your Location</h3>
-
-    <div class="location-status"
-      id="locationStatus">
-
-      Tap the button below to allow ZEEPY
-      to detect your location.
-
-    </div>
-
-
-    <button class="green-btn"
-      onclick="getLocation()">
-
-      Find My Location
-
-    </button>
-
-  </div>
-
-
-  <br>
-
-
-  <div class="feature-grid">
-
-
-    <div class="feature">
-
-      <div class="feature-icon">🛍️</div>
-
-      <h3>Nearby Seller</h3>
-
-      <p>
-        Find products available close to you.
-      </p>
-
-      <div class="distance">
-        Distance: —
-      </div>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="feature-icon">👤</div>
-
-      <h3>Nearby People</h3>
-
-      <p>
-        Discover ZEEPY users around your area.
-      </p>
-
-      <div class="distance">
-        Distance: —
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- MEDIA -->
-
-<section id="media" class="section">
-
-  <div class="section-head">
-
-    <h2>🎬 ZEEPY Media</h2>
-
-    <p>
-      Watch, share and discover content.
-    </p>
-
-  </div>
-
-
-  <div class="feature-grid">
-
-
-    <div class="feature">
-
-      <div class="feature-icon">🎥</div>
-
-      <h3>Videos</h3>
-
-      <p>
-        Discover entertaining and useful videos.
-      </p>
-
-      <button class="green-btn">
-        Watch
-      </button>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="feature-icon">📸</div>
-
-      <h3>Photos</h3>
-
-      <p>
-        Share moments with your community.
-      </p>
-
-      <button class="green-btn">
-        Explore
-      </button>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="feature-icon">➕</div>
-
-      <h3>Create</h3>
-
-      <p>
-        Upload your own content and build an audience.
-      </p>
-
-      <button class="green-btn"
-        onclick="creatorReward()">
-        Create & Earn
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- EARN -->
-
-<section id="earn" class="section">
-
-  <div class="section-head">
-
-    <h2>💰 ZEEPY Earn</h2>
-
-    <p>
-      Turn your activity, creativity and business into
-      opportunities.
-    </p>
-
-  </div>
-
-
-  <div class="wallet">
-
-    <div class="wallet-label">
-      YOUR ZEEPY DEMO BALANCE
-    </div>
-
-    <div class="wallet-balance"
-      id="walletBalance">
-
-      GH₵ 0.00
-
-    </div>
-
-    <button onclick="withdrawMoney()">
-      Withdraw
-    </button>
-
-  </div>
-
-
-  <div class="feature-grid">
-
-
-    <div class="earning-card">
-
-      <h3>🎥 Creator Rewards</h3>
-
-      <p>
-        Create useful or entertaining videos and build an
-        audience. Future ZEEPY creator programs can reward
-        eligible creators based on approved engagement.
-      </p>
-
-      <div class="earning-amount">
-        + GH₵ 5.00 demo
-      </div>
-
-      <button class="green-btn"
-        onclick="addEarning(5,'Creator reward')">
-
-        Create Content
-
-      </button>
-
-    </div>
-
-
-    <div class="earning-card">
-
-      <h3>🛒 Seller Earnings</h3>
-
-      <p>
-        Sell products through ZEEPY and keep your agreed
-        seller revenue after applicable platform fees.
-      </p>
-
-      <div class="earning-amount">
-        Earn from sales
-      </div>
-
-      <button class="green-btn"
-        onclick="addEarning(10,'Seller activity')">
-
-        Sell Product
-
-      </button>
-
-    </div>
-
-
-    <div class="earning-card">
-
-      <h3>👥 Referral Rewards</h3>
-
-      <p>
-        Invite new users through approved referral programs
-        and receive rewards when qualifying conditions are met.
-      </p>
-
-      <div class="earning-amount">
-        + GH₵ 2.00 demo
-      </div>
-
-      <button class="green-btn"
-        onclick="addEarning(2,'Referral reward')">
-
-        Invite Someone
-
-      </button>
-
-    </div>
-
-
-    <div class="earning-card">
-
-      <h3>🔴 Live Creator</h3>
-
-      <p>
-        Build an audience through live sessions. Future
-        monetization can include eligible tips, subscriptions,
-        promotions or other approved creator programs.
-      </p>
-
-      <div class="earning-amount">
-        Build your audience
-      </div>
-
-      <button class="green-btn"
-        onclick="addEarning(3,'Live creator reward')">
-
-        Start Creating
-
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="revenue-box">
-
-    <h2>🏢 How ZEEPY Can Earn</h2>
-
-    <p>
-      ZEEPY can generate legitimate platform revenue through
-      clearly disclosed transaction fees, seller services,
-      advertising, promoted listings, business tools and
-      optional premium services.
+      Allow ZEEPY to access your location so we can build
+      nearby people, products and services.
     </p>
 
     <br>
 
-    <p>
-      The goal is simple: <strong>users earn from value they
-      create, businesses earn from sales, and ZEEPY earns a
-      fair platform fee for providing the service.</strong>
-    </p>
+    <button class="primary" onclick="getLocation()">
+      📍 Get My Location
+    </button>
+
+    <div id="locationStatus" class="status">
+      Location not detected yet.
+    </div>
 
   </div>
 
 </section>
 
 
+<section id="media" class="container hidden">
 
-<!-- PROFILE -->
+  <h2 class="section-title">🎬 Media</h2>
 
-<section id="profile" class="section">
+  <div class="cards">
 
-  <div class="profile">
-
-    <div class="profile-avatar">
-      Y
+    <div class="card">
+      <div class="icon">🎥</div>
+      <h3>Videos</h3>
+      <p>Watch and share community videos.</p>
+      <button class="primary" onclick="alert('Video uploads will be connected next.')">
+        Upload
+      </button>
     </div>
 
-    <h2>ZEEPY User</h2>
-
-    <p style="color:#b6aaa0;margin-top:7px;">
-
-      Your profile, community and marketplace identity.
-
-    </p>
-
-
-    <div class="stats">
-
-      <div>
-        <strong>0</strong>
-        <span>Posts</span>
-      </div>
-
-      <div>
-        <strong>0</strong>
-        <span>Followers</span>
-      </div>
-
-      <div>
-        <strong>0</strong>
-        <span>Following</span>
-      </div>
-
+    <div class="card">
+      <div class="icon">📸</div>
+      <h3>Photos</h3>
+      <p>Share your moments with the ZEEPY community.</p>
+      <button class="primary" onclick="alert('Photo uploads will be connected next.')">
+        Upload
+      </button>
     </div>
-
-
-    <button class="primary"
-      style="margin-top:25px;">
-
-      Edit Profile
-
-    </button>
 
   </div>
 
+</section>
+
+
+<section id="earn" class="container hidden">
+
+  <h2 class="section-title">💰 Earn on ZEEPY</h2>
+
+  <div class="earn-box">
+
+    <div class="wallet">
+
+      <small>Demo Wallet Balance</small>
+
+      <div class="balance" id="balance">
+        GH₵ 0.00
+      </div>
+
+      <button class="secondary" onclick="withdrawMoney()">
+        Withdraw
+      </button>
+
+    </div>
+
+    <h3>Ways users can earn</h3>
+
+    <br>
+
+    <div class="earn-buttons">
+
+      <button class="earn-btn" onclick="addEarning(5,'Creator activity')">
+        🎥 Creator<br>+ GH₵ 5
+      </button>
+
+      <button class="earn-btn" onclick="addEarning(10,'Seller activity')">
+        🛍️ Seller<br>+ GH₵ 10
+      </button>
+
+      <button class="earn-btn" onclick="addEarning(2,'Referral')">
+        👥 Referral<br>+ GH₵ 2
+      </button>
+
+      <button class="earn-btn" onclick="addEarning(3,'Live activity')">
+        🔴 Live<br>+ GH₵ 3
+      </button>
+
+    </div>
+
+    <br>
+
+    <p>
+      ZEEPY can later support transparent reward programs for
+      creators, sellers, referrals and other eligible activities.
+    </p>
+
+  </div>
 
   <br>
 
+  <div class="card">
 
-  <div class="earning-card">
+    <h3>💼 How ZEEPY can earn</h3>
 
-    <h3>💰 Your Earnings</h3>
+    <br>
 
     <p>
-      View and manage your ZEEPY earning activities.
+      ZEEPY can generate revenue through clearly disclosed
+      transaction fees, promoted listings, advertising,
+      business tools, premium services and other legitimate
+      platform services.
     </p>
-
-    <button class="green-btn"
-      onclick="showSection('earn')">
-
-      Open Wallet
-
-    </button>
 
   </div>
 
 </section>
 
 
+<section id="profile" class="container hidden">
 
-<!-- LOGIN -->
+  <h2 class="section-title">👤 Profile</h2>
 
-<section id="login" class="section">
+  <div class="card profile">
 
-  <div class="login-box">
+    <div class="avatar">Z</div>
 
-    <h2>Welcome back 👋</h2>
-
-    <p>
-      Log in to your ZEEPY account.
-    </p>
-
-
-    <input
-      type="email"
-      placeholder="Email address"
-      id="loginEmail"
-    >
-
-
-    <input
-      type="password"
-      placeholder="Password"
-      id="loginPassword"
-    >
-
-
-    <button onclick="loginUser()">
-      Log In
-    </button>
-
-
-    <p style="text-align:center;margin-top:15px;">
-
-      New to ZEEPY?
-
-      <strong style="color:#e86600;">
-        Create an account
-      </strong>
-
-    </p>
+    <div>
+      <h3 id="profileName">ZEEPY User</h3>
+      <p id="profileEmail">Create an account to personalize your profile.</p>
+    </div>
 
   </div>
 
 </section>
-
 
 </main>
 
 
-
 <footer>
-
-  <div class="logo">
-    ZEE<span>PY</span>
-  </div>
-
-  <p>
-    Connect. Meet. Trade. Live. Earn.
-  </p>
-
+  <h2>ZEE<span>PY</span></h2>
   <br>
-
-  <p>
-    © 2026 ZEEPY — Building something different.
-  </p>
-
+  <p>Connect. Meet. Trade. Live. <strong>Earn.</strong></p>
+  <br>
+  <small>© 2026 ZEEPY. Building a better social-commerce community.</small>
 </footer>
 
+
+<!-- LOGIN MODAL -->
+
+<div class="modal" id="loginModal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closeLogin()">×</button>
+
+    <h2>Welcome to ZEEPY 🟠</h2>
+
+    <input
+      id="nameInput"
+      class="input"
+      type="text"
+      placeholder="Your name"
+    >
+
+    <input
+      id="emailInput"
+      class="input"
+      type="email"
+      placeholder="Email address"
+    >
+
+    <input
+      id="passwordInput"
+      class="input"
+      type="password"
+      placeholder="Password"
+    >
+
+    <button class="primary" style="width:100%" onclick="loginUser()">
+      Create Account / Log In
+    </button>
+
+  </div>
+
+</div>
 
 
 <script>
 
-/* NAVIGATION */
+/* SECTION NAVIGATION */
 
-function showSection(id,button){
+function showSection(section){
 
-  document.querySelectorAll(".section")
-  .forEach(section=>{
-    section.classList.remove("active");
+  const sections = [
+    "home",
+    "market",
+    "meet",
+    "groups",
+    "live",
+    "messages",
+    "nearby",
+    "media",
+    "earn",
+    "profile"
+  ];
+
+  sections.forEach(function(id){
+
+    const element = document.getElementById(id);
+
+    if(element){
+      element.classList.add("hidden");
+    }
+
   });
 
-
-  const selected=
-    document.getElementById(id);
-
+  const selected = document.getElementById(section);
 
   if(selected){
-    selected.classList.add("active");
+    selected.classList.remove("hidden");
   }
-
-
-  document.querySelectorAll(".nav button")
-  .forEach(btn=>{
-    btn.classList.remove("active");
-  });
-
-
-  if(button){
-    button.classList.add("active");
-  }
-
 
   window.scrollTo({
     top:0,
     behavior:"smooth"
   });
+}
+
+
+/* LOGIN */
+
+function openLogin(){
+  document.getElementById("loginModal").style.display="flex";
+}
+
+function closeLogin(){
+  document.getElementById("loginModal").style.display="none";
+}
+
+function loginUser(){
+
+  const name =
+    document.getElementById("nameInput").value.trim();
+
+  const email =
+    document.getElementById("emailInput").value.trim();
+
+  const password =
+    document.getElementById("passwordInput").value.trim();
+
+  if(!name || !email || !password){
+
+    alert("Please complete all fields.");
+
+    return;
+  }
+
+  localStorage.setItem("zeepyUser",JSON.stringify({
+    name:name,
+    email:email
+  }));
+
+  document.getElementById("profileName").textContent=name;
+
+  document.getElementById("profileEmail").textContent=email;
+
+  closeLogin();
+
+  alert("Welcome to ZEEPY, " + name + "! 🟠");
+
+  showSection("profile");
+}
+
+
+/* LOAD USER */
+
+function loadUser(){
+
+  const saved =
+    localStorage.getItem("zeepyUser");
+
+  if(saved){
+
+    const user=JSON.parse(saved);
+
+    document.getElementById("profileName").textContent=user.name;
+
+    document.getElementById("profileEmail").textContent=user.email;
+
+  }
+
+}
+
+
+/* WALLET */
+
+let wallet =
+  parseFloat(localStorage.getItem("zeepyWallet")) || 0;
+
+function updateBalance(){
+
+  document.getElementById("balance").textContent =
+    "GH₵ " + wallet.toFixed(2);
+
+}
+
+function addEarning(amount,reason){
+
+  wallet += amount;
+
+  localStorage.setItem("zeepyWallet",wallet);
+
+  updateBalance();
+
+  alert(
+    "Demo reward added!\n\n" +
+    "+" + "GH₵ " + amount.toFixed(2) +
+    "\nReason: " + reason
+  );
+
+}
+
+function withdrawMoney(){
+
+  alert(
+    "Withdrawal is not connected yet.\n\n" +
+    "The wallet shown here is a demo. " +
+    "We will connect real payment and withdrawal services later."
+  );
+
+}
+
+
+/* MARKET */
+
+function buyProduct(product){
+
+  alert(
+    "You selected: " + product +
+    "\n\nReal seller messaging and checkout will be connected later."
+  );
 
 }
 
@@ -1898,272 +961,121 @@ function showSection(id,button){
 
 function createMeeting(){
 
-  const code =
+  const id =
     "ZEEPY-" +
     Math.random()
-    .toString(36)
-    .substring(2,8)
-    .toUpperCase();
+      .toString(36)
+      .substring(2,8)
+      .toUpperCase();
 
+  document.getElementById("meetingResult").innerHTML =
+    "Meeting ID: <strong>" +
+    id +
+    "</strong><br><br>" +
+    "<button class='primary' onclick=\"copyMeeting('" +
+    id +
+    "')\">Copy ID</button>";
 
-  document.getElementById("meetingResult")
-  .innerHTML=`
+}
 
-    <div class="meeting-code">
+function copyMeeting(id){
 
-      <strong>Meeting created!</strong>
+  navigator.clipboard.writeText(id)
+    .then(function(){
 
-      <br><br>
+      alert("Meeting ID copied: " + id);
 
-      Meeting ID:
-      <strong>${code}</strong>
+    })
+    .catch(function(){
 
-      <br><br>
+      alert("Meeting ID: " + id);
 
-      <button class="primary"
-        onclick="copyMeeting('${code}')">
-
-        Copy Meeting ID
-
-      </button>
-
-    </div>
-
-  `;
+    });
 
 }
 
 
-function copyMeeting(code){
+/* GROUPS */
 
-  if(navigator.clipboard){
+function joinGroup(group){
 
-    navigator.clipboard.writeText(code);
-
-    alert(
-      "Meeting ID copied: "+code
-    );
-
-  }else{
-
-    alert(
-      "Meeting ID: "+code
-    );
-
-  }
-
-}
-
-
-/* GROUP */
-
-function createGroup(){
-
-  const name=
-    prompt("Enter your group name:");
-
-
-  if(name){
-
-    alert(
-      "Group '"+name+
-      "' created in this prototype."
-    );
-
-  }
+  alert(
+    "You selected the " +
+    group +
+    " group.\n\n" +
+    "Real group membership will be connected later."
+  );
 
 }
 
 
 /* LIVE */
 
-function startLive(){
+function goLive(){
 
   alert(
-    "ZEEPY Live interface is ready. " +
-    "Real live streaming will be connected " +
-    "to the backend."
+    "ZEEPY Live is coming next! 🔴\n\n" +
+    "Real live streaming will require a video streaming service and backend."
   );
 
 }
-
-
-/* LOGIN */
-
-function loginUser(){
-
-  const email=
-    document.getElementById("loginEmail").value;
-
-
-  if(!email){
-
-    alert(
-      "Please enter your email address."
-    );
-
-    return;
-  }
-
-
-  alert(
-    "Login interface ready. " +
-    "Real authentication will be connected " +
-    "to the ZEEPY backend."
-  );
-
-}
-
-
-/* MARKET */
-
-function contactSeller(product){
-
-  alert(
-    "You selected: "+product+
-    ". Seller messaging will be connected "
-    +"to the ZEEPY messaging system."
-  );
-
-}
-
-
-/* CREATOR REWARD */
-
-function creatorReward(){
-
-  addEarning(
-    5,
-    "Creator activity"
-  );
-
-}
-
-
-/* EARNINGS */
-
-let wallet =
-  Number(localStorage.getItem("zeepyWallet")) || 0;
-
-
-function updateWallet(){
-
-  document.getElementById(
-    "walletBalance"
-  ).innerText =
-    "GH₵ " +
-    wallet.toFixed(2);
-
-}
-
-
-function addEarning(amount,reason){
-
-  wallet += amount;
-
-  localStorage.setItem(
-    "zeepyWallet",
-    wallet
-  );
-
-
-  updateWallet();
-
-
-  alert(
-    reason +
-    " added to your DEMO ZEEPY balance: GH₵ "
-    + amount.toFixed(2)
-  );
-
-}
-
-
-function withdrawMoney(){
-
-  if(wallet <= 0){
-
-    alert(
-      "Your demo wallet is empty."
-    );
-
-    return;
-  }
-
-
-  alert(
-    "Withdrawal is not connected yet. " +
-    "A real payment system will be connected "
-    + "before real withdrawals are enabled."
-  );
-
-}
-
-
-updateWallet();
 
 
 /* LOCATION */
 
 function getLocation(){
 
-  const status=
-    document.getElementById(
-      "locationStatus"
-    );
-
+  const status =
+    document.getElementById("locationStatus");
 
   if(!navigator.geolocation){
 
-    status.innerText=
-      "Your browser does not support location services.";
+    status.textContent =
+      "Geolocation is not supported by this browser.";
 
     return;
-
   }
 
-
-  status.innerText=
-    "Detecting your location...";
-
+  status.textContent =
+    "Requesting your location...";
 
   navigator.geolocation.getCurrentPosition(
 
     function(position){
 
-      const lat=
+      const lat =
         position.coords.latitude;
 
-
-      const lon=
+      const lon =
         position.coords.longitude;
 
-
-      status.innerHTML=
-        "✅ Location detected.<br>" +
-
-        "Latitude: "+
-        lat.toFixed(5)+
-
-        "<br>"+
-
-        "Longitude: "+
-        lon.toFixed(5);
+      status.innerHTML =
+        "<strong>Location detected!</strong><br>" +
+        "Latitude: " + lat.toFixed(6) +
+        "<br>" +
+        "Longitude: " + lon.toFixed(6) +
+        "<br><br>" +
+        "Next step: connect this to ZEEPY's real nearby-distance system.";
 
     },
 
+    function(error){
 
-    function(){
-
-      status.innerText=
-        "Location permission was not granted. " +
-        "Please allow location access and try again.";
+      status.textContent =
+        "Location permission was denied or unavailable.";
 
     }
 
   );
 
 }
+
+
+/* START */
+
+loadUser();
+
+updateBalance();
 
 </script>
 
