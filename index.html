@@ -840,7 +840,17 @@ function showSection(section){
   });
 }
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+const SUPABASE_URL = "https://rolcuhrubqryfkaziacr.supabase.co";
+const SUPABASE_KEY = "sb_publishable_iy6KvSrIMcMiKAXklrYg9A_eGVsVq5p";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+</script>
 /* LOGIN */
 
 function openLogin(){
