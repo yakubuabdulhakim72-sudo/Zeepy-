@@ -7,382 +7,367 @@
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,Helvetica,sans-serif;
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-  background:#f6f7f9;
-  color:#171717;
+background:#f6f7f9;
+color:#171717;
 }
 
 header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:#111;
-  color:white;
-  padding:14px 5%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  box-shadow:0 3px 15px rgba(0,0,0,.25);
+position:sticky;
+top:0;
+z-index:1000;
+background:#111;
+color:white;
+padding:14px 5%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+box-shadow:0 3px 15px rgba(0,0,0,.25);
 }
 
 .logo{
-  font-size:28px;
-  font-weight:900;
-  letter-spacing:-1px;
+font-size:28px;
+font-weight:900;
 }
 
 .logo span{
-  color:#ff7a00;
+color:#ff7a00;
 }
 
 .header-right{
-  display:flex;
-  align-items:center;
-  gap:10px;
+display:flex;
+align-items:center;
+gap:10px;
 }
 
 .bell{
-  font-size:22px;
+font-size:22px;
 }
 
-.login-btn{
-  background:#ff7a00;
-  color:white;
-  border:0;
-  padding:10px 18px;
-  border-radius:25px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-nav{
-  background:white;
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding:10px 5%;
-  border-bottom:1px solid #eee;
-}
-
-nav button{
-  border:0;
-  background:#f1f1f1;
-  padding:9px 14px;
-  border-radius:20px;
-  white-space:nowrap;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-nav button:hover{
-  background:#ff7a00;
-  color:white;
-}
-
-.hero{
-  margin:18px auto;
-  width:90%;
-  max-width:1100px;
-  min-height:330px;
-  border-radius:25px;
-  padding:45px 30px;
-  color:white;
-  background:linear-gradient(135deg,#111,#3a1900,#ff7a00);
-  display:flex;
-  align-items:center;
-  box-shadow:0 10px 35px rgba(0,0,0,.18);
-}
-
-.hero-content{
-  max-width:650px;
-}
-
-.hero h1{
-  font-size:clamp(40px,8vw,70px);
-  line-height:1;
-  margin-bottom:18px;
-}
-
-.hero h1 span{
-  color:#ff9800;
-}
-
-.hero p{
-  font-size:19px;
-  line-height:1.6;
-  color:#eee;
-  margin-bottom:25px;
-}
-
-.hero-buttons{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
+.login-btn,
 .primary{
-  background:#ff7a00;
-  color:white;
-  border:0;
-  padding:13px 22px;
-  border-radius:28px;
-  font-weight:bold;
-  cursor:pointer;
+background:#ff7a00;
+color:white;
+border:0;
+padding:11px 18px;
+border-radius:25px;
+font-weight:bold;
+cursor:pointer;
 }
 
 .secondary{
-  background:white;
-  color:#111;
-  border:0;
-  padding:13px 22px;
-  border-radius:28px;
-  font-weight:bold;
-  cursor:pointer;
+background:white;
+color:#111;
+border:0;
+padding:11px 18px;
+border-radius:25px;
+font-weight:bold;
+cursor:pointer;
+}
+
+nav{
+background:white;
+display:flex;
+gap:8px;
+overflow-x:auto;
+padding:10px 5%;
+border-bottom:1px solid #eee;
+}
+
+nav button{
+border:0;
+background:#f1f1f1;
+padding:9px 14px;
+border-radius:20px;
+white-space:nowrap;
+cursor:pointer;
+font-weight:bold;
+}
+
+nav button:hover{
+background:#ff7a00;
+color:white;
+}
+
+.hero{
+margin:18px auto;
+width:90%;
+max-width:1100px;
+min-height:330px;
+border-radius:25px;
+padding:45px 30px;
+color:white;
+background:linear-gradient(135deg,#111,#3a1900,#ff7a00);
+display:flex;
+align-items:center;
+box-shadow:0 10px 35px rgba(0,0,0,.18);
+}
+
+.hero-content{
+max-width:650px;
+}
+
+.hero h1{
+font-size:clamp(40px,8vw,70px);
+line-height:1;
+margin-bottom:18px;
+}
+
+.hero h1 span{
+color:#ff9800;
+}
+
+.hero p{
+font-size:19px;
+line-height:1.6;
+color:#eee;
+margin-bottom:25px;
+}
+
+.hero-buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
 }
 
 .container{
-  width:90%;
-  max-width:1100px;
-  margin:25px auto;
+width:90%;
+max-width:1100px;
+margin:25px auto;
 }
 
 .section-title{
-  font-size:28px;
-  margin-bottom:15px;
+font-size:28px;
+margin-bottom:15px;
 }
 
 .cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:16px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:16px;
 }
 
-.card{
-  background:white;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.07);
-  border:1px solid #eee;
+.card,
+.product,
+.location{
+background:white;
+border-radius:20px;
+padding:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.07);
+border:1px solid #eee;
 }
 
 .card .icon{
-  font-size:35px;
-  margin-bottom:12px;
+font-size:35px;
+margin-bottom:12px;
 }
 
 .card h3{
-  margin-bottom:8px;
+margin-bottom:8px;
 }
 
 .card p{
-  color:#666;
-  line-height:1.5;
+color:#666;
+line-height:1.5;
 }
 
 .market-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:15px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
 }
 
 .product{
-  background:white;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 5px 18px rgba(0,0,0,.08);
+padding:0;
+overflow:hidden;
 }
 
 .product-img{
-  height:150px;
-  background:linear-gradient(135deg,#eee,#ddd);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:55px;
+height:150px;
+background:linear-gradient(135deg,#eee,#ddd);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:55px;
 }
 
 .product-info{
-  padding:15px;
+padding:15px;
 }
 
 .price{
-  color:#ff7a00;
-  font-size:20px;
-  font-weight:bold;
-  margin:8px 0;
+color:#ff7a00;
+font-size:20px;
+font-weight:bold;
+margin:8px 0;
 }
 
 .buy{
-  width:100%;
-  border:0;
-  background:#111;
-  color:white;
-  padding:10px;
-  border-radius:12px;
-  cursor:pointer;
+width:100%;
+border:0;
+background:#111;
+color:white;
+padding:10px;
+border-radius:12px;
+cursor:pointer;
 }
 
 .earn-box{
-  background:linear-gradient(135deg,#111,#2b1600);
-  color:white;
-  border-radius:24px;
-  padding:25px;
-  margin-top:20px;
+background:linear-gradient(135deg,#111,#2b1600);
+color:white;
+border-radius:24px;
+padding:25px;
 }
 
 .wallet{
-  background:#ff7a00;
-  border-radius:18px;
-  padding:22px;
-  margin-bottom:18px;
-}
-
-.wallet small{
-  opacity:.9;
+background:#ff7a00;
+border-radius:18px;
+padding:22px;
+margin-bottom:18px;
 }
 
 .balance{
-  font-size:36px;
-  font-weight:900;
-  margin:8px 0;
+font-size:36px;
+font-weight:900;
+margin:8px 0;
 }
 
 .earn-buttons{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:12px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:12px;
 }
 
 .earn-btn{
-  background:white;
-  color:#111;
-  border:0;
-  border-radius:15px;
-  padding:15px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.location{
-  background:white;
-  border-radius:20px;
-  padding:20px;
-  margin-top:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.07);
+background:white;
+color:#111;
+border:0;
+border-radius:15px;
+padding:15px;
+cursor:pointer;
+font-weight:bold;
 }
 
 .status{
-  margin-top:12px;
-  padding:12px;
-  background:#f2f2f2;
-  border-radius:12px;
-  color:#555;
-  word-break:break-word;
+margin-top:12px;
+padding:12px;
+background:#f2f2f2;
+border-radius:12px;
+color:#555;
+word-break:break-word;
 }
 
 .profile{
-  display:flex;
-  gap:18px;
-  align-items:center;
+display:flex;
+gap:18px;
+align-items:center;
 }
 
 .avatar{
-  width:75px;
-  height:75px;
-  border-radius:50%;
-  background:#ff7a00;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:30px;
-  font-weight:bold;
+width:75px;
+height:75px;
+border-radius:50%;
+background:#ff7a00;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+font-weight:bold;
 }
 
 footer{
-  margin-top:40px;
-  background:#111;
-  color:white;
-  padding:35px 5%;
-  text-align:center;
+margin-top:40px;
+background:#111;
+color:white;
+padding:35px 5%;
+text-align:center;
 }
 
-footer strong{
-  color:#ff7a00;
+footer strong,
+footer span{
+color:#ff7a00;
 }
 
 .modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-  padding:20px;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.65);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+padding:20px;
 }
 
 .modal-box{
-  background:white;
-  width:100%;
-  max-width:420px;
-  border-radius:22px;
-  padding:25px;
-}
-
-.modal-box h2{
-  margin-bottom:18px;
-}
-
-.input{
-  width:100%;
-  padding:13px;
-  border:1px solid #ddd;
-  border-radius:12px;
-  margin-bottom:12px;
+background:white;
+width:100%;
+max-width:420px;
+border-radius:22px;
+padding:25px;
 }
 
 .close{
-  float:right;
-  border:0;
-  background:#eee;
-  border-radius:50%;
-  width:32px;
-  height:32px;
-  cursor:pointer;
+float:right;
+border:0;
+background:#eee;
+border-radius:50%;
+width:32px;
+height:32px;
+cursor:pointer;
+}
+
+.input{
+width:100%;
+padding:13px;
+border:1px solid #ddd;
+border-radius:12px;
+margin-bottom:12px;
+}
+
+.auth-message{
+margin:10px 0;
+padding:10px;
+border-radius:10px;
+display:none;
+font-size:14px;
+background:#f2f2f2;
 }
 
 .hidden{
-  display:none;
+display:none;
 }
 
 @media(max-width:600px){
-  header{
-    padding:12px 4%;
-  }
 
-  .logo{
-    font-size:24px;
-  }
+header{
+padding:12px 4%;
+}
 
-  .hero{
-    padding:32px 22px;
-    min-height:360px;
-  }
+.logo{
+font-size:24px;
+}
 
-  .hero p{
-    font-size:16px;
-  }
+.hero{
+padding:32px 22px;
+min-height:360px;
+}
 
-  .section-title{
-    font-size:24px;
-  }
+.hero p{
+font-size:16px;
+}
+
+.section-title{
+font-size:24px;
+}
+
 }
 </style>
 </head>
@@ -390,360 +375,586 @@ footer strong{
 <body>
 
 <header>
-  <div class="logo">ZEE<span>PY</span></div>
 
-  <div class="header-right">
-    <div class="bell">🔔</div>
-    <button class="login-btn" onclick="openLogin()">Log in</button>
-  </div>
+<div class="logo">ZEE<span>PY</span></div>
+
+<div class="header-right">
+
+<div class="bell">🔔</div>
+
+<button class="login-btn" onclick="openLogin()">
+Log in
+</button>
+
+</div>
+
 </header>
 
+
 <nav>
-  <button onclick="showSection('home')">🏠 Home</button>
-  <button onclick="showSection('market')">🛍️ Market</button>
-  <button onclick="showSection('meet')">🤝 Meet</button>
-  <button onclick="showSection('groups')">👥 Groups</button>
-  <button onclick="showSection('live')">🔴 Live</button>
-  <button onclick="showSection('messages')">💬 Messages</button>
-  <button onclick="showSection('nearby')">📍 Nearby</button>
-  <button onclick="showSection('media')">🎬 Media</button>
-  <button onclick="showSection('earn')">💰 Earn</button>
-  <button onclick="showSection('profile')">👤 Profile</button>
+
+<button onclick="showSection('home')">🏠 Home</button>
+<button onclick="showSection('market')">🛍️ Market</button>
+<button onclick="showSection('meet')">🤝 Meet</button>
+<button onclick="showSection('groups')">👥 Groups</button>
+<button onclick="showSection('live')">🔴 Live</button>
+<button onclick="showSection('messages')">💬 Messages</button>
+<button onclick="showSection('nearby')">📍 Nearby</button>
+<button onclick="showSection('media')">🎬 Media</button>
+<button onclick="showSection('earn')">💰 Earn</button>
+<button onclick="showSection('profile')">👤 Profile</button>
+
 </nav>
+
 
 <main>
 
+
 <section id="home">
 
-  <div class="hero">
-    <div class="hero-content">
-      <h1>Connect.<br>Discover.<br><span>Earn.</span></h1>
+<div class="hero">
 
-      <p>
-        Welcome to ZEEPY — a social-commerce platform where people
-        connect, discover products, meet others, create content,
-        sell, and build opportunities.
-      </p>
+<div class="hero-content">
 
-      <div class="hero-buttons">
-        <button class="primary" onclick="showSection('market')">
-          🛍️ Explore Market
-        </button>
+<h1>
+Connect.<br>
+Discover.<br>
+<span>Earn.</span>
+</h1>
 
-        <button class="secondary" onclick="openLogin()">
-          🚀 Join ZEEPY
-        </button>
-      </div>
-    </div>
-  </div>
+<p>
+Welcome to ZEEPY — a social-commerce platform where people
+connect, discover products, meet others, create content,
+sell and build opportunities.
+</p>
 
-  <div class="container">
-    <h2 class="section-title">Everything in one place</h2>
+<div class="hero-buttons">
 
-    <div class="cards">
+<button class="primary" onclick="showSection('market')">
+🛍️ Explore Market
+</button>
 
-      <div class="card">
-        <div class="icon">🛍️</div>
-        <h3>Marketplace</h3>
-        <p>Discover products and give sellers a place to reach customers.</p>
-      </div>
+<button class="secondary" onclick="openLogin()">
+🚀 Join ZEEPY
+</button>
 
-      <div class="card">
-        <div class="icon">🤝</div>
-        <h3>Meet People</h3>
-        <p>Connect with people and communities around you.</p>
-      </div>
+</div>
 
-      <div class="card">
-        <div class="icon">🎥</div>
-        <h3>Create & Watch</h3>
-        <p>Share videos, posts and creative content with the community.</p>
-      </div>
+</div>
 
-      <div class="card">
-        <div class="icon">💰</div>
-        <h3>Earn</h3>
-        <p>Creators, sellers and active users can participate in reward programs.</p>
-      </div>
+</div>
 
-    </div>
-  </div>
+
+<div class="container">
+
+<h2 class="section-title">
+Everything in one place
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">🛍️</div>
+<h3>Marketplace</h3>
+<p>Discover products and connect buyers with sellers.</p>
+</div>
+
+<div class="card">
+<div class="icon">🤝</div>
+<h3>Meet People</h3>
+<p>Connect with people and communities around you.</p>
+</div>
+
+<div class="card">
+<div class="icon">🎥</div>
+<h3>Create & Watch</h3>
+<p>Share videos, posts and creative content.</p>
+</div>
+
+<div class="card">
+<div class="icon">💰</div>
+<h3>Earn</h3>
+<p>Participate in legitimate ZEEPY reward programs.</p>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
 <section id="market" class="container hidden">
 
-  <h2 class="section-title">🛍️ ZEEPY Market</h2>
+<h2 class="section-title">
+🛍️ ZEEPY Market
+</h2>
 
-  <div class="market-grid">
+<div class="market-grid">
 
-    <div class="product">
-      <div class="product-img">📱</div>
-      <div class="product-info">
-        <h3>Smartphone</h3>
-        <div class="price">GH₵ 2,500</div>
-        <button class="buy" onclick="buyProduct('Smartphone')">Contact Seller</button>
-      </div>
-    </div>
+<div class="product">
 
-    <div class="product">
-      <div class="product-img">💻</div>
-      <div class="product-info">
-        <h3>Laptop</h3>
-        <div class="price">GH₵ 4,800</div>
-        <button class="buy" onclick="buyProduct('Laptop')">Contact Seller</button>
-      </div>
-    </div>
+<div class="product-img">📱</div>
 
-    <div class="product">
-      <div class="product-img">👟</div>
-      <div class="product-info">
-        <h3>Fashion Shoes</h3>
-        <div class="price">GH₵ 350</div>
-        <button class="buy" onclick="buyProduct('Fashion Shoes')">Contact Seller</button>
-      </div>
-    </div>
+<div class="product-info">
 
-    <div class="product">
-      <div class="product-img">🎧</div>
-      <div class="product-info">
-        <h3>Wireless Headphones</h3>
-        <div class="price">GH₵ 280</div>
-        <button class="buy" onclick="buyProduct('Wireless Headphones')">Contact Seller</button>
-      </div>
-    </div>
+<h3>Smartphone</h3>
 
-  </div>
+<div class="price">
+GH₵ 2,500
+</div>
+
+<button class="buy"
+onclick="buyProduct('Smartphone')">
+Contact Seller
+</button>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-img">💻</div>
+
+<div class="product-info">
+
+<h3>Laptop</h3>
+
+<div class="price">
+GH₵ 4,800
+</div>
+
+<button class="buy"
+onclick="buyProduct('Laptop')">
+Contact Seller
+</button>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-img">👟</div>
+
+<div class="product-info">
+
+<h3>Fashion Shoes</h3>
+
+<div class="price">
+GH₵ 350
+</div>
+
+<button class="buy"
+onclick="buyProduct('Fashion Shoes')">
+Contact Seller
+</button>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-img">🎧</div>
+
+<div class="product-info">
+
+<h3>Wireless Headphones</h3>
+
+<div class="price">
+GH₵ 280
+</div>
+
+<button class="buy"
+onclick="buyProduct('Wireless Headphones')">
+Contact Seller
+</button>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
 <section id="meet" class="container hidden">
 
-  <h2 class="section-title">🤝 Meet</h2>
+<h2 class="section-title">
+🤝 Meet
+</h2>
 
-  <div class="card">
-    <h3>Create a meeting</h3>
-    <p>Start a ZEEPY meeting room and invite others.</p>
-    <br>
-    <button class="primary" onclick="createMeeting()">Create Meeting</button>
-    <div id="meetingResult" class="status"></div>
-  </div>
+<div class="card">
+
+<h3>Create a meeting</h3>
+
+<p>
+Start a ZEEPY meeting room and invite others.
+</p>
+
+<br>
+
+<button class="primary"
+onclick="createMeeting()">
+Create Meeting
+</button>
+
+<div id="meetingResult"
+class="status">
+</div>
+
+</div>
 
 </section>
 
 
 <section id="groups" class="container hidden">
 
-  <h2 class="section-title">👥 Groups</h2>
+<h2 class="section-title">
+👥 Groups
+</h2>
 
-  <div class="cards">
+<div class="cards">
 
-    <div class="card">
-      <div class="icon">📚</div>
-      <h3>Students</h3>
-      <p>Connect, learn and share opportunities.</p>
-      <button class="primary" onclick="joinGroup('Students')">Join</button>
-    </div>
+<div class="card">
 
-    <div class="card">
-      <div class="icon">🛒</div>
-      <h3>Business Owners</h3>
-      <p>Network with sellers and entrepreneurs.</p>
-      <button class="primary" onclick="joinGroup('Business Owners')">Join</button>
-    </div>
+<div class="icon">📚</div>
 
-    <div class="card">
-      <div class="icon">🎨</div>
-      <h3>Creators</h3>
-      <p>Share ideas and grow your audience.</p>
-      <button class="primary" onclick="joinGroup('Creators')">Join</button>
-    </div>
+<h3>Students</h3>
 
-  </div>
+<p>
+Connect, learn and share opportunities.
+</p>
+
+<br>
+
+<button class="primary"
+onclick="joinGroup('Students')">
+Join
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🛒</div>
+
+<h3>Business Owners</h3>
+
+<p>
+Network with sellers and entrepreneurs.
+</p>
+
+<br>
+
+<button class="primary"
+onclick="joinGroup('Business Owners')">
+Join
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🎨</div>
+
+<h3>Creators</h3>
+
+<p>
+Share ideas and grow your audience.
+</p>
+
+<br>
+
+<button class="primary"
+onclick="joinGroup('Creators')">
+Join
+</button>
+
+</div>
+
+</div>
 
 </section>
 
 
 <section id="live" class="container hidden">
 
-  <h2 class="section-title">🔴 ZEEPY Live</h2>
+<h2 class="section-title">
+🔴 ZEEPY Live
+</h2>
 
-  <div class="card">
-    <div class="icon">🔴</div>
-    <h3>Go Live</h3>
-    <p>
-      Creators will eventually be able to broadcast live,
-      interact with viewers and participate in creator rewards.
-    </p>
-    <br>
-    <button class="primary" onclick="goLive()">Start Live</button>
-  </div>
+<div class="card">
+
+<div class="icon">🔴</div>
+
+<h3>Go Live</h3>
+
+<p>
+Creators will eventually be able to broadcast live,
+interact with viewers and participate in creator rewards.
+</p>
+
+<br>
+
+<button class="primary"
+onclick="goLive()">
+Start Live
+</button>
+
+</div>
 
 </section>
 
 
 <section id="messages" class="container hidden">
 
-  <h2 class="section-title">💬 Messages</h2>
+<h2 class="section-title">
+💬 Messages
+</h2>
 
-  <div class="card">
-    <h3>Your conversations</h3>
-    <p>No conversations yet.</p>
-    <br>
-    <button class="primary" onclick="alert('Messaging system will be connected to real user accounts next.')">
-      New Message
-    </button>
-  </div>
+<div class="card">
+
+<h3>Your conversations</h3>
+
+<p>
+No conversations yet.
+</p>
+
+<br>
+
+<button class="primary"
+onclick="newMessage()">
+New Message
+</button>
+
+</div>
 
 </section>
 
 
 <section id="nearby" class="container hidden">
 
-  <h2 class="section-title">📍 Nearby</h2>
+<h2 class="section-title">
+📍 Nearby
+</h2>
 
-  <div class="location">
+<div class="location">
 
-    <h3>Find your location</h3>
+<h3>Find your location</h3>
 
-    <p>
-      Allow ZEEPY to access your location so we can build
-      nearby people, products and services.
-    </p>
+<p>
+Allow ZEEPY to access your location so we can build
+nearby people, products and services.
+</p>
 
-    <br>
+<br>
 
-    <button class="primary" onclick="getLocation()">
-      📍 Get My Location
-    </button>
+<button class="primary"
+onclick="getLocation()">
+📍 Get My Location
+</button>
 
-    <div id="locationStatus" class="status">
-      Location not detected yet.
-    </div>
+<div id="locationStatus"
+class="status">
+Location not detected yet.
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
 <section id="media" class="container hidden">
 
-  <h2 class="section-title">🎬 Media</h2>
+<h2 class="section-title">
+🎬 Media
+</h2>
 
-  <div class="cards">
+<div class="cards">
 
-    <div class="card">
-      <div class="icon">🎥</div>
-      <h3>Videos</h3>
-      <p>Watch and share community videos.</p>
-      <button class="primary" onclick="alert('Video uploads will be connected next.')">
-        Upload
-      </button>
-    </div>
+<div class="card">
 
-    <div class="card">
-      <div class="icon">📸</div>
-      <h3>Photos</h3>
-      <p>Share your moments with the ZEEPY community.</p>
-      <button class="primary" onclick="alert('Photo uploads will be connected next.')">
-        Upload
-      </button>
-    </div>
+<div class="icon">🎥</div>
 
-  </div>
+<h3>Videos</h3>
+
+<p>
+Watch and share community videos.
+</p>
+
+<br>
+
+<button class="primary"
+onclick="uploadMedia('video')">
+Upload
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">📸</div>
+
+<h3>Photos</h3>
+
+<p>
+Share your moments with the ZEEPY community.
+</p>
+
+<br>
+
+<button class="primary"
+onclick="uploadMedia('photo')">
+Upload
+</button>
+
+</div>
+
+</div>
 
 </section>
 
 
 <section id="earn" class="container hidden">
 
-  <h2 class="section-title">💰 Earn on ZEEPY</h2>
+<h2 class="section-title">
+💰 Earn on ZEEPY
+</h2>
 
-  <div class="earn-box">
+<div class="earn-box">
 
-    <div class="wallet">
+<div class="wallet">
 
-      <small>Demo Wallet Balance</small>
+<small>
+Demo Wallet Balance
+</small>
 
-      <div class="balance" id="balance">
-        GH₵ 0.00
-      </div>
+<div class="balance"
+id="balance">
+GH₵ 0.00
+</div>
 
-      <button class="secondary" onclick="withdrawMoney()">
-        Withdraw
-      </button>
+<button class="secondary"
+onclick="withdrawMoney()">
+Withdraw
+</button>
 
-    </div>
+</div>
 
-    <h3>Ways users can earn</h3>
 
-    <br>
+<h3>
+Ways users can earn
+</h3>
 
-    <div class="earn-buttons">
+<br>
 
-      <button class="earn-btn" onclick="addEarning(5,'Creator activity')">
-        🎥 Creator<br>+ GH₵ 5
-      </button>
+<div class="earn-buttons">
 
-      <button class="earn-btn" onclick="addEarning(10,'Seller activity')">
-        🛍️ Seller<br>+ GH₵ 10
-      </button>
+<button class="earn-btn"
+onclick="addEarning(5,'Creator activity')">
+🎥 Creator<br>
++ GH₵ 5
+</button>
 
-      <button class="earn-btn" onclick="addEarning(2,'Referral')">
-        👥 Referral<br>+ GH₵ 2
-      </button>
+<button class="earn-btn"
+onclick="addEarning(10,'Seller activity')">
+🛍️ Seller<br>
++ GH₵ 10
+</button>
 
-      <button class="earn-btn" onclick="addEarning(3,'Live activity')">
-        🔴 Live<br>+ GH₵ 3
-      </button>
+<button class="earn-btn"
+onclick="addEarning(2,'Referral')">
+👥 Referral<br>
++ GH₵ 2
+</button>
 
-    </div>
+<button class="earn-btn"
+onclick="addEarning(3,'Live activity')">
+🔴 Live<br>
++ GH₵ 3
+</button>
 
-    <br>
+</div>
 
-    <p>
-      ZEEPY can later support transparent reward programs for
-      creators, sellers, referrals and other eligible activities.
-    </p>
+<br>
 
-  </div>
+<p>
+These rewards are currently demonstration values.
+Real earning systems will require backend rules and payment integration.
+</p>
 
-  <br>
+</div>
 
-  <div class="card">
 
-    <h3>💼 How ZEEPY can earn</h3>
+<br>
 
-    <br>
 
-    <p>
-      ZEEPY can generate revenue through clearly disclosed
-      transaction fees, promoted listings, advertising,
-      business tools, premium services and other legitimate
-      platform services.
-    </p>
+<div class="card">
 
-  </div>
+<h3>
+💼 How ZEEPY can earn
+</h3>
+
+<br>
+
+<p>
+ZEEPY can generate revenue through disclosed transaction fees,
+promoted listings, advertising, business tools, premium services
+and other legitimate platform services.
+</p>
+
+</div>
 
 </section>
 
 
 <section id="profile" class="container hidden">
 
-  <h2 class="section-title">👤 Profile</h2>
+<h2 class="section-title">
+👤 Profile
+</h2>
 
-  <div class="card profile">
+<div class="card profile">
 
-    <div class="avatar">Z</div>
+<div class="avatar"
+id="avatar">
+Z
+</div>
 
-    <div>
-      <h3 id="profileName">ZEEPY User</h3>
-      <p id="profileEmail">Create an account to personalize your profile.</p>
-    </div>
+<div>
 
-  </div>
+<h3 id="profileName">
+ZEEPY User
+</h3>
+
+<p id="profileEmail">
+Create an account to personalize your profile.
+</p>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<button class="primary"
+onclick="logoutUser()">
+Log Out
+</button>
+
+</div>
 
 </section>
 
@@ -751,337 +962,822 @@ footer strong{
 
 
 <footer>
-  <h2>ZEE<span>PY</span></h2>
-  <br>
-  <p>Connect. Meet. Trade. Live. <strong>Earn.</strong></p>
-  <br>
-  <small>© 2026 ZEEPY. Building a better social-commerce community.</small>
+
+<h2>
+ZEE<span>PY</span>
+</h2>
+
+<br>
+
+<p>
+Connect. Meet. Trade. Live.
+<strong>Earn.</strong>
+</p>
+
+<br>
+
+<small>
+© 2026 ZEEPY. Building a better social-commerce community.
+</small>
+
 </footer>
 
 
 <!-- LOGIN MODAL -->
 
-<div class="modal" id="loginModal">
+<div class="modal"
+id="loginModal">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <button class="close" onclick="closeLogin()">×</button>
+<button class="close"
+onclick="closeLogin()">
+×
+</button>
 
-    <h2>Welcome to ZEEPY 🟠</h2>
+<h2>
+Welcome to ZEEPY 🟠
+</h2>
 
-    <input
-      id="nameInput"
-      class="input"
-      type="text"
-      placeholder="Your name"
-    >
+<br>
 
-    <input
-      id="emailInput"
-      class="input"
-      type="email"
-      placeholder="Email address"
-    >
+<input
+id="nameInput"
+class="input"
+type="text"
+placeholder="Your name">
 
-    <input
-      id="passwordInput"
-      class="input"
-      type="password"
-      placeholder="Password"
-    >
+<input
+id="emailInput"
+class="input"
+type="email"
+placeholder="Email address">
 
-    <button class="primary" style="width:100%" onclick="loginUser()">
-      Create Account / Log In
-    </button>
+<input
+id="passwordInput"
+class="input"
+type="password"
+placeholder="Password (minimum 6 characters)">
 
-  </div>
+<div id="authMessage"
+class="auth-message">
+</div>
+
+<button
+class="primary"
+style="width:100%"
+onclick="loginUser()">
+Create Account / Log In
+</button>
+
+</div>
 
 </div>
 
 
-<script>
-
-/* SECTION NAVIGATION */
-
-function showSection(section){
-
-  const sections = [
-    "home",
-    "market",
-    "meet",
-    "groups",
-    "live",
-    "messages",
-    "nearby",
-    "media",
-    "earn",
-    "profile"
-  ];
-
-  sections.forEach(function(id){
-
-    const element = document.getElementById(id);
-
-    if(element){
-      element.classList.add("hidden");
-    }
-
-  });
-
-  const selected = document.getElementById(section);
-
-  if(selected){
-    selected.classList.remove("hidden");
-  }
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-}
+<!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const SUPABASE_URL = "https://rolcuhrubqryfkaziacr.supabase.co";
-const SUPABASE_KEY = "sb_publishable_iy6KvSrIMcMiKAXklrYg9A_eGVsVq5p";
 
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
+/* =====================================================
+   SUPABASE
+   ===================================================== */
+
+const SUPABASE_URL =
+"https://rolcuhrubqryfkaziacr.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_iy6KvSrIMcMiKAXklrYg9A_eGVsVq5p";
+
+const supabaseClient =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
 );
-</script>
-/* LOGIN */
+
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+function showSection(section){
+
+const sections = [
+"home",
+"market",
+"meet",
+"groups",
+"live",
+"messages",
+"nearby",
+"media",
+"earn",
+"profile"
+];
+
+sections.forEach(function(id){
+
+const element =
+document.getElementById(id);
+
+if(element){
+element.classList.add("hidden");
+}
+
+});
+
+const selected =
+document.getElementById(section);
+
+if(selected){
+selected.classList.remove("hidden");
+}
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =====================================================
+   LOGIN MODAL
+   ===================================================== */
 
 function openLogin(){
-  document.getElementById("loginModal").style.display="flex";
+
+document.getElementById(
+"loginModal"
+).style.display="flex";
+
 }
 
 function closeLogin(){
-  document.getElementById("loginModal").style.display="none";
-}
 
-function loginUser(){
-
-  const name =
-    document.getElementById("nameInput").value.trim();
-
-  const email =
-    document.getElementById("emailInput").value.trim();
-
-  const password =
-    document.getElementById("passwordInput").value.trim();
-
-  if(!name || !email || !password){
-
-    alert("Please complete all fields.");
-
-    return;
-  }
-
-  localStorage.setItem("zeepyUser",JSON.stringify({
-    name:name,
-    email:email
-  }));
-
-  document.getElementById("profileName").textContent=name;
-
-  document.getElementById("profileEmail").textContent=email;
-
-  closeLogin();
-
-  alert("Welcome to ZEEPY, " + name + "! 🟠");
-
-  showSection("profile");
-}
-
-
-/* LOAD USER */
-
-function loadUser(){
-
-  const saved =
-    localStorage.getItem("zeepyUser");
-
-  if(saved){
-
-    const user=JSON.parse(saved);
-
-    document.getElementById("profileName").textContent=user.name;
-
-    document.getElementById("profileEmail").textContent=user.email;
-
-  }
+document.getElementById(
+"loginModal"
+).style.display="none";
 
 }
 
 
-/* WALLET */
+/* =====================================================
+   AUTH MESSAGE
+   ===================================================== */
+
+function showAuthMessage(message){
+
+const box =
+document.getElementById(
+"authMessage"
+);
+
+box.textContent=message;
+
+box.style.display="block";
+
+}
+
+
+/* =====================================================
+   LOGIN / SIGNUP
+   ===================================================== */
+
+async function loginUser(){
+
+const name =
+document.getElementById(
+"nameInput"
+).value.trim();
+
+const email =
+document.getElementById(
+"emailInput"
+).value.trim();
+
+const password =
+document.getElementById(
+"passwordInput"
+).value;
+
+if(!name || !email || !password){
+
+showAuthMessage(
+"Please complete all fields."
+);
+
+return;
+
+}
+
+if(password.length < 6){
+
+showAuthMessage(
+"Password must be at least 6 characters."
+);
+
+return;
+
+}
+
+showAuthMessage(
+"Creating/checking your account..."
+);
+
+
+/* SIGN UP */
+
+const {
+data:signUpData,
+error:signUpError
+} =
+await supabaseClient.auth.signUp({
+
+email:email,
+
+password:password,
+
+options:{
+data:{
+full_name:name
+}
+}
+
+});
+
+
+/* SIGNUP SUCCESS */
+
+if(!signUpError){
+
+if(
+signUpData &&
+signUpData.session
+){
+
+saveUser(
+name,
+email
+);
+
+closeLogin();
+
+alert(
+"Welcome to ZEEPY, " +
+name +
+"! 🟠"
+);
+
+showSection("profile");
+
+return;
+
+}
+
+showAuthMessage(
+"Account created! Please check your email and confirm your account, then log in."
+);
+
+return;
+
+}
+
+
+/* EXISTING ACCOUNT */
+
+const errorMessage =
+signUpError.message.toLowerCase();
+
+const accountExists =
+errorMessage.includes("already") ||
+errorMessage.includes("registered") ||
+errorMessage.includes("exists");
+
+
+if(!accountExists){
+
+showAuthMessage(
+"Signup error: " +
+signUpError.message
+);
+
+return;
+
+}
+
+
+/* LOGIN */
+
+showAuthMessage(
+"Logging you in..."
+);
+
+const {
+data,
+error
+} =
+await supabaseClient.auth.signInWithPassword({
+
+email:email,
+
+password:password
+
+});
+
+
+if(error){
+
+showAuthMessage(
+"Login error: " +
+error.message
+);
+
+return;
+
+}
+
+const user =
+data.user;
+
+const savedName =
+user &&
+user.user_metadata &&
+user.user_metadata.full_name
+?
+user.user_metadata.full_name
+:
+name;
+
+
+saveUser(
+savedName,
+user.email || email
+);
+
+closeLogin();
+
+alert(
+"Welcome back to ZEEPY, " +
+savedName +
+"! 🟠"
+);
+
+showSection("profile");
+
+}
+
+
+/* =====================================================
+   SAVE USER
+   ===================================================== */
+
+function saveUser(name,email){
+
+localStorage.setItem(
+"zeepyUser",
+JSON.stringify({
+name:name,
+email:email
+})
+);
+
+document.getElementById(
+"profileName"
+).textContent=name;
+
+document.getElementById(
+"profileEmail"
+).textContent=email;
+
+document.getElementById(
+"avatar"
+).textContent =
+name.charAt(0).toUpperCase();
+
+}
+
+
+/* =====================================================
+   LOAD USER
+   ===================================================== */
+
+async function loadUser(){
+
+try{
+
+const {
+data,
+error
+} =
+await supabaseClient.auth.getSession();
+
+if(!error &&
+data &&
+data.session &&
+data.session.user){
+
+const user =
+data.session.user;
+
+const name =
+user.user_metadata &&
+user.user_metadata.full_name
+?
+user.user_metadata.full_name
+:
+"ZEEPY User";
+
+saveUser(
+name,
+user.email || ""
+);
+
+return;
+
+}
+
+}catch(error){
+
+console.error(
+"Session error:",
+error
+);
+
+}
+
+
+/* LOCAL FALLBACK */
+
+const saved =
+localStorage.getItem(
+"zeepyUser"
+);
+
+if(saved){
+
+try{
+
+const user =
+JSON.parse(saved);
+
+saveUser(
+user.name,
+user.email
+);
+
+}catch(error){
+
+localStorage.removeItem(
+"zeepyUser"
+);
+
+}
+
+}
+
+}
+
+
+/* =====================================================
+   LOGOUT
+   ===================================================== */
+
+async function logoutUser(){
+
+await supabaseClient.auth.signOut();
+
+localStorage.removeItem(
+"zeepyUser"
+);
+
+document.getElementById(
+"profileName"
+).textContent="ZEEPY User";
+
+document.getElementById(
+"profileEmail"
+).textContent=
+"Create an account to personalize your profile.";
+
+document.getElementById(
+"avatar"
+).textContent="Z";
+
+alert(
+"You have been logged out."
+);
+
+showSection("home");
+
+}
+
+
+/* =====================================================
+   WALLET
+   ===================================================== */
 
 let wallet =
-  parseFloat(localStorage.getItem("zeepyWallet")) || 0;
+parseFloat(
+localStorage.getItem(
+"zeepyWallet"
+)
+) || 0;
+
 
 function updateBalance(){
 
-  document.getElementById("balance").textContent =
-    "GH₵ " + wallet.toFixed(2);
+document.getElementById(
+"balance"
+).textContent =
+"GH₵ " +
+wallet.toFixed(2);
 
 }
 
-function addEarning(amount,reason){
 
-  wallet += amount;
+function addEarning(
+amount,
+reason
+){
 
-  localStorage.setItem("zeepyWallet",wallet);
+wallet += amount;
 
-  updateBalance();
+localStorage.setItem(
+"zeepyWallet",
+wallet
+);
 
-  alert(
-    "Demo reward added!\n\n" +
-    "+" + "GH₵ " + amount.toFixed(2) +
-    "\nReason: " + reason
-  );
+updateBalance();
+
+alert(
+"Demo reward added!\n\n" +
+"+GH₵ " +
+amount.toFixed(2) +
+"\nReason: " +
+reason
+);
 
 }
+
 
 function withdrawMoney(){
 
-  alert(
-    "Withdrawal is not connected yet.\n\n" +
-    "The wallet shown here is a demo. " +
-    "We will connect real payment and withdrawal services later."
-  );
+alert(
+"Withdrawal is not connected yet.\n\n" +
+"The wallet is currently a demonstration. Real payment services will be connected later."
+);
 
 }
 
 
-/* MARKET */
+/* =====================================================
+   MARKET
+   ===================================================== */
 
 function buyProduct(product){
 
-  alert(
-    "You selected: " + product +
-    "\n\nReal seller messaging and checkout will be connected later."
-  );
+alert(
+"You selected: " +
+product +
+"\n\n" +
+"Real seller messaging and checkout will be connected later."
+);
 
 }
 
 
-/* MEETING */
+/* =====================================================
+   MEETING
+   ===================================================== */
 
 function createMeeting(){
 
-  const id =
-    "ZEEPY-" +
-    Math.random()
-      .toString(36)
-      .substring(2,8)
-      .toUpperCase();
+const id =
+"ZEEPY-" +
+Math.random()
+.toString(36)
+.substring(2,8)
+.toUpperCase();
 
-  document.getElementById("meetingResult").innerHTML =
-    "Meeting ID: <strong>" +
-    id +
-    "</strong><br><br>" +
-    "<button class='primary' onclick=\"copyMeeting('" +
-    id +
-    "')\">Copy ID</button>";
+document.getElementById(
+"meetingResult"
+).innerHTML =
+"Meeting ID: <strong>" +
+id +
+"</strong><br><br>" +
+"<button class='primary' onclick=\"copyMeeting('" +
+id +
+"')\">Copy ID</button>";
 
 }
+
 
 function copyMeeting(id){
 
-  navigator.clipboard.writeText(id)
-    .then(function(){
+if(
+navigator.clipboard &&
+navigator.clipboard.writeText
+){
 
-      alert("Meeting ID copied: " + id);
+navigator.clipboard.writeText(id)
+.then(function(){
 
-    })
-    .catch(function(){
+alert(
+"Meeting ID copied: " +
+id
+);
 
-      alert("Meeting ID: " + id);
+})
+.catch(function(){
 
-    });
+alert(
+"Meeting ID: " +
+id
+);
+
+});
+
+}else{
+
+alert(
+"Meeting ID: " +
+id
+);
+
+}
 
 }
 
 
-/* GROUPS */
+/* =====================================================
+   GROUPS
+   ===================================================== */
 
 function joinGroup(group){
 
-  alert(
-    "You selected the " +
-    group +
-    " group.\n\n" +
-    "Real group membership will be connected later."
-  );
+alert(
+"You selected the " +
+group +
+" group.\n\n" +
+"Real group membership will be connected later."
+);
 
 }
 
 
-/* LIVE */
+/* =====================================================
+   LIVE
+   ===================================================== */
 
 function goLive(){
 
-  alert(
-    "ZEEPY Live is coming next! 🔴\n\n" +
-    "Real live streaming will require a video streaming service and backend."
-  );
+alert(
+"ZEEPY Live is coming next! 🔴\n\n" +
+"Real live streaming will be connected in a later stage."
+);
 
 }
 
 
-/* LOCATION */
+/* =====================================================
+   MESSAGES
+   ===================================================== */
+
+function newMessage(){
+
+alert(
+"Messaging will be connected to real ZEEPY accounts in a later stage."
+);
+
+}
+
+
+/* =====================================================
+   MEDIA
+   ===================================================== */
+
+function uploadMedia(type){
+
+if(type === "video"){
+
+alert(
+"Video uploading will be connected next."
+);
+
+}else{
+
+alert(
+"Photo uploading will be connected next."
+);
+
+}
+
+}
+
+
+/* =====================================================
+   LOCATION
+   ===================================================== */
 
 function getLocation(){
 
-  const status =
-    document.getElementById("locationStatus");
+const status =
+document.getElementById(
+"locationStatus"
+);
 
-  if(!navigator.geolocation){
+if(!navigator.geolocation){
 
-    status.textContent =
-      "Geolocation is not supported by this browser.";
+status.textContent =
+"Geolocation is not supported by this browser.";
 
-    return;
-  }
+return;
 
-  status.textContent =
-    "Requesting your location...";
+}
 
-  navigator.geolocation.getCurrentPosition(
+status.textContent =
+"Requesting your location...";
 
-    function(position){
+navigator.geolocation.getCurrentPosition(
 
-      const lat =
-        position.coords.latitude;
+function(position){
 
-      const lon =
-        position.coords.longitude;
+const lat =
+position.coords.latitude;
 
-      status.innerHTML =
-        "<strong>Location detected!</strong><br>" +
-        "Latitude: " + lat.toFixed(6) +
-        "<br>" +
-        "Longitude: " + lon.toFixed(6) +
-        "<br><br>" +
-        "Next step: connect this to ZEEPY's real nearby-distance system.";
+const lon =
+position.coords.longitude;
 
-    },
+status.innerHTML =
+"<strong>Location detected!</strong><br>" +
+"Latitude: " +
+lat.toFixed(6) +
+"<br>" +
+"Longitude: " +
+lon.toFixed(6) +
+"<br><br>" +
+"ZEEPY can use this information for the nearby-distance system.";
 
-    function(error){
+},
 
-      status.textContent =
-        "Location permission was denied or unavailable.";
+function(){
 
-    }
+status.textContent =
+"Location permission was denied or unavailable.";
 
-  );
+},
+
+{
+enableHighAccuracy:true,
+timeout:10000,
+maximumAge:0
+}
+
+);
 
 }
 
 
-/* START */
+/* =====================================================
+   AUTH STATE
+   ===================================================== */
+
+supabaseClient.auth.onAuthStateChange(
+function(event,session){
+
+if(
+session &&
+session.user
+){
+
+const user =
+session.user;
+
+const name =
+user.user_metadata &&
+user.user_metadata.full_name
+?
+user.user_metadata.full_name
+:
+"ZEEPY User";
+
+saveUser(
+name,
+user.email || ""
+);
+
+}
+
+}
+);
+
+
+/* =====================================================
+   START
+   ===================================================== */
 
 loadUser();
 
