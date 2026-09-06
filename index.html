@@ -3,371 +3,388 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ZEEPY — Connect. Discover. Earn.</title>
 
 <style>
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial,Helvetica,sans-serif;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-background:#f6f7f9;
-color:#171717;
+  background:#f6f7f9;
+  color:#171717;
 }
 
 header{
-position:sticky;
-top:0;
-z-index:1000;
-background:#111;
-color:white;
-padding:14px 5%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-box-shadow:0 3px 15px rgba(0,0,0,.25);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#111;
+  color:white;
+  padding:14px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 3px 15px rgba(0,0,0,.25);
 }
 
 .logo{
-font-size:28px;
-font-weight:900;
+  font-size:28px;
+  font-weight:900;
 }
 
-.logo span{
-color:#ff7a00;
+.logo span,
+footer span{
+  color:#ff7a00;
 }
 
 .header-right{
-display:flex;
-align-items:center;
-gap:10px;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .bell{
-font-size:22px;
+  font-size:22px;
 }
 
 .login-btn,
 .primary{
-background:#ff7a00;
-color:white;
-border:0;
-padding:11px 18px;
-border-radius:25px;
-font-weight:bold;
-cursor:pointer;
+  background:#ff7a00;
+  color:white;
+  border:0;
+  padding:11px 18px;
+  border-radius:25px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .secondary{
-background:white;
-color:#111;
-border:0;
-padding:11px 18px;
-border-radius:25px;
-font-weight:bold;
-cursor:pointer;
+  background:white;
+  color:#111;
+  border:0;
+  padding:11px 18px;
+  border-radius:25px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button{
+  cursor:pointer;
 }
 
 nav{
-background:white;
-display:flex;
-gap:8px;
-overflow-x:auto;
-padding:10px 5%;
-border-bottom:1px solid #eee;
+  background:white;
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:10px 5%;
+  border-bottom:1px solid #eee;
 }
 
 nav button{
-border:0;
-background:#f1f1f1;
-padding:9px 14px;
-border-radius:20px;
-white-space:nowrap;
-cursor:pointer;
-font-weight:bold;
+  border:0;
+  background:#f1f1f1;
+  padding:9px 14px;
+  border-radius:20px;
+  white-space:nowrap;
+  font-weight:bold;
 }
 
 nav button:hover{
-background:#ff7a00;
-color:white;
+  background:#ff7a00;
+  color:white;
 }
 
 .hero{
-margin:18px auto;
-width:90%;
-max-width:1100px;
-min-height:330px;
-border-radius:25px;
-padding:45px 30px;
-color:white;
-background:linear-gradient(135deg,#111,#3a1900,#ff7a00);
-display:flex;
-align-items:center;
-box-shadow:0 10px 35px rgba(0,0,0,.18);
+  margin:18px auto;
+  width:90%;
+  max-width:1100px;
+  min-height:330px;
+  border-radius:25px;
+  padding:45px 30px;
+  color:white;
+  background:linear-gradient(135deg,#111,#3a1900,#ff7a00);
+  display:flex;
+  align-items:center;
+  box-shadow:0 10px 35px rgba(0,0,0,.18);
 }
 
 .hero-content{
-max-width:650px;
+  max-width:650px;
 }
 
 .hero h1{
-font-size:clamp(40px,8vw,70px);
-line-height:1;
-margin-bottom:18px;
+  font-size:clamp(40px,8vw,70px);
+  line-height:1;
+  margin-bottom:18px;
 }
 
 .hero h1 span{
-color:#ff9800;
+  color:#ff9800;
 }
 
 .hero p{
-font-size:19px;
-line-height:1.6;
-color:#eee;
-margin-bottom:25px;
+  font-size:19px;
+  line-height:1.6;
+  color:#eee;
+  margin-bottom:25px;
 }
 
 .hero-buttons{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
 }
 
 .container{
-width:90%;
-max-width:1100px;
-margin:25px auto;
+  width:90%;
+  max-width:1100px;
+  margin:25px auto;
 }
 
 .section-title{
-font-size:28px;
-margin-bottom:15px;
+  font-size:28px;
+  margin-bottom:15px;
 }
 
 .cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:16px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
 }
 
 .card,
 .product,
 .location{
-background:white;
-border-radius:20px;
-padding:20px;
-box-shadow:0 5px 20px rgba(0,0,0,.07);
-border:1px solid #eee;
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.07);
+  border:1px solid #eee;
 }
 
 .card .icon{
-font-size:35px;
-margin-bottom:12px;
+  font-size:35px;
+  margin-bottom:12px;
 }
 
 .card h3{
-margin-bottom:8px;
+  margin-bottom:8px;
 }
 
 .card p{
-color:#666;
-line-height:1.5;
+  color:#666;
+  line-height:1.5;
 }
 
 .market-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
 }
 
 .product{
-padding:0;
-overflow:hidden;
+  padding:0;
+  overflow:hidden;
 }
 
 .product-img{
-height:150px;
-background:linear-gradient(135deg,#eee,#ddd);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:55px;
+  height:150px;
+  background:linear-gradient(135deg,#eee,#ddd);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
 }
 
 .product-info{
-padding:15px;
+  padding:15px;
 }
 
 .price{
-color:#ff7a00;
-font-size:20px;
-font-weight:bold;
-margin:8px 0;
+  color:#ff7a00;
+  font-size:20px;
+  font-weight:bold;
+  margin:8px 0;
 }
 
 .buy{
-width:100%;
-border:0;
-background:#111;
-color:white;
-padding:10px;
-border-radius:12px;
-cursor:pointer;
+  width:100%;
+  border:0;
+  background:#111;
+  color:white;
+  padding:10px;
+  border-radius:12px;
 }
 
 .earn-box{
-background:linear-gradient(135deg,#111,#2b1600);
-color:white;
-border-radius:24px;
-padding:25px;
+  background:linear-gradient(135deg,#111,#2b1600);
+  color:white;
+  border-radius:24px;
+  padding:25px;
 }
 
 .wallet{
-background:#ff7a00;
-border-radius:18px;
-padding:22px;
-margin-bottom:18px;
+  background:#ff7a00;
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:18px;
 }
 
 .balance{
-font-size:36px;
-font-weight:900;
-margin:8px 0;
+  font-size:36px;
+  font-weight:900;
+  margin:8px 0;
 }
 
 .earn-buttons{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:12px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
 }
 
 .earn-btn{
-background:white;
-color:#111;
-border:0;
-border-radius:15px;
-padding:15px;
-cursor:pointer;
-font-weight:bold;
+  background:white;
+  color:#111;
+  border:0;
+  border-radius:15px;
+  padding:15px;
+  font-weight:bold;
 }
 
 .status{
-margin-top:12px;
-padding:12px;
-background:#f2f2f2;
-border-radius:12px;
-color:#555;
-word-break:break-word;
+  margin-top:12px;
+  padding:12px;
+  background:#f2f2f2;
+  border-radius:12px;
+  color:#555;
+  word-break:break-word;
 }
 
 .profile{
-display:flex;
-gap:18px;
-align-items:center;
+  display:flex;
+  gap:18px;
+  align-items:center;
 }
 
 .avatar{
-width:75px;
-height:75px;
-border-radius:50%;
-background:#ff7a00;
-color:white;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-font-weight:bold;
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  background:#ff7a00;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:bold;
 }
 
 footer{
-margin-top:40px;
-background:#111;
-color:white;
-padding:35px 5%;
-text-align:center;
-}
-
-footer strong,
-footer span{
-color:#ff7a00;
+  margin-top:40px;
+  background:#111;
+  color:white;
+  padding:35px 5%;
+  text-align:center;
 }
 
 .modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.65);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:2000;
-padding:20px;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  padding:20px;
 }
 
 .modal-box{
-background:white;
-width:100%;
-max-width:420px;
-border-radius:22px;
-padding:25px;
+  background:white;
+  width:100%;
+  max-width:420px;
+  border-radius:22px;
+  padding:25px;
 }
 
 .close{
-float:right;
-border:0;
-background:#eee;
-border-radius:50%;
-width:32px;
-height:32px;
-cursor:pointer;
+  float:right;
+  border:0;
+  background:#eee;
+  border-radius:50%;
+  width:32px;
+  height:32px;
+  font-size:20px;
 }
 
 .input{
-width:100%;
-padding:13px;
-border:1px solid #ddd;
-border-radius:12px;
-margin-bottom:12px;
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  margin-bottom:12px;
+}
+
+.auth-tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:15px;
+}
+
+.auth-tab{
+  flex:1;
+  padding:10px;
+  border:0;
+  border-radius:12px;
+  background:#eee;
+  font-weight:bold;
+}
+
+.auth-tab.active{
+  background:#ff7a00;
+  color:white;
 }
 
 .auth-message{
-margin:10px 0;
-padding:10px;
-border-radius:10px;
-display:none;
-font-size:14px;
-background:#f2f2f2;
+  margin:10px 0;
+  padding:10px;
+  border-radius:10px;
+  display:none;
+  font-size:14px;
+  background:#f2f2f2;
 }
 
 .hidden{
-display:none;
+  display:none !important;
 }
 
 @media(max-width:600px){
 
-header{
-padding:12px 4%;
-}
+  header{
+    padding:12px 4%;
+  }
 
-.logo{
-font-size:24px;
-}
+  .logo{
+    font-size:24px;
+  }
 
-.hero{
-padding:32px 22px;
-min-height:360px;
-}
+  .hero{
+    padding:32px 22px;
+    min-height:360px;
+  }
 
-.hero p{
-font-size:16px;
-}
+  .hero p{
+    font-size:16px;
+  }
 
-.section-title{
-font-size:24px;
-}
-
+  .section-title{
+    font-size:24px;
+  }
 }
 </style>
 </head>
@@ -376,17 +393,22 @@ font-size:24px;
 
 <header>
 
-<div class="logo">ZEE<span>PY</span></div>
+  <div class="logo">
+    ZEE<span>PY</span>
+  </div>
 
-<div class="header-right">
+  <div class="header-right">
 
-<div class="bell">🔔</div>
+    <div class="bell">🔔</div>
 
-<button class="login-btn" onclick="openLogin()">
-Log in
-</button>
+    <button
+      class="login-btn"
+      id="headerLoginButton"
+      onclick="openLogin()">
+      Log in
+    </button>
 
-</div>
+  </div>
 
 </header>
 
@@ -409,7 +431,6 @@ Log in
 
 <main>
 
-
 <section id="home">
 
 <div class="hero">
@@ -430,11 +451,15 @@ sell and build opportunities.
 
 <div class="hero-buttons">
 
-<button class="primary" onclick="showSection('market')">
+<button
+class="primary"
+onclick="showSection('market')">
 🛍️ Explore Market
 </button>
 
-<button class="secondary" onclick="openLogin()">
+<button
+class="secondary"
+onclick="openLogin()">
 🚀 Join ZEEPY
 </button>
 
@@ -504,7 +529,8 @@ Everything in one place
 GH₵ 2,500
 </div>
 
-<button class="buy"
+<button
+class="buy"
 onclick="buyProduct('Smartphone')">
 Contact Seller
 </button>
@@ -526,7 +552,8 @@ Contact Seller
 GH₵ 4,800
 </div>
 
-<button class="buy"
+<button
+class="buy"
 onclick="buyProduct('Laptop')">
 Contact Seller
 </button>
@@ -548,7 +575,8 @@ Contact Seller
 GH₵ 350
 </div>
 
-<button class="buy"
+<button
+class="buy"
 onclick="buyProduct('Fashion Shoes')">
 Contact Seller
 </button>
@@ -570,7 +598,8 @@ Contact Seller
 GH₵ 280
 </div>
 
-<button class="buy"
+<button
+class="buy"
 onclick="buyProduct('Wireless Headphones')">
 Contact Seller
 </button>
@@ -600,12 +629,14 @@ Start a ZEEPY meeting room and invite others.
 
 <br>
 
-<button class="primary"
+<button
+class="primary"
 onclick="createMeeting()">
 Create Meeting
 </button>
 
-<div id="meetingResult"
+<div
+id="meetingResult"
 class="status">
 </div>
 
@@ -634,7 +665,8 @@ Connect, learn and share opportunities.
 
 <br>
 
-<button class="primary"
+<button
+class="primary"
 onclick="joinGroup('Students')">
 Join
 </button>
@@ -654,7 +686,8 @@ Network with sellers and entrepreneurs.
 
 <br>
 
-<button class="primary"
+<button
+class="primary"
 onclick="joinGroup('Business Owners')">
 Join
 </button>
@@ -674,7 +707,8 @@ Share ideas and grow your audience.
 
 <br>
 
-<button class="primary"
+<button
+class="primary"
 onclick="joinGroup('Creators')">
 Join
 </button>
@@ -705,7 +739,8 @@ interact with viewers and participate in creator rewards.
 
 <br>
 
-<button class="primary"
+<button
+class="primary"
 onclick="goLive()">
 Start Live
 </button>
@@ -731,7 +766,8 @@ No conversations yet.
 
 <br>
 
-<button class="primary"
+<button
+class="primary"
 onclick="newMessage()">
 New Message
 </button>
@@ -758,12 +794,14 @@ nearby people, products and services.
 
 <br>
 
-<button class="primary"
+<button
+class="primary"
 onclick="getLocation()">
 📍 Get My Location
 </button>
 
-<div id="locationStatus"
+<div
+id="locationStatus"
 class="status">
 Location not detected yet.
 </div>
@@ -793,7 +831,8 @@ Watch and share community videos.
 
 <br>
 
-<button class="primary"
+<button
+class="primary"
 onclick="uploadMedia('video')">
 Upload
 </button>
@@ -813,7 +852,8 @@ Share your moments with the ZEEPY community.
 
 <br>
 
-<button class="primary"
+<button
+class="primary"
 onclick="uploadMedia('photo')">
 Upload
 </button>
@@ -839,12 +879,14 @@ Upload
 Demo Wallet Balance
 </small>
 
-<div class="balance"
+<div
+class="balance"
 id="balance">
 GH₵ 0.00
 </div>
 
-<button class="secondary"
+<button
+class="secondary"
 onclick="withdrawMoney()">
 Withdraw
 </button>
@@ -860,25 +902,29 @@ Ways users can earn
 
 <div class="earn-buttons">
 
-<button class="earn-btn"
+<button
+class="earn-btn"
 onclick="addEarning(5,'Creator activity')">
 🎥 Creator<br>
 + GH₵ 5
 </button>
 
-<button class="earn-btn"
+<button
+class="earn-btn"
 onclick="addEarning(10,'Seller activity')">
 🛍️ Seller<br>
 + GH₵ 10
 </button>
 
-<button class="earn-btn"
+<button
+class="earn-btn"
 onclick="addEarning(2,'Referral')">
 👥 Referral<br>
 + GH₵ 2
 </button>
 
-<button class="earn-btn"
+<button
+class="earn-btn"
 onclick="addEarning(3,'Live activity')">
 🔴 Live<br>
 + GH₵ 3
@@ -926,7 +972,8 @@ and other legitimate platform services.
 
 <div class="card profile">
 
-<div class="avatar"
+<div
+class="avatar"
 id="avatar">
 Z
 </div>
@@ -949,7 +996,8 @@ Create an account to personalize your profile.
 
 <div class="card">
 
-<button class="primary"
+<button
+class="primary"
 onclick="logoutUser()">
 Log Out
 </button>
@@ -985,27 +1033,51 @@ Connect. Meet. Trade. Live.
 
 <!-- LOGIN MODAL -->
 
-<div class="modal"
+<div
+class="modal"
 id="loginModal">
 
 <div class="modal-box">
 
-<button class="close"
+<button
+class="close"
 onclick="closeLogin()">
 ×
 </button>
 
-<h2>
+<h2 id="authTitle">
 Welcome to ZEEPY 🟠
 </h2>
 
 <br>
 
+
+<div class="auth-tabs">
+
+<button
+id="loginTab"
+class="auth-tab active"
+onclick="setAuthMode('login')">
+Log In
+</button>
+
+<button
+id="signupTab"
+class="auth-tab"
+onclick="setAuthMode('signup')">
+Create Account
+</button>
+
+</div>
+
+
 <input
 id="nameInput"
 class="input"
 type="text"
-placeholder="Your name">
+placeholder="Your name"
+style="display:none;">
+
 
 <input
 id="emailInput"
@@ -1013,21 +1085,26 @@ class="input"
 type="email"
 placeholder="Email address">
 
+
 <input
 id="passwordInput"
 class="input"
 type="password"
-placeholder="Password (minimum 6 characters)">
+placeholder="Password">
 
-<div id="authMessage"
+
+<div
+id="authMessage"
 class="auth-message">
 </div>
 
+
 <button
+id="authActionButton"
 class="primary"
-style="width:100%"
-onclick="loginUser()">
-Create Account / Log In
+style="width:100%;"
+onclick="handleAuth()">
+Log In
 </button>
 
 </div>
@@ -1042,7 +1119,7 @@ Create Account / Log In
 <script>
 
 /* =====================================================
-   SUPABASE
+   SUPABASE CONNECTION
    ===================================================== */
 
 const SUPABASE_URL =
@@ -1059,46 +1136,108 @@ SUPABASE_KEY
 
 
 /* =====================================================
+   AUTH MODE
+   ===================================================== */
+
+let authMode = "login";
+
+
+function setAuthMode(mode){
+
+  authMode = mode;
+
+  const nameInput =
+    document.getElementById("nameInput");
+
+  const loginTab =
+    document.getElementById("loginTab");
+
+  const signupTab =
+    document.getElementById("signupTab");
+
+  const title =
+    document.getElementById("authTitle");
+
+  const button =
+    document.getElementById("authActionButton");
+
+  const message =
+    document.getElementById("authMessage");
+
+  message.style.display = "none";
+
+  if(mode === "signup"){
+
+    nameInput.style.display = "block";
+
+    loginTab.classList.remove("active");
+    signupTab.classList.add("active");
+
+    title.textContent =
+      "Create your ZEEPY account 🟠";
+
+    button.textContent =
+      "Create Account";
+
+  }else{
+
+    nameInput.style.display = "none";
+
+    loginTab.classList.add("active");
+    signupTab.classList.remove("active");
+
+    title.textContent =
+      "Welcome back to ZEEPY 🟠";
+
+    button.textContent =
+      "Log In";
+  }
+}
+
+
+/* =====================================================
    NAVIGATION
    ===================================================== */
 
 function showSection(section){
 
-const sections = [
-"home",
-"market",
-"meet",
-"groups",
-"live",
-"messages",
-"nearby",
-"media",
-"earn",
-"profile"
-];
+  const sections = [
+    "home",
+    "market",
+    "meet",
+    "groups",
+    "live",
+    "messages",
+    "nearby",
+    "media",
+    "earn",
+    "profile"
+  ];
 
-sections.forEach(function(id){
+  sections.forEach(function(id){
 
-const element =
-document.getElementById(id);
+    const element =
+      document.getElementById(id);
 
-if(element){
-element.classList.add("hidden");
-}
+    if(element){
+      element.classList.add("hidden");
+    }
 
-});
+  });
 
-const selected =
-document.getElementById(section);
 
-if(selected){
-selected.classList.remove("hidden");
-}
+  const selected =
+    document.getElementById(section);
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+  if(selected){
+    selected.classList.remove("hidden");
+  }
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
@@ -1109,17 +1248,20 @@ behavior:"smooth"
 
 function openLogin(){
 
-document.getElementById(
-"loginModal"
-).style.display="flex";
+  document.getElementById(
+    "loginModal"
+  ).style.display = "flex";
+
+  setAuthMode("login");
 
 }
 
+
 function closeLogin(){
 
-document.getElementById(
-"loginModal"
-).style.display="none";
+  document.getElementById(
+    "loginModal"
+  ).style.display = "none";
 
 }
 
@@ -1130,202 +1272,204 @@ document.getElementById(
 
 function showAuthMessage(message){
 
-const box =
-document.getElementById(
-"authMessage"
-);
+  const box =
+    document.getElementById(
+      "authMessage"
+    );
 
-box.textContent=message;
+  box.textContent = message;
 
-box.style.display="block";
-
+  box.style.display = "block";
 }
 
 
 /* =====================================================
-   LOGIN / SIGNUP
+   AUTHENTICATION
    ===================================================== */
 
-async function loginUser(){
+async function handleAuth(){
 
-const name =
-document.getElementById(
-"nameInput"
-).value.trim();
+  const name =
+    document.getElementById(
+      "nameInput"
+    ).value.trim();
 
-const email =
-document.getElementById(
-"emailInput"
-).value.trim();
+  const email =
+    document.getElementById(
+      "emailInput"
+    ).value.trim();
 
-const password =
-document.getElementById(
-"passwordInput"
-).value;
-
-if(!name || !email || !password){
-
-showAuthMessage(
-"Please complete all fields."
-);
-
-return;
-
-}
-
-if(password.length < 6){
-
-showAuthMessage(
-"Password must be at least 6 characters."
-);
-
-return;
-
-}
-
-showAuthMessage(
-"Creating/checking your account..."
-);
+  const password =
+    document.getElementById(
+      "passwordInput"
+    ).value;
 
 
-/* SIGN UP */
+  if(!email || !password){
 
-const {
-data:signUpData,
-error:signUpError
-} =
-await supabaseClient.auth.signUp({
+    showAuthMessage(
+      "Please enter your email and password."
+    );
 
-email:email,
-
-password:password,
-
-options:{
-data:{
-full_name:name
-}
-}
-
-});
+    return;
+  }
 
 
-/* SIGNUP SUCCESS */
+  if(authMode === "signup"){
 
-if(!signUpError){
+    if(!name){
 
-if(
-signUpData &&
-signUpData.session
-){
+      showAuthMessage(
+        "Please enter your name."
+      );
 
-saveUser(
-name,
-email
-);
-
-closeLogin();
-
-alert(
-"Welcome to ZEEPY, " +
-name +
-"! 🟠"
-);
-
-showSection("profile");
-
-return;
-
-}
-
-showAuthMessage(
-"Account created! Please check your email and confirm your account, then log in."
-);
-
-return;
-
-}
+      return;
+    }
 
 
-/* EXISTING ACCOUNT */
+    if(password.length < 6){
 
-const errorMessage =
-signUpError.message.toLowerCase();
+      showAuthMessage(
+        "Password must be at least 6 characters."
+      );
 
-const accountExists =
-errorMessage.includes("already") ||
-errorMessage.includes("registered") ||
-errorMessage.includes("exists");
-
-
-if(!accountExists){
-
-showAuthMessage(
-"Signup error: " +
-signUpError.message
-);
-
-return;
-
-}
+      return;
+    }
 
 
-/* LOGIN */
-
-showAuthMessage(
-"Logging you in..."
-);
-
-const {
-data,
-error
-} =
-await supabaseClient.auth.signInWithPassword({
-
-email:email,
-
-password:password
-
-});
+    showAuthMessage(
+      "Creating your ZEEPY account..."
+    );
 
 
-if(error){
+    const {
+      data,
+      error
+    } =
+    await supabaseClient.auth.signUp({
 
-showAuthMessage(
-"Login error: " +
-error.message
-);
+      email:email,
 
-return;
+      password:password,
 
-}
+      options:{
+        data:{
+          full_name:name
+        }
+      }
 
-const user =
-data.user;
-
-const savedName =
-user &&
-user.user_metadata &&
-user.user_metadata.full_name
-?
-user.user_metadata.full_name
-:
-name;
+    });
 
 
-saveUser(
-savedName,
-user.email || email
-);
+    if(error){
 
-closeLogin();
+      showAuthMessage(
+        "Account creation failed: " +
+        error.message
+      );
 
-alert(
-"Welcome back to ZEEPY, " +
-savedName +
-"! 🟠"
-);
+      return;
+    }
 
-showSection("profile");
+
+    if(data && data.session){
+
+      saveUser(
+        name,
+        email
+      );
+
+      closeLogin();
+
+      alert(
+        "Welcome to ZEEPY, " +
+        name +
+        "! 🟠"
+      );
+
+      showSection("profile");
+
+      return;
+    }
+
+
+    showAuthMessage(
+      "Your account has been created. Please check your email to confirm your account, then use Log In."
+    );
+
+    setAuthMode("login");
+
+    return;
+
+  }
+
+
+  /* =================================================
+     LOGIN
+     ================================================= */
+
+  showAuthMessage(
+    "Logging you in..."
+  );
+
+
+  const {
+    data,
+    error
+  } =
+  await supabaseClient.auth.signInWithPassword({
+
+    email:email,
+
+    password:password
+
+  });
+
+
+  if(error){
+
+    showAuthMessage(
+      "Login failed: " +
+      error.message
+    );
+
+    return;
+  }
+
+
+  if(data && data.user){
+
+    const user =
+      data.user;
+
+    const savedName =
+      user.user_metadata &&
+      user.user_metadata.full_name
+      ?
+      user.user_metadata.full_name
+      :
+      "ZEEPY User";
+
+
+    saveUser(
+      savedName,
+      user.email || email
+    );
+
+
+    closeLogin();
+
+
+    alert(
+      "Welcome back to ZEEPY, " +
+      savedName +
+      "! 🟠"
+    );
+
+
+    showSection("profile");
+
+  }
 
 }
 
@@ -1336,26 +1480,35 @@ showSection("profile");
 
 function saveUser(name,email){
 
-localStorage.setItem(
-"zeepyUser",
-JSON.stringify({
-name:name,
-email:email
-})
-);
+  localStorage.setItem(
+    "zeepyUser",
+    JSON.stringify({
+      name:name,
+      email:email
+    })
+  );
 
-document.getElementById(
-"profileName"
-).textContent=name;
 
-document.getElementById(
-"profileEmail"
-).textContent=email;
+  document.getElementById(
+    "profileName"
+  ).textContent = name;
 
-document.getElementById(
-"avatar"
-).textContent =
-name.charAt(0).toUpperCase();
+
+  document.getElementById(
+    "profileEmail"
+  ).textContent = email;
+
+
+  document.getElementById(
+    "avatar"
+  ).textContent =
+    name.charAt(0).toUpperCase();
+
+
+  document.getElementById(
+    "headerLoginButton"
+  ).textContent =
+    "Profile";
 
 }
 
@@ -1366,77 +1519,82 @@ name.charAt(0).toUpperCase();
 
 async function loadUser(){
 
-try{
+  try{
 
-const {
-data,
-error
-} =
-await supabaseClient.auth.getSession();
-
-if(!error &&
-data &&
-data.session &&
-data.session.user){
-
-const user =
-data.session.user;
-
-const name =
-user.user_metadata &&
-user.user_metadata.full_name
-?
-user.user_metadata.full_name
-:
-"ZEEPY User";
-
-saveUser(
-name,
-user.email || ""
-);
-
-return;
-
-}
-
-}catch(error){
-
-console.error(
-"Session error:",
-error
-);
-
-}
+    const {
+      data,
+      error
+    } =
+    await supabaseClient.auth.getSession();
 
 
-/* LOCAL FALLBACK */
+    if(
+      !error &&
+      data &&
+      data.session &&
+      data.session.user
+    ){
 
-const saved =
-localStorage.getItem(
-"zeepyUser"
-);
+      const user =
+        data.session.user;
 
-if(saved){
 
-try{
+      const name =
+        user.user_metadata &&
+        user.user_metadata.full_name
+        ?
+        user.user_metadata.full_name
+        :
+        "ZEEPY User";
 
-const user =
-JSON.parse(saved);
 
-saveUser(
-user.name,
-user.email
-);
+      saveUser(
+        name,
+        user.email || ""
+      );
 
-}catch(error){
+      return;
+    }
 
-localStorage.removeItem(
-"zeepyUser"
-);
+  }catch(error){
 
-}
+    console.error(
+      "Session error:",
+      error
+    );
 
-}
+  }
+
+
+  /* LOCAL FALLBACK */
+
+  const saved =
+    localStorage.getItem(
+      "zeepyUser"
+    );
+
+
+  if(saved){
+
+    try{
+
+      const user =
+        JSON.parse(saved);
+
+      saveUser(
+        user.name,
+        user.email
+      );
+
+    }catch(error){
+
+      localStorage.removeItem(
+        "zeepyUser"
+      );
+
+    }
+
+  }
 
 }
 
@@ -1447,30 +1605,43 @@ localStorage.removeItem(
 
 async function logoutUser(){
 
-await supabaseClient.auth.signOut();
+  await supabaseClient.auth.signOut();
 
-localStorage.removeItem(
-"zeepyUser"
-);
+  localStorage.removeItem(
+    "zeepyUser"
+  );
 
-document.getElementById(
-"profileName"
-).textContent="ZEEPY User";
 
-document.getElementById(
-"profileEmail"
-).textContent=
-"Create an account to personalize your profile.";
+  document.getElementById(
+    "profileName"
+  ).textContent =
+    "ZEEPY User";
 
-document.getElementById(
-"avatar"
-).textContent="Z";
 
-alert(
-"You have been logged out."
-);
+  document.getElementById(
+    "profileEmail"
+  ).textContent =
+    "Create an account to personalize your profile.";
 
-showSection("home");
+
+  document.getElementById(
+    "avatar"
+  ).textContent =
+    "Z";
+
+
+  document.getElementById(
+    "headerLoginButton"
+  ).textContent =
+    "Log in";
+
+
+  alert(
+    "You have been logged out."
+  );
+
+
+  showSection("home");
 
 }
 
@@ -1480,55 +1651,55 @@ showSection("home");
    ===================================================== */
 
 let wallet =
-parseFloat(
-localStorage.getItem(
-"zeepyWallet"
-)
-) || 0;
+  parseFloat(
+    localStorage.getItem(
+      "zeepyWallet"
+    )
+  ) || 0;
 
 
 function updateBalance(){
 
-document.getElementById(
-"balance"
-).textContent =
-"GH₵ " +
-wallet.toFixed(2);
+  document.getElementById(
+    "balance"
+  ).textContent =
+    "GH₵ " +
+    wallet.toFixed(2);
 
 }
 
 
 function addEarning(
-amount,
-reason
+  amount,
+  reason
 ){
 
-wallet += amount;
+  wallet += amount;
 
-localStorage.setItem(
-"zeepyWallet",
-wallet
-);
+  localStorage.setItem(
+    "zeepyWallet",
+    wallet
+  );
 
-updateBalance();
+  updateBalance();
 
-alert(
-"Demo reward added!\n\n" +
-"+GH₵ " +
-amount.toFixed(2) +
-"\nReason: " +
-reason
-);
+  alert(
+    "Demo reward added!\n\n" +
+    "+GH₵ " +
+    amount.toFixed(2) +
+    "\nReason: " +
+    reason
+  );
 
 }
 
 
 function withdrawMoney(){
 
-alert(
-"Withdrawal is not connected yet.\n\n" +
-"The wallet is currently a demonstration. Real payment services will be connected later."
-);
+  alert(
+    "Withdrawal is not connected yet.\n\n" +
+    "The wallet is currently a demonstration. Real payment services will be connected later."
+  );
 
 }
 
@@ -1539,12 +1710,12 @@ alert(
 
 function buyProduct(product){
 
-alert(
-"You selected: " +
-product +
-"\n\n" +
-"Real seller messaging and checkout will be connected later."
-);
+  alert(
+    "You selected: " +
+    product +
+    "\n\n" +
+    "Real seller messaging and checkout will be connected later."
+  );
 
 }
 
@@ -1555,59 +1726,64 @@ product +
 
 function createMeeting(){
 
-const id =
-"ZEEPY-" +
-Math.random()
-.toString(36)
-.substring(2,8)
-.toUpperCase();
+  const id =
+    "ZEEPY-" +
+    Math.random()
+    .toString(36)
+    .substring(2,8)
+    .toUpperCase();
 
-document.getElementById(
-"meetingResult"
-).innerHTML =
-"Meeting ID: <strong>" +
-id +
-"</strong><br><br>" +
-"<button class='primary' onclick=\"copyMeeting('" +
-id +
-"')\">Copy ID</button>";
+
+  document.getElementById(
+    "meetingResult"
+  ).innerHTML =
+    "Meeting ID: <strong>" +
+    id +
+    "</strong><br><br>" +
+
+    "<button class='primary' " +
+    "onclick=\"copyMeeting('" +
+    id +
+    "')\">" +
+    "Copy ID" +
+    "</button>";
 
 }
 
 
 function copyMeeting(id){
 
-if(
-navigator.clipboard &&
-navigator.clipboard.writeText
-){
+  if(
+    navigator.clipboard &&
+    navigator.clipboard.writeText
+  ){
 
-navigator.clipboard.writeText(id)
-.then(function(){
+    navigator.clipboard.writeText(id)
+    .then(function(){
 
-alert(
-"Meeting ID copied: " +
-id
-);
+      alert(
+        "Meeting ID copied: " +
+        id
+      );
 
-})
-.catch(function(){
+    })
+    .catch(function(){
 
-alert(
-"Meeting ID: " +
-id
-);
+      alert(
+        "Meeting ID: " +
+        id
+      );
 
-});
+    });
 
-}else{
+  }else{
 
-alert(
-"Meeting ID: " +
-id
-);
+    alert(
+      "Meeting ID: " +
+      id
+    );
 
-}
+  }
 
 }
 
@@ -1618,12 +1794,12 @@ id
 
 function joinGroup(group){
 
-alert(
-"You selected the " +
-group +
-" group.\n\n" +
-"Real group membership will be connected later."
-);
+  alert(
+    "You selected the " +
+    group +
+    " group.\n\n" +
+    "Real group membership will be connected later."
+  );
 
 }
 
@@ -1634,10 +1810,10 @@ group +
 
 function goLive(){
 
-alert(
-"ZEEPY Live is coming next! 🔴\n\n" +
-"Real live streaming will be connected in a later stage."
-);
+  alert(
+    "ZEEPY Live is coming next! 🔴\n\n" +
+    "Real live streaming will be connected in a later stage."
+  );
 
 }
 
@@ -1648,9 +1824,9 @@ alert(
 
 function newMessage(){
 
-alert(
-"Messaging will be connected to real ZEEPY accounts in a later stage."
-);
+  alert(
+    "Messaging will be connected to real ZEEPY accounts in a later stage."
+  );
 
 }
 
@@ -1661,19 +1837,19 @@ alert(
 
 function uploadMedia(type){
 
-if(type === "video"){
+  if(type === "video"){
 
-alert(
-"Video uploading will be connected next."
-);
+    alert(
+      "Video uploading will be connected next."
+    );
 
-}else{
+  }else{
 
-alert(
-"Photo uploading will be connected next."
-);
+    alert(
+      "Photo uploading will be connected next."
+    );
 
-}
+  }
 
 }
 
@@ -1684,59 +1860,88 @@ alert(
 
 function getLocation(){
 
-const status =
-document.getElementById(
-"locationStatus"
-);
+  const status =
+    document.getElementById(
+      "locationStatus"
+    );
 
-if(!navigator.geolocation){
 
-status.textContent =
-"Geolocation is not supported by this browser.";
+  if(!navigator.geolocation){
 
-return;
+    status.textContent =
+      "Your browser does not support location.";
 
-}
+    return;
+  }
 
-status.textContent =
-"Requesting your location...";
 
-navigator.geolocation.getCurrentPosition(
+  status.textContent =
+    "📍 Requesting your location...";
 
-function(position){
 
-const lat =
-position.coords.latitude;
+  navigator.geolocation.getCurrentPosition(
 
-const lon =
-position.coords.longitude;
+    function(position){
 
-status.innerHTML =
-"<strong>Location detected!</strong><br>" +
-"Latitude: " +
-lat.toFixed(6) +
-"<br>" +
-"Longitude: " +
-lon.toFixed(6) +
-"<br><br>" +
-"ZEEPY can use this information for the nearby-distance system.";
+      const lat =
+        position.coords.latitude;
 
-},
+      const lon =
+        position.coords.longitude;
 
-function(){
 
-status.textContent =
-"Location permission was denied or unavailable.";
+      status.innerHTML =
+        "<strong>✅ Location detected!</strong><br><br>" +
 
-},
+        "Latitude: " +
+        lat.toFixed(6) +
 
-{
-enableHighAccuracy:true,
-timeout:10000,
-maximumAge:0
-}
+        "<br>" +
 
-);
+        "Longitude: " +
+        lon.toFixed(6) +
+
+        "<br><br>" +
+
+        "Your location is ready for the ZEEPY Nearby system.";
+
+    },
+
+
+    function(error){
+
+      if(error.code === 1){
+
+        status.textContent =
+          "Location permission was denied. Please allow location permission in your browser.";
+
+      }else if(error.code === 2){
+
+        status.textContent =
+          "Your location could not be detected. Please check your phone location/GPS.";
+
+      }else if(error.code === 3){
+
+        status.textContent =
+          "Location request timed out. Please try again.";
+
+      }else{
+
+        status.textContent =
+          "Unable to detect your location. Please try again.";
+
+      }
+
+    },
+
+
+    {
+      enableHighAccuracy:true,
+      timeout:15000,
+      maximumAge:0
+    }
+
+  );
 
 }
 
@@ -1746,37 +1951,39 @@ maximumAge:0
    ===================================================== */
 
 supabaseClient.auth.onAuthStateChange(
-function(event,session){
+  function(event,session){
 
-if(
-session &&
-session.user
-){
+    if(
+      session &&
+      session.user
+    ){
 
-const user =
-session.user;
+      const user =
+        session.user;
 
-const name =
-user.user_metadata &&
-user.user_metadata.full_name
-?
-user.user_metadata.full_name
-:
-"ZEEPY User";
 
-saveUser(
-name,
-user.email || ""
-);
+      const name =
+        user.user_metadata &&
+        user.user_metadata.full_name
+        ?
+        user.user_metadata.full_name
+        :
+        "ZEEPY User";
 
-}
 
-}
+      saveUser(
+        name,
+        user.email || ""
+      );
+
+    }
+
+  }
 );
 
 
 /* =====================================================
-   START
+   START ZEEPY
    ===================================================== */
 
 loadUser();
