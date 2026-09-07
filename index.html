@@ -32,12 +32,12 @@ header{
   top:0;
   z-index:100;
   height:64px;
-  background:#ffffff;
+  background:#fff;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 14px;
-  border-bottom:1px solid #eeeeee;
+  border-bottom:1px solid #eee;
   box-shadow:0 2px 8px rgba(0,0,0,.05);
 }
 
@@ -296,7 +296,7 @@ label{
 }
 
 .wallet{
-  background:linear-gradient(135deg,#fff7ed,#ffffff);
+  background:linear-gradient(135deg,#fff7ed,#fff);
   border:1px solid #fed7aa;
 }
 
@@ -448,6 +448,53 @@ nav button.active{
   font-weight:bold;
 }
 
+.product-card{
+  border:1px solid #eee;
+  border-radius:14px;
+  padding:12px;
+  margin-top:12px;
+  background:#fff;
+}
+
+.product-card img{
+  width:100%;
+  max-height:220px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:10px;
+}
+
+.product-title{
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+
+.product-price{
+  color:#ea580c;
+  font-size:20px;
+  font-weight:bold;
+  margin:7px 0;
+}
+
+.product-description{
+  color:#666;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.product-seller{
+  color:#999;
+  font-size:12px;
+  margin-top:8px;
+}
+
+.market-form{
+  border-top:1px solid #eee;
+  margin-top:15px;
+  padding-top:15px;
+}
+
 @media(min-width:700px){
   .features{
     grid-template-columns:repeat(4,1fr);
@@ -471,13 +518,18 @@ nav button.active{
   <div class="logo">ZEEPY</div>
 
   <div class="header-right">
-    <button class="icon-btn" onclick="showToast('Notifications coming soon 🔔')">
+
+    <button class="icon-btn"
+      onclick="showToast('Notifications coming soon 🔔')">
       🔔
     </button>
 
-    <button class="auth-pill" id="authPill" onclick="openAuth()">
+    <button class="auth-pill"
+      id="authPill"
+      onclick="openAuth()">
       Log in
     </button>
+
   </div>
 </header>
 
@@ -488,6 +540,7 @@ nav button.active{
 
   <div class="hero">
     <h1>Welcome to ZEEPY</h1>
+
     <p>
       Connect. Discover. Earn.<br>
       Buy, sell, share, meet people and enjoy live content.
@@ -540,6 +593,7 @@ nav button.active{
 
   <div class="card">
     <h2>Everything in one place</h2>
+
     <p>
       ZEEPY brings shopping, social connection, media,
       live content and earning opportunities together.
@@ -553,20 +607,84 @@ nav button.active{
 <section id="market" class="section">
 
   <div class="card">
+
     <h2>🛒 ZEEPY Market</h2>
-    <p>Buy and sell products on ZEEPY.</p>
+
+    <p>
+      Buy and sell products on ZEEPY.
+    </p>
+
+    <button class="btn"
+      onclick="toggleProductForm()">
+      ➕ Sell a Product
+    </button>
+
+    <div id="productForm"
+      class="market-form hidden">
+
+      <h3>Post a Product</h3>
+
+      <label>Product Name</label>
+
+      <input
+        type="text"
+        id="productName"
+        placeholder="e.g. Samsung Galaxy A17">
+
+      <label>Price (GH₵)</label>
+
+      <input
+        type="number"
+        id="productPrice"
+        placeholder="Enter price"
+        min="0"
+        step="0.01">
+
+      <label>Description</label>
+
+      <textarea
+        id="productDescription"
+        rows="4"
+        placeholder="Describe your product"></textarea>
+
+      <label>Product Image</label>
+
+      <input
+        type="file"
+        id="productImage"
+        accept="image/*">
+
+      <button class="btn"
+        onclick="postProduct()">
+        🚀 Post Product
+      </button>
+
+      <button class="btn secondary"
+        onclick="toggleProductForm()">
+        Cancel
+      </button>
+
+    </div>
+
   </div>
 
+
   <div class="card">
-    <input type="text" id="marketSearch"
+
+    <input
+      type="text"
+      id="marketSearch"
       placeholder="Search products..."
       oninput="searchMarket()">
 
     <div id="marketResults">
+
       <div class="empty">
-        🛍️ Products will appear here.
+        🛍️ Loading products...
       </div>
+
     </div>
+
   </div>
 
 </section>
@@ -576,16 +694,21 @@ nav button.active{
 <section id="meet" class="section">
 
   <div class="card">
+
     <h2>🤝 Meet</h2>
+
     <p>
       Discover and connect with people around you.
     </p>
+
   </div>
 
   <div class="card">
+
     <div class="empty">
       👋 People you may want to meet will appear here.
     </div>
+
   </div>
 
 </section>
@@ -595,18 +718,26 @@ nav button.active{
 <section id="groups" class="section">
 
   <div class="card">
-    <h2>👥 Groups</h2>
-    <p>Create or join communities on ZEEPY.</p>
 
-    <button class="btn" onclick="showToast('Group creation coming soon!')">
+    <h2>👥 Groups</h2>
+
+    <p>
+      Create or join communities on ZEEPY.
+    </p>
+
+    <button class="btn"
+      onclick="showToast('Group creation coming soon!')">
       Create Group
     </button>
+
   </div>
 
   <div class="card">
+
     <div class="empty">
       👥 Your groups will appear here.
     </div>
+
   </div>
 
 </section>
@@ -617,7 +748,9 @@ nav button.active{
 
   <div class="card live-box">
 
-    <span class="live-label">🔴 LIVE</span>
+    <span class="live-label">
+      🔴 LIVE
+    </span>
 
     <h2>Go Live</h2>
 
@@ -625,27 +758,44 @@ nav button.active{
       Start a live broadcast and connect with people.
     </p>
 
-    <video id="cameraPreview" autoplay playsinline muted></video>
+    <video
+      id="cameraPreview"
+      autoplay
+      playsinline
+      muted>
+    </video>
 
-    <button class="btn" id="startLiveBtn" onclick="startBroadcast()">
+    <button
+      class="btn"
+      id="startLiveBtn"
+      onclick="startBroadcast()">
       Start Broadcast
     </button>
 
-    <button class="btn danger" id="stopLiveBtn"
-      onclick="stopBroadcast()" style="display:none;">
+    <button
+      class="btn danger"
+      id="stopLiveBtn"
+      onclick="stopBroadcast()"
+      style="display:none;">
       Stop Broadcast
     </button>
 
   </div>
 
   <div class="card">
+
     <h2>Live Now</h2>
 
-    <div id="liveUsers" class="live-users">
+    <div
+      id="liveUsers"
+      class="live-users">
+
       <div class="empty">
         🔴 No one is live right now.
       </div>
+
     </div>
+
   </div>
 
 </section>
@@ -655,14 +805,21 @@ nav button.active{
 <section id="messages" class="section">
 
   <div class="card">
+
     <h2>💬 Messages</h2>
-    <p>Chat and connect with other ZEEPY users.</p>
+
+    <p>
+      Chat and connect with other ZEEPY users.
+    </p>
+
   </div>
 
   <div class="card">
+
     <div class="empty">
       💬 Your conversations will appear here.
     </div>
+
   </div>
 
 </section>
@@ -672,14 +829,24 @@ nav button.active{
 <section id="nearby" class="section">
 
   <div class="card">
-    <h2>📍 Nearby</h2>
-    <p>Discover people and opportunities around you.</p>
 
-    <button class="btn" onclick="getNearbyLocation()">
+    <h2>📍 Nearby</h2>
+
+    <p>
+      Discover people and opportunities around you.
+    </p>
+
+    <button
+      class="btn"
+      onclick="getNearbyLocation()">
       📍 Find My Location
     </button>
 
-    <p id="locationResult" style="margin-top:12px;"></p>
+    <p
+      id="locationResult"
+      style="margin-top:12px;">
+    </p>
+
   </div>
 
 </section>
@@ -689,6 +856,7 @@ nav button.active{
 <section id="media" class="section">
 
   <div class="card">
+
     <h2>🎬 ZEEPY Media</h2>
 
     <p>
@@ -698,7 +866,9 @@ nav button.active{
 
     <div class="media-upload">
 
-      <div style="font-size:45px;">📸</div>
+      <div style="font-size:45px;">
+        📸
+      </div>
 
       <h3 style="margin:8px 0;">
         Add Media
@@ -712,21 +882,25 @@ nav button.active{
         type="file"
         id="mediaFile"
         accept="image/*,video/*"
-        onchange="previewMedia(event)"
-      >
+        onchange="previewMedia(event)">
 
-      <div id="mediaPreview" class="media-preview"></div>
+      <div
+        id="mediaPreview"
+        class="media-preview">
+      </div>
 
     </div>
 
   </div>
 
   <div class="card">
+
     <h2>🎥 Media Feed</h2>
 
     <div class="empty">
       Your media feed will appear here.
     </div>
+
   </div>
 
 </section>
@@ -736,28 +910,36 @@ nav button.active{
 <section id="earn" class="section">
 
   <div class="card">
+
     <h2>💰 Earn</h2>
 
     <p>
       Explore ways to earn through ZEEPY.
     </p>
+
   </div>
 
   <div class="card wallet">
 
     <h2>My Wallet</h2>
 
-    <div class="balance" id="walletBalance">
+    <div
+      class="balance"
+      id="walletBalance">
       GH₵ 0.00
     </div>
 
     <div class="action-grid">
 
-      <div class="action" onclick="showToast('Deposit feature coming soon.')">
+      <div
+        class="action"
+        onclick="showToast('Deposit feature coming soon.')">
         ➕ Deposit
       </div>
 
-      <div class="action" onclick="showToast('Withdrawal feature coming soon.')">
+      <div
+        class="action"
+        onclick="showToast('Withdrawal feature coming soon.')">
         💸 Withdraw
       </div>
 
@@ -775,18 +957,26 @@ nav button.active{
 
     <div class="profile-header">
 
-      <div class="avatar" id="profileAvatar">
+      <div
+        class="avatar"
+        id="profileAvatar">
         👤
       </div>
 
       <div>
-        <div class="profile-name" id="profileName">
+
+        <div
+          class="profile-name"
+          id="profileName">
           ZEEPY User
         </div>
 
-        <div class="profile-email" id="profileEmail">
+        <div
+          class="profile-email"
+          id="profileEmail">
           Not logged in
         </div>
+
       </div>
 
     </div>
@@ -799,19 +989,29 @@ nav button.active{
     <h2>👤 Profile</h2>
 
     <label>Full Name</label>
-    <input type="text" id="profileNameInput"
+
+    <input
+      type="text"
+      id="profileNameInput"
       placeholder="Enter your name">
 
     <label>Profile Picture</label>
-    <input type="file" id="profilePhoto"
+
+    <input
+      type="file"
+      id="profilePhoto"
       accept="image/*"
       onchange="previewProfilePhoto(event)">
 
-    <button class="btn" onclick="updateProfile()">
+    <button
+      class="btn"
+      onclick="updateProfile()">
       Save Profile
     </button>
 
-    <button class="btn secondary" onclick="logout()">
+    <button
+      class="btn secondary"
+      onclick="logout()">
       Log Out
     </button>
 
@@ -829,17 +1029,21 @@ nav button.active{
       Log In to ZEEPY
     </h2>
 
-    <div id="authStatus" class="status"></div>
+    <div
+      id="authStatus"
+      class="status">
+    </div>
 
-    <div id="signupNameContainer" class="hidden">
+    <div
+      id="signupNameContainer"
+      class="hidden">
 
       <label>Full Name</label>
 
       <input
         type="text"
         id="signupName"
-        placeholder="Enter your full name"
-      >
+        placeholder="Enter your full name">
 
     </div>
 
@@ -848,18 +1052,19 @@ nav button.active{
     <input
       type="email"
       id="authEmail"
-      placeholder="Enter your email"
-    >
+      placeholder="Enter your email">
 
     <label>Password</label>
 
     <input
       type="password"
       id="authPassword"
-      placeholder="Enter your password"
-    >
+      placeholder="Enter your password">
 
-    <button class="btn" id="authButton" onclick="handleAuth()">
+    <button
+      class="btn"
+      id="authButton"
+      onclick="handleAuth()">
       Log In
     </button>
 
@@ -869,7 +1074,9 @@ nav button.active{
         Don't have an account?
       </span>
 
-      <span onclick="toggleAuthMode()" id="authSwitchButton">
+      <span
+        onclick="toggleAuthMode()"
+        id="authSwitchButton">
         Sign Up
       </span>
 
@@ -885,44 +1092,51 @@ nav button.active{
 <!-- BOTTOM NAV -->
 <nav>
 
-  <button id="navHome"
+  <button
+    id="navHome"
     class="active"
     onclick="showSection('home')">
     <span>🏠</span>
     Home
   </button>
 
-  <button id="navMarket"
+  <button
+    id="navMarket"
     onclick="showSection('market')">
     <span>🛒</span>
     Market
   </button>
 
-  <button id="navMeet"
+  <button
+    id="navMeet"
     onclick="showSection('meet')">
     <span>🤝</span>
     Meet
   </button>
 
-  <button id="navLive"
+  <button
+    id="navLive"
     onclick="showSection('live')">
     <span>🔴</span>
     Live
   </button>
 
-  <button id="navMedia"
+  <button
+    id="navMedia"
     onclick="showSection('media')">
     <span>🎬</span>
     Media
   </button>
 
-  <button id="navMessages"
+  <button
+    id="navMessages"
     onclick="showSection('messages')">
     <span>💬</span>
     Messages
   </button>
 
-  <button id="navProfile"
+  <button
+    id="navProfile"
     onclick="showSection('profile')">
     <span>👤</span>
     Profile
@@ -936,9 +1150,9 @@ nav button.active{
 
 <script>
 
-/* ================================
+/* =========================================
    SUPABASE
-================================ */
+========================================= */
 
 const SUPABASE_URL =
   "https://rolcuhrubqryfkaziacr.supabase.co";
@@ -953,24 +1167,30 @@ const supabaseClient =
   );
 
 
-/* ================================
+/* =========================================
    VARIABLES
-================================ */
+========================================= */
 
 let currentUser = null;
+
 let authMode = "login";
 
+let productsCache = [];
+
 let liveStream = null;
+
 let liveChannel = null;
+
 let lobbyChannel = null;
+
 let peerConnections = {};
 
 let isBroadcasting = false;
 
 
-/* ================================
+/* =========================================
    TOAST
-================================ */
+========================================= */
 
 function showToast(message){
 
@@ -982,32 +1202,42 @@ function showToast(message){
   toast.classList.add("show");
 
   setTimeout(() => {
+
     toast.classList.remove("show");
-  }, 3000);
+
+  },3000);
 }
 
 
-/* ================================
+/* =========================================
    NAVIGATION
-================================ */
+========================================= */
 
 function showSection(sectionName){
 
-  document.querySelectorAll(".section")
+  document
+    .querySelectorAll(".section")
     .forEach(section => {
+
       section.classList.remove("active");
+
     });
 
   const section =
     document.getElementById(sectionName);
 
   if(section){
+
     section.classList.add("active");
+
   }
 
-  document.querySelectorAll("nav button")
+  document
+    .querySelectorAll("nav button")
     .forEach(button => {
+
       button.classList.remove("active");
+
     });
 
   const navButton =
@@ -1018,7 +1248,9 @@ function showSection(sectionName){
     );
 
   if(navButton){
+
     navButton.classList.add("active");
+
   }
 
   window.scrollTo({
@@ -1026,29 +1258,41 @@ function showSection(sectionName){
     behavior:"smooth"
   });
 
+  if(sectionName === "market"){
+
+    loadProducts();
+
+  }
+
   if(sectionName === "live"){
+
     setupLobby();
+
   }
 }
 
 
-/* ================================
+/* =========================================
    AUTH OPEN
-================================ */
+========================================= */
 
 function openAuth(){
 
   if(currentUser){
+
     showSection("profile");
+
   }else{
+
     showSection("auth");
+
   }
 }
 
 
-/* ================================
+/* =========================================
    AUTH MODE
-================================ */
+========================================= */
 
 function toggleAuthMode(){
 
@@ -1103,6 +1347,7 @@ function toggleAuthMode(){
       "Sign Up";
 
     nameContainer.classList.add("hidden");
+
   }
 
   document
@@ -1111,18 +1356,21 @@ function toggleAuthMode(){
 }
 
 
-/* ================================
+/* =========================================
    AUTH
-================================ */
+========================================= */
 
 async function handleAuth(){
 
   const email =
-    document.getElementById("authEmail")
-      .value.trim();
+    document
+      .getElementById("authEmail")
+      .value
+      .trim();
 
   const password =
-    document.getElementById("authPassword")
+    document
+      .getElementById("authPassword")
       .value;
 
   const status =
@@ -1150,8 +1398,10 @@ async function handleAuth(){
     if(authMode === "signup"){
 
       const name =
-        document.getElementById("signupName")
-          .value.trim();
+        document
+          .getElementById("signupName")
+          .value
+          .trim();
 
       if(!name){
 
@@ -1168,6 +1418,7 @@ async function handleAuth(){
         await supabaseClient.auth.signUp({
 
           email:email,
+
           password:password,
 
           options:{
@@ -1180,28 +1431,48 @@ async function handleAuth(){
 
       if(error) throw error;
 
+      if(data.user){
+
+        await createProfile(
+          data.user,
+          name
+        );
+
+      }
+
       status.textContent =
-        "Account created successfully. You can now log in.";
+        "Account created successfully.";
 
       status.className =
         "status success show";
 
       authMode = "login";
 
-      toggleAuthMode();
-
-      document.getElementById("authEmail")
+      document
+        .getElementById("authEmail")
         .value = email;
+
+      document
+        .getElementById("authPassword")
+        .value = "";
+
+      document
+        .getElementById("signupName")
+        .value = "";
+
+      toggleAuthMode();
 
     }else{
 
       const { data, error } =
-        await supabaseClient.auth.signInWithPassword({
+        await supabaseClient.auth
+          .signInWithPassword({
 
-          email:email,
-          password:password
+            email:email,
 
-        });
+            password:password
+
+          });
 
       if(error) throw error;
 
@@ -1210,9 +1481,12 @@ async function handleAuth(){
 
       await loadUser();
 
-      showToast("Welcome back to ZEEPY!");
+      showToast(
+        "Welcome back to ZEEPY!"
+      );
 
       showSection("home");
+
     }
 
   }catch(error){
@@ -1227,23 +1501,69 @@ async function handleAuth(){
 }
 
 
-/* ================================
+/* =========================================
+   CREATE PROFILE
+========================================= */
+
+async function createProfile(
+  user,
+  name
+){
+
+  try{
+
+    const { error } =
+      await supabaseClient
+        .from("profiles")
+        .upsert({
+
+          id:user.id,
+
+          full_name:name,
+
+          email:user.email
+
+        },{
+          onConflict:"id"
+        });
+
+    if(error){
+
+      console.warn(
+        "Profile creation:",
+        error.message
+      );
+
+    }
+
+  }catch(error){
+
+    console.warn(error);
+
+  }
+}
+
+
+/* =========================================
    LOAD USER
-================================ */
+========================================= */
 
 async function loadUser(){
 
   const { data } =
-    await supabaseClient.auth.getUser();
+    await supabaseClient.auth
+      .getUser();
 
   if(!data || !data.user){
 
     currentUser = null;
 
-    document.getElementById("authPill")
+    document
+      .getElementById("authPill")
       .textContent = "Log in";
 
     return;
+
   }
 
   currentUser =
@@ -1252,84 +1572,153 @@ async function loadUser(){
   const metadata =
     currentUser.user_metadata || {};
 
-  const name =
+  let name =
     metadata.full_name ||
     currentUser.email
       .split("@")[0];
 
-  document.getElementById("authPill")
+  try{
+
+    const { data:profile } =
+      await supabaseClient
+        .from("profiles")
+        .select("*")
+        .eq("id",currentUser.id)
+        .maybeSingle();
+
+    if(profile){
+
+      name =
+        profile.full_name ||
+        name;
+
+    }
+
+  }catch(error){
+
+    console.warn(
+      "Profile load:",
+      error.message
+    );
+
+  }
+
+  document
+    .getElementById("authPill")
     .textContent = name;
 
-  document.getElementById("profileName")
+  document
+    .getElementById("profileName")
     .textContent = name;
 
-  document.getElementById("profileEmail")
+  document
+    .getElementById("profileEmail")
     .textContent =
-      currentUser.email;
+      currentUser.email || "";
 
-  document.getElementById("profileNameInput")
+  document
+    .getElementById("profileNameInput")
     .value = name;
 
   const savedPhoto =
     localStorage.getItem(
-      "zeepy_profile_photo"
+      "zeepy_profile_photo_" +
+      currentUser.id
     );
 
   if(savedPhoto){
 
-    document.getElementById("profileAvatar")
+    document
+      .getElementById("profileAvatar")
       .innerHTML =
       `<img src="${savedPhoto}" alt="Profile">`;
+
   }
 }
 
 
-/* ================================
+/* =========================================
    UPDATE PROFILE
-================================ */
+========================================= */
 
 async function updateProfile(){
 
   if(!currentUser){
 
-    showToast("Please log in first.");
+    showToast(
+      "Please log in first."
+    );
 
     showSection("auth");
 
     return;
+
   }
 
   const name =
-    document.getElementById("profileNameInput")
-      .value.trim();
+    document
+      .getElementById("profileNameInput")
+      .value
+      .trim();
 
   if(!name){
 
-    showToast("Please enter your name.");
+    showToast(
+      "Please enter your name."
+    );
 
     return;
+
   }
 
   try{
 
     const { error } =
-      await supabaseClient.auth.updateUser({
+      await supabaseClient.auth
+        .updateUser({
 
-        data:{
-          full_name:name
-        }
+          data:{
+            full_name:name
+          }
 
-      });
+        });
 
     if(error) throw error;
 
-    document.getElementById("profileName")
+    const { error:profileError } =
+      await supabaseClient
+        .from("profiles")
+        .upsert({
+
+          id:currentUser.id,
+
+          full_name:name,
+
+          email:currentUser.email
+
+        },{
+          onConflict:"id"
+        });
+
+    if(profileError){
+
+      console.warn(
+        profileError.message
+      );
+
+    }
+
+    document
+      .getElementById("profileName")
       .textContent = name;
 
-    document.getElementById("authPill")
+    document
+      .getElementById("authPill")
       .textContent = name;
 
-    showToast("Profile updated successfully.");
+    showToast(
+      "Profile updated successfully."
+    );
 
   }catch(error){
 
@@ -1337,13 +1726,14 @@ async function updateProfile(){
       error.message ||
       "Could not update profile."
     );
+
   }
 }
 
 
-/* ================================
+/* =========================================
    PROFILE PHOTO
-================================ */
+========================================= */
 
 function previewProfilePhoto(event){
 
@@ -1352,31 +1742,49 @@ function previewProfilePhoto(event){
 
   if(!file) return;
 
+  if(!currentUser){
+
+    showToast(
+      "Please log in first."
+    );
+
+    return;
+
+  }
+
   const reader =
     new FileReader();
 
-  reader.onload = function(e){
+  reader.onload =
+    function(e){
 
-    const image =
-      e.target.result;
+      const image =
+        e.target.result;
 
-    localStorage.setItem(
-      "zeepy_profile_photo",
-      image
-    );
+      localStorage.setItem(
+        "zeepy_profile_photo_" +
+        currentUser.id,
+        image
+      );
 
-    document.getElementById("profileAvatar")
-      .innerHTML =
-      `<img src="${image}" alt="Profile">`;
-  };
+      document
+        .getElementById("profileAvatar")
+        .innerHTML =
+        `<img src="${image}" alt="Profile">`;
+
+      showToast(
+        "Profile picture updated."
+      );
+
+    };
 
   reader.readAsDataURL(file);
 }
 
 
-/* ================================
+/* =========================================
    LOGOUT
-================================ */
+========================================= */
 
 async function logout(){
 
@@ -1386,105 +1794,497 @@ async function logout(){
 
   currentUser = null;
 
-  document.getElementById("authPill")
+  document
+    .getElementById("authPill")
     .textContent = "Log in";
 
-  showToast("You have logged out.");
+  showToast(
+    "You have logged out."
+  );
 
   showSection("home");
 }
 
 
-/* ================================
-   MEDIA PREVIEW
-================================ */
+/* =========================================
+   PRODUCT FORM
+========================================= */
 
-function previewMedia(event){
+function toggleProductForm(){
 
-  const file =
-    event.target.files[0];
+  const form =
+    document.getElementById(
+      "productForm"
+    );
 
-  const preview =
-    document.getElementById("mediaPreview");
+  form.classList.toggle("hidden");
 
-  preview.innerHTML = "";
-
-  if(!file) return;
-
-  const url =
-    URL.createObjectURL(file);
-
-  if(file.type.startsWith("image/")){
-
-    const img =
-      document.createElement("img");
-
-    img.src = url;
-
-    preview.appendChild(img);
-
-  }else if(file.type.startsWith("video/")){
-
-    const video =
-      document.createElement("video");
-
-    video.src = url;
-    video.controls = true;
-    video.playsInline = true;
-
-    preview.appendChild(video);
-
-  }else{
-
-    preview.innerHTML =
-      "<p>Unsupported media type.</p>";
-  }
-
-  showToast("Media preview ready 🎬");
 }
 
 
-/* ================================
-   MARKET SEARCH
-================================ */
+/* =========================================
+   POST PRODUCT
+========================================= */
 
-function searchMarket(){
+async function postProduct(){
 
-  const query =
-    document.getElementById("marketSearch")
-      .value.toLowerCase();
+  if(!currentUser){
+
+    showToast(
+      "Please log in before selling a product."
+    );
+
+    showSection("auth");
+
+    return;
+  }
+
+  const name =
+    document
+      .getElementById("productName")
+      .value
+      .trim();
+
+  const price =
+    parseFloat(
+      document
+        .getElementById("productPrice")
+        .value
+    );
+
+  const description =
+    document
+      .getElementById("productDescription")
+      .value
+      .trim();
+
+  const imageInput =
+    document.getElementById(
+      "productImage"
+    );
+
+  if(!name){
+
+    showToast(
+      "Please enter the product name."
+    );
+
+    return;
+  }
+
+  if(isNaN(price) || price < 0){
+
+    showToast(
+      "Please enter a valid price."
+    );
+
+    return;
+  }
+
+  if(!description){
+
+    showToast(
+      "Please enter a product description."
+    );
+
+    return;
+  }
+
+  const button =
+    event?.target;
+
+  if(button){
+
+    button.disabled = true;
+    button.textContent =
+      "Saving...";
+  }
+
+  try{
+
+    let imageUrl = null;
+
+    /*
+      We first save the product information.
+      Image upload is optional because the
+      database may not yet have a Storage bucket.
+    */
+
+    if(
+      imageInput.files &&
+      imageInput.files[0]
+    ){
+
+      const file =
+        imageInput.files[0];
+
+      /*
+        Store a local preview when Storage
+        has not been configured yet.
+      */
+
+      imageUrl =
+        await readFileAsDataURL(file);
+
+    }
+
+    const productData = {
+
+      name:name,
+
+      price:price,
+
+      description:description,
+
+      seller_id:currentUser.id
+
+    };
+
+    /*
+      Add image_url only when an image exists.
+    */
+
+    if(imageUrl){
+
+      productData.image_url =
+        imageUrl;
+
+    }
+
+    const { data, error } =
+      await supabaseClient
+        .from("products")
+        .insert(productData)
+        .select()
+        .single();
+
+    if(error){
+
+      throw error;
+
+    }
+
+    showToast(
+      "Product posted successfully! 🎉"
+    );
+
+    document
+      .getElementById("productName")
+      .value = "";
+
+    document
+      .getElementById("productPrice")
+      .value = "";
+
+    document
+      .getElementById("productDescription")
+      .value = "";
+
+    document
+      .getElementById("productImage")
+      .value = "";
+
+    document
+      .getElementById("productForm")
+      .classList.add("hidden");
+
+    await loadProducts();
+
+  }catch(error){
+
+    console.error(
+      "Product error:",
+      error
+    );
+
+    showToast(
+      "Could not save product: " +
+      (error.message || "Unknown error")
+    );
+
+  }finally{
+
+    if(button){
+
+      button.disabled = false;
+
+      button.textContent =
+        "🚀 Post Product";
+
+    }
+
+  }
+}
+
+
+/* =========================================
+   READ FILE
+========================================= */
+
+function readFileAsDataURL(file){
+
+  return new Promise(
+    (resolve,reject) => {
+
+      const reader =
+        new FileReader();
+
+      reader.onload =
+        () => resolve(
+          reader.result
+        );
+
+      reader.onerror =
+        () => reject(
+          new Error(
+            "Could not read image."
+          )
+        );
+
+      reader.readAsDataURL(file);
+
+    }
+  );
+}
+
+
+/* =========================================
+   LOAD PRODUCTS
+========================================= */
+
+async function loadProducts(){
 
   const results =
-    document.getElementById("marketResults");
+    document.getElementById(
+      "marketResults"
+    );
 
-  if(!query){
+  if(!results) return;
+
+  results.innerHTML =
+    `<div class="empty">
+      🛍️ Loading products...
+    </div>`;
+
+  try{
+
+    const { data, error } =
+      await supabaseClient
+        .from("products")
+        .select("*")
+        .order(
+          "created_at",
+          {
+            ascending:false
+          }
+        );
+
+    if(error){
+
+      throw error;
+
+    }
+
+    productsCache =
+      data || [];
+
+    renderProducts(
+      productsCache
+    );
+
+  }catch(error){
+
+    console.error(
+      "Load products:",
+      error
+    );
 
     results.innerHTML =
       `<div class="empty">
-        🛍️ Products will appear here.
+        ⚠️ Could not load products.<br>
+        <small>${escapeHtml(
+          error.message || ""
+        )}</small>
+      </div>`;
+
+  }
+}
+
+
+/* =========================================
+   RENDER PRODUCTS
+========================================= */
+
+function renderProducts(products){
+
+  const results =
+    document.getElementById(
+      "marketResults"
+    );
+
+  if(!results) return;
+
+  if(!products.length){
+
+    results.innerHTML =
+      `<div class="empty">
+        🛍️ No products yet.<br>
+        Be the first person to sell on ZEEPY!
       </div>`;
 
     return;
   }
 
   results.innerHTML =
-    `<div class="card" style="margin-top:10px;">
-      <h3>Search: ${query}</h3>
-      <p style="margin-top:7px;">
-        Product results will appear here as the ZEEPY Market grows.
-      </p>
-    </div>`;
+    products.map(
+      product => {
+
+        const name =
+          product.name ||
+          product.title ||
+          "Product";
+
+        const price =
+          Number(
+            product.price || 0
+          ).toFixed(2);
+
+        const description =
+          product.description ||
+          "";
+
+        const image =
+          product.image_url ||
+          product.image ||
+          "";
+
+        return `
+
+          <div class="product-card">
+
+            ${
+              image
+                ? `
+                  <img
+                    src="${escapeAttribute(image)}"
+                    alt="${escapeAttribute(name)}">
+                  `
+                : ""
+            }
+
+            <div class="product-title">
+              ${escapeHtml(name)}
+            </div>
+
+            <div class="product-price">
+              GH₵ ${price}
+            </div>
+
+            <div class="product-description">
+              ${escapeHtml(description)}
+            </div>
+
+            <div class="product-seller">
+              Seller ID: ${escapeHtml(
+                product.seller_id ||
+                "ZEEPY Seller"
+              )}
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    ).join("");
+
 }
 
 
-/* ================================
+/* =========================================
+   SEARCH MARKET
+========================================= */
+
+function searchMarket(){
+
+  const query =
+    document
+      .getElementById("marketSearch")
+      .value
+      .toLowerCase()
+      .trim();
+
+  if(!query){
+
+    renderProducts(
+      productsCache
+    );
+
+    return;
+  }
+
+  const filtered =
+    productsCache.filter(
+      product => {
+
+        const name =
+          String(
+            product.name ||
+            product.title ||
+            ""
+          ).toLowerCase();
+
+        const description =
+          String(
+            product.description ||
+            ""
+          ).toLowerCase();
+
+        return (
+          name.includes(query) ||
+          description.includes(query)
+        );
+
+      }
+    );
+
+  renderProducts(filtered);
+
+}
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHtml(value){
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+function escapeAttribute(value){
+
+  return escapeHtml(value);
+
+}
+
+
+/* =========================================
    LOCATION
-================================ */
+========================================= */
 
 function getNearbyLocation(){
 
   const result =
-    document.getElementById("locationResult");
+    document.getElementById(
+      "locationResult"
+    );
 
   if(!navigator.geolocation){
 
@@ -1492,6 +2292,7 @@ function getNearbyLocation(){
       "Location is not supported by this browser.";
 
     return;
+
   }
 
   result.textContent =
@@ -1510,7 +2311,10 @@ function getNearbyLocation(){
       result.textContent =
         `Location found 📍 (${lat.toFixed(4)}, ${lon.toFixed(4)})`;
 
-      showToast("Location found!");
+      showToast(
+        "Location found!"
+      );
+
     },
 
     error => {
@@ -1518,19 +2322,84 @@ function getNearbyLocation(){
       result.textContent =
         "Could not get your location. Please allow location permission.";
 
-      showToast("Location permission is needed.");
+      showToast(
+        "Location permission is needed."
+      );
+
     }
+
   );
+
 }
 
 
-/* ================================
+/* =========================================
+   MEDIA PREVIEW
+========================================= */
+
+function previewMedia(event){
+
+  const file =
+    event.target.files[0];
+
+  const preview =
+    document.getElementById(
+      "mediaPreview"
+    );
+
+  preview.innerHTML = "";
+
+  if(!file) return;
+
+  const url =
+    URL.createObjectURL(file);
+
+  if(file.type.startsWith("image/")){
+
+    const img =
+      document.createElement("img");
+
+    img.src = url;
+
+    preview.appendChild(img);
+
+  }else if(
+    file.type.startsWith("video/")
+  ){
+
+    const video =
+      document.createElement("video");
+
+    video.src = url;
+
+    video.controls = true;
+
+    video.playsInline = true;
+
+    preview.appendChild(video);
+
+  }else{
+
+    preview.innerHTML =
+      "<p>Unsupported media type.</p>";
+
+  }
+
+  showToast(
+    "Media preview ready 🎬"
+  );
+
+}
+
+
+/* =========================================
    LIVE MEDIA
-================================ */
+========================================= */
 
 async function getLiveMedia(){
 
-  if(liveStream) return liveStream;
+  if(liveStream)
+    return liveStream;
 
   try{
 
@@ -1539,6 +2408,7 @@ async function getLiveMedia(){
         .getUserMedia({
 
           video:true,
+
           audio:true
 
         });
@@ -1560,22 +2430,28 @@ async function getLiveMedia(){
     );
 
     throw error;
+
   }
+
 }
 
 
-/* ================================
+/* =========================================
    RELEASE LIVE STREAM
-================================ */
+========================================= */
 
 function releaseLiveStreams(){
 
   if(liveStream){
 
-    liveStream.getTracks()
-      .forEach(track => track.stop());
+    liveStream
+      .getTracks()
+      .forEach(
+        track => track.stop()
+      );
 
     liveStream = null;
+
   }
 
   const preview =
@@ -1586,17 +2462,20 @@ function releaseLiveStreams(){
   if(preview){
 
     preview.srcObject = null;
+
   }
+
 }
 
 
-/* ================================
+/* =========================================
    START BROADCAST
-================================ */
+========================================= */
 
 async function startBroadcast(){
 
-  if(isBroadcasting) return;
+  if(isBroadcasting)
+    return;
 
   if(!currentUser){
 
@@ -1607,6 +2486,7 @@ async function startBroadcast(){
     showSection("auth");
 
     return;
+
   }
 
   try{
@@ -1615,13 +2495,13 @@ async function startBroadcast(){
 
     isBroadcasting = true;
 
-    document.getElementById(
-      "startLiveBtn"
-    ).style.display = "none";
+    document
+      .getElementById("startLiveBtn")
+      .style.display = "none";
 
-    document.getElementById(
-      "stopLiveBtn"
-    ).style.display = "block";
+    document
+      .getElementById("stopLiveBtn")
+      .style.display = "block";
 
     if(!liveChannel){
 
@@ -1639,6 +2519,7 @@ async function startBroadcast(){
         );
 
       await liveChannel.subscribe();
+
     }
 
     await liveChannel.send({
@@ -1648,10 +2529,15 @@ async function startBroadcast(){
       event:"live_started",
 
       payload:{
-        userId:currentUser.id,
+
+        userId:
+          currentUser.id,
+
         name:
-          currentUser.user_metadata?.full_name ||
+          currentUser.user_metadata
+            ?.full_name ||
           currentUser.email
+
       }
 
     });
@@ -1669,13 +2555,15 @@ async function startBroadcast(){
     releaseLiveStreams();
 
     isBroadcasting = false;
+
   }
+
 }
 
 
-/* ================================
+/* =========================================
    STOP BROADCAST
-================================ */
+========================================= */
 
 async function stopBroadcast(){
 
@@ -1684,11 +2572,15 @@ async function stopBroadcast(){
     releaseLiveStreams();
 
     return;
+
   }
 
   try{
 
-    if(liveChannel && currentUser){
+    if(
+      liveChannel &&
+      currentUser
+    ){
 
       await liveChannel.send({
 
@@ -1697,21 +2589,25 @@ async function stopBroadcast(){
         event:"live_stopped",
 
         payload:{
-          userId:currentUser.id
+          userId:
+            currentUser.id
         }
 
       });
 
-      await supabaseClient.removeChannel(
-        liveChannel
-      );
+      await supabaseClient
+        .removeChannel(
+          liveChannel
+        );
 
       liveChannel = null;
+
     }
 
   }catch(error){
 
     console.error(error);
+
   }
 
   releaseLiveStreams();
@@ -1729,18 +2625,23 @@ async function stopBroadcast(){
     );
 
   if(startButton)
-    startButton.style.display = "block";
+    startButton.style.display =
+      "block";
 
   if(stopButton)
-    stopButton.style.display = "none";
+    stopButton.style.display =
+      "none";
 
-  showToast("Broadcast stopped.");
+  showToast(
+    "Broadcast stopped."
+  );
+
 }
 
 
-/* ================================
+/* =========================================
    LIVE LOBBY
-================================ */
+========================================= */
 
 async function setupLobby(){
 
@@ -1767,6 +2668,7 @@ async function setupLobby(){
         payload => {
 
           refreshLiveUsers();
+
         }
       )
       .on(
@@ -1777,18 +2679,21 @@ async function setupLobby(){
         payload => {
 
           refreshLiveUsers();
+
         }
       )
       .subscribe();
+
   }
 
   refreshLiveUsers();
+
 }
 
 
-/* ================================
+/* =========================================
    REFRESH LIVE USERS
-================================ */
+========================================= */
 
 async function refreshLiveUsers(){
 
@@ -1797,24 +2702,22 @@ async function refreshLiveUsers(){
       "liveUsers"
     );
 
-  if(!container) return;
+  if(!container)
+    return;
 
   container.innerHTML =
     `<div class="empty">
       🔴 No one is live right now.
     </div>`;
 
-  /*
-    Live users can be connected here
-    through Supabase Realtime.
-  */
-
   if(isBroadcasting){
 
     const name =
-      currentUser?.user_metadata
+      currentUser
+        ?.user_metadata
         ?.full_name ||
-      currentUser?.email ||
+      currentUser
+        ?.email ||
       "ZEEPY User";
 
     container.innerHTML = `
@@ -1822,28 +2725,43 @@ async function refreshLiveUsers(){
       <div class="live-user">
 
         <div>
-          🔴 <strong>${name}</strong>
+
+          🔴
+          <strong>
+            ${escapeHtml(name)}
+          </strong>
+
           <br>
-          <small>Live now</small>
+
+          <small>
+            Live now
+          </small>
+
         </div>
 
         <button
           class="btn"
           style="width:auto;margin:0;"
-          onclick="watchLive('${currentUser.id}')">
+          onclick="watchLive('${escapeAttribute(
+            currentUser.id
+          )}')">
+
           Watch
+
         </button>
 
       </div>
 
     `;
+
   }
+
 }
 
 
-/* ================================
+/* =========================================
    WATCH LIVE
-================================ */
+========================================= */
 
 async function watchLive(userId){
 
@@ -1854,52 +2772,57 @@ async function watchLive(userId){
     );
 
     return;
+
   }
 
   showToast(
     "Connecting to live broadcast..."
   );
 
-  /*
-    WebRTC viewer connection can be
-    expanded here as more ZEEPY users
-    join live broadcasting.
-  */
-
   showToast(
     "Live viewer connection started."
   );
+
 }
 
 
-/* ================================
+/* =========================================
    STOP WATCHING
-================================ */
+========================================= */
 
 function stopWatching(){
 
-  Object.values(peerConnections)
-    .forEach(connection => {
+  Object
+    .values(peerConnections)
+    .forEach(
+      connection => {
 
-      try{
-        connection.close();
-      }catch(e){}
+        try{
 
-    });
+          connection.close();
+
+        }catch(e){}
+
+      }
+    );
 
   peerConnections = {};
+
 }
 
 
-/* ================================
+/* =========================================
    BROADCAST OFFER
-================================ */
+========================================= */
 
 async function createOfferForViewer(
   viewerId
 ){
 
-  if(!liveStream || !currentUser)
+  if(
+    !liveStream ||
+    !currentUser
+  )
     return;
 
   const peer =
@@ -1924,15 +2847,18 @@ async function createOfferForViewer(
   peerConnections[viewerId] =
     peer;
 
-  liveStream.getTracks()
-    .forEach(track => {
+  liveStream
+    .getTracks()
+    .forEach(
+      track => {
 
-      peer.addTrack(
-        track,
-        liveStream
-      );
+        peer.addTrack(
+          track,
+          liveStream
+        );
 
-    });
+      }
+    );
 
   const offer =
     await peer.createOffer();
@@ -1942,12 +2868,13 @@ async function createOfferForViewer(
   );
 
   return offer;
+
 }
 
 
-/* ================================
+/* =========================================
    HANDLE BROADCASTER OFFER
-================================ */
+========================================= */
 
 async function handleBroadcasterOffer(
   offer,
@@ -1988,7 +2915,9 @@ async function handleBroadcasterOffer(
 
         video.srcObject =
           event.streams[0];
+
       }
+
     };
 
   await peer.setRemoteDescription(
@@ -2003,12 +2932,13 @@ async function handleBroadcasterOffer(
   );
 
   return answer;
+
 }
 
 
-/* ================================
+/* =========================================
    WALLET
-================================ */
+========================================= */
 
 function loadWallet(){
 
@@ -2025,20 +2955,22 @@ function loadWallet(){
       "zeepy_wallet_balance",
       balance
     );
+
   }
 
-  document.getElementById(
-    "walletBalance"
-  ).textContent =
-    "GH₵ " +
-    parseFloat(balance)
-      .toFixed(2);
+  document
+    .getElementById("walletBalance")
+    .textContent =
+      "GH₵ " +
+      parseFloat(balance)
+        .toFixed(2);
+
 }
 
 
-/* ================================
+/* =========================================
    CLEANUP
-================================ */
+========================================= */
 
 window.addEventListener(
   "beforeunload",
@@ -2052,6 +2984,7 @@ window.addEventListener(
         .removeChannel(
           lobbyChannel
         );
+
     }
 
     if(liveChannel){
@@ -2060,16 +2993,18 @@ window.addEventListener(
         .removeChannel(
           liveChannel
         );
+
     }
 
     stopWatching();
+
   }
 );
 
 
-/* ================================
+/* =========================================
    INITIALIZE ZEEPY
-================================ */
+========================================= */
 
 async function initializeZEEPY(){
 
@@ -2093,15 +3028,19 @@ async function initializeZEEPY(){
   }else{
 
     currentUser = null;
+
   }
 
+  await loadProducts();
+
   await setupLobby();
+
 }
 
 
-/* ================================
+/* =========================================
    AUTH STATE
-================================ */
+========================================= */
 
 supabaseClient.auth.onAuthStateChange(
   async (event, session) => {
@@ -2117,18 +3056,19 @@ supabaseClient.auth.onAuthStateChange(
 
       currentUser = null;
 
-      document.getElementById(
-        "authPill"
-      ).textContent = "Log in";
+      document
+        .getElementById("authPill")
+        .textContent = "Log in";
+
     }
 
   }
 );
 
 
-/* ================================
+/* =========================================
    START
-================================ */
+========================================= */
 
 initializeZEEPY();
 
