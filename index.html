@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ZEEPY — Connect. Discover. Earn.</title>
-
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ZEEPY — Connect. Discover. Earn.</title><style>
 *{
   box-sizing:border-box;
   margin:0;
@@ -54,6 +49,11 @@ footer span{
 
 button{
   cursor:pointer;
+}
+
+button:disabled{
+  opacity:.6;
+  cursor:not-allowed;
 }
 
 .login-btn,
@@ -439,6 +439,18 @@ footer{
   font-size:13px;
 }
 
+.live-debug{
+  display:none;
+  margin-top:10px;
+  padding:10px;
+  border-radius:10px;
+  background:#f8f8f8;
+  color:#555;
+  font-size:12px;
+  line-height:1.4;
+  word-break:break-word;
+}
+
 @media(max-width:600px){
 
   header{
@@ -466,35 +478,16 @@ footer{
     min-height:280px;
   }
 }
-</style>
-</head>
-
-<body>
-
-<header>
-
-<div class="logo">
+</style></head><body><header><div class="logo">
 ZEE<span>PY</span>
-</div>
-
-<div class="header-right">
-
-<div class="bell">🔔</div>
-
-<button
+</div><div class="header-right"><div class="bell">🔔</div><button
 class="login-btn"
 id="headerLoginButton"
 onclick="openLogin()">
 Log in
 </button>
 
-</div>
-
-</header>
-
-<nav>
-
-<button onclick="showSection('home')">🏠 Home</button>
+</div></header><nav><button onclick="showSection('home')">🏠 Home</button>
 <button onclick="showSection('market')">🛍️ Market</button>
 <button onclick="showSection('meet')">🤝 Meet</button>
 <button onclick="showSection('groups')">👥 Groups</button>
@@ -505,32 +498,14 @@ Log in
 <button onclick="showSection('earn')">💰 Earn</button>
 <button onclick="showSection('profile')">👤 Profile</button>
 
-</nav>
-
-<main>
-
-<!-- HOME -->
-
-<section id="home">
-
-<div class="hero">
-
-<div class="hero-content">
-
-<h1>
+</nav><main><!-- HOME --><section id="home"><div class="hero"><div class="hero-content"><h1>
 Connect.<br>
 Discover.<br>
 <span>Earn.</span>
-</h1>
-
-<p>
+</h1><p>
 Welcome to ZEEPY — a social-commerce platform where people connect,
 discover products, meet others, create content, sell and build opportunities.
-</p>
-
-<div class="hero-buttons">
-
-<button
+</p><div class="hero-buttons"><button
 class="primary"
 onclick="showSection('market')">
 🛍️ Explore Market
@@ -542,290 +517,103 @@ onclick="openLogin()">
 🚀 Join ZEEPY
 </button>
 
-</div>
-
-</div>
-
-</div>
-
-<div class="container">
-
-<h2 class="section-title">
+</div></div></div><div class="container"><h2 class="section-title">
 Everything in one place
-</h2>
-
-<div class="cards">
-
-<div class="card">
+</h2><div class="cards"><div class="card">
 <div class="icon">🛍️</div>
 <h3>Marketplace</h3>
 <p>Discover products and connect buyers with sellers.</p>
-</div>
-
-<div class="card">
+</div><div class="card">
 <div class="icon">🤝</div>
 <h3>Meet People</h3>
 <p>Connect with people and communities around you.</p>
-</div>
-
-<div class="card">
+</div><div class="card">
 <div class="icon">🎥</div>
 <h3>Create & Watch</h3>
 <p>Share videos, posts and creative content.</p>
-</div>
-
-<div class="card">
+</div><div class="card">
 <div class="icon">💰</div>
 <h3>Earn</h3>
 <p>Participate in legitimate ZEEPY reward programs.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- MARKET -->
-
-<section id="market" class="container hidden">
-
-<h2 class="section-title">
+</div></div></div></section><!-- MARKET --><section id="market" class="container hidden"><h2 class="section-title">
 🛍️ ZEEPY Market
-</h2>
-
-<div class="market-grid">
-
-<div class="product">
-
+</h2><div class="market-grid"><div class="product">
 <div class="product-img">📱</div>
-
 <div class="product-info">
-
 <h3>Smartphone</h3>
-
-<div class="price">
-GH₵ 2,500
-</div>
-
-<button
-class="buy"
-onclick="buyProduct('Smartphone')">
+<div class="price">GH₵ 2,500</div>
+<button class="buy" onclick="buyProduct('Smartphone')">
 Contact Seller
 </button>
-
 </div>
-
-</div>
-
-<div class="product">
-
+</div><div class="product">
 <div class="product-img">💻</div>
-
 <div class="product-info">
-
 <h3>Laptop</h3>
-
-<div class="price">
-GH₵ 4,800
-</div>
-
-<button
-class="buy"
-onclick="buyProduct('Laptop')">
+<div class="price">GH₵ 4,800</div>
+<button class="buy" onclick="buyProduct('Laptop')">
 Contact Seller
 </button>
-
 </div>
-
-</div>
-
-<div class="product">
-
+</div><div class="product">
 <div class="product-img">👟</div>
-
 <div class="product-info">
-
 <h3>Fashion Shoes</h3>
-
-<div class="price">
-GH₵ 350
-</div>
-
-<button
-class="buy"
-onclick="buyProduct('Fashion Shoes')">
+<div class="price">GH₵ 350</div>
+<button class="buy" onclick="buyProduct('Fashion Shoes')">
 Contact Seller
 </button>
-
 </div>
-
-</div>
-
-<div class="product">
-
+</div><div class="product">
 <div class="product-img">🎧</div>
-
 <div class="product-info">
-
 <h3>Wireless Headphones</h3>
-
-<div class="price">
-GH₵ 280
-</div>
-
-<button
-class="buy"
-onclick="buyProduct('Wireless Headphones')">
+<div class="price">GH₵ 280</div>
+<button class="buy" onclick="buyProduct('Wireless Headphones')">
 Contact Seller
 </button>
-
 </div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- MEET -->
-
-<section id="meet" class="container hidden">
-
-<h2 class="section-title">
-🤝 Meet
-</h2>
-
-<div class="card">
-
-<h3>Create a meeting</h3>
-
-<p>
+</div></div></section><!-- MEET --><section id="meet" class="container hidden"><h2 class="section-title">🤝 Meet</h2><div class="card"><h3>Create a meeting</h3><p>
 Start a ZEEPY meeting room and invite others.
-</p>
-
-<br>
-
-<button
-class="primary"
-onclick="createMeeting()">
+</p><br><button class="primary" onclick="createMeeting()">
 Create Meeting
-</button>
-
-<div
-id="meetingResult"
-class="status">
-</div>
-
-</div>
-
-</section>
-
-<!-- GROUPS -->
-
-<section id="groups" class="container hidden">
-
-<h2 class="section-title">
-👥 Groups
-</h2>
-
-<div class="cards">
-
-<div class="card">
-
+</button><div id="meetingResult" class="status"></div></div></section><!-- GROUPS --><section id="groups" class="container hidden"><h2 class="section-title">👥 Groups</h2><div class="cards"><div class="card">
 <div class="icon">📚</div>
-
 <h3>Students</h3>
-
-<p>
-Connect, learn and share opportunities.
-</p>
-
+<p>Connect, learn and share opportunities.</p>
 <br>
-
-<button
-class="primary"
-onclick="joinGroup('Students')">
+<button class="primary" onclick="joinGroup('Students')">
 Join
 </button>
-
-</div>
-
-<div class="card">
-
+</div><div class="card">
 <div class="icon">🛒</div>
-
 <h3>Business Owners</h3>
-
-<p>
-Network with sellers and entrepreneurs.
-</p>
-
+<p>Network with sellers and entrepreneurs.</p>
 <br>
-
-<button
-class="primary"
-onclick="joinGroup('Business Owners')">
+<button class="primary" onclick="joinGroup('Business Owners')">
 Join
 </button>
-
-</div>
-
-<div class="card">
-
+</div><div class="card">
 <div class="icon">🎨</div>
-
 <h3>Creators</h3>
-
-<p>
-Share ideas and grow your audience.
-</p>
-
+<p>Share ideas and grow your audience.</p>
 <br>
-
-<button
-class="primary"
-onclick="joinGroup('Creators')">
+<button class="primary" onclick="joinGroup('Creators')">
 Join
 </button>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- LIVE -->
-
-<section id="live" class="container hidden">
-
-<h2 class="section-title">
+</div></div></section><!-- LIVE --><section id="live" class="container hidden"><h2 class="section-title">
 🔴 ZEEPY Live
-</h2>
-
-<div class="card">
-
-<div class="live-preview">
-
-<div
+</h2><div class="card"><div class="live-preview"><div
 class="live-icon"
 id="liveIcon">
 🔴
-</div>
-
-<h2 id="liveTitle">
+</div><h2 id="liveTitle">
 ZEEPY Live Studio
-</h2>
-
-<br>
-
-<p
+</h2><br><p
 id="liveMessage"
 style="color:#ddd;">
 Your live broadcast screen is ready.
-</p>
-
-<video
+</p><video
 id="cameraPreview"
 autoplay
 playsinline
@@ -836,13 +624,7 @@ muted>
 id="liveIndicator"
 class="live-indicator">
 🔴 CAMERA LIVE
-</div>
-
-</div>
-
-<div class="live-controls">
-
-<button
+</div></div><div class="live-controls"><button
 class="primary"
 id="startLiveButton"
 onclick="startBroadcast()">
@@ -855,9 +637,7 @@ onclick="stopBroadcast()">
 ⏹️ Stop
 </button>
 
-</div>
-
-<button
+</div><button
 class="secondary"
 onclick="showSection('home')"
 style="margin-top:10px;">
@@ -868,17 +648,23 @@ Back Home
 id="liveStatus"
 class="live-status">
 Camera and microphone are not connected yet.
-</div>
-
-<div
+</div><div
 id="permissionHelp"
-class="permission-help">
-<strong>Camera access is needed.</strong><br>
-Please make sure your browser has permission to use the camera and microphone,
-then tap <strong>Try Again</strong>.
-</div>
+class="permission-help"><strong>Camera and microphone access is needed.</strong>
+<br><br>
 
-<button
+Your browser says permission may have been denied or the device
+may already be using the camera/microphone.
+
+<br><br>
+
+Please close apps that may be using the camera, then tap
+<strong>Try Again</strong>.
+
+</div><div
+id="liveDebug"
+class="live-debug">
+</div><button
 id="tryAgainButton"
 class="primary"
 onclick="startBroadcast()"
@@ -886,299 +672,81 @@ style="display:none;margin-top:10px;width:100%;">
 🔄 Try Again
 </button>
 
-</div>
-
-</section>
-
-<!-- MESSAGES -->
-
-<section id="messages" class="container hidden">
-
-<h2 class="section-title">
-💬 Messages
-</h2>
-
-<div class="card">
-
-<h3>Your conversations</h3>
-
-<p>
-No conversations yet.
-</p>
-
-<br>
-
-<button
-class="primary"
-onclick="newMessage()">
+</div></section><!-- MESSAGES --><section id="messages" class="container hidden"><h2 class="section-title">💬 Messages</h2><div class="card"><h3>Your conversations</h3><p>No conversations yet.</p><br><button class="primary" onclick="newMessage()">
 New Message
-</button>
-
-</div>
-
-</section>
-
-<!-- NEARBY -->
-
-<section id="nearby" class="container hidden">
-
-<h2 class="section-title">
-📍 Nearby
-</h2>
-
-<div class="location">
-
-<h3>Find your location</h3>
-
-<p>
+</button></div></section><!-- NEARBY --><section id="nearby" class="container hidden"><h2 class="section-title">📍 Nearby</h2><div class="location"><h3>Find your location</h3><p>
 Allow ZEEPY to access your location so we can build nearby
 people, products and services.
-</p>
-
-<br>
-
-<button
-class="primary"
-onclick="getLocation()">
+</p><br><button class="primary" onclick="getLocation()">
 📍 Get My Location
-</button>
-
-<div
+</button><div
 id="locationStatus"
 class="status">
 Location not detected yet.
-</div>
-
-</div>
-
-</section>
-
-<!-- MEDIA -->
-
-<section id="media" class="container hidden">
-
-<h2 class="section-title">
-🎬 Media
-</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<div class="icon">🎥</div>
-
-<h3>Videos</h3>
-
-<p>
-Watch and share community videos.
-</p>
-
-<br>
-
-<button
-class="primary"
-onclick="uploadMedia('video')">
+</div></div></section><!-- MEDIA --><section id="media" class="container hidden"><h2 class="section-title">🎬 Media</h2><div class="cards"><div class="card"><div class="icon">🎥</div><h3>Videos</h3><p>Watch and share community videos.</p><br><button class="primary" onclick="uploadMedia('video')">
 Upload
-</button>
-
-</div>
-
-<div class="card">
-
-<div class="icon">📸</div>
-
-<h3>Photos</h3>
-
-<p>
-Share your moments with the ZEEPY community.
-</p>
-
-<br>
-
-<button
-class="primary"
-onclick="uploadMedia('photo')">
+</button></div><div class="card"><div class="icon">📸</div><h3>Photos</h3><p>Share your moments with the ZEEPY community.</p><br><button class="primary" onclick="uploadMedia('photo')">
 Upload
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- EARN -->
-
-<section id="earn" class="container hidden">
-
-<h2 class="section-title">
-💰 Earn on ZEEPY
-</h2>
-
-<div class="earn-box">
-
-<div class="wallet">
-
-<small>
-Demo Wallet Balance
-</small>
+</button></div></div></section><!-- EARN --><section id="earn" class="container hidden"><h2 class="section-title">💰 Earn on ZEEPY</h2><div class="earn-box"><div class="wallet"><small>Demo Wallet Balance</small>
 
 <div
 class="balance"
 id="balance">
 GH₵ 0.00
-</div>
-
-<button
-class="secondary"
-onclick="withdrawMoney()">
+</div><button class="secondary" onclick="withdrawMoney()">
 Withdraw
-</button>
-
-</div>
-
-<h3>
-Ways users can earn
-</h3>
-
-<br>
-
-<div class="earn-buttons">
-
-<button
+</button></div><h3>Ways users can earn</h3><br><div class="earn-buttons"><button
 class="earn-btn"
 onclick="addEarning(5,'Creator activity')">
-🎥 Creator<br>
-+ GH₵ 5
+🎥 Creator<br>+ GH₵ 5
 </button>
 
 <button
 class="earn-btn"
 onclick="addEarning(10,'Seller activity')">
-🛍️ Seller<br>
-+ GH₵ 10
+🛍️ Seller<br>+ GH₵ 10
 </button>
 
 <button
 class="earn-btn"
 onclick="addEarning(2,'Referral')">
-👥 Referral<br>
-+ GH₵ 2
+👥 Referral<br>+ GH₵ 2
 </button>
 
 <button
 class="earn-btn"
 onclick="addEarning(3,'Live activity')">
-🔴 Live<br>
-+ GH₵ 3
+🔴 Live<br>+ GH₵ 3
 </button>
 
-</div>
-
-<br>
-
-<p>
+</div><br><p>
 These rewards are currently demonstration values.
 Real earning systems will require backend rules and payment integration.
-</p>
-
-</div>
-
-<br>
-
-<div class="card">
-
-<h3>
-💼 How ZEEPY can earn
-</h3>
-
-<br>
-
-<p>
+</p></div><br><div class="card"><h3>💼 How ZEEPY can earn</h3><br><p>
 ZEEPY can generate revenue through disclosed transaction fees,
 promoted listings, advertising, business tools, premium services
 and other legitimate platform services.
-</p>
-
-</div>
-
-</section>
-
-<!-- PROFILE -->
-
-<section id="profile" class="container hidden">
-
-<h2 class="section-title">
-👤 Profile
-</h2>
-
-<div class="card profile">
-
-<div
+</p></div></section><!-- PROFILE --><section id="profile" class="container hidden"><h2 class="section-title">👤 Profile</h2><div class="card profile"><div
 class="avatar"
 id="avatar">
 Z
-</div>
-
-<div>
-
-<h3 id="profileName">
+</div><div><h3 id="profileName">
 ZEEPY User
-</h3>
-
-<p id="profileEmail">
+</h3><p id="profileEmail">
 Create an account to personalize your profile.
-</p>
-
-</div>
-
-</div>
-
-<br>
-
-<div class="card">
-
-<button
+</p></div></div><br><div class="card"><button
 class="primary"
 onclick="logoutUser()">
 Log Out
 </button>
 
-</div>
-
-</section>
-
-</main>
-
-<footer>
-
-<h2>
-ZEE<span>PY</span>
-</h2>
-
-<br>
-
-<p>
+</div></section></main><footer><h2>ZEE<span>PY</span></h2><br><p>
 Connect. Meet. Trade. Live. <strong>Earn.</strong>
-</p>
-
-<br>
-
-<small>
+</p><br><small>
 © 2026 ZEEPY. Building a better social-commerce community.
-</small>
-
-</footer>
-
-<!-- LOGIN MODAL -->
-
-<div
+</small></footer><!-- LOGIN MODAL --><div
 class="modal"
-id="loginModal">
-
-<div class="modal-box">
-
-<button
+id="loginModal"><div class="modal-box"><button
 class="close"
 onclick="closeLogin()">
 ×
@@ -1186,13 +754,7 @@ onclick="closeLogin()">
 
 <h2 id="authTitle">
 Welcome to ZEEPY 🟠
-</h2>
-
-<br>
-
-<div class="auth-tabs">
-
-<button
+</h2><br><div class="auth-tabs"><button
 id="loginTab"
 class="auth-tab active"
 onclick="setAuthMode('login')">
@@ -1206,9 +768,7 @@ onclick="setAuthMode('signup')">
 Create Account
 </button>
 
-</div>
-
-<input
+</div><input
 id="nameInput"
 class="input"
 type="text"
@@ -1230,9 +790,7 @@ placeholder="Password">
 <div
 id="authMessage"
 class="auth-message">
-</div>
-
-<button
+</div><button
 id="authActionButton"
 class="primary"
 style="width:100%;"
@@ -1240,13 +798,7 @@ onclick="handleAuth()">
 Log In
 </button>
 
-</div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
+</div></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
 
 const SUPABASE_URL =
 "https://rolcuhrubqryfkaziacr.supabase.co";
@@ -1392,19 +944,13 @@ box.style.display = "block";
 async function handleAuth(){
 
 const name =
-document.getElementById(
-"nameInput"
-).value.trim();
+document.getElementById("nameInput").value.trim();
 
 const email =
-document.getElementById(
-"emailInput"
-).value.trim();
+document.getElementById("emailInput").value.trim();
 
 const password =
-document.getElementById(
-"passwordInput"
-).value;
+document.getElementById("passwordInput").value;
 
 if(!email || !password){
 
@@ -1522,7 +1068,8 @@ return;
 
 if(data && data.user){
 
-const user = data.user;
+const user =
+data.user;
 
 const savedName =
 user.user_metadata &&
@@ -1702,10 +1249,7 @@ wallet.toFixed(2);
 
 }
 
-function addEarning(
-amount,
-reason
-){
+function addEarning(amount,reason){
 
 wallet += amount;
 
@@ -1831,19 +1375,22 @@ group +
 
 }
 
-
 /* ========================================
-   ZEEPY LIVE CAMERA + MICROPHONE
+   ZEEPY LIVE — IMPROVED CAMERA SYSTEM
 ======================================== */
 
 let liveStream = null;
+let cameraStream = null;
+let microphoneStream = null;
 
 function setLiveStatus(message){
 
 const status =
 document.getElementById("liveStatus");
 
+if(status){
 status.innerHTML = message;
+}
 
 }
 
@@ -1856,16 +1403,132 @@ const help =
 document.getElementById("permissionHelp");
 
 if(button){
+
 button.style.display =
 show ? "block" : "none";
+
 }
 
 if(help){
+
 help.style.display =
 show ? "block" : "none";
+
 }
 
 }
+
+function showLiveDebug(message){
+
+const box =
+document.getElementById("liveDebug");
+
+if(box){
+
+box.innerHTML = message;
+box.style.display = message ? "block" : "none";
+
+}
+
+}
+
+/*
+   Release all camera and microphone tracks.
+*/
+
+function releaseLiveStreams(){
+
+const streams = [
+liveStream,
+cameraStream,
+microphoneStream
+];
+
+streams.forEach(function(stream){
+
+if(stream){
+
+stream.getTracks().forEach(function(track){
+
+try{
+track.stop();
+}catch(e){
+console.warn("Could not stop track:",e);
+}
+
+});
+
+}
+
+});
+
+liveStream = null;
+cameraStream = null;
+microphoneStream = null;
+
+}
+
+/*
+   Detect the browser's camera/microphone permission
+   where the browser supports the Permissions API.
+*/
+
+async function checkDevicePermissions(){
+
+const result = {
+camera:"unknown",
+microphone:"unknown"
+};
+
+if(!navigator.permissions){
+return result;
+}
+
+try{
+
+const cameraPermission =
+await navigator.permissions.query({
+name:"camera"
+});
+
+result.camera =
+cameraPermission.state;
+
+}catch(error){
+
+console.log(
+"Camera permission state unavailable:",
+error
+);
+
+}
+
+try{
+
+const microphonePermission =
+await navigator.permissions.query({
+name:"microphone"
+});
+
+result.microphone =
+microphonePermission.state;
+
+}catch(error){
+
+console.log(
+"Microphone permission state unavailable:",
+error
+);
+
+}
+
+return result;
+
+}
+
+/*
+   Main broadcast function.
+*/
 
 async function startBroadcast(){
 
@@ -1891,11 +1554,16 @@ const indicator =
 document.getElementById("liveIndicator");
 
 showTryAgain(false);
+showLiveDebug("");
+
+/*
+   Prevent duplicate streams.
+*/
 
 if(liveStream){
 
 setLiveStatus(
-"🔴 Your camera and microphone are already connected."
+"🔴 <strong>Your camera and microphone are already connected.</strong>"
 );
 
 return;
@@ -1903,16 +1571,15 @@ return;
 }
 
 /*
-   IMPORTANT:
-   Camera and microphone access requires
-   a secure page such as HTTPS or localhost.
+   Secure context check.
 */
 
 if(!window.isSecureContext){
 
 setLiveStatus(
-"⚠️ <strong>Secure connection required.</strong><br><br>" +
-"Your browser must open ZEEPY using HTTPS before the camera and microphone can work."
+"🔒 <strong>Secure connection required.</strong><br><br>" +
+"ZEEPY must be opened using HTTPS. " +
+"Please make sure the address begins with <strong>https://</strong>."
 );
 
 showTryAgain(false);
@@ -1921,15 +1588,18 @@ return;
 
 }
 
+/*
+   Browser API check.
+*/
+
 if(
 !navigator.mediaDevices ||
 typeof navigator.mediaDevices.getUserMedia !== "function"
 ){
 
 setLiveStatus(
-"⚠️ <strong>Camera access is not available.</strong><br><br>" +
-"Your current browser does not provide camera/microphone access to this page. " +
-"Please open ZEEPY in a modern browser such as Chrome."
+"⚠️ <strong>This browser cannot access the camera.</strong><br><br>" +
+"Please open ZEEPY directly in a modern browser such as Google Chrome."
 );
 
 showTryAgain(false);
@@ -1946,31 +1616,144 @@ button.textContent =
 "⏳ Connecting...";
 
 setLiveStatus(
-"📷 <strong>Requesting camera and microphone...</strong><br><br>" +
-"Please wait. If your browser displays a permission box, tap <strong>Allow</strong>."
+"📷 <strong>Connecting to your camera and microphone...</strong><br><br>" +
+"Please wait."
 );
 
 /*
-   First request both camera and microphone.
+   Check browser-reported permissions.
 */
 
-liveStream =
+const permissions =
+await checkDevicePermissions();
+
+showLiveDebug(
+"Camera permission: " +
+permissions.camera +
+"<br>" +
+"Microphone permission: " +
+permissions.microphone
+);
+
+/*
+   IMPORTANT:
+   First request camera only.
+   Some Android browsers behave better when
+   camera and microphone are requested separately.
+*/
+
+try{
+
+cameraStream =
 await navigator.mediaDevices.getUserMedia({
 
 video:{
 facingMode:"user"
 },
 
+audio:false
+
+});
+
+}catch(cameraError){
+
+console.error(
+"Camera request failed:",
+cameraError
+);
+
+throw cameraError;
+
+}
+
+/*
+   Now request microphone separately.
+*/
+
+try{
+
+microphoneStream =
+await navigator.mediaDevices.getUserMedia({
+
+video:false,
+
 audio:true
 
 });
 
+}catch(microphoneError){
+
+console.error(
+"Microphone request failed:",
+microphoneError
+);
+
 /*
-   Attach the camera stream to the video element.
+   If microphone fails, release the camera
+   because we don't want to leave the camera running.
+*/
+
+if(cameraStream){
+
+cameraStream
+.getTracks()
+.forEach(function(track){
+
+track.stop();
+
+});
+
+cameraStream = null;
+
+}
+
+throw microphoneError;
+
+}
+
+/*
+   Combine camera and microphone tracks.
+*/
+
+liveStream =
+new MediaStream();
+
+/*
+   Add camera tracks.
+*/
+
+cameraStream
+.getVideoTracks()
+.forEach(function(track){
+
+liveStream.addTrack(track);
+
+});
+
+/*
+   Add microphone tracks.
+*/
+
+microphoneStream
+.getAudioTracks()
+.forEach(function(track){
+
+liveStream.addTrack(track);
+
+});
+
+/*
+   Attach final stream to video.
 */
 
 video.srcObject =
 liveStream;
+
+video.muted = true;
+
+video.autoplay = true;
+
+video.playsInline = true;
 
 video.style.display =
 "block";
@@ -1978,14 +1761,35 @@ video.style.display =
 icon.style.display =
 "none";
 
+indicator.style.display =
+"inline-block";
+
 title.textContent =
 "🔴 You are LIVE";
 
 message.textContent =
 "Your camera and microphone are connected.";
 
-indicator.style.display =
-"inline-block";
+/*
+   Start video playback.
+*/
+
+try{
+
+await video.play();
+
+}catch(playError){
+
+console.warn(
+"Video autoplay/play warning:",
+playError
+);
+
+}
+
+/*
+   Update interface.
+*/
 
 button.textContent =
 "🔴 Live Now";
@@ -1997,6 +1801,10 @@ setLiveStatus(
 "Your live camera preview is now working on this device."
 );
 
+showTryAgain(false);
+
+showLiveDebug("");
+
 }catch(error){
 
 console.error(
@@ -2004,7 +1812,7 @@ console.error(
 error
 );
 
-liveStream = null;
+releaseLiveStreams();
 
 video.srcObject = null;
 
@@ -2023,69 +1831,126 @@ button.textContent =
 "🔴 Start Broadcast";
 
 /*
-   Different browser errors are handled separately.
+   Handle NotAllowedError.
 */
 
 if(error.name === "NotAllowedError"){
 
 setLiveStatus(
-"🚫 <strong>Camera/microphone access was blocked.</strong><br><br>" +
-"The browser did not give ZEEPY access. " +
-"Please check the ZEEPY site permission for Camera and Microphone, then tap <strong>Try Again</strong>."
+"🚫 <strong>The browser refused camera/microphone access.</strong><br><br>" +
+"Your site permission may already say Allow, but the browser or Android may still be blocking the device request.<br><br>" +
+"Close other apps using the camera, reopen ZEEPY, and tap <strong>Try Again</strong>."
 );
 
 showTryAgain(true);
 
-}else if(error.name === "PermissionDeniedError"){
+showLiveDebug(
+"Browser error: NotAllowedError" +
+"<br>" +
+(error.message || "")
+);
+
+}
+
+/*
+   PermissionDeniedError.
+*/
+
+else if(error.name === "PermissionDeniedError"){
 
 setLiveStatus(
-"🚫 <strong>Camera/microphone permission was denied.</strong><br><br>" +
-"Please allow Camera and Microphone for ZEEPY, then tap <strong>Try Again</strong>."
+"🚫 <strong>Camera or microphone permission was denied.</strong><br><br>" +
+"Please check Android browser permissions and then tap <strong>Try Again</strong>."
 );
 
 showTryAgain(true);
 
-}else if(error.name === "NotFoundError"){
+}
+
+/*
+   Camera/microphone missing.
+*/
+
+else if(error.name === "NotFoundError"){
 
 setLiveStatus(
-"📷 <strong>No camera or microphone was found.</strong><br><br>" +
+"📷 <strong>Camera or microphone was not found.</strong><br><br>" +
 "Please check that your phone has a working camera and microphone."
 );
 
 showTryAgain(true);
 
-}else if(error.name === "NotReadableError"){
+}
+
+/*
+   Device already being used.
+*/
+
+else if(error.name === "NotReadableError"){
 
 setLiveStatus(
-"⚠️ <strong>Camera or microphone is already being used.</strong><br><br>" +
-"Close other apps using the camera or microphone, then tap <strong>Try Again</strong>."
+"⚠️ <strong>The camera or microphone is currently being used by another application.</strong><br><br>" +
+"Close Camera, video-call apps, screen recording, Telegram, WhatsApp or other apps that may be using the camera/microphone, then tap <strong>Try Again</strong>."
 );
 
 showTryAgain(true);
 
-}else if(error.name === "OverconstrainedError"){
+}
+
+/*
+   Hardware/device constraint issue.
+*/
+
+else if(error.name === "OverconstrainedError"){
 
 setLiveStatus(
-"⚠️ <strong>Camera settings could not be satisfied.</strong><br><br>" +
-"ZEEPY will try a simpler camera request."
+"⚠️ <strong>The requested camera setting was not available.</strong><br><br>" +
+"ZEEPY will retry with a simpler camera configuration."
 );
 
 showTryAgain(true);
 
-}else if(error.name === "SecurityError"){
+}
+
+/*
+   Security error.
+*/
+
+else if(error.name === "SecurityError"){
 
 setLiveStatus(
-"🔒 <strong>Browser security blocked camera access.</strong><br><br>" +
-"Please make sure ZEEPY is opened through its secure HTTPS address."
+"🔒 <strong>Browser security prevented camera access.</strong><br><br>" +
+"Make sure ZEEPY is opened through its HTTPS address."
 );
 
 showTryAgain(false);
 
-}else{
+}
+
+/*
+   Abort error.
+*/
+
+else if(error.name === "AbortError"){
 
 setLiveStatus(
-"⚠️ <strong>Camera could not be started.</strong><br><br>" +
-"Browser error: <strong>" +
+"⚠️ <strong>The camera request was interrupted.</strong><br><br>" +
+"Please tap <strong>Try Again</strong>."
+);
+
+showTryAgain(true);
+
+}
+
+/*
+   Unknown error.
+*/
+
+else{
+
+setLiveStatus(
+"⚠️ <strong>ZEEPY could not start the camera.</strong><br><br>" +
+"Error: <strong>" +
 (error.name || "Unknown error") +
 "</strong><br><br>" +
 (error.message || "Please try again.")
@@ -2093,11 +1958,22 @@ setLiveStatus(
 
 showTryAgain(true);
 
-}
+showLiveDebug(
+"Full browser error: " +
+(error.name || "Unknown") +
+"<br>" +
+(error.message || "No additional message.")
+);
 
 }
 
 }
+
+}
+
+/*
+   Stop the live broadcast.
+*/
 
 function stopBroadcast(){
 
@@ -2123,20 +1999,9 @@ const indicator =
 document.getElementById("liveIndicator");
 
 showTryAgain(false);
+showLiveDebug("");
 
-if(liveStream){
-
-liveStream
-.getTracks()
-.forEach(function(track){
-
-track.stop();
-
-});
-
-liveStream = null;
-
-}
+releaseLiveStreams();
 
 video.srcObject = null;
 
@@ -2165,6 +2030,19 @@ status.textContent =
 
 }
 
+/*
+   When leaving the Live section, don't automatically
+   kill the stream. The user can use Stop.
+*/
+
+window.addEventListener(
+"beforeunload",
+function(){
+
+releaseLiveStreams();
+
+}
+);
 
 /* =========================
    MESSAGES
@@ -2177,7 +2055,6 @@ alert(
 );
 
 }
-
 
 /* =========================
    MEDIA
@@ -2200,7 +2077,6 @@ alert(
 }
 
 }
-
 
 /* =========================
    LOCATION
@@ -2237,17 +2113,12 @@ position.coords.longitude;
 
 status.innerHTML =
 "<strong>✅ Location detected!</strong><br><br>" +
-
 "Latitude: " +
 lat.toFixed(6) +
-
 "<br>" +
-
 "Longitude: " +
 lon.toFixed(6) +
-
 "<br><br>" +
-
 "Your location is ready for the ZEEPY Nearby system.";
 
 },
@@ -2288,7 +2159,6 @@ maximumAge:0
 
 }
 
-
 /* =========================
    SUPABASE AUTH STATE
 ========================= */
@@ -2324,7 +2194,5 @@ loadUser();
 
 updateBalance();
 
-</script>
-
-</body>
+</script></body>
 </html>
