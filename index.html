@@ -1,7 +1,12 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ZEEPY — Connect. Discover. Earn.</title><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ZEEPY — Connect. Discover. Earn.</title>
+
+<style>
 *{
   box-sizing:border-box;
   margin:0;
@@ -14,40 +19,8 @@ body{
   color:#171717;
 }
 
-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:#111;
-  color:white;
-  padding:14px 5%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  box-shadow:0 3px 15px rgba(0,0,0,.25);
-}
-
-.logo{
-  font-size:28px;
-  font-weight:900;
-}
-
-.logo span,
-footer span{
-  color:#ff7a00;
-}
-
-.header-right{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.bell{
-  font-size:22px;
-}
-
 button{
+  border:none;
   cursor:pointer;
 }
 
@@ -56,2143 +29,2929 @@ button:disabled{
   cursor:not-allowed;
 }
 
-.login-btn,
-.primary{
-  background:#ff7a00;
-  color:white;
-  border:0;
-  padding:11px 18px;
-  border-radius:25px;
-  font-weight:bold;
-}
-
-.secondary{
-  background:white;
-  color:#111;
-  border:1px solid #ddd;
-  padding:11px 18px;
-  border-radius:25px;
-  font-weight:bold;
-}
-
-nav{
-  background:white;
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding:10px 5%;
-  border-bottom:1px solid #eee;
-}
-
-nav button{
-  border:0;
-  background:#f1f1f1;
-  padding:9px 14px;
-  border-radius:20px;
-  white-space:nowrap;
-  font-weight:bold;
-}
-
-nav button:hover{
-  background:#ff7a00;
-  color:white;
-}
-
-.hero{
-  margin:18px auto;
-  width:90%;
-  max-width:1100px;
-  min-height:330px;
-  border-radius:25px;
-  padding:45px 30px;
-  color:white;
-  background:linear-gradient(135deg,#111,#3a1900,#ff7a00);
-  display:flex;
-  align-items:center;
-  box-shadow:0 10px 35px rgba(0,0,0,.18);
-}
-
-.hero-content{
-  max-width:650px;
-}
-
-.hero h1{
-  font-size:clamp(40px,8vw,70px);
-  line-height:1;
-  margin-bottom:18px;
-}
-
-.hero h1 span{
-  color:#ff9800;
-}
-
-.hero p{
-  font-size:19px;
-  line-height:1.6;
-  color:#eee;
-  margin-bottom:25px;
-}
-
-.hero-buttons{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.container{
-  width:90%;
-  max-width:1100px;
-  margin:25px auto;
-}
-
-.section-title{
-  font-size:28px;
-  margin-bottom:15px;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:16px;
-}
-
-.card,
-.product,
-.location{
-  background:white;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.07);
-  border:1px solid #eee;
-}
-
-.card .icon{
-  font-size:35px;
-  margin-bottom:12px;
-}
-
-.card h3{
-  margin-bottom:8px;
-}
-
-.card p{
-  color:#666;
-  line-height:1.5;
-}
-
-.market-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:15px;
-}
-
-.product{
-  padding:0;
-  overflow:hidden;
-}
-
-.product-img{
-  height:150px;
-  background:linear-gradient(135deg,#eee,#ddd);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:55px;
-}
-
-.product-info{
-  padding:15px;
-}
-
-.price{
-  color:#ff7a00;
-  font-size:20px;
-  font-weight:bold;
-  margin:8px 0;
-}
-
-.buy{
-  width:100%;
-  border:0;
-  background:#111;
-  color:white;
-  padding:10px;
-  border-radius:12px;
-}
-
-.earn-box{
-  background:linear-gradient(135deg,#111,#2b1600);
-  color:white;
-  border-radius:24px;
-  padding:25px;
-}
-
-.wallet{
-  background:#ff7a00;
-  border-radius:18px;
-  padding:22px;
-  margin-bottom:18px;
-}
-
-.balance{
-  font-size:36px;
-  font-weight:900;
-  margin:8px 0;
-}
-
-.earn-buttons{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:12px;
-}
-
-.earn-btn{
-  background:white;
-  color:#111;
-  border:0;
-  border-radius:15px;
-  padding:15px;
-  font-weight:bold;
-}
-
-.status{
-  margin-top:12px;
-  padding:12px;
-  background:#f2f2f2;
-  border-radius:12px;
-  color:#555;
-  word-break:break-word;
-}
-
-.profile{
-  display:flex;
-  gap:18px;
-  align-items:center;
-}
-
-.avatar{
-  width:75px;
-  height:75px;
-  border-radius:50%;
-  background:#ff7a00;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:30px;
-  font-weight:bold;
-}
-
-footer{
-  margin-top:40px;
-  background:#111;
-  color:white;
-  padding:35px 5%;
-  text-align:center;
-}
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.7);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-  padding:20px;
-}
-
-.modal-box{
-  background:white;
-  width:100%;
-  max-width:420px;
-  border-radius:22px;
-  padding:25px;
-}
-
-.close{
-  float:right;
-  border:0;
-  background:#eee;
-  border-radius:50%;
-  width:32px;
-  height:32px;
-  font-size:20px;
-}
-
-.input{
-  width:100%;
-  padding:13px;
-  border:1px solid #ddd;
-  border-radius:12px;
-  margin-bottom:12px;
-}
-
-.auth-tabs{
-  display:flex;
-  gap:8px;
-  margin-bottom:15px;
-}
-
-.auth-tab{
-  flex:1;
-  padding:10px;
-  border:0;
-  border-radius:12px;
-  background:#eee;
-  font-weight:bold;
-}
-
-.auth-tab.active{
-  background:#ff7a00;
-  color:white;
-}
-
-.auth-message{
-  margin:10px 0;
-  padding:10px;
-  border-radius:10px;
-  display:none;
-  font-size:14px;
-  background:#f2f2f2;
-}
-
 .hidden{
   display:none !important;
 }
 
-/* =========================
-   ZEEPY LIVE
-========================= */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  height:64px;
+  background:#fff;
+  border-bottom:1px solid #e5e7eb;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 15px;
+}
 
-.live-preview{
-  background:#111;
-  color:white;
-  border-radius:20px;
-  min-height:300px;
+.logo{
+  font-size:26px;
+  font-weight:900;
+  color:#12a84a;
+  letter-spacing:-1px;
+}
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.icon-btn{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#f1f3f5;
+  font-size:19px;
+}
+
+.login-btn{
+  background:#12a84a;
+  color:#fff;
+  padding:11px 17px;
+  border-radius:22px;
+  font-weight:bold;
+  max-width:150px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:66px;
+  background:#fff;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:1000;
+}
+
+nav button{
+  background:none;
+  color:#666;
+  font-size:11px;
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:20px;
-  margin-bottom:20px;
-  overflow:hidden;
+  gap:4px;
 }
 
-.live-icon{
-  font-size:65px;
+nav button span{
+  font-size:21px;
+}
+
+nav button.active{
+  color:#12a84a;
+  font-weight:bold;
+}
+
+main{
+  padding-bottom:85px;
+}
+
+.section{
+  display:none;
+  padding:18px;
+}
+
+.section.active{
+  display:block;
+}
+
+.hero{
+  background:linear-gradient(135deg,#12a84a,#087d38);
+  color:#fff;
+  padding:30px 22px;
+  border-radius:20px;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  line-height:1.5;
+}
+
+.card{
+  background:#fff;
+  border-radius:17px;
+  padding:18px;
   margin-bottom:15px;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.card h2{
+  margin-bottom:8px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.feature{
+  background:#fff;
+  padding:20px 12px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+
+.feature div{
+  font-size:28px;
+  margin-bottom:7px;
+}
+
+.auth-box{
+  max-width:430px;
+  margin:35px auto;
+  background:#fff;
+  padding:22px;
+  border-radius:20px;
+  box-shadow:0 3px 15px rgba(0,0,0,.08);
+}
+
+.auth-box h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:13px;
+  border:1px solid #d9dde2;
+  border-radius:10px;
+  margin-bottom:12px;
+  outline:none;
+  font-size:15px;
+}
+
+input:focus,
+textarea:focus{
+  border-color:#12a84a;
+}
+
+.primary{
+  width:100%;
+  background:#12a84a;
+  color:#fff;
+  padding:13px;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:15px;
+}
+
+.secondary{
+  background:#eef1f3;
+  color:#222;
+  padding:11px 15px;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.danger{
+  background:#dc3545;
+  color:#fff;
+  padding:11px 15px;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.live-header{
+  margin-bottom:15px;
+}
+
+.live-title{
+  font-size:27px;
+  font-weight:800;
+  margin-bottom:5px;
+}
+
+.live-subtitle{
+  color:#666;
+}
+
+.live-studio{
+  background:#111;
+  border-radius:18px;
+  overflow:hidden;
+  margin:15px 0;
+  position:relative;
 }
 
 #cameraPreview{
   width:100%;
-  max-height:500px;
-  min-height:250px;
+  aspect-ratio:16/9;
   object-fit:cover;
-  border-radius:18px;
   background:#000;
-  display:none;
+  display:block;
 }
 
-.live-status{
-  margin-top:15px;
-  padding:15px;
-  border-radius:12px;
-  background:#f1f1f1;
-  color:#555;
-  line-height:1.5;
-  word-break:break-word;
+.live-label{
+  position:absolute;
+  top:12px;
+  left:12px;
+  background:#e00000;
+  color:#fff;
+  padding:6px 10px;
+  border-radius:7px;
+  font-size:12px;
+  font-weight:bold;
 }
 
 .live-controls{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
-  margin-top:15px;
 }
 
-.live-controls button{
-  flex:1;
-  min-width:130px;
+.start-live{
+  background:#12a84a;
+  color:#fff;
+  padding:13px 18px;
+  border-radius:10px;
+  font-weight:bold;
 }
 
-.permission-help{
-  display:none;
-  margin-top:10px;
-  padding:12px;
-  border-radius:12px;
-  background:#fff3e8;
-  color:#8a4500;
+.stop-live{
+  background:#dc3545;
+  color:#fff;
+  padding:13px 18px;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.status{
+  margin-top:12px;
+  padding:11px;
+  background:#f1f3f5;
+  border-radius:9px;
+  color:#444;
   font-size:14px;
   line-height:1.5;
 }
 
-.live-indicator{
-  display:none;
-  margin-top:10px;
-  padding:7px 14px;
-  background:#ff7a00;
-  color:white;
-  border-radius:20px;
+.permission-box{
+  background:#fff3cd;
+  color:#664d03;
+  padding:14px;
+  border-radius:12px;
+  margin-top:15px;
+  line-height:1.5;
+  font-size:14px;
+}
+
+.live-list{
+  margin-top:20px;
+}
+
+.live-user{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  background:#fff;
+  padding:14px;
+  border-radius:13px;
+  margin-bottom:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.live-user-info{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+
+.avatar{
+  width:43px;
+  height:43px;
+  min-width:43px;
+  border-radius:50%;
+  background:#12a84a;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-weight:bold;
-  font-size:13px;
 }
 
-.live-debug{
-  display:none;
+.watch-btn{
+  background:#12a84a;
+  color:#fff;
+  padding:9px 14px;
+  border-radius:9px;
+  font-weight:bold;
+}
+
+#viewerBox{
+  margin-top:20px;
+}
+
+#viewerVideo{
+  width:100%;
+  aspect-ratio:16/9;
+  background:#000;
+  border-radius:17px;
+  object-fit:cover;
+}
+
+.viewer-info{
   margin-top:10px;
-  padding:10px;
+  padding:12px;
+  background:#fff;
+  border-radius:12px;
+  line-height:1.5;
+}
+
+.profile-head{
+  text-align:center;
+  background:#fff;
+  padding:25px;
+  border-radius:18px;
+}
+
+.profile-avatar{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  margin:auto;
+  background:#12a84a;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:85px;
+  transform:translateX(-50%);
+  background:#222;
+  color:#fff;
+  padding:12px 18px;
   border-radius:10px;
-  background:#f8f8f8;
-  color:#555;
-  font-size:12px;
+  z-index:3000;
+  max-width:90%;
+  text-align:center;
   line-height:1.4;
-  word-break:break-word;
 }
 
-@media(max-width:600px){
-
-  header{
-    padding:12px 4%;
+@media(min-width:700px){
+  nav{
+    position:static;
+    height:60px;
+    border-top:none;
+    border-bottom:1px solid #ddd;
   }
 
-  .logo{
-    font-size:24px;
-  }
-
-  .hero{
-    padding:32px 22px;
-    min-height:360px;
-  }
-
-  .hero p{
-    font-size:16px;
-  }
-
-  .section-title{
-    font-size:24px;
-  }
-
-  .live-preview{
-    min-height:280px;
+  main{
+    max-width:900px;
+    margin:auto;
   }
 }
-</style></head><body><header><div class="logo">
-ZEE<span>PY</span>
-</div><div class="header-right"><div class="bell">🔔</div><button
-class="login-btn"
-id="headerLoginButton"
-onclick="openLogin()">
-Log in
-</button>
+</style>
 
-</div></header><nav><button onclick="showSection('home')">🏠 Home</button>
-<button onclick="showSection('market')">🛍️ Market</button>
-<button onclick="showSection('meet')">🤝 Meet</button>
-<button onclick="showSection('groups')">👥 Groups</button>
-<button onclick="showSection('live')">🔴 Live</button>
-<button onclick="showSection('messages')">💬 Messages</button>
-<button onclick="showSection('nearby')">📍 Nearby</button>
-<button onclick="showSection('media')">🎬 Media</button>
-<button onclick="showSection('earn')">💰 Earn</button>
-<button onclick="showSection('profile')">👤 Profile</button>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
 
-</nav><main><!-- HOME --><section id="home"><div class="hero"><div class="hero-content"><h1>
-Connect.<br>
-Discover.<br>
-<span>Earn.</span>
-</h1><p>
-Welcome to ZEEPY — a social-commerce platform where people connect,
-discover products, meet others, create content, sell and build opportunities.
-</p><div class="hero-buttons"><button
-class="primary"
-onclick="showSection('market')">
-🛍️ Explore Market
-</button>
+<body>
 
-<button
-class="secondary"
-onclick="openLogin()">
-🚀 Join ZEEPY
-</button>
+<header>
+  <div class="logo">ZEEPY</div>
 
-</div></div></div><div class="container"><h2 class="section-title">
-Everything in one place
-</h2><div class="cards"><div class="card">
-<div class="icon">🛍️</div>
-<h3>Marketplace</h3>
-<p>Discover products and connect buyers with sellers.</p>
-</div><div class="card">
-<div class="icon">🤝</div>
-<h3>Meet People</h3>
-<p>Connect with people and communities around you.</p>
-</div><div class="card">
-<div class="icon">🎥</div>
-<h3>Create & Watch</h3>
-<p>Share videos, posts and creative content.</p>
-</div><div class="card">
-<div class="icon">💰</div>
-<h3>Earn</h3>
-<p>Participate in legitimate ZEEPY reward programs.</p>
-</div></div></div></section><!-- MARKET --><section id="market" class="container hidden"><h2 class="section-title">
-🛍️ ZEEPY Market
-</h2><div class="market-grid"><div class="product">
-<div class="product-img">📱</div>
-<div class="product-info">
-<h3>Smartphone</h3>
-<div class="price">GH₵ 2,500</div>
-<button class="buy" onclick="buyProduct('Smartphone')">
-Contact Seller
-</button>
-</div>
-</div><div class="product">
-<div class="product-img">💻</div>
-<div class="product-info">
-<h3>Laptop</h3>
-<div class="price">GH₵ 4,800</div>
-<button class="buy" onclick="buyProduct('Laptop')">
-Contact Seller
-</button>
-</div>
-</div><div class="product">
-<div class="product-img">👟</div>
-<div class="product-info">
-<h3>Fashion Shoes</h3>
-<div class="price">GH₵ 350</div>
-<button class="buy" onclick="buyProduct('Fashion Shoes')">
-Contact Seller
-</button>
-</div>
-</div><div class="product">
-<div class="product-img">🎧</div>
-<div class="product-info">
-<h3>Wireless Headphones</h3>
-<div class="price">GH₵ 280</div>
-<button class="buy" onclick="buyProduct('Wireless Headphones')">
-Contact Seller
-</button>
-</div>
-</div></div></section><!-- MEET --><section id="meet" class="container hidden"><h2 class="section-title">🤝 Meet</h2><div class="card"><h3>Create a meeting</h3><p>
-Start a ZEEPY meeting room and invite others.
-</p><br><button class="primary" onclick="createMeeting()">
-Create Meeting
-</button><div id="meetingResult" class="status"></div></div></section><!-- GROUPS --><section id="groups" class="container hidden"><h2 class="section-title">👥 Groups</h2><div class="cards"><div class="card">
-<div class="icon">📚</div>
-<h3>Students</h3>
-<p>Connect, learn and share opportunities.</p>
-<br>
-<button class="primary" onclick="joinGroup('Students')">
-Join
-</button>
-</div><div class="card">
-<div class="icon">🛒</div>
-<h3>Business Owners</h3>
-<p>Network with sellers and entrepreneurs.</p>
-<br>
-<button class="primary" onclick="joinGroup('Business Owners')">
-Join
-</button>
-</div><div class="card">
-<div class="icon">🎨</div>
-<h3>Creators</h3>
-<p>Share ideas and grow your audience.</p>
-<br>
-<button class="primary" onclick="joinGroup('Creators')">
-Join
-</button>
-</div></div></section><!-- LIVE --><section id="live" class="container hidden"><h2 class="section-title">
-🔴 ZEEPY Live
-</h2><div class="card"><div class="live-preview"><div
-class="live-icon"
-id="liveIcon">
-🔴
-</div><h2 id="liveTitle">
-ZEEPY Live Studio
-</h2><br><p
-id="liveMessage"
-style="color:#ddd;">
-Your live broadcast screen is ready.
-</p><video
-id="cameraPreview"
-autoplay
-playsinline
-muted>
-</video>
+  <div class="header-right">
+    <button class="icon-btn"
+      onclick="showToast('Notifications coming soon 🔔')">
+      🔔
+    </button>
 
-<div
-id="liveIndicator"
-class="live-indicator">
-🔴 CAMERA LIVE
-</div></div><div class="live-controls"><button
-class="primary"
-id="startLiveButton"
-onclick="startBroadcast()">
-🔴 Start Broadcast
-</button>
+    <button id="authHeaderBtn"
+      class="login-btn"
+      onclick="openAuth()">
+      Log in
+    </button>
+  </div>
+</header>
 
-<button
-class="secondary"
-onclick="stopBroadcast()">
-⏹️ Stop
-</button>
+<main>
 
-</div><button
-class="secondary"
-onclick="showSection('home')"
-style="margin-top:10px;">
-Back Home
-</button>
+<section id="home" class="section active">
 
-<div
-id="liveStatus"
-class="live-status">
-Camera and microphone are not connected yet.
-</div><div
-id="permissionHelp"
-class="permission-help"><strong>Camera and microphone access is needed.</strong>
-<br><br>
+  <div class="hero">
+    <h1>Welcome to ZEEPY</h1>
+    <p>
+      Connect. Discover. Earn.
+      Buy, sell, share, meet people and enjoy live content.
+    </p>
+  </div>
 
-Your browser says permission may have been denied or the device
-may already be using the camera/microphone.
+  <div class="grid">
 
-<br><br>
+    <div class="feature" onclick="showSection('market')">
+      <div>🛒</div>
+      <b>Market</b>
+    </div>
 
-Please close apps that may be using the camera, then tap
-<strong>Try Again</strong>.
+    <div class="feature" onclick="showSection('meet')">
+      <div>🤝</div>
+      <b>Meet</b>
+    </div>
 
-</div><div
-id="liveDebug"
-class="live-debug">
-</div><button
-id="tryAgainButton"
-class="primary"
-onclick="startBroadcast()"
-style="display:none;margin-top:10px;width:100%;">
-🔄 Try Again
-</button>
+    <div class="feature" onclick="showSection('groups')">
+      <div>👥</div>
+      <b>Groups</b>
+    </div>
 
-</div></section><!-- MESSAGES --><section id="messages" class="container hidden"><h2 class="section-title">💬 Messages</h2><div class="card"><h3>Your conversations</h3><p>No conversations yet.</p><br><button class="primary" onclick="newMessage()">
-New Message
-</button></div></section><!-- NEARBY --><section id="nearby" class="container hidden"><h2 class="section-title">📍 Nearby</h2><div class="location"><h3>Find your location</h3><p>
-Allow ZEEPY to access your location so we can build nearby
-people, products and services.
-</p><br><button class="primary" onclick="getLocation()">
-📍 Get My Location
-</button><div
-id="locationStatus"
-class="status">
-Location not detected yet.
-</div></div></section><!-- MEDIA --><section id="media" class="container hidden"><h2 class="section-title">🎬 Media</h2><div class="cards"><div class="card"><div class="icon">🎥</div><h3>Videos</h3><p>Watch and share community videos.</p><br><button class="primary" onclick="uploadMedia('video')">
-Upload
-</button></div><div class="card"><div class="icon">📸</div><h3>Photos</h3><p>Share your moments with the ZEEPY community.</p><br><button class="primary" onclick="uploadMedia('photo')">
-Upload
-</button></div></div></section><!-- EARN --><section id="earn" class="container hidden"><h2 class="section-title">💰 Earn on ZEEPY</h2><div class="earn-box"><div class="wallet"><small>Demo Wallet Balance</small>
+    <div class="feature" onclick="showSection('live')">
+      <div>🔴</div>
+      <b>Live</b>
+    </div>
 
-<div
-class="balance"
-id="balance">
-GH₵ 0.00
-</div><button class="secondary" onclick="withdrawMoney()">
-Withdraw
-</button></div><h3>Ways users can earn</h3><br><div class="earn-buttons"><button
-class="earn-btn"
-onclick="addEarning(5,'Creator activity')">
-🎥 Creator<br>+ GH₵ 5
-</button>
+    <div class="feature" onclick="showSection('messages')">
+      <div>💬</div>
+      <b>Messages</b>
+    </div>
 
-<button
-class="earn-btn"
-onclick="addEarning(10,'Seller activity')">
-🛍️ Seller<br>+ GH₵ 10
-</button>
+    <div class="feature" onclick="showSection('earn')">
+      <div>💰</div>
+      <b>Earn</b>
+    </div>
 
-<button
-class="earn-btn"
-onclick="addEarning(2,'Referral')">
-👥 Referral<br>+ GH₵ 2
-</button>
+  </div>
 
-<button
-class="earn-btn"
-onclick="addEarning(3,'Live activity')">
-🔴 Live<br>+ GH₵ 3
-</button>
+</section>
 
-</div><br><p>
-These rewards are currently demonstration values.
-Real earning systems will require backend rules and payment integration.
-</p></div><br><div class="card"><h3>💼 How ZEEPY can earn</h3><br><p>
-ZEEPY can generate revenue through disclosed transaction fees,
-promoted listings, advertising, business tools, premium services
-and other legitimate platform services.
-</p></div></section><!-- PROFILE --><section id="profile" class="container hidden"><h2 class="section-title">👤 Profile</h2><div class="card profile"><div
-class="avatar"
-id="avatar">
-Z
-</div><div><h3 id="profileName">
-ZEEPY User
-</h3><p id="profileEmail">
-Create an account to personalize your profile.
-</p></div></div><br><div class="card"><button
-class="primary"
-onclick="logoutUser()">
-Log Out
-</button>
+<section id="market" class="section">
+  <div class="card">
+    <h2>🛒 ZEEPY Market</h2>
+    <p>Buy and sell products on ZEEPY.</p>
+  </div>
 
-</div></section></main><footer><h2>ZEE<span>PY</span></h2><br><p>
-Connect. Meet. Trade. Live. <strong>Earn.</strong>
-</p><br><small>
-© 2026 ZEEPY. Building a better social-commerce community.
-</small></footer><!-- LOGIN MODAL --><div
-class="modal"
-id="loginModal"><div class="modal-box"><button
-class="close"
-onclick="closeLogin()">
-×
-</button>
+  <div class="card">
+    <h3>Coming Soon</h3>
+    <p style="margin-top:8px;color:#666;">
+      Product listings, sellers, buyers, orders and payments will be added here.
+    </p>
+  </div>
+</section>
 
-<h2 id="authTitle">
-Welcome to ZEEPY 🟠
-</h2><br><div class="auth-tabs"><button
-id="loginTab"
-class="auth-tab active"
-onclick="setAuthMode('login')">
-Log In
-</button>
+<section id="meet" class="section">
+  <div class="card">
+    <h2>🤝 Meet</h2>
+    <p>Discover and connect with people on ZEEPY.</p>
+  </div>
+</section>
 
-<button
-id="signupTab"
-class="auth-tab"
-onclick="setAuthMode('signup')">
-Create Account
-</button>
+<section id="groups" class="section">
+  <div class="card">
+    <h2>👥 Groups</h2>
+    <p>Create or join communities on ZEEPY.</p>
+  </div>
+</section>
 
-</div><input
-id="nameInput"
-class="input"
-type="text"
-placeholder="Your name"
-style="display:none;">
+<!-- LIVE -->
+<section id="live" class="section">
 
-<input
-id="emailInput"
-class="input"
-type="email"
-placeholder="Email address">
+  <div class="live-header">
+    <div class="live-title">🔴 ZEEPY Live</div>
+    <div class="live-subtitle">
+      Go live and let people watch you in real time.
+    </div>
+  </div>
 
-<input
-id="passwordInput"
-class="input"
-type="password"
-placeholder="Password">
+  <div class="card">
 
-<div
-id="authMessage"
-class="auth-message">
-</div><button
-id="authActionButton"
-class="primary"
-style="width:100%;"
-onclick="handleAuth()">
-Log In
-</button>
+    <h2>Live Studio</h2>
 
-</div></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+    <div class="live-studio">
+
+      <video
+        id="cameraPreview"
+        autoplay
+        playsinline
+        muted>
+      </video>
+
+      <div id="liveLabel" class="live-label hidden">
+        LIVE
+      </div>
+
+    </div>
+
+    <div class="live-controls">
+
+      <button
+        id="startBroadcastBtn"
+        class="start-live"
+        onclick="startBroadcast()">
+        🔴 Start Broadcast
+      </button>
+
+      <button
+        id="stopBroadcastBtn"
+        class="stop-live hidden"
+        onclick="stopBroadcast()">
+        ⏹ Stop Broadcast
+      </button>
+
+    </div>
+
+    <div id="liveStatus" class="status">
+      Camera and microphone are ready.
+      Tap Start Broadcast when you are ready.
+    </div>
+
+    <div id="permissionHelp" class="permission-box">
+      📷 Camera and 🎤 microphone access are required.
+      If Android asks for permission, tap Allow.
+    </div>
+
+  </div>
+
+  <div class="card live-list">
+
+    <h2>🔴 People Live Now</h2>
+
+    <p id="noLiveMessage"
+       style="margin-top:10px;color:#777;">
+      Nobody is live right now.
+    </p>
+
+    <div id="liveUsers"></div>
+
+  </div>
+
+  <div id="viewerBox" class="card hidden">
+
+    <h2>📺 Watching Live</h2>
+
+    <video
+      id="viewerVideo"
+      autoplay
+      playsinline
+      controls>
+    </video>
+
+    <div id="viewerInfo" class="viewer-info">
+      Connecting to live broadcast...
+    </div>
+
+    <button
+      class="danger"
+      style="margin-top:12px;"
+      onclick="stopWatching()">
+      Stop Watching
+    </button>
+
+  </div>
+
+</section>
+
+<section id="messages" class="section">
+  <div class="card">
+    <h2>💬 Messages</h2>
+    <p>Chat with your ZEEPY connections.</p>
+  </div>
+</section>
+
+<section id="nearby" class="section">
+  <div class="card">
+    <h2>📍 Nearby</h2>
+    <p>Discover people and opportunities around you.</p>
+  </div>
+</section>
+
+<section id="media" class="section">
+  <div class="card">
+    <h2>🎬 Media</h2>
+    <p>Upload and watch photos and videos.</p>
+  </div>
+</section>
+
+<section id="earn" class="section">
+
+  <div class="card">
+    <h2>💰 Earn</h2>
+    <p>Build opportunities and earn through ZEEPY.</p>
+  </div>
+
+  <div class="card">
+    <h3>Wallet</h3>
+    <h2 id="walletBalance">GH₵ 0.00</h2>
+  </div>
+
+</section>
+
+<section id="profile" class="section">
+
+  <div class="profile-head">
+
+    <div id="profileAvatar" class="profile-avatar">
+      Z
+    </div>
+
+    <h2 id="profileName">
+      ZEEPY User
+    </h2>
+
+    <p id="profileEmail"
+       style="color:#777;margin-top:5px;">
+      Not logged in
+    </p>
+
+    <button
+      id="profileAuthButton"
+      class="primary"
+      style="margin-top:18px;"
+      onclick="openAuth()">
+      Log in
+    </button>
+
+  </div>
+
+</section>
+
+<section id="auth" class="section">
+
+  <div class="auth-box">
+
+    <h2 id="authTitle">
+      Log in to ZEEPY
+    </h2>
+
+    <input
+      id="authName"
+      type="text"
+      placeholder="Full name"
+      class="hidden">
+
+    <input
+      id="authEmail"
+      type="email"
+      placeholder="Email address">
+
+    <input
+      id="authPassword"
+      type="password"
+      placeholder="Password">
+
+    <button
+      id="authSubmit"
+      class="primary"
+      onclick="handleAuth()">
+      Log In
+    </button>
+
+    <p
+      id="authMessage"
+      style="text-align:center;margin-top:12px;color:#666;">
+    </p>
+
+    <button
+      id="authSwitch"
+      class="secondary"
+      style="width:100%;margin-top:10px;"
+      onclick="toggleAuthMode()">
+      Create an account
+    </button>
+
+    <button
+      class="secondary"
+      style="width:100%;margin-top:10px;"
+      onclick="showSection('home')">
+      Cancel
+    </button>
+
+  </div>
+
+</section>
+
+</main>
+
+<nav>
+
+  <button id="navHome"
+          class="active"
+          onclick="showSection('home')">
+    <span>🏠</span>
+    Home
+  </button>
+
+  <button id="navMarket"
+          onclick="showSection('market')">
+    <span>🛒</span>
+    Market
+  </button>
+
+  <button id="navMeet"
+          onclick="showSection('meet')">
+    <span>🤝</span>
+    Meet
+  </button>
+
+  <button id="navLive"
+          onclick="showSection('live')">
+    <span>🔴</span>
+    Live
+  </button>
+
+  <button id="navMessages"
+          onclick="showSection('messages')">
+    <span>💬</span>
+    Messages
+  </button>
+
+  <button id="navProfile"
+          onclick="showSection('profile')">
+    <span>👤</span>
+    Profile
+  </button>
+
+</nav>
+
+<script>
+
+/* =========================================================
+   SUPABASE
+========================================================= */
 
 const SUPABASE_URL =
-"https://rolcuhrubqryfkaziacr.supabase.co";
+  "https://rolcuhrubqryfkaziacr.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_iy6KvSrIMcMiKAXklrYg9A_eGVsVq5p";
+  "sb_publishable_iy6KvSrIMcMiKAXklrYg9A_eGVsVq5p";
 
 const supabaseClient =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+/* =========================================================
+   GLOBAL VARIABLES
+========================================================= */
+
+let currentUser = null;
+
+let cameraStream = null;
+let microphoneStream = null;
+let liveStream = null;
+
+let isBroadcasting = false;
+
+let lobbyChannel = null;
+let broadcasterChannel = null;
+
+let viewerPeer = null;
+let viewerChannel = null;
+
+let viewerRoomId = null;
+let currentViewerId = null;
+
+const broadcasterPeers = new Map();
+
+
+/* =========================================================
+   AUTH MODE
+========================================================= */
 
 let authMode = "login";
 
-/* =========================
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function showSection(sectionId){
+
+  document.querySelectorAll(".section")
+    .forEach(section=>{
+      section.classList.remove("active");
+    });
+
+  const section =
+    document.getElementById(sectionId);
+
+  if(section){
+    section.classList.add("active");
+  }
+
+  document.querySelectorAll("nav button")
+    .forEach(button=>{
+      button.classList.remove("active");
+    });
+
+  const navButton =
+    document.getElementById(
+      "nav" +
+      sectionId.charAt(0).toUpperCase() +
+      sectionId.slice(1)
+    );
+
+  if(navButton){
+    navButton.classList.add("active");
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  if(sectionId === "live"){
+    refreshLiveUsers();
+  }
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(message){
+
+  const old =
+    document.querySelector(".toast");
+
+  if(old){
+    old.remove();
+  }
+
+  const toast =
+    document.createElement("div");
+
+  toast.className = "toast";
+  toast.textContent = message;
+
+  document.body.appendChild(toast);
+
+  setTimeout(()=>{
+    if(toast.parentNode){
+      toast.remove();
+    }
+  },3000);
+}
+
+
+/* =========================================================
    AUTH
-========================= */
+========================================================= */
 
-function setAuthMode(mode){
-
-authMode = mode;
-
-const nameInput =
-document.getElementById("nameInput");
-
-const loginTab =
-document.getElementById("loginTab");
-
-const signupTab =
-document.getElementById("signupTab");
-
-const title =
-document.getElementById("authTitle");
-
-const button =
-document.getElementById("authActionButton");
-
-const message =
-document.getElementById("authMessage");
-
-message.style.display = "none";
-
-if(mode === "signup"){
-
-nameInput.style.display = "block";
-
-loginTab.classList.remove("active");
-signupTab.classList.add("active");
-
-title.textContent =
-"Create your ZEEPY account 🟠";
-
-button.textContent =
-"Create Account";
-
-}else{
-
-nameInput.style.display = "none";
-
-loginTab.classList.add("active");
-signupTab.classList.remove("active");
-
-title.textContent =
-"Welcome back to ZEEPY 🟠";
-
-button.textContent =
-"Log In";
-
+function openAuth(){
+  showSection("auth");
 }
 
+function toggleAuthMode(){
+
+  if(authMode === "login"){
+
+    authMode = "signup";
+
+    document.getElementById("authTitle")
+      .textContent =
+      "Create your ZEEPY account";
+
+    document.getElementById("authName")
+      .classList.remove("hidden");
+
+    document.getElementById("authSubmit")
+      .textContent =
+      "Sign Up";
+
+    document.getElementById("authSwitch")
+      .textContent =
+      "Already have an account? Log in";
+
+  }else{
+
+    authMode = "login";
+
+    document.getElementById("authTitle")
+      .textContent =
+      "Log in to ZEEPY";
+
+    document.getElementById("authName")
+      .classList.add("hidden");
+
+    document.getElementById("authSubmit")
+      .textContent =
+      "Log In";
+
+    document.getElementById("authSwitch")
+      .textContent =
+      "Create an account";
+  }
+
+  document.getElementById("authMessage")
+    .textContent = "";
 }
 
-function showSection(section){
-
-const sections = [
-"home",
-"market",
-"meet",
-"groups",
-"live",
-"messages",
-"nearby",
-"media",
-"earn",
-"profile"
-];
-
-sections.forEach(function(id){
-
-const element =
-document.getElementById(id);
-
-if(element){
-element.classList.add("hidden");
-}
-
-});
-
-const selected =
-document.getElementById(section);
-
-if(selected){
-selected.classList.remove("hidden");
-}
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-function openLogin(){
-
-document.getElementById(
-"loginModal"
-).style.display = "flex";
-
-setAuthMode("login");
-
-}
-
-function closeLogin(){
-
-document.getElementById(
-"loginModal"
-).style.display = "none";
-
-}
-
-function showAuthMessage(message){
-
-const box =
-document.getElementById("authMessage");
-
-box.textContent = message;
-
-box.style.display = "block";
-
-}
 
 async function handleAuth(){
 
-const name =
-document.getElementById("nameInput").value.trim();
+  const email =
+    document.getElementById("authEmail")
+      .value.trim();
 
-const email =
-document.getElementById("emailInput").value.trim();
+  const password =
+    document.getElementById("authPassword")
+      .value;
 
-const password =
-document.getElementById("passwordInput").value;
+  const name =
+    document.getElementById("authName")
+      .value.trim();
 
-if(!email || !password){
+  const message =
+    document.getElementById("authMessage");
 
-showAuthMessage(
-"Please enter your email and password."
-);
+  if(!email || !password){
 
-return;
+    message.textContent =
+      "Please enter your email and password.";
 
+    return;
+  }
+
+  if(authMode === "signup" && !name){
+
+    message.textContent =
+      "Please enter your full name.";
+
+    return;
+  }
+
+  message.textContent =
+    "Please wait...";
+
+  try{
+
+    if(authMode === "signup"){
+
+      const {
+        data,
+        error
+      } =
+      await supabaseClient.auth.signUp({
+        email:email,
+        password:password,
+        options:{
+          data:{
+            full_name:name
+          }
+        }
+      });
+
+      if(error){
+        throw error;
+      }
+
+      if(data.session){
+
+        currentUser =
+          data.user;
+
+        updateProfile();
+
+        showToast(
+          "Welcome to ZEEPY! 🎉"
+        );
+
+        showSection("home");
+
+      }else{
+
+        message.textContent =
+          "Account created. Please log in.";
+
+        showToast(
+          "Account created successfully! 🎉"
+        );
+      }
+
+    }else{
+
+      const {
+        data,
+        error
+      } =
+      await supabaseClient.auth
+        .signInWithPassword({
+          email:email,
+          password:password
+        });
+
+      if(error){
+        throw error;
+      }
+
+      currentUser =
+        data.user;
+
+      updateProfile();
+
+      showToast(
+        "Login successful! 🎉"
+      );
+
+      showSection("home");
+    }
+
+  }catch(error){
+
+    console.error(error);
+
+    message.textContent =
+      error.message ||
+      "Something went wrong.";
+  }
 }
 
-if(authMode === "signup"){
 
-if(!name){
-
-showAuthMessage(
-"Please enter your name."
-);
-
-return;
-
-}
-
-if(password.length < 6){
-
-showAuthMessage(
-"Password must be at least 6 characters."
-);
-
-return;
-
-}
-
-showAuthMessage(
-"Creating your ZEEPY account..."
-);
-
-const { data, error } =
-await supabaseClient.auth.signUp({
-
-email:email,
-
-password:password,
-
-options:{
-data:{
-full_name:name
-}
-}
-
-});
-
-if(error){
-
-showAuthMessage(
-"Account creation failed: " +
-error.message
-);
-
-return;
-
-}
-
-if(data && data.session){
-
-saveUser(name,email);
-
-closeLogin();
-
-alert(
-"Welcome to ZEEPY, " +
-name +
-"! 🟠"
-);
-
-showSection("profile");
-
-return;
-
-}
-
-showAuthMessage(
-"Your account has been created. Please check your email to confirm your account, then use Log In."
-);
-
-setAuthMode("login");
-
-return;
-
-}
-
-showAuthMessage(
-"Logging you in..."
-);
-
-const { data, error } =
-await supabaseClient.auth.signInWithPassword({
-
-email:email,
-
-password:password
-
-});
-
-if(error){
-
-showAuthMessage(
-"Login failed: " +
-error.message
-);
-
-return;
-
-}
-
-if(data && data.user){
-
-const user =
-data.user;
-
-const savedName =
-user.user_metadata &&
-user.user_metadata.full_name
-? user.user_metadata.full_name
-: "ZEEPY User";
-
-saveUser(
-savedName,
-user.email || email
-);
-
-closeLogin();
-
-alert(
-"Welcome back to ZEEPY, " +
-savedName +
-"! 🟠"
-);
-
-showSection("profile");
-
-}
-
-}
-
-function saveUser(name,email){
-
-localStorage.setItem(
-"zeepyUser",
-JSON.stringify({
-name:name,
-email:email
-})
-);
-
-document.getElementById(
-"profileName"
-).textContent = name;
-
-document.getElementById(
-"profileEmail"
-).textContent = email;
-
-document.getElementById(
-"avatar"
-).textContent =
-name.charAt(0).toUpperCase();
-
-document.getElementById(
-"headerLoginButton"
-).textContent =
-"Profile";
-
-}
+/* =========================================================
+   SESSION
+========================================================= */
 
 async function loadUser(){
 
-try{
+  try{
 
-const { data, error } =
-await supabaseClient.auth.getSession();
+    const {
+      data
+    } =
+    await supabaseClient.auth.getSession();
 
-if(
-!error &&
-data &&
-data.session &&
-data.session.user
-){
+    currentUser =
+      data.session ?
+      data.session.user :
+      null;
 
-const user =
-data.session.user;
+    updateProfile();
 
-const name =
-user.user_metadata &&
-user.user_metadata.full_name
-? user.user_metadata.full_name
-: "ZEEPY User";
+  }catch(error){
 
-saveUser(
-name,
-user.email || ""
+    console.error(error);
+  }
+}
+
+
+supabaseClient.auth.onAuthStateChange(
+  (event,session)=>{
+
+    currentUser =
+      session ?
+      session.user :
+      null;
+
+    updateProfile();
+  }
 );
 
-return;
 
+/* =========================================================
+   PROFILE
+========================================================= */
+
+function updateProfile(){
+
+  const headerButton =
+    document.getElementById(
+      "authHeaderBtn"
+    );
+
+  const profileButton =
+    document.getElementById(
+      "profileAuthButton"
+    );
+
+  const profileName =
+    document.getElementById(
+      "profileName"
+    );
+
+  const profileEmail =
+    document.getElementById(
+      "profileEmail"
+    );
+
+  const profileAvatar =
+    document.getElementById(
+      "profileAvatar"
+    );
+
+  if(currentUser){
+
+    const metadata =
+      currentUser.user_metadata || {};
+
+    const name =
+      metadata.full_name ||
+      currentUser.email?.split("@")[0] ||
+      "ZEEPY User";
+
+    headerButton.textContent =
+      name;
+
+    headerButton.onclick =
+      ()=>showSection("profile");
+
+    profileButton.textContent =
+      "Log out";
+
+    profileButton.onclick =
+      logout;
+
+    profileName.textContent =
+      name;
+
+    profileEmail.textContent =
+      currentUser.email || "";
+
+    profileAvatar.textContent =
+      name.charAt(0).toUpperCase();
+
+  }else{
+
+    headerButton.textContent =
+      "Log in";
+
+    headerButton.onclick =
+      openAuth;
+
+    profileButton.textContent =
+      "Log in";
+
+    profileButton.onclick =
+      openAuth;
+
+    profileName.textContent =
+      "ZEEPY User";
+
+    profileEmail.textContent =
+      "Not logged in";
+
+    profileAvatar.textContent =
+      "Z";
+  }
 }
 
-}catch(error){
 
-console.error(
-"Session error:",
-error
-);
+/* =========================================================
+   LOGOUT
+========================================================= */
 
+async function logout(){
+
+  if(isBroadcasting){
+    await stopBroadcast();
+  }
+
+  await stopWatching();
+
+  try{
+
+    await supabaseClient.auth.signOut();
+
+    currentUser = null;
+
+    updateProfile();
+
+    showToast(
+      "You have logged out."
+    );
+
+    showSection("home");
+
+  }catch(error){
+
+    console.error(error);
+
+    showToast(
+      "Logout failed."
+    );
+  }
 }
 
-const saved =
-localStorage.getItem("zeepyUser");
 
-if(saved){
+/* =========================================================
+   CAMERA + MICROPHONE
+========================================================= */
 
-try{
+async function getLiveMedia(){
 
-const user =
-JSON.parse(saved);
+  releaseLiveStreams();
 
-saveUser(
-user.name,
-user.email
-);
+  if(!navigator.mediaDevices ||
+     !navigator.mediaDevices.getUserMedia){
 
-}catch(error){
+    throw new Error(
+      "Camera and microphone are not supported by this browser."
+    );
+  }
 
-localStorage.removeItem(
-"zeepyUser"
-);
+  let stream;
 
+  try{
+
+    stream =
+      await navigator.mediaDevices.getUserMedia({
+
+        video:{
+          facingMode:"user",
+          width:{
+            ideal:1280
+          },
+          height:{
+            ideal:720
+          }
+        },
+
+        audio:{
+          echoCancellation:true,
+          noiseSuppression:true,
+          autoGainControl:true
+        }
+      });
+
+  }catch(error){
+
+    console.error(
+      "getUserMedia error:",
+      error
+    );
+
+    if(error.name === "NotAllowedError"){
+
+      throw new Error(
+        "🚫 Camera/microphone permission was denied. Please allow Camera and Microphone for your browser in Android Settings."
+      );
+    }
+
+    if(error.name === "NotReadableError"){
+
+      throw new Error(
+        "🚫 The camera or microphone is already being used by another app. Close Camera, WhatsApp, Telegram or other apps and try again."
+      );
+    }
+
+    if(error.name === "SecurityError"){
+
+      throw new Error(
+        "🚫 The browser security settings blocked camera/microphone access. Make sure ZEEPY is opened using HTTPS."
+      );
+    }
+
+    throw new Error(
+      "🚫 Camera/microphone error: " +
+      (error.message || error.name)
+    );
+  }
+
+  liveStream = stream;
+
+  cameraStream = stream;
+
+  microphoneStream = stream;
+
+  return stream;
 }
 
-}
 
-}
-
-async function logoutUser(){
-
-await supabaseClient.auth.signOut();
-
-localStorage.removeItem(
-"zeepyUser"
-);
-
-document.getElementById(
-"profileName"
-).textContent =
-"ZEEPY User";
-
-document.getElementById(
-"profileEmail"
-).textContent =
-"Create an account to personalize your profile.";
-
-document.getElementById(
-"avatar"
-).textContent =
-"Z";
-
-document.getElementById(
-"headerLoginButton"
-).textContent =
-"Log in";
-
-alert(
-"You have been logged out."
-);
-
-showSection("home");
-
-}
-
-/* =========================
-   WALLET
-========================= */
-
-let wallet =
-parseFloat(
-localStorage.getItem("zeepyWallet")
-) || 0;
-
-function updateBalance(){
-
-document.getElementById(
-"balance"
-).textContent =
-"GH₵ " +
-wallet.toFixed(2);
-
-}
-
-function addEarning(amount,reason){
-
-wallet += amount;
-
-localStorage.setItem(
-"zeepyWallet",
-wallet
-);
-
-updateBalance();
-
-alert(
-"Demo reward added!\n\n" +
-"+GH₵ " +
-amount.toFixed(2) +
-"\nReason: " +
-reason
-);
-
-}
-
-function withdrawMoney(){
-
-alert(
-"Withdrawal is not connected yet.\n\n" +
-"The wallet is currently a demonstration."
-);
-
-}
-
-/* =========================
-   MARKET
-========================= */
-
-function buyProduct(product){
-
-alert(
-"You selected: " +
-product +
-"\n\n" +
-"Real seller messaging and checkout will be connected later."
-);
-
-}
-
-/* =========================
-   MEET
-========================= */
-
-function createMeeting(){
-
-const id =
-"ZEEPY-" +
-Math.random()
-.toString(36)
-.substring(2,8)
-.toUpperCase();
-
-document.getElementById(
-"meetingResult"
-).innerHTML =
-"Meeting ID: <strong>" +
-id +
-"</strong><br><br>" +
-
-"<button class='primary' " +
-"onclick=\"copyMeeting('" +
-id +
-"')\">" +
-"Copy ID" +
-"</button>";
-
-}
-
-function copyMeeting(id){
-
-if(
-navigator.clipboard &&
-navigator.clipboard.writeText
-){
-
-navigator.clipboard
-.writeText(id)
-.then(function(){
-
-alert(
-"Meeting ID copied: " +
-id
-);
-
-})
-.catch(function(){
-
-alert(
-"Meeting ID: " +
-id
-);
-
-});
-
-}else{
-
-alert(
-"Meeting ID: " +
-id
-);
-
-}
-
-}
-
-/* =========================
-   GROUPS
-========================= */
-
-function joinGroup(group){
-
-alert(
-"You selected the " +
-group +
-" group.\n\n" +
-"Real group membership will be connected later."
-);
-
-}
-
-/* ========================================
-   ZEEPY LIVE — IMPROVED CAMERA SYSTEM
-======================================== */
-
-let liveStream = null;
-let cameraStream = null;
-let microphoneStream = null;
-
-function setLiveStatus(message){
-
-const status =
-document.getElementById("liveStatus");
-
-if(status){
-status.innerHTML = message;
-}
-
-}
-
-function showTryAgain(show){
-
-const button =
-document.getElementById("tryAgainButton");
-
-const help =
-document.getElementById("permissionHelp");
-
-if(button){
-
-button.style.display =
-show ? "block" : "none";
-
-}
-
-if(help){
-
-help.style.display =
-show ? "block" : "none";
-
-}
-
-}
-
-function showLiveDebug(message){
-
-const box =
-document.getElementById("liveDebug");
-
-if(box){
-
-box.innerHTML = message;
-box.style.display = message ? "block" : "none";
-
-}
-
-}
-
-/*
-   Release all camera and microphone tracks.
-*/
+/* =========================================================
+   RELEASE MEDIA
+========================================================= */
 
 function releaseLiveStreams(){
 
-const streams = [
-liveStream,
-cameraStream,
-microphoneStream
-];
+  const streams = [
+    cameraStream,
+    microphoneStream,
+    liveStream
+  ];
 
-streams.forEach(function(stream){
+  const stopped =
+    new Set();
 
-if(stream){
+  streams.forEach(stream=>{
 
-stream.getTracks().forEach(function(track){
+    if(!stream ||
+       stopped.has(stream)){
+      return;
+    }
 
-try{
-track.stop();
-}catch(e){
-console.warn("Could not stop track:",e);
+    stopped.add(stream);
+
+    stream.getTracks()
+      .forEach(track=>{
+
+        try{
+          track.stop();
+        }catch(e){}
+
+      });
+  });
+
+  cameraStream = null;
+  microphoneStream = null;
+  liveStream = null;
 }
 
-});
 
+/* =========================================================
+   WEBRTC CONFIG
+========================================================= */
+
+function createPeerConnection(){
+
+  return new RTCPeerConnection({
+
+    iceServers:[
+      {
+        urls:[
+          "stun:stun.l.google.com:19302",
+          "stun:stun1.l.google.com:19302"
+        ]
+      }
+    ],
+
+    iceCandidatePoolSize:10
+  });
 }
 
-});
 
-liveStream = null;
-cameraStream = null;
-microphoneStream = null;
-
-}
-
-/*
-   Detect the browser's camera/microphone permission
-   where the browser supports the Permissions API.
-*/
-
-async function checkDevicePermissions(){
-
-const result = {
-camera:"unknown",
-microphone:"unknown"
-};
-
-if(!navigator.permissions){
-return result;
-}
-
-try{
-
-const cameraPermission =
-await navigator.permissions.query({
-name:"camera"
-});
-
-result.camera =
-cameraPermission.state;
-
-}catch(error){
-
-console.log(
-"Camera permission state unavailable:",
-error
-);
-
-}
-
-try{
-
-const microphonePermission =
-await navigator.permissions.query({
-name:"microphone"
-});
-
-result.microphone =
-microphonePermission.state;
-
-}catch(error){
-
-console.log(
-"Microphone permission state unavailable:",
-error
-);
-
-}
-
-return result;
-
-}
-
-/*
-   Main broadcast function.
-*/
+/* =========================================================
+   START BROADCAST
+========================================================= */
 
 async function startBroadcast(){
 
-const status =
-document.getElementById("liveStatus");
+  if(isBroadcasting){
 
-const video =
-document.getElementById("cameraPreview");
+    showToast(
+      "You are already live."
+    );
 
-const icon =
-document.getElementById("liveIcon");
+    return;
+  }
 
-const title =
-document.getElementById("liveTitle");
+  if(!currentUser){
 
-const message =
-document.getElementById("liveMessage");
+    showToast(
+      "Please log in before starting a live broadcast."
+    );
 
-const button =
-document.getElementById("startLiveButton");
+    showSection("auth");
 
-const indicator =
-document.getElementById("liveIndicator");
+    return;
+  }
 
-showTryAgain(false);
-showLiveDebug("");
+  const status =
+    document.getElementById(
+      "liveStatus"
+    );
 
-/*
-   Prevent duplicate streams.
-*/
+  const startButton =
+    document.getElementById(
+      "startBroadcastBtn"
+    );
 
-if(liveStream){
+  const stopButton =
+    document.getElementById(
+      "stopBroadcastBtn"
+    );
 
-setLiveStatus(
-"🔴 <strong>Your camera and microphone are already connected.</strong>"
-);
+  const label =
+    document.getElementById(
+      "liveLabel"
+    );
 
-return;
+  try{
 
+    if(!window.isSecureContext){
+
+      throw new Error(
+        "ZEEPY Live requires HTTPS."
+      );
+    }
+
+    status.textContent =
+      "Starting camera and microphone...";
+
+    startButton.disabled = true;
+
+    liveStream =
+      await getLiveMedia();
+
+    const video =
+      document.getElementById(
+        "cameraPreview"
+      );
+
+    video.srcObject =
+      liveStream;
+
+    try{
+      await video.play();
+    }catch(e){}
+
+    /*
+      Create lobby first.
+    */
+
+    await setupLobby();
+
+    /*
+      Create broadcaster channel.
+    */
+
+    const roomId =
+      currentUser.id;
+
+    broadcasterChannel =
+      supabaseClient.channel(
+        "zeepy-live-room-" + roomId,
+        {
+          config:{
+            broadcast:{
+              self:false
+            }
+          }
+        }
+      );
+
+    /*
+      Viewer asks to join.
+    */
+
+    broadcasterChannel.on(
+      "broadcast",
+      {
+        event:"viewer-join"
+      },
+      async ({payload})=>{
+
+        if(!isBroadcasting){
+          return;
+        }
+
+        const viewerId =
+          payload?.viewerId;
+
+        if(!viewerId){
+          return;
+        }
+
+        await createOfferForViewer(
+          viewerId
+        );
+      }
+    );
+
+    /*
+      Viewer sends answer.
+    */
+
+    broadcasterChannel.on(
+      "broadcast",
+      {
+        event:"viewer-answer"
+      },
+      async ({payload})=>{
+
+        const viewerId =
+          payload?.viewerId;
+
+        const answer =
+          payload?.answer;
+
+        const peer =
+          broadcasterPeers.get(
+            viewerId
+          );
+
+        if(
+          peer &&
+          answer
+        ){
+
+          try{
+
+            await peer.setRemoteDescription(
+              new RTCSessionDescription(
+                answer
+              )
+            );
+
+          }catch(error){
+
+            console.error(
+              "Remote answer error:",
+              error
+            );
+          }
+        }
+      }
+    );
+
+    /*
+      Viewer sends ICE.
+    */
+
+    broadcasterChannel.on(
+      "broadcast",
+      {
+        event:"viewer-ice"
+      },
+      async ({payload})=>{
+
+        const viewerId =
+          payload?.viewerId;
+
+        const candidate =
+          payload?.candidate;
+
+        const peer =
+          broadcasterPeers.get(
+            viewerId
+          );
+
+        if(
+          peer &&
+          candidate
+        ){
+
+          try{
+
+            await peer.addIceCandidate(
+              new RTCIceCandidate(
+                candidate
+              )
+            );
+
+          }catch(error){
+
+            console.error(
+              "Viewer ICE error:",
+              error
+            );
+          }
+        }
+      }
+    );
+
+    await broadcasterChannel.subscribe();
+
+    /*
+      Track broadcaster presence.
+    */
+
+    const metadata =
+      currentUser.user_metadata || {};
+
+    const broadcasterName =
+      metadata.full_name ||
+      currentUser.email?.split("@")[0] ||
+      "ZEEPY User";
+
+    await lobbyChannel.track({
+
+      roomId:roomId,
+
+      userId:currentUser.id,
+
+      name:broadcasterName,
+
+      startedAt:Date.now(),
+
+      type:"broadcaster"
+    });
+
+    isBroadcasting = true;
+
+    label.classList.remove(
+      "hidden"
+    );
+
+    startButton.classList.add(
+      "hidden"
+    );
+
+    stopButton.classList.remove(
+      "hidden"
+    );
+
+    startButton.disabled = false;
+
+    status.textContent =
+      "🔴 You are LIVE! Waiting for viewers...";
+
+    showToast(
+      "You are now LIVE! 🔴"
+    );
+
+    refreshLiveUsers();
+
+  }catch(error){
+
+    console.error(
+      "Broadcast error:",
+      error
+    );
+
+    isBroadcasting = false;
+
+    releaseLiveStreams();
+
+    const video =
+      document.getElementById(
+        "cameraPreview"
+      );
+
+    video.srcObject = null;
+
+    if(broadcasterChannel){
+
+      try{
+        await supabaseClient.removeChannel(
+          broadcasterChannel
+        );
+      }catch(e){}
+
+      broadcasterChannel = null;
+    }
+
+    status.textContent =
+      error.message ||
+      "Could not start the broadcast.";
+
+    startButton.disabled = false;
+
+    showToast(
+      error.message ||
+      "Could not start Live."
+    );
+  }
 }
 
-/*
-   Secure context check.
-*/
 
-if(!window.isSecureContext){
+/* =========================================================
+   STOP BROADCAST
+========================================================= */
 
-setLiveStatus(
-"🔒 <strong>Secure connection required.</strong><br><br>" +
-"ZEEPY must be opened using HTTPS. " +
-"Please make sure the address begins with <strong>https://</strong>."
-);
+async function stopBroadcast(){
 
-showTryAgain(false);
+  isBroadcasting = false;
 
-return;
+  const status =
+    document.getElementById(
+      "liveStatus"
+    );
 
+  const startButton =
+    document.getElementById(
+      "startBroadcastBtn"
+    );
+
+  const stopButton =
+    document.getElementById(
+      "stopBroadcastBtn"
+    );
+
+  const label =
+    document.getElementById(
+      "liveLabel"
+    );
+
+  /*
+    Tell viewers first.
+  */
+
+  if(broadcasterChannel){
+
+    try{
+
+      await broadcasterChannel.send({
+
+        type:"broadcast",
+
+        event:"broadcast-stopped",
+
+        payload:{
+          roomId:
+            currentUser ?
+            currentUser.id :
+            null
+        }
+      });
+
+    }catch(e){
+      console.error(e);
+    }
+  }
+
+  /*
+    Close viewer peer connections.
+  */
+
+  broadcasterPeers.forEach(
+    peer=>{
+
+      try{
+        peer.close();
+      }catch(e){}
+    }
+  );
+
+  broadcasterPeers.clear();
+
+  /*
+    Stop camera and microphone.
+  */
+
+  releaseLiveStreams();
+
+  document.getElementById(
+    "cameraPreview"
+  ).srcObject = null;
+
+  /*
+    Remove broadcaster presence.
+  */
+
+  if(lobbyChannel){
+
+    try{
+      await lobbyChannel.untrack();
+    }catch(e){}
+  }
+
+  /*
+    Remove broadcaster channel.
+  */
+
+  if(broadcasterChannel){
+
+    try{
+
+      await supabaseClient.removeChannel(
+        broadcasterChannel
+      );
+
+    }catch(e){}
+
+    broadcasterChannel = null;
+  }
+
+  label.classList.add(
+    "hidden"
+  );
+
+  startButton.classList.remove(
+    "hidden"
+  );
+
+  stopButton.classList.add(
+    "hidden"
+  );
+
+  startButton.disabled = false;
+
+  status.textContent =
+    "Broadcast stopped. Tap Start Broadcast to go live again.";
+
+  refreshLiveUsers();
+
+  showToast(
+    "Your live broadcast has ended."
+  );
 }
 
-/*
-   Browser API check.
-*/
 
-if(
-!navigator.mediaDevices ||
-typeof navigator.mediaDevices.getUserMedia !== "function"
+/* =========================================================
+   LIVE LOBBY
+========================================================= */
+
+async function setupLobby(){
+
+  if(lobbyChannel){
+    return;
+  }
+
+  const presenceKey =
+    currentUser ?
+    currentUser.id :
+    "guest-" + crypto.randomUUID();
+
+  lobbyChannel =
+    supabaseClient.channel(
+      "zeepy-live-lobby",
+      {
+        config:{
+          presence:{
+            key:presenceKey
+          },
+
+          broadcast:{
+            self:false
+          }
+        }
+      }
+    );
+
+  lobbyChannel.on(
+    "presence",
+    {
+      event:"sync"
+    },
+    ()=>{
+      refreshLiveUsers();
+    }
+  );
+
+  lobbyChannel.on(
+    "presence",
+    {
+      event:"join"
+    },
+    ()=>{
+      refreshLiveUsers();
+    }
+  );
+
+  lobbyChannel.on(
+    "presence",
+    {
+      event:"leave"
+    },
+    ()=>{
+      refreshLiveUsers();
+    }
+  );
+
+  await lobbyChannel.subscribe();
+
+  if(
+    isBroadcasting &&
+    currentUser
+  ){
+
+    const metadata =
+      currentUser.user_metadata || {};
+
+    await lobbyChannel.track({
+
+      roomId:currentUser.id,
+
+      userId:currentUser.id,
+
+      name:
+        metadata.full_name ||
+        currentUser.email?.split("@")[0] ||
+        "ZEEPY User",
+
+      startedAt:Date.now(),
+
+      type:"broadcaster"
+    });
+  }
+}
+
+
+/* =========================================================
+   REFRESH LIVE USERS
+========================================================= */
+
+async function refreshLiveUsers(){
+
+  const container =
+    document.getElementById(
+      "liveUsers"
+    );
+
+  const noLive =
+    document.getElementById(
+      "noLiveMessage"
+    );
+
+  if(!container){
+    return;
+  }
+
+  if(!lobbyChannel){
+
+    try{
+      await setupLobby();
+    }catch(error){
+
+      console.error(
+        "Lobby error:",
+        error
+      );
+
+      return;
+    }
+  }
+
+  let state = {};
+
+  try{
+
+    state =
+      lobbyChannel.presenceState();
+
+  }catch(error){
+
+    console.error(
+      "Presence state error:",
+      error
+    );
+
+    return;
+  }
+
+  container.innerHTML = "";
+
+  const broadcasters = [];
+
+  Object.keys(state)
+    .forEach(key=>{
+
+      const entries =
+        state[key] || [];
+
+      entries.forEach(entry=>{
+
+        if(
+          entry.type === "broadcaster" &&
+          entry.roomId
+        ){
+
+          broadcasters.push(entry);
+        }
+      });
+    });
+
+  /*
+    Make sure current broadcaster
+    appears immediately.
+  */
+
+  if(
+    isBroadcasting &&
+    currentUser
+  ){
+
+    const exists =
+      broadcasters.some(
+        item =>
+          item.userId ===
+          currentUser.id
+      );
+
+    if(!exists){
+
+      const metadata =
+        currentUser.user_metadata || {};
+
+      broadcasters.push({
+
+        roomId:currentUser.id,
+
+        userId:currentUser.id,
+
+        name:
+          metadata.full_name ||
+          currentUser.email?.split("@")[0] ||
+          "You",
+
+        type:"broadcaster"
+      });
+    }
+  }
+
+  if(broadcasters.length === 0){
+
+    noLive.classList.remove(
+      "hidden"
+    );
+
+    return;
+  }
+
+  noLive.classList.add(
+    "hidden"
+  );
+
+  broadcasters.forEach(
+    user=>{
+
+      const row =
+        document.createElement(
+          "div"
+        );
+
+      row.className =
+        "live-user";
+
+      const info =
+        document.createElement(
+          "div"
+        );
+
+      info.className =
+        "live-user-info";
+
+      const avatar =
+        document.createElement(
+          "div"
+        );
+
+      avatar.className =
+        "avatar";
+
+      avatar.textContent =
+        (user.name || "Z")
+          .charAt(0)
+          .toUpperCase();
+
+      const nameBox =
+        document.createElement(
+          "div"
+        );
+
+      const strong =
+        document.createElement(
+          "strong"
+        );
+
+      strong.textContent =
+        user.name ||
+        "ZEEPY User";
+
+      const small =
+        document.createElement(
+          "small"
+        );
+
+      small.style.display =
+        "block";
+
+      small.style.color =
+        "#e00000";
+
+      small.textContent =
+        "🔴 LIVE";
+
+      nameBox.appendChild(
+        strong
+      );
+
+      nameBox.appendChild(
+        small
+      );
+
+      info.appendChild(
+        avatar
+      );
+
+      info.appendChild(
+        nameBox
+      );
+
+      row.appendChild(
+        info
+      );
+
+      if(
+        !currentUser ||
+        user.userId !== currentUser.id
+      ){
+
+        const watch =
+          document.createElement(
+            "button"
+          );
+
+        watch.className =
+          "watch-btn";
+
+        watch.textContent =
+          "Watch";
+
+        watch.onclick =
+          ()=>{
+            watchLive(
+              user.roomId,
+              user.name
+            );
+          };
+
+        row.appendChild(
+          watch
+        );
+
+      }else{
+
+        const you =
+          document.createElement(
+            "span"
+          );
+
+        you.textContent =
+          "You";
+
+        you.style.color =
+          "#12a84a";
+
+        you.style.fontWeight =
+          "bold";
+
+        row.appendChild(
+          you
+        );
+      }
+
+      container.appendChild(
+        row
+      );
+    });
+}
+
+
+/* =========================================================
+   CREATE BROADCAST OFFER
+========================================================= */
+
+async function createOfferForViewer(
+  viewerId
 ){
 
-setLiveStatus(
-"⚠️ <strong>This browser cannot access the camera.</strong><br><br>" +
-"Please open ZEEPY directly in a modern browser such as Google Chrome."
-);
+  if(
+    !isBroadcasting ||
+    !liveStream ||
+    !broadcasterChannel
+  ){
 
-showTryAgain(false);
+    return;
+  }
 
-return;
+  /*
+    Close previous peer for this viewer.
+  */
 
+  const oldPeer =
+    broadcasterPeers.get(
+      viewerId
+    );
+
+  if(oldPeer){
+
+    try{
+      oldPeer.close();
+    }catch(e){}
+  }
+
+  const peer =
+    createPeerConnection();
+
+  broadcasterPeers.set(
+    viewerId,
+    peer
+  );
+
+  /*
+    Add live tracks.
+  */
+
+  liveStream.getTracks()
+    .forEach(track=>{
+
+      peer.addTrack(
+        track,
+        liveStream
+      );
+    });
+
+  /*
+    ICE.
+  */
+
+  peer.onicecandidate =
+    async event=>{
+
+      if(
+        !event.candidate ||
+        !broadcasterChannel
+      ){
+        return;
+      }
+
+      try{
+
+        await broadcasterChannel.send({
+
+          type:"broadcast",
+
+          event:"broadcaster-ice",
+
+          payload:{
+
+            viewerId:viewerId,
+
+            candidate:
+              event.candidate.toJSON()
+          }
+        });
+
+      }catch(error){
+
+        console.error(
+          "Broadcaster ICE error:",
+          error
+        );
+      }
+    };
+
+  /*
+    Connection status.
+  */
+
+  peer.onconnectionstatechange =
+    ()=>{
+
+      console.log(
+        "Broadcaster peer:",
+        viewerId,
+        peer.connectionState
+      );
+
+      if(
+        peer.connectionState ===
+        "failed" ||
+        peer.connectionState ===
+        "closed"
+      ){
+
+        try{
+          peer.close();
+        }catch(e){}
+
+        broadcasterPeers.delete(
+          viewerId
+        );
+      }
+    };
+
+  try{
+
+    const offer =
+      await peer.createOffer({
+        offerToReceiveAudio:false,
+        offerToReceiveVideo:false
+      });
+
+    await peer.setLocalDescription(
+      offer
+    );
+
+    /*
+      Give the browser a moment
+      to gather the initial ICE data.
+    */
+
+    await new Promise(
+      resolve=>setTimeout(
+        resolve,
+        300
+      )
+    );
+
+    await broadcasterChannel.send({
+
+      type:"broadcast",
+
+      event:"broadcaster-offer",
+
+      payload:{
+
+        viewerId:viewerId,
+
+        offer:{
+
+          type:
+            peer.localDescription.type,
+
+          sdp:
+            peer.localDescription.sdp
+        }
+      }
+    });
+
+  }catch(error){
+
+    console.error(
+      "Offer creation error:",
+      error
+    );
+  }
 }
 
-try{
 
-button.disabled = true;
+/* =========================================================
+   WATCH LIVE
+========================================================= */
 
-button.textContent =
-"⏳ Connecting...";
+async function watchLive(
+  roomId,
+  broadcasterName
+){
 
-setLiveStatus(
-"📷 <strong>Connecting to your camera and microphone...</strong><br><br>" +
-"Please wait."
-);
+  if(!roomId){
 
-/*
-   Check browser-reported permissions.
-*/
+    showToast(
+      "Live broadcast not found."
+    );
 
-const permissions =
-await checkDevicePermissions();
+    return;
+  }
 
-showLiveDebug(
-"Camera permission: " +
-permissions.camera +
-"<br>" +
-"Microphone permission: " +
-permissions.microphone
-);
+  if(
+    currentUser &&
+    roomId === currentUser.id
+  ){
 
-/*
-   IMPORTANT:
-   First request camera only.
-   Some Android browsers behave better when
-   camera and microphone are requested separately.
-*/
+    showToast(
+      "You cannot watch your own broadcast."
+    );
 
-try{
+    return;
+  }
 
-cameraStream =
-await navigator.mediaDevices.getUserMedia({
+  await stopWatching();
 
-video:{
-facingMode:"user"
-},
+  viewerRoomId =
+    roomId;
 
-audio:false
+  currentViewerId =
+    currentUser ?
+    currentUser.id :
+    "guest-" + crypto.randomUUID();
 
-});
+  const viewerBox =
+    document.getElementById(
+      "viewerBox"
+    );
 
-}catch(cameraError){
+  const viewerVideo =
+    document.getElementById(
+      "viewerVideo"
+    );
 
-console.error(
-"Camera request failed:",
-cameraError
-);
+  const viewerInfo =
+    document.getElementById(
+      "viewerInfo"
+    );
 
-throw cameraError;
+  viewerBox.classList.remove(
+    "hidden"
+  );
 
+  viewerVideo.srcObject =
+    null;
+
+  viewerInfo.textContent =
+    "Connecting to " +
+    (broadcasterName ||
+     "ZEEPY User") +
+    "...";
+
+  /*
+    Connect to room.
+  */
+
+  viewerChannel =
+    supabaseClient.channel(
+      "zeepy-live-room-" + roomId,
+      {
+        config:{
+          broadcast:{
+            self:false
+          }
+        }
+      }
+    );
+
+  /*
+    Receive offer.
+  */
+
+  viewerChannel.on(
+    "broadcast",
+    {
+      event:"broadcaster-offer"
+    },
+    async ({payload})=>{
+
+      if(
+        payload?.viewerId !==
+        currentViewerId
+      ){
+
+        return;
+      }
+
+      await handleBroadcasterOffer(
+        payload.offer,
+        currentViewerId,
+        roomId
+      );
+    }
+  );
+
+  /*
+    Receive broadcaster ICE.
+  */
+
+  viewerChannel.on(
+    "broadcast",
+    {
+      event:"broadcaster-ice"
+    },
+    async ({payload})=>{
+
+      if(
+        payload?.viewerId !==
+        currentViewerId
+      ){
+
+        return;
+      }
+
+      const candidate =
+        payload?.candidate;
+
+      if(
+        viewerPeer &&
+        candidate
+      ){
+
+        try{
+
+          await viewerPeer.addIceCandidate(
+            new RTCIceCandidate(
+              candidate
+            )
+          );
+
+        }catch(error){
+
+          console.error(
+            "Broadcaster ICE error:",
+            error
+          );
+        }
+      }
+    }
+  );
+
+  /*
+    Broadcast ended.
+  */
+
+  viewerChannel.on(
+    "broadcast",
+    {
+      event:"broadcast-stopped"
+    },
+    ({payload})=>{
+
+      if(
+        payload?.roomId ===
+        roomId
+      ){
+
+        viewerInfo.textContent =
+          "The broadcaster has ended the live.";
+
+        stopWatching();
+      }
+    }
+  );
+
+  await viewerChannel.subscribe();
+
+  /*
+    Tell broadcaster we are watching.
+  */
+
+  try{
+
+    await viewerChannel.send({
+
+      type:"broadcast",
+
+      event:"viewer-join",
+
+      payload:{
+
+        viewerId:
+          currentViewerId
+      }
+    });
+
+  }catch(error){
+
+    console.error(
+      "Viewer join error:",
+      error
+    );
+
+    viewerInfo.textContent =
+      "Could not connect to the live broadcast.";
+  }
+
+  viewerBox.scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
 }
 
-/*
-   Now request microphone separately.
-*/
 
-try{
+/* =========================================================
+   HANDLE OFFER
+========================================================= */
 
-microphoneStream =
-await navigator.mediaDevices.getUserMedia({
+async function handleBroadcasterOffer(
+  offer,
+  viewerId,
+  roomId
+){
 
-video:false,
+  try{
 
-audio:true
+    if(!offer){
+      return;
+    }
 
-});
+    if(viewerPeer){
 
-}catch(microphoneError){
+      try{
+        viewerPeer.close();
+      }catch(e){}
 
-console.error(
-"Microphone request failed:",
-microphoneError
-);
+      viewerPeer = null;
+    }
 
-/*
-   If microphone fails, release the camera
-   because we don't want to leave the camera running.
-*/
+    viewerPeer =
+      createPeerConnection();
 
-if(cameraStream){
+    /*
+      Receive broadcaster tracks.
+    */
 
-cameraStream
-.getTracks()
-.forEach(function(track){
+    viewerPeer.ontrack =
+      event=>{
 
-track.stop();
+        const viewerVideo =
+          document.getElementById(
+            "viewerVideo"
+          );
 
-});
+        let stream =
+          event.streams &&
+          event.streams[0];
 
-cameraStream = null;
+        if(!stream){
 
+          stream =
+            viewerVideo.srcObject ||
+            new MediaStream();
+
+          if(
+            event.track &&
+            !stream.getTracks()
+              .includes(event.track)
+          ){
+
+            stream.addTrack(
+              event.track
+            );
+          }
+        }
+
+        viewerVideo.srcObject =
+          stream;
+
+        viewerVideo.play()
+          .catch(()=>{});
+
+        document.getElementById(
+          "viewerInfo"
+        ).textContent =
+          "🔴 Live now";
+      };
+
+    /*
+      Send ICE to broadcaster.
+    */
+
+    viewerPeer.onicecandidate =
+      async event=>{
+
+        if(
+          !event.candidate ||
+          !viewerChannel
+        ){
+
+          return;
+        }
+
+        try{
+
+          await viewerChannel.send({
+
+            type:"broadcast",
+
+            event:"viewer-ice",
+
+            payload:{
+
+              viewerId:
+                viewerId,
+
+              candidate:
+                event.candidate.toJSON()
+            }
+          });
+
+        }catch(error){
+
+          console.error(
+            "Viewer ICE send error:",
+            error
+          );
+        }
+      };
+
+    viewerPeer.onconnectionstatechange =
+      ()=>{
+
+        const state =
+          viewerPeer.connectionState;
+
+        console.log(
+          "Viewer connection:",
+          state
+        );
+
+        if(state === "connected"){
+
+          document.getElementById(
+            "viewerInfo"
+          ).textContent =
+            "🔴 Live now";
+        }
+
+        if(
+          state === "failed" ||
+          state === "closed"
+        ){
+
+          document.getElementById(
+            "viewerInfo"
+          ).textContent =
+            "Connection ended.";
+        }
+      };
+
+    /*
+      Set remote offer.
+    */
+
+    await viewerPeer.setRemoteDescription(
+      new RTCSessionDescription(
+        offer
+      )
+    );
+
+    /*
+      Create answer.
+    */
+
+    const answer =
+      await viewerPeer.createAnswer();
+
+    await viewerPeer.setLocalDescription(
+      answer
+    );
+
+    /*
+      Send answer back.
+    */
+
+    if(!viewerChannel){
+      return;
+    }
+
+    await viewerChannel.send({
+
+      type:"broadcast",
+
+      event:"viewer-answer",
+
+      payload:{
+
+        viewerId:
+          viewerId,
+
+        answer:{
+
+          type:
+            viewerPeer.localDescription.type,
+
+          sdp:
+            viewerPeer.localDescription.sdp
+        }
+      }
+    });
+
+  }catch(error){
+
+    console.error(
+      "Viewer connection error:",
+      error
+    );
+
+    const info =
+      document.getElementById(
+        "viewerInfo"
+      );
+
+    if(info){
+
+      info.textContent =
+        "Could not connect to this live broadcast.";
+    }
+  }
 }
 
-throw microphoneError;
 
+/* =========================================================
+   STOP WATCHING
+========================================================= */
+
+async function stopWatching(){
+
+  if(viewerPeer){
+
+    try{
+      viewerPeer.close();
+    }catch(e){}
+
+    viewerPeer = null;
+  }
+
+  if(viewerChannel){
+
+    try{
+
+      await supabaseClient.removeChannel(
+        viewerChannel
+      );
+
+    }catch(e){}
+
+    viewerChannel = null;
+  }
+
+  const viewerVideo =
+    document.getElementById(
+      "viewerVideo"
+    );
+
+  if(viewerVideo){
+
+    viewerVideo.srcObject =
+      null;
+  }
+
+  const viewerBox =
+    document.getElementById(
+      "viewerBox"
+    );
+
+  if(viewerBox){
+
+    viewerBox.classList.add(
+      "hidden"
+    );
+  }
+
+  viewerRoomId = null;
+  currentViewerId = null;
 }
 
-/*
-   Combine camera and microphone tracks.
-*/
 
-liveStream =
-new MediaStream();
+/* =========================================================
+   WALLET
+========================================================= */
 
-/*
-   Add camera tracks.
-*/
+function loadWallet(){
 
-cameraStream
-.getVideoTracks()
-.forEach(function(track){
+  const balance =
+    localStorage.getItem(
+      "zeepy_wallet_balance"
+    ) || "0.00";
 
-liveStream.addTrack(track);
+  const wallet =
+    document.getElementById(
+      "walletBalance"
+    );
 
-});
+  if(wallet){
 
-/*
-   Add microphone tracks.
-*/
-
-microphoneStream
-.getAudioTracks()
-.forEach(function(track){
-
-liveStream.addTrack(track);
-
-});
-
-/*
-   Attach final stream to video.
-*/
-
-video.srcObject =
-liveStream;
-
-video.muted = true;
-
-video.autoplay = true;
-
-video.playsInline = true;
-
-video.style.display =
-"block";
-
-icon.style.display =
-"none";
-
-indicator.style.display =
-"inline-block";
-
-title.textContent =
-"🔴 You are LIVE";
-
-message.textContent =
-"Your camera and microphone are connected.";
-
-/*
-   Start video playback.
-*/
-
-try{
-
-await video.play();
-
-}catch(playError){
-
-console.warn(
-"Video autoplay/play warning:",
-playError
-);
-
+    wallet.textContent =
+      "GH₵ " +
+      Number(balance).toFixed(2);
+  }
 }
 
-/*
-   Update interface.
-*/
 
-button.textContent =
-"🔴 Live Now";
-
-button.disabled = false;
-
-setLiveStatus(
-"🔴 <strong>Camera and microphone connected!</strong><br><br>" +
-"Your live camera preview is now working on this device."
-);
-
-showTryAgain(false);
-
-showLiveDebug("");
-
-}catch(error){
-
-console.error(
-"ZEEPY Live error:",
-error
-);
-
-releaseLiveStreams();
-
-video.srcObject = null;
-
-video.style.display =
-"none";
-
-icon.style.display =
-"block";
-
-indicator.style.display =
-"none";
-
-button.disabled = false;
-
-button.textContent =
-"🔴 Start Broadcast";
-
-/*
-   Handle NotAllowedError.
-*/
-
-if(error.name === "NotAllowedError"){
-
-setLiveStatus(
-"🚫 <strong>The browser refused camera/microphone access.</strong><br><br>" +
-"Your site permission may already say Allow, but the browser or Android may still be blocking the device request.<br><br>" +
-"Close other apps using the camera, reopen ZEEPY, and tap <strong>Try Again</strong>."
-);
-
-showTryAgain(true);
-
-showLiveDebug(
-"Browser error: NotAllowedError" +
-"<br>" +
-(error.message || "")
-);
-
-}
-
-/*
-   PermissionDeniedError.
-*/
-
-else if(error.name === "PermissionDeniedError"){
-
-setLiveStatus(
-"🚫 <strong>Camera or microphone permission was denied.</strong><br><br>" +
-"Please check Android browser permissions and then tap <strong>Try Again</strong>."
-);
-
-showTryAgain(true);
-
-}
-
-/*
-   Camera/microphone missing.
-*/
-
-else if(error.name === "NotFoundError"){
-
-setLiveStatus(
-"📷 <strong>Camera or microphone was not found.</strong><br><br>" +
-"Please check that your phone has a working camera and microphone."
-);
-
-showTryAgain(true);
-
-}
-
-/*
-   Device already being used.
-*/
-
-else if(error.name === "NotReadableError"){
-
-setLiveStatus(
-"⚠️ <strong>The camera or microphone is currently being used by another application.</strong><br><br>" +
-"Close Camera, video-call apps, screen recording, Telegram, WhatsApp or other apps that may be using the camera/microphone, then tap <strong>Try Again</strong>."
-);
-
-showTryAgain(true);
-
-}
-
-/*
-   Hardware/device constraint issue.
-*/
-
-else if(error.name === "OverconstrainedError"){
-
-setLiveStatus(
-"⚠️ <strong>The requested camera setting was not available.</strong><br><br>" +
-"ZEEPY will retry with a simpler camera configuration."
-);
-
-showTryAgain(true);
-
-}
-
-/*
-   Security error.
-*/
-
-else if(error.name === "SecurityError"){
-
-setLiveStatus(
-"🔒 <strong>Browser security prevented camera access.</strong><br><br>" +
-"Make sure ZEEPY is opened through its HTTPS address."
-);
-
-showTryAgain(false);
-
-}
-
-/*
-   Abort error.
-*/
-
-else if(error.name === "AbortError"){
-
-setLiveStatus(
-"⚠️ <strong>The camera request was interrupted.</strong><br><br>" +
-"Please tap <strong>Try Again</strong>."
-);
-
-showTryAgain(true);
-
-}
-
-/*
-   Unknown error.
-*/
-
-else{
-
-setLiveStatus(
-"⚠️ <strong>ZEEPY could not start the camera.</strong><br><br>" +
-"Error: <strong>" +
-(error.name || "Unknown error") +
-"</strong><br><br>" +
-(error.message || "Please try again.")
-);
-
-showTryAgain(true);
-
-showLiveDebug(
-"Full browser error: " +
-(error.name || "Unknown") +
-"<br>" +
-(error.message || "No additional message.")
-);
-
-}
-
-}
-
-}
-
-/*
-   Stop the live broadcast.
-*/
-
-function stopBroadcast(){
-
-const video =
-document.getElementById("cameraPreview");
-
-const icon =
-document.getElementById("liveIcon");
-
-const title =
-document.getElementById("liveTitle");
-
-const message =
-document.getElementById("liveMessage");
-
-const button =
-document.getElementById("startLiveButton");
-
-const status =
-document.getElementById("liveStatus");
-
-const indicator =
-document.getElementById("liveIndicator");
-
-showTryAgain(false);
-showLiveDebug("");
-
-releaseLiveStreams();
-
-video.srcObject = null;
-
-video.style.display =
-"none";
-
-icon.style.display =
-"block";
-
-indicator.style.display =
-"none";
-
-title.textContent =
-"ZEEPY Live Studio";
-
-message.textContent =
-"Your live broadcast screen is ready.";
-
-button.textContent =
-"🔴 Start Broadcast";
-
-button.disabled = false;
-
-status.textContent =
-"Broadcast stopped. Camera and microphone are disconnected.";
-
-}
-
-/*
-   When leaving the Live section, don't automatically
-   kill the stream. The user can use Stop.
-*/
+/* =========================================================
+   PAGE CLEANUP
+========================================================= */
 
 window.addEventListener(
-"beforeunload",
-function(){
+  "beforeunload",
+  ()=>{
 
-releaseLiveStreams();
+    if(liveStream){
 
-}
+      liveStream.getTracks()
+        .forEach(track=>{
+
+          try{
+            track.stop();
+          }catch(e){}
+        });
+    }
+
+    broadcasterPeers.forEach(
+      peer=>{
+
+        try{
+          peer.close();
+        }catch(e){}
+      }
+    );
+  }
 );
 
-/* =========================
-   MESSAGES
-========================= */
 
-function newMessage(){
+/* =========================================================
+   INITIALIZE ZEEPY
+========================================================= */
 
-alert(
-"Messaging will be connected to real ZEEPY accounts in a later stage."
-);
+async function initializeZEEPY(){
 
+  await loadUser();
+
+  loadWallet();
+
+  try{
+
+    await setupLobby();
+
+  }catch(error){
+
+    console.error(
+      "Live lobby initialization error:",
+      error
+    );
+  }
 }
 
-/* =========================
-   MEDIA
-========================= */
+initializeZEEPY();
 
-function uploadMedia(type){
+</script>
 
-if(type === "video"){
-
-alert(
-"Video uploading will be connected next."
-);
-
-}else{
-
-alert(
-"Photo uploading will be connected next."
-);
-
-}
-
-}
-
-/* =========================
-   LOCATION
-========================= */
-
-function getLocation(){
-
-const status =
-document.getElementById(
-"locationStatus"
-);
-
-if(!navigator.geolocation){
-
-status.textContent =
-"Your browser does not support location.";
-
-return;
-
-}
-
-status.textContent =
-"📍 Requesting your location...";
-
-navigator.geolocation.getCurrentPosition(
-
-function(position){
-
-const lat =
-position.coords.latitude;
-
-const lon =
-position.coords.longitude;
-
-status.innerHTML =
-"<strong>✅ Location detected!</strong><br><br>" +
-"Latitude: " +
-lat.toFixed(6) +
-"<br>" +
-"Longitude: " +
-lon.toFixed(6) +
-"<br><br>" +
-"Your location is ready for the ZEEPY Nearby system.";
-
-},
-
-function(error){
-
-if(error.code === 1){
-
-status.textContent =
-"Location permission was denied. Please allow location permission in your browser.";
-
-}else if(error.code === 2){
-
-status.textContent =
-"Your location could not be detected. Please check your phone location/GPS.";
-
-}else if(error.code === 3){
-
-status.textContent =
-"Location request timed out. Please try again.";
-
-}else{
-
-status.textContent =
-"Unable to detect your location. Please try again.";
-
-}
-
-},
-
-{
-enableHighAccuracy:true,
-timeout:15000,
-maximumAge:0
-}
-
-);
-
-}
-
-/* =========================
-   SUPABASE AUTH STATE
-========================= */
-
-supabaseClient.auth.onAuthStateChange(
-function(event,session){
-
-if(
-session &&
-session.user
-){
-
-const user =
-session.user;
-
-const name =
-user.user_metadata &&
-user.user_metadata.full_name
-? user.user_metadata.full_name
-: "ZEEPY User";
-
-saveUser(
-name,
-user.email || ""
-);
-
-}
-
-}
-);
-
-loadUser();
-
-updateBalance();
-
-</script></body>
+</body>
 </html>
