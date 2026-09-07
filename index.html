@@ -69,7 +69,7 @@ button{
 .secondary{
   background:white;
   color:#111;
-  border:0;
+  border:1px solid #ddd;
   padding:11px 18px;
   border-radius:25px;
   font-weight:bold;
@@ -388,6 +388,7 @@ footer{
 #cameraPreview{
   width:100%;
   max-height:500px;
+  min-height:250px;
   object-fit:cover;
   border-radius:18px;
   background:#000;
@@ -400,6 +401,8 @@ footer{
   border-radius:12px;
   background:#f1f1f1;
   color:#555;
+  line-height:1.5;
+  word-break:break-word;
 }
 
 .live-controls{
@@ -412,6 +415,28 @@ footer{
 .live-controls button{
   flex:1;
   min-width:130px;
+}
+
+.permission-help{
+  display:none;
+  margin-top:10px;
+  padding:12px;
+  border-radius:12px;
+  background:#fff3e8;
+  color:#8a4500;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.live-indicator{
+  display:none;
+  margin-top:10px;
+  padding:7px 14px;
+  background:#ff7a00;
+  color:white;
+  border-radius:20px;
+  font-weight:bold;
+  font-size:13px;
 }
 
 @media(max-width:600px){
@@ -435,6 +460,10 @@ footer{
 
   .section-title{
     font-size:24px;
+  }
+
+  .live-preview{
+    min-height:280px;
   }
 }
 </style>
@@ -790,7 +819,9 @@ ZEEPY Live Studio
 
 <br>
 
-<p id="liveMessage" style="color:#ddd;">
+<p
+id="liveMessage"
+style="color:#ddd;">
 Your live broadcast screen is ready.
 </p>
 
@@ -800,6 +831,12 @@ autoplay
 playsinline
 muted>
 </video>
+
+<div
+id="liveIndicator"
+class="live-indicator">
+🔴 CAMERA LIVE
+</div>
 
 </div>
 
@@ -832,6 +869,22 @@ id="liveStatus"
 class="live-status">
 Camera and microphone are not connected yet.
 </div>
+
+<div
+id="permissionHelp"
+class="permission-help">
+<strong>Camera access is needed.</strong><br>
+Please make sure your browser has permission to use the camera and microphone,
+then tap <strong>Try Again</strong>.
+</div>
+
+<button
+id="tryAgainButton"
+class="primary"
+onclick="startBroadcast()"
+style="display:none;margin-top:10px;width:100%;">
+🔄 Try Again
+</button>
 
 </div>
 
@@ -1208,6 +1261,10 @@ SUPABASE_KEY
 );
 
 let authMode = "login";
+
+/* =========================
+   AUTH
+========================= */
 
 function setAuthMode(mode){
 
@@ -1626,6 +1683,10 @@ showSection("home");
 
 }
 
+/* =========================
+   WALLET
+========================= */
+
 let wallet =
 parseFloat(
 localStorage.getItem("zeepyWallet")
@@ -1674,6 +1735,10 @@ alert(
 
 }
 
+/* =========================
+   MARKET
+========================= */
+
 function buyProduct(product){
 
 alert(
@@ -1684,6 +1749,10 @@ product +
 );
 
 }
+
+/* =========================
+   MEET
+========================= */
 
 function createMeeting(){
 
@@ -1747,6 +1816,10 @@ id
 
 }
 
+/* =========================
+   GROUPS
+========================= */
+
 function joinGroup(group){
 
 alert(
@@ -1759,11 +1832,40 @@ group +
 }
 
 
-/* ================================
+/* ========================================
    ZEEPY LIVE CAMERA + MICROPHONE
-================================ */
+======================================== */
 
 let liveStream = null;
+
+function setLiveStatus(message){
+
+const status =
+document.getElementById("liveStatus");
+
+status.innerHTML = message;
+
+}
+
+function showTryAgain(show){
+
+const button =
+document.getElementById("tryAgainButton");
+
+const help =
+document.getElementById("permissionHelp");
+
+if(button){
+button.style.display =
+show ? "block" : "none";
+}
+
+if(help){
+help.style.display =
+show ? "block" : "none";
+}
+
+}
 
 async function startBroadcast(){
 
@@ -1785,13 +1887,52 @@ document.getElementById("liveMessage");
 const button =
 document.getElementById("startLiveButton");
 
+const indicator =
+document.getElementById("liveIndicator");
+
+showTryAgain(false);
+
+if(liveStream){
+
+setLiveStatus(
+"🔴 Your camera and microphone are already connected."
+);
+
+return;
+
+}
+
+/*
+   IMPORTANT:
+   Camera and microphone access requires
+   a secure page such as HTTPS or localhost.
+*/
+
+if(!window.isSecureContext){
+
+setLiveStatus(
+"⚠️ <strong>Secure connection required.</strong><br><br>" +
+"Your browser must open ZEEPY using HTTPS before the camera and microphone can work."
+);
+
+showTryAgain(false);
+
+return;
+
+}
+
 if(
 !navigator.mediaDevices ||
-!navigator.mediaDevices.getUserMedia
+typeof navigator.mediaDevices.getUserMedia !== "function"
 ){
 
-status.textContent =
-"Your browser does not support camera and microphone access.";
+setLiveStatus(
+"⚠️ <strong>Camera access is not available.</strong><br><br>" +
+"Your current browser does not provide camera/microphone access to this page. " +
+"Please open ZEEPY in a modern browser such as Chrome."
+);
+
+showTryAgain(false);
 
 return;
 
@@ -1799,17 +1940,34 @@ return;
 
 try{
 
-status.textContent =
-"📷 Requesting camera and microphone permission...";
+button.disabled = true;
+
+button.textContent =
+"⏳ Connecting...";
+
+setLiveStatus(
+"📷 <strong>Requesting camera and microphone...</strong><br><br>" +
+"Please wait. If your browser displays a permission box, tap <strong>Allow</strong>."
+);
+
+/*
+   First request both camera and microphone.
+*/
 
 liveStream =
 await navigator.mediaDevices.getUserMedia({
 
-video:true,
+video:{
+facingMode:"user"
+},
 
 audio:true
 
 });
+
+/*
+   Attach the camera stream to the video element.
+*/
 
 video.srcObject =
 liveStream;
@@ -1826,34 +1984,114 @@ title.textContent =
 message.textContent =
 "Your camera and microphone are connected.";
 
+indicator.style.display =
+"inline-block";
+
 button.textContent =
 "🔴 Live Now";
 
-status.innerHTML =
+button.disabled = false;
+
+setLiveStatus(
 "🔴 <strong>Camera and microphone connected!</strong><br><br>" +
-"Your live preview is working on this device.";
+"Your live camera preview is now working on this device."
+);
 
 }catch(error){
 
 console.error(
-"Live error:",
+"ZEEPY Live error:",
 error
 );
 
+liveStream = null;
+
+video.srcObject = null;
+
+video.style.display =
+"none";
+
+icon.style.display =
+"block";
+
+indicator.style.display =
+"none";
+
+button.disabled = false;
+
+button.textContent =
+"🔴 Start Broadcast";
+
+/*
+   Different browser errors are handled separately.
+*/
+
 if(error.name === "NotAllowedError"){
 
-status.textContent =
-"Camera/microphone permission was denied. Please allow access in your browser.";
+setLiveStatus(
+"🚫 <strong>Camera/microphone access was blocked.</strong><br><br>" +
+"The browser did not give ZEEPY access. " +
+"Please check the ZEEPY site permission for Camera and Microphone, then tap <strong>Try Again</strong>."
+);
+
+showTryAgain(true);
+
+}else if(error.name === "PermissionDeniedError"){
+
+setLiveStatus(
+"🚫 <strong>Camera/microphone permission was denied.</strong><br><br>" +
+"Please allow Camera and Microphone for ZEEPY, then tap <strong>Try Again</strong>."
+);
+
+showTryAgain(true);
 
 }else if(error.name === "NotFoundError"){
 
-status.textContent =
-"No camera or microphone was found on this device.";
+setLiveStatus(
+"📷 <strong>No camera or microphone was found.</strong><br><br>" +
+"Please check that your phone has a working camera and microphone."
+);
+
+showTryAgain(true);
+
+}else if(error.name === "NotReadableError"){
+
+setLiveStatus(
+"⚠️ <strong>Camera or microphone is already being used.</strong><br><br>" +
+"Close other apps using the camera or microphone, then tap <strong>Try Again</strong>."
+);
+
+showTryAgain(true);
+
+}else if(error.name === "OverconstrainedError"){
+
+setLiveStatus(
+"⚠️ <strong>Camera settings could not be satisfied.</strong><br><br>" +
+"ZEEPY will try a simpler camera request."
+);
+
+showTryAgain(true);
+
+}else if(error.name === "SecurityError"){
+
+setLiveStatus(
+"🔒 <strong>Browser security blocked camera access.</strong><br><br>" +
+"Please make sure ZEEPY is opened through its secure HTTPS address."
+);
+
+showTryAgain(false);
 
 }else{
 
-status.textContent =
-"Could not start the camera and microphone. Please try again.";
+setLiveStatus(
+"⚠️ <strong>Camera could not be started.</strong><br><br>" +
+"Browser error: <strong>" +
+(error.name || "Unknown error") +
+"</strong><br><br>" +
+(error.message || "Please try again.")
+);
+
+showTryAgain(true);
 
 }
 
@@ -1881,6 +2119,11 @@ document.getElementById("startLiveButton");
 const status =
 document.getElementById("liveStatus");
 
+const indicator =
+document.getElementById("liveIndicator");
+
+showTryAgain(false);
+
 if(liveStream){
 
 liveStream
@@ -1897,9 +2140,14 @@ liveStream = null;
 
 video.srcObject = null;
 
-video.style.display = "none";
+video.style.display =
+"none";
 
-icon.style.display = "block";
+icon.style.display =
+"block";
+
+indicator.style.display =
+"none";
 
 title.textContent =
 "ZEEPY Live Studio";
@@ -1910,15 +2158,17 @@ message.textContent =
 button.textContent =
 "🔴 Start Broadcast";
 
+button.disabled = false;
+
 status.textContent =
 "Broadcast stopped. Camera and microphone are disconnected.";
 
 }
 
 
-/* ================================
+/* =========================
    MESSAGES
-================================ */
+========================= */
 
 function newMessage(){
 
@@ -1929,9 +2179,9 @@ alert(
 }
 
 
-/* ================================
+/* =========================
    MEDIA
-================================ */
+========================= */
 
 function uploadMedia(type){
 
@@ -1952,9 +2202,9 @@ alert(
 }
 
 
-/* ================================
+/* =========================
    LOCATION
-================================ */
+========================= */
 
 function getLocation(){
 
@@ -2039,9 +2289,9 @@ maximumAge:0
 }
 
 
-/* ================================
+/* =========================
    SUPABASE AUTH STATE
-================================ */
+========================= */
 
 supabaseClient.auth.onAuthStateChange(
 function(event,session){
