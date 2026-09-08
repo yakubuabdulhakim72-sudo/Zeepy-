@@ -448,45 +448,169 @@ nav button.active{
   font-weight:bold;
 }
 
-.product-card{
-  border:1px solid #eee;
-  border-radius:14px;
-  padding:12px;
-  margin-top:12px;
-  background:#fff;
+/* ==============================
+   MARKET
+============================== */
+
+.market-top{
+  background:linear-gradient(135deg,#fff7ed,#fff);
+  border:1px solid #fed7aa;
 }
 
-.product-card img{
-  width:100%;
-  max-height:220px;
-  object-fit:cover;
-  border-radius:12px;
-  margin-bottom:10px;
-}
-
-.product-title{
-  font-size:18px;
-  font-weight:bold;
+.market-title{
+  font-size:27px;
+  font-weight:800;
+  color:#ea580c;
   margin-bottom:5px;
 }
 
-.product-price{
-  color:#ea580c;
-  font-size:20px;
-  font-weight:bold;
-  margin:7px 0;
-}
-
-.product-description{
+.market-subtitle{
   color:#666;
-  font-size:14px;
-  line-height:1.5;
+  margin-bottom:15px;
 }
 
-.product-seller{
-  color:#999;
+.market-search{
+  position:relative;
+}
+
+.market-search input{
+  padding-left:42px;
+  border:1px solid #fed7aa;
+  background:#fff;
+  margin-bottom:0;
+}
+
+.market-search-icon{
+  position:absolute;
+  left:14px;
+  top:18px;
+  font-size:18px;
+}
+
+.market-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:12px;
+}
+
+.market-actions .btn{
+  margin-top:0;
+}
+
+.category-scroll{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:4px 0 8px;
+}
+
+.category-chip{
+  flex-shrink:0;
+  padding:9px 13px;
+  border-radius:20px;
+  background:#fff7ed;
+  color:#ea580c;
+  border:1px solid #fed7aa;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.category-chip.active{
+  background:#f97316;
+  color:white;
+}
+
+.shop-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+
+.shop-card{
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid #eee;
+  box-shadow:0 3px 10px rgba(0,0,0,.05);
+}
+
+.shop-cover{
+  height:120px;
+  background:linear-gradient(135deg,#f97316,#fb923c);
+  overflow:hidden;
+}
+
+.shop-cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.shop-info{
+  padding:13px;
+  position:relative;
+}
+
+.shop-logo{
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#fff7ed;
+  border:4px solid white;
+  margin-top:-38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#ea580c;
+  font-size:25px;
+  font-weight:bold;
+  overflow:hidden;
+}
+
+.shop-logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.shop-name{
+  font-size:18px;
+  font-weight:800;
+  margin-top:7px;
+}
+
+.shop-meta{
+  color:#777;
   font-size:12px;
-  margin-top:8px;
+  margin-top:4px;
+}
+
+.shop-description{
+  color:#666;
+  font-size:13px;
+  line-height:1.4;
+  margin-top:7px;
+}
+
+.shop-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:10px;
+}
+
+.small-btn{
+  padding:10px;
+  border-radius:9px;
+  background:#fff7ed;
+  color:#ea580c;
+  font-weight:bold;
+}
+
+.small-btn.primary{
+  background:#f97316;
+  color:white;
 }
 
 .market-form{
@@ -495,7 +619,201 @@ nav button.active{
   padding-top:15px;
 }
 
+.market-form h3{
+  margin-bottom:12px;
+  color:#ea580c;
+}
+
+.shop-product-form{
+  display:none;
+}
+
+.shop-product-form.show{
+  display:block;
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.product-card{
+  border:1px solid #eee;
+  border-radius:14px;
+  padding:10px;
+  background:#fff;
+  overflow:hidden;
+}
+
+.product-card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:8px;
+}
+
+.product-placeholder{
+  width:100%;
+  height:150px;
+  border-radius:10px;
+  background:#fff7ed;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:45px;
+  margin-bottom:8px;
+}
+
+.product-title{
+  font-size:15px;
+  font-weight:bold;
+  margin-bottom:4px;
+}
+
+.product-price{
+  color:#ea580c;
+  font-size:17px;
+  font-weight:bold;
+  margin:5px 0;
+}
+
+.product-description{
+  color:#666;
+  font-size:12px;
+  line-height:1.4;
+}
+
+.product-seller{
+  color:#999;
+  font-size:11px;
+  margin-top:7px;
+}
+
+.product-shop{
+  color:#ea580c;
+  font-size:12px;
+  font-weight:bold;
+  margin-top:6px;
+}
+
+.product-actions{
+  display:flex;
+  gap:5px;
+  margin-top:8px;
+}
+
+.product-actions button{
+  flex:1;
+  padding:8px 5px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:bold;
+  background:#fff7ed;
+  color:#ea580c;
+}
+
+.product-actions button:first-child{
+  background:#f97316;
+  color:white;
+}
+
+.shop-profile{
+  display:none;
+}
+
+.shop-profile.show{
+  display:block;
+}
+
+.shop-profile-cover{
+  height:160px;
+  border-radius:15px;
+  overflow:hidden;
+  background:linear-gradient(135deg,#f97316,#ea580c);
+}
+
+.shop-profile-cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.shop-profile-header{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-top:-30px;
+  padding:0 15px;
+  position:relative;
+}
+
+.shop-profile-logo{
+  width:78px;
+  height:78px;
+  border-radius:50%;
+  background:#fff7ed;
+  border:5px solid white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  font-size:32px;
+}
+
+.shop-profile-logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.shop-profile-name{
+  font-size:22px;
+  font-weight:800;
+  margin-top:30px;
+}
+
+.shop-profile-meta{
+  color:#777;
+  font-size:12px;
+  margin-top:3px;
+}
+
+.back-btn{
+  background:#fff7ed;
+  color:#ea580c;
+  padding:9px 13px;
+  border-radius:9px;
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
+.shop-create-form{
+  display:none;
+}
+
+.shop-create-form.show{
+  display:block;
+}
+
+.file-note{
+  font-size:11px;
+  color:#888;
+  margin-top:-7px;
+  margin-bottom:10px;
+}
+
+.my-shop-banner{
+  display:none;
+}
+
+.my-shop-banner.show{
+  display:block;
+}
+
 @media(min-width:700px){
+
   .features{
     grid-template-columns:repeat(4,1fr);
   }
@@ -504,6 +822,15 @@ nav button.active{
     min-width:90px;
     font-size:11px;
   }
+
+  .shop-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .product-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
 }
 
 .hidden{
@@ -515,22 +842,26 @@ nav button.active{
 <body>
 
 <header>
+
   <div class="logo">ZEEPY</div>
 
   <div class="header-right">
 
-    <button class="icon-btn"
+    <button
+      class="icon-btn"
       onclick="showToast('Notifications coming soon 🔔')">
       🔔
     </button>
 
-    <button class="auth-pill"
+    <button
+      class="auth-pill"
       id="authPill"
       onclick="openAuth()">
       Log in
     </button>
 
   </div>
+
 </header>
 
 <main>
@@ -539,12 +870,14 @@ nav button.active{
 <section id="home" class="section active">
 
   <div class="hero">
+
     <h1>Welcome to ZEEPY</h1>
 
     <p>
       Connect. Discover. Earn.<br>
       Buy, sell, share, meet people and enjoy live content.
     </p>
+
   </div>
 
   <div class="features">
@@ -592,75 +925,318 @@ nav button.active{
   </div>
 
   <div class="card">
+
     <h2>Everything in one place</h2>
 
     <p>
       ZEEPY brings shopping, social connection, media,
       live content and earning opportunities together.
     </p>
+
   </div>
 
 </section>
 
 
-<!-- MARKET -->
+<!-- =====================================================
+     MARKET
+===================================================== -->
+
 <section id="market" class="section">
 
-  <div class="card">
+  <!-- MARKET HOME -->
 
-    <h2>🛒 ZEEPY Market</h2>
+  <div id="marketHome">
 
-    <p>
-      Buy and sell products on ZEEPY.
-    </p>
+    <div class="card market-top">
 
-    <button class="btn"
-      onclick="toggleProductForm()">
-      ➕ Sell a Product
+      <div class="market-title">
+        🛍️ ZEEPY Market
+      </div>
+
+      <div class="market-subtitle">
+        Discover shops, products and sellers on ZEEPY.
+      </div>
+
+      <div class="market-search">
+
+        <span class="market-search-icon">
+          🔍
+        </span>
+
+        <input
+          type="text"
+          id="marketSearch"
+          placeholder="Search products or shops..."
+          oninput="searchMarket()">
+
+      </div>
+
+      <div class="market-actions">
+
+        <button
+          class="btn"
+          onclick="openCreateShop()">
+          🏪 Create Your Shop
+        </button>
+
+        <button
+          class="btn secondary"
+          onclick="openMyShop()">
+          👤 My Shop
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- CATEGORIES -->
+
+    <div class="card">
+
+      <h2>Categories</h2>
+
+      <div
+        id="marketCategories"
+        class="category-scroll">
+
+        <button
+          class="category-chip active"
+          onclick="filterCategory('all',this)">
+          All
+        </button>
+
+        <button
+          class="category-chip"
+          onclick="filterCategory('Phones & Tablets',this)">
+          📱 Phones
+        </button>
+
+        <button
+          class="category-chip"
+          onclick="filterCategory('Electronics',this)">
+          💻 Electronics
+        </button>
+
+        <button
+          class="category-chip"
+          onclick="filterCategory('Fashion',this)">
+          👕 Fashion
+        </button>
+
+        <button
+          class="category-chip"
+          onclick="filterCategory('Beauty',this)">
+          💄 Beauty
+        </button>
+
+        <button
+          class="category-chip"
+          onclick="filterCategory('Vehicles',this)">
+          🚗 Vehicles
+        </button>
+
+        <button
+          class="category-chip"
+          onclick="filterCategory('Food',this)">
+          🍔 Food
+        </button>
+
+        <button
+          class="category-chip"
+          onclick="filterCategory('Services',this)">
+          🛠️ Services
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- SHOPS -->
+
+    <div class="card">
+
+      <h2>🏪 Shops on ZEEPY</h2>
+
+      <p>
+        Explore stores created by ZEEPY sellers.
+      </p>
+
+      <div
+        id="shopsResults"
+        class="shop-grid"
+        style="margin-top:12px;">
+
+        <div class="empty">
+          🏪 Loading shops...
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- PRODUCTS -->
+
+    <div class="card">
+
+      <h2>🔥 Products</h2>
+
+      <div
+        id="marketResults">
+
+        <div class="empty">
+          🛍️ Loading products...
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- CREATE SHOP -->
+
+  <div
+    id="createShopView"
+    class="card shop-create-form">
+
+    <button
+      class="back-btn"
+      onclick="closeMarketViews()">
+      ← Back to Market
     </button>
 
-    <div id="productForm"
-      class="market-form hidden">
+    <h2>🏪 Create Your ZEEPY Shop</h2>
 
-      <h3>Post a Product</h3>
+    <p>
+      Create your own store and start selling products.
+    </p>
 
-      <label>Product Name</label>
+    <div
+      id="shopStatus"
+      class="status">
+    </div>
+
+    <div class="market-form">
+
+      <label>Shop Name</label>
 
       <input
         type="text"
-        id="productName"
-        placeholder="e.g. Samsung Galaxy A17">
+        id="shopName"
+        placeholder="e.g. Abdul Phones">
 
-      <label>Price (GH₵)</label>
+      <label>Shop Category</label>
 
-      <input
-        type="number"
-        id="productPrice"
-        placeholder="Enter price"
-        min="0"
-        step="0.01">
+      <select id="shopCategory">
 
-      <label>Description</label>
+        <option value="">
+          Select a category
+        </option>
+
+        <option value="Phones & Tablets">
+          📱 Phones & Tablets
+        </option>
+
+        <option value="Electronics">
+          💻 Electronics
+        </option>
+
+        <option value="Fashion">
+          👕 Fashion
+        </option>
+
+        <option value="Beauty">
+          💄 Beauty
+        </option>
+
+        <option value="Home & Garden">
+          🏠 Home & Garden
+        </option>
+
+        <option value="Vehicles">
+          🚗 Vehicles
+        </option>
+
+        <option value="Food">
+          🍔 Food
+        </option>
+
+        <option value="Sports">
+          ⚽ Sports
+        </option>
+
+        <option value="Books">
+          📚 Books
+        </option>
+
+        <option value="Services">
+          🛠️ Services
+        </option>
+
+        <option value="Other">
+          🛍️ Other
+        </option>
+
+      </select>
+
+      <label>Shop Description</label>
 
       <textarea
-        id="productDescription"
+        id="shopDescription"
         rows="4"
-        placeholder="Describe your product"></textarea>
+        placeholder="Tell customers about your shop">
+      </textarea>
 
-      <label>Product Image</label>
+      <label>Location</label>
+
+      <input
+        type="text"
+        id="shopLocation"
+        placeholder="e.g. Tamale, Ghana">
+
+      <label>Phone</label>
+
+      <input
+        type="tel"
+        id="shopPhone"
+        placeholder="Your shop phone number">
+
+      <label>Shop Logo</label>
 
       <input
         type="file"
-        id="productImage"
+        id="shopLogo"
         accept="image/*">
 
-      <button class="btn"
-        onclick="postProduct()">
-        🚀 Post Product
+      <div class="file-note">
+        Optional for now. We can connect permanent image storage next.
+      </div>
+
+      <label>Shop Cover Image</label>
+
+      <input
+        type="file"
+        id="shopCover"
+        accept="image/*">
+
+      <div class="file-note">
+        Optional for now.
+      </div>
+
+      <button
+        class="btn"
+        onclick="createShop()">
+        🚀 Create Shop
       </button>
 
-      <button class="btn secondary"
-        onclick="toggleProductForm()">
+      <button
+        class="btn secondary"
+        onclick="closeMarketViews()">
         Cancel
       </button>
 
@@ -669,23 +1245,45 @@ nav button.active{
   </div>
 
 
-  <div class="card">
+  <!-- MY SHOP -->
 
-    <input
-      type="text"
-      id="marketSearch"
-      placeholder="Search products..."
-      oninput="searchMarket()">
+  <div
+    id="myShopView"
+    class="card shop-create-form">
 
-    <div id="marketResults">
+    <button
+      class="back-btn"
+      onclick="closeMarketViews()">
+      ← Back to Market
+    </button>
+
+    <div id="myShopContent">
 
       <div class="empty">
-        🛍️ Loading products...
+        Loading your shop...
       </div>
 
     </div>
 
   </div>
+
+
+  <!-- SHOP PROFILE -->
+
+  <div
+    id="shopProfileView"
+    class="card shop-profile">
+
+    <button
+      class="back-btn"
+      onclick="closeShopProfile()">
+      ← Back to Market
+    </button>
+
+    <div id="shopProfileContent"></div>
+
+  </div>
+
 
 </section>
 
@@ -725,7 +1323,8 @@ nav button.active{
       Create or join communities on ZEEPY.
     </p>
 
-    <button class="btn"
+    <button
+      class="btn"
       onclick="showToast('Group creation coming soon!')">
       Create Group
     </button>
@@ -1090,6 +1689,7 @@ nav button.active{
 
 
 <!-- BOTTOM NAV -->
+
 <nav>
 
   <button
@@ -1177,6 +1777,12 @@ let authMode = "login";
 
 let productsCache = [];
 
+let shopsCache = [];
+
+let currentCategory = "all";
+
+let currentShop = null;
+
 let liveStream = null;
 
 let liveChannel = null;
@@ -1260,6 +1866,10 @@ function showSection(sectionName){
 
   if(sectionName === "market"){
 
+    closeMarketViews();
+
+    loadShops();
+
     loadProducts();
 
   }
@@ -1269,6 +1879,7 @@ function showSection(sectionName){
     setupLobby();
 
   }
+
 }
 
 
@@ -1287,6 +1898,7 @@ function openAuth(){
     showSection("auth");
 
   }
+
 }
 
 
@@ -1353,6 +1965,7 @@ function toggleAuthMode(){
   document
     .getElementById("authStatus")
     .classList.remove("show");
+
 }
 
 
@@ -1385,6 +1998,7 @@ async function handleAuth(){
       "status error show";
 
     return;
+
   }
 
   status.textContent =
@@ -1412,6 +2026,7 @@ async function handleAuth(){
           "status error show";
 
         return;
+
       }
 
       const { data, error } =
@@ -1497,7 +2112,9 @@ async function handleAuth(){
 
     status.className =
       "status error show";
+
   }
+
 }
 
 
@@ -1541,6 +2158,7 @@ async function createProfile(
     console.warn(error);
 
   }
+
 }
 
 
@@ -1631,9 +2249,10 @@ async function loadUser(){
     document
       .getElementById("profileAvatar")
       .innerHTML =
-      `<img src="${savedPhoto}" alt="Profile">`;
+      `<img src="${escapeAttribute(savedPhoto)}" alt="Profile">`;
 
   }
+
 }
 
 
@@ -1728,6 +2347,7 @@ async function updateProfile(){
     );
 
   }
+
 }
 
 
@@ -1770,7 +2390,7 @@ function previewProfilePhoto(event){
       document
         .getElementById("profileAvatar")
         .innerHTML =
-        `<img src="${image}" alt="Profile">`;
+        `<img src="${escapeAttribute(image)}" alt="Profile">`;
 
       showToast(
         "Profile picture updated."
@@ -1779,6 +2399,7 @@ function previewProfilePhoto(event){
     };
 
   reader.readAsDataURL(file);
+
 }
 
 
@@ -1803,158 +2424,250 @@ async function logout(){
   );
 
   showSection("home");
-}
-
-
-/* =========================================
-   PRODUCT FORM
-========================================= */
-
-function toggleProductForm(){
-
-  const form =
-    document.getElementById(
-      "productForm"
-    );
-
-  form.classList.toggle("hidden");
 
 }
 
 
-/* =========================================
-   POST PRODUCT
-========================================= */
+/* =========================================================
+   SHOP SYSTEM
+========================================================= */
 
-async function postProduct(){
+
+/* OPEN CREATE SHOP */
+
+function openCreateShop(){
 
   if(!currentUser){
 
     showToast(
-      "Please log in before selling a product."
+      "Please log in before creating a shop."
     );
 
     showSection("auth");
 
     return;
+
+  }
+
+  closeMarketViews();
+
+  document
+    .getElementById("createShopView")
+    .classList.add("show");
+
+}
+
+
+/* CLOSE MARKET VIEWS */
+
+function closeMarketViews(){
+
+  document
+    .getElementById("marketHome")
+    .style.display = "block";
+
+  document
+    .getElementById("createShopView")
+    .classList.remove("show");
+
+  document
+    .getElementById("myShopView")
+    .classList.remove("show");
+
+  document
+    .getElementById("shopProfileView")
+    .classList.remove("show");
+
+}
+
+
+/* CREATE SHOP */
+
+async function createShop(){
+
+  if(!currentUser){
+
+    showToast(
+      "Please log in first."
+    );
+
+    showSection("auth");
+
+    return;
+
   }
 
   const name =
     document
-      .getElementById("productName")
+      .getElementById("shopName")
       .value
       .trim();
 
-  const price =
-    parseFloat(
-      document
-        .getElementById("productPrice")
-        .value
-    );
+  const category =
+    document
+      .getElementById("shopCategory")
+      .value;
 
   const description =
     document
-      .getElementById("productDescription")
+      .getElementById("shopDescription")
       .value
       .trim();
 
-  const imageInput =
-    document.getElementById(
-      "productImage"
-    );
+  const location =
+    document
+      .getElementById("shopLocation")
+      .value
+      .trim();
+
+  const phone =
+    document
+      .getElementById("shopPhone")
+      .value
+      .trim();
+
+  const logoInput =
+    document.getElementById("shopLogo");
+
+  const coverInput =
+    document.getElementById("shopCover");
+
+  const status =
+    document.getElementById("shopStatus");
 
   if(!name){
 
-    showToast(
-      "Please enter the product name."
-    );
+    status.textContent =
+      "Please enter your shop name.";
+
+    status.className =
+      "status error show";
 
     return;
+
   }
 
-  if(isNaN(price) || price < 0){
+  if(!category){
 
-    showToast(
-      "Please enter a valid price."
-    );
+    status.textContent =
+      "Please select a shop category.";
+
+    status.className =
+      "status error show";
 
     return;
+
   }
 
-  if(!description){
+  status.textContent =
+    "Creating your shop...";
 
-    showToast(
-      "Please enter a product description."
-    );
-
-    return;
-  }
-
-  const button =
-    event?.target;
-
-  if(button){
-
-    button.disabled = true;
-    button.textContent =
-      "Saving...";
-  }
+  status.className =
+    "status success show";
 
   try{
 
-    let imageUrl = null;
+    let logoUrl = null;
 
-    /*
-      We first save the product information.
-      Image upload is optional because the
-      database may not yet have a Storage bucket.
-    */
+    let coverUrl = null;
 
     if(
-      imageInput.files &&
-      imageInput.files[0]
+      logoInput.files &&
+      logoInput.files[0]
     ){
 
-      const file =
-        imageInput.files[0];
-
-      /*
-        Store a local preview when Storage
-        has not been configured yet.
-      */
-
-      imageUrl =
-        await readFileAsDataURL(file);
+      logoUrl =
+        await readFileAsDataURL(
+          logoInput.files[0]
+        );
 
     }
 
-    const productData = {
+    if(
+      coverInput.files &&
+      coverInput.files[0]
+    ){
 
-      name:name,
+      coverUrl =
+        await readFileAsDataURL(
+          coverInput.files[0]
+        );
 
-      price:price,
+    }
 
-      description:description,
+    const slug =
+      createSlug(
+        name +
+        "-" +
+        Date.now()
+      );
 
-      seller_id:currentUser.id
+    const shopData = {
+
+      owner_id:
+        currentUser.id,
+
+      shop_name:
+        name,
+
+      slug:
+        slug,
+
+      description:
+        description || null,
+
+      location:
+        location || null,
+
+      phone:
+        phone || null,
+
+      is_active:
+        true
 
     };
 
     /*
-      Add image_url only when an image exists.
+      Find category ID.
     */
 
-    if(imageUrl){
+    const { data:categoryData } =
+      await supabaseClient
+        .from("shop_categories")
+        .select("id")
+        .eq("name",category)
+        .maybeSingle();
 
-      productData.image_url =
-        imageUrl;
+    if(categoryData){
+
+      shopData.category_id =
+        categoryData.id;
 
     }
 
-    const { data, error } =
+    /*
+      Images are stored as data URLs for now.
+      Later we will move them to Supabase Storage.
+    */
+
+    if(logoUrl){
+
+      shopData.logo_url =
+        logoUrl;
+
+    }
+
+    if(coverUrl){
+
+      shopData.cover_url =
+        coverUrl;
+
+    }
+
+    const { data,error } =
       await supabaseClient
-        .from("products")
-        .insert(productData)
+        .from("shops")
+        .insert(shopData)
         .select()
         .single();
 
@@ -1964,93 +2677,1137 @@ async function postProduct(){
 
     }
 
+    /*
+      Add owner to shop_members.
+    */
+
+    await supabaseClient
+      .from("shop_members")
+      .insert({
+
+        shop_id:
+          data.id,
+
+        user_id:
+          currentUser.id,
+
+        role:
+          "owner"
+
+      });
+
+    status.textContent =
+      "Your shop has been created successfully! 🎉";
+
+    status.className =
+      "status success show";
+
     showToast(
-      "Product posted successfully! 🎉"
+      "Your ZEEPY shop is ready! 🏪"
     );
 
-    document
-      .getElementById("productName")
-      .value = "";
+    await loadShops();
 
-    document
-      .getElementById("productPrice")
-      .value = "";
+    setTimeout(() => {
 
-    document
-      .getElementById("productDescription")
-      .value = "";
+      openMyShop();
 
-    document
-      .getElementById("productImage")
-      .value = "";
+    },700);
 
+  }catch(error){
+
+    console.error(
+      "Shop creation error:",
+      error
+    );
+
+    status.textContent =
+      "Could not create shop: " +
+      (error.message || "Unknown error");
+
+    status.className =
+      "status error show";
+
+  }
+
+}
+
+
+/* CREATE SLUG */
+
+function createSlug(value){
+
+  return String(value)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g,"-")
+    .replace(/^-+|-+$/g,"")
+    .substring(0,70);
+
+}
+
+
+/* LOAD SHOPS */
+
+async function loadShops(){
+
+  const container =
+    document.getElementById(
+      "shopsResults"
+    );
+
+  if(!container) return;
+
+  container.innerHTML =
+    `<div class="empty">
+      🏪 Loading shops...
+    </div>`;
+
+  try{
+
+    const { data,error } =
+      await supabaseClient
+        .from("shops")
+        .select(`
+          *,
+          shop_categories(name,icon)
+        `)
+        .eq("is_active",true)
+        .order(
+          "created_at",
+          {
+            ascending:false
+          }
+        );
+
+    if(error){
+
+      throw error;
+
+    }
+
+    shopsCache =
+      data || [];
+
+    renderShops(
+      shopsCache
+    );
+
+  }catch(error){
+
+    console.error(
+      "Load shops:",
+      error
+    );
+
+    container.innerHTML =
+      `<div class="empty">
+        ⚠️ Could not load shops.<br>
+        <small>${escapeHtml(
+          error.message || ""
+        )}</small>
+      </div>`;
+
+  }
+
+}
+
+
+/* RENDER SHOPS */
+
+function renderShops(shops){
+
+  const container =
+    document.getElementById(
+      "shopsResults"
+    );
+
+  if(!container) return;
+
+  if(!shops.length){
+
+    container.innerHTML =
+      `<div class="empty">
+        🏪 No shops yet.<br>
+        Be the first person to create a ZEEPY shop!
+      </div>`;
+
+    return;
+
+  }
+
+  container.innerHTML =
+    shops.map(shop => {
+
+      const name =
+        shop.shop_name ||
+        "ZEEPY Shop";
+
+      const firstLetter =
+        escapeHtml(
+          name.charAt(0).toUpperCase()
+        );
+
+      const category =
+        shop.shop_categories?.name ||
+        "Shop";
+
+      const icon =
+        shop.shop_categories?.icon ||
+        "🛍️";
+
+      const description =
+        shop.description ||
+        "Welcome to my ZEEPY shop.";
+
+      return `
+
+        <div class="shop-card">
+
+          <div class="shop-cover">
+
+            ${
+              shop.cover_url
+              ?
+              `<img
+                src="${escapeAttribute(shop.cover_url)}"
+                alt="${escapeAttribute(name)}">`
+              :
+              ""
+            }
+
+          </div>
+
+          <div class="shop-info">
+
+            <div class="shop-logo">
+
+              ${
+                shop.logo_url
+                ?
+                `<img
+                  src="${escapeAttribute(shop.logo_url)}"
+                  alt="${escapeAttribute(name)}">`
+                :
+                firstLetter
+              }
+
+            </div>
+
+            <div class="shop-name">
+
+              ${escapeHtml(name)}
+
+              ${
+                shop.is_verified
+                ?
+                " ✓"
+                :
+                ""
+              }
+
+            </div>
+
+            <div class="shop-meta">
+
+              ${icon} ${escapeHtml(category)}
+
+              ${
+                shop.location
+                ?
+                " • 📍 " +
+                escapeHtml(shop.location)
+                :
+                ""
+              }
+
+            </div>
+
+            <div class="shop-meta">
+
+              ⭐ ${Number(shop.rating || 0).toFixed(1)}
+              • ${Number(shop.total_reviews || 0)} reviews
+
+            </div>
+
+            <div class="shop-description">
+
+              ${escapeHtml(description)}
+
+            </div>
+
+            <div class="shop-buttons">
+
+              <button
+                class="small-btn primary"
+                onclick="openShop('${escapeAttribute(shop.id)}')">
+
+                🏪 Visit Shop
+
+              </button>
+
+              <button
+                class="small-btn"
+                onclick="followShop('${escapeAttribute(shop.id)}')">
+
+                ❤️ Follow
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* OPEN SHOP */
+
+async function openShop(shopId){
+
+  closeMarketViews();
+
+  document
+    .getElementById("marketHome")
+    .style.display = "none";
+
+  const profile =
+    document.getElementById(
+      "shopProfileView"
+    );
+
+  profile.classList.add("show");
+
+  const content =
+    document.getElementById(
+      "shopProfileContent"
+    );
+
+  content.innerHTML =
+    `<div class="empty">
+      🏪 Loading shop...
+    </div>`;
+
+  try{
+
+    const { data:shop,error } =
+      await supabaseClient
+        .from("shops")
+        .select(`
+          *,
+          shop_categories(name,icon)
+        `)
+        .eq("id",shopId)
+        .maybeSingle();
+
+    if(error){
+
+      throw error;
+
+    }
+
+    if(!shop){
+
+      content.innerHTML =
+        `<div class="empty">
+          Shop not found.
+        </div>`;
+
+      return;
+
+    }
+
+    currentShop =
+      shop;
+
+    const { data:products } =
+      await supabaseClient
+        .from("products")
+        .select("*")
+        .eq("shop_id",shop.id)
+        .order(
+          "created_at",
+          {
+            ascending:false
+          }
+        );
+
+    const name =
+      shop.shop_name ||
+      "ZEEPY Shop";
+
+    const category =
+      shop.shop_categories?.name ||
+      "Shop";
+
+    const icon =
+      shop.shop_categories?.icon ||
+      "🛍️";
+
+    const firstLetter =
+      escapeHtml(
+        name.charAt(0).toUpperCase()
+      );
+
+    content.innerHTML = `
+
+      <div class="shop-profile-cover">
+
+        ${
+          shop.cover_url
+          ?
+          `<img
+            src="${escapeAttribute(shop.cover_url)}"
+            alt="${escapeAttribute(name)}">`
+          :
+          ""
+        }
+
+      </div>
+
+      <div class="shop-profile-header">
+
+        <div class="shop-profile-logo">
+
+          ${
+            shop.logo_url
+            ?
+            `<img
+              src="${escapeAttribute(shop.logo_url)}"
+              alt="${escapeAttribute(name)}">`
+            :
+            firstLetter
+          }
+
+        </div>
+
+        <div>
+
+          <div class="shop-profile-name">
+
+            ${escapeHtml(name)}
+
+            ${
+              shop.is_verified
+              ?
+              " ✓"
+              :
+              ""
+            }
+
+          </div>
+
+          <div class="shop-profile-meta">
+
+            ${icon} ${escapeHtml(category)}
+
+            ${
+              shop.location
+              ?
+              " • 📍 " +
+              escapeHtml(shop.location)
+              :
+              ""
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div style="padding:15px;">
+
+        <p>
+
+          ${escapeHtml(
+            shop.description ||
+            "Welcome to my ZEEPY shop."
+          )}
+
+        </p>
+
+        <div
+          class="shop-meta"
+          style="margin-top:8px;">
+
+          ⭐ ${Number(shop.rating || 0).toFixed(1)}
+          • ${Number(shop.total_reviews || 0)} reviews
+          • ❤️ ${escapeHtml(String(
+              await getFollowerCount(shop.id)
+            ))} followers
+
+        </div>
+
+        <button
+          class="btn"
+          onclick="followShop('${escapeAttribute(shop.id)}')">
+
+          ❤️ Follow Shop
+
+        </button>
+
+        ${
+          shop.phone
+          ?
+          `<button
+            class="btn secondary"
+            onclick="contactShop('${escapeAttribute(shop.phone)}')">
+            📞 Contact Seller
+          </button>`
+          :
+          ""
+        }
+
+      </div>
+
+      <div style="padding:0 15px 15px;">
+
+        <h2>
+          🛍️ Products
+        </h2>
+
+        <div
+          class="product-grid"
+          style="margin-top:10px;">
+
+          ${
+            products && products.length
+            ?
+            products.map(product =>
+              renderProductCard(
+                product,
+                name
+              )
+            ).join("")
+            :
+            `
+              <div
+                class="empty"
+                style="grid-column:1/-1;">
+                📦 This shop has no products yet.
+              </div>
+            `
+          }
+
+        </div>
+
+      </div>
+
+    `;
+
+  }catch(error){
+
+    console.error(error);
+
+    content.innerHTML =
+      `<div class="empty">
+        ⚠️ Could not open shop.<br>
+        <small>${escapeHtml(
+          error.message || ""
+        )}</small>
+      </div>`;
+
+  }
+
+}
+
+
+/* CLOSE SHOP */
+
+function closeShopProfile(){
+
+  currentShop = null;
+
+  closeMarketViews();
+
+}
+
+
+/* GET FOLLOWER COUNT */
+
+async function getFollowerCount(shopId){
+
+  try{
+
+    const { count } =
+      await supabaseClient
+        .from("shop_followers")
+        .select("*",{
+          count:"exact",
+          head:true
+        })
+        .eq("shop_id",shopId);
+
+    return count || 0;
+
+  }catch(error){
+
+    return 0;
+
+  }
+
+}
+
+
+/* FOLLOW SHOP */
+
+async function followShop(shopId){
+
+  if(!currentUser){
+
+    showToast(
+      "Please log in to follow shops."
+    );
+
+    showSection("auth");
+
+    return;
+
+  }
+
+  try{
+
+    const { error } =
+      await supabaseClient
+        .from("shop_followers")
+        .insert({
+
+          shop_id:
+            shopId,
+
+          user_id:
+            currentUser.id
+
+        });
+
+    if(error){
+
+      if(
+        error.code === "23505"
+      ){
+
+        showToast(
+          "You already follow this shop ❤️"
+        );
+
+        return;
+
+      }
+
+      throw error;
+
+    }
+
+    showToast(
+      "Shop followed successfully ❤️"
+    );
+
+  }catch(error){
+
+    showToast(
+      "Could not follow shop: " +
+      (error.message || "")
+    );
+
+  }
+
+}
+
+
+/* CONTACT SHOP */
+
+function contactShop(phone){
+
+  if(!phone){
+
+    showToast(
+      "Seller phone number is not available."
+    );
+
+    return;
+
+  }
+
+  window.location.href =
+    "tel:" +
+    phone;
+
+}
+
+
+/* MY SHOP */
+
+async function openMyShop(){
+
+  if(!currentUser){
+
+    showToast(
+      "Please log in to view your shop."
+    );
+
+    showSection("auth");
+
+    return;
+
+  }
+
+  closeMarketViews();
+
+  document
+    .getElementById("marketHome")
+    .style.display = "none";
+
+  document
+    .getElementById("myShopView")
+    .classList.add("show");
+
+  const content =
+    document.getElementById(
+      "myShopContent"
+    );
+
+  content.innerHTML =
+    `<div class="empty">
+      🏪 Loading your shop...
+    </div>`;
+
+  try{
+
+    const { data:shop,error } =
+      await supabaseClient
+        .from("shops")
+        .select(`
+          *,
+          shop_categories(name,icon)
+        `)
+        .eq("owner_id",currentUser.id)
+        .maybeSingle();
+
+    if(error){
+
+      throw error;
+
+    }
+
+    if(!shop){
+
+      content.innerHTML = `
+
+        <div class="empty">
+
+          🏪 You don't have a shop yet.
+
+          <button
+            class="btn"
+            onclick="openCreateShop()">
+
+            ➕ Create My Shop
+
+          </button>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+    const { data:products } =
+      await supabaseClient
+        .from("products")
+        .select("*")
+        .eq("shop_id",shop.id)
+        .order(
+          "created_at",
+          {
+            ascending:false
+          }
+        );
+
+    const name =
+      shop.shop_name ||
+      "My Shop";
+
+    content.innerHTML = `
+
+      <div class="shop-profile-cover">
+
+        ${
+          shop.cover_url
+          ?
+          `<img
+            src="${escapeAttribute(shop.cover_url)}"
+            alt="${escapeAttribute(name)}">`
+          :
+          ""
+        }
+
+      </div>
+
+      <div class="shop-profile-header">
+
+        <div class="shop-profile-logo">
+
+          ${
+            shop.logo_url
+            ?
+            `<img
+              src="${escapeAttribute(shop.logo_url)}"
+              alt="${escapeAttribute(name)}">`
+            :
+            escapeHtml(
+              name.charAt(0).toUpperCase()
+            )
+          }
+
+        </div>
+
+        <div>
+
+          <div class="shop-profile-name">
+
+            ${escapeHtml(name)}
+
+          </div>
+
+          <div class="shop-profile-meta">
+
+            Your Shop
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div style="padding:15px;">
+
+        <p>
+
+          ${escapeHtml(
+            shop.description ||
+            "Your ZEEPY shop."
+          )}
+
+        </p>
+
+        <button
+          class="btn"
+          onclick="toggleAddProductForm()">
+
+          ➕ Add Product
+
+        </button>
+
+        <div
+          id="myProductForm"
+          class="market-form shop-product-form">
+
+          <h3>
+            Add Product to Your Shop
+          </h3>
+
+          <label>Product Name</label>
+
+          <input
+            id="myProductName"
+            type="text"
+            placeholder="e.g. Samsung Galaxy A17">
+
+          <label>Price (GH₵)</label>
+
+          <input
+            id="myProductPrice"
+            type="number"
+            min="0"
+            step="0.01"
+            placeholder="Enter price">
+
+          <label>Description</label>
+
+          <textarea
+            id="myProductDescription"
+            rows="3"
+            placeholder="Describe your product"></textarea>
+
+          <label>Stock</label>
+
+          <input
+            id="myProductStock"
+            type="number"
+            min="0"
+            value="1"
+            placeholder="Available quantity">
+
+          <label>Product Image</label>
+
+          <input
+            id="myProductImage"
+            type="file"
+            accept="image/*">
+
+          <button
+            class="btn"
+            onclick="addProductToShop('${escapeAttribute(shop.id)}')">
+
+            🚀 Add Product
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <div style="padding:0 15px 15px;">
+
+        <h2>
+          📦 My Products
+        </h2>
+
+        <div
+          class="product-grid"
+          style="margin-top:10px;">
+
+          ${
+            products && products.length
+            ?
+            products.map(product =>
+              renderProductCard(
+                product,
+                name
+              ).replace(
+                "</div>",
+                `
+                  <div class="product-actions">
+                    <button
+                      onclick="addToCart('${escapeAttribute(product.id)}')">
+                      🛒 Cart
+                    </button>
+                  </div>
+                </div>
+                `
+              )
+            ).join("")
+            :
+            `
+              <div
+                class="empty"
+                style="grid-column:1/-1;">
+                📦 You haven't added products yet.
+              </div>
+            `
+          }
+
+        </div>
+
+      </div>
+
+    `;
+
+  }catch(error){
+
+    console.error(error);
+
+    content.innerHTML =
+      `<div class="empty">
+        ⚠️ Could not load your shop.<br>
+        <small>${escapeHtml(
+          error.message || ""
+        )}</small>
+      </div>`;
+
+  }
+
+}
+
+
+/* TOGGLE ADD PRODUCT */
+
+function toggleAddProductForm(){
+
+  const form =
+    document.getElementById(
+      "myProductForm"
+    );
+
+  if(form){
+
+    form.classList.toggle("show");
+
+  }
+
+}
+
+
+/* ADD PRODUCT TO SHOP */
+
+async function addProductToShop(shopId){
+
+  if(!currentUser){
+
+    showToast(
+      "Please log in first."
+    );
+
+    return;
+
+  }
+
+  const name =
     document
-      .getElementById("productForm")
-      .classList.add("hidden");
+      .getElementById("myProductName")
+      .value
+      .trim();
+
+  const price =
+    parseFloat(
+      document
+        .getElementById("myProductPrice")
+        .value
+    );
+
+  const description =
+    document
+      .getElementById("myProductDescription")
+      .value
+      .trim();
+
+  const stock =
+    parseInt(
+      document
+        .getElementById("myProductStock")
+        .value
+    ) || 0;
+
+  const imageInput =
+    document.getElementById(
+      "myProductImage"
+    );
+
+  if(!name){
+
+    showToast(
+      "Enter the product name."
+    );
+
+    return;
+
+  }
+
+  if(isNaN(price) || price < 0){
+
+    showToast(
+      "Enter a valid price."
+    );
+
+    return;
+
+  }
+
+  if(!description){
+
+    showToast(
+      "Enter a product description."
+    );
+
+    return;
+
+  }
+
+  try{
+
+    let imageUrl = null;
+
+    if(
+      imageInput.files &&
+      imageInput.files[0]
+    ){
+
+      imageUrl =
+        await readFileAsDataURL(
+          imageInput.files[0]
+        );
+
+    }
+
+    const productData = {
+
+      name:
+        name,
+
+      price:
+        price,
+
+      description:
+        description,
+
+      stock:
+        stock,
+
+      shop_id:
+        shopId,
+
+      seller_id:
+        currentUser.id,
+
+      is_active:
+        true
+
+    };
+
+    if(imageUrl){
+
+      productData.image_url =
+        imageUrl;
+
+    }
+
+    const { error } =
+      await supabaseClient
+        .from("products")
+        .insert(productData);
+
+    if(error){
+
+      throw error;
+
+    }
+
+    showToast(
+      "Product added to your shop! 🎉"
+    );
+
+    await openMyShop();
 
     await loadProducts();
 
   }catch(error){
 
-    console.error(
-      "Product error:",
-      error
-    );
+    console.error(error);
 
     showToast(
-      "Could not save product: " +
-      (error.message || "Unknown error")
+      "Could not add product: " +
+      (error.message || "")
     );
 
-  }finally{
-
-    if(button){
-
-      button.disabled = false;
-
-      button.textContent =
-        "🚀 Post Product";
-
-    }
-
   }
+
 }
 
 
-/* =========================================
-   READ FILE
-========================================= */
-
-function readFileAsDataURL(file){
-
-  return new Promise(
-    (resolve,reject) => {
-
-      const reader =
-        new FileReader();
-
-      reader.onload =
-        () => resolve(
-          reader.result
-        );
-
-      reader.onerror =
-        () => reject(
-          new Error(
-            "Could not read image."
-          )
-        );
-
-      reader.readAsDataURL(file);
-
-    }
-  );
-}
+/* =========================================================
+   PRODUCTS
+========================================================= */
 
 
-/* =========================================
-   LOAD PRODUCTS
-========================================= */
+/* LOAD PRODUCTS */
 
 async function loadProducts(){
 
@@ -2068,10 +3825,13 @@ async function loadProducts(){
 
   try{
 
-    const { data, error } =
+    const { data,error } =
       await supabaseClient
         .from("products")
-        .select("*")
+        .select(`
+          *,
+          shops(shop_name)
+        `)
         .order(
           "created_at",
           {
@@ -2108,12 +3868,11 @@ async function loadProducts(){
       </div>`;
 
   }
+
 }
 
 
-/* =========================================
-   RENDER PRODUCTS
-========================================= */
+/* RENDER PRODUCTS */
 
 function renderProducts(products){
 
@@ -2124,86 +3883,155 @@ function renderProducts(products){
 
   if(!results) return;
 
-  if(!products.length){
+  let filtered =
+    products;
+
+  if(currentCategory !== "all"){
+
+    /*
+      Category filtering works when
+      category information is available.
+    */
+
+    filtered =
+      products.filter(product => {
+
+        return String(
+          product.category ||
+          ""
+        ).toLowerCase() ===
+        currentCategory.toLowerCase();
+
+      });
+
+  }
+
+  if(!filtered.length){
 
     results.innerHTML =
       `<div class="empty">
-        🛍️ No products yet.<br>
-        Be the first person to sell on ZEEPY!
+        🛍️ No products found.
       </div>`;
 
     return;
+
   }
 
   results.innerHTML =
-    products.map(
-      product => {
-
-        const name =
-          product.name ||
-          product.title ||
-          "Product";
-
-        const price =
-          Number(
-            product.price || 0
-          ).toFixed(2);
-
-        const description =
-          product.description ||
-          "";
-
-        const image =
-          product.image_url ||
-          product.image ||
-          "";
-
-        return `
-
-          <div class="product-card">
-
-            ${
-              image
-                ? `
-                  <img
-                    src="${escapeAttribute(image)}"
-                    alt="${escapeAttribute(name)}">
-                  `
-                : ""
-            }
-
-            <div class="product-title">
-              ${escapeHtml(name)}
-            </div>
-
-            <div class="product-price">
-              GH₵ ${price}
-            </div>
-
-            <div class="product-description">
-              ${escapeHtml(description)}
-            </div>
-
-            <div class="product-seller">
-              Seller ID: ${escapeHtml(
-                product.seller_id ||
-                "ZEEPY Seller"
-              )}
-            </div>
-
-          </div>
-
-        `;
-
+    `<div class="product-grid">
+      ${
+        filtered.map(product =>
+          renderProductCard(
+            product,
+            product.shops?.shop_name
+          )
+        ).join("")
       }
-    ).join("");
+    </div>`;
 
 }
 
 
-/* =========================================
-   SEARCH MARKET
-========================================= */
+/* RENDER ONE PRODUCT */
+
+function renderProductCard(
+  product,
+  shopName
+){
+
+  const name =
+    product.name ||
+    product.title ||
+    "Product";
+
+  const price =
+    Number(
+      product.price || 0
+    ).toFixed(2);
+
+  const description =
+    product.description ||
+    "";
+
+  const image =
+    product.image_url ||
+    product.image ||
+    "";
+
+  const shop =
+    shopName ||
+    "ZEEPY Seller";
+
+  return `
+
+    <div class="product-card">
+
+      ${
+        image
+        ?
+        `
+          <img
+            src="${escapeAttribute(image)}"
+            alt="${escapeAttribute(name)}">
+        `
+        :
+        `
+          <div class="product-placeholder">
+            🛍️
+          </div>
+        `
+      }
+
+      <div class="product-title">
+        ${escapeHtml(name)}
+      </div>
+
+      <div class="product-price">
+        GH₵ ${price}
+      </div>
+
+      <div class="product-description">
+        ${escapeHtml(description)}
+      </div>
+
+      <div class="product-shop">
+        🏪 ${escapeHtml(shop)}
+      </div>
+
+      <div class="product-actions">
+
+        <button
+          onclick="addToCart('${escapeAttribute(product.id)}')">
+
+          🛒 Add to Cart
+
+        </button>
+
+        ${
+          product.shop_id
+          ?
+          `
+            <button
+              onclick="openShop('${escapeAttribute(product.shop_id)}')">
+
+              🏪 Shop
+
+            </button>
+          `
+          :
+          ""
+        }
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* SEARCH MARKET */
 
 function searchMarket(){
 
@@ -2216,14 +4044,19 @@ function searchMarket(){
 
   if(!query){
 
+    renderShops(
+      shopsCache
+    );
+
     renderProducts(
       productsCache
     );
 
     return;
+
   }
 
-  const filtered =
+  const filteredProducts =
     productsCache.filter(
       product => {
 
@@ -2240,22 +4073,275 @@ function searchMarket(){
             ""
           ).toLowerCase();
 
+        const shop =
+          String(
+            product.shops?.shop_name ||
+            ""
+          ).toLowerCase();
+
         return (
           name.includes(query) ||
-          description.includes(query)
+          description.includes(query) ||
+          shop.includes(query)
         );
 
       }
     );
 
-  renderProducts(filtered);
+  const filteredShops =
+    shopsCache.filter(
+      shop => {
+
+        const name =
+          String(
+            shop.shop_name ||
+            ""
+          ).toLowerCase();
+
+        const description =
+          String(
+            shop.description ||
+            ""
+          ).toLowerCase();
+
+        const location =
+          String(
+            shop.location ||
+            ""
+          ).toLowerCase();
+
+        return (
+          name.includes(query) ||
+          description.includes(query) ||
+          location.includes(query)
+        );
+
+      }
+    );
+
+  renderShops(
+    filteredShops
+  );
+
+  renderProducts(
+    filteredProducts
+  );
 
 }
 
 
-/* =========================================
-   ESCAPE HTML
-========================================= */
+/* CATEGORY FILTER */
+
+function filterCategory(
+  category,
+  button
+){
+
+  currentCategory =
+    category;
+
+  document
+    .querySelectorAll(
+      ".category-chip"
+    )
+    .forEach(
+      item => item.classList.remove(
+        "active"
+      )
+    );
+
+  if(button){
+
+    button.classList.add(
+      "active"
+    );
+
+  }
+
+  if(category === "all"){
+
+    renderProducts(
+      productsCache
+    );
+
+    return;
+
+  }
+
+  /*
+    Category names can later be stored
+    directly on every product.
+  */
+
+  const filtered =
+    productsCache.filter(
+      product =>
+        String(
+          product.category ||
+          ""
+        ).toLowerCase() ===
+        category.toLowerCase()
+    );
+
+  renderProducts(
+    filtered
+  );
+
+}
+
+
+/* ADD TO CART */
+
+async function addToCart(productId){
+
+  if(!currentUser){
+
+    showToast(
+      "Please log in to use your cart."
+    );
+
+    showSection("auth");
+
+    return;
+
+  }
+
+  try{
+
+    let { data:cart } =
+      await supabaseClient
+        .from("carts")
+        .select("*")
+        .eq("user_id",currentUser.id)
+        .maybeSingle();
+
+    if(!cart){
+
+      const { data:newCart,error } =
+        await supabaseClient
+          .from("carts")
+          .insert({
+
+            user_id:
+              currentUser.id
+
+          })
+          .select()
+          .single();
+
+      if(error){
+
+        throw error;
+
+      }
+
+      cart =
+        newCart;
+
+    }
+
+    const { data:existing } =
+      await supabaseClient
+        .from("cart_items")
+        .select("*")
+        .eq("cart_id",cart.id)
+        .eq("product_id",productId)
+        .maybeSingle();
+
+    if(existing){
+
+      const { error } =
+        await supabaseClient
+          .from("cart_items")
+          .update({
+
+            quantity:
+              Number(existing.quantity || 1) + 1
+
+          })
+          .eq("id",existing.id);
+
+      if(error){
+
+        throw error;
+
+      }
+
+    }else{
+
+      const { error } =
+        await supabaseClient
+          .from("cart_items")
+          .insert({
+
+            cart_id:
+              cart.id,
+
+            product_id:
+              productId,
+
+            quantity:
+              1
+
+          });
+
+      if(error){
+
+        throw error;
+
+      }
+
+    }
+
+    showToast(
+      "Product added to cart 🛒"
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    showToast(
+      "Could not add to cart: " +
+      (error.message || "")
+    );
+
+  }
+
+}
+
+
+/* FILE READER */
+
+function readFileAsDataURL(file){
+
+  return new Promise(
+    (resolve,reject) => {
+
+      const reader =
+        new FileReader();
+
+      reader.onload =
+        () => resolve(
+          reader.result
+        );
+
+      reader.onerror =
+        () => reject(
+          new Error(
+            "Could not read image."
+          )
+        );
+
+      reader.readAsDataURL(file);
+
+    }
+  );
+
+}
+
+
+/* ESCAPE HTML */
 
 function escapeHtml(value){
 
@@ -2265,6 +4351,7 @@ function escapeHtml(value){
     .replace(/>/g,"&gt;")
     .replace(/"/g,"&quot;")
     .replace(/'/g,"&#039;");
+
 }
 
 
@@ -2275,9 +4362,9 @@ function escapeAttribute(value){
 }
 
 
-/* =========================================
+/* =========================================================
    LOCATION
-========================================= */
+========================================================= */
 
 function getNearbyLocation(){
 
@@ -2333,9 +4420,9 @@ function getNearbyLocation(){
 }
 
 
-/* =========================================
-   MEDIA PREVIEW
-========================================= */
+/* =========================================================
+   MEDIA
+========================================================= */
 
 function previewMedia(event){
 
@@ -2392,9 +4479,9 @@ function previewMedia(event){
 }
 
 
-/* =========================================
-   LIVE MEDIA
-========================================= */
+/* =========================================================
+   LIVE
+========================================================= */
 
 async function getLiveMedia(){
 
@@ -2436,10 +4523,6 @@ async function getLiveMedia(){
 }
 
 
-/* =========================================
-   RELEASE LIVE STREAM
-========================================= */
-
 function releaseLiveStreams(){
 
   if(liveStream){
@@ -2467,10 +4550,6 @@ function releaseLiveStreams(){
 
 }
 
-
-/* =========================================
-   START BROADCAST
-========================================= */
 
 async function startBroadcast(){
 
@@ -2561,10 +4640,6 @@ async function startBroadcast(){
 }
 
 
-/* =========================================
-   STOP BROADCAST
-========================================= */
-
 async function stopBroadcast(){
 
   if(!isBroadcasting){
@@ -2639,10 +4714,6 @@ async function stopBroadcast(){
 }
 
 
-/* =========================================
-   LIVE LOBBY
-========================================= */
-
 async function setupLobby(){
 
   if(!lobbyChannel){
@@ -2690,10 +4761,6 @@ async function setupLobby(){
 
 }
 
-
-/* =========================================
-   REFRESH LIVE USERS
-========================================= */
 
 async function refreshLiveUsers(){
 
@@ -2759,10 +4826,6 @@ async function refreshLiveUsers(){
 }
 
 
-/* =========================================
-   WATCH LIVE
-========================================= */
-
 async function watchLive(userId){
 
   if(!userId){
@@ -2786,10 +4849,6 @@ async function watchLive(userId){
 }
 
 
-/* =========================================
-   STOP WATCHING
-========================================= */
-
 function stopWatching(){
 
   Object
@@ -2810,10 +4869,6 @@ function stopWatching(){
 
 }
 
-
-/* =========================================
-   BROADCAST OFFER
-========================================= */
 
 async function createOfferForViewer(
   viewerId
@@ -2871,10 +4926,6 @@ async function createOfferForViewer(
 
 }
 
-
-/* =========================================
-   HANDLE BROADCASTER OFFER
-========================================= */
 
 async function handleBroadcasterOffer(
   offer,
@@ -2936,9 +4987,9 @@ async function handleBroadcasterOffer(
 }
 
 
-/* =========================================
+/* =========================================================
    WALLET
-========================================= */
+========================================================= */
 
 function loadWallet(){
 
@@ -2968,9 +5019,9 @@ function loadWallet(){
 }
 
 
-/* =========================================
+/* =========================================================
    CLEANUP
-========================================= */
+========================================================= */
 
 window.addEventListener(
   "beforeunload",
@@ -3002,9 +5053,9 @@ window.addEventListener(
 );
 
 
-/* =========================================
-   INITIALIZE ZEEPY
-========================================= */
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
 async function initializeZEEPY(){
 
@@ -3031,6 +5082,8 @@ async function initializeZEEPY(){
 
   }
 
+  await loadShops();
+
   await loadProducts();
 
   await setupLobby();
@@ -3038,12 +5091,12 @@ async function initializeZEEPY(){
 }
 
 
-/* =========================================
+/* =========================================================
    AUTH STATE
-========================================= */
+========================================================= */
 
 supabaseClient.auth.onAuthStateChange(
-  async (event, session) => {
+  async (event,session) => {
 
     if(session){
 
@@ -3066,9 +5119,9 @@ supabaseClient.auth.onAuthStateChange(
 );
 
 
-/* =========================================
+/* =========================================================
    START
-========================================= */
+========================================================= */
 
 initializeZEEPY();
 
