@@ -47,6 +47,11 @@ button{
   cursor:pointer;
 }
 
+button:disabled{
+  cursor:not-allowed;
+  opacity:.6;
+}
+
 img{
   max-width:100%;
 }
@@ -63,12 +68,12 @@ header{
   position:sticky;
   top:0;
   z-index:1000;
-  height:70px;
+  min-height:70px;
   background:var(--black);
   color:white;
   display:flex;
   align-items:center;
-  padding:0 25px;
+  padding:10px 25px;
   box-shadow:0 2px 15px rgba(0,0,0,.18);
 }
 
@@ -93,6 +98,11 @@ header{
   gap:6px;
   flex:1;
   overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.top-nav::-webkit-scrollbar{
+  display:none;
 }
 
 .top-nav button{
@@ -134,6 +144,10 @@ header{
   padding:11px 18px;
   border-radius:8px;
   font-weight:bold;
+  max-width:140px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
 /* =========================
@@ -242,6 +256,7 @@ main{
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:15px;
   margin:30px 0 15px;
 }
 
@@ -376,6 +391,7 @@ textarea{
   border-right:1px solid #eee;
   display:flex;
   flex-direction:column;
+  min-width:0;
 }
 
 .people-header{
@@ -484,6 +500,7 @@ textarea{
   border-radius:15px;
   line-height:1.5;
   background:#eee;
+  word-break:break-word;
 }
 
 .message.mine{
@@ -554,6 +571,7 @@ textarea{
   color:white;
   font-size:35px;
   font-weight:bold;
+  flex-shrink:0;
 }
 
 .profile-avatar img{
@@ -611,6 +629,75 @@ textarea{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:20px;
+}
+
+.transaction-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding:14px 0;
+  border-bottom:1px solid #eee;
+}
+
+.transaction-left{
+  min-width:0;
+}
+
+.transaction-title{
+  font-weight:bold;
+  text-transform:capitalize;
+}
+
+.transaction-description{
+  font-size:13px;
+  color:#777;
+  margin-top:3px;
+}
+
+.transaction-date{
+  font-size:12px;
+  color:#999;
+  margin-top:4px;
+}
+
+.transaction-amount{
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+.transaction-credit{
+  color:var(--green);
+}
+
+.transaction-debit{
+  color:var(--red);
+}
+
+.status-badge{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:bold;
+  margin-top:5px;
+  background:#eee;
+}
+
+.status-pending{
+  background:#fff3df;
+  color:#9a5b00;
+}
+
+.status-completed{
+  background:#e9f9ef;
+  color:#176b35;
+}
+
+.status-failed,
+.status-cancelled{
+  background:#ffeded;
+  color:#a11;
 }
 
 /* =========================
@@ -738,6 +825,7 @@ textarea{
 ========================= */
 
 @media(max-width:1000px){
+
   .grid{
     grid-template-columns:repeat(2,1fr);
   }
@@ -756,6 +844,7 @@ textarea{
 }
 
 @media(max-width:750px){
+
   header{
     height:auto;
     min-height:65px;
@@ -822,6 +911,15 @@ textarea{
     align-items:flex-start;
     flex-direction:column;
   }
+
+  .section-title{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .transaction-row{
+    align-items:flex-start;
+  }
 }
 </style>
 </head>
@@ -836,22 +934,55 @@ textarea{
 
   <nav class="top-nav">
 
-    <button onclick="showPage('home')" data-page="home">Home</button>
-    <button onclick="showPage('market')" data-page="market">Market</button>
-    <button onclick="showPage('messages')" data-page="messages">Messages</button>
-    <button onclick="showPage('meet')" data-page="meet">Meet</button>
-    <button onclick="showPage('groups')" data-page="groups">Groups</button>
-    <button onclick="showPage('live')" data-page="live">Live</button>
-    <button onclick="showPage('media')" data-page="media">Media</button>
-    <button onclick="showPage('nearby')" data-page="nearby">Nearby</button>
-    <button onclick="showPage('wallet')" data-page="wallet">Wallet</button>
-    <button onclick="showPage('profile')" data-page="profile">Profile</button>
+    <button onclick="showPage('home')" data-page="home">
+      Home
+    </button>
+
+    <button onclick="showPage('market')" data-page="market">
+      Market
+    </button>
+
+    <button onclick="showPage('messages')" data-page="messages">
+      Messages
+    </button>
+
+    <button onclick="showPage('meet')" data-page="meet">
+      Meet
+    </button>
+
+    <button onclick="showPage('groups')" data-page="groups">
+      Groups
+    </button>
+
+    <button onclick="showPage('live')" data-page="live">
+      Live
+    </button>
+
+    <button onclick="showPage('media')" data-page="media">
+      Media
+    </button>
+
+    <button onclick="showPage('nearby')" data-page="nearby">
+      Nearby
+    </button>
+
+    <button onclick="showPage('wallet')" data-page="wallet">
+      Wallet
+    </button>
+
+    <button onclick="showPage('profile')" data-page="profile">
+      Profile
+    </button>
 
   </nav>
 
   <div class="header-actions">
 
-    <button class="icon-btn" onclick="showNotifications()">🔔</button>
+    <button
+      class="icon-btn"
+      onclick="showNotifications()">
+      🔔
+    </button>
 
     <button
       id="authButton"
@@ -866,9 +997,9 @@ textarea{
 
 <main>
 
-<!-- =========================
+<!-- =========================================================
      HOME
-========================= -->
+========================================================= -->
 
 <section id="home" class="page active">
 
@@ -959,15 +1090,17 @@ textarea{
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      MARKET
-========================= -->
+========================================================= -->
 
 <section id="market" class="page">
 
   <div class="section-title">
+
     <div>
       <h2>ZEEPY Marketplace</h2>
+
       <p class="muted">
         Buy, sell and discover products.
       </p>
@@ -978,6 +1111,7 @@ textarea{
       onclick="requireLogin('addProduct')">
       + Add Product
     </button>
+
   </div>
 
   <div
@@ -992,22 +1126,33 @@ textarea{
 
       <div class="form-group">
         <label>Product name</label>
-        <input id="productName" placeholder="Example: Samsung Galaxy">
+        <input
+          id="productName"
+          placeholder="Example: Samsung Galaxy">
       </div>
 
       <div class="form-group">
         <label>Price (GHS)</label>
-        <input id="productPrice" type="number" placeholder="2500">
+        <input
+          id="productPrice"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="2500">
       </div>
 
       <div class="form-group">
         <label>Category</label>
-        <input id="productCategory" placeholder="Phones">
+        <input
+          id="productCategory"
+          placeholder="Phones">
       </div>
 
       <div class="form-group">
         <label>Image URL</label>
-        <input id="productImage" placeholder="https://...">
+        <input
+          id="productImage"
+          placeholder="https://...">
       </div>
 
       <div class="form-group full">
@@ -1030,25 +1175,32 @@ textarea{
   <div
     id="productsGrid"
     class="grid">
-    <div class="loading">Loading products...</div>
+
+    <div class="loading">
+      Loading products...
+    </div>
+
   </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      MESSAGES
-========================= -->
+========================================================= -->
 
 <section id="messages" class="page">
 
   <div class="section-title">
+
     <div>
       <h2>Messages</h2>
+
       <p class="muted">
         Search for people and start a conversation.
       </p>
     </div>
+
   </div>
 
   <div
@@ -1078,10 +1230,10 @@ textarea{
       <div
         id="peopleList"
         class="people-list">
-
       </div>
 
     </div>
+
 
     <div class="chat-panel">
 
@@ -1089,16 +1241,24 @@ textarea{
         id="chatHeader"
         class="chat-header">
 
-        <div class="avatar">?</div>
+        <div class="avatar">
+          ?
+        </div>
 
         <div>
-          <strong>Select a person</strong>
+
+          <strong>
+            Select a person
+          </strong>
+
           <div class="muted">
             Search for someone to start chatting.
           </div>
+
         </div>
 
       </div>
+
 
       <div
         id="chatMessages"
@@ -1110,6 +1270,7 @@ textarea{
 
       </div>
 
+
       <form
         id="chatForm"
         class="chat-form"
@@ -1118,9 +1279,13 @@ textarea{
         <input
           id="messageInput"
           placeholder="Write a message..."
-          autocomplete="off">
+          autocomplete="off"
+          disabled>
 
-        <button type="submit">
+        <button
+          id="sendMessageButton"
+          type="submit"
+          disabled>
           Send
         </button>
 
@@ -1133,45 +1298,62 @@ textarea{
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      MEET
-========================= -->
+========================================================= -->
 
 <section id="meet" class="page">
 
   <div class="section-title">
+
     <div>
+
       <h2>ZEEPY Meet</h2>
+
       <p class="muted">
         Create meetings and connect with your community.
       </p>
+
     </div>
+
   </div>
 
   <div class="grid">
 
     <div class="card">
+
       <div class="card-body">
+
         <h3>🎥 Start a Meeting</h3>
+
         <p class="muted">
           Meeting infrastructure can be connected to a video provider later.
         </p>
+
         <br>
+
         <button
           class="btn btn-orange"
           onclick="requireLogin('meeting')">
           Create Meeting
         </button>
+
       </div>
+
     </div>
 
     <div class="card">
+
       <div class="card-body">
+
         <h3>📅 Meetings</h3>
+
         <p class="muted">
           Your upcoming ZEEPY meetings will appear here.
         </p>
+
       </div>
+
     </div>
 
   </div>
@@ -1179,19 +1361,22 @@ textarea{
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      GROUPS
-========================= -->
+========================================================= -->
 
 <section id="groups" class="page">
 
   <div class="section-title">
 
     <div>
+
       <h2>ZEEPY Groups</h2>
+
       <p class="muted">
         Create and join communities.
       </p>
+
     </div>
 
     <button
@@ -1211,17 +1396,23 @@ textarea{
     <br>
 
     <div class="form-group">
+
       <label>Group name</label>
+
       <input
         id="groupName"
         placeholder="Example: Ghana Students">
+
     </div>
 
     <div class="form-group">
+
       <label>Description</label>
+
       <textarea
         id="groupDescription"
         placeholder="What is this group about?"></textarea>
+
     </div>
 
     <button
@@ -1235,24 +1426,32 @@ textarea{
   <div
     id="groupsGrid"
     class="grid">
-    <div class="loading">Loading groups...</div>
+
+    <div class="loading">
+      Loading groups...
+    </div>
+
   </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      LIVE
-========================= -->
+========================================================= -->
 
 <section id="live" class="page">
 
   <div class="section-title">
+
     <div>
+
       <h2>Live</h2>
+
       <p class="muted">
         Discover live creators and communities.
       </p>
+
     </div>
 
     <button
@@ -1260,18 +1459,24 @@ textarea{
       onclick="requireLogin('goLive')">
       🔴 Go Live
     </button>
+
   </div>
 
   <div class="grid">
 
     <div class="card">
+
       <div class="card-body">
+
         <h3>🔴 Live Video</h3>
+
         <p class="muted">
           Your live streaming system can be connected to a real streaming
           provider as the platform grows.
         </p>
+
       </div>
+
     </div>
 
   </div>
@@ -1279,18 +1484,22 @@ textarea{
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      MEDIA
-========================= -->
+========================================================= -->
 
 <section id="media" class="page">
 
   <div class="section-title">
+
     <div>
+
       <h2>ZEEPY Media</h2>
+
       <p class="muted">
         Share videos and other media.
       </p>
+
     </div>
 
     <button
@@ -1298,6 +1507,7 @@ textarea{
       onclick="requireLogin('uploadMedia')">
       + Upload Media
     </button>
+
   </div>
 
   <div
@@ -1309,26 +1519,43 @@ textarea{
     <br>
 
     <div class="form-group">
+
       <label>Title</label>
+
       <input
         id="mediaTitle"
         placeholder="Video title">
+
     </div>
 
     <div class="form-group">
+
       <label>Media URL</label>
+
       <input
         id="mediaUrl"
         placeholder="https://...">
+
     </div>
 
     <div class="form-group">
+
       <label>Type</label>
 
       <select id="mediaType">
-        <option value="video">Video</option>
-        <option value="image">Image</option>
-        <option value="audio">Audio</option>
+
+        <option value="video">
+          Video
+        </option>
+
+        <option value="image">
+          Image
+        </option>
+
+        <option value="audio">
+          Audio
+        </option>
+
       </select>
 
     </div>
@@ -1344,25 +1571,35 @@ textarea{
   <div
     id="mediaGrid"
     class="grid">
-    <div class="loading">Loading media...</div>
+
+    <div class="loading">
+      Loading media...
+    </div>
+
   </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      NEARBY
-========================= -->
+========================================================= -->
 
 <section id="nearby" class="page">
 
-  <div class="hero" style="min-height:300px;">
+  <div
+    class="hero"
+    style="min-height:300px;">
 
     <div class="hero-content">
 
-      <small>ZEEPY Nearby</small>
+      <small>
+        ZEEPY Nearby
+      </small>
 
-      <h1>Discover What's Around You</h1>
+      <h1>
+        Discover What's Around You
+      </h1>
 
       <p>
         Find people, businesses, products, groups and opportunities
@@ -1384,19 +1621,24 @@ textarea{
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      WALLET
-========================= -->
+========================================================= -->
 
 <section id="wallet" class="page">
 
   <div class="section-title">
 
     <div>
-      <h2>ZEEPY Wallet</h2>
+
+      <h2>
+        ZEEPY Wallet
+      </h2>
+
       <p class="muted">
         Track your earnings and transactions.
       </p>
+
     </div>
 
   </div>
@@ -1404,7 +1646,9 @@ textarea{
   <div
     id="walletLoginNotice"
     class="notice hidden">
+
     Log in to view your wallet.
+
   </div>
 
   <div
@@ -1414,35 +1658,76 @@ textarea{
     <div class="wallet-grid">
 
       <div class="wallet-card">
-        <span>Available Balance</span>
-        <strong id="walletBalance">GHS 0.00</strong>
+
+        <span>
+          Available Balance
+        </span>
+
+        <strong id="walletBalance">
+          GHS 0.00
+        </strong>
+
       </div>
 
-      <div class="wallet-card">
-        <span>Total Earnings</span>
-        <strong id="walletEarnings">GHS 0.00</strong>
-      </div>
 
       <div class="wallet-card">
-        <span>Pending</span>
-        <strong id="walletPending">GHS 0.00</strong>
+
+        <span>
+          Total Earnings
+        </span>
+
+        <strong id="walletEarnings">
+          GHS 0.00
+        </strong>
+
       </div>
 
+
       <div class="wallet-card">
-        <span>Platform Revenue</span>
-        <strong id="walletRevenue">GHS 0.00</strong>
+
+        <span>
+          Pending
+        </span>
+
+        <strong id="walletPending">
+          GHS 0.00
+        </strong>
+
+      </div>
+
+
+      <div class="wallet-card">
+
+        <span>
+          ZEEPY Revenue
+        </span>
+
+        <strong id="walletRevenue">
+          GHS 0.00
+        </strong>
+
       </div>
 
     </div>
+
+
+    <div
+      id="walletNotice"
+      class="notice hidden">
+    </div>
+
 
     <div class="wallet-actions">
 
       <div class="form-card">
 
-        <h3>Add Funds</h3>
+        <h3>
+          Add Funds
+        </h3>
 
         <p class="muted">
-          Payment integration is not connected yet.
+          Submit a deposit request. A real payment provider
+          can be connected later.
         </p>
 
         <br>
@@ -1450,24 +1735,32 @@ textarea{
         <input
           id="depositAmount"
           type="number"
+          min="1"
+          step="0.01"
           placeholder="Amount in GHS">
 
         <br><br>
 
         <button
+          id="depositButton"
           class="btn btn-orange"
           onclick="processDeposit()">
-          Add Funds
+
+          Request Deposit
+
         </button>
 
       </div>
 
+
       <div class="form-card">
 
-        <h3>Withdraw</h3>
+        <h3>
+          Withdraw
+        </h3>
 
         <p class="muted">
-          Withdrawal provider is not connected yet.
+          Submit a withdrawal request from your available balance.
         </p>
 
         <br>
@@ -1475,23 +1768,31 @@ textarea{
         <input
           id="withdrawAmount"
           type="number"
+          min="1"
+          step="0.01"
           placeholder="Amount in GHS">
 
         <br><br>
 
         <button
+          id="withdrawButton"
           class="btn btn-dark"
           onclick="requestWithdrawal()">
+
           Request Withdrawal
+
         </button>
 
       </div>
 
     </div>
 
+
     <div class="form-card">
 
-      <h3>Transaction History</h3>
+      <h3>
+        Transaction History
+      </h3>
 
       <br>
 
@@ -1506,17 +1807,20 @@ textarea{
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      PROFILE
-========================= -->
+========================================================= -->
 
 <section id="profile" class="page">
 
   <div
     id="profileLoginNotice"
     class="notice hidden">
+
     Please log in to view your profile.
+
   </div>
+
 
   <div
     id="profileApp"
@@ -1554,36 +1858,59 @@ textarea{
 
     </div>
 
-    <h3>Edit Profile</h3>
+
+    <h3>
+      Edit Profile
+    </h3>
 
     <br>
 
     <div class="form-grid">
 
       <div class="form-group">
-        <label>Full name</label>
+
+        <label>
+          Full name
+        </label>
+
         <input
           id="editFullName"
           placeholder="Your full name">
+
       </div>
 
+
       <div class="form-group">
-        <label>Username</label>
+
+        <label>
+          Username
+        </label>
+
         <input
           id="editUsername"
           placeholder="username">
+
       </div>
 
+
       <div class="form-group full">
-        <label>Bio</label>
+
+        <label>
+          Bio
+        </label>
+
         <textarea
           id="editBio"
           placeholder="Tell people about yourself"></textarea>
+
       </div>
+
 
       <div class="form-group full">
 
-        <label>Profile picture</label>
+        <label>
+          Profile picture
+        </label>
 
         <input
           id="avatarFile"
@@ -1598,6 +1925,7 @@ textarea{
       </div>
 
     </div>
+
 
     <div
       id="avatarPreview"
@@ -1631,9 +1959,9 @@ textarea{
 </main>
 
 
-<!-- =========================
+<!-- =========================================================
      AUTH MODAL
-========================= -->
+========================================================= -->
 
 <div
   id="authModal"
@@ -1647,14 +1975,19 @@ textarea{
       ×
     </button>
 
-    <h2 id="authTitle">Log in to ZEEPY</h2>
+    <h2 id="authTitle">
+      Log in to ZEEPY
+    </h2>
 
     <p
       id="authSubtitle"
       class="muted"
       style="margin:8px 0 20px;">
+
       Connect with your ZEEPY community.
+
     </p>
+
 
     <div class="auth-tabs">
 
@@ -1662,16 +1995,22 @@ textarea{
         id="loginTab"
         class="active"
         onclick="setAuthMode('login')">
+
         Log In
+
       </button>
+
 
       <button
         id="signupTab"
         onclick="setAuthMode('signup')">
+
         Create Account
+
       </button>
 
     </div>
+
 
     <div
       id="signupFields"
@@ -1679,7 +2018,9 @@ textarea{
 
       <div class="form-group">
 
-        <label>Full name</label>
+        <label>
+          Full name
+        </label>
 
         <input
           id="signupFullName"
@@ -1687,9 +2028,12 @@ textarea{
 
       </div>
 
+
       <div class="form-group">
 
-        <label>Username</label>
+        <label>
+          Username
+        </label>
 
         <input
           id="signupUsername"
@@ -1697,9 +2041,12 @@ textarea{
 
       </div>
 
+
       <div class="form-group">
 
-        <label>Profile picture</label>
+        <label>
+          Profile picture
+        </label>
 
         <input
           id="signupAvatar"
@@ -1709,6 +2056,7 @@ textarea{
 
       </div>
 
+
       <div
         id="signupAvatarPreview"
         class="auth-avatar-preview hidden">
@@ -1716,9 +2064,12 @@ textarea{
 
     </div>
 
+
     <div class="form-group">
 
-      <label>Email</label>
+      <label>
+        Email
+      </label>
 
       <input
         id="authEmail"
@@ -1727,9 +2078,12 @@ textarea{
 
     </div>
 
+
     <div class="form-group">
 
-      <label>Password</label>
+      <label>
+        Password
+      </label>
 
       <input
         id="authPassword"
@@ -1738,17 +2092,21 @@ textarea{
 
     </div>
 
+
     <div
       id="authMessage"
       class="notice hidden">
     </div>
+
 
     <button
       id="authSubmit"
       class="btn btn-orange"
       style="width:100%;"
       onclick="loginOrSignup()">
+
       Log In
+
     </button>
 
   </div>
@@ -1789,6 +2147,8 @@ let authMode = "login";
 
 let messagesChannel = null;
 
+let messagesInitialized = false;
+
 
 /* ============================================================
    BASIC HELPERS
@@ -1796,7 +2156,10 @@ let messagesChannel = null;
 
 function escapeHtml(value){
 
-  if(value === null || value === undefined){
+  if(
+    value === null ||
+    value === undefined
+  ){
     return "";
   }
 
@@ -1815,7 +2178,6 @@ function getDisplayName(person){
     person.full_name ||
     person.name ||
     person.username ||
-    person.email ||
     "ZEEPY User"
   );
 }
@@ -1824,7 +2186,11 @@ function getDisplayName(person){
 function getUsername(person){
 
   if(person.username){
-    return "@" + String(person.username).replace(/^@/,"");
+
+    return "@" +
+      String(person.username)
+        .replace(/^@/,"");
+
   }
 
   return "";
@@ -1843,25 +2209,37 @@ function getAvatar(person){
 
 function initials(name){
 
-  const text = String(name || "Z");
+  const text =
+    String(name || "Z");
 
-  const parts = text.trim().split(/\s+/);
+  const parts =
+    text.trim().split(/\s+/);
 
   if(parts.length >= 2){
+
     return (
       parts[0][0] +
       parts[1][0]
     ).toUpperCase();
+
   }
 
-  return text.substring(0,2).toUpperCase();
+  return text
+    .substring(0,2)
+    .toUpperCase();
 }
 
 
-function avatarHtml(person, className="avatar"){
+function avatarHtml(
+  person,
+  className="avatar"
+){
 
-  const name = getDisplayName(person);
-  const url = getAvatar(person);
+  const name =
+    getDisplayName(person);
+
+  const url =
+    getAvatar(person);
 
   if(url){
 
@@ -1870,7 +2248,7 @@ function avatarHtml(person, className="avatar"){
         <img
           src="${escapeHtml(url)}"
           alt="${escapeHtml(name)}"
-          onerror="this.parentElement.innerHTML='${escapeHtml(initials(name))}'">
+          onerror="this.style.display='none';this.parentElement.textContent='${escapeHtml(initials(name))}'">
       </div>
     `;
 
@@ -1884,27 +2262,35 @@ function avatarHtml(person, className="avatar"){
 }
 
 
-function showNotice(elementId,message,type=""){
+function showNotice(
+  elementId,
+  message,
+  type=""
+){
 
-  const el = document.getElementById(elementId);
+  const el =
+    document.getElementById(elementId);
 
   if(!el) return;
 
-  el.className = "notice " + type;
-  el.textContent = message;
-  el.classList.remove("hidden");
+  el.className =
+    "notice " + type;
 
+  el.textContent =
+    message;
+
+  el.classList.remove("hidden");
 }
 
 
 function hideNotice(elementId){
 
-  const el = document.getElementById(elementId);
+  const el =
+    document.getElementById(elementId);
 
   if(el){
     el.classList.add("hidden");
   }
-
 }
 
 
@@ -1914,16 +2300,21 @@ function hideNotice(elementId){
 
 function showPage(pageId){
 
-  document.querySelectorAll(".page")
-    .forEach(page => page.classList.remove("active"));
+  document
+    .querySelectorAll(".page")
+    .forEach(page =>
+      page.classList.remove("active")
+    );
 
-  const page = document.getElementById(pageId);
+  const page =
+    document.getElementById(pageId);
 
   if(page){
     page.classList.add("active");
   }
 
-  document.querySelectorAll(".top-nav button")
+  document
+    .querySelectorAll(".top-nav button")
     .forEach(button => {
 
       button.classList.toggle(
@@ -1933,6 +2324,7 @@ function showPage(pageId){
 
     });
 
+
   window.scrollTo({
     top:0,
     behavior:"smooth"
@@ -1940,27 +2332,44 @@ function showPage(pageId){
 
 
   if(pageId === "messages"){
+
     initializeMessages();
+
   }
+
 
   if(pageId === "profile"){
+
     updateProfilePage();
+
   }
+
 
   if(pageId === "wallet"){
+
     loadWallet();
+
   }
+
 
   if(pageId === "market"){
+
     loadProducts();
+
   }
+
 
   if(pageId === "groups"){
+
     loadGroups();
+
   }
 
+
   if(pageId === "media"){
+
     loadMedia();
+
   }
 
 }
@@ -2057,15 +2466,21 @@ function setAuthMode(mode){
 }
 
 
+/* ============================================================
+   LOGIN / SIGNUP
+============================================================ */
+
 async function loginOrSignup(){
 
   const email =
     document.getElementById("authEmail")
-      .value.trim();
+      .value
+      .trim();
 
   const password =
     document.getElementById("authPassword")
       .value;
+
 
   if(!email || !password){
 
@@ -2079,28 +2494,53 @@ async function loginOrSignup(){
   }
 
 
+  if(
+    authMode === "signup" &&
+    password.length < 6
+  ){
+
+    showNotice(
+      "authMessage",
+      "Password must be at least 6 characters.",
+      "error"
+    );
+
+    return;
+  }
+
+
   const submit =
     document.getElementById("authSubmit");
 
   submit.disabled = true;
-  submit.textContent = "Please wait...";
+  submit.textContent =
+    "Please wait...";
 
 
   try{
 
     if(authMode === "login"){
 
-      const {data,error} =
-        await supabaseClient.auth.signInWithPassword({
-          email,
-          password
-        });
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.auth
+          .signInWithPassword({
+            email,
+            password
+          });
+
 
       if(error) throw error;
 
-      currentUser = data.user;
+
+      currentUser =
+        data.user;
+
 
       await loadCurrentProfile();
+
 
       closeAuth();
 
@@ -2108,17 +2548,24 @@ async function loginOrSignup(){
 
       showPage("home");
 
+
     }else{
 
       const fullName =
-        document.getElementById("signupFullName")
-          .value.trim();
+        document
+          .getElementById("signupFullName")
+          .value
+          .trim();
+
 
       let username =
-        document.getElementById("signupUsername")
-          .value.trim()
+        document
+          .getElementById("signupUsername")
+          .value
+          .trim()
           .replace(/^@/,"")
           .toLowerCase();
+
 
       if(!fullName){
 
@@ -2130,6 +2577,7 @@ async function loginOrSignup(){
 
         return;
       }
+
 
       if(!username){
 
@@ -2143,40 +2591,42 @@ async function loginOrSignup(){
       }
 
 
-      const {data,error} =
-        await supabaseClient.auth.signUp({
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.auth
+          .signUp({
 
-          email,
-          password,
+            email,
+            password,
 
-          options:{
-            data:{
-              full_name:fullName,
-              username:username
+            options:{
+              data:{
+                full_name:fullName,
+                username:username
+              }
             }
-          }
 
-        });
+          });
 
 
       if(error) throw error;
 
 
-      currentUser = data.user;
-
-
-      /*
-        If email confirmation is disabled, Supabase
-        gives us a session immediately and we can upload
-        the selected avatar now.
-      */
-
       if(data.session){
+
+        currentUser =
+          data.user;
 
         await loadCurrentProfile();
 
+
         const avatarInput =
-          document.getElementById("signupAvatar");
+          document.getElementById(
+            "signupAvatar"
+          );
+
 
         if(
           avatarInput &&
@@ -2184,11 +2634,23 @@ async function loginOrSignup(){
           avatarInput.files.length
         ){
 
-          await uploadAvatarFile(
-            avatarInput.files[0]
-          );
+          try{
+
+            await uploadAvatarFile(
+              avatarInput.files[0]
+            );
+
+          }catch(avatarError){
+
+            console.error(
+              "Avatar upload after signup failed:",
+              avatarError
+            );
+
+          }
 
         }
+
 
         closeAuth();
 
@@ -2200,11 +2662,12 @@ async function loginOrSignup(){
           "Account created successfully. Welcome to ZEEPY!"
         );
 
+
       }else{
 
         showNotice(
           "authMessage",
-          "Account created. Check your email to confirm the account, then log in. Your ZEEPY profile will be created automatically.",
+          "Account created. Check your email to confirm the account, then log in.",
           "success"
         );
 
@@ -2212,15 +2675,18 @@ async function loginOrSignup(){
 
     }
 
+
   }catch(error){
 
     console.error(error);
 
     showNotice(
       "authMessage",
-      error.message || "Something went wrong.",
+      error.message ||
+      "Something went wrong.",
       "error"
     );
+
 
   }finally{
 
@@ -2242,49 +2708,102 @@ async function loginOrSignup(){
 
 async function checkSession(){
 
-  const {data,error} =
-    await supabaseClient.auth.getSession();
+  try{
 
-  if(error){
-
-    console.error(error);
-
-    return;
-
-  }
-
-  currentUser =
-    data.session?.user || null;
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth
+        .getSession();
 
 
-  if(currentUser){
+    if(error){
 
-    await loadCurrentProfile();
+      console.error(
+        "Session error:",
+        error
+      );
 
-  }
+      return;
 
-  updateAuthUI();
+    }
 
-}
-
-
-supabaseClient.auth.onAuthStateChange(
-  async (event,session)=>{
 
     currentUser =
-      session?.user || null;
+      data.session?.user || null;
+
 
     if(currentUser){
 
       await loadCurrentProfile();
 
-    }else{
-
-      currentProfile = null;
-
     }
 
+
     updateAuthUI();
+
+
+  }catch(error){
+
+    console.error(
+      "Could not check session:",
+      error
+    );
+
+  }
+
+}
+
+
+/*
+  Do not perform long awaited database work directly
+  inside onAuthStateChange.
+*/
+
+supabaseClient.auth.onAuthStateChange(
+  (event,session) => {
+
+    currentUser =
+      session?.user || null;
+
+
+    setTimeout(async () => {
+
+      if(currentUser){
+
+        await loadCurrentProfile();
+
+      }else{
+
+        currentProfile = null;
+        selectedPerson = null;
+
+        if(messagesChannel){
+
+          try{
+
+            await supabaseClient
+              .removeChannel(
+                messagesChannel
+              );
+
+          }catch(error){
+
+            console.error(error);
+
+          }
+
+          messagesChannel = null;
+
+        }
+
+      }
+
+
+      updateAuthUI();
+
+    },0);
 
   }
 );
@@ -2307,11 +2826,24 @@ async function loadCurrentProfile(){
 
   try{
 
-    const {data,error} =
+    /*
+      Deliberately select only fields we know are needed.
+      This avoids depending on profiles.created_at or email.
+    */
+
+    const {
+      data,
+      error
+    } =
       await supabaseClient
         .from("profiles")
-        .select("*")
-        .eq("id",currentUser.id)
+        .select(
+          "id,full_name,username,bio,avatar_url"
+        )
+        .eq(
+          "id",
+          currentUser.id
+        )
         .maybeSingle();
 
 
@@ -2329,19 +2861,14 @@ async function loadCurrentProfile(){
 
     if(data){
 
-      currentProfile = data;
+      currentProfile =
+        data;
 
     }else{
 
-      /*
-        This is a safety net.
-
-        Your database trigger should normally create
-        this row automatically.
-      */
-
       const metadata =
         currentUser.user_metadata || {};
+
 
       const generatedUsername =
         metadata.username ||
@@ -2371,14 +2898,21 @@ async function loadCurrentProfile(){
       };
 
 
-      const {data:newProfile,error:createError} =
+      const {
+        data:newProfile,
+        error:createError
+      } =
         await supabaseClient
           .from("profiles")
           .upsert(
             profileData,
-            {onConflict:"id"}
+            {
+              onConflict:"id"
+            }
           )
-          .select()
+          .select(
+            "id,full_name,username,bio,avatar_url"
+          )
           .single();
 
 
@@ -2391,7 +2925,8 @@ async function loadCurrentProfile(){
 
       }else{
 
-        currentProfile = newProfile;
+        currentProfile =
+          newProfile;
 
       }
 
@@ -2399,6 +2934,7 @@ async function loadCurrentProfile(){
 
 
     updateProfilePage();
+
 
   }catch(error){
 
@@ -2412,24 +2948,38 @@ async function loadCurrentProfile(){
 function updateProfilePage(){
 
   const loginNotice =
-    document.getElementById("profileLoginNotice");
+    document.getElementById(
+      "profileLoginNotice"
+    );
 
   const profileApp =
-    document.getElementById("profileApp");
+    document.getElementById(
+      "profileApp"
+    );
 
 
   if(!currentUser){
 
-    loginNotice.classList.remove("hidden");
-    profileApp.classList.add("hidden");
+    loginNotice.classList.remove(
+      "hidden"
+    );
+
+    profileApp.classList.add(
+      "hidden"
+    );
 
     return;
 
   }
 
 
-  loginNotice.classList.add("hidden");
-  profileApp.classList.remove("hidden");
+  loginNotice.classList.add(
+    "hidden"
+  );
+
+  profileApp.classList.remove(
+    "hidden"
+  );
 
 
   const profile =
@@ -2462,38 +3012,47 @@ function updateProfilePage(){
 
   document.getElementById(
     "profileName"
-  ).textContent = name;
+  ).textContent =
+    name;
 
 
   document.getElementById(
     "profileUsername"
   ).textContent =
-    "@" + String(username).replace(/^@/,"");
+    "@" +
+    String(username)
+      .replace(/^@/,"");
 
 
   document.getElementById(
     "profileBio"
-  ).textContent = bio;
+  ).textContent =
+    bio;
 
 
   document.getElementById(
     "editFullName"
-  ).value = name;
+  ).value =
+    name;
 
 
   document.getElementById(
     "editUsername"
   ).value =
-    String(username).replace(/^@/,"");
+    String(username)
+      .replace(/^@/,"");
 
 
   document.getElementById(
     "editBio"
-  ).value = bio;
+  ).value =
+    bio;
 
 
   const avatarElement =
-    document.getElementById("profileAvatar");
+    document.getElementById(
+      "profileAvatar"
+    );
 
 
   if(avatar){
@@ -2502,7 +3061,7 @@ function updateProfilePage(){
       <img
         src="${escapeHtml(avatar)}"
         alt="Profile picture"
-        onerror="this.parentElement.textContent='${escapeHtml(initials(name))}'">
+        onerror="this.style.display='none';this.parentElement.textContent='${escapeHtml(initials(name))}'">
     `;
 
   }else{
@@ -2527,23 +3086,33 @@ async function saveProfile(){
 
 
   const fullName =
-    document.getElementById("editFullName")
-      .value.trim();
+    document
+      .getElementById("editFullName")
+      .value
+      .trim();
+
 
   const username =
-    document.getElementById("editUsername")
-      .value.trim()
+    document
+      .getElementById("editUsername")
+      .value
+      .trim()
       .replace(/^@/,"")
       .toLowerCase();
 
+
   const bio =
-    document.getElementById("editBio")
-      .value.trim();
+    document
+      .getElementById("editBio")
+      .value
+      .trim();
 
 
   if(!fullName){
 
-    alert("Please enter your full name.");
+    alert(
+      "Please enter your full name."
+    );
 
     return;
 
@@ -2552,7 +3121,9 @@ async function saveProfile(){
 
   if(!username){
 
-    alert("Please enter a username.");
+    alert(
+      "Please enter a username."
+    );
 
     return;
 
@@ -2561,7 +3132,10 @@ async function saveProfile(){
 
   try{
 
-    const {data,error} =
+    const {
+      data,
+      error
+    } =
       await supabaseClient
         .from("profiles")
         .upsert({
@@ -2573,23 +3147,32 @@ async function saveProfile(){
           username:username,
 
           bio:
-            bio || "Welcome to ZEEPY."
+            bio ||
+            "Welcome to ZEEPY."
 
         },{
           onConflict:"id"
         })
-        .select()
+        .select(
+          "id,full_name,username,bio,avatar_url"
+        )
         .single();
 
 
     if(error) throw error;
 
 
-    currentProfile = data;
+    currentProfile =
+      data;
 
     updateProfilePage();
 
-    alert("Profile saved successfully.");
+    updateAuthUI();
+
+    alert(
+      "Profile saved successfully."
+    );
+
 
   }catch(error){
 
@@ -2622,7 +3205,9 @@ function previewAvatar(event){
 
   if(!file){
 
-    preview.classList.add("hidden");
+    preview.classList.add(
+      "hidden"
+    );
 
     return;
 
@@ -2631,7 +3216,9 @@ function previewAvatar(event){
 
   if(!file.type.startsWith("image/")){
 
-    alert("Please select an image.");
+    alert(
+      "Please select an image."
+    );
 
     event.target.value = "";
 
@@ -2642,7 +3229,9 @@ function previewAvatar(event){
 
   if(file.size > 5 * 1024 * 1024){
 
-    alert("Image must be 5MB or smaller.");
+    alert(
+      "Image must be 5MB or smaller."
+    );
 
     event.target.value = "";
 
@@ -2663,7 +3252,9 @@ function previewAvatar(event){
         alt="Preview">
     `;
 
-    preview.classList.remove("hidden");
+    preview.classList.remove(
+      "hidden"
+    );
 
   };
 
@@ -2686,7 +3277,22 @@ function previewSignupAvatar(event){
 
   if(!file){
 
-    preview.classList.add("hidden");
+    preview.classList.add(
+      "hidden"
+    );
+
+    return;
+
+  }
+
+
+  if(!file.type.startsWith("image/")){
+
+    alert(
+      "Please select an image."
+    );
+
+    event.target.value = "";
 
     return;
 
@@ -2695,7 +3301,9 @@ function previewSignupAvatar(event){
 
   if(file.size > 5 * 1024 * 1024){
 
-    alert("Image must be 5MB or smaller.");
+    alert(
+      "Image must be 5MB or smaller."
+    );
 
     event.target.value = "";
 
@@ -2716,7 +3324,9 @@ function previewSignupAvatar(event){
         alt="Profile preview">
     `;
 
-    preview.classList.remove("hidden");
+    preview.classList.remove(
+      "hidden"
+    );
 
   };
 
@@ -2738,7 +3348,9 @@ async function uploadAvatar(){
 
 
   const input =
-    document.getElementById("avatarFile");
+    document.getElementById(
+      "avatarFile"
+    );
 
   const file =
     input.files?.[0];
@@ -2746,7 +3358,9 @@ async function uploadAvatar(){
 
   if(!file){
 
-    alert("Please select a profile picture first.");
+    alert(
+      "Please select a profile picture first."
+    );
 
     return;
 
@@ -2760,6 +3374,7 @@ async function uploadAvatar(){
     alert(
       "Profile picture uploaded successfully."
     );
+
 
   }catch(error){
 
@@ -2805,7 +3420,9 @@ async function uploadAvatarFile(file){
 
 
   const extension =
-    file.name.split(".").pop()
+    file.name
+      .split(".")
+      .pop()
       .toLowerCase()
       .replace(/[^a-z0-9]/g,"");
 
@@ -2822,7 +3439,9 @@ async function uploadAvatarFile(file){
     extension;
 
 
-  const {error:uploadError} =
+  const {
+    error:uploadError
+  } =
     await supabaseClient
       .storage
       .from("avatars")
@@ -2843,1983 +3462,35 @@ async function uploadAvatarFile(file){
   }
 
 
-  const {data:urlData} =
+  const {
+    data:urlData
+  } =
     supabaseClient
       .storage
       .from("avatars")
-      .getPublicUrl(filePath);
+      .getPublicUrl(
+        filePath
+      );
 
 
   const avatarUrl =
     urlData.publicUrl;
 
 
-  const {data,error} =
+  const {
+    data,
+    error
+  } =
     await supabaseClient
       .from("profiles")
       .upsert({
 
         id:currentUser.id,
 
-        avatar_url:avatarUrl
+        avatar_url:
+          avatarUrl
 
       },{
         onConflict:"id"
       })
-      .select()
-      .single();
-
-
-  if(error){
-
-    throw error;
-
-  }
-
-
-  currentProfile = data;
-
-  updateProfilePage();
-
-}
-
-
-/* ============================================================
-   AUTH UI
-============================================================ */
-
-function updateAuthUI(){
-
-  const button =
-    document.getElementById("authButton");
-
-
-  if(currentUser){
-
-    const name =
-      currentProfile?.full_name ||
-      currentUser.email?.split("@")[0] ||
-      "Profile";
-
-    button.textContent =
-      name.length > 12
-        ? name.substring(0,12) + "..."
-        : name;
-
-    button.onclick =
-      () => showPage("profile");
-
-  }else{
-
-    button.textContent =
-      "Log in";
-
-    button.onclick =
-      () => openAuth("login");
-
-  }
-
-
-  const messagesNotice =
-    document.getElementById(
-      "messagesLoginNotice"
-    );
-
-  const messagesApp =
-    document.getElementById(
-      "messagesApp"
-    );
-
-
-  if(currentUser){
-
-    messagesNotice.classList.add("hidden");
-    messagesApp.classList.remove("hidden");
-
-  }else{
-
-    messagesNotice.classList.remove("hidden");
-    messagesApp.classList.add("hidden");
-
-  }
-
-}
-
-
-/* ============================================================
-   LOGOUT
-============================================================ */
-
-async function logout(){
-
-  await supabaseClient.auth.signOut();
-
-  currentUser = null;
-  currentProfile = null;
-  selectedPerson = null;
-
-  if(messagesChannel){
-
-    await supabaseClient
-      .removeChannel(messagesChannel);
-
-    messagesChannel = null;
-
-  }
-
-  updateAuthUI();
-
-  showPage("home");
-
-}
-
-
-/* ============================================================
-   MESSAGES
-============================================================ */
-
-async function initializeMessages(){
-
-  if(!currentUser){
-
-    return;
-
-  }
-
-
-  await loadMessagePeople();
-
-  setupMessagesRealtime();
-
-}
-
-
-async function loadMessagePeople(){
-
-  if(!currentUser){
-
-    return;
-
-  }
-
-
-  const peopleList =
-    document.getElementById(
-      "peopleList"
-    );
-
-
-  peopleList.innerHTML =
-    `<div class="loading">Finding people...</div>`;
-
-
-  try{
-
-    const {data,error} =
-      await supabaseClient
-        .from("profiles")
-        .select("*")
-        .neq("id",currentUser.id)
-        .order("created_at",{
-          ascending:false
-        });
-
-
-    if(error) throw error;
-
-
-    allPeople = data || [];
-
-    renderPeople(allPeople);
-
-
-  }catch(error){
-
-    console.error(
-      "People loading error:",
-      error
-    );
-
-
-    peopleList.innerHTML = `
-      <div class="empty">
-        Could not load people.<br><br>
-        ${escapeHtml(error.message)}
-      </div>
-    `;
-
-  }
-
-}
-
-
-function renderPeople(people){
-
-  const list =
-    document.getElementById(
-      "peopleList"
-    );
-
-
-  if(!people.length){
-
-    list.innerHTML = `
-      <div class="empty">
-        No ZEEPY users found yet.
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  list.innerHTML =
-    people.map(person => {
-
-      const name =
-        getDisplayName(person);
-
-      const username =
-        getUsername(person);
-
-      return `
-
-        <div
-          class="person ${
-            selectedPerson?.id === person.id
-              ? "selected"
-              : ""
-          }"
-          onclick="selectPerson('${person.id}')">
-
-          ${avatarHtml(person)}
-
-          <div class="person-info">
-
-            <strong>
-              ${escapeHtml(name)}
-            </strong>
-
-            <span>
-              ${escapeHtml(
-                username ||
-                person.email ||
-                ""
-              )}
-            </span>
-
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
-
-}
-
-
-/*
-  IMPORTANT FIX:
-
-  The old version only searched one field.
-  This version checks full_name, name,
-  username AND email.
-*/
-
-function filterPeople(){
-
-  const query =
-    document.getElementById(
-      "peopleSearch"
-    )
-    .value
-    .trim()
-    .toLowerCase();
-
-
-  if(!query){
-
-    renderPeople(allPeople);
-
-    return;
-
-  }
-
-
-  const filtered =
-    allPeople.filter(person => {
-
-      const fullName =
-        String(
-          person.full_name || ""
-        ).toLowerCase();
-
-      const name =
-        String(
-          person.name || ""
-        ).toLowerCase();
-
-      const username =
-        String(
-          person.username || ""
-        ).toLowerCase();
-
-      const email =
-        String(
-          person.email || ""
-        ).toLowerCase();
-
-
-      return (
-        fullName.includes(query) ||
-        name.includes(query) ||
-        username.includes(query) ||
-        email.includes(query)
-      );
-
-    });
-
-
-  renderPeople(filtered);
-
-}
-
-
-async function selectPerson(personId){
-
-  const person =
-    allPeople.find(
-      p => p.id === personId
-    );
-
-
-  if(!person){
-
-    console.error(
-      "Person not found:",
-      personId
-    );
-
-    return;
-
-  }
-
-
-  selectedPerson = person;
-
-
-  renderPeople(
-    document.getElementById(
-      "peopleSearch"
-    ).value.trim()
-      ? allPeople.filter(p => {
-
-          const query =
-            document.getElementById(
-              "peopleSearch"
-            )
-            .value
-            .trim()
-            .toLowerCase();
-
-          return (
-            String(
-              p.full_name || ""
-            ).toLowerCase().includes(query) ||
-
-            String(
-              p.username || ""
-            ).toLowerCase().includes(query) ||
-
-            String(
-              p.email || ""
-            ).toLowerCase().includes(query)
-          );
-
-        })
-      : allPeople
-  );
-
-
-  const chatHeader =
-    document.getElementById(
-      "chatHeader"
-    );
-
-
-  const name =
-    getDisplayName(person);
-
-  const username =
-    getUsername(person);
-
-
-  chatHeader.innerHTML = `
-
-    ${avatarHtml(person)}
-
-    <div>
-
-      <strong>
-        ${escapeHtml(name)}
-      </strong>
-
-      <div class="muted">
-        ${escapeHtml(
-          username ||
-          person.email ||
-          ""
-        )}
-      </div>
-
-    </div>
-
-  `;
-
-
-  /*
-    We remain inside Messages.
-    No new page/destination is opened.
-  */
-
-  await loadConversation();
-
-}
-
-
-async function loadConversation(){
-
-  if(
-    !currentUser ||
-    !selectedPerson
-  ){
-
-    return;
-
-  }
-
-
-  const container =
-    document.getElementById(
-      "chatMessages"
-    );
-
-
-  container.innerHTML =
-    `<div class="loading">Loading conversation...</div>`;
-
-
-  try{
-
-    const {data,error} =
-      await supabaseClient
-        .from("messages")
-        .select("*")
-        .or(
-          `and(sender_id.eq.${currentUser.id},receiver_id.eq.${selectedPerson.id}),and(sender_id.eq.${selectedPerson.id},receiver_id.eq.${currentUser.id})`
-        )
-        .order("created_at",{
-          ascending:true
-        });
-
-
-    if(error) throw error;
-
-
-    renderMessages(data || []);
-
-
-  }catch(error){
-
-    console.error(error);
-
-    container.innerHTML = `
-      <div class="empty">
-        Could not load messages.<br><br>
-        ${escapeHtml(error.message)}
-      </div>
-    `;
-
-  }
-
-}
-
-
-function renderMessages(messages){
-
-  const container =
-    document.getElementById(
-      "chatMessages"
-    );
-
-
-  if(!messages.length){
-
-    container.innerHTML = `
-      <div class="empty">
-        No messages yet.<br>
-        Say hello 👋
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    messages.map(message => {
-
-      const mine =
-        message.sender_id === currentUser.id;
-
-
-      const time =
-        message.created_at
-          ? new Date(
-              message.created_at
-            ).toLocaleString()
-          : "";
-
-
-      return `
-
-        <div class="message-row ${
-          mine ? "mine" : ""
-        }">
-
-          <div class="message ${
-            mine ? "mine" : "theirs"
-          }">
-
-            <div>
-              ${escapeHtml(
-                message.content || ""
-              )}
-            </div>
-
-            <div class="message-time">
-              ${escapeHtml(time)}
-            </div>
-
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
-
-
-  container.scrollTop =
-    container.scrollHeight;
-
-}
-
-
-async function sendMessage(event){
-
-  event.preventDefault();
-
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  if(!selectedPerson){
-
-    alert(
-      "Select a person first."
-    );
-
-    return;
-
-  }
-
-
-  const input =
-    document.getElementById(
-      "messageInput"
-    );
-
-
-  const content =
-    input.value.trim();
-
-
-  if(!content){
-
-    return;
-
-  }
-
-
-  input.disabled = true;
-
-
-  try{
-
-    const {error} =
-      await supabaseClient
-        .from("messages")
-        .insert({
-
-          sender_id:
-            currentUser.id,
-
-          receiver_id:
-            selectedPerson.id,
-
-          content:content
-
-        });
-
-
-    if(error) throw error;
-
-
-    input.value = "";
-
-    await loadConversation();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Message could not be sent: " +
-      error.message
-    );
-
-  }finally{
-
-    input.disabled = false;
-
-    input.focus();
-
-  }
-
-}
-
-
-function setupMessagesRealtime(){
-
-  if(!currentUser){
-
-    return;
-
-  }
-
-
-  if(messagesChannel){
-
-    supabaseClient
-      .removeChannel(messagesChannel);
-
-    messagesChannel = null;
-
-  }
-
-
-  messagesChannel =
-    supabaseClient
-      .channel(
-        "messages-" +
-        currentUser.id
-      )
-      .on(
-        "postgres_changes",
-        {
-          event:"INSERT",
-          schema:"public",
-          table:"messages"
-        },
-        payload => {
-
-          const message =
-            payload.new;
-
-
-          if(
-            selectedPerson &&
-            (
-              (
-                message.sender_id ===
-                currentUser.id &&
-                message.receiver_id ===
-                selectedPerson.id
-              ) ||
-              (
-                message.sender_id ===
-                selectedPerson.id &&
-                message.receiver_id ===
-                currentUser.id
-              )
-            )
-          ){
-
-            loadConversation();
-
-          }
-
-        }
-      )
-      .subscribe();
-
-}
-
-
-function startMessaging(){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-  showPage("messages");
-
-}
-
-
-/* ============================================================
-   MARKET
-============================================================ */
-
-async function loadProducts(){
-
-  const grid =
-    document.getElementById(
-      "productsGrid"
-    );
-
-
-  try{
-
-    const {data,error} =
-      await supabaseClient
-        .from("products")
-        .select("*")
-        .order("created_at",{
-          ascending:false
-        });
-
-
-    if(error) throw error;
-
-
-    if(!data || !data.length){
-
-      grid.innerHTML = `
-        <div class="empty">
-          No products yet. Be the first to add one.
-        </div>
-      `;
-
-      return;
-
-    }
-
-
-    grid.innerHTML =
-      data.map(product => {
-
-        const image =
-          product.image_url ||
-          product.image ||
-          "";
-
-
-        return `
-
-          <div class="card">
-
-            ${
-              image
-                ? `
-                  <img
-                    class="product-image"
-                    src="${escapeHtml(image)}"
-                    alt="${escapeHtml(product.name || "Product")}"
-                  >
-                `
-                : `
-                  <div
-                    class="product-image"
-                    style="display:flex;align-items:center;justify-content:center;font-size:50px;">
-                    🛍️
-                  </div>
-                `
-            }
-
-            <div class="card-body">
-
-              <span class="tag">
-                ${escapeHtml(
-                  product.category || "Product"
-                )}
-              </span>
-
-              <br><br>
-
-              <h3>
-                ${escapeHtml(
-                  product.name || "Unnamed Product"
-                )}
-              </h3>
-
-              <div class="price">
-                GHS ${Number(
-                  product.price || 0
-                ).toFixed(2)}
-              </div>
-
-              <p class="muted">
-                ${escapeHtml(
-                  product.description || ""
-                )}
-              </p>
-
-              <br>
-
-              ${
-                product.seller_id
-                  ? `
-                    <button
-                      class="btn btn-orange"
-                      onclick="contactSeller('${product.seller_id}')">
-                      Message Seller
-                    </button>
-                  `
-                  : ""
-              }
-
-            </div>
-
-          </div>
-
-        `;
-
-      }).join("");
-
-
-  }catch(error){
-
-    console.error(error);
-
-    grid.innerHTML = `
-      <div class="empty">
-        Could not load products.<br><br>
-        ${escapeHtml(error.message)}
-      </div>
-    `;
-
-  }
-
-}
-
-
-async function saveProduct(){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  const name =
-    document.getElementById(
-      "productName"
-    ).value.trim();
-
-  const price =
-    Number(
-      document.getElementById(
-        "productPrice"
-      ).value
-    );
-
-  const category =
-    document.getElementById(
-      "productCategory"
-    ).value.trim();
-
-  const image_url =
-    document.getElementById(
-      "productImage"
-    ).value.trim();
-
-  const description =
-    document.getElementById(
-      "productDescription"
-    ).value.trim();
-
-
-  if(!name){
-
-    alert("Enter a product name.");
-
-    return;
-
-  }
-
-
-  if(!price || price < 0){
-
-    alert("Enter a valid price.");
-
-    return;
-
-  }
-
-
-  try{
-
-    const {error} =
-      await supabaseClient
-        .from("products")
-        .insert({
-
-          seller_id:
-            currentUser.id,
-
-          name,
-
-          price,
-
-          category,
-
-          image_url,
-
-          description
-
-        });
-
-
-    if(error) throw error;
-
-
-    document.getElementById(
-      "productName"
-    ).value = "";
-
-    document.getElementById(
-      "productPrice"
-    ).value = "";
-
-    document.getElementById(
-      "productCategory"
-    ).value = "";
-
-    document.getElementById(
-      "productImage"
-    ).value = "";
-
-    document.getElementById(
-      "productDescription"
-    ).value = "";
-
-
-    document.getElementById(
-      "productForm"
-    ).classList.add("hidden");
-
-
-    await loadProducts();
-
-    alert(
-      "Product published successfully."
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Could not publish product: " +
-      error.message
-    );
-
-  }
-
-}
-
-
-function contactSeller(sellerId){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  showPage("messages");
-
-
-  setTimeout(
-    () => selectPerson(sellerId),
-    300
-  );
-
-}
-
-
-/* ============================================================
-   GROUPS
-============================================================ */
-
-async function loadGroups(){
-
-  const grid =
-    document.getElementById(
-      "groupsGrid"
-    );
-
-
-  try{
-
-    const {data,error} =
-      await supabaseClient
-        .from("groups")
-        .select("*")
-        .order("created_at",{
-          ascending:false
-        });
-
-
-    if(error) throw error;
-
-
-    if(!data || !data.length){
-
-      grid.innerHTML = `
-        <div class="empty">
-          No groups yet.
-        </div>
-      `;
-
-      return;
-
-    }
-
-
-    grid.innerHTML =
-      data.map(group => `
-
-        <div class="card">
-
-          <div class="card-body">
-
-            <span class="tag">
-              Community
-            </span>
-
-            <br><br>
-
-            <h3>
-              ${escapeHtml(
-                group.name || "Unnamed Group"
-              )}
-            </h3>
-
-            <p class="muted">
-              ${escapeHtml(
-                group.description || ""
-              )}
-            </p>
-
-            <br>
-
-            <button
-              class="btn btn-orange"
-              onclick="joinGroup('${group.id}')">
-              Join Group
-            </button>
-
-          </div>
-
-        </div>
-
-      `).join("");
-
-
-  }catch(error){
-
-    console.error(error);
-
-    grid.innerHTML = `
-      <div class="empty">
-        Could not load groups.<br><br>
-        ${escapeHtml(error.message)}
-      </div>
-    `;
-
-  }
-
-}
-
-
-async function saveGroup(){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  const name =
-    document.getElementById(
-      "groupName"
-    ).value.trim();
-
-  const description =
-    document.getElementById(
-      "groupDescription"
-    ).value.trim();
-
-
-  if(!name){
-
-    alert("Enter a group name.");
-
-    return;
-
-  }
-
-
-  try{
-
-    const {error} =
-      await supabaseClient
-        .from("groups")
-        .insert({
-
-          name,
-
-          description,
-
-          created_by:
-            currentUser.id
-
-        });
-
-
-    if(error) throw error;
-
-
-    document.getElementById(
-      "groupName"
-    ).value = "";
-
-    document.getElementById(
-      "groupDescription"
-    ).value = "";
-
-
-    document.getElementById(
-      "groupForm"
-    ).classList.add("hidden");
-
-
-    await loadGroups();
-
-    alert(
-      "Group created successfully."
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Could not create group: " +
-      error.message
-    );
-
-  }
-
-}
-
-
-async function joinGroup(groupId){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  try{
-
-    const {error} =
-      await supabaseClient
-        .from("group_members")
-        .insert({
-
-          group_id:groupId,
-
-          user_id:
-            currentUser.id
-
-        });
-
-
-    if(error){
-
-      if(
-        error.code === "23505"
-      ){
-
-        alert(
-          "You are already a member of this group."
-        );
-
-        return;
-
-      }
-
-      throw error;
-
-    }
-
-
-    alert(
-      "You joined the group."
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Could not join group: " +
-      error.message
-    );
-
-  }
-
-}
-
-
-/* ============================================================
-   MEDIA
-============================================================ */
-
-async function loadMedia(){
-
-  const grid =
-    document.getElementById(
-      "mediaGrid"
-    );
-
-
-  try{
-
-    const {data,error} =
-      await supabaseClient
-        .from("media")
-        .select("*")
-        .order("created_at",{
-          ascending:false
-        });
-
-
-    if(error) throw error;
-
-
-    if(!data || !data.length){
-
-      grid.innerHTML = `
-        <div class="empty">
-          No media uploaded yet.
-        </div>
-      `;
-
-      return;
-
-    }
-
-
-    grid.innerHTML =
-      data.map(item => `
-
-        <div class="card">
-
-          <div class="card-body">
-
-            <span class="tag">
-              ${escapeHtml(
-                item.type || "media"
-              )}
-            </span>
-
-            <br><br>
-
-            <h3>
-              ${escapeHtml(
-                item.title || "Untitled"
-              )}
-            </h3>
-
-            <br>
-
-            ${
-              item.type === "video"
-                ? `
-                  <video
-                    controls
-                    style="width:100%;border-radius:10px;">
-                    <source
-                      src="${escapeHtml(item.url || "")}">
-                  </video>
-                `
-                :
-                item.type === "image"
-                  ? `
-                    <img
-                      src="${escapeHtml(item.url || "")}"
-                      style="width:100%;border-radius:10px;">
-                  `
-                  : `
-                    <a
-                      href="${escapeHtml(item.url || "")}"
-                      target="_blank">
-                      Open Media
-                    </a>
-                  `
-            }
-
-          </div>
-
-        </div>
-
-      `).join("");
-
-
-  }catch(error){
-
-    console.error(error);
-
-    grid.innerHTML = `
-      <div class="empty">
-        Could not load media.<br><br>
-        ${escapeHtml(error.message)}
-      </div>
-    `;
-
-  }
-
-}
-
-
-async function saveMedia(){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  const title =
-    document.getElementById(
-      "mediaTitle"
-    ).value.trim();
-
-  const url =
-    document.getElementById(
-      "mediaUrl"
-    ).value.trim();
-
-  const type =
-    document.getElementById(
-      "mediaType"
-    ).value;
-
-
-  if(!title || !url){
-
-    alert(
-      "Enter a title and media URL."
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    const {error} =
-      await supabaseClient
-        .from("media")
-        .insert({
-
-          user_id:
-            currentUser.id,
-
-          title,
-
-          url,
-
-          type
-
-        });
-
-
-    if(error) throw error;
-
-
-    document.getElementById(
-      "mediaTitle"
-    ).value = "";
-
-    document.getElementById(
-      "mediaUrl"
-    ).value = "";
-
-
-    document.getElementById(
-      "mediaForm"
-    ).classList.add("hidden");
-
-
-    await loadMedia();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Could not publish media: " +
-      error.message
-    );
-
-  }
-
-}
-
-
-/* ============================================================
-   WALLET
-============================================================ */
-
-async function loadWallet(){
-
-  const notice =
-    document.getElementById(
-      "walletLoginNotice"
-    );
-
-  const app =
-    document.getElementById(
-      "walletApp"
-    );
-
-
-  if(!currentUser){
-
-    notice.classList.remove("hidden");
-    app.classList.add("hidden");
-
-    return;
-
-  }
-
-
-  notice.classList.add("hidden");
-  app.classList.remove("hidden");
-
-
-  try{
-
-    const {data,error} =
-      await supabaseClient
-        .from("transactions")
-        .select("*")
-        .eq(
-          "user_id",
-          currentUser.id
-        )
-        .order("created_at",{
-          ascending:false
-        });
-
-
-    if(error) throw error;
-
-
-    const transactions =
-      data || [];
-
-
-    let balance = 0;
-    let earnings = 0;
-    let pending = 0;
-
-
-    transactions.forEach(tx => {
-
-      const amount =
-        Number(
-          tx.amount || 0
-        );
-
-
-      const status =
-        String(
-          tx.status || "completed"
-        ).toLowerCase();
-
-
-      if(status === "pending"){
-
-        pending += amount;
-
-      }else{
-
-        const type =
-          String(
-            tx.type ||
-            tx.transaction_type ||
-            ""
-          ).toLowerCase();
-
-
-        if(
-          type.includes("earning") ||
-          type.includes("sale") ||
-          type.includes("income")
-        ){
-
-          balance += amount;
-          earnings += amount;
-
-        }else if(
-          type.includes("withdraw")
-        ){
-
-          balance -= amount;
-
-        }else{
-
-          balance += amount;
-
-        }
-
-      }
-
-    });
-
-
-    setWalletValues(
-      balance,
-      earnings,
-      pending,
-      0
-    );
-
-
-    renderTransactions(
-      transactions
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-    document.getElementById(
-      "transactionsList"
-    ).innerHTML = `
-      <div class="error notice">
-        ${escapeHtml(
-          error.message
-        )}
-      </div>
-    `;
-
-  }
-
-}
-
-
-function setWalletValues(
-  balance,
-  earnings,
-  pending,
-  revenue
-){
-
-  document.getElementById(
-    "walletBalance"
-  ).textContent =
-    "GHS " +
-    Number(balance).toFixed(2);
-
-
-  document.getElementById(
-    "walletEarnings"
-  ).textContent =
-    "GHS " +
-    Number(earnings).toFixed(2);
-
-
-  document.getElementById(
-    "walletPending"
-  ).textContent =
-    "GHS " +
-    Number(pending).toFixed(2);
-
-
-  document.getElementById(
-    "walletRevenue"
-  ).textContent =
-    "GHS " +
-    Number(revenue).toFixed(2);
-
-}
-
-
-function renderTransactions(transactions){
-
-  const list =
-    document.getElementById(
-      "transactionsList"
-    );
-
-
-  if(!transactions.length){
-
-    list.innerHTML = `
-      <div class="empty">
-        No transactions yet.
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  list.innerHTML =
-    transactions.map(tx => `
-
-      <div
-        style="
-          display:flex;
-          justify-content:space-between;
-          gap:15px;
-          padding:13px 0;
-          border-bottom:1px solid #eee;
-        ">
-
-        <div>
-
-          <strong>
-            ${escapeHtml(
-              tx.type ||
-              tx.transaction_type ||
-              "Transaction"
-            )}
-          </strong>
-
-          <div class="muted">
-            ${escapeHtml(
-              tx.created_at
-                ? new Date(
-                    tx.created_at
-                  ).toLocaleString()
-                : ""
-            )}
-          </div>
-
-        </div>
-
-        <strong>
-          GHS ${Number(
-            tx.amount || 0
-          ).toFixed(2)}
-        </strong>
-
-      </div>
-
-    `).join("");
-
-}
-
-
-function processDeposit(){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  alert(
-    "Payment integration is not connected yet. No money has been charged or transferred."
-  );
-
-}
-
-
-function requestWithdrawal(){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  alert(
-    "Withdrawal integration is not connected yet. No money has been transferred."
-  );
-
-}
-
-
-/* ============================================================
-   NEARBY
-============================================================ */
-
-function findNearby(){
-
-  const results =
-    document.getElementById(
-      "nearbyResults"
-    );
-
-
-  results.innerHTML = `
-
-    <div class="form-card">
-
-      <h3>Nearby discovery</h3>
-
-      <p class="muted">
-        ZEEPY can later use location permission to
-        discover people, shops, products, groups and
-        opportunities around you.
-      </p>
-
-      <br>
-
-      <button
-        class="btn btn-orange"
-        onclick="requestLocation()">
-        Allow Location
-      </button>
-
-    </div>
-
-  `;
-
-}
-
-
-function requestLocation(){
-
-  if(!navigator.geolocation){
-
-    alert(
-      "Location is not supported by this browser."
-    );
-
-    return;
-
-  }
-
-
-  navigator.geolocation.getCurrentPosition(
-
-    position => {
-
-      document.getElementById(
-        "nearbyResults"
-      ).innerHTML = `
-
-        <div class="notice success">
-
-          Location permission received.
-
-          <br><br>
-
-          ZEEPY can now connect this location
-          to the future Nearby discovery system.
-
-        </div>
-
-      `;
-
-      console.log(
-        position.coords.latitude,
-        position.coords.longitude
-      );
-
-    },
-
-    error => {
-
-      alert(
-        "Location permission was not granted."
-      );
-
-    }
-
-  );
-
-}
-
-
-/* ============================================================
-   NOTIFICATIONS
-============================================================ */
-
-function showNotifications(){
-
-  alert(
-    currentUser
-      ? "Your ZEEPY notifications will appear here."
-      : "Log in to see your notifications."
-  );
-
-}
-
-
-/* ============================================================
-   LOGIN REQUIREMENTS
-============================================================ */
-
-function requireLogin(action){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  if(action === "addProduct"){
-
-    const form =
-      document.getElementById(
-        "productForm"
-      );
-
-    form.classList.toggle(
-      "hidden"
-    );
-
-  }
-
-
-  if(action === "createGroup"){
-
-    const form =
-      document.getElementById(
-        "groupForm"
-      );
-
-    form.classList.toggle(
-      "hidden"
-    );
-
-  }
-
-
-  if(action === "uploadMedia"){
-
-    const form =
-      document.getElementById(
-        "mediaForm"
-      );
-
-    form.classList.toggle(
-      "hidden"
-    );
-
-  }
-
-
-  if(action === "meeting"){
-
-    alert(
-      "Meeting creation is ready for connection to your video-meeting provider."
-    );
-
-  }
-
-
-  if(action === "goLive"){
-
-    alert(
-      "Live streaming is ready for connection to your streaming provider."
-    );
-
-  }
-
-}
-
-
-/* ============================================================
-   START
-============================================================ */
-
-async function initializeApp(){
-
-  await checkSession();
-
-  await loadProducts();
-
-  await loadGroups();
-
-  await loadMedia();
-
-  updateAuthUI();
-
-}
-
-
-initializeApp();
-
-</script>
-
-</body>
-</html>
+      .
