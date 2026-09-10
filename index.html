@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ZEEPY — Connect. Discover. Create.</title>
+<title>ZEEPY — Your Digital Society</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -13,33 +13,29 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 :root{
-  --orange:#ff6b00;
-  --orange2:#ff8a00;
+  --orange:#ff6a00;
+  --orange2:#ff8a1f;
   --black:#0b0b0b;
   --dark:#151515;
   --dark2:#202020;
-  --gray:#777;
-  --light:#f6f6f6;
+  --gray:#8f8f8f;
+  --light:#f5f5f5;
   --white:#fff;
-  --green:#18a957;
-  --red:#e53935;
-  --border:#e8e8e8;
+  --green:#22c55e;
+  --red:#ef4444;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f5f5f5;
-  color:#111;
-  min-height:100vh;
+  background:#f4f4f4;
+  color:#151515;
+  padding-bottom:75px;
 }
 
-button,
-input,
-textarea,
-select{
+button,input,textarea,select{
   font:inherit;
 }
 
@@ -47,379 +43,367 @@ button{
   cursor:pointer;
 }
 
-button:disabled{
-  cursor:not-allowed;
-  opacity:.6;
-}
-
-img{
-  max-width:100%;
-}
-
 .hidden{
-  display:none !important;
+  display:none!important;
 }
 
 /* HEADER */
-
-header{
+.header{
   position:sticky;
   top:0;
   z-index:1000;
-  min-height:70px;
   background:var(--black);
   color:white;
+  height:64px;
   display:flex;
   align-items:center;
-  padding:10px 25px;
-  box-shadow:0 2px 15px rgba(0,0,0,.18);
+  padding:0 18px;
+  gap:20px;
+  box-shadow:0 2px 12px #0005;
 }
 
 .logo{
-  font-size:28px;
+  font-size:25px;
   font-weight:900;
   letter-spacing:-1px;
-  margin-right:30px;
+  min-width:95px;
 }
 
-.logo .z1{
-  color:#fff;
-}
-
-.logo .z2{
+.logo span{
   color:var(--orange);
 }
 
-.top-nav{
+.topnav{
   display:flex;
-  align-items:center;
-  gap:6px;
+  gap:5px;
   flex:1;
   overflow-x:auto;
-  scrollbar-width:none;
 }
 
-.top-nav::-webkit-scrollbar{
-  display:none;
-}
-
-.top-nav button{
+.topnav button{
   border:0;
   background:transparent;
-  color:#ddd;
-  padding:10px 12px;
+  color:#bbb;
+  padding:10px 13px;
   border-radius:8px;
   white-space:nowrap;
 }
 
-.top-nav button:hover,
-.top-nav button.active{
-  background:var(--orange);
+.topnav button:hover,
+.topnav button.active{
+  background:#292929;
   color:white;
 }
 
-.header-actions{
+.header-right{
   display:flex;
+  gap:8px;
   align-items:center;
-  gap:10px;
-  margin-left:10px;
 }
 
 .icon-btn{
-  width:42px;
-  height:42px;
-  border:0;
-  border-radius:50%;
-  background:#242424;
+  background:#222;
   color:white;
-  font-size:18px;
+  border:0;
+  width:38px;
+  height:38px;
+  border-radius:50%;
 }
 
-.login-btn{
+.login-btn,
+.primary{
   background:var(--orange);
-  color:white;
   border:0;
-  padding:11px 18px;
+  color:white;
+  padding:10px 17px;
   border-radius:8px;
   font-weight:bold;
-  max-width:140px;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
 }
 
-/* PAGE */
-
-main{
-  max-width:1400px;
-  margin:auto;
+.login-btn:hover,
+.primary:hover{
+  background:var(--orange2);
 }
 
+/* PAGES */
 .page{
   display:none;
-  padding:25px;
+  max-width:1200px;
+  margin:auto;
+  padding:22px 16px;
 }
 
 .page.active{
   display:block;
 }
 
-/* HERO */
-
 .hero{
-  min-height:390px;
-  border-radius:22px;
-  overflow:hidden;
-  position:relative;
-  background:
-    linear-gradient(120deg,rgba(0,0,0,.94),rgba(20,20,20,.72)),
-    radial-gradient(circle at 80% 30%,#ff6b00,transparent 30%),
-    #111;
+  background:linear-gradient(135deg,#0b0b0b,#242424);
   color:white;
-  padding:60px;
-  display:flex;
-  align-items:center;
-  margin-bottom:25px;
+  border-radius:18px;
+  padding:35px 25px;
+  margin-bottom:22px;
+  position:relative;
+  overflow:hidden;
 }
 
-.hero-content{
-  max-width:720px;
-}
-
-.hero small{
-  display:inline-block;
-  color:#ff9a45;
-  font-weight:bold;
-  margin-bottom:12px;
-  text-transform:uppercase;
-  letter-spacing:2px;
+.hero:after{
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  background:var(--orange);
+  opacity:.12;
+  border-radius:50%;
+  right:-80px;
+  top:-80px;
 }
 
 .hero h1{
-  font-size:52px;
-  line-height:1.05;
-  margin-bottom:18px;
+  font-size:clamp(30px,6vw,52px);
+  margin-bottom:10px;
+}
+
+.hero h1 span{
+  color:var(--orange);
 }
 
 .hero p{
-  color:#ddd;
-  font-size:18px;
-  line-height:1.7;
-  margin-bottom:25px;
+  color:#ccc;
+  max-width:650px;
+  line-height:1.6;
 }
 
-.hero-buttons{
+.hero-actions{
   display:flex;
   flex-wrap:wrap;
-  gap:12px;
+  gap:10px;
+  margin-top:22px;
 }
 
-.btn{
-  border:0;
-  padding:13px 20px;
-  border-radius:9px;
-  font-weight:bold;
-}
-
-.btn-orange{
-  background:var(--orange);
-  color:white;
-}
-
-.btn-dark{
-  background:#222;
+.secondary{
+  background:#303030;
   color:white;
   border:1px solid #444;
+  padding:10px 17px;
+  border-radius:8px;
 }
 
-.btn-light{
-  background:white;
-  color:#111;
-}
-
-.btn-danger{
-  background:var(--red);
-  color:white;
-}
-
-/* SECTION */
-
+/* CARDS */
 .section-title{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  gap:15px;
-  margin:30px 0 15px;
+  align-items:center;
+  margin:25px 0 12px;
 }
 
 .section-title h2{
-  font-size:25px;
+  font-size:21px;
 }
 
-.muted{
+.section-title span{
   color:var(--gray);
+  font-size:13px;
 }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:18px;
+  gap:14px;
 }
-
-/* CARDS */
 
 .card{
   background:white;
-  border-radius:15px;
-  border:1px solid var(--border);
-  overflow:hidden;
-  box-shadow:0 5px 18px rgba(0,0,0,.04);
+  border:1px solid #e4e4e4;
+  border-radius:14px;
+  padding:17px;
+  box-shadow:0 2px 7px #00000008;
 }
 
-.card-body{
-  padding:16px;
+.card:hover{
+  transform:translateY(-2px);
+  transition:.2s;
+  box-shadow:0 6px 20px #00000012;
 }
 
-.product-image{
-  width:100%;
-  height:190px;
-  object-fit:cover;
-  background:#eee;
+.feature-card{
+  min-height:130px;
+  cursor:pointer;
 }
 
-.card h3{
-  margin-bottom:8px;
+.feature-icon{
+  width:45px;
+  height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff0e6;
+  border-radius:12px;
+  font-size:23px;
+  margin-bottom:10px;
 }
 
-.price{
-  color:var(--orange);
-  font-size:20px;
-  font-weight:bold;
-  margin:8px 0;
+.feature-card h3{
+  margin-bottom:5px;
 }
 
-.tag{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:20px;
-  background:#fff1e6;
-  color:var(--orange);
-  font-size:12px;
-  font-weight:bold;
+.feature-card p{
+  color:#777;
+  font-size:13px;
+  line-height:1.4;
 }
 
 /* FORMS */
-
 .form-card{
   background:white;
-  padding:22px;
-  border-radius:16px;
-  border:1px solid var(--border);
+  border-radius:15px;
+  padding:20px;
+  border:1px solid #ddd;
   margin-bottom:20px;
 }
 
 .form-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:15px;
+  gap:12px;
 }
 
-.form-group{
-  margin-bottom:14px;
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
 }
 
-.form-group.full{
+.field.full{
   grid-column:1/-1;
 }
 
-label{
-  display:block;
-  font-size:14px;
+.field label{
+  font-size:13px;
   font-weight:bold;
-  margin-bottom:7px;
 }
 
-input,
-textarea,
-select{
+.field input,
+.field textarea,
+.field select,
+.search{
   width:100%;
-  padding:12px 13px;
+  padding:12px;
   border:1px solid #ddd;
-  border-radius:9px;
+  border-radius:8px;
   outline:none;
   background:white;
 }
 
-input:focus,
-textarea:focus,
-select:focus{
+.field input:focus,
+.field textarea:focus,
+.field select:focus,
+.search:focus{
   border-color:var(--orange);
 }
 
 textarea{
-  min-height:110px;
+  min-height:100px;
   resize:vertical;
 }
 
-/* MESSAGES */
-
-.messages-layout{
+/* PRODUCTS */
+.product-grid{
   display:grid;
-  grid-template-columns:320px 1fr;
-  height:650px;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.product{
   background:white;
-  border-radius:18px;
+  border-radius:14px;
   overflow:hidden;
-  border:1px solid var(--border);
+  border:1px solid #ddd;
 }
 
-.people-panel{
-  border-right:1px solid #eee;
+.product-img{
+  height:160px;
+  background:#eee;
   display:flex;
-  flex-direction:column;
-  min-width:0;
+  align-items:center;
+  justify-content:center;
+  font-size:45px;
+  overflow:hidden;
 }
 
-.people-header{
-  padding:18px;
-  border-bottom:1px solid #eee;
+.product-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.people-header h2{
-  margin-bottom:12px;
+.product-body{
+  padding:14px;
+}
+
+.product-body h3{
+  margin-bottom:5px;
+}
+
+.price{
+  color:var(--orange);
+  font-size:19px;
+  font-weight:bold;
+  margin:8px 0;
+}
+
+.muted{
+  color:#777;
+  font-size:13px;
+}
+
+/* MESSAGES */
+.message-layout{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  min-height:570px;
+  background:white;
+  border:1px solid #ddd;
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.people{
+  border-right:1px solid #ddd;
+  padding:15px;
 }
 
 .people-list{
+  margin-top:12px;
+  max-height:480px;
   overflow-y:auto;
-  flex:1;
 }
 
 .person{
   display:flex;
   align-items:center;
-  gap:12px;
-  padding:13px 16px;
-  border-bottom:1px solid #f2f2f2;
+  gap:10px;
+  padding:10px;
+  border-radius:10px;
   cursor:pointer;
 }
 
 .person:hover,
 .person.selected{
-  background:#fff4eb;
+  background:#fff0e6;
 }
 
 .avatar{
-  width:45px;
-  height:45px;
+  width:42px;
+  height:42px;
   border-radius:50%;
-  background:linear-gradient(135deg,var(--orange),#ffb066);
-  color:white;
+  background:#ddd;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:bold;
   overflow:hidden;
   flex-shrink:0;
+  font-weight:bold;
 }
 
 .avatar img{
@@ -428,299 +412,237 @@ textarea{
   object-fit:cover;
 }
 
-.person-info{
-  min-width:0;
+.person-name{
+  font-weight:bold;
 }
 
-.person-info strong{
-  display:block;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+.person-sub{
+  color:#888;
+  font-size:12px;
 }
 
-.person-info span{
-  display:block;
-  color:#777;
-  font-size:13px;
-  margin-top:3px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-.chat-panel{
+.chat{
   display:flex;
   flex-direction:column;
   min-width:0;
 }
 
-.chat-header{
-  padding:15px 18px;
-  border-bottom:1px solid #eee;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  min-height:75px;
+.chat-head{
+  padding:15px;
+  border-bottom:1px solid #ddd;
+  font-weight:bold;
 }
 
 .chat-messages{
   flex:1;
-  overflow-y:auto;
-  padding:20px;
-  background:#fafafa;
-}
-
-.message-row{
-  display:flex;
-  margin-bottom:12px;
-}
-
-.message-row.mine{
-  justify-content:flex-end;
-}
-
-.message{
-  max-width:70%;
-  padding:10px 14px;
-  border-radius:15px;
-  line-height:1.5;
-  background:#eee;
-  word-break:break-word;
-}
-
-.message.mine{
-  background:var(--orange);
-  color:white;
-  border-bottom-right-radius:4px;
-}
-
-.message.theirs{
-  border-bottom-left-radius:4px;
-}
-
-.message-time{
-  font-size:10px;
-  opacity:.65;
-  margin-top:4px;
-}
-
-.chat-form{
-  display:flex;
-  gap:10px;
   padding:15px;
-  border-top:1px solid #eee;
+  overflow-y:auto;
+  background:#fafafa;
+  min-height:400px;
 }
 
-.chat-form input{
-  flex:1;
+.bubble{
+  max-width:75%;
+  padding:10px 13px;
+  margin-bottom:9px;
+  border-radius:13px;
+  line-height:1.4;
 }
 
-.chat-form button{
+.mine{
   background:var(--orange);
   color:white;
-  border:0;
-  padding:0 20px;
-  border-radius:9px;
-  font-weight:bold;
+  margin-left:auto;
+  border-bottom-right-radius:3px;
+}
+
+.theirs{
+  background:#e8e8e8;
+  border-bottom-left-radius:3px;
+}
+
+.chat-input{
+  display:flex;
+  gap:8px;
+  padding:12px;
+  border-top:1px solid #ddd;
+}
+
+.chat-input input{
+  flex:1;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+
+/* SOCIETY */
+.society-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.society-card{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  border:1px solid #ddd;
+  cursor:pointer;
+}
+
+.society-card strong{
+  display:block;
+  margin:8px 0;
+  font-size:17px;
+}
+
+.society-card small{
+  color:#777;
+  line-height:1.5;
 }
 
 /* PROFILE */
-
-.profile-card{
-  background:white;
-  border-radius:18px;
-  padding:30px;
-  border:1px solid var(--border);
-}
-
-.profile-top{
+.profile-head{
+  background:#111;
+  color:white;
+  padding:28px;
+  border-radius:16px;
   display:flex;
   align-items:center;
   gap:20px;
-  padding-bottom:25px;
-  border-bottom:1px solid #eee;
-  margin-bottom:25px;
+  margin-bottom:20px;
 }
 
-.profile-avatar{
-  width:110px;
-  height:110px;
+.profile-big{
+  width:90px;
+  height:90px;
   border-radius:50%;
-  overflow:hidden;
-  background:linear-gradient(135deg,var(--orange),#ffad70);
+  background:#333;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:white;
-  font-size:35px;
-  font-weight:bold;
-  flex-shrink:0;
+  overflow:hidden;
+  font-size:30px;
 }
 
-.profile-avatar img{
+.profile-big img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
 
-.profile-name{
-  font-size:28px;
-  font-weight:bold;
+.stats{
+  display:flex;
+  gap:25px;
+  margin-top:12px;
 }
 
-.profile-username{
-  color:var(--orange);
-  margin-top:5px;
-}
-
-.profile-bio{
-  margin-top:10px;
-  color:#666;
+.stats strong{
+  display:block;
+  font-size:20px;
 }
 
 /* WALLET */
-
-.wallet-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  margin-bottom:25px;
-}
-
-.wallet-card{
-  background:var(--black);
+.wallet-balance{
+  background:linear-gradient(135deg,#111,#292929);
   color:white;
-  padding:22px;
-  border-radius:16px;
+  border-radius:17px;
+  padding:25px;
+  margin-bottom:18px;
 }
 
-.wallet-card span{
-  color:#aaa;
-  font-size:13px;
-}
-
-.wallet-card strong{
-  display:block;
-  font-size:27px;
-  margin-top:8px;
+.balance{
+  font-size:38px;
+  font-weight:bold;
   color:var(--orange);
+  margin:8px 0 18px;
 }
 
 .wallet-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
-.transaction-row{
+.transaction{
+  padding:12px 0;
+  border-bottom:1px solid #eee;
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  padding:14px 0;
-  border-bottom:1px solid #eee;
 }
 
-.transaction-left{
-  min-width:0;
-}
-
-.transaction-title{
-  font-weight:bold;
-  text-transform:capitalize;
-}
-
-.transaction-description{
-  font-size:13px;
-  color:#777;
-  margin-top:3px;
-}
-
-.transaction-date{
-  font-size:12px;
-  color:#999;
-  margin-top:4px;
-}
-
-.transaction-amount{
-  font-weight:bold;
-  white-space:nowrap;
-}
-
-.transaction-credit{
-  color:var(--green);
-}
-
-.transaction-debit{
-  color:var(--red);
-}
-
-.status-badge{
-  display:inline-block;
-  padding:4px 8px;
-  border-radius:20px;
-  font-size:11px;
-  font-weight:bold;
-  margin-top:5px;
-  background:#eee;
-}
-
-.status-pending{
-  background:#fff3df;
-  color:#9a5b00;
-}
-
-.status-completed{
-  background:#e9f9ef;
-  color:#176b35;
-}
-
-.status-failed,
-.status-cancelled{
-  background:#ffeded;
-  color:#a11;
-}
-
-/* EMPTY / INFO */
-
-.empty{
-  padding:45px 20px;
-  text-align:center;
-  color:#777;
-}
-
-.notice{
-  padding:15px;
-  border-radius:10px;
-  background:#fff3e8;
-  border:1px solid #ffd3b0;
-  color:#8a4300;
+/* STATUS */
+.status{
+  padding:9px 13px;
+  border-radius:8px;
   margin-bottom:15px;
+  font-size:13px;
+  display:none;
 }
 
-.success{
-  background:#e9f9ef;
-  border-color:#b9e9ca;
-  color:#176b35;
+.status.show{
+  display:block;
 }
 
-.error{
-  background:#ffeded;
-  border-color:#ffc5c5;
-  color:#a11;
+.status.success{
+  background:#dcfce7;
+  color:#166534;
 }
 
-/* MODAL */
+.status.error{
+  background:#fee2e2;
+  color:#991b1b;
+}
 
+.status.info{
+  background:#e0f2fe;
+  color:#075985;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:999;
+  height:65px;
+  background:#111;
+  display:none;
+  justify-content:space-around;
+  align-items:center;
+  box-shadow:0 -2px 15px #0003;
+}
+
+.bottom-nav button{
+  background:none;
+  border:0;
+  color:#aaa;
+  font-size:11px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+}
+
+.bottom-nav button.active,
+.bottom-nav button:hover{
+  color:var(--orange);
+}
+
+.bottom-icon{
+  font-size:20px;
+}
+
+/* AUTH */
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.72);
+  background:#000b;
+  z-index:2000;
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:3000;
   padding:20px;
 }
 
@@ -728,169 +650,129 @@ textarea{
   display:flex;
 }
 
-.modal-box{
+.auth-box{
+  width:min(430px,100%);
   background:white;
-  width:min(500px,100%);
-  max-height:90vh;
-  overflow-y:auto;
-  border-radius:18px;
+  border-radius:17px;
   padding:25px;
-  position:relative;
 }
 
-.modal-close{
-  position:absolute;
-  right:18px;
-  top:15px;
-  border:0;
-  background:#eee;
-  width:35px;
-  height:35px;
-  border-radius:50%;
+.auth-box h2{
+  margin-bottom:5px;
 }
 
-.auth-tabs{
-  display:flex;
-  margin-bottom:20px;
-  background:#f3f3f3;
-  border-radius:9px;
-  padding:4px;
-}
-
-.auth-tabs button{
-  flex:1;
-  border:0;
-  padding:10px;
-  border-radius:7px;
-  background:transparent;
-}
-
-.auth-tabs button.active{
-  background:var(--orange);
-  color:white;
-}
-
-.auth-avatar-preview{
-  width:75px;
-  height:75px;
-  border-radius:50%;
-  overflow:hidden;
-  background:#eee;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:10px;
-}
-
-.auth-avatar-preview img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.loading{
-  text-align:center;
-  padding:30px;
+.auth-box p{
   color:#777;
+  margin-bottom:18px;
+}
+
+.auth-box .field{
+  margin-bottom:12px;
+}
+
+.auth-switch{
+  margin-top:15px;
+  text-align:center;
+  color:#777;
+  font-size:13px;
+}
+
+.link{
+  color:var(--orange);
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* EMPTY */
+.empty{
+  text-align:center;
+  padding:45px 20px;
+  color:#888;
 }
 
 /* RESPONSIVE */
-
-@media(max-width:1000px){
-
+@media(max-width:900px){
   .grid{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .wallet-grid{
+  .product-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .hero{
-    padding:40px;
+  .society-grid{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .hero h1{
-    font-size:42px;
+  .topnav{
+    display:none;
+  }
+
+  .bottom-nav{
+    display:flex;
   }
 }
 
-@media(max-width:750px){
-
-  header{
-    height:auto;
-    min-height:65px;
-    padding:10px 12px;
-    flex-wrap:wrap;
+@media(max-width:650px){
+  .header{
+    padding:0 10px;
   }
 
   .logo{
-    margin-right:10px;
+    min-width:auto;
   }
 
-  .top-nav{
-    order:3;
-    flex-basis:100%;
-    margin-top:8px;
+  .header-right .icon-btn{
+    display:none;
   }
 
-  .header-actions{
-    margin-left:auto;
+  .login-btn{
+    padding:8px 12px;
   }
 
   .page{
-    padding:14px;
+    padding:15px 10px;
   }
 
-  .hero{
-    min-height:420px;
-    padding:30px 22px;
+  .grid,
+  .product-grid,
+  .society-grid{
+    grid-template-columns:1fr 1fr;
+    gap:9px;
   }
 
-  .hero h1{
-    font-size:35px;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
+  .card,
+  .society-card{
+    padding:13px;
   }
 
   .form-grid{
     grid-template-columns:1fr;
   }
 
-  .wallet-grid,
-  .wallet-actions{
+  .field.full{
+    grid-column:auto;
+  }
+
+  .message-layout{
     grid-template-columns:1fr;
   }
 
-  .messages-layout{
-    grid-template-columns:1fr;
-    height:700px;
-  }
-
-  .people-panel{
-    max-height:250px;
+  .people{
     border-right:0;
-    border-bottom:1px solid #eee;
+    border-bottom:1px solid #ddd;
   }
 
-  .message{
-    max-width:85%;
+  .people-list{
+    max-height:170px;
   }
 
-  .profile-top{
-    align-items:flex-start;
-    flex-direction:column;
+  .chat-messages{
+    min-height:300px;
   }
 
-  .section-title{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .transaction-row{
-    align-items:flex-start;
+  .hero{
+    padding:25px 18px;
   }
 }
 </style>
@@ -898,902 +780,637 @@ textarea{
 
 <body>
 
-<header>
+<header class="header">
 
-  <div class="logo">
-    <span class="z1">ZEE</span><span class="z2">PY</span>
-  </div>
+  <div class="logo">ZEE<span>PY</span></div>
 
-  <nav class="top-nav">
-
-    <button onclick="showPage('home')" data-page="home">Home</button>
-    <button onclick="showPage('market')" data-page="market">Market</button>
-    <button onclick="showPage('messages')" data-page="messages">Messages</button>
-    <button onclick="showPage('meet')" data-page="meet">Meet</button>
-    <button onclick="showPage('groups')" data-page="groups">Groups</button>
-    <button onclick="showPage('live')" data-page="live">Live</button>
-    <button onclick="showPage('media')" data-page="media">Media</button>
-    <button onclick="showPage('nearby')" data-page="nearby">Nearby</button>
-    <button onclick="showPage('wallet')" data-page="wallet">Wallet</button>
-    <button onclick="showPage('profile')" data-page="profile">Profile</button>
-
+  <nav class="topnav">
+    <button onclick="showPage('home')" id="nav-home">Home</button>
+    <button onclick="showPage('market')" id="nav-market">Market</button>
+    <button onclick="showPage('messages')" id="nav-messages">Messages</button>
+    <button onclick="showPage('discover')" id="nav-discover">Discover</button>
+    <button onclick="showPage('groups')" id="nav-groups">Groups</button>
+    <button onclick="showPage('media')" id="nav-media">Media</button>
+    <button onclick="showPage('live')" id="nav-live">Live</button>
+    <button onclick="showPage('wallet')" id="nav-wallet">Wallet</button>
+    <button onclick="showPage('profile')" id="nav-profile">Profile</button>
   </nav>
 
-  <div class="header-actions">
-
-    <button class="icon-btn" onclick="showNotifications()">🔔</button>
-
-    <button
-      id="authButton"
-      class="login-btn"
-      onclick="openAuth('login')">
-      Log in
-    </button>
-
+  <div class="header-right">
+    <button class="icon-btn" onclick="showPage('notifications')">🔔</button>
+    <button class="login-btn" id="authButton" onclick="openAuth()">Log in</button>
   </div>
 
 </header>
 
-<main>
 
 <!-- HOME -->
-
-<section id="home" class="page active">
+<section class="page active" id="home">
 
   <div class="hero">
+    <h1>Your <span>ZEEPY</span> World</h1>
+    <p>
+      Connect with people, discover opportunities, buy and sell,
+      share information, join communities and participate in society.
+    </p>
 
-    <div class="hero-content">
+    <div class="hero-actions">
+      <button class="primary" onclick="showPage('market')">🛒 Explore Market</button>
+      <button class="secondary" onclick="showPage('discover')">🌍 Discover ZEEPY</button>
+      <button class="secondary" onclick="openCreate()">➕ Create</button>
+    </div>
+  </div>
 
-      <small>Welcome to ZEEPY</small>
+  <div id="connectionStatus" class="status"></div>
 
-      <h1>Your ZEEPY World</h1>
+  <div class="section-title">
+    <h2>What's happening?</h2>
+    <span>Your community</span>
+  </div>
 
-      <p>
-        Connect with people, discover products, meet, create groups,
-        share media, find people nearby, go live and build opportunities —
-        all in one place.
-      </p>
+  <div class="grid">
 
-      <div class="hero-buttons">
+    <div class="card feature-card" onclick="showPage('media')">
+      <div class="feature-icon">📰</div>
+      <h3>News & Reports</h3>
+      <p>Reports, stories and important information from society.</p>
+    </div>
 
-        <button class="btn btn-orange" onclick="showPage('market')">
-          Explore Market
-        </button>
+    <div class="card feature-card" onclick="showPage('market')">
+      <div class="feature-icon">🛒</div>
+      <h3>Market</h3>
+      <p>Buy, sell and discover products and local businesses.</p>
+    </div>
 
-        <button class="btn btn-dark" onclick="startMessaging()">
-          Start Chatting
-        </button>
+    <div class="card feature-card" onclick="showPage('groups')">
+      <div class="feature-icon">👥</div>
+      <h3>Community</h3>
+      <p>Join groups and connect with people who share your interests.</p>
+    </div>
 
-        <button class="btn btn-light" onclick="showPage('groups')">
-          Join Community
-        </button>
-
-      </div>
-
+    <div class="card feature-card" onclick="showPage('messages')">
+      <div class="feature-icon">💬</div>
+      <h3>Messages</h3>
+      <p>Talk privately with people and sellers.</p>
     </div>
 
   </div>
 
   <div class="section-title">
-    <h2>Everything in One Place</h2>
+    <h2>ZEEPY Society</h2>
+    <span>Explore different parts of life</span>
   </div>
 
-  <div class="grid">
+  <div class="society-grid">
 
-    <div class="card">
-      <div class="card-body">
-        <h3>🛍️ Marketplace</h3>
-        <p class="muted">
-          Discover products, promote your business and connect with buyers.
-        </p>
-      </div>
+    <div class="society-card" onclick="society('News & Reports')">
+      <div>📰</div>
+      <strong>News & Reports</strong>
+      <small>Local reports, public information, citizen journalism and stories.</small>
     </div>
 
-    <div class="card">
-      <div class="card-body">
-        <h3>💬 Messages</h3>
-        <p class="muted">
-          Find people and communicate directly.
-        </p>
-      </div>
+    <div class="society-card" onclick="society('Education')">
+      <div>🎓</div>
+      <strong>Education</strong>
+      <small>Schools, learning resources, scholarships, teachers and students.</small>
     </div>
 
-    <div class="card">
-      <div class="card-body">
-        <h3>👥 Groups</h3>
-        <p class="muted">
-          Create or join communities around your interests.
-        </p>
-      </div>
+    <div class="society-card" onclick="society('Jobs & Opportunities')">
+      <div>💼</div>
+      <strong>Jobs & Opportunities</strong>
+      <small>Jobs, skills, internships, businesses and opportunities.</small>
     </div>
 
-    <div class="card">
-      <div class="card-body">
-        <h3>💰 Earn</h3>
-        <p class="muted">
-          Build opportunities through your products, content and community.
-        </p>
-      </div>
+    <div class="society-card" onclick="society('Health')">
+      <div>🏥</div>
+      <strong>Health</strong>
+      <small>Health information, services and community awareness.</small>
+    </div>
+
+    <div class="society-card" onclick="society('Public Services')">
+      <div>🏛️</div>
+      <strong>Public Services</strong>
+      <small>Useful public information and community services.</small>
+    </div>
+
+    <div class="society-card" onclick="society('Sports')">
+      <div>⚽</div>
+      <strong>Sports</strong>
+      <small>Teams, players, competitions and sports communities.</small>
+    </div>
+
+    <div class="society-card" onclick="society('Entertainment')">
+      <div>🎭</div>
+      <strong>Entertainment</strong>
+      <small>Music, creators, comedy, events and entertainment.</small>
+    </div>
+
+    <div class="society-card" onclick="society('Agriculture')">
+      <div>🌾</div>
+      <strong>Agriculture</strong>
+      <small>Farmers, food, agriculture businesses and opportunities.</small>
+    </div>
+
+    <div class="society-card" onclick="society('Housing')">
+      <div>🏠</div>
+      <strong>Housing</strong>
+      <small>Homes, rentals, property and housing communities.</small>
+    </div>
+
+    <div class="society-card" onclick="society('Transport')">
+      <div>🚗</div>
+      <strong>Transport</strong>
+      <small>Transport services, vehicles and travel information.</small>
+    </div>
+
+    <div class="society-card" onclick="society('Community Help')">
+      <div>🆘</div>
+      <strong>Community Help</strong>
+      <small>Requests for help, support and community assistance.</small>
+    </div>
+
+    <div class="society-card" onclick="society('Announcements')">
+      <div>📢</div>
+      <strong>Announcements</strong>
+      <small>Important announcements from communities and organizations.</small>
     </div>
 
   </div>
 
 </section>
 
-<!-- MARKET -->
 
-<section id="market" class="page">
+<!-- MARKET -->
+<section class="page" id="market">
 
   <div class="section-title">
-
-    <div>
-      <h2>ZEEPY Marketplace</h2>
-      <p class="muted">Buy, sell and discover products.</p>
-    </div>
-
-    <button class="btn btn-orange" onclick="requireLogin('addProduct')">
-      + Add Product
-    </button>
-
+    <h2>🛒 ZEEPY Market</h2>
+    <button class="primary" onclick="toggleCreateProduct()">Sell Something</button>
   </div>
 
   <div id="productForm" class="form-card hidden">
 
-    <h3>Add Product</h3>
-    <br>
+    <h3>Create Product Listing</h3><br>
 
     <div class="form-grid">
 
-      <div class="form-group">
+      <div class="field">
         <label>Product name</label>
-        <input id="productName" placeholder="Example: Samsung Galaxy">
+        <input id="productName" placeholder="e.g. Samsung phone">
       </div>
 
-      <div class="form-group">
-        <label>Price (GHS)</label>
-        <input id="productPrice" type="number" min="0" step="0.01" placeholder="2500">
+      <div class="field">
+        <label>Price</label>
+        <input id="productPrice" type="number" placeholder="Price">
       </div>
 
-      <div class="form-group">
+      <div class="field">
         <label>Category</label>
-        <input id="productCategory" placeholder="Phones">
+        <select id="productCategory">
+          <option>Electronics</option>
+          <option>Phones & Tablets</option>
+          <option>Fashion</option>
+          <option>Beauty</option>
+          <option>Vehicles</option>
+          <option>Food</option>
+          <option>Services</option>
+          <option>Other</option>
+        </select>
       </div>
 
-      <div class="form-group">
+      <div class="field">
         <label>Image URL</label>
         <input id="productImage" placeholder="https://...">
       </div>
 
-      <div class="form-group full">
+      <div class="field full">
         <label>Description</label>
-        <textarea id="productDescription" placeholder="Describe your product"></textarea>
+        <textarea id="productDescription"></textarea>
       </div>
 
     </div>
 
-    <button class="btn btn-orange" onclick="saveProduct()">
-      Publish Product
-    </button>
+    <br>
+    <button class="primary" onclick="createProduct()">Publish Listing</button>
 
   </div>
 
-  <div id="productsGrid" class="grid">
-    <div class="loading">Loading products...</div>
-  </div>
+  <input class="search" id="marketSearch" placeholder="Search products..." oninput="filterProducts()">
+
+  <div class="product-grid" id="productsList"></div>
 
 </section>
 
-<!-- MESSAGES -->
 
-<section id="messages" class="page">
+<!-- MESSAGES -->
+<section class="page" id="messages">
 
   <div class="section-title">
-
-    <div>
-      <h2>Messages</h2>
-
-      <p class="muted">
-        Search for people and start a conversation.
-      </p>
-    </div>
-
+    <h2>💬 Messages</h2>
+    <span id="messageStatus">Private conversations</span>
   </div>
 
-  <div id="messagesLoginNotice" class="notice hidden">
-    Please log in to use ZEEPY Messages.
-  </div>
+  <div class="message-layout">
 
-  <div id="messagesApp" class="messages-layout hidden">
+    <aside class="people">
 
-    <div class="people-panel">
+      <input
+        class="search"
+        id="peopleSearch"
+        placeholder="Search people..."
+        oninput="searchPeople()"
+      >
 
-      <div class="people-header">
-
-        <h2>People</h2>
-
-        <input
-          id="peopleSearch"
-          type="search"
-          placeholder="Search name or username..."
-          oninput="filterPeople()">
-
+      <div class="people-list" id="peopleList">
+        <div class="empty">Loading people...</div>
       </div>
 
-      <div id="peopleList" class="people-list"></div>
+    </aside>
 
-    </div>
+    <main class="chat">
 
-    <div class="chat-panel">
-
-      <div id="chatHeader" class="chat-header">
-
-        <div class="avatar">?</div>
-
-        <div>
-          <strong>Select a person</strong>
-
-          <div class="muted">
-            Search for someone to start chatting.
-          </div>
-        </div>
-
+      <div class="chat-head" id="chatHead">
+        Select a person to start chatting
       </div>
 
-      <div id="chatMessages" class="chat-messages">
-
+      <div class="chat-messages" id="chatMessages">
         <div class="empty">
-          Select a person to start a conversation.
+          Choose someone from the list.
         </div>
-
       </div>
 
-      <form id="chatForm" class="chat-form">
+      <div class="chat-input">
 
         <input
           id="messageInput"
           placeholder="Write a message..."
-          autocomplete="off"
-          disabled>
+          onkeydown="if(event.key==='Enter')sendMessage()"
+        >
 
-        <button
-          id="sendMessageButton"
-          type="submit"
-          disabled>
-          Send
-        </button>
+        <button class="primary" onclick="sendMessage()">Send</button>
 
-      </form>
+      </div>
 
-    </div>
+    </main>
 
   </div>
 
 </section>
 
-<!-- MEET -->
 
-<section id="meet" class="page">
+<!-- DISCOVER -->
+<section class="page" id="discover">
 
-  <div class="section-title">
-
-    <div>
-      <h2>ZEEPY Meet</h2>
-
-      <p class="muted">
-        Create meetings and connect with your community.
-      </p>
-    </div>
-
+  <div class="hero">
+    <h1>Discover <span>ZEEPY</span></h1>
+    <p>Explore people, communities, information, opportunities and places around you.</p>
   </div>
 
   <div class="grid">
 
-    <div class="card">
-      <div class="card-body">
-
-        <h3>🎥 Start a Meeting</h3>
-
-        <p class="muted">
-          Meeting infrastructure can be connected to a video provider later.
-        </p>
-
-        <br>
-
-        <button
-          class="btn btn-orange"
-          onclick="requireLogin('meeting')">
-          Create Meeting
-        </button>
-
-      </div>
+    <div class="card feature-card" onclick="society('News & Reports')">
+      <div class="feature-icon">📰</div>
+      <h3>News & Reports</h3>
+      <p>Discover reports and stories.</p>
     </div>
 
-    <div class="card">
-      <div class="card-body">
+    <div class="card feature-card" onclick="society('Education')">
+      <div class="feature-icon">🎓</div>
+      <h3>Education</h3>
+      <p>Learning and educational opportunities.</p>
+    </div>
 
-        <h3>📅 Meetings</h3>
+    <div class="card feature-card" onclick="society('Jobs & Opportunities')">
+      <div class="feature-icon">💼</div>
+      <h3>Jobs</h3>
+      <p>Discover work and opportunities.</p>
+    </div>
 
-        <p class="muted">
-          Your upcoming ZEEPY meetings will appear here.
-        </p>
+    <div class="card feature-card" onclick="society('Nearby')">
+      <div class="feature-icon">📍</div>
+      <h3>Nearby</h3>
+      <p>Discover what's around you.</p>
+    </div>
 
-      </div>
+    <div class="card feature-card" onclick="society('Sports')">
+      <div class="feature-icon">⚽</div>
+      <h3>Sports</h3>
+      <p>Sports communities and events.</p>
+    </div>
+
+    <div class="card feature-card" onclick="society('Entertainment')">
+      <div class="feature-icon">🎬</div>
+      <h3>Entertainment</h3>
+      <p>Creators and entertainment.</p>
     </div>
 
   </div>
 
 </section>
+
 
 <!-- GROUPS -->
-
-<section id="groups" class="page">
+<section class="page" id="groups">
 
   <div class="section-title">
-
-    <div>
-      <h2>ZEEPY Groups</h2>
-
-      <p class="muted">
-        Create and join communities.
-      </p>
-    </div>
-
-    <button
-      class="btn btn-orange"
-      onclick="requireLogin('createGroup')">
-      + Create Group
-    </button>
-
+    <h2>👥 Groups</h2>
+    <button class="primary" onclick="createGroup()">Create Group</button>
   </div>
 
-  <div id="groupForm" class="form-card hidden">
-
-    <h3>Create Group</h3>
-    <br>
-
-    <div class="form-group">
-
-      <label>Group name</label>
-
-      <input
-        id="groupName"
-        placeholder="Example: Ghana Students">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Description</label>
-
-      <textarea
-        id="groupDescription"
-        placeholder="What is this group about?"></textarea>
-
-    </div>
-
-    <button class="btn btn-orange" onclick="saveGroup()">
-      Create Group
-    </button>
-
-  </div>
-
-  <div id="groupsGrid" class="grid">
-    <div class="loading">Loading groups...</div>
+  <div id="groupsList" class="grid">
+    <div class="empty">Loading groups...</div>
   </div>
 
 </section>
 
-<!-- LIVE -->
 
-<section id="live" class="page">
+<!-- MEDIA / REPORTS -->
+<section class="page" id="media">
 
   <div class="section-title">
+    <h2>📰 Media & Reports</h2>
+    <button class="primary" onclick="createReport()">Create Report</button>
+  </div>
 
-    <div>
-
-      <h2>Live</h2>
-
-      <p class="muted">
-        Discover live creators and communities.
-      </p>
-
-    </div>
-
-    <button
-      class="btn btn-orange"
-      onclick="requireLogin('goLive')">
-      🔴 Go Live
-    </button>
-
+  <div class="hero">
+    <h1>Tell the <span>Story</span></h1>
+    <p>
+      ZEEPY can become a place where people share reports,
+      community stories, videos, photos and important information.
+    </p>
   </div>
 
   <div class="grid">
 
     <div class="card">
+      <h3>📰 Citizen Reports</h3>
+      <p class="muted">Community members can report what is happening around them.</p>
+    </div>
 
-      <div class="card-body">
+    <div class="card">
+      <h3>🎥 Video Reports</h3>
+      <p class="muted">Share video stories and events.</p>
+    </div>
 
-        <h3>🔴 Live Video</h3>
+    <div class="card">
+      <h3>📸 Photo Stories</h3>
+      <p class="muted">Share images from your community.</p>
+    </div>
 
-        <p class="muted">
-          Your live streaming system can be connected to a real streaming
-          provider as the platform grows.
-        </p>
-
-      </div>
-
+    <div class="card">
+      <h3>📢 Breaking Information</h3>
+      <p class="muted">Important community announcements.</p>
     </div>
 
   </div>
 
 </section>
 
-<!-- MEDIA -->
 
-<section id="media" class="page">
+<!-- LIVE -->
+<section class="page" id="live">
 
-  <div class="section-title">
+  <div class="hero">
+    <h1>🔴 ZEEPY <span>Live</span></h1>
+    <p>
+      Live conversations, events, creators and future live-shopping experiences.
+    </p>
 
-    <div>
-
-      <h2>ZEEPY Media</h2>
-
-      <p class="muted">
-        Share videos and other media.
-      </p>
-
-    </div>
-
-    <button
-      class="btn btn-orange"
-      onclick="requireLogin('uploadMedia')">
-      + Upload Media
-    </button>
-
-  </div>
-
-  <div id="mediaForm" class="form-card hidden">
-
-    <h3>Upload Media</h3>
-    <br>
-
-    <div class="form-group">
-
-      <label>Title</label>
-
-      <input
-        id="mediaTitle"
-        placeholder="Video title">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Media URL</label>
-
-      <input
-        id="mediaUrl"
-        placeholder="https://...">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Type</label>
-
-      <select id="mediaType">
-
-        <option value="video">Video</option>
-        <option value="image">Image</option>
-        <option value="audio">Audio</option>
-
-      </select>
-
-    </div>
-
-    <button class="btn btn-orange" onclick="saveMedia()">
-      Publish
-    </button>
-
-  </div>
-
-  <div id="mediaGrid" class="grid">
-    <div class="loading">Loading media...</div>
-  </div>
-
-</section>
-
-<!-- NEARBY -->
-
-<section id="nearby" class="page">
-
-  <div class="hero" style="min-height:300px;">
-
-    <div class="hero-content">
-
-      <small>ZEEPY Nearby</small>
-
-      <h1>Discover What's Around You</h1>
-
-      <p>
-        Find people, businesses, products, groups and opportunities
-        around your area.
-      </p>
-
-      <button
-        class="btn btn-orange"
-        onclick="findNearby()">
-        Find Nearby
+    <div class="hero-actions">
+      <button class="primary" onclick="startLive()">GO LIVE</button>
+      <button class="secondary" onclick="alert('Live discovery will show active broadcasts here.')">
+        Watch Live
       </button>
-
     </div>
-
   </div>
 
-  <div id="nearbyResults"></div>
-
 </section>
+
 
 <!-- WALLET -->
-
-<section id="wallet" class="page">
+<section class="page" id="wallet">
 
   <div class="section-title">
-
-    <div>
-
-      <h2>ZEEPY Wallet</h2>
-
-      <p class="muted">
-        Track your earnings and transactions.
-      </p>
-
-    </div>
-
+    <h2>💰 Wallet</h2>
+    <span>Your ZEEPY earnings</span>
   </div>
 
-  <div id="walletLoginNotice" class="notice hidden">
-    Log in to view your wallet.
-  </div>
+  <div class="wallet-balance">
 
-  <div id="walletApp" class="hidden">
+    <div>Available Balance</div>
 
-    <div class="wallet-grid">
-
-      <div class="wallet-card">
-        <span>Available Balance</span>
-        <strong id="walletBalance">GHS 0.00</strong>
-      </div>
-
-      <div class="wallet-card">
-        <span>Total Earnings</span>
-        <strong id="walletEarnings">GHS 0.00</strong>
-      </div>
-
-      <div class="wallet-card">
-        <span>Pending</span>
-        <strong id="walletPending">GHS 0.00</strong>
-      </div>
-
-      <div class="wallet-card">
-        <span>ZEEPY Revenue</span>
-        <strong id="walletRevenue">GHS 0.00</strong>
-      </div>
-
+    <div class="balance" id="walletBalance">
+      GH₵ 0.00
     </div>
-
-    <div id="walletNotice" class="notice hidden"></div>
 
     <div class="wallet-actions">
-
-      <div class="form-card">
-
-        <h3>Add Funds</h3>
-
-        <p class="muted">
-          Submit a deposit request. A real payment provider
-          can be connected later.
-        </p>
-
-        <br>
-
-        <input
-          id="depositAmount"
-          type="number"
-          min="1"
-          step="0.01"
-          placeholder="Amount in GHS">
-
-        <br><br>
-
-        <button
-          id="depositButton"
-          class="btn btn-orange"
-          onclick="processDeposit()">
-          Request Deposit
-        </button>
-
-      </div>
-
-      <div class="form-card">
-
-        <h3>Withdraw</h3>
-
-        <p class="muted">
-          Submit a withdrawal request from your available balance.
-        </p>
-
-        <br>
-
-        <input
-          id="withdrawAmount"
-          type="number"
-          min="1"
-          step="0.01"
-          placeholder="Amount in GHS">
-
-        <br><br>
-
-        <button
-          id="withdrawButton"
-          class="btn btn-dark"
-          onclick="requestWithdrawal()">
-          Request Withdrawal
-        </button>
-
-      </div>
-
+      <button class="primary" onclick="walletAction('deposit')">Add Money</button>
+      <button class="secondary" onclick="walletAction('withdraw')">Withdraw</button>
     </div>
 
-    <div class="form-card">
+  </div>
 
-      <h3>Transaction History</h3>
-
-      <br>
-
-      <div id="transactionsList">
-        Loading transactions...
-      </div>
-
+  <div class="card">
+    <h3>Transactions</h3>
+    <div id="transactionsList">
+      <div class="empty">No transactions yet.</div>
     </div>
-
   </div>
 
 </section>
 
+
 <!-- PROFILE -->
+<section class="page" id="profile">
 
-<section id="profile" class="page">
+  <div class="profile-head">
 
-  <div id="profileLoginNotice" class="notice hidden">
-    Please log in to view your profile.
-  </div>
-
-  <div id="profileApp" class="profile-card hidden">
-
-    <div class="profile-top">
-
-      <div id="profileAvatar" class="profile-avatar">
-        Z
-      </div>
-
-      <div>
-
-        <div id="profileName" class="profile-name">
-          Your Name
-        </div>
-
-        <div id="profileUsername" class="profile-username">
-          @username
-        </div>
-
-        <div id="profileBio" class="profile-bio">
-          Welcome to ZEEPY.
-        </div>
-
-      </div>
-
+    <div class="profile-big" id="profileAvatar">
+      👤
     </div>
 
-    <h3>Edit Profile</h3>
+    <div>
+      <h2 id="profileName">Guest</h2>
+      <p id="profileUsername">@guest</p>
 
-    <br>
+      <div class="stats">
+        <div>
+          <strong id="profileProducts">0</strong>
+          <small>Listings</small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-card">
+
+    <h3>Edit Profile</h3><br>
 
     <div class="form-grid">
 
-      <div class="form-group">
-
+      <div class="field">
         <label>Full name</label>
-
-        <input
-          id="editFullName"
-          placeholder="Your full name">
-
+        <input id="editName">
       </div>
 
-      <div class="form-group">
-
+      <div class="field">
         <label>Username</label>
-
-        <input
-          id="editUsername"
-          placeholder="username">
-
+        <input id="editUsername">
       </div>
 
-      <div class="form-group full">
-
+      <div class="field full">
         <label>Bio</label>
-
-        <textarea
-          id="editBio"
-          placeholder="Tell people about yourself"></textarea>
-
+        <textarea id="editBio"></textarea>
       </div>
 
-      <div class="form-group full">
-
-        <label>Profile picture</label>
-
-        <input
-          id="avatarFile"
-          type="file"
-          accept="image/png,image/jpeg,image/webp"
-          onchange="previewAvatar(event)">
-
-        <small class="muted">
-          JPG, PNG or WebP. Maximum 5MB.
-        </small>
-
+      <div class="field full">
+        <label>Profile picture URL</label>
+        <input id="editAvatar" placeholder="Image URL">
       </div>
 
     </div>
 
-    <div id="avatarPreview" class="auth-avatar-preview hidden"></div>
-
     <br>
 
-    <button
-      class="btn btn-orange"
-      onclick="uploadAvatar()">
-      Upload Profile Picture
-    </button>
-
-    <button
-      class="btn btn-dark"
-      onclick="saveProfile()">
-      Save Profile
-    </button>
-
-    <button
-      class="btn btn-danger"
-      onclick="logout()">
-      Log Out
-    </button>
+    <button class="primary" onclick="saveProfile()">Save Profile</button>
 
   </div>
 
 </section>
 
-</main>
 
-<!-- AUTH -->
+<!-- NOTIFICATIONS -->
+<section class="page" id="notifications">
 
-<div id="authModal" class="modal">
+  <div class="section-title">
+    <h2>🔔 Notifications</h2>
+  </div>
 
-  <div class="modal-box">
-
-    <button class="modal-close" onclick="closeAuth()">×</button>
-
-    <h2 id="authTitle">Log in to ZEEPY</h2>
-
-    <p
-      id="authSubtitle"
-      class="muted"
-      style="margin:8px 0 20px;">
-      Connect with your ZEEPY community.
-    </p>
-
-    <div class="auth-tabs">
-
-      <button
-        id="loginTab"
-        class="active"
-        onclick="setAuthMode('login')">
-        Log In
-      </button>
-
-      <button
-        id="signupTab"
-        onclick="setAuthMode('signup')">
-        Create Account
-      </button>
-
+  <div class="card">
+    <div class="empty">
+      Your notifications will appear here.
     </div>
+  </div>
 
-    <div id="signupFields" class="hidden">
+</section>
 
-      <div class="form-group">
 
-        <label>Full name</label>
+<!-- CREATE -->
+<div class="modal" id="createModal">
 
-        <input
-          id="signupFullName"
-          placeholder="Your full name">
+  <div class="auth-box">
 
-      </div>
+    <h2>Create on ZEEPY</h2>
+    <p>Choose what you want to create.</p>
 
-      <div class="form-group">
+    <button class="primary" style="width:100%;margin-bottom:10px"
+      onclick="closeCreate();showPage('market');toggleCreateProduct()">
+      🛒 Product Listing
+    </button>
 
-        <label>Username</label>
+    <button class="secondary" style="width:100%;margin-bottom:10px"
+      onclick="closeCreate();createReport()">
+      📰 Report
+    </button>
 
-        <input
-          id="signupUsername"
-          placeholder="username">
+    <button class="secondary" style="width:100%;margin-bottom:10px"
+      onclick="closeCreate();createGroup()">
+      👥 Group
+    </button>
 
-      </div>
-
-      <div class="form-group">
-
-        <label>Profile picture</label>
-
-        <input
-          id="signupAvatar"
-          type="file"
-          accept="image/png,image/jpeg,image/webp"
-          onchange="previewSignupAvatar(event)">
-
-      </div>
-
-      <div
-        id="signupAvatarPreview"
-        class="auth-avatar-preview hidden">
-      </div>
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Email</label>
-
-      <input
-        id="authEmail"
-        type="email"
-        placeholder="you@example.com">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Password</label>
-
-      <input
-        id="authPassword"
-        type="password"
-        placeholder="Minimum 6 characters">
-
-    </div>
-
-    <div id="authMessage" class="notice hidden"></div>
-
-    <button
-      id="authSubmit"
-      class="btn btn-orange"
-      style="width:100%;"
-      onclick="loginOrSignup()">
-      Log In
+    <button class="secondary" style="width:100%"
+      onclick="closeCreate();startLive()">
+      🔴 Live
     </button>
 
   </div>
 
 </div>
 
-<script>
-"use strict";
 
-/* ============================================================
-   ZEEPY SAFE SUPABASE START
-============================================================ */
+<!-- AUTH -->
+<div class="modal" id="authModal">
+
+  <div class="auth-box">
+
+    <h2 id="authTitle">Welcome to ZEEPY</h2>
+
+    <p id="authDescription">
+      Login to connect with your ZEEPY world.
+    </p>
+
+    <div id="authError" class="status"></div>
+
+    <div id="signupNameField" class="field hidden">
+      <label>Full name</label>
+      <input id="authName" placeholder="Your name">
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input id="authEmail" type="email" placeholder="you@example.com">
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input id="authPassword" type="password" placeholder="Password">
+    </div>
+
+    <button class="primary" style="width:100%;margin-top:8px"
+      onclick="submitAuth()" id="authSubmit">
+      Log in
+    </button>
+
+    <div class="auth-switch">
+      <span id="authSwitchText">Don't have an account?</span>
+      <span class="link" onclick="toggleAuthMode()" id="authSwitchButton">
+        Sign up
+      </span>
+    </div>
+
+    <br>
+
+    <button class="secondary" style="width:100%" onclick="closeAuth()">
+      Close
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- BOTTOM -->
+<nav class="bottom-nav">
+
+  <button onclick="showPage('home')" id="bottom-home">
+    <span class="bottom-icon">🏠</span>Home
+  </button>
+
+  <button onclick="showPage('market')" id="bottom-market">
+    <span class="bottom-icon">🛒</span>Market
+  </button>
+
+  <button onclick="showPage('messages')" id="bottom-messages">
+    <span class="bottom-icon">💬</span>Messages
+  </button>
+
+  <button onclick="openCreate()">
+    <span class="bottom-icon">➕</span>Create
+  </button>
+
+  <button onclick="showPage('profile')" id="bottom-profile">
+    <span class="bottom-icon">👤</span>Profile
+  </button>
+
+</nav>
+
+
+<script>
+
+/* =========================================================
+   ZEEPY SUPABASE CONNECTION
+   ========================================================= */
 
 const SUPABASE_URL =
   "https://rolcuhrubqryfkaziacr.supabase.co";
@@ -1801,1245 +1418,508 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
   "sb_publishable_iy6KvSrIMcMiKAXklrYg9A_eGVsVq5p";
 
-let supabaseClient = null;
-
-try{
-
-  if(
-    window.supabase &&
-    typeof window.supabase.createClient === "function"
-  ){
-
-    supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-      );
-
-  }else{
-
-    console.error(
-      "Supabase library was not loaded."
-    );
-
-  }
-
-}catch(error){
-
-  console.error(
-    "Supabase startup error:",
-    error
-  );
-
-}
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
 
-/* ============================================================
-   GLOBAL STATE
-============================================================ */
+/* =========================================================
+   APP STATE
+   ========================================================= */
 
 let currentUser = null;
 let currentProfile = null;
-
 let selectedPerson = null;
 let allPeople = [];
-
+let allProducts = [];
 let authMode = "login";
 
-let messagesChannel = null;
-let messagesInitialized = false;
 
-let messagesLoading = false;
-
-
-/* ============================================================
+/* =========================================================
    HELPERS
-============================================================ */
+   ========================================================= */
 
-function escapeHtml(value){
+function showStatus(message,type="info"){
 
-  if(
-    value === null ||
-    value === undefined
-  ){
-    return "";
-  }
+  const box = document.getElementById("connectionStatus");
+
+  if(!box) return;
+
+  box.textContent = message;
+  box.className = "status show " + type;
+}
+
+
+function escapeHTML(value){
+
+  if(value === null || value === undefined) return "";
 
   return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-}
-
-
-function getDisplayName(person){
-
-  if(!person){
-    return "ZEEPY User";
-  }
-
-  return (
-    person.full_name ||
-    person.name ||
-    person.username ||
-    "ZEEPY User"
-  );
-}
-
-
-function getUsername(person){
-
-  if(
-    person &&
-    person.username
-  ){
-
-    return "@" +
-      String(person.username)
-        .replace(/^@/,"");
-
-  }
-
-  return "";
-}
-
-
-function getAvatar(person){
-
-  if(!person){
-    return "";
-  }
-
-  return (
-    person.avatar_url ||
-    person.avatar ||
-    ""
-  );
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
 
 
 function initials(name){
 
-  const text =
-    String(name || "Z").trim();
+  if(!name) return "👤";
 
-  if(!text){
-    return "Z";
-  }
-
-  const parts =
-    text.split(/\s+/);
-
-  if(parts.length >= 2){
-
-    return (
-      parts[0][0] +
-      parts[1][0]
-    ).toUpperCase();
-
-  }
-
-  return text
-    .substring(0,2)
+  return name
+    .split(" ")
+    .slice(0,2)
+    .map(x=>x[0])
+    .join("")
     .toUpperCase();
 }
 
 
-function avatarHtml(
-  person,
-  className="avatar"
-){
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
 
-  const name =
-    getDisplayName(person);
+function showPage(page){
 
-  const url =
-    getAvatar(person);
+  document.querySelectorAll(".page")
+    .forEach(p=>p.classList.remove("active"));
 
-  if(url){
+  const target = document.getElementById(page);
 
-    return `
-      <div class="${className}">
-        <img
-          src="${escapeHtml(url)}"
-          alt="${escapeHtml(name)}"
-          onerror="this.style.display='none';this.parentElement.textContent='${escapeHtml(initials(name))}'">
-      </div>
-    `;
-
+  if(target){
+    target.classList.add("active");
   }
 
-  return `
-    <div class="${className}">
-      ${escapeHtml(initials(name))}
-    </div>
-  `;
+  document.querySelectorAll(".topnav button")
+    .forEach(b=>b.classList.remove("active"));
+
+  const nav = document.getElementById("nav-"+page);
+
+  if(nav) nav.classList.add("active");
+
+  document.querySelectorAll(".bottom-nav button")
+    .forEach(b=>b.classList.remove("active"));
+
+  const bottom = document.getElementById("bottom-"+page);
+
+  if(bottom) bottom.classList.add("active");
+
+  window.scrollTo(0,0);
+
+  if(page==="market") loadProducts();
+  if(page==="messages") initializeMessages();
+  if(page==="groups") loadGroups();
+  if(page==="wallet") loadWallet();
+  if(page==="profile") loadProfilePage();
 }
 
 
-function showNotice(
-  elementId,
-  message,
-  type=""
-){
+/* =========================================================
+   AUTH
+   ========================================================= */
 
-  const el =
-    document.getElementById(elementId);
+function openAuth(){
 
-  if(!el){
+  if(currentUser){
+
+    logout();
+
     return;
   }
 
-  el.className =
-    "notice" +
-    (type ? " " + type : "");
-
-  el.textContent =
-    message;
-
-  el.classList.remove("hidden");
-}
-
-
-function hideNotice(elementId){
-
-  const el =
-    document.getElementById(elementId);
-
-  if(el){
-    el.classList.add("hidden");
-  }
-
-}
-
-
-function safeError(error){
-
-  if(!error){
-    return "Unknown error.";
-  }
-
-  return (
-    error.message ||
-    error.error_description ||
-    String(error)
-  );
-}
-
-
-function databaseReady(){
-
-  if(!supabaseClient){
-
-    alert(
-      "ZEEPY could not connect to Supabase. Please refresh the page."
-    );
-
-    return false;
-
-  }
-
-  return true;
-}
-
-
-/* ============================================================
-   PAGE NAVIGATION
-   IMPORTANT:
-   Navigation NEVER depends on Supabase.
-============================================================ */
-
-function showPage(pageId){
-
-  try{
-
-    const pages =
-      document.querySelectorAll(".page");
-
-    pages.forEach(page => {
-
-      page.classList.remove("active");
-
-    });
-
-
-    const page =
-      document.getElementById(pageId);
-
-    if(!page){
-
-      console.error(
-        "Page not found:",
-        pageId
-      );
-
-      return;
-
-    }
-
-
-    page.classList.add("active");
-
-
-    document
-      .querySelectorAll(".top-nav button")
-      .forEach(button => {
-
-        button.classList.toggle(
-          "active",
-          button.dataset.page === pageId
-        );
-
-      });
-
-
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-
-
-    /*
-      Feature loading is deliberately isolated.
-      A database failure cannot stop navigation.
-    */
-
-    if(pageId === "messages"){
-
-      setTimeout(() => {
-
-        initializeMessages()
-          .catch(error =>
-            console.error(
-              "Messages initialization error:",
-              error
-            )
-          );
-
-      },0);
-
-    }
-
-
-    if(pageId === "profile"){
-
-      try{
-        updateProfilePage();
-      }catch(error){
-        console.error(error);
-      }
-
-    }
-
-
-    if(pageId === "wallet"){
-
-      setTimeout(() => {
-
-        loadWallet()
-          .catch(error =>
-            console.error(
-              "Wallet error:",
-              error
-            )
-          );
-
-      },0);
-
-    }
-
-
-    if(pageId === "market"){
-
-      setTimeout(() => {
-
-        loadProducts()
-          .catch(error =>
-            console.error(
-              "Market error:",
-              error
-            )
-          );
-
-      },0);
-
-    }
-
-
-    if(pageId === "groups"){
-
-      setTimeout(() => {
-
-        loadGroups()
-          .catch(error =>
-            console.error(
-              "Groups error:",
-              error
-            )
-          );
-
-      },0);
-
-    }
-
-
-    if(pageId === "media"){
-
-      setTimeout(() => {
-
-        loadMedia()
-          .catch(error =>
-            console.error(
-              "Media error:",
-              error
-            )
-          );
-
-      },0);
-
-    }
-
-  }catch(error){
-
-    console.error(
-      "Navigation error:",
-      error
-    );
-
-  }
-
-}
-
-
-/* ============================================================
-   AUTH MODAL
-============================================================ */
-
-function openAuth(mode="login"){
-
-  try{
-
-    setAuthMode(mode);
-
-    const modal =
-      document.getElementById("authModal");
-
-    if(modal){
-      modal.classList.add("show");
-    }
-
-  }catch(error){
-
-    console.error(
-      "Auth modal error:",
-      error
-    );
-
-  }
-
+  document.getElementById("authModal").classList.add("show");
 }
 
 
 function closeAuth(){
 
-  const modal =
-    document.getElementById("authModal");
-
-  if(modal){
-    modal.classList.remove("show");
-  }
-
+  document.getElementById("authModal")
+    .classList.remove("show");
 }
 
 
-function setAuthMode(mode){
+function toggleAuthMode(){
 
   authMode =
-    mode === "signup"
+    authMode==="login"
       ? "signup"
       : "login";
 
+  document.getElementById("authTitle").textContent =
+    authMode==="login"
+      ? "Welcome to ZEEPY"
+      : "Create your ZEEPY account";
 
-  const loginTab =
-    document.getElementById("loginTab");
+  document.getElementById("authDescription").textContent =
+    authMode==="login"
+      ? "Login to connect with your ZEEPY world."
+      : "Join the ZEEPY community.";
 
-  const signupTab =
-    document.getElementById("signupTab");
+  document.getElementById("signupNameField")
+    .classList.toggle("hidden",authMode==="login");
 
-  const signupFields =
-    document.getElementById("signupFields");
+  document.getElementById("authSubmit").textContent =
+    authMode==="login"
+      ? "Log in"
+      : "Create Account";
 
-  const title =
-    document.getElementById("authTitle");
+  document.getElementById("authSwitchText").textContent =
+    authMode==="login"
+      ? "Don't have an account?"
+      : "Already have an account?";
 
-  const subtitle =
-    document.getElementById("authSubtitle");
-
-  const submit =
-    document.getElementById("authSubmit");
-
-
-  if(loginTab){
-
-    loginTab.classList.toggle(
-      "active",
-      authMode === "login"
-    );
-
-  }
-
-
-  if(signupTab){
-
-    signupTab.classList.toggle(
-      "active",
-      authMode === "signup"
-    );
-
-  }
-
-
-  if(authMode === "signup"){
-
-    if(signupFields){
-      signupFields.classList.remove("hidden");
-    }
-
-    if(title){
-      title.textContent =
-        "Create your ZEEPY account";
-    }
-
-    if(subtitle){
-      subtitle.textContent =
-        "Create your profile and join ZEEPY.";
-    }
-
-    if(submit){
-      submit.textContent =
-        "Create Account";
-    }
-
-  }else{
-
-    if(signupFields){
-      signupFields.classList.add("hidden");
-    }
-
-    if(title){
-      title.textContent =
-        "Log in to ZEEPY";
-    }
-
-    if(subtitle){
-      subtitle.textContent =
-        "Connect with your ZEEPY community.";
-    }
-
-    if(submit){
-      submit.textContent =
-        "Log In";
-    }
-
-  }
-
-  hideNotice("authMessage");
-
+  document.getElementById("authSwitchButton").textContent =
+    authMode==="login"
+      ? "Sign up"
+      : "Log in";
 }
 
 
-/* ============================================================
-   LOGIN / SIGNUP
-============================================================ */
-
-async function loginOrSignup(){
-
-  if(!databaseReady()){
-    return;
-  }
-
+async function submitAuth(){
 
   const email =
-    document.getElementById("authEmail")
-      ?.value
-      .trim();
-
+    document.getElementById("authEmail").value.trim();
 
   const password =
-    document.getElementById("authPassword")
-      ?.value || "";
+    document.getElementById("authPassword").value;
 
+  const name =
+    document.getElementById("authName").value.trim();
 
   if(!email || !password){
 
-    showNotice(
-      "authMessage",
-      "Please enter your email and password.",
-      "error"
-    );
+    showAuthError("Enter your email and password.");
 
     return;
-
   }
 
+  document.getElementById("authSubmit").disabled=true;
 
-  if(
-    authMode === "signup" &&
-    password.length < 6
-  ){
+  if(authMode==="signup"){
 
-    showNotice(
-      "authMessage",
-      "Password must be at least 6 characters.",
-      "error"
-    );
+    if(!name){
 
-    return;
+      showAuthError("Enter your full name.");
 
-  }
+      document.getElementById("authSubmit").disabled=false;
 
+      return;
+    }
 
-  const submit =
-    document.getElementById("authSubmit");
+    const {data,error} =
+      await db.auth.signUp({
+        email,
+        password,
+        options:{
+          data:{
+            full_name:name
+          }
+        }
+      });
 
+    if(error){
 
-  if(submit){
+      showAuthError(error.message);
 
-    submit.disabled = true;
+      document.getElementById("authSubmit").disabled=false;
 
-    submit.textContent =
-      "Please wait...";
+      return;
+    }
 
-  }
+    if(data.user && data.session){
 
-
-  try{
-
-    if(authMode === "login"){
-
-      const result =
-        await supabaseClient.auth
-          .signInWithPassword({
-            email,
-            password
-          });
-
-
-      if(result.error){
-        throw result.error;
-      }
-
-
-      currentUser =
-        result.data.user || null;
-
-
-      if(currentUser){
-
-        await loadCurrentProfile();
-
-      }
-
+      await ensureProfile(data.user,name);
 
       closeAuth();
 
-      updateAuthUI();
+      await refreshUser();
 
-      showPage("home");
-
+      alert("Account created successfully!");
 
     }else{
 
-      const fullName =
-        document
-          .getElementById("signupFullName")
-          ?.value
-          .trim() || "";
-
-
-      const username =
-        document
-          .getElementById("signupUsername")
-          ?.value
-          .trim()
-          .replace(/^@/,"")
-          .toLowerCase() || "";
-
-
-      if(!fullName){
-
-        showNotice(
-          "authMessage",
-          "Please enter your full name.",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      if(!username){
-
-        showNotice(
-          "authMessage",
-          "Please choose a username.",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      const result =
-        await supabaseClient.auth
-          .signUp({
-
-            email,
-            password,
-
-            options:{
-              data:{
-                full_name:fullName,
-                username:username
-              }
-            }
-
-          });
-
-
-      if(result.error){
-        throw result.error;
-      }
-
-
-      if(result.data.session){
-
-        currentUser =
-          result.data.user;
-
-
-        await loadCurrentProfile();
-
-
-        const avatarInput =
-          document.getElementById(
-            "signupAvatar"
-          );
-
-
-        if(
-          avatarInput &&
-          avatarInput.files &&
-          avatarInput.files.length
-        ){
-
-          try{
-
-            await uploadAvatarFile(
-              avatarInput.files[0]
-            );
-
-          }catch(avatarError){
-
-            console.error(
-              "Signup avatar error:",
-              avatarError
-            );
-
-          }
-
-        }
-
-
-        closeAuth();
-
-        updateAuthUI();
-
-        showPage("profile");
-
-
-        alert(
-          "Account created successfully. Welcome to ZEEPY!"
-        );
-
-      }else{
-
-        showNotice(
-          "authMessage",
-          "Account created. Check your email to confirm the account, then log in.",
-          "success"
-        );
-
-      }
-
-    }
-
-  }catch(error){
-
-    console.error(
-      "Authentication error:",
-      error
-    );
-
-
-    showNotice(
-      "authMessage",
-      safeError(error),
-      "error"
-    );
-
-  }finally{
-
-    if(submit){
-
-      submit.disabled = false;
-
-      submit.textContent =
-        authMode === "login"
-          ? "Log In"
-          : "Create Account";
-
-    }
-
-  }
-
-}
-
-
-/* ============================================================
-   SESSION
-============================================================ */
-
-async function checkSession(){
-
-  if(!supabaseClient){
-    return;
-  }
-
-
-  try{
-
-    const result =
-      await supabaseClient.auth.getSession();
-
-
-    if(result.error){
-
-      console.error(
-        "Session error:",
-        result.error
+      alert(
+        "Account created. If email confirmation is enabled in Supabase, confirm your email first, then log in."
       );
 
-      return;
-
+      toggleAuthMode();
     }
-
-
-    currentUser =
-      result.data?.session?.user || null;
-
-
-    if(currentUser){
-
-      await loadCurrentProfile();
-
-    }
-
-
-    updateAuthUI();
-
-  }catch(error){
-
-    console.error(
-      "Could not check session:",
-      error
-    );
-
-  }
-
-}
-
-
-/* ============================================================
-   AUTH STATE LISTENER
-============================================================ */
-
-function setupAuthListener(){
-
-  if(!supabaseClient){
-    return;
-  }
-
-
-  try{
-
-    supabaseClient.auth.onAuthStateChange(
-      (event,session) => {
-
-        currentUser =
-          session?.user || null;
-
-
-        /*
-          Never perform awaited Supabase work directly
-          inside the auth callback.
-        */
-
-        setTimeout(async () => {
-
-          try{
-
-            if(currentUser){
-
-              await loadCurrentProfile();
-
-            }else{
-
-              currentProfile = null;
-              selectedPerson = null;
-              allPeople = [];
-
-              messagesInitialized = false;
-
-
-              if(messagesChannel){
-
-                try{
-
-                  await supabaseClient
-                    .removeChannel(
-                      messagesChannel
-                    );
-
-                }catch(error){
-
-                  console.error(
-                    error
-                  );
-
-                }
-
-                messagesChannel = null;
-
-              }
-
-            }
-
-
-            updateAuthUI();
-
-          }catch(error){
-
-            console.error(
-              "Auth state handling error:",
-              error
-            );
-
-          }
-
-        },0);
-
-      }
-    );
-
-  }catch(error){
-
-    console.error(
-      "Could not setup auth listener:",
-      error
-    );
-
-  }
-
-}
-
-
-/* ============================================================
-   PROFILE
-============================================================ */
-
-async function loadCurrentProfile(){
-
-  if(!currentUser){
-
-    currentProfile = null;
-
-    return;
-
-  }
-
-
-  if(!supabaseClient){
-
-    return;
-
-  }
-
-
-  try{
-
-    const result =
-      await supabaseClient
-        .from("profiles")
-        .select(
-          "id,full_name,username,bio,avatar_url"
-        )
-        .eq(
-          "id",
-          currentUser.id
-        )
-        .maybeSingle();
-
-
-    if(result.error){
-
-      console.error(
-        "Profile loading error:",
-        result.error
-      );
-
-      return;
-
-    }
-
-
-    if(result.data){
-
-      currentProfile =
-        result.data;
-
-    }else{
-
-      const metadata =
-        currentUser.user_metadata || {};
-
-
-      const generatedUsername =
-        metadata.username ||
-        (
-          currentUser.email
-            ? currentUser.email.split("@")[0]
-            : "user"
-        );
-
-
-      const profileData = {
-
-        id:currentUser.id,
-
-        full_name:
-          metadata.full_name || "",
-
-        username:
-          generatedUsername,
-
-        bio:
-          "Welcome to ZEEPY.",
-
-        avatar_url:
-          metadata.avatar_url || ""
-
-      };
-
-
-      const createResult =
-        await supabaseClient
-          .from("profiles")
-          .upsert(
-            profileData,
-            {
-              onConflict:"id"
-            }
-          )
-          .select(
-            "id,full_name,username,bio,avatar_url"
-          )
-          .maybeSingle();
-
-
-      if(createResult.error){
-
-        console.error(
-          "Could not create profile:",
-          createResult.error
-        );
-
-      }else if(createResult.data){
-
-        currentProfile =
-          createResult.data;
-
-      }
-
-    }
-
-
-    updateProfilePage();
-
-  }catch(error){
-
-    console.error(
-      "Profile error:",
-      error
-    );
-
-  }
-
-}
-
-
-function updateProfilePage(){
-
-  const loginNotice =
-    document.getElementById(
-      "profileLoginNotice"
-    );
-
-  const profileApp =
-    document.getElementById(
-      "profileApp"
-    );
-
-
-  if(!loginNotice || !profileApp){
-    return;
-  }
-
-
-  if(!currentUser){
-
-    loginNotice.classList.remove(
-      "hidden"
-    );
-
-    profileApp.classList.add(
-      "hidden"
-    );
-
-    return;
-
-  }
-
-
-  loginNotice.classList.add(
-    "hidden"
-  );
-
-  profileApp.classList.remove(
-    "hidden"
-  );
-
-
-  const profile =
-    currentProfile || {};
-
-
-  const name =
-    profile.full_name ||
-    currentUser.user_metadata?.full_name ||
-    "ZEEPY User";
-
-
-  const username =
-    profile.username ||
-    currentUser.user_metadata?.username ||
-    "user";
-
-
-  const bio =
-    profile.bio ||
-    "Welcome to ZEEPY.";
-
-
-  const avatar =
-    profile.avatar_url ||
-    "";
-
-
-  const nameElement =
-    document.getElementById("profileName");
-
-  const usernameElement =
-    document.getElementById("profileUsername");
-
-  const bioElement =
-    document.getElementById("profileBio");
-
-  const fullNameInput =
-    document.getElementById("editFullName");
-
-  const usernameInput =
-    document.getElementById("editUsername");
-
-  const bioInput =
-    document.getElementById("editBio");
-
-
-  if(nameElement){
-    nameElement.textContent = name;
-  }
-
-  if(usernameElement){
-
-    usernameElement.textContent =
-      "@" +
-      String(username)
-        .replace(/^@/,"");
-
-  }
-
-  if(bioElement){
-    bioElement.textContent = bio;
-  }
-
-  if(fullNameInput){
-    fullNameInput.value = name;
-  }
-
-  if(usernameInput){
-
-    usernameInput.value =
-      String(username)
-        .replace(/^@/,"");
-
-  }
-
-  if(bioInput){
-    bioInput.value = bio;
-  }
-
-
-  const avatarElement =
-    document.getElementById(
-      "profileAvatar"
-    );
-
-
-  if(!avatarElement){
-    return;
-  }
-
-
-  if(avatar){
-
-    avatarElement.innerHTML = `
-      <img
-        src="${escapeHtml(avatar)}"
-        alt="Profile picture"
-        onerror="this.style.display='none';this.parentElement.textContent='${escapeHtml(initials(name))}'">
-    `;
 
   }else{
 
-    avatarElement.textContent =
-      initials(name);
+    const {data,error} =
+      await db.auth.signInWithPassword({
+        email,
+        password
+      });
 
+    if(error){
+
+      showAuthError(error.message);
+
+      document.getElementById("authSubmit").disabled=false;
+
+      return;
+    }
+
+    closeAuth();
+
+    await refreshUser();
   }
 
+  document.getElementById("authSubmit").disabled=false;
+}
+
+
+function showAuthError(message){
+
+  const box =
+    document.getElementById("authError");
+
+  box.textContent=message;
+
+  box.className="status show error";
+}
+
+
+async function logout(){
+
+  await db.auth.signOut();
+
+  currentUser=null;
+  currentProfile=null;
+  selectedPerson=null;
+
+  updateAuthUI();
+
+  showPage("home");
+
+  showStatus("You are logged out.","info");
+}
+
+
+async function refreshUser(){
+
+  const {
+    data:{user}
+  } = await db.auth.getUser();
+
+  currentUser=user || null;
+
+  if(currentUser){
+
+    await ensureProfile(currentUser);
+
+    await loadCurrentProfile();
+
+    updateAuthUI();
+
+    showStatus(
+      "✅ ZEEPY is connected to your Supabase account.",
+      "success"
+    );
+
+  }else{
+
+    updateAuthUI();
+
+  }
+}
+
+
+function updateAuthUI(){
+
+  const button =
+    document.getElementById("authButton");
+
+  if(currentUser){
+
+    button.textContent="Log out";
+
+  }else{
+
+    button.textContent="Log in";
+  }
+}
+
+
+/* =========================================================
+   SUPABASE CONNECTION TEST
+   ========================================================= */
+
+async function testSupabaseConnection(){
+
+  showStatus(
+    "Connecting ZEEPY to Supabase...",
+    "info"
+  );
+
+  try{
+
+    const {error} =
+      await db
+        .from("profiles")
+        .select("id")
+        .limit(1);
+
+    if(error){
+
+      console.error(error);
+
+      showStatus(
+        "❌ Supabase connected, but the profiles table/policy returned an error: "+
+        error.message,
+        "error"
+      );
+
+      return false;
+    }
+
+    showStatus(
+      "✅ ZEEPY is connected to Supabase.",
+      "success"
+    );
+
+    return true;
+
+  }catch(error){
+
+    console.error(error);
+
+    showStatus(
+      "❌ Supabase connection failed: "+
+      error.message,
+      "error"
+    );
+
+    return false;
+  }
+}
+
+
+/* =========================================================
+   PROFILES
+   ========================================================= */
+
+async function ensureProfile(user,nameOverride=""){
+
+  if(!user) return;
+
+  const fullName =
+    nameOverride ||
+    user.user_metadata?.full_name ||
+    user.email?.split("@")[0] ||
+    "ZEEPY User";
+
+  const username =
+    (fullName
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g,"")
+      .slice(0,20)) ||
+    ("user"+user.id.slice(0,6));
+
+  const {error} =
+    await db
+      .from("profiles")
+      .upsert({
+        id:user.id,
+        full_name:fullName,
+        username:username
+      },{
+        onConflict:"id"
+      });
+
+  if(error){
+
+    console.warn(
+      "Could not create/update profile:",
+      error.message
+    );
+  }
+}
+
+
+async function loadCurrentProfile(){
+
+  if(!currentUser) return null;
+
+  const {data,error} =
+    await db
+      .from("profiles")
+      .select("*")
+      .eq("id",currentUser.id)
+      .maybeSingle();
+
+  if(error){
+
+    console.error(error);
+
+    return null;
+  }
+
+  currentProfile=data;
+
+  return data;
+}
+
+
+async function loadProfilePage(){
+
+  if(!currentUser){
+
+    document.getElementById("profileName").textContent="Guest";
+    document.getElementById("profileUsername").textContent="@guest";
+
+    return;
+  }
+
+  const profile =
+    await loadCurrentProfile();
+
+  if(!profile) return;
+
+  document.getElementById("profileName").textContent =
+    profile.full_name || "ZEEPY User";
+
+  document.getElementById("profileUsername").textContent =
+    "@"+(profile.username || "user");
+
+  document.getElementById("editName").value =
+    profile.full_name || "";
+
+  document.getElementById("editUsername").value =
+    profile.username || "";
+
+  document.getElementById("editBio").value =
+    profile.bio || "";
+
+  document.getElementById("editAvatar").value =
+    profile.avatar_url || "";
+
+  const avatar =
+    document.getElementById("profileAvatar");
+
+  if(profile.avatar_url){
+
+    avatar.innerHTML =
+      `<img src="${escapeHTML(profile.avatar_url)}">`;
+
+  }else{
+
+    avatar.textContent =
+      initials(profile.full_name);
+  }
+
+  const {count} =
+    await db
+      .from("products")
+      .select("*",{count:"exact",head:true})
+      .eq("seller_id",currentUser.id);
+
+  document.getElementById("profileProducts").textContent =
+    count || 0;
 }
 
 
@@ -3047,2375 +1927,677 @@ async function saveProfile(){
 
   if(!currentUser){
 
-    openAuth("login");
+    openAuth();
 
-    return;
-
-  }
-
-
-  if(!databaseReady()){
     return;
   }
 
-
-  const fullName =
-    document
-      .getElementById("editFullName")
-      ?.value
-      .trim() || "";
-
+  const full_name =
+    document.getElementById("editName").value.trim();
 
   const username =
-    document
-      .getElementById("editUsername")
-      ?.value
-      .trim()
-      .replace(/^@/,"")
-      .toLowerCase() || "";
-
+    document.getElementById("editUsername").value.trim();
 
   const bio =
-    document
-      .getElementById("editBio")
-      ?.value
-      .trim() || "";
+    document.getElementById("editBio").value.trim();
 
+  const avatar_url =
+    document.getElementById("editAvatar").value.trim();
 
-  if(!fullName){
-
-    alert(
-      "Please enter your full name."
-    );
-
-    return;
-
-  }
-
-
-  if(!username){
-
-    alert(
-      "Please enter a username."
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    const result =
-      await supabaseClient
-        .from("profiles")
-        .upsert({
-
-          id:currentUser.id,
-
-          full_name:fullName,
-
-          username:username,
-
-          bio:
-            bio ||
-            "Welcome to ZEEPY."
-
-        },{
-          onConflict:"id"
-        })
-        .select(
-          "id,full_name,username,bio,avatar_url"
-        )
-        .maybeSingle();
-
-
-    if(result.error){
-      throw result.error;
-    }
-
-
-    if(result.data){
-
-      currentProfile =
-        result.data;
-
-    }
-
-
-    updateProfilePage();
-
-    updateAuthUI();
-
-
-    alert(
-      "Profile saved successfully."
-    );
-
-  }catch(error){
-
-    console.error(
-      "Save profile error:",
-      error
-    );
-
-
-    alert(
-      "Could not save profile:\n\n" +
-      safeError(error)
-    );
-
-  }
-
-}
-
-
-/* ============================================================
-   AVATAR
-============================================================ */
-
-function previewAvatar(event){
-
-  const file =
-    event.target.files?.[0];
-
-  const preview =
-    document.getElementById(
-      "avatarPreview"
-    );
-
-
-  if(!preview){
-    return;
-  }
-
-
-  if(!file){
-
-    preview.classList.add(
-      "hidden"
-    );
-
-    return;
-
-  }
-
-
-  if(!file.type.startsWith("image/")){
-
-    alert(
-      "Please select an image."
-    );
-
-    event.target.value = "";
-
-    return;
-
-  }
-
-
-  if(file.size > 5 * 1024 * 1024){
-
-    alert(
-      "Image must be 5MB or smaller."
-    );
-
-    event.target.value = "";
-
-    return;
-
-  }
-
-
-  const reader =
-    new FileReader();
-
-
-  reader.onload = function(){
-
-    preview.innerHTML = `
-      <img
-        src="${reader.result}"
-        alt="Preview">
-    `;
-
-    preview.classList.remove(
-      "hidden"
-    );
-
-  };
-
-
-  reader.readAsDataURL(file);
-
-}
-
-
-function previewSignupAvatar(event){
-
-  const file =
-    event.target.files?.[0];
-
-  const preview =
-    document.getElementById(
-      "signupAvatarPreview"
-    );
-
-
-  if(!preview){
-    return;
-  }
-
-
-  if(!file){
-
-    preview.classList.add(
-      "hidden"
-    );
-
-    return;
-
-  }
-
-
-  if(!file.type.startsWith("image/")){
-
-    alert(
-      "Please select an image."
-    );
-
-    event.target.value = "";
-
-    return;
-
-  }
-
-
-  if(file.size > 5 * 1024 * 1024){
-
-    alert(
-      "Image must be 5MB or smaller."
-    );
-
-    event.target.value = "";
-
-    return;
-
-  }
-
-
-  const reader =
-    new FileReader();
-
-
-  reader.onload = function(){
-
-    preview.innerHTML = `
-      <img
-        src="${reader.result}"
-        alt="Profile preview">
-    `;
-
-    preview.classList.remove(
-      "hidden"
-    );
-
-  };
-
-
-  reader.readAsDataURL(file);
-
-}
-
-
-async function uploadAvatar(){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  const input =
-    document.getElementById(
-      "avatarFile"
-    );
-
-  const file =
-    input?.files?.[0];
-
-
-  if(!file){
-
-    alert(
-      "Please select a profile picture first."
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    await uploadAvatarFile(file);
-
-    alert(
-      "Profile picture uploaded successfully."
-    );
-
-  }catch(error){
-
-    console.error(
-      "Avatar upload error:",
-      error
-    );
-
-    alert(
-      "Avatar upload failed:\n\n" +
-      safeError(error)
-    );
-
-  }
-
-}
-
-
-async function uploadAvatarFile(file){
-
-  if(!currentUser){
-
-    throw new Error(
-      "You must be logged in."
-    );
-
-  }
-
-
-  if(!supabaseClient){
-
-    throw new Error(
-      "Supabase is not connected."
-    );
-
-  }
-
-
-  if(!file.type.startsWith("image/")){
-
-    throw new Error(
-      "Please select an image."
-    );
-
-  }
-
-
-  if(file.size > 5 * 1024 * 1024){
-
-    throw new Error(
-      "Image must be 5MB or smaller."
-    );
-
-  }
-
-
-  const extension =
-    (
-      file.name
-        .split(".")
-        .pop() ||
-      "jpg"
-    )
-      .toLowerCase()
-      .replace(/[^a-z0-9]/g,"");
-
-
-  const filePath =
-    currentUser.id +
-    "/" +
-    Date.now() +
-    "-" +
-    Math.random()
-      .toString(36)
-      .substring(2,8) +
-    "." +
-    extension;
-
-
-  const uploadResult =
-    await supabaseClient
-      .storage
-      .from("avatars")
-      .upload(
-        filePath,
-        file,
-        {
-          cacheControl:"3600",
-          upsert:false
-        }
-      );
-
-
-  if(uploadResult.error){
-    throw uploadResult.error;
-  }
-
-
-  const urlResult =
-    supabaseClient
-      .storage
-      .from("avatars")
-      .getPublicUrl(
-        filePath
-      );
-
-
-  const avatarUrl =
-    urlResult.data?.publicUrl || "";
-
-
-  if(!avatarUrl){
-
-    throw new Error(
-      "Could not create avatar URL."
-    );
-
-  }
-
-
-  const profileResult =
-    await supabaseClient
+  const {error} =
+    await db
       .from("profiles")
-      .upsert({
-
-        id:currentUser.id,
-
-        avatar_url:
-          avatarUrl
-
-      },{
-        onConflict:"id"
+      .update({
+        full_name,
+        username,
+        bio,
+        avatar_url
       })
-      .select(
-        "id,full_name,username,bio,avatar_url"
-      )
-      .maybeSingle();
+      .eq("id",currentUser.id);
 
+  if(error){
 
-  if(profileResult.error){
-    throw profileResult.error;
+    alert("Profile update failed: "+error.message);
+
+    return;
   }
 
+  await loadCurrentProfile();
+  await loadProfilePage();
 
-  if(profileResult.data){
-
-    currentProfile =
-      profileResult.data;
-
-  }else{
-
-    if(!currentProfile){
-      currentProfile = {};
-    }
-
-    currentProfile.avatar_url =
-      avatarUrl;
-
-  }
-
-
-  updateProfilePage();
-  updateAuthUI();
-
+  alert("Profile saved successfully.");
 }
 
 
-/* ============================================================
-   AUTH UI
-============================================================ */
-
-function updateAuthUI(){
-
-  const button =
-    document.getElementById(
-      "authButton"
-    );
-
-
-  if(button){
-
-    if(currentUser){
-
-      const name =
-        currentProfile?.full_name ||
-        currentUser.email?.split("@")[0] ||
-        "Profile";
-
-
-      button.textContent =
-        name.length > 12
-          ? name.substring(0,12) + "..."
-          : name;
-
-
-      button.onclick =
-        function(){
-
-          showPage("profile");
-
-        };
-
-    }else{
-
-      button.textContent =
-        "Log in";
-
-
-      button.onclick =
-        function(){
-
-          openAuth("login");
-
-        };
-
-    }
-
-  }
-
-
-  const messagesNotice =
-    document.getElementById(
-      "messagesLoginNotice"
-    );
-
-  const messagesApp =
-    document.getElementById(
-      "messagesApp"
-    );
-
-
-  if(messagesNotice && messagesApp){
-
-    if(currentUser){
-
-      messagesNotice.classList.add(
-        "hidden"
-      );
-
-      messagesApp.classList.remove(
-        "hidden"
-      );
-
-    }else{
-
-      messagesNotice.classList.remove(
-        "hidden"
-      );
-
-      messagesApp.classList.add(
-        "hidden"
-      );
-
-    }
-
-  }
-
-
-  updateProfilePage();
-
-}
-
-
-/* ============================================================
-   LOGOUT
-============================================================ */
-
-async function logout(){
-
-  try{
-
-    if(
-      messagesChannel &&
-      supabaseClient
-    ){
-
-      try{
-
-        await supabaseClient
-          .removeChannel(
-            messagesChannel
-          );
-
-      }catch(error){
-
-        console.error(
-          "Channel removal error:",
-          error
-        );
-
-      }
-
-      messagesChannel = null;
-
-    }
-
-
-    if(supabaseClient){
-
-      await supabaseClient
-        .auth
-        .signOut();
-
-    }
-
-  }catch(error){
-
-    console.error(
-      "Logout error:",
-      error
-    );
-
-  }
-
-
-  currentUser = null;
-  currentProfile = null;
-  selectedPerson = null;
-  allPeople = [];
-  messagesInitialized = false;
-
-
-  updateAuthUI();
-
-  showPage("home");
-
-}
-
-
-/* ============================================================
-   MESSAGES
-============================================================ */
+/* =========================================================
+   PEOPLE / MESSAGES
+   ========================================================= */
 
 async function initializeMessages(){
 
-  if(messagesLoading){
-    return;
-  }
-
-
   if(!currentUser){
 
-    updateAuthUI();
+    document.getElementById("peopleList").innerHTML =
+      `<div class="empty">
+        Please log in to use Messages.
+        <br><br>
+        <button class="primary" onclick="openAuth()">Log in</button>
+      </div>`;
 
     return;
-
   }
 
-
-  const app =
-    document.getElementById(
-      "messagesApp"
-    );
-
-
-  if(app){
-
-    app.classList.remove(
-      "hidden"
-    );
-
-  }
-
-
-  /*
-    Only load people again when necessary.
-  */
-
-  if(
-    !messagesInitialized ||
-    !allPeople.length
-  ){
-
-    messagesLoading = true;
-
-    try{
-
-      await loadMessagePeople();
-
-    }finally{
-
-      messagesLoading = false;
-
-    }
-
-  }
-
-
-  if(!messagesChannel){
-
-    setupMessagesRealtime();
-
-  }
-
-
-  messagesInitialized = true;
-
+  await loadPeople();
 }
 
 
-async function loadMessagePeople(){
+async function loadPeople(){
 
-  if(!currentUser){
+  const list =
+    document.getElementById("peopleList");
 
-    return;
+  list.innerHTML =
+    `<div class="empty">Loading people...</div>`;
 
-  }
+  const {data,error} =
+    await db
+      .from("profiles")
+      .select("*")
+      .neq("id",currentUser.id)
+      .order("full_name",{ascending:true});
 
+  if(error){
 
-  if(!supabaseClient){
+    console.error(error);
 
-    showMessagePeopleError(
-      "Supabase is not connected."
-    );
+    list.innerHTML =
+      `<div class="empty">
+        ❌ People could not be loaded.<br><br>
+        ${escapeHTML(error.message)}
+      </div>`;
 
-    return;
-
-  }
-
-
-  const peopleList =
-    document.getElementById(
-      "peopleList"
-    );
-
-
-  if(!peopleList){
     return;
   }
 
+  allPeople=data || [];
 
-  peopleList.innerHTML =
-    `<div class="loading">
-      Finding people...
-    </div>`;
-
-
-  try{
-
-    const result =
-      await supabaseClient
-        .from("profiles")
-        .select(
-          "id,full_name,username,bio,avatar_url"
-        )
-        .neq(
-          "id",
-          currentUser.id
-        )
-        .order(
-          "username",
-          {
-            ascending:true
-          }
-        );
-
-
-    if(result.error){
-      throw result.error;
-    }
-
-
-    allPeople =
-      result.data || [];
-
-
-    renderPeople(
-      allPeople
-    );
-
-
-  }catch(error){
-
-    console.error(
-      "People loading error:",
-      error
-    );
-
-
-    allPeople = [];
-
-
-    showMessagePeopleError(
-      safeError(error)
-    );
-
-  }
-
-}
-
-
-function showMessagePeopleError(message){
-
-  const peopleList =
-    document.getElementById(
-      "peopleList"
-    );
-
-
-  if(!peopleList){
-    return;
-  }
-
-
-  peopleList.innerHTML = `
-
-    <div class="empty">
-
-      <strong>
-        Could not load people.
-      </strong>
-
-      <br><br>
-
-      ${escapeHtml(message)}
-
-      <br><br>
-
-      <button
-        class="btn btn-orange"
-        onclick="retryMessages()">
-
-        Try Again
-
-      </button>
-
-    </div>
-
-  `;
-
-}
-
-
-async function retryMessages(){
-
-  messagesInitialized = false;
-
-  await initializeMessages();
-
+  renderPeople(allPeople);
 }
 
 
 function renderPeople(people){
 
   const list =
-    document.getElementById(
-      "peopleList"
-    );
-
-
-  if(!list){
-    return;
-  }
-
+    document.getElementById("peopleList");
 
   if(!people.length){
 
-    list.innerHTML = `
-
-      <div class="empty">
-
-        No other ZEEPY users found yet.
-
-        <br><br>
-
-        Create another account to test
-        Messages between users.
-
-      </div>
-
-    `;
+    list.innerHTML =
+      `<div class="empty">
+        No other profiles found yet.
+      </div>`;
 
     return;
-
   }
-
 
   list.innerHTML =
-    people
-      .map(person => {
+    people.map(person=>`
 
-        const name =
-          getDisplayName(person);
+      <div
+        class="person ${selectedPerson?.id===person.id?"selected":""}"
+        onclick="selectPerson('${person.id}')"
+      >
 
-        const username =
-          getUsername(person);
+        <div class="avatar">
+          ${
+            person.avatar_url
+              ? `<img src="${escapeHTML(person.avatar_url)}">`
+              : escapeHTML(initials(person.full_name))
+          }
+        </div>
 
-
-        return `
-
-          <div
-            class="person ${
-              selectedPerson?.id === person.id
-                ? "selected"
-                : ""
-            }"
-            data-person-id="${escapeHtml(person.id)}"
-            onclick="selectPerson(this.dataset.personId)">
-
-            ${avatarHtml(person)}
-
-            <div class="person-info">
-
-              <strong>
-                ${escapeHtml(name)}
-              </strong>
-
-              <span>
-                ${escapeHtml(
-                  username ||
-                  "ZEEPY member"
-                )}
-              </span>
-
-            </div>
-
+        <div>
+          <div class="person-name">
+            ${escapeHTML(person.full_name || "ZEEPY User")}
           </div>
 
-        `;
-
-      })
-      .join("");
-
-}
-
-
-function filterPeople(){
-
-  const search =
-    document.getElementById(
-      "peopleSearch"
-    );
-
-
-  const query =
-    search
-      ? search.value
-          .trim()
-          .toLowerCase()
-      : "";
-
-
-  if(!query){
-
-    renderPeople(
-      allPeople
-    );
-
-    return;
-
-  }
-
-
-  const filtered =
-    allPeople.filter(person => {
-
-      const fullName =
-        String(
-          person.full_name || ""
-        )
-        .toLowerCase();
-
-
-      const username =
-        String(
-          person.username || ""
-        )
-        .toLowerCase();
-
-
-      const bio =
-        String(
-          person.bio || ""
-        )
-        .toLowerCase();
-
-
-      return (
-        fullName.includes(query) ||
-        username.includes(query) ||
-        bio.includes(query)
-      );
-
-    });
-
-
-  renderPeople(
-    filtered
-  );
-
-}
-
-
-async function selectPerson(personId){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  const person =
-    allPeople.find(
-      p => String(p.id) === String(personId)
-    );
-
-
-  if(!person){
-
-    console.error(
-      "Person not found:",
-      personId
-    );
-
-    return;
-
-  }
-
-
-  selectedPerson =
-    person;
-
-
-  renderPeople(
-    getFilteredPeople()
-  );
-
-
-  const chatHeader =
-    document.getElementById(
-      "chatHeader"
-    );
-
-
-  const name =
-    getDisplayName(person);
-
-  const username =
-    getUsername(person);
-
-
-  if(chatHeader){
-
-    chatHeader.innerHTML = `
-
-      ${avatarHtml(person)}
-
-      <div>
-
-        <strong>
-          ${escapeHtml(name)}
-        </strong>
-
-        <div class="muted">
-          ${escapeHtml(
-            username ||
-            "ZEEPY member"
-          )}
+          <div class="person-sub">
+            @${escapeHTML(person.username || "user")}
+          </div>
         </div>
 
       </div>
 
-    `;
-
-  }
-
-
-  const input =
-    document.getElementById(
-      "messageInput"
-    );
-
-  const sendButton =
-    document.getElementById(
-      "sendMessageButton"
-    );
-
-
-  if(input){
-
-    input.disabled = false;
-
-  }
-
-
-  if(sendButton){
-
-    sendButton.disabled = false;
-
-  }
-
-
-  if(input){
-
-    input.focus();
-
-  }
-
-
-  await loadConversation();
-
+    `).join("");
 }
 
 
-function getFilteredPeople(){
-
-  const search =
-    document.getElementById(
-      "peopleSearch"
-    );
-
+function searchPeople(){
 
   const query =
-    search
-      ? search.value
-          .trim()
-          .toLowerCase()
-      : "";
+    document
+      .getElementById("peopleSearch")
+      .value
+      .toLowerCase()
+      .trim();
 
+  const filtered =
+    allPeople.filter(person=>
+      (person.full_name || "")
+        .toLowerCase()
+        .includes(query) ||
 
-  if(!query){
-
-    return allPeople;
-
-  }
-
-
-  return allPeople.filter(person => {
-
-    const fullName =
-      String(
-        person.full_name || ""
-      )
-      .toLowerCase();
-
-
-    const username =
-      String(
-        person.username || ""
-      )
-      .toLowerCase();
-
-
-    const bio =
-      String(
-        person.bio || ""
-      )
-      .toLowerCase();
-
-
-    return (
-      fullName.includes(query) ||
-      username.includes(query) ||
-      bio.includes(query)
+      (person.username || "")
+        .toLowerCase()
+        .includes(query)
     );
 
-  });
+  renderPeople(filtered);
+}
 
+
+async function selectPerson(id){
+
+  selectedPerson =
+    allPeople.find(p=>p.id===id);
+
+  if(!selectedPerson) return;
+
+  renderPeople(allPeople);
+
+  document.getElementById("chatHead").textContent =
+    selectedPerson.full_name || "Conversation";
+
+  await loadConversation();
 }
 
 
 async function loadConversation(){
 
-  if(
-    !currentUser ||
-    !selectedPerson
-  ){
+  if(!currentUser || !selectedPerson) return;
+
+  const box =
+    document.getElementById("chatMessages");
+
+  box.innerHTML =
+    `<div class="empty">Loading conversation...</div>`;
+
+  const {data,error} =
+    await db
+      .from("messages")
+      .select("*")
+      .or(
+        `and(sender_id.eq.${currentUser.id},receiver_id.eq.${selectedPerson.id}),and(sender_id.eq.${selectedPerson.id},receiver_id.eq.${currentUser.id})`
+      )
+      .order("created_at",{ascending:true});
+
+  if(error){
+
+    console.error(error);
+
+    box.innerHTML =
+      `<div class="empty">
+        ❌ Could not load messages.<br>
+        ${escapeHTML(error.message)}
+      </div>`;
 
     return;
-
   }
 
+  if(!data || !data.length){
 
-  if(!supabaseClient){
+    box.innerHTML =
+      `<div class="empty">
+        No messages yet. Say hello 👋
+      </div>`;
 
-    return;
-
-  }
-
-
-  const container =
-    document.getElementById(
-      "chatMessages"
-    );
-
-
-  if(!container){
     return;
   }
 
+  box.innerHTML =
+    data.map(message=>`
 
-  container.innerHTML =
-    `<div class="loading">
-      Loading conversation...
-    </div>`;
+      <div class="bubble ${
+        message.sender_id===currentUser.id
+          ? "mine"
+          : "theirs"
+      }">
 
-
-  try{
-
-    const userId =
-      currentUser.id;
-
-    const personId =
-      selectedPerson.id;
-
-
-    const result =
-      await supabaseClient
-        .from("messages")
-        .select(
-          "id,sender_id,receiver_id,content,created_at"
-        )
-        .or(
-          `and(sender_id.eq.${userId},receiver_id.eq.${personId}),and(sender_id.eq.${personId},receiver_id.eq.${userId})`
-        )
-        .order(
-          "created_at",
-          {
-            ascending:true
-          }
-        );
-
-
-    if(result.error){
-      throw result.error;
-    }
-
-
-    renderMessages(
-      result.data || []
-    );
-
-
-  }catch(error){
-
-    console.error(
-      "Conversation loading error:",
-      error
-    );
-
-
-    container.innerHTML = `
-
-      <div class="empty">
-
-        <strong>
-          Could not load messages.
-        </strong>
-
-        <br><br>
-
-        ${escapeHtml(
-          safeError(error)
-        )}
-
-        <br><br>
-
-        <button
-          class="btn btn-orange"
-          onclick="loadConversation()">
-
-          Try Again
-
-        </button>
+        ${escapeHTML(message.content)}
 
       </div>
 
-    `;
+    `).join("");
 
-  }
-
+  box.scrollTop=box.scrollHeight;
 }
 
 
-function renderMessages(messages){
-
-  const container =
-    document.getElementById(
-      "chatMessages"
-    );
-
-
-  if(!container){
-    return;
-  }
-
-
-  if(!messages.length){
-
-    container.innerHTML = `
-
-      <div class="empty">
-
-        No messages yet.
-
-        <br>
-
-        Say hello 👋
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    messages
-      .map(message => {
-
-        const mine =
-          currentUser &&
-          message.sender_id ===
-          currentUser.id;
-
-
-        const time =
-          message.created_at
-            ? new Date(
-                message.created_at
-              ).toLocaleString()
-            : "";
-
-
-        return `
-
-          <div
-            class="message-row ${
-              mine ? "mine" : ""
-            }">
-
-            <div
-              class="message ${
-                mine
-                  ? "mine"
-                  : "theirs"
-              }">
-
-              <div>
-                ${escapeHtml(
-                  message.content || ""
-                )}
-              </div>
-
-              <div class="message-time">
-                ${escapeHtml(time)}
-              </div>
-
-            </div>
-
-          </div>
-
-        `;
-
-      })
-      .join("");
-
-
-  container.scrollTop =
-    container.scrollHeight;
-
-}
-
-
-async function sendMessage(event){
-
-  if(event){
-    event.preventDefault();
-  }
-
+async function sendMessage(){
 
   if(!currentUser){
 
-    openAuth("login");
+    openAuth();
 
     return;
-
   }
-
 
   if(!selectedPerson){
 
-    alert(
-      "Select a person first."
-    );
+    alert("Select a person first.");
 
     return;
-
   }
-
-
-  if(!supabaseClient){
-
-    alert(
-      "Supabase is not connected."
-    );
-
-    return;
-
-  }
-
 
   const input =
-    document.getElementById(
-      "messageInput"
-    );
-
-  const sendButton =
-    document.getElementById(
-      "sendMessageButton"
-    );
-
-
-  if(!input){
-    return;
-  }
-
+    document.getElementById("messageInput");
 
   const content =
     input.value.trim();
 
+  if(!content) return;
 
-  if(!content){
+  input.disabled=true;
+
+  const {error} =
+    await db
+      .from("messages")
+      .insert({
+        sender_id:currentUser.id,
+        receiver_id:selectedPerson.id,
+        content:content
+      });
+
+  input.disabled=false;
+
+  if(error){
+
+    alert("Message could not be sent: "+error.message);
+
     return;
   }
 
+  input.value="";
 
-  if(sendButton){
-    sendButton.disabled = true;
-  }
-
-  input.disabled = true;
-
-
-  try{
-
-    const result =
-      await supabaseClient
-        .from("messages")
-        .insert({
-
-          sender_id:
-            currentUser.id,
-
-          receiver_id:
-            selectedPerson.id,
-
-          content
-
-        })
-        .select(
-          "id,sender_id,receiver_id,content,created_at"
-        )
-        .maybeSingle();
-
-
-    if(result.error){
-      throw result.error;
-    }
-
-
-    input.value = "";
-
-
-    if(result.data){
-
-      await loadConversation();
-
-    }
-
-
-  }catch(error){
-
-    console.error(
-      "Send message error:",
-      error
-    );
-
-
-    alert(
-      "Message could not be sent:\n\n" +
-      safeError(error)
-    );
-
-  }finally{
-
-    input.disabled = false;
-
-    if(sendButton){
-
-      sendButton.disabled =
-        !selectedPerson;
-
-    }
-
-    input.focus();
-
-  }
-
+  await loadConversation();
 }
 
 
-function setupMessagesRealtime(){
+/* REALTIME */
+function setupRealtime(){
 
-  if(
-    !currentUser ||
-    !supabaseClient
-  ){
+  db
+    .channel("zeepy-messages")
+    .on(
+      "postgres_changes",
+      {
+        event:"*",
+        schema:"public",
+        table:"messages"
+      },
+      payload=>{
 
-    return;
+        if(selectedPerson && currentUser){
 
-  }
+          loadConversation();
+        }
 
-
-  if(messagesChannel){
-
-    return;
-
-  }
-
-
-  const channelName =
-    "zeepy-messages-" +
-    currentUser.id;
-
-
-  try{
-
-    messagesChannel =
-      supabaseClient
-        .channel(channelName)
-        .on(
-          "postgres_changes",
-          {
-            event:"INSERT",
-            schema:"public",
-            table:"messages"
-          },
-          payload => {
-
-            try{
-
-              const message =
-                payload.new;
-
-
-              if(
-                !selectedPerson ||
-                !currentUser
-              ){
-
-                return;
-
-              }
-
-
-              const belongsToConversation =
-                (
-                  message.sender_id ===
-                  currentUser.id &&
-                  message.receiver_id ===
-                  selectedPerson.id
-                ) ||
-                (
-                  message.sender_id ===
-                  selectedPerson.id &&
-                  message.receiver_id ===
-                  currentUser.id
-                );
-
-
-              if(
-                belongsToConversation
-              ){
-
-                loadConversation()
-                  .catch(error =>
-                    console.error(
-                      error
-                    )
-                  );
-
-              }
-
-            }catch(error){
-
-              console.error(
-                "Realtime message error:",
-                error
-              );
-
-            }
-
-          }
-        )
-        .subscribe(
-          status => {
-
-            console.log(
-              "ZEEPY Messages realtime:",
-              status
-            );
-
-          }
-        );
-
-  }catch(error){
-
-    console.error(
-      "Realtime setup error:",
-      error
-    );
-
-    messagesChannel = null;
-
-  }
-
+      }
+    )
+    .subscribe();
 }
 
 
-function startMessaging(){
+/* =========================================================
+   MARKET
+   ========================================================= */
+
+function toggleCreateProduct(){
 
   if(!currentUser){
 
-    openAuth("login");
+    openAuth();
 
     return;
-
   }
 
-
-  showPage("messages");
-
+  document
+    .getElementById("productForm")
+    .classList.toggle("hidden");
 }
 
-
-/* ============================================================
-   MARKET
-============================================================ */
 
 async function loadProducts(){
 
-  const grid =
-    document.getElementById(
-      "productsGrid"
-    );
+  const list =
+    document.getElementById("productsList");
 
+  list.innerHTML =
+    `<div class="empty">Loading market...</div>`;
 
-  if(!grid){
+  const {data,error} =
+    await db
+      .from("products")
+      .select("*")
+      .order("created_at",{ascending:false});
+
+  if(error){
+
+    list.innerHTML =
+      `<div class="empty">
+        Market could not be loaded.<br><br>
+        ${escapeHTML(error.message)}
+      </div>`;
+
     return;
   }
 
+  allProducts=data || [];
 
-  if(!supabaseClient){
+  renderProducts(allProducts);
+}
 
-    grid.innerHTML = `
-      <div class="empty">
-        Supabase is not connected.
-      </div>
-    `;
+
+function renderProducts(products){
+
+  const list =
+    document.getElementById("productsList");
+
+  if(!products.length){
+
+    list.innerHTML =
+      `<div class="empty">
+        No products listed yet.
+      </div>`;
 
     return;
-
   }
 
+  list.innerHTML =
+    products.map(product=>`
 
-  try{
+      <div class="product">
 
-    const result =
-      await supabaseClient
-        .from("products")
-        .select("*")
-        .order(
-          "created_at",
-          {
-            ascending:false
+        <div class="product-img">
+
+          ${
+            product.image_url || product.image
+              ? `<img src="${escapeHTML(product.image_url || product.image)}">`
+              : "🛍️"
           }
-        );
-
-
-    if(result.error){
-      throw result.error;
-    }
-
-
-    const data =
-      result.data || [];
-
-
-    if(!data.length){
-
-      grid.innerHTML = `
-
-        <div class="empty">
-
-          No products yet.
-
-          <br><br>
-
-          Be the first to add one.
 
         </div>
 
-      `;
+        <div class="product-body">
 
-      return;
+          <h3>
+            ${escapeHTML(product.name || "Product")}
+          </h3>
 
-    }
+          <div class="price">
+            GH₵ ${Number(product.price || 0).toFixed(2)}
+          </div>
 
+          <div class="muted">
+            ${escapeHTML(product.category || "Other")}
+          </div>
 
-    grid.innerHTML =
-      data
-        .map(product => {
+          <p class="muted" style="margin-top:8px">
+            ${escapeHTML(product.description || "")}
+          </p>
 
-          const image =
-            product.image_url ||
-            product.image ||
-            "";
+          <br>
 
+          <button
+            class="primary"
+            onclick="messageSeller('${product.seller_id || ""}')"
+          >
+            Message Seller
+          </button>
 
-          const sellerButton =
-            product.seller_id &&
-            product.seller_id !== currentUser?.id
-
-            ? `
-
-              <button
-                class="btn btn-orange"
-                data-seller-id="${escapeHtml(product.seller_id)}"
-                onclick="contactSeller(this.dataset.sellerId)">
-
-                Message Seller
-
-              </button>
-
-            `
-
-            : "";
-
-
-          return `
-
-            <div class="card">
-
-              ${
-                image
-                ? `
-
-                  <img
-                    class="product-image"
-                    src="${escapeHtml(image)}"
-                    alt="${escapeHtml(
-                      product.name ||
-                      "Product"
-                    )}">
-
-                `
-                : `
-
-                  <div
-                    class="product-image"
-                    style="
-                      display:flex;
-                      align-items:center;
-                      justify-content:center;
-                      font-size:50px;">
-                    🛍️
-                  </div>
-
-                `
-              }
-
-              <div class="card-body">
-
-                <span class="tag">
-                  ${escapeHtml(
-                    product.category ||
-                    "Product"
-                  )}
-                </span>
-
-                <br><br>
-
-                <h3>
-                  ${escapeHtml(
-                    product.name ||
-                    "Unnamed Product"
-                  )}
-                </h3>
-
-                <div class="price">
-                  GHS ${Number(
-                    product.price || 0
-                  ).toFixed(2)}
-                </div>
-
-                <p class="muted">
-                  ${escapeHtml(
-                    product.description ||
-                    ""
-                  )}
-                </p>
-
-                <br>
-
-                ${sellerButton}
-
-              </div>
-
-            </div>
-
-          `;
-
-        })
-        .join("");
-
-
-  }catch(error){
-
-    console.error(
-      "Product loading error:",
-      error
-    );
-
-
-    grid.innerHTML = `
-
-      <div class="empty">
-
-        Could not load products.
-
-        <br><br>
-
-        ${escapeHtml(
-          safeError(error)
-        )}
+        </div>
 
       </div>
 
-    `;
-
-  }
-
+    `).join("");
 }
 
 
-async function saveProduct(){
+function filterProducts(){
+
+  const query =
+    document
+      .getElementById("marketSearch")
+      .value
+      .toLowerCase();
+
+  renderProducts(
+    allProducts.filter(product=>
+      (product.name || "")
+        .toLowerCase()
+        .includes(query) ||
+
+      (product.category || "")
+        .toLowerCase()
+        .includes(query)
+    )
+  );
+}
+
+
+async function createProduct(){
 
   if(!currentUser){
 
-    openAuth("login");
+    openAuth();
 
     return;
-
   }
-
-
-  if(!databaseReady()){
-    return;
-  }
-
 
   const name =
-    document
-      .getElementById("productName")
-      ?.value
-      .trim() || "";
-
+    document.getElementById("productName").value.trim();
 
   const price =
-    Number(
-      document
-        .getElementById("productPrice")
-        ?.value
-    );
-
+    Number(document.getElementById("productPrice").value);
 
   const category =
-    document
-      .getElementById("productCategory")
-      ?.value
-      .trim() || "";
-
+    document.getElementById("productCategory").value;
 
   const image_url =
-    document
-      .getElementById("productImage")
-      ?.value
-      .trim() || "";
-
+    document.getElementById("productImage").value.trim();
 
   const description =
-    document
-      .getElementById("productDescription")
-      ?.value
-      .trim() || "";
+    document.getElementById("productDescription").value.trim();
 
+  if(!name || !price){
 
-  if(!name){
-
-    alert(
-      "Enter a product name."
-    );
+    alert("Enter the product name and price.");
 
     return;
-
   }
 
-
-  if(
-    !Number.isFinite(price) ||
-    price <= 0
-  ){
-
-    alert(
-      "Enter a valid price greater than zero."
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    const result =
-      await supabaseClient
-        .from("products")
-        .insert({
-
-          seller_id:
-            currentUser.id,
-
-          name,
-
-          price,
-
-          category,
-
-          image_url,
-
-          description
-
-        });
-
-
-    if(result.error){
-      throw result.error;
-    }
-
-
-    [
-      "productName",
-      "productPrice",
-      "productCategory",
-      "productImage",
-      "productDescription"
-    ]
-      .forEach(id => {
-
-        const el =
-          document.getElementById(id);
-
-        if(el){
-          el.value = "";
-        }
-
+  const {error} =
+    await db
+      .from("products")
+      .insert({
+        seller_id:currentUser.id,
+        name,
+        price,
+        category,
+        image_url,
+        description
       });
 
+  if(error){
 
-    document
-      .getElementById("productForm")
-      ?.classList.add("hidden");
+    alert("Could not create listing: "+error.message);
 
-
-    await loadProducts();
-
-
-    alert(
-      "Product published successfully."
-    );
-
-
-  }catch(error){
-
-    console.error(
-      "Save product error:",
-      error
-    );
-
-
-    alert(
-      "Could not publish product:\n\n" +
-      safeError(error)
-    );
-
+    return;
   }
 
+  document.getElementById("productName").value="";
+  document.getElementById("productPrice").value="";
+  document.getElementById("productImage").value="";
+  document.getElementById("productDescription").value="";
+
+  document
+    .getElementById("productForm")
+    .classList.add("hidden");
+
+  await loadProducts();
+
+  alert("Product listed successfully.");
 }
 
 
-async function contactSeller(sellerId){
+async function messageSeller(sellerId){
 
   if(!currentUser){
 
-    openAuth("login");
+    openAuth();
 
     return;
-
   }
 
+  if(!sellerId){
 
-  if(
-    sellerId === currentUser.id
-  ){
+    alert("Seller information is not available.");
 
     return;
-
   }
 
+  await loadPeople();
+
+  const seller =
+    allPeople.find(p=>p.id===sellerId);
+
+  if(!seller){
+
+    alert(
+      "The seller profile could not be found."
+    );
+
+    return;
+  }
+
+  selectedPerson=seller;
 
   showPage("messages");
 
-
-  await initializeMessages();
-
-
-  let seller =
-    allPeople.find(
-      person =>
-        String(person.id) ===
-        String(sellerId)
-    );
-
-
-  /*
-    If the seller wasn't in the original people list,
-    try loading that profile directly.
-  */
-
-  if(!seller && supabaseClient){
-
-    try{
-
-      const result =
-        await supabaseClient
-          .from("profiles")
-          .select(
-            "id,full_name,username,bio,avatar_url"
-          )
-          .eq(
-            "id",
-            sellerId
-          )
-          .maybeSingle();
-
-
-      if(
-        !result.error &&
-        result.data
-      ){
-
-        seller =
-          result.data;
-
-        allPeople.push(
-          seller
-        );
-
-      }
-
-    }catch(error){
-
-      console.error(
-        "Seller lookup error:",
-        error
-      );
-
-    }
-
-  }
-
-
-  if(seller){
-
-    await selectPerson(
-      seller.id
-    );
-
-  }else{
-
-    alert(
-      "Seller profile could not be found."
-    );
-
-  }
-
+  await selectPerson(seller.id);
 }
 
 
-/* ============================================================
+/* =========================================================
    GROUPS
-============================================================ */
+   ========================================================= */
 
 async function loadGroups(){
 
-  const grid =
-    document.getElementById(
-      "groupsGrid"
-    );
+  const list =
+    document.getElementById("groupsList");
 
+  const {data,error} =
+    await db
+      .from("groups")
+      .select("*")
+      .order("created_at",{ascending:false});
 
-  if(!grid){
+  if(error){
+
+    list.innerHTML =
+      `<div class="empty">
+        Groups could not be loaded.<br><br>
+        ${escapeHTML(error.message)}
+      </div>`;
+
+    return;
+  }
+
+  if(!data || !data.length){
+
+    list.innerHTML =
+      `<div class="empty">
+        No groups yet. Create the first community.
+      </div>`;
+
     return;
   }
 
+  list.innerHTML =
+    data.map(group=>`
 
-  if(!supabaseClient){
+      <div class="card">
 
-    grid.innerHTML = `
-      <div class="empty">
-        Supabase is not connected.
-      </div>
-    `;
+        <div class="feature-icon">👥</div>
 
-    return;
+        <h3>${escapeHTML(group.name)}</h3>
 
-  }
+        <p class="muted">
+          ${escapeHTML(group.description || "ZEEPY community")}
+        </p>
 
+        <br>
 
-  try{
-
-    const result =
-      await supabaseClient
-        .from("groups")
-        .select("*")
-        .order(
-          "created_at",
-          {
-            ascending:false
-          }
-        );
-
-
-    if(result.error){
-      throw result.error;
-    }
-
-
-    const data =
-      result.data || [];
-
-
-    if(!data.length){
-
-      grid.innerHTML = `
-
-        <div class="empty">
-          No groups yet.
-        </div>
-
-      `;
-
-      return;
-
-    }
-
-
-    grid.innerHTML =
-      data
-        .map(group => `
-
-          <div class="card">
-
-            <div class="card-body">
-
-              <span class="tag">
-                Community
-              </span>
-
-              <br><br>
-
-              <h3>
-                ${escapeHtml(
-                  group.name ||
-                  "Unnamed Group"
-                )}
-              </h3>
-
-              <p class="muted">
-                ${escapeHtml(
-                  group.description ||
-                  ""
-                )}
-              </p>
-
-              <br>
-
-              <button
-                class="btn btn-orange"
-                data-group-id="${escapeHtml(group.id)}"
-                onclick="joinGroup(this.dataset.groupId)">
-
-                Join Group
-
-              </button>
-
-            </div>
-
-          </div>
-
-        `)
-        .join("");
-
-
-  }catch(error){
-
-    console.error(
-      "Groups loading error:",
-      error
-    );
-
-
-    grid.innerHTML = `
-
-      <div class="empty">
-
-        Could not load groups.
-
-        <br><br>
-
-        ${escapeHtml(
-          safeError(error)
-        )}
+        <button class="primary"
+          onclick="joinGroup('${group.id}')">
+          Join Group
+        </button>
 
       </div>
 
-    `;
-
-  }
-
+    `).join("");
 }
 
 
-async function saveGroup(){
+async function createGroup(){
 
   if(!currentUser){
 
-    openAuth("login");
+    openAuth();
 
     return;
-
   }
-
-
-  if(!databaseReady()){
-    return;
-  }
-
 
   const name =
-    document
-      .getElementById("groupName")
-      ?.value
-      .trim() || "";
+    prompt("Group name:");
 
+  if(!name) return;
 
   const description =
-    document
-      .getElementById("groupDescription")
-      ?.value
-      .trim() || "";
+    prompt("Group description:") || "";
 
+  const {data,error} =
+    await db
+      .from("groups")
+      .insert({
+        name,
+        description,
+        created_by:currentUser.id
+      })
+      .select()
+      .single();
 
-  if(!name){
+  if(error){
 
-    alert(
-      "Enter a group name."
-    );
+    alert("Could not create group: "+error.message);
 
     return;
-
   }
 
+  if(data){
 
-  try{
-
-    const result =
-      await supabaseClient
-        .from("groups")
-        .insert({
-
-          name,
-
-          description,
-
-          created_by:
-            currentUser.id
-
-        });
-
-
-    if(result.error){
-      throw result.error;
-    }
-
-
-    document.getElementById(
-      "groupName"
-    ).value = "";
-
-
-    document.getElementById(
-      "groupDescription"
-    ).value = "";
-
-
-    document
-      .getElementById("groupForm")
-      ?.classList.add("hidden");
-
-
-    await loadGroups();
-
-
-    alert(
-      "Group created successfully."
-    );
-
-
-  }catch(error){
-
-    console.error(
-      "Create group error:",
-      error
-    );
-
-
-    alert(
-      "Could not create group:\n\n" +
-      safeError(error)
-    );
-
+    await db
+      .from("group_members")
+      .insert({
+        group_id:data.id,
+        user_id:currentUser.id
+      });
   }
 
+  await loadGroups();
+
+  alert("Group created.");
 }
 
 
@@ -5423,1690 +2605,339 @@ async function joinGroup(groupId){
 
   if(!currentUser){
 
-    openAuth("login");
+    openAuth();
 
-    return;
-
-  }
-
-
-  if(!databaseReady()){
     return;
   }
 
+  const {error} =
+    await db
+      .from("group_members")
+      .insert({
+        group_id:groupId,
+        user_id:currentUser.id
+      });
 
-  try{
+  if(error){
 
-    const result =
-      await supabaseClient
-        .from("group_members")
-        .insert({
+    if(error.code==="23505"){
 
-          group_id:
-            groupId,
+      alert("You are already a member.");
 
-          user_id:
-            currentUser.id
+    }else{
 
-        });
-
-
-    if(result.error){
-
-      if(
-        result.error.code === "23505"
-      ){
-
-        alert(
-          "You are already a member of this group."
-        );
-
-        return;
-
-      }
-
-      throw result.error;
-
+      alert("Could not join group: "+error.message);
     }
 
-
-    alert(
-      "You joined the group."
-    );
-
-
-  }catch(error){
-
-    console.error(
-      "Join group error:",
-      error
-    );
-
-
-    alert(
-      "Could not join group:\n\n" +
-      safeError(error)
-    );
-
+    return;
   }
 
+  alert("You joined the group.");
 }
 
 
-/* ============================================================
-   MEDIA
-============================================================ */
-
-async function loadMedia(){
-
-  const grid =
-    document.getElementById(
-      "mediaGrid"
-    );
-
-
-  if(!grid){
-    return;
-  }
-
-
-  if(!supabaseClient){
-
-    grid.innerHTML = `
-      <div class="empty">
-        Supabase is not connected.
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  try{
-
-    const result =
-      await supabaseClient
-        .from("media")
-        .select("*")
-        .order(
-          "created_at",
-          {
-            ascending:false
-          }
-        );
-
-
-    if(result.error){
-      throw result.error;
-    }
-
-
-    const data =
-      result.data || [];
-
-
-    if(!data.length){
-
-      grid.innerHTML = `
-
-        <div class="empty">
-          No media uploaded yet.
-        </div>
-
-      `;
-
-      return;
-
-    }
-
-
-    grid.innerHTML =
-      data
-        .map(item => `
-
-          <div class="card">
-
-            <div class="card-body">
-
-              <span class="tag">
-                ${escapeHtml(
-                  item.type ||
-                  "media"
-                )}
-              </span>
-
-              <br><br>
-
-              <h3>
-                ${escapeHtml(
-                  item.title ||
-                  "Untitled"
-                )}
-              </h3>
-
-              <br>
-
-              ${
-                item.type === "video"
-
-                ? `
-
-                  <video
-                    controls
-                    style="
-                      width:100%;
-                      border-radius:10px;">
-
-                    <source
-                      src="${escapeHtml(
-                        item.url ||
-                        ""
-                      )}">
-
-                  </video>
-
-                `
-
-                :
-
-                item.type === "image"
-
-                ? `
-
-                  <img
-                    src="${escapeHtml(
-                      item.url ||
-                      ""
-                    )}"
-                    alt="${escapeHtml(
-                      item.title ||
-                      "Media"
-                    )}"
-                    style="
-                      width:100%;
-                      border-radius:10px;">
-
-                `
-
-                : `
-
-                  <a
-                    href="${escapeHtml(
-                      item.url ||
-                      ""
-                    )}"
-                    target="_blank"
-                    rel="noopener">
-
-                    Open Media
-
-                  </a>
-
-                `
-              }
-
-            </div>
-
-          </div>
-
-        `)
-        .join("");
-
-
-  }catch(error){
-
-    console.error(
-      "Media loading error:",
-      error
-    );
-
-
-    grid.innerHTML = `
-
-      <div class="empty">
-
-        Could not load media.
-
-        <br><br>
-
-        ${escapeHtml(
-          safeError(error)
-        )}
-
-      </div>
-
-    `;
-
-  }
-
-}
-
-
-async function saveMedia(){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  if(!databaseReady()){
-    return;
-  }
-
-
-  const title =
-    document
-      .getElementById("mediaTitle")
-      ?.value
-      .trim() || "";
-
-
-  const url =
-    document
-      .getElementById("mediaUrl")
-      ?.value
-      .trim() || "";
-
-
-  const type =
-    document
-      .getElementById("mediaType")
-      ?.value || "video";
-
-
-  if(!title || !url){
-
-    alert(
-      "Enter a title and media URL."
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    const result =
-      await supabaseClient
-        .from("media")
-        .insert({
-
-          user_id:
-            currentUser.id,
-
-          title,
-
-          url,
-
-          type
-
-        });
-
-
-    if(result.error){
-      throw result.error;
-    }
-
-
-    document.getElementById(
-      "mediaTitle"
-    ).value = "";
-
-
-    document.getElementById(
-      "mediaUrl"
-    ).value = "";
-
-
-    document
-      .getElementById("mediaForm")
-      ?.classList.add("hidden");
-
-
-    await loadMedia();
-
-
-    alert(
-      "Media published successfully."
-    );
-
-
-  }catch(error){
-
-    console.error(
-      "Save media error:",
-      error
-    );
-
-
-    alert(
-      "Could not publish media:\n\n" +
-      safeError(error)
-    );
-
-  }
-
-}
-
-
-/* ============================================================
+/* =========================================================
    WALLET
-============================================================ */
+   ========================================================= */
 
 async function loadWallet(){
 
-  const notice =
-    document.getElementById(
-      "walletLoginNotice"
-    );
-
-  const app =
-    document.getElementById(
-      "walletApp"
-    );
-
-
-  if(!notice || !app){
-    return;
-  }
-
-
   if(!currentUser){
 
-    notice.classList.remove(
-      "hidden"
-    );
+    document.getElementById("walletBalance")
+      .textContent="GH₵ 0.00";
 
-    app.classList.add(
-      "hidden"
-    );
-
-    return;
-
-  }
-
-
-  notice.classList.add(
-    "hidden"
-  );
-
-  app.classList.remove(
-    "hidden"
-  );
-
-
-  hideNotice(
-    "walletNotice"
-  );
-
-
-  if(!supabaseClient){
-
-    showNotice(
-      "walletNotice",
-      "Supabase is not connected.",
-      "error"
-    );
+    document.getElementById("transactionsList")
+      .innerHTML=
+      `<div class="empty">
+        Log in to use your wallet.
+      </div>`;
 
     return;
-
   }
 
+  const {data,error} =
+    await db
+      .from("transactions")
+      .select("*")
+      .eq("user_id",currentUser.id)
+      .order("created_at",{ascending:false});
 
-  try{
+  if(error){
 
-    const result =
-      await supabaseClient
-        .from("transactions")
-        .select(
-          "id,user_id,type,amount,status,direction,description,reference,created_at"
-        )
-        .eq(
-          "user_id",
-          currentUser.id
-        )
-        .order(
-          "created_at",
-          {
-            ascending:false
-          }
-        );
+    document.getElementById("transactionsList")
+      .innerHTML=
+      `<div class="empty">
+        Wallet could not be loaded.<br><br>
+        ${escapeHTML(error.message)}
+      </div>`;
 
+    return;
+  }
 
-    if(result.error){
-      throw result.error;
-    }
+  let balance=0;
 
+  (data || []).forEach(tx=>{
 
-    const transactions =
-      result.data || [];
+    if(tx.status==="completed"){
 
-
-    let balance = 0;
-    let earnings = 0;
-    let pending = 0;
-    let pendingWithdrawals = 0;
-
-
-    transactions.forEach(tx => {
-
-      const amount =
-        Number(tx.amount || 0);
-
+      const amount=Number(tx.amount || 0);
 
       if(
-        !Number.isFinite(amount) ||
-        amount < 0
+        tx.direction==="credit" ||
+        tx.type==="deposit" ||
+        tx.type==="earning"
       ){
 
-        return;
-
-      }
-
-
-      const status =
-        String(
-          tx.status ||
-          "completed"
-        )
-        .toLowerCase();
-
-
-      const direction =
-        String(
-          tx.direction ||
-          "credit"
-        )
-        .toLowerCase();
-
-
-      const type =
-        String(
-          tx.type ||
-          ""
-        )
-        .toLowerCase();
-
-
-      if(status === "pending"){
-
-        pending += amount;
-
-
-        if(
-          direction === "debit"
-        ){
-
-          pendingWithdrawals +=
-            amount;
-
-        }
-
-        return;
-
-      }
-
-
-      if(
-        status !== "completed"
-      ){
-
-        return;
-
-      }
-
-
-      if(
-        direction === "credit"
-      ){
-
-        balance += amount;
-
-
-        if(
-          type === "earning" ||
-          type === "sale" ||
-          type === "income" ||
-          type === "commission"
-        ){
-
-          earnings += amount;
-
-        }
+        balance+=amount;
 
       }else if(
-        direction === "debit"
+        tx.direction==="debit" ||
+        tx.type==="withdrawal"
       ){
 
-        balance -= amount;
-
+        balance-=amount;
       }
-
-    });
-
-
-    const availableBalance =
-      Math.max(
-        0,
-        balance -
-        pendingWithdrawals
-      );
-
-
-    setWalletValues(
-      availableBalance,
-      earnings,
-      pending,
-      0
-    );
-
-
-    renderTransactions(
-      transactions
-    );
-
-
-  }catch(error){
-
-    console.error(
-      "Wallet loading error:",
-      error
-    );
-
-
-    setWalletValues(
-      0,
-      0,
-      0,
-      0
-    );
-
-
-    const list =
-      document.getElementById(
-        "transactionsList"
-      );
-
-
-    if(list){
-
-      list.innerHTML = `
-
-        <div class="error notice">
-
-          Could not load wallet.
-
-          <br><br>
-
-          ${escapeHtml(
-            safeError(error)
-          )}
-
-        </div>
-
-      `;
-
     }
-
-  }
-
-}
-
-
-function setWalletValues(
-  balance,
-  earnings,
-  pending,
-  revenue
-){
-
-  const values = {
-
-    walletBalance:
-      balance,
-
-    walletEarnings:
-      earnings,
-
-    walletPending:
-      pending,
-
-    walletRevenue:
-      revenue
-
-  };
-
-
-  Object.keys(values)
-    .forEach(id => {
-
-      const element =
-        document.getElementById(id);
-
-      if(element){
-
-        element.textContent =
-          "GHS " +
-          Number(
-            values[id] || 0
-          ).toFixed(2);
-
-      }
-
-    });
-
-}
-
-
-function renderTransactions(
-  transactions
-){
-
-  const list =
-    document.getElementById(
-      "transactionsList"
-    );
-
-
-  if(!list){
-    return;
-  }
-
-
-  if(!transactions.length){
-
-    list.innerHTML = `
-
-      <div class="empty">
-
-        No transactions yet.
-
-        <br><br>
-
-        Your earnings and wallet activity
-        will appear here.
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  list.innerHTML =
-    transactions
-      .map(tx => {
-
-        const amount =
-          Number(
-            tx.amount || 0
-          );
-
-
-        const direction =
-          String(
-            tx.direction ||
-            "credit"
-          )
-          .toLowerCase();
-
-
-        const status =
-          String(
-            tx.status ||
-            "completed"
-          )
-          .toLowerCase();
-
-
-        const type =
-          tx.type ||
-          "Transaction";
-
-
-        const description =
-          tx.description ||
-          "";
-
-
-        const date =
-          tx.created_at
-            ? new Date(
-                tx.created_at
-              ).toLocaleString()
-            : "";
-
-
-        const sign =
-          direction === "debit"
-            ? "-"
-            : "+";
-
-
-        const amountClass =
-          direction === "debit"
-            ? "transaction-debit"
-            : "transaction-credit";
-
-
-        return `
-
-          <div class="transaction-row">
-
-            <div class="transaction-left">
-
-              <div class="transaction-title">
-                ${escapeHtml(type)}
-              </div>
-
-              ${
-                description
-                ? `
-
-                  <div class="transaction-description">
-                    ${escapeHtml(description)}
-                  </div>
-
-                `
-                : ""
-              }
-
-              <div class="transaction-date">
-                ${escapeHtml(date)}
-              </div>
-
-              <span
-                class="status-badge status-${escapeHtml(status)}">
-
-                ${escapeHtml(status)}
-
-              </span>
-
-            </div>
-
-            <div
-              class="transaction-amount ${amountClass}">
-
-              ${sign}
-              GHS ${amount.toFixed(2)}
-
-            </div>
-
-          </div>
-
-        `;
-
-      })
-      .join("");
-
-}
-
-
-/* ============================================================
-   DEPOSIT
-============================================================ */
-
-async function processDeposit(){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  if(!databaseReady()){
-    return;
-  }
-
-
-  const input =
-    document.getElementById(
-      "depositAmount"
-    );
-
-  const button =
-    document.getElementById(
-      "depositButton"
-    );
-
-
-  const amount =
-    Number(
-      input?.value
-    );
-
-
-  if(
-    !Number.isFinite(amount) ||
-    amount <= 0
-  ){
-
-    showNotice(
-      "walletNotice",
-      "Enter a valid deposit amount greater than GHS 0.",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  if(button){
-
-    button.disabled = true;
-
-    button.textContent =
-      "Submitting...";
-
-  }
-
-
-  try{
-
-    const reference =
-      "DEP-" +
-      Date.now() +
-      "-" +
-      Math.random()
-        .toString(36)
-        .substring(2,8)
-        .toUpperCase();
-
-
-    const result =
-      await supabaseClient
-        .from("transactions")
-        .insert({
-
-          user_id:
-            currentUser.id,
-
-          type:
-            "deposit",
-
-          amount,
-
-          status:
-            "pending",
-
-          direction:
-            "credit",
-
-          description:
-            "Wallet deposit request",
-
-          reference
-
-        });
-
-
-    if(result.error){
-      throw result.error;
-    }
-
-
-    if(input){
-      input.value = "";
-    }
-
-
-    showNotice(
-      "walletNotice",
-      "Deposit request submitted successfully. It is pending until payment is confirmed.",
-      "success"
-    );
-
-
-    await loadWallet();
-
-
-  }catch(error){
-
-    console.error(
-      "Deposit error:",
-      error
-    );
-
-
-    showNotice(
-      "walletNotice",
-      "Deposit request failed: " +
-      safeError(error),
-      "error"
-    );
-
-  }finally{
-
-    if(button){
-
-      button.disabled = false;
-
-      button.textContent =
-        "Request Deposit";
-
-    }
-
-  }
-
-}
-
-
-/* ============================================================
-   WITHDRAW
-============================================================ */
-
-async function requestWithdrawal(){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  if(!databaseReady()){
-    return;
-  }
-
-
-  const input =
-    document.getElementById(
-      "withdrawAmount"
-    );
-
-  const button =
-    document.getElementById(
-      "withdrawButton"
-    );
-
-
-  const amount =
-    Number(
-      input?.value
-    );
-
-
-  if(
-    !Number.isFinite(amount) ||
-    amount <= 0
-  ){
-
-    showNotice(
-      "walletNotice",
-      "Enter a valid withdrawal amount greater than GHS 0.",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  if(button){
-
-    button.disabled = true;
-
-    button.textContent =
-      "Checking balance...";
-
-  }
-
-
-  try{
-
-    const result =
-      await supabaseClient
-        .from("transactions")
-        .select(
-          "amount,status,direction,type"
-        )
-        .eq(
-          "user_id",
-          currentUser.id
-        );
-
-
-    if(result.error){
-      throw result.error;
-    }
-
-
-    let balance = 0;
-    let pendingWithdrawals = 0;
-
-
-    (result.data || [])
-      .forEach(tx => {
-
-        const txAmount =
-          Number(
-            tx.amount || 0
-          );
-
-
-        if(
-          !Number.isFinite(txAmount) ||
-          txAmount < 0
-        ){
-
-          return;
-
-        }
-
-
-        const status =
-          String(
-            tx.status ||
-            "completed"
-          )
-          .toLowerCase();
-
-
-        const direction =
-          String(
-            tx.direction ||
-            "credit"
-          )
-          .toLowerCase();
-
-
-        if(
-          status === "completed"
-        ){
-
-          if(
-            direction === "credit"
-          ){
-
-            balance +=
-              txAmount;
-
-          }else if(
-            direction === "debit"
-          ){
-
-            balance -=
-              txAmount;
-
-          }
-
-        }
-
-
-        if(
-          status === "pending" &&
-          direction === "debit"
-        ){
-
-          pendingWithdrawals +=
-            txAmount;
-
-        }
-
-      });
-
-
-    const available =
-      Math.max(
-        0,
-        balance -
-        pendingWithdrawals
-      );
-
-
-    if(amount > available){
-
-      showNotice(
-        "walletNotice",
-        "Insufficient available balance. Available: GHS " +
-        available.toFixed(2),
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    if(button){
-
-      button.textContent =
-        "Submitting...";
-
-    }
-
-
-    const reference =
-      "WDR-" +
-      Date.now() +
-      "-" +
-      Math.random()
-        .toString(36)
-        .substring(2,8)
-        .toUpperCase();
-
-
-    const insertResult =
-      await supabaseClient
-        .from("transactions")
-        .insert({
-
-          user_id:
-            currentUser.id,
-
-          type:
-            "withdrawal",
-
-          amount,
-
-          status:
-            "pending",
-
-          direction:
-            "debit",
-
-          description:
-            "Wallet withdrawal request",
-
-          reference
-
-        });
-
-
-    if(insertResult.error){
-      throw insertResult.error;
-    }
-
-
-    if(input){
-      input.value = "";
-    }
-
-
-    showNotice(
-      "walletNotice",
-      "Withdrawal request submitted successfully. It is now pending processing.",
-      "success"
-    );
-
-
-    await loadWallet();
-
-
-  }catch(error){
-
-    console.error(
-      "Withdrawal error:",
-      error
-    );
-
-
-    showNotice(
-      "walletNotice",
-      "Withdrawal request failed: " +
-      safeError(error),
-      "error"
-    );
-
-  }finally{
-
-    if(button){
-
-      button.disabled = false;
-
-      button.textContent =
-        "Request Withdrawal";
-
-    }
-
-  }
-
-}
-
-
-/* ============================================================
-   NEARBY
-============================================================ */
-
-function findNearby(){
-
-  const results =
-    document.getElementById(
-      "nearbyResults"
-    );
-
-
-  if(!results){
-    return;
-  }
-
-
-  results.innerHTML = `
-
-    <div class="form-card">
-
-      <h3>
-        Nearby discovery
-      </h3>
-
-      <p class="muted">
-
-        ZEEPY can use location permission
-        to discover people, shops, products,
-        groups and opportunities around you.
-
-      </p>
-
-      <br>
-
-      <button
-        class="btn btn-orange"
-        onclick="requestLocation()">
-
-        Allow Location
-
-      </button>
-
-    </div>
-
-  `;
-
-}
-
-
-function requestLocation(){
-
-  if(!navigator.geolocation){
-
-    alert(
-      "Location is not supported by this browser."
-    );
-
-    return;
-
-  }
-
-
-  navigator.geolocation.getCurrentPosition(
-
-    position => {
-
-      const results =
-        document.getElementById(
-          "nearbyResults"
-        );
-
-
-      if(results){
-
-        results.innerHTML = `
-
-          <div class="notice success">
-
-            Location permission received.
-
-            <br><br>
-
-            ZEEPY can now connect this location
-            to the future Nearby discovery system.
-
-          </div>
-
-        `;
-
-      }
-
-
-      console.log(
-        position.coords.latitude,
-        position.coords.longitude
-      );
-
-    },
-
-    error => {
-
-      console.error(
-        "Location error:",
-        error
-      );
-
-
-      alert(
-        "Location permission was not granted."
-      );
-
-    }
-
-  );
-
-}
-
-
-/* ============================================================
-   NOTIFICATIONS
-============================================================ */
-
-function showNotifications(){
-
-  alert(
-    currentUser
-      ? "Your ZEEPY notifications will appear here."
-      : "Log in to see your notifications."
-  );
-
-}
-
-
-/* ============================================================
-   LOGIN REQUIREMENTS
-============================================================ */
-
-function requireLogin(action){
-
-  if(!currentUser){
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  if(action === "addProduct"){
-
-    document
-      .getElementById("productForm")
-      ?.classList.toggle("hidden");
-
-  }
-
-
-  if(action === "createGroup"){
-
-    document
-      .getElementById("groupForm")
-      ?.classList.toggle("hidden");
-
-  }
-
-
-  if(action === "uploadMedia"){
-
-    document
-      .getElementById("mediaForm")
-      ?.classList.toggle("hidden");
-
-  }
-
-
-  if(action === "meeting"){
-
-    alert(
-      "Meeting creation is ready for connection to your video-meeting provider."
-    );
-
-  }
-
-
-  if(action === "goLive"){
-
-    alert(
-      "Live streaming is ready for connection to your streaming provider."
-    );
-
-  }
-
-}
-
-
-/* ============================================================
-   GLOBAL EVENT SETUP
-============================================================ */
-
-function setupPageEvents(){
-
-  const chatForm =
-    document.getElementById(
-      "chatForm"
-    );
-
-
-  if(chatForm){
-
-    chatForm.addEventListener(
-      "submit",
-      sendMessage
-    );
-
-  }
-
-
-  /*
-    Clicking outside the authentication box
-    closes the modal.
-  */
-
-  const authModal =
-    document.getElementById(
-      "authModal"
-    );
-
-
-  if(authModal){
-
-    authModal.addEventListener(
-      "click",
-      event => {
-
-        if(
-          event.target === authModal
-        ){
-
-          closeAuth();
-
-        }
-
-      }
-    );
-
-  }
-
-
-  /*
-    Enter key sends a message.
-  */
-
-  const messageInput =
-    document.getElementById(
-      "messageInput"
-    );
-
-
-  if(messageInput){
-
-    messageInput.addEventListener(
-      "keydown",
-      event => {
-
-        if(
-          event.key === "Enter" &&
-          !event.shiftKey
-        ){
-
-          event.preventDefault();
-
-          sendMessage(event);
-
-        }
-
-      }
-    );
-
-  }
-
-}
-
-
-/* ============================================================
-   START APPLICATION
-============================================================ */
-
-async function initializeApp(){
-
-  /*
-    FIRST make the interface usable.
-    Database work comes afterwards.
-  */
-
-  showPage("home");
-
-  setupPageEvents();
-
-  setupAuthListener();
-
-  updateAuthUI();
-
-
-  /*
-    Supabase work is isolated.
-    It cannot prevent buttons from working.
-  */
-
-  if(!supabaseClient){
-
-    console.error(
-      "ZEEPY started without Supabase."
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    await checkSession();
-
-  }catch(error){
-
-    console.error(
-      "Initial session check failed:",
-      error
-    );
-
-  }
-
-
-  /*
-    These are independent.
-    Promise.allSettled means one failure
-    cannot stop the others.
-  */
-
-  Promise.allSettled([
-
-    loadProducts(),
-
-    loadGroups(),
-
-    loadMedia()
-
-  ])
-  .then(results => {
-
-    console.log(
-      "ZEEPY initial data loading finished:",
-      results
-    );
-
-  })
-  .catch(error => {
-
-    console.error(
-      "Initial data loading error:",
-      error
-    );
 
   });
 
+  document.getElementById("walletBalance")
+    .textContent =
+    "GH₵ "+balance.toFixed(2);
+
+  const list =
+    document.getElementById("transactionsList");
+
+  if(!data || !data.length){
+
+    list.innerHTML=
+      `<div class="empty">
+        No transactions yet.
+      </div>`;
+
+    return;
+  }
+
+  list.innerHTML =
+    data.map(tx=>`
+
+      <div class="transaction">
+
+        <div>
+          <strong>
+            ${escapeHTML(tx.description || tx.type || "Transaction")}
+          </strong>
+
+          <div class="muted">
+            ${escapeHTML(tx.status || "")}
+          </div>
+        </div>
+
+        <strong>
+          GH₵ ${Number(tx.amount || 0).toFixed(2)}
+        </strong>
+
+      </div>
+
+    `).join("");
 }
 
 
-/* ============================================================
-   EXPOSE FUNCTIONS TO HTML BUTTONS
-============================================================ */
+async function walletAction(type){
 
-window.showPage = showPage;
-window.openAuth = openAuth;
-window.closeAuth = closeAuth;
-window.setAuthMode = setAuthMode;
-window.loginOrSignup = loginOrSignup;
+  if(!currentUser){
 
-window.startMessaging = startMessaging;
-window.selectPerson = selectPerson;
-window.filterPeople = filterPeople;
-window.sendMessage = sendMessage;
-window.retryMessages = retryMessages;
+    openAuth();
 
-window.requireLogin = requireLogin;
+    return;
+  }
 
-window.saveProduct = saveProduct;
-window.contactSeller = contactSeller;
+  const amount =
+    Number(prompt(
+      type==="deposit"
+        ? "Enter amount to add:"
+        : "Enter amount to withdraw:"
+    ));
 
-window.saveGroup = saveGroup;
-window.joinGroup = joinGroup;
+  if(!amount || amount<=0) return;
 
-window.saveMedia = saveMedia;
+  const {error} =
+    await db
+      .from("transactions")
+      .insert({
+        user_id:currentUser.id,
+        type:type==="deposit"
+          ? "deposit"
+          : "withdrawal",
+        amount,
+        status:"pending",
+        direction:type==="deposit"
+          ? "credit"
+          : "debit",
+        description:
+          type==="deposit"
+            ? "Wallet deposit request"
+            : "Wallet withdrawal request"
+      });
 
-window.loadWallet = loadWallet;
-window.processDeposit = processDeposit;
-window.requestWithdrawal = requestWithdrawal;
+  if(error){
 
-window.previewAvatar = previewAvatar;
-window.previewSignupAvatar = previewSignupAvatar;
-window.uploadAvatar = uploadAvatar;
-window.saveProfile = saveProfile;
-window.logout = logout;
+    alert("Wallet request failed: "+error.message);
 
-window.findNearby = findNearby;
-window.requestLocation = requestLocation;
+    return;
+  }
 
-window.showNotifications = showNotifications;
+  await loadWallet();
+
+  alert(
+    "Your request has been recorded as pending."
+  );
+}
 
 
-/* ============================================================
-   RUN
-============================================================ */
+/* =========================================================
+   SOCIETY FEATURES
+   ========================================================= */
 
-if(
-  document.readyState === "loading"
-){
+function society(name){
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    initializeApp
+  alert(
+    name+
+    " is now part of the ZEEPY society interface.\n\n"+
+    "We will connect this section to real data after the core ZEEPY foundation is working."
+  );
+}
+
+
+function createReport(){
+
+  if(!currentUser){
+
+    openAuth();
+
+    return;
+  }
+
+  const title =
+    prompt("Report title:");
+
+  if(!title) return;
+
+  const story =
+    prompt("Write your report:");
+
+  if(!story) return;
+
+  alert(
+    "Report captured.\n\n"+
+    "Next stage: connect reports to the ZEEPY media database and moderation system."
+  );
+}
+
+
+function startLive(){
+
+  if(!currentUser){
+
+    openAuth();
+
+    return;
+  }
+
+  alert(
+    "ZEEPY Live is ready for the next integration stage.\n\n"+
+    "The live broadcasting engine will be connected separately so it can support real video, viewers, comments and live shopping."
+  );
+}
+
+
+/* =========================================================
+   CREATE MENU
+   ========================================================= */
+
+function openCreate(){
+
+  document
+    .getElementById("createModal")
+    .classList.add("show");
+}
+
+
+function closeCreate(){
+
+  document
+    .getElementById("createModal")
+    .classList.remove("show");
+}
+
+
+/* =========================================================
+   STARTUP
+   ========================================================= */
+
+async function initializeZEEPY(){
+
+  console.log(
+    "ZEEPY starting with Supabase:",
+    SUPABASE_URL
   );
 
-}else{
+  await testSupabaseConnection();
 
-  initializeApp();
+  const {
+    data:{session}
+  } = await db.auth.getSession();
+
+  currentUser =
+    session?.user || null;
+
+  if(currentUser){
+
+    await ensureProfile(currentUser);
+
+    await loadCurrentProfile();
+
+  }
+
+  updateAuthUI();
+
+  await loadProducts();
+
+  await loadGroups();
+
+  setupRealtime();
+
+  db.auth.onAuthStateChange(
+    async(event,session)=>{
+
+      currentUser =
+        session?.user || null;
+
+      if(currentUser){
+
+        await ensureProfile(currentUser);
+
+        await loadCurrentProfile();
+
+      }
+
+      updateAuthUI();
+
+    }
+  );
 
 }
+
+
+/* =========================================================
+   RUN
+   ========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  initializeZEEPY
+);
 
 </script>
 
