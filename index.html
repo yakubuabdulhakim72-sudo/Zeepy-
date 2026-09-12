@@ -350,6 +350,7 @@ button{
   justify-content:center;
   gap:4px;
   font-size:11px;
+  position:relative;
 }
 
 .nav-item .nav-icon{
@@ -377,6 +378,23 @@ button{
   color:white;
   font-size:26px;
   font-weight:900;
+}
+
+.unread-badge{
+  position:absolute;
+  top:5px;
+  right:22%;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  border-radius:20px;
+  background:#ff3b30;
+  color:white;
+  font-size:10px;
+  font-weight:900;
+  display:none;
+  align-items:center;
+  justify-content:center;
 }
 
 .modal-bg{
@@ -481,7 +499,7 @@ button{
   padding:11px 16px;
   border-radius:12px;
   display:none;
-  z-index:300;
+  z-index:500;
   max-width:90%;
   text-align:center;
 }
@@ -490,7 +508,246 @@ button{
   display:block;
 }
 
+/* =========================================================
+   MESSAGES
+   ========================================================= */
+
+.messages-bg{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#080808;
+  z-index:180;
+}
+
+.messages-bg.show{
+  display:block;
+}
+
+.messages-panel{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  background:#080808;
+}
+
+.messages-header{
+  height:64px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 15px;
+  border-bottom:1px solid #292929;
+  background:#0b0b0b;
+}
+
+.messages-header h2{
+  font-size:20px;
+}
+
+.messages-back{
+  width:38px;
+  height:38px;
+  border:1px solid #333;
+  background:#171717;
+  color:white;
+  border-radius:50%;
+}
+
+.messages-search{
+  padding:12px 15px;
+  border-bottom:1px solid #252525;
+}
+
+.messages-search input{
+  width:100%;
+  background:#181818;
+  border:1px solid #303030;
+  color:white;
+  border-radius:12px;
+  padding:12px 14px;
+  outline:none;
+}
+
+.people-list{
+  flex:1;
+  overflow-y:auto;
+  padding:8px 10px 20px;
+}
+
+.person-row{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:13px 10px;
+  background:none;
+  border:0;
+  border-bottom:1px solid #202020;
+  color:white;
+  text-align:left;
+}
+
+.person-row:hover{
+  background:#151515;
+}
+
+.person-info{
+  flex:1;
+  min-width:0;
+}
+
+.person-name{
+  font-weight:800;
+  font-size:15px;
+}
+
+.person-username{
+  color:#888;
+  font-size:12px;
+  margin-top:3px;
+}
+
+.person-status{
+  color:#777;
+  font-size:11px;
+  margin-top:4px;
+}
+
+.chat-view{
+  display:none;
+  position:absolute;
+  inset:0;
+  background:#080808;
+  flex-direction:column;
+}
+
+.chat-view.show{
+  display:flex;
+}
+
+.chat-header{
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 12px;
+  border-bottom:1px solid #292929;
+  background:#0b0b0b;
+}
+
+.chat-user{
+  flex:1;
+  min-width:0;
+}
+
+.chat-user-name{
+  font-weight:800;
+}
+
+.chat-user-username{
+  color:#777;
+  font-size:11px;
+  margin-top:3px;
+}
+
+.chat-messages{
+  flex:1;
+  overflow-y:auto;
+  padding:18px 13px 15px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.message-row{
+  display:flex;
+  width:100%;
+}
+
+.message-row.mine{
+  justify-content:flex-end;
+}
+
+.message-bubble{
+  max-width:min(78%,500px);
+  padding:10px 13px;
+  border-radius:16px;
+  background:#202020;
+  color:#eee;
+  line-height:1.4;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.message-row.mine .message-bubble{
+  background:var(--orange);
+  color:white;
+  border-bottom-right-radius:5px;
+}
+
+.message-row.theirs .message-bubble{
+  border-bottom-left-radius:5px;
+}
+
+.message-time{
+  display:block;
+  margin-top:4px;
+  font-size:9px;
+  opacity:.65;
+}
+
+.chat-empty{
+  margin:auto;
+  text-align:center;
+  color:#777;
+  padding:20px;
+}
+
+.chat-input-area{
+  display:flex;
+  gap:8px;
+  padding:10px;
+  border-top:1px solid #292929;
+  background:#0d0d0d;
+  padding-bottom:max(10px,env(safe-area-inset-bottom));
+}
+
+.chat-input{
+  flex:1;
+  min-width:0;
+  max-height:110px;
+  resize:none;
+  background:#191919;
+  border:1px solid #333;
+  color:white;
+  border-radius:20px;
+  padding:10px 14px;
+  outline:none;
+}
+
+.chat-send{
+  width:45px;
+  height:45px;
+  flex-shrink:0;
+  border:0;
+  border-radius:50%;
+  background:var(--orange);
+  color:white;
+  font-size:18px;
+  font-weight:900;
+}
+
+.search-empty{
+  padding:35px 15px;
+  text-align:center;
+  color:#777;
+}
+
 @media(max-width:700px){
+
   .category-grid{
     grid-template-columns:repeat(2,1fr);
   }
@@ -502,9 +759,11 @@ button{
   .hero h1{
     font-size:29px;
   }
+
 }
 
 @media(min-width:701px){
+
   .modal-bg{
     align-items:center;
   }
@@ -512,7 +771,20 @@ button{
   .modal{
     border-radius:22px;
   }
+
+  .messages-panel{
+    width:min(650px,100%);
+    margin:auto;
+    border-left:1px solid #292929;
+    border-right:1px solid #292929;
+  }
+
+  .messages-bg{
+    background:rgba(0,0,0,.78);
+  }
+
 }
+
 </style>
 </head>
 
@@ -525,21 +797,29 @@ button{
   </div>
 
   <div class="top-actions">
-    <button class="icon-btn" onclick="showNotice('Search will be connected in a later step.')">⌕</button>
 
-    <button class="icon-btn" onclick="showNotice('Notifications will be connected in a later step.')">🔔</button>
+    <button class="icon-btn"
+      onclick="showNotice('Search will be connected in a later step.')">
+      ⌕
+    </button>
 
-    <button class="auth-btn" id="authButton" onclick="openAuth()">
+    <button class="icon-btn"
+      onclick="showNotice('Notifications will be connected in a later step.')">
+      🔔
+    </button>
+
+    <button class="auth-btn"
+      id="authButton"
+      onclick="openAuth()">
       Log in
     </button>
+
   </div>
 
 </header>
 
 
 <main class="container">
-
-  <!-- HERO -->
 
   <section class="hero">
 
@@ -554,11 +834,13 @@ button{
 
     <div class="hero-buttons">
 
-      <button class="primary" onclick="openPostNotice()">
+      <button class="primary"
+        onclick="openPostNotice()">
         ＋ Create
       </button>
 
-      <button class="secondary" onclick="scrollToFeed()">
+      <button class="secondary"
+        onclick="scrollToFeed()">
         Explore Community
       </button>
 
@@ -566,8 +848,6 @@ button{
 
   </section>
 
-
-  <!-- COMMUNITY -->
 
   <section class="section">
 
@@ -586,8 +866,6 @@ button{
 
   </section>
 
-
-  <!-- DISCOVER -->
 
   <section class="section">
 
@@ -627,8 +905,6 @@ button{
   </section>
 
 
-  <!-- COMMUNITY FEED -->
-
   <section class="section" id="communityFeed">
 
     <div class="section-head">
@@ -649,35 +925,58 @@ button{
 </main>
 
 
-<!-- BOTTOM NAV -->
-
 <nav class="bottom-nav">
 
   <div class="bottom-inner">
 
-    <button class="nav-item active" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <button class="nav-item active"
+      onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
       <span class="nav-icon">⌂</span>
       Home
+
     </button>
 
-    <button class="nav-item" onclick="showNotice('Market will be connected in a later step.')">
+
+    <button class="nav-item"
+      onclick="showNotice('Market will be connected in a later step.')">
+
       <span class="nav-icon">🛍️</span>
       Market
+
     </button>
 
-    <button class="nav-item go-btn" onclick="openPostNotice()">
+
+    <button class="nav-item go-btn"
+      onclick="openPostNotice()">
+
       <span class="go-circle">＋</span>
       Go
+
     </button>
 
-    <button class="nav-item" onclick="showNotice('Messages will be connected in a later step.')">
+
+    <button class="nav-item"
+      onclick="openMessages()">
+
       <span class="nav-icon">💬</span>
+
+      <span class="unread-badge"
+        id="unreadBadge">
+        0
+      </span>
+
       Messages
+
     </button>
 
-    <button class="nav-item" onclick="openProfileNotice()">
+
+    <button class="nav-item"
+      onclick="openProfileNotice()">
+
       <span class="nav-icon">👤</span>
       Profile
+
     </button>
 
   </div>
@@ -685,45 +984,211 @@ button{
 </nav>
 
 
-<!-- AUTH MODAL -->
+<!-- AUTH -->
 
 <div class="modal-bg" id="authModal">
 
   <div class="modal">
 
     <div class="modal-top">
-      <h2 id="authTitle">Log in to ZEEPY</h2>
-      <button class="close" onclick="closeAuth()">✕</button>
+
+      <h2 id="authTitle">
+        Log in to ZEEPY
+      </h2>
+
+      <button class="close"
+        onclick="closeAuth()">
+        ✕
+      </button>
+
     </div>
+
 
     <form id="authForm">
 
-      <div class="form-group" id="nameGroup" style="display:none;">
+      <div class="form-group"
+        id="nameGroup"
+        style="display:none;">
+
         <label>Your name</label>
-        <input id="authName" type="text" placeholder="Your full name">
+
+        <input
+          id="authName"
+          type="text"
+          placeholder="Your full name">
+
       </div>
 
+
       <div class="form-group">
+
         <label>Email</label>
-        <input id="authEmail" type="email" placeholder="you@example.com" required>
+
+        <input
+          id="authEmail"
+          type="email"
+          placeholder="you@example.com"
+          required>
+
       </div>
+
 
       <div class="form-group">
+
         <label>Password</label>
-        <input id="authPassword" type="password" placeholder="Password" required>
+
+        <input
+          id="authPassword"
+          type="password"
+          placeholder="Password"
+          required>
+
       </div>
 
-      <button class="form-submit" type="submit" id="authSubmit">
+
+      <button
+        class="form-submit"
+        type="submit"
+        id="authSubmit">
+
         Log in
+
       </button>
 
     </form>
 
+
     <div class="auth-switch">
-      <span id="switchText">Don't have an account?</span>
-      <button onclick="toggleAuthMode()" id="switchButton">
+
+      <span id="switchText">
+        Don't have an account?
+      </span>
+
+      <button
+        onclick="toggleAuthMode()"
+        id="switchButton">
+
         Sign up
+
       </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     MESSAGES
+     ===================================================== -->
+
+<div class="messages-bg" id="messagesBg">
+
+  <div class="messages-panel">
+
+    <div class="messages-header">
+
+      <button
+        class="messages-back"
+        onclick="closeMessages()">
+        ←
+      </button>
+
+      <h2>Messages</h2>
+
+    </div>
+
+
+    <div class="messages-search">
+
+      <input
+        id="peopleSearch"
+        type="search"
+        placeholder="Search people on ZEEPY..."
+        autocomplete="off">
+
+    </div>
+
+
+    <div
+      class="people-list"
+      id="peopleList">
+
+      <div class="search-empty">
+        Search for a person to start a conversation.
+      </div>
+
+    </div>
+
+
+    <!-- CHAT -->
+
+    <div class="chat-view"
+      id="chatView">
+
+      <div class="chat-header">
+
+        <button
+          class="messages-back"
+          onclick="closeChat()">
+          ←
+        </button>
+
+
+        <div id="chatAvatar"
+          class="avatar">
+        </div>
+
+
+        <div class="chat-user">
+
+          <div
+            class="chat-user-name"
+            id="chatUserName">
+            ZEEPY Member
+          </div>
+
+          <div
+            class="chat-user-username"
+            id="chatUserUsername">
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="chat-messages"
+        id="chatMessages">
+
+        <div class="chat-empty">
+          Start your conversation.
+        </div>
+
+      </div>
+
+
+      <form
+        class="chat-input-area"
+        id="chatForm">
+
+        <textarea
+          class="chat-input"
+          id="chatInput"
+          rows="1"
+          placeholder="Write a message..."
+          maxlength="2000"></textarea>
+
+        <button
+          class="chat-send"
+          type="submit">
+          ➤
+        </button>
+
+      </form>
+
     </div>
 
   </div>
@@ -737,7 +1202,7 @@ button{
 <script>
 
 /* =========================================================
-   ZEEPY SUPABASE CONNECTION
+   SUPABASE
    ========================================================= */
 
 const SUPABASE_URL =
@@ -760,20 +1225,37 @@ const supabaseClient =
 let currentUser = null;
 let authMode = "login";
 
+let selectedPerson = null;
+
+let messageRealtimeChannel = null;
+
+let peopleSearchTimer = null;
+
 
 /* =========================================================
    START
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener(
+  "DOMContentLoaded",
+  async () => {
 
-  await checkUser();
+    await checkUser();
 
-  await loadCategories();
+    await loadCategories();
 
-  await loadPosts();
+    await loadPosts();
 
-});
+    if(currentUser){
+
+      await updateUnreadCount();
+
+      subscribeToMessages();
+
+    }
+
+  }
+);
 
 
 /* =========================================================
@@ -787,16 +1269,20 @@ async function checkUser(){
     const {
       data,
       error
-    } = await supabaseClient.auth.getSession();
+    } =
+      await supabaseClient.auth.getSession();
 
     if(error){
+
       console.error(error);
       return;
+
     }
 
-    currentUser = data.session
-      ? data.session.user
-      : null;
+    currentUser =
+      data.session
+        ? data.session.user
+        : null;
 
     updateAuthButton();
 
@@ -812,11 +1298,26 @@ async function checkUser(){
 supabaseClient.auth.onAuthStateChange(
   async (_event, session) => {
 
-    currentUser = session
-      ? session.user
-      : null;
+    currentUser =
+      session
+        ? session.user
+        : null;
 
     updateAuthButton();
+
+    if(currentUser){
+
+      subscribeToMessages();
+
+      await updateUnreadCount();
+
+    }else{
+
+      removeMessageRealtime();
+
+      updateUnreadBadge(0);
+
+    }
 
   }
 );
@@ -829,15 +1330,19 @@ function updateAuthButton(){
 
   if(currentUser){
 
-    button.textContent = "Log out";
+    button.textContent =
+      "Log out";
 
-    button.onclick = logout;
+    button.onclick =
+      logout;
 
   }else{
 
-    button.textContent = "Log in";
+    button.textContent =
+      "Log in";
 
-    button.onclick = openAuth;
+    button.onclick =
+      openAuth;
 
   }
 
@@ -848,7 +1353,8 @@ async function logout(){
 
   const {
     error
-  } = await supabaseClient.auth.signOut();
+  } =
+    await supabaseClient.auth.signOut();
 
   if(error){
 
@@ -859,7 +1365,13 @@ async function logout(){
 
   currentUser = null;
 
+  removeMessageRealtime();
+
   updateAuthButton();
+
+  updateUnreadBadge(0);
+
+  closeMessages();
 
   showNotice("You have logged out.");
 
@@ -890,6 +1402,7 @@ function toggleAuthMode(){
     authMode === "login"
       ? "signup"
       : "login";
+
 
   const title =
     document.getElementById("authTitle");
@@ -948,146 +1461,1445 @@ function toggleAuthMode(){
 
 document
   .getElementById("authForm")
-  .addEventListener("submit", async (event) => {
+  .addEventListener(
+    "submit",
+    async event => {
 
-    event.preventDefault();
+      event.preventDefault();
 
-    const email =
-      document.getElementById("authEmail")
-      .value
-      .trim();
+      const email =
+        document
+          .getElementById("authEmail")
+          .value
+          .trim();
 
-    const password =
-      document.getElementById("authPassword")
-      .value;
+      const password =
+        document
+          .getElementById("authPassword")
+          .value;
 
-    const name =
-      document.getElementById("authName")
-      .value
-      .trim();
+      const name =
+        document
+          .getElementById("authName")
+          .value
+          .trim();
 
-    const submit =
-      document.getElementById("authSubmit");
-
-    submit.disabled = true;
-
-    submit.textContent = "Please wait...";
+      const submit =
+        document
+          .getElementById("authSubmit");
 
 
-    try{
+      submit.disabled =
+        true;
 
-      if(authMode === "signup"){
+      submit.textContent =
+        "Please wait...";
 
-        const {
-          data,
-          error
-        } = await supabaseClient.auth.signUp({
 
-          email,
-          password,
+      try{
 
-          options:{
-            data:{
-              display_name:name
-            }
+        if(authMode === "signup"){
+
+          if(!name){
+
+            throw new Error(
+              "Please enter your name."
+            );
+
           }
 
-        });
 
-        if(error) throw error;
+          const {
+            data,
+            error
+          } =
+            await supabaseClient.auth.signUp({
 
-        if(data.session){
+              email,
+              password,
 
-          showNotice("Welcome to ZEEPY!");
+              options:{
+                data:{
+                  display_name:name
+                }
+              }
 
-          closeAuth();
+            });
+
+
+          if(error)
+            throw error;
+
+
+          if(data.session){
+
+            currentUser =
+              data.user;
+
+            updateAuthButton();
+
+            closeAuth();
+
+            await ensureProfile();
+
+            subscribeToMessages();
+
+            showNotice(
+              "Welcome to ZEEPY!"
+            );
+
+          }else{
+
+            showNotice(
+              "Account created. Check your email if confirmation is required."
+            );
+
+          }
 
         }else{
 
+          const {
+            data,
+            error
+          } =
+            await supabaseClient.auth.signInWithPassword({
+
+              email,
+              password
+
+            });
+
+
+          if(error)
+            throw error;
+
+
+          currentUser =
+            data.user;
+
+          updateAuthButton();
+
+          closeAuth();
+
+          await ensureProfile();
+
+          subscribeToMessages();
+
+          await updateUnreadCount();
+
           showNotice(
-            "Account created. Check your email if confirmation is required."
+            "Welcome back to ZEEPY!"
           );
 
         }
 
-      }else{
+      }catch(error){
 
-        const {
-          data,
-          error
-        } = await supabaseClient.auth.signInWithPassword({
-
-          email,
-          password
-
-        });
-
-        if(error) throw error;
-
-        currentUser =
-          data.user;
-
-        updateAuthButton();
-
-        closeAuth();
-
-        showNotice("Welcome back to ZEEPY!");
+        showNotice(
+          error.message
+        );
 
       }
 
-    }catch(error){
 
-      showNotice(error.message);
+      submit.disabled =
+        false;
+
+      submit.textContent =
+        authMode === "login"
+          ? "Log in"
+          : "Create account";
+
+    });
+
+
+/* =========================================================
+   PROFILE SAFETY
+   ========================================================= */
+
+async function ensureProfile(){
+
+  if(!currentUser)
+    return;
+
+
+  try{
+
+    const {
+      data
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select("id")
+        .eq("id",currentUser.id)
+        .maybeSingle();
+
+
+    if(data)
+      return;
+
+
+    const displayName =
+      currentUser.user_metadata?.display_name ||
+      currentUser.email?.split("@")[0] ||
+      "ZEEPY Member";
+
+
+    const username =
+      makeUsername(displayName);
+
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .insert({
+
+          id:currentUser.id,
+
+          display_name:
+            displayName,
+
+          username:
+            username
+
+        });
+
+
+    if(error){
+
+      console.warn(
+        "Profile creation:",
+        error.message
+      );
+
+    }
+
+  }catch(error){
+
+    console.warn(error);
+
+  }
+
+}
+
+
+function makeUsername(name){
+
+  let username =
+    String(name)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g,"")
+      .slice(0,20);
+
+  if(!username)
+    username = "zeepyuser";
+
+  return username +
+    Math.floor(
+      1000 + Math.random() * 9000
+    );
+
+}
+
+
+/* =========================================================
+   MESSAGES — OPEN
+   ========================================================= */
+
+async function openMessages(){
+
+  if(!currentUser){
+
+    showNotice(
+      "Please log in first to use Messages."
+    );
+
+    openAuth();
+
+    return;
+
+  }
+
+
+  document
+    .getElementById("messagesBg")
+    .classList.add("show");
+
+
+  document
+    .getElementById("peopleSearch")
+    .value = "";
+
+
+  closeChat();
+
+  document
+    .getElementById("peopleList")
+    .innerHTML = `
+
+      <div class="search-empty">
+        🔎 Search for a person to start a conversation.
+      </div>
+
+    `;
+
+
+  await updateUnreadCount();
+
+}
+
+
+function closeMessages(){
+
+  document
+    .getElementById("messagesBg")
+    .classList.remove("show");
+
+  closeChat();
+
+}
+
+
+function closeChat(){
+
+  selectedPerson =
+    null;
+
+  document
+    .getElementById("chatView")
+    .classList.remove("show");
+
+}
+
+
+/* =========================================================
+   PEOPLE SEARCH
+   ========================================================= */
+
+document
+  .getElementById("peopleSearch")
+  .addEventListener(
+    "input",
+    event => {
+
+      const value =
+        event.target.value.trim();
+
+      clearTimeout(
+        peopleSearchTimer
+      );
+
+
+      if(!value){
+
+        document
+          .getElementById("peopleList")
+          .innerHTML = `
+
+            <div class="search-empty">
+              🔎 Search for a person to start a conversation.
+            </div>
+
+          `;
+
+        return;
+
+      }
+
+
+      peopleSearchTimer =
+        setTimeout(
+          () => searchPeople(value),
+          300
+        );
+
+    }
+  );
+
+
+async function searchPeople(term){
+
+  const list =
+    document.getElementById(
+      "peopleList"
+    );
+
+
+  if(!currentUser){
+
+    list.innerHTML = `
+
+      <div class="search-empty">
+        Please log in first.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  list.innerHTML = `
+
+    <div class="search-empty">
+      Searching...
+    </div>
+
+  `;
+
+
+  try{
+
+    /*
+      Search display name and username.
+      The current user's own profile is excluded.
+    */
+
+    const safeTerm =
+      term.replace(/[%_]/g,"");
+
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id,display_name,username,avatar_url"
+        )
+        .neq(
+          "id",
+          currentUser.id
+        )
+        .or(
+          `display_name.ilike.%${safeTerm}%,username.ilike.%${safeTerm}%`
+        )
+        .limit(30);
+
+
+    if(error)
+      throw error;
+
+
+    if(!data || data.length === 0){
+
+      list.innerHTML = `
+
+        <div class="search-empty">
+
+          <div style="font-size:30px;margin-bottom:8px;">
+            👤
+          </div>
+
+          No ZEEPY member found for
+          "<strong>${escapeHtml(term)}</strong>".
+
+        </div>
+
+      `;
+
+      return;
 
     }
 
 
-    submit.disabled = false;
+    list.innerHTML =
+      data
+        .map(person =>
+          personRowHTML(person)
+        )
+        .join("");
 
-    submit.textContent =
-      authMode === "login"
-        ? "Log in"
-        : "Create account";
 
-  });
+  }catch(error){
+
+    console.error(error);
+
+    list.innerHTML = `
+
+      <div class="search-empty">
+
+        <strong>
+          People could not be loaded.
+        </strong>
+
+        <p style="margin-top:7px;">
+          ${escapeHtml(error.message)}
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+function personRowHTML(person){
+
+  const name =
+    person.display_name ||
+    person.username ||
+    "ZEEPY Member";
+
+
+  const username =
+    person.username
+      ? "@" + person.username
+      : "";
+
+
+  const avatar =
+    person.avatar_url;
+
+
+  const initials =
+    name
+      .trim()
+      .charAt(0)
+      .toUpperCase();
+
+
+  return `
+
+    <button
+      class="person-row"
+      onclick='openChat(${JSON.stringify(
+        person
+      ).replace(/'/g,"&#039;")})'>
+
+
+      <div class="avatar">
+
+        ${
+          avatar
+            ? `
+              <img
+                src="${escapeHtml(avatar)}"
+                alt="">
+            `
+            : initials
+        }
+
+      </div>
+
+
+      <div class="person-info">
+
+        <div class="person-name">
+          ${escapeHtml(name)}
+        </div>
+
+        <div class="person-username">
+          ${escapeHtml(username)}
+        </div>
+
+        <div class="person-status">
+          Tap to message
+        </div>
+
+      </div>
+
+
+      <div style="color:#666;font-size:18px;">
+        ›
+      </div>
+
+    </button>
+
+  `;
+
+}
 
 
 /* =========================================================
-   LOAD COMMUNITY CATEGORIES
+   OPEN CHAT
    ========================================================= */
 
-async function loadCategories(){
+async function openChat(person){
 
-  const grid =
-    document.getElementById("categoryGrid");
+  if(!currentUser){
+
+    showNotice(
+      "Please log in first."
+    );
+
+    return;
+
+  }
+
+
+  if(!person ||
+     !person.id){
+
+    return;
+
+  }
+
+
+  selectedPerson =
+    person;
+
+
+  const chatView =
+    document.getElementById(
+      "chatView"
+    );
+
+
+  const name =
+    person.display_name ||
+    person.username ||
+    "ZEEPY Member";
+
+
+  document
+    .getElementById("chatUserName")
+    .textContent =
+      name;
+
+
+  document
+    .getElementById("chatUserUsername")
+    .textContent =
+      person.username
+        ? "@" + person.username
+        : "";
+
+
+  const avatar =
+    document.getElementById(
+      "chatAvatar"
+    );
+
+
+  if(person.avatar_url){
+
+    avatar.innerHTML = `
+
+      <img
+        src="${escapeHtml(person.avatar_url)}"
+        alt="">
+
+    `;
+
+  }else{
+
+    avatar.textContent =
+      name
+        .trim()
+        .charAt(0)
+        .toUpperCase();
+
+  }
+
+
+  chatView.classList.add("show");
+
+
+  await loadConversation();
+
+  await markConversationRead();
+
+  await updateUnreadCount();
+
+
+  setTimeout(() => {
+
+    document
+      .getElementById("chatInput")
+      .focus();
+
+  },100);
+
+}
+
+
+/* =========================================================
+   LOAD CONVERSATION
+   ========================================================= */
+
+async function loadConversation(){
+
+  const box =
+    document.getElementById(
+      "chatMessages"
+    );
+
+
+  if(!currentUser ||
+     !selectedPerson){
+
+    return;
+
+  }
+
+
+  box.innerHTML = `
+
+    <div class="chat-empty">
+      Loading conversation...
+    </div>
+
+  `;
+
+
+  try{
+
+    /*
+      We retrieve messages where:
+      current user -> selected user
+      OR
+      selected user -> current user
+    */
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("messages")
+        .select(`
+          id,
+          sender_id,
+          receiver_id,
+          content,
+          is_read,
+          created_at
+        `)
+        .or(
+          `and(sender_id.eq.${currentUser.id},receiver_id.eq.${selectedPerson.id}),and(sender_id.eq.${selectedPerson.id},receiver_id.eq.${currentUser.id})`
+        )
+        .order(
+          "created_at",
+          {
+            ascending:true
+          }
+        )
+        .limit(200);
+
+
+    if(error)
+      throw error;
+
+
+    if(!data || data.length === 0){
+
+      box.innerHTML = `
+
+        <div class="chat-empty">
+
+          <div style="font-size:35px;margin-bottom:10px;">
+            💬
+          </div>
+
+          <strong>
+            Start the conversation
+          </strong>
+
+          <div style="margin-top:6px;">
+            Send a message to
+            ${escapeHtml(
+              selectedPerson.display_name ||
+              selectedPerson.username ||
+              "this member"
+            )}.
+          </div>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    box.innerHTML =
+      data
+        .map(message =>
+          messageHTML(message)
+        )
+        .join("");
+
+
+    scrollChatToBottom();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    box.innerHTML = `
+
+      <div class="chat-empty">
+
+        <strong>
+          Messages could not be loaded.
+        </strong>
+
+        <p style="margin-top:7px;">
+          ${escapeHtml(error.message)}
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+function messageHTML(message){
+
+  const mine =
+    message.sender_id ===
+    currentUser.id;
+
+
+  return `
+
+    <div class="message-row ${
+      mine ? "mine" : "theirs"
+    }">
+
+      <div class="message-bubble">
+
+        ${escapeHtml(
+          message.content || ""
+        )}
+
+        <span class="message-time">
+
+          ${formatTime(
+            message.created_at
+          )}
+
+          ${
+            mine
+              ? (
+                  message.is_read
+                    ? " · Read"
+                    : ""
+                )
+              : ""
+          }
+
+        </span>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   SEND MESSAGE
+   ========================================================= */
+
+document
+  .getElementById("chatForm")
+  .addEventListener(
+    "submit",
+    async event => {
+
+      event.preventDefault();
+
+      await sendMessage();
+
+    }
+  );
+
+
+async function sendMessage(){
+
+  if(!currentUser){
+
+    showNotice(
+      "Please log in first."
+    );
+
+    return;
+
+  }
+
+
+  if(!selectedPerson){
+
+    showNotice(
+      "Select a person first."
+    );
+
+    return;
+
+  }
+
+
+  const input =
+    document.getElementById(
+      "chatInput"
+    );
+
+
+  const content =
+    input.value.trim();
+
+
+  if(!content)
+    return;
+
+
+  const sendButton =
+    document.querySelector(
+      ".chat-send"
+    );
+
+
+  input.disabled =
+    true;
+
+  sendButton.disabled =
+    true;
+
 
   try{
 
     const {
       data,
       error
-    } = await supabaseClient
+    } =
+      await supabaseClient
+        .from("messages")
+        .insert({
 
-      .from("community_categories")
+          sender_id:
+            currentUser.id,
 
-      .select(
-        "id,name,slug,description,icon,sort_order"
+          receiver_id:
+            selectedPerson.id,
+
+          content:
+            content,
+
+          is_read:
+            false
+
+        })
+        .select(`
+          id,
+          sender_id,
+          receiver_id,
+          content,
+          is_read,
+          created_at
+        `)
+        .single();
+
+
+    if(error)
+      throw error;
+
+
+    input.value = "";
+
+
+    /*
+      Add immediately so the sender sees it
+      even before realtime arrives.
+    */
+
+    addMessageToChat(
+      data
+    );
+
+
+    scrollChatToBottom();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showNotice(
+      "Message could not be sent: " +
+      error.message
+    );
+
+  }
+
+
+  input.disabled =
+    false;
+
+  sendButton.disabled =
+    false;
+
+  input.focus();
+
+}
+
+
+/* =========================================================
+   ADD MESSAGE WITHOUT RELOADING
+   ========================================================= */
+
+function addMessageToChat(message){
+
+  const box =
+    document.getElementById(
+      "chatMessages"
+    );
+
+
+  /*
+    If the empty state is showing,
+    remove it.
+  */
+
+  const empty =
+    box.querySelector(
+      ".chat-empty"
+    );
+
+  if(empty)
+    empty.remove();
+
+
+  /*
+    Prevent duplicate realtime message.
+  */
+
+  if(
+    document.querySelector(
+      `[data-message-id="${message.id}"]`
+    )
+  ){
+
+    return;
+
+  }
+
+
+  const wrapper =
+    document.createElement(
+      "div"
+    );
+
+
+  wrapper.dataset.messageId =
+    message.id;
+
+
+  const mine =
+    message.sender_id ===
+    currentUser.id;
+
+
+  wrapper.className =
+    "message-row " +
+    (mine ? "mine" : "theirs");
+
+
+  wrapper.innerHTML = `
+
+    <div class="message-bubble">
+
+      ${escapeHtml(
+        message.content || ""
+      )}
+
+      <span class="message-time">
+
+        ${formatTime(
+          message.created_at
+        )}
+
+        ${
+          mine && message.is_read
+            ? " · Read"
+            : ""
+        }
+
+      </span>
+
+    </div>
+
+  `;
+
+
+  box.appendChild(
+    wrapper
+  );
+
+}
+
+
+/* =========================================================
+   MARK READ
+   ========================================================= */
+
+async function markConversationRead(){
+
+  if(!currentUser ||
+     !selectedPerson){
+
+    return;
+
+  }
+
+
+  try{
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("messages")
+        .update({
+          is_read:true
+        })
+        .eq(
+          "receiver_id",
+          currentUser.id
+        )
+        .eq(
+          "sender_id",
+          selectedPerson.id
+        )
+        .eq(
+          "is_read",
+          false
+        );
+
+
+    if(error){
+
+      console.warn(
+        "Read update:",
+        error.message
+      );
+
+    }
+
+  }catch(error){
+
+    console.warn(error);
+
+  }
+
+}
+
+
+/* =========================================================
+   UNREAD COUNT
+   ========================================================= */
+
+async function updateUnreadCount(){
+
+  if(!currentUser){
+
+    updateUnreadBadge(0);
+    return;
+
+  }
+
+
+  try{
+
+    const {
+      count,
+      error
+    } =
+      await supabaseClient
+        .from("messages")
+        .select(
+          "id",
+          {
+            count:"exact",
+            head:true
+          }
+        )
+        .eq(
+          "receiver_id",
+          currentUser.id
+        )
+        .eq(
+          "is_read",
+          false
+        );
+
+
+    if(error)
+      throw error;
+
+
+    updateUnreadBadge(
+      count || 0
+    );
+
+
+  }catch(error){
+
+    console.warn(
+      "Unread count:",
+      error.message
+    );
+
+  }
+
+}
+
+
+function updateUnreadBadge(count){
+
+  const badge =
+    document.getElementById(
+      "unreadBadge"
+    );
+
+
+  if(!badge)
+    return;
+
+
+  if(count > 0){
+
+    badge.style.display =
+      "flex";
+
+    badge.textContent =
+      count > 99
+        ? "99+"
+        : count;
+
+  }else{
+
+    badge.style.display =
+      "none";
+
+  }
+
+}
+
+
+/* =========================================================
+   REALTIME
+   ========================================================= */
+
+function subscribeToMessages(){
+
+  if(!currentUser)
+    return;
+
+
+  removeMessageRealtime();
+
+
+  messageRealtimeChannel =
+    supabaseClient
+      .channel(
+        "zeepy-messages-" +
+        currentUser.id
       )
+      .on(
+        "postgres_changes",
+        {
+          event:"INSERT",
+          schema:"public",
+          table:"messages"
+        },
+        async payload => {
 
-      .eq("is_active",true)
-
-      .order("sort_order",{ascending:true});
-
-
-    if(error) throw error;
+          const message =
+            payload.new;
 
 
-    if(!data || data.length === 0){
+          if(!message)
+            return;
+
+
+          /*
+            If message belongs to currently
+            open conversation, show it.
+          */
+
+          const belongsToOpenChat =
+            selectedPerson &&
+            (
+              (
+                message.sender_id ===
+                currentUser.id &&
+                message.receiver_id ===
+                selectedPerson.id
+              )
+              ||
+              (
+                message.sender_id ===
+                selectedPerson.id &&
+                message.receiver_id ===
+                currentUser.id
+              )
+            );
+
+
+          if(belongsToOpenChat){
+
+            addMessageToChat(
+              message
+            );
+
+            scrollChatToBottom();
+
+
+            if(
+              message.receiver_id ===
+              currentUser.id
+            ){
+
+              await markConversationRead();
+
+            }
+
+          }
+
+
+          /*
+            Always refresh unread count.
+          */
+
+          await updateUnreadCount();
+
+        }
+      )
+      .subscribe();
+
+}
+
+
+function removeMessageRealtime(){
+
+  if(messageRealtimeChannel){
+
+    supabaseClient.removeChannel(
+      messageRealtimeChannel
+    );
+
+    messageRealtimeChannel =
+      null;
+
+  }
+
+}
+
+
+/* =========================================================
+   CHAT HELPERS
+   ========================================================= */
+
+function scrollChatToBottom(){
+
+  const box =
+    document.getElementById(
+      "chatMessages"
+    );
+
+
+  setTimeout(() => {
+
+    box.scrollTop =
+      box.scrollHeight;
+
+  },50);
+
+}
+
+
+function formatTime(value){
+
+  if(!value)
+    return "";
+
+
+  const date =
+    new Date(value);
+
+
+  if(Number.isNaN(
+    date.getTime()
+  ))
+    return "";
+
+
+  return date.toLocaleTimeString(
+    undefined,
+    {
+      hour:"numeric",
+      minute:"2-digit"
+    }
+  );
+
+}
+
+
+/* =========================================================
+   COMMUNITY CATEGORIES
+   ========================================================= */
+
+async function loadCategories(){
+
+  const grid =
+    document.getElementById(
+      "categoryGrid"
+    );
+
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from(
+          "community_categories"
+        )
+        .select(
+          "id,name,slug,description,icon,sort_order"
+        )
+        .eq(
+          "is_active",
+          true
+        )
+        .order(
+          "sort_order",
+          {
+            ascending:true
+          }
+        );
+
+
+    if(error)
+      throw error;
+
+
+    if(!data ||
+       data.length === 0){
 
       grid.innerHTML = `
+
         <div class="empty">
           No community areas found.
         </div>
+
       `;
 
       return;
@@ -1096,30 +2908,36 @@ async function loadCategories(){
 
 
     grid.innerHTML =
-      data.map(category => `
+      data.map(
+        category => `
 
-        <button
-          class="category"
-          onclick="openCategory('${escapeHtml(category.name)}')"
-        >
+          <button
+            class="category"
+            onclick="openCategory('${escapeHtml(
+              category.name
+            )}')">
 
-          <span class="emoji">
-            ${category.icon || "🌍"}
-          </span>
+            <span class="emoji">
+              ${category.icon || "🌍"}
+            </span>
 
-          <strong>
-            ${escapeHtml(category.name)}
-          </strong>
+            <strong>
+              ${escapeHtml(
+                category.name
+              )}
+            </strong>
 
-          <small>
-            ${escapeHtml(
-              category.description || "Explore this area"
-            )}
-          </small>
+            <small>
+              ${escapeHtml(
+                category.description ||
+                "Explore this area"
+              )}
+            </small>
 
-        </button>
+          </button>
 
-      `).join("");
+        `
+      ).join("");
 
 
   }catch(error){
@@ -1127,9 +2945,11 @@ async function loadCategories(){
     console.error(error);
 
     grid.innerHTML = `
+
       <div class="empty">
         We couldn't load the community areas.
       </div>
+
     `;
 
   }
@@ -1138,60 +2958,67 @@ async function loadCategories(){
 
 
 /* =========================================================
-   LOAD PUBLIC POSTS
+   POSTS
    ========================================================= */
 
 async function loadPosts(){
 
   const feed =
-    document.getElementById("feed");
+    document.getElementById(
+      "feed"
+    );
+
 
   try{
 
     const {
       data,
       error
-    } = await supabaseClient
-
-      .from("posts")
-
-      .select(`
-        id,
-        content,
-        media_url,
-        media_type,
-        location_name,
-        likes_count,
-        comments_count,
-        shares_count,
-        created_at,
-        profiles(
-          display_name,
-          username,
-          avatar_url
-        ),
-        community_categories(
-          name,
-          icon
+    } =
+      await supabaseClient
+        .from("posts")
+        .select(`
+          id,
+          content,
+          media_url,
+          media_type,
+          location_name,
+          likes_count,
+          comments_count,
+          shares_count,
+          created_at,
+          profiles(
+            display_name,
+            username,
+            avatar_url
+          ),
+          community_categories(
+            name,
+            icon
+          )
+        `)
+        .eq(
+          "visibility",
+          "public"
         )
-      `)
-
-      .eq("visibility","public")
-
-      .order(
-        "created_at",
-        {ascending:false}
-      )
-
-      .limit(20);
+        .order(
+          "created_at",
+          {
+            ascending:false
+          }
+        )
+        .limit(20);
 
 
-    if(error) throw error;
+    if(error)
+      throw error;
 
 
-    if(!data || data.length === 0){
+    if(!data ||
+       data.length === 0){
 
       feed.innerHTML = `
+
         <div class="empty">
 
           <div style="font-size:30px;margin-bottom:10px;">
@@ -1207,6 +3034,7 @@ async function loadPosts(){
           </p>
 
         </div>
+
       `;
 
       return;
@@ -1215,161 +3043,191 @@ async function loadPosts(){
 
 
     feed.innerHTML =
-      data.map(post => {
+      data.map(
+        post => {
 
-        const profile =
-          post.profiles || {};
+          const profile =
+            post.profiles || {};
 
-        const category =
-          post.community_categories || {};
-
-        const name =
-          profile.display_name ||
-          profile.username ||
-          "ZEEPY Member";
-
-        const avatar =
-          profile.avatar_url;
-
-        const initials =
-          name
-            .trim()
-            .charAt(0)
-            .toUpperCase();
+          const category =
+            post.community_categories ||
+            {};
 
 
-        return `
+          const name =
+            profile.display_name ||
+            profile.username ||
+            "ZEEPY Member";
 
-          <article class="post">
 
-            <div class="post-head">
+          const avatar =
+            profile.avatar_url;
 
-              <div class="avatar">
 
-                ${
-                  avatar
-                    ? `<img src="${escapeHtml(avatar)}" alt="">`
-                    : initials
-                }
+          const initials =
+            name
+              .trim()
+              .charAt(0)
+              .toUpperCase();
 
-              </div>
 
-              <div>
+          return `
 
-                <div class="post-name">
-                  ${escapeHtml(name)}
-                </div>
+            <article class="post">
 
-                <div class="post-meta">
+              <div class="post-head">
+
+                <div class="avatar">
 
                   ${
-                    category.icon || "🌍"
-                  }
-
-                  ${
-                    escapeHtml(
-                      category.name ||
-                      "Community"
-                    )
-                  }
-
-                  ·
-
-                  ${
-                    formatDate(post.created_at)
+                    avatar
+                      ? `
+                        <img
+                          src="${escapeHtml(
+                            avatar
+                          )}"
+                          alt="">
+                      `
+                      : initials
                   }
 
                 </div>
 
-              </div>
+                <div>
 
-            </div>
-
-
-            ${
-              post.content
-                ? `
-                  <div class="post-body">
-                    ${escapeHtml(post.content)}
+                  <div class="post-name">
+                    ${escapeHtml(name)}
                   </div>
-                `
-                : ""
-            }
 
-
-            ${
-              post.media_url
-                ? `
-                  <div style="
-                    margin-top:12px;
-                    border-radius:14px;
-                    overflow:hidden;
-                    background:#0c0c0c;
-                  ">
+                  <div class="post-meta">
 
                     ${
-                      post.media_type === "video"
-                        ? `
-                          <video
-                            src="${escapeHtml(post.media_url)}"
-                            controls
-                            style="
-                              width:100%;
-                              display:block;
-                              max-height:500px;
-                            "
-                          ></video>
-                        `
-                        : `
-                          <img
-                            src="${escapeHtml(post.media_url)}"
-                            alt=""
-                            style="
-                              width:100%;
-                              display:block;
-                              max-height:500px;
-                              object-fit:cover;
-                            "
-                          >
-                        `
+                      category.icon ||
+                      "🌍"
+                    }
+
+                    ${
+                      escapeHtml(
+                        category.name ||
+                        "Community"
+                      )
+                    }
+
+                    ·
+
+                    ${
+                      formatDate(
+                        post.created_at
+                      )
                     }
 
                   </div>
-                `
-                : ""
-            }
+
+                </div>
+
+              </div>
 
 
-            <div class="post-actions">
+              ${
+                post.content
+                  ? `
+                    <div class="post-body">
+                      ${escapeHtml(
+                        post.content
+                      )}
+                    </div>
+                  `
+                  : ""
+              }
 
-              <button
-                class="post-action"
-                onclick="showNotice('Likes will be connected in the next interaction step.')"
-              >
-                ❤️ ${post.likes_count || 0}
-              </button>
 
-              <button
-                class="post-action"
-                onclick="showNotice('Comments will be connected in the next interaction step.')"
-              >
-                💬 ${post.comments_count || 0}
-              </button>
+              ${
+                post.media_url
+                  ? `
+                    <div style="
+                      margin-top:12px;
+                      border-radius:14px;
+                      overflow:hidden;
+                      background:#0c0c0c;
+                    ">
 
-              <button
-                class="post-action"
-                onclick="showNotice('Sharing will be connected in the next interaction step.')"
-              >
-                🔄 ${post.shares_count || 0}
-              </button>
+                      ${
+                        post.media_type ===
+                        "video"
+                          ? `
+                            <video
+                              src="${escapeHtml(
+                                post.media_url
+                              )}"
+                              controls
+                              style="
+                                width:100%;
+                                display:block;
+                                max-height:500px;
+                              "
+                            ></video>
+                          `
+                          : `
+                            <img
+                              src="${escapeHtml(
+                                post.media_url
+                              )}"
+                              alt=""
+                              style="
+                                width:100%;
+                                display:block;
+                                max-height:500px;
+                                object-fit:cover;
+                              "
+                            >
+                          `
+                      }
 
-            </div>
+                    </div>
+                  `
+                  : ""
+              }
 
-          </article>
 
-        `;
+              <div class="post-actions">
 
-      }).join("");
+                <button
+                  class="post-action"
+                  onclick="showNotice('Likes will be connected in the next interaction step.')">
+
+                  ❤️
+                  ${post.likes_count || 0}
+
+                </button>
+
+
+                <button
+                  class="post-action"
+                  onclick="showNotice('Comments will be connected in the next interaction step.')">
+
+                  💬
+                  ${post.comments_count || 0}
+
+                </button>
+
+
+                <button
+                  class="post-action"
+                  onclick="showNotice('Sharing will be connected in the next interaction step.')">
+
+                  🔄
+                  ${post.shares_count || 0}
+
+                </button>
+
+              </div>
+
+            </article>
+
+          `;
+
+        }
+      ).join("");
 
 
   }catch(error){
@@ -1377,6 +3235,7 @@ async function loadPosts(){
     console.error(error);
 
     feed.innerHTML = `
+
       <div class="empty">
 
         <strong>
@@ -1384,10 +3243,13 @@ async function loadPosts(){
         </strong>
 
         <p style="margin-top:7px;">
-          ${escapeHtml(error.message)}
+          ${escapeHtml(
+            error.message
+          )}
         </p>
 
       </div>
+
     `;
 
   }
@@ -1396,7 +3258,7 @@ async function loadPosts(){
 
 
 /* =========================================================
-   UI ACTIONS
+   OTHER UI
    ========================================================= */
 
 function openCategory(name){
@@ -1423,6 +3285,7 @@ function openPostNotice(){
 
   }
 
+
   showNotice(
     "The full Create/Upload system will be connected in a later step."
   );
@@ -1440,6 +3303,7 @@ function openProfileNotice(){
 
   }
 
+
   showNotice(
     "Your full profile page will be connected in a later step."
   );
@@ -1450,7 +3314,9 @@ function openProfileNotice(){
 function scrollToFeed(){
 
   document
-    .getElementById("communityFeed")
+    .getElementById(
+      "communityFeed"
+    )
     .scrollIntoView({
       behavior:"smooth"
     });
@@ -1461,57 +3327,94 @@ function scrollToFeed(){
 function showNotice(message){
 
   const toast =
-    document.getElementById("toast");
+    document.getElementById(
+      "toast"
+    );
+
 
   toast.textContent =
     message;
 
-  toast.classList.add("show");
 
-  clearTimeout(window.toastTimer);
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    window.toastTimer
+  );
+
 
   window.toastTimer =
-    setTimeout(() => {
+    setTimeout(
+      () => {
 
-      toast.classList.remove("show");
+        toast.classList.remove(
+          "show"
+        );
 
-    },3500);
+      },
+      3500
+    );
 
 }
 
 
-/* =========================================================
-   HELPERS
-   ========================================================= */
-
 function escapeHtml(value){
 
-  if(value === null ||
-     value === undefined){
+  if(
+    value === null ||
+    value === undefined
+  ){
 
     return "";
 
   }
 
+
   return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 
 }
 
 
 function formatDate(value){
 
-  if(!value) return "";
+  if(!value)
+    return "";
+
 
   const date =
     new Date(value);
 
-  if(Number.isNaN(date.getTime()))
+
+  if(
+    Number.isNaN(
+      date.getTime()
+    )
+  )
     return "";
+
 
   return date.toLocaleDateString(
     undefined,
