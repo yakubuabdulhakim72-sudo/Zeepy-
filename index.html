@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>ZEEPY — Your Community. Your World.</title>
 
@@ -18,23 +18,33 @@
 :root{
   --orange:#ff6b00;
   --orange2:#ff8a00;
-  --black:#080808;
-  --dark:#111;
-  --card:#181818;
+  --black:#070707;
+  --dark:#101010;
+  --card:#171717;
   --card2:#202020;
-  --text:#fff;
-  --muted:#a9a9a9;
   --line:#2c2c2c;
+  --text:#fff;
+  --muted:#999;
+  --green:#22c55e;
+  --red:#ef4444;
+  --blue:#3b82f6;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#080808;
-  color:white;
+  background:var(--black);
+  color:#fff;
   min-height:100vh;
 }
 
-button,input,textarea{
+button,
+input,
+textarea,
+select{
   font:inherit;
 }
 
@@ -42,42 +52,56 @@ button{
   cursor:pointer;
 }
 
+button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* =====================================================
+   TOP BAR
+===================================================== */
+
 .topbar{
   height:64px;
-  background:#080808;
-  border-bottom:1px solid #292929;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 18px;
   position:sticky;
   top:0;
   z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 16px;
+  background:rgba(7,7,7,.96);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(12px);
 }
 
 .logo{
   font-size:26px;
   font-weight:900;
-  letter-spacing:-1px;
+  letter-spacing:-1.5px;
 }
 
-.logo .py{
+.logo span{
   color:var(--orange);
 }
 
 .top-actions{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:8px;
 }
 
 .icon-btn{
   width:40px;
   height:40px;
   border:1px solid #333;
-  background:#151515;
-  color:white;
   border-radius:50%;
+  background:#151515;
+  color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -85,73 +109,131 @@ button{
 }
 
 .auth-btn{
-  border:none;
+  border:0;
+  border-radius:22px;
   background:var(--orange);
   color:#fff;
-  font-weight:700;
-  border-radius:22px;
   padding:10px 17px;
+  font-weight:800;
 }
+
+/* =====================================================
+   DESKTOP NAV
+===================================================== */
+
+.desktop-nav{
+  display:none;
+  border-bottom:1px solid #222;
+  background:#0b0b0b;
+}
+
+.desktop-nav-inner{
+  width:min(1050px,100%);
+  margin:auto;
+  display:flex;
+  gap:4px;
+  overflow:auto;
+  padding:8px 12px;
+}
+
+.desktop-nav button{
+  border:0;
+  background:transparent;
+  color:#aaa;
+  padding:10px 13px;
+  border-radius:10px;
+  white-space:nowrap;
+}
+
+.desktop-nav button:hover,
+.desktop-nav button.active{
+  background:#202020;
+  color:#fff;
+}
+
+.desktop-nav button.active{
+  color:var(--orange);
+}
+
+/* =====================================================
+   MAIN
+===================================================== */
 
 .container{
   width:min(1050px,100%);
   margin:auto;
-  padding:18px 14px 100px;
+  padding:16px 13px 100px;
 }
 
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
 .hero{
-  background:
-    radial-gradient(circle at 90% 20%,rgba(255,107,0,.28),transparent 35%),
-    linear-gradient(135deg,#171717,#0c0c0c);
-  border:1px solid #292929;
+  border:1px solid #2b2b2b;
   border-radius:24px;
-  padding:28px 22px;
+  padding:27px 21px;
   margin-bottom:18px;
-  overflow:hidden;
+  background:
+    radial-gradient(circle at 90% 15%,rgba(255,107,0,.30),transparent 35%),
+    linear-gradient(135deg,#191919,#0c0c0c);
 }
 
 .hero small{
   color:var(--orange);
-  font-weight:700;
-  letter-spacing:.5px;
+  font-weight:800;
+  letter-spacing:.6px;
 }
 
 .hero h1{
   font-size:34px;
-  margin:8px 0;
   line-height:1.05;
+  margin:8px 0;
 }
 
 .hero p{
-  color:#c4c4c4;
+  color:#c0c0c0;
   line-height:1.5;
-  max-width:650px;
+  max-width:680px;
 }
 
 .hero-buttons{
   display:flex;
-  gap:10px;
   flex-wrap:wrap;
+  gap:9px;
   margin-top:20px;
+}
+
+.primary,
+.secondary{
+  border-radius:12px;
+  padding:12px 17px;
+  font-weight:800;
 }
 
 .primary{
   background:var(--orange);
+  color:#fff;
   border:0;
-  color:white;
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:800;
 }
 
 .secondary{
   background:#242424;
-  border:1px solid #363636;
-  color:white;
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:700;
+  color:#fff;
+  border:1px solid #383838;
 }
+
+/* =====================================================
+   SECTIONS
+===================================================== */
 
 .section{
   margin-top:22px;
@@ -161,6 +243,7 @@ button{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:10px;
   margin-bottom:11px;
 }
 
@@ -169,36 +252,38 @@ button{
 }
 
 .section-head span{
-  color:#888;
-  font-size:13px;
+  color:#777;
+  font-size:12px;
 }
+
+/* =====================================================
+   CATEGORY GRID
+===================================================== */
 
 .category-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
 }
 
 .category{
   min-height:92px;
+  padding:13px 11px;
+  text-align:left;
+  color:#fff;
   background:#171717;
   border:1px solid #292929;
   border-radius:16px;
-  padding:13px 10px;
-  text-align:left;
-  color:white;
-  transition:.2s;
 }
 
 .category:hover{
   border-color:var(--orange);
-  transform:translateY(-2px);
 }
 
 .category .emoji{
-  font-size:25px;
+  font-size:24px;
   display:block;
-  margin-bottom:8px;
+  margin-bottom:7px;
 }
 
 .category strong{
@@ -207,27 +292,37 @@ button{
 }
 
 .category small{
-  color:#888;
   display:block;
+  color:#777;
   margin-top:4px;
+  line-height:1.3;
 }
+
+/* =====================================================
+   DISCOVER CARDS
+===================================================== */
 
 .feature-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
 }
 
 .feature{
   background:#171717;
   border:1px solid #292929;
   border-radius:16px;
-  padding:17px 13px;
+  padding:16px 12px;
+  cursor:pointer;
+}
+
+.feature:hover{
+  border-color:#555;
 }
 
 .feature-icon{
   font-size:25px;
-  margin-bottom:10px;
+  margin-bottom:9px;
 }
 
 .feature h3{
@@ -236,10 +331,14 @@ button{
 }
 
 .feature p{
+  color:#858585;
   font-size:12px;
-  color:#8e8e8e;
   line-height:1.4;
 }
+
+/* =====================================================
+   FEED
+===================================================== */
 
 .feed{
   display:flex;
@@ -263,13 +362,13 @@ button{
 .avatar{
   width:43px;
   height:43px;
+  min-width:43px;
   border-radius:50%;
   background:#292929;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
-  flex-shrink:0;
   font-weight:800;
 }
 
@@ -285,52 +384,255 @@ button{
 
 .post-meta{
   color:#777;
-  font-size:12px;
+  font-size:11px;
   margin-top:3px;
 }
 
 .post-body{
   color:#ddd;
-  line-height:1.5;
+  line-height:1.55;
   margin-top:13px;
   white-space:pre-wrap;
 }
 
+.post-media{
+  margin-top:12px;
+  border-radius:15px;
+  overflow:hidden;
+  background:#0a0a0a;
+}
+
+.post-media img,
+.post-media video{
+  width:100%;
+  max-height:550px;
+  display:block;
+  object-fit:cover;
+}
+
 .post-actions{
   display:flex;
-  gap:8px;
-  margin-top:14px;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:13px;
   padding-top:12px;
   border-top:1px solid #272727;
 }
 
 .post-action{
   background:#202020;
-  border:1px solid #2b2b2b;
+  border:1px solid #2d2d2d;
   color:#aaa;
   border-radius:10px;
-  padding:8px 12px;
+  padding:8px 11px;
   font-size:12px;
 }
 
-.empty{
-  text-align:center;
-  padding:35px 15px;
+.post-action.liked{
+  color:#ff6b00;
+  border-color:#6b310e;
+}
+
+/* =====================================================
+   GENERAL CARDS
+===================================================== */
+
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.card{
+  background:#171717;
+  border:1px solid #292929;
+  border-radius:17px;
+  padding:16px;
+}
+
+.card-icon{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.card h3{
+  font-size:16px;
+  margin-bottom:6px;
+}
+
+.card p{
   color:#888;
-  border:1px dashed #333;
+  font-size:13px;
+  line-height:1.45;
+}
+
+.big-card{
+  background:
+    radial-gradient(circle at 90% 10%,rgba(255,107,0,.18),transparent 35%),
+    #171717;
+  border:1px solid #292929;
+  border-radius:20px;
+  padding:20px;
+}
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+.profile-cover{
+  background:
+    linear-gradient(135deg,#211308,#111);
+  border:1px solid #2b2b2b;
+  border-radius:22px;
+  padding:20px;
+}
+
+.profile-main{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.profile-avatar{
+  width:82px;
+  height:82px;
+  border-radius:50%;
+  background:#2b2b2b;
+  border:3px solid var(--orange);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  font-size:30px;
+  font-weight:900;
+}
+
+.profile-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.profile-name{
+  font-size:22px;
+  font-weight:900;
+}
+
+.profile-username{
+  color:#888;
+  margin-top:4px;
+}
+
+.profile-bio{
+  color:#bbb;
+  line-height:1.45;
+  margin-top:15px;
+}
+
+.profile-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+
+/* =====================================================
+   WALLET
+===================================================== */
+
+.balance-card{
+  border-radius:22px;
+  padding:22px;
+  background:
+    radial-gradient(circle at 90% 20%,rgba(255,255,255,.13),transparent 30%),
+    linear-gradient(135deg,#ff6b00,#bd4500);
+}
+
+.balance-label{
+  color:#ffe3cf;
+  font-size:13px;
+}
+
+.balance{
+  font-size:35px;
+  font-weight:900;
+  margin:7px 0 16px;
+}
+
+.wallet-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.wallet-actions button{
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(0,0,0,.18);
+  color:#fff;
+  padding:9px 13px;
+  border-radius:10px;
+}
+
+/* =====================================================
+   MARKET
+===================================================== */
+
+.market-tools{
+  display:flex;
+  gap:8px;
+  margin-bottom:13px;
+}
+
+.market-search{
+  flex:1;
+  min-width:0;
+}
+
+.input{
+  width:100%;
+  background:#111;
+  border:1px solid #333;
+  color:#fff;
+  border-radius:11px;
+  padding:12px;
+  outline:none;
+}
+
+.shop-card{
+  background:#171717;
+  border:1px solid #292929;
   border-radius:18px;
+  padding:16px;
+}
+
+.shop-icon{
+  width:50px;
+  height:50px;
+  border-radius:14px;
+  background:#292929;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  margin-bottom:10px;
+}
+
+.price{
+  color:var(--orange);
+  font-weight:900;
+  margin-top:8px;
 }
 
 /* =====================================================
    MESSAGES
-   ===================================================== */
+===================================================== */
 
 .messages-screen{
   display:none;
   position:fixed;
-  inset:64px 0 67px 0;
-  background:#080808;
+  inset:64px 0 68px;
   z-index:80;
+  background:#080808;
 }
 
 .messages-screen.show{
@@ -347,6 +649,7 @@ button{
 
 .people-panel{
   width:340px;
+  flex-shrink:0;
   border-right:1px solid #292929;
   background:#101010;
   display:flex;
@@ -354,23 +657,12 @@ button{
 }
 
 .people-header{
-  padding:18px;
+  padding:17px;
   border-bottom:1px solid #292929;
 }
 
 .people-header h2{
-  font-size:21px;
   margin-bottom:12px;
-}
-
-.people-search{
-  width:100%;
-  background:#1b1b1b;
-  border:1px solid #333;
-  color:#fff;
-  padding:12px 14px;
-  border-radius:12px;
-  outline:none;
 }
 
 .people-list{
@@ -383,7 +675,7 @@ button{
   border:0;
   border-bottom:1px solid #252525;
   background:transparent;
-  color:white;
+  color:#fff;
   display:flex;
   align-items:center;
   gap:11px;
@@ -393,7 +685,7 @@ button{
 
 .person:hover,
 .person.selected{
-  background:#1d1d1d;
+  background:#1e1e1e;
 }
 
 .person-name{
@@ -402,7 +694,7 @@ button{
 
 .person-username{
   color:#777;
-  font-size:12px;
+  font-size:11px;
   margin-top:3px;
 }
 
@@ -438,11 +730,11 @@ button{
 }
 
 .chat-back{
-  display:none;
   width:35px;
   height:35px;
+  display:none;
   border:0;
-  background:#242424;
+  background:#252525;
   color:#fff;
   border-radius:50%;
 }
@@ -457,7 +749,7 @@ button{
 
 .chat-person-username{
   color:#777;
-  font-size:12px;
+  font-size:11px;
   margin-top:2px;
 }
 
@@ -490,7 +782,6 @@ button{
 
 .message-row.mine .message-bubble{
   background:var(--orange);
-  color:#fff;
   border-bottom-right-radius:5px;
 }
 
@@ -506,7 +797,7 @@ button{
 
 .chat-input-area{
   display:none;
-  padding:11px;
+  padding:10px;
   border-top:1px solid #292929;
   background:#111;
   gap:8px;
@@ -519,34 +810,84 @@ button{
 .chat-input{
   flex:1;
   min-width:0;
-  background:#1b1b1b;
-  border:1px solid #333;
-  color:#fff;
-  padding:12px 13px;
-  border-radius:13px;
-  outline:none;
 }
 
 .send-btn{
   width:48px;
   border:0;
+  border-radius:12px;
   background:var(--orange);
   color:#fff;
-  border-radius:13px;
+  font-size:18px;
+}
+
+/* =====================================================
+   BOTTOM NAV
+===================================================== */
+
+.bottom-nav{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  height:68px;
+  z-index:120;
+  background:rgba(12,12,12,.97);
+  border-top:1px solid #292929;
+}
+
+.bottom-inner{
+  height:100%;
+  width:min(600px,100%);
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+}
+
+.nav-item{
+  border:0;
+  background:transparent;
+  color:#777;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+  font-size:10px;
+}
+
+.nav-item.active{
+  color:var(--orange);
+}
+
+.nav-icon{
   font-size:19px;
-  font-weight:800;
+}
+
+.go-circle{
+  width:39px;
+  height:39px;
+  border-radius:50%;
+  background:var(--orange);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  margin-top:-18px;
+  border:4px solid #080808;
 }
 
 /* =====================================================
    MODALS
-   ===================================================== */
+===================================================== */
 
 .modal-bg{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.78);
-  z-index:200;
+  z-index:300;
+  background:rgba(0,0,0,.82);
   align-items:flex-end;
   justify-content:center;
 }
@@ -556,29 +897,29 @@ button{
 }
 
 .modal{
-  width:min(520px,100%);
+  width:min(540px,100%);
+  max-height:92vh;
+  overflow:auto;
   background:#171717;
   border:1px solid #333;
-  border-radius:24px 24px 0 0;
-  padding:22px;
-  max-height:90vh;
-  overflow:auto;
+  border-radius:23px 23px 0 0;
+  padding:21px;
 }
 
 .modal-top{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  margin-bottom:18px;
+  justify-content:space-between;
+  margin-bottom:17px;
 }
 
 .close{
-  background:#292929;
-  border:0;
-  color:#fff;
   width:36px;
   height:36px;
+  border:0;
   border-radius:50%;
+  background:#292929;
+  color:#fff;
 }
 
 .form-group{
@@ -588,63 +929,88 @@ button{
 .form-group label{
   display:block;
   color:#aaa;
-  font-size:13px;
+  font-size:12px;
   margin-bottom:6px;
 }
 
-.form-group input,
 .form-group textarea{
-  width:100%;
-  background:#0e0e0e;
-  border:1px solid #333;
-  color:#fff;
-  padding:12px;
-  border-radius:11px;
-  outline:none;
-}
-
-.form-group textarea{
-  min-height:100px;
+  min-height:120px;
   resize:vertical;
 }
 
 .form-submit{
   width:100%;
-  background:var(--orange);
   border:0;
+  background:var(--orange);
   color:#fff;
   padding:13px;
   border-radius:12px;
-  font-weight:800;
-  margin-top:5px;
+  font-weight:900;
 }
 
 .auth-switch{
   text-align:center;
-  color:#999;
-  margin-top:14px;
+  color:#888;
+  margin-top:13px;
   font-size:13px;
 }
 
 .auth-switch button{
-  background:none;
   border:0;
+  background:none;
   color:var(--orange);
 }
+
+/* =====================================================
+   COMMENTS
+===================================================== */
+
+.comment{
+  display:flex;
+  gap:9px;
+  padding:10px 0;
+  border-bottom:1px solid #282828;
+}
+
+.comment:last-child{
+  border-bottom:0;
+}
+
+.comment-body{
+  background:#222;
+  border-radius:12px;
+  padding:8px 10px;
+  flex:1;
+}
+
+.comment-name{
+  font-weight:800;
+  font-size:12px;
+}
+
+.comment-text{
+  color:#ddd;
+  margin-top:3px;
+  font-size:13px;
+}
+
+/* =====================================================
+   TOAST / EMPTY
+===================================================== */
 
 .toast{
   position:fixed;
   left:50%;
-  bottom:85px;
+  bottom:84px;
   transform:translateX(-50%);
-  background:#222;
+  background:#242424;
   border:1px solid #444;
-  color:white;
+  color:#fff;
   padding:11px 16px;
   border-radius:12px;
+  z-index:500;
   display:none;
-  z-index:300;
-  max-width:90%;
+  max-width:92%;
   text-align:center;
 }
 
@@ -652,14 +1018,100 @@ button{
   display:block;
 }
 
-@media(max-width:700px){
+.empty{
+  text-align:center;
+  padding:30px 15px;
+  color:#777;
+  border:1px dashed #333;
+  border-radius:17px;
+}
+
+.loading{
+  text-align:center;
+  color:#777;
+  padding:25px;
+}
+
+.stat-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:17px;
+}
+
+.stat{
+  background:#202020;
+  border-radius:12px;
+  padding:11px;
+  text-align:center;
+}
+
+.stat strong{
+  display:block;
+  font-size:18px;
+}
+
+.stat span{
+  color:#777;
+  font-size:11px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(min-width:701px){
+
+  .desktop-nav{
+    display:block;
+  }
+
+  .bottom-nav{
+    display:none;
+  }
+
+  .modal-bg{
+    align-items:center;
+  }
+
+  .modal{
+    border-radius:22px;
+  }
 
   .category-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(4,1fr);
   }
 
   .feature-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .card-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:700px){
+
+  .topbar{
+    padding:0 11px;
+  }
+
+  .logo{
+    font-size:24px;
+  }
+
+  .top-actions{
+    gap:5px;
+  }
+
+  .top-actions .icon-btn{
+    width:36px;
+    height:36px;
+  }
+
+  .auth-btn{
+    padding:9px 12px;
   }
 
   .hero h1{
@@ -687,18 +1139,11 @@ button{
   }
 
   .message-bubble{
-    max-width:82%;
-  }
-}
-
-@media(min-width:701px){
-
-  .modal-bg{
-    align-items:center;
+    max-width:83%;
   }
 
-  .modal{
-    border-radius:22px;
+  .profile-main{
+    align-items:flex-start;
   }
 }
 </style>
@@ -706,23 +1151,27 @@ button{
 
 <body>
 
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
+
 <header class="topbar">
 
   <div class="logo">
-    ZEE<span class="py">PY</span>
+    ZEE<span>PY</span>
   </div>
 
   <div class="top-actions">
 
     <button
       class="icon-btn"
-      onclick="showNotice('Search will be connected in a later step.')">
+      onclick="openSearch()">
       ⌕
     </button>
 
     <button
       class="icon-btn"
-      onclick="showNotice('Notifications will be connected in a later step.')">
+      onclick="openNotifications()">
       🔔
     </button>
 
@@ -738,7 +1187,36 @@ button{
 </header>
 
 
-<main class="container" id="homePage">
+<!-- =====================================================
+     DESKTOP NAV
+===================================================== -->
+
+<nav class="desktop-nav">
+
+  <div class="desktop-nav-inner">
+
+    <button id="dHome" onclick="showPage('home')">Home</button>
+    <button id="dMarket" onclick="showPage('market')">Market</button>
+    <button id="dMedia" onclick="showPage('media')">Media</button>
+    <button id="dNearby" onclick="showPage('nearby')">Nearby</button>
+    <button id="dGroups" onclick="showPage('groups')">Groups</button>
+    <button id="dEducation" onclick="showPage('education')">Education</button>
+    <button id="dMeetings" onclick="showPage('meetings')">Meetings</button>
+    <button id="dWallet" onclick="showPage('wallet')">Wallet</button>
+    <button id="dProfile" onclick="showProfile()">Profile</button>
+
+  </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<main class="container">
+
+<section class="page active" id="page-home">
 
   <section class="hero">
 
@@ -747,17 +1225,20 @@ button{
     <h1>Your ZEEPY World</h1>
 
     <p>
-      A place where people connect, learn, share, discover opportunities,
-      trade, communicate and participate in community life.
+      Connect with people, discover opportunities,
+      share ideas, learn, trade, communicate and build
+      your community.
     </p>
 
     <div class="hero-buttons">
 
-      <button class="primary" onclick="openPostNotice()">
+      <button class="primary"
+              onclick="openCreatePost()">
         ＋ Create
       </button>
 
-      <button class="secondary" onclick="scrollToFeed()">
+      <button class="secondary"
+              onclick="document.getElementById('communityFeed').scrollIntoView({behavior:'smooth'})">
         Explore Community
       </button>
 
@@ -770,13 +1251,15 @@ button{
 
     <div class="section-head">
       <h2>🏙️ Community</h2>
-      <span>What's happening around you</span>
+      <span>Explore ZEEPY</span>
     </div>
 
-    <div class="category-grid" id="categoryGrid">
+    <div
+      class="category-grid"
+      id="categoryGrid">
 
-      <div class="empty">
-        Loading community areas...
+      <div class="loading">
+        Loading community...
       </div>
 
     </div>
@@ -788,33 +1271,37 @@ button{
 
     <div class="section-head">
       <h2>✨ Discover</h2>
-      <span>Explore ZEEPY</span>
+      <span>Your ZEEPY city</span>
     </div>
 
     <div class="feature-grid">
 
-      <div class="feature">
+      <div class="feature"
+           onclick="showPage('market')">
         <div class="feature-icon">🛍️</div>
         <h3>Market</h3>
-        <p>Buy, sell, discover shops and services.</p>
+        <p>Discover shops, products, services and sellers.</p>
       </div>
 
-      <div class="feature">
+      <div class="feature"
+           onclick="showPage('media')">
         <div class="feature-icon">🎥</div>
         <h3>Media</h3>
-        <p>Photos, videos and creative community content.</p>
+        <p>Photos, videos and community stories.</p>
       </div>
 
-      <div class="feature">
+      <div class="feature"
+           onclick="showPage('live')">
         <div class="feature-icon">🔴</div>
         <h3>Live</h3>
-        <p>Live broadcasts and future live shopping.</p>
+        <p>Join live conversations and broadcasts.</p>
       </div>
 
-      <div class="feature">
+      <div class="feature"
+           onclick="showPage('nearby')">
         <div class="feature-icon">📍</div>
         <h3>Nearby</h3>
-        <p>Discover people, places and services nearby.</p>
+        <p>Discover people and opportunities around you.</p>
       </div>
 
     </div>
@@ -822,16 +1309,24 @@ button{
   </section>
 
 
-  <section class="section" id="communityFeed">
+  <section class="section"
+           id="communityFeed">
 
     <div class="section-head">
+
       <h2>📰 Community Feed</h2>
-      <span>Latest public posts</span>
+
+      <span id="feedStatus">
+        Latest posts
+      </span>
+
     </div>
 
-    <div class="feed" id="feed">
+    <div
+      class="feed"
+      id="feed">
 
-      <div class="empty">
+      <div class="loading">
         Loading community posts...
       </div>
 
@@ -839,35 +1334,567 @@ button{
 
   </section>
 
+</section>
+
+
+<!-- =====================================================
+     MARKET
+===================================================== -->
+
+<section class="page" id="page-market">
+
+  <div class="section-head">
+    <h2>🛍️ ZEEPY Market</h2>
+    <span>Buy • Sell • Discover</span>
+  </div>
+
+  <div class="big-card">
+
+    <h2>Build your shop on ZEEPY</h2>
+
+    <p style="color:#999;line-height:1.5;margin-top:8px;">
+      Every ZEEPY member can eventually become a seller,
+      create a shop and connect with customers.
+    </p>
+
+    <div class="hero-buttons">
+
+      <button class="primary"
+              onclick="createShop()">
+        ＋ Create Your Shop
+      </button>
+
+      <button class="secondary"
+              onclick="loadMarketplace()">
+        Browse Market
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="section">
+
+    <div class="market-tools">
+
+      <input
+        id="marketSearch"
+        class="input market-search"
+        placeholder="Search products...">
+
+      <button
+        class="secondary"
+        onclick="loadMarketplace()">
+        Search
+      </button>
+
+    </div>
+
+    <div
+      id="marketGrid"
+      class="card-grid">
+
+      <div class="loading">
+        Loading market...
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEDIA
+===================================================== -->
+
+<section class="page" id="page-media">
+
+  <div class="section-head">
+    <h2>🎥 ZEEPY Media</h2>
+    <span>Photos & videos</span>
+  </div>
+
+  <div class="big-card">
+
+    <div style="font-size:38px;">
+      🎬
+    </div>
+
+    <h2 style="margin-top:8px;">
+      Community Media
+    </h2>
+
+    <p style="color:#999;line-height:1.5;margin-top:7px;">
+      Discover public photos and videos shared by
+      ZEEPY members.
+    </p>
+
+    <button
+      class="primary"
+      style="margin-top:15px;"
+      onclick="openCreatePost()">
+      ＋ Share Media
+    </button>
+
+  </div>
+
+  <div
+    class="section feed"
+    id="mediaFeed">
+
+    <div class="loading">
+      Loading media...
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     NEARBY
+===================================================== -->
+
+<section class="page" id="page-nearby">
+
+  <div class="section-head">
+    <h2>📍 Nearby</h2>
+    <span>Discover your area</span>
+  </div>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="card-icon">👥</div>
+      <h3>People Nearby</h3>
+      <p>
+        Discover members who choose to share
+        their location.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🛍️</div>
+      <h3>Local Shops</h3>
+      <p>
+        Find businesses and sellers around
+        your community.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📢</div>
+      <h3>Local Opportunities</h3>
+      <p>
+        Discover community opportunities,
+        events and announcements.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="section big-card">
+
+    <h3>Location on ZEEPY</h3>
+
+    <p style="color:#888;line-height:1.5;margin-top:7px;">
+      ZEEPY can later use location permission to
+      organize the city around real communities,
+      neighborhoods, shops and services.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     GROUPS
+===================================================== -->
+
+<section class="page" id="page-groups">
+
+  <div class="section-head">
+    <h2>👥 Groups</h2>
+    <span>Communities within ZEEPY</span>
+  </div>
+
+  <div class="big-card">
+
+    <h2>Create a Community Group</h2>
+
+    <p style="color:#999;line-height:1.5;margin-top:8px;">
+      Build groups for schools, businesses, neighborhoods,
+      interests, organizations and communities.
+    </p>
+
+    <button
+      class="primary"
+      style="margin-top:15px;"
+      onclick="createGroup()">
+      ＋ Create Group
+    </button>
+
+  </div>
+
+  <div
+    id="groupsGrid"
+    class="section card-grid">
+
+    <div class="card">
+      <div class="card-icon">🏫</div>
+      <h3>Schools</h3>
+      <p>Connect students and educators.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">💼</div>
+      <h3>Business</h3>
+      <p>Build professional communities.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">⚽</div>
+      <h3>Sports</h3>
+      <p>Connect around sports and activities.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     EDUCATION
+===================================================== -->
+
+<section class="page" id="page-education">
+
+  <div class="section-head">
+    <h2>🎓 Education</h2>
+    <span>Learn together</span>
+  </div>
+
+  <div class="big-card">
+
+    <div style="font-size:38px;">
+      📚
+    </div>
+
+    <h2 style="margin-top:8px;">
+      ZEEPY Education
+    </h2>
+
+    <p style="color:#999;line-height:1.5;margin-top:7px;">
+      A future learning space for students,
+      teachers, educational institutions,
+      courses, study groups and useful resources.
+    </p>
+
+  </div>
+
+  <div class="section card-grid">
+
+    <div class="card">
+      <div class="card-icon">📝</div>
+      <h3>Study Groups</h3>
+      <p>Learn with other members.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">👨‍🏫</div>
+      <h3>Teachers</h3>
+      <p>Connect educators with learners.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <h3>Opportunities</h3>
+      <p>Discover education opportunities.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEETINGS
+===================================================== -->
+
+<section class="page" id="page-meetings">
+
+  <div class="section-head">
+    <h2>🤝 Meetings</h2>
+    <span>Connect in real life</span>
+  </div>
+
+  <div class="big-card">
+
+    <h2>Community Meetings</h2>
+
+    <p style="color:#999;line-height:1.5;margin-top:7px;">
+      Organize community meetings, events,
+      group discussions and gatherings.
+    </p>
+
+    <button
+      class="primary"
+      style="margin-top:15px;"
+      onclick="createMeeting()">
+      ＋ Create Meeting
+    </button>
+
+  </div>
+
+  <div class="section card-grid">
+
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <h3>Events</h3>
+      <p>Create and discover events.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <h3>Places</h3>
+      <p>Choose where people meet.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">👥</div>
+      <h3>Participants</h3>
+      <p>Connect attendees.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     LIVE
+===================================================== -->
+
+<section class="page" id="page-live">
+
+  <div class="section-head">
+    <h2>🔴 ZEEPY Live</h2>
+    <span>Broadcast • Connect</span>
+  </div>
+
+  <div class="big-card">
+
+    <div style="font-size:45px;">
+      🔴
+    </div>
+
+    <h2 style="margin-top:8px;">
+      Go Live
+    </h2>
+
+    <p style="color:#999;line-height:1.5;margin-top:7px;">
+      Start building your live community.
+      Live shopping and creator monetization can
+      grow on top of this system.
+    </p>
+
+    <div class="hero-buttons">
+
+      <button
+        class="primary"
+        onclick="startLive()">
+        Start Live
+      </button>
+
+      <button
+        class="secondary"
+        onclick="showLiveRooms()">
+        Browse Live
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="section card-grid">
+
+    <div class="card">
+      <div class="card-icon">🛍️</div>
+      <h3>Live Shopping</h3>
+      <p>Sell products during broadcasts.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">💰</div>
+      <h3>Creator Earnings</h3>
+      <p>Build future earning opportunities.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">❤️</div>
+      <h3>Audience</h3>
+      <p>Connect with your community.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     WALLET
+===================================================== -->
+
+<section class="page" id="page-wallet">
+
+  <div class="section-head">
+    <h2>💰 Wallet</h2>
+    <span>Your ZEEPY earnings</span>
+  </div>
+
+  <div class="balance-card">
+
+    <div class="balance-label">
+      Available Balance
+    </div>
+
+    <div class="balance">
+      GH₵ <span id="walletBalance">0.00</span>
+    </div>
+
+    <div class="wallet-actions">
+
+      <button onclick="walletAction('Add money')">
+        ＋ Add Money
+      </button>
+
+      <button onclick="walletAction('Withdraw')">
+        Withdraw
+      </button>
+
+      <button onclick="walletAction('Transfer')">
+        Transfer
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="section card-grid">
+
+    <div class="card">
+      <div class="card-icon">🛍️</div>
+      <h3>Seller Earnings</h3>
+      <p>Income from marketplace activity.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🎥</div>
+      <h3>Creator Earnings</h3>
+      <p>Future creator monetization.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <h3>Referrals</h3>
+      <p>Future referral rewards.</p>
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <div class="section-head">
+      <h2>Transactions</h2>
+      <span>Recent activity</span>
+    </div>
+
+    <div class="empty">
+      Your wallet transactions will appear here.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+
+<section class="page" id="page-profile">
+
+  <div
+    class="profile-cover"
+    id="profileBox">
+
+    <div class="loading">
+      Loading profile...
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <div class="section-head">
+      <h2>My Posts</h2>
+      <span>Your community activity</span>
+    </div>
+
+    <div
+      id="profilePosts"
+      class="feed">
+
+      <div class="empty">
+        Your posts will appear here.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
 </main>
 
 
 <!-- =====================================================
      MESSAGES
-     ===================================================== -->
+===================================================== -->
 
-<section class="messages-screen" id="messagesScreen">
+<section
+  class="messages-screen"
+  id="messagesScreen">
 
   <div class="messages-wrap">
 
-    <aside class="people-panel" id="peoplePanel">
+    <aside
+      class="people-panel"
+      id="peoplePanel">
 
       <div class="people-header">
 
         <h2>💬 Messages</h2>
 
         <input
-          class="people-search"
           id="peopleSearch"
+          class="input"
           type="search"
           placeholder="Search people..."
           autocomplete="off">
 
       </div>
 
-      <div class="people-list" id="peopleList">
+      <div
+        id="peopleList"
+        class="people-list">
 
-        <div class="empty" style="margin:15px;">
+        <div class="empty"
+             style="margin:15px;">
           Search for a ZEEPY member.
         </div>
 
@@ -876,20 +1903,26 @@ button{
     </aside>
 
 
-    <section class="chat-panel" id="chatPanel">
+    <section
+      class="chat-panel"
+      id="chatPanel">
 
-      <div class="chat-empty" id="chatEmpty">
+      <div
+        id="chatEmpty"
+        class="chat-empty">
 
         <div>
 
-          <div style="font-size:45px;margin-bottom:12px;">
+          <div style="font-size:45px;">
             💬
           </div>
 
-          <strong>Select a person to start messaging</strong>
+          <strong>
+            Select a person to start messaging
+          </strong>
 
           <p style="margin-top:7px;">
-            Search for another ZEEPY member on the left.
+            Search for another ZEEPY member.
           </p>
 
         </div>
@@ -897,7 +1930,9 @@ button{
       </div>
 
 
-      <div class="chat-header" id="chatHeader">
+      <div
+        id="chatHeader"
+        class="chat-header">
 
         <button
           class="chat-back"
@@ -905,7 +1940,9 @@ button{
           ←
         </button>
 
-        <div class="avatar" id="chatAvatar">
+        <div
+          class="avatar"
+          id="chatAvatar">
           ?
         </div>
 
@@ -929,19 +1966,18 @@ button{
 
 
       <div
-        class="chat-messages"
-        id="chatMessages">
+        id="chatMessages"
+        class="chat-messages">
       </div>
 
 
       <form
-        class="chat-input-area"
-        id="chatInputArea">
+        id="chatInputArea"
+        class="chat-input-area">
 
         <input
-          class="chat-input"
           id="chatInput"
-          type="text"
+          class="input chat-input"
           placeholder="Write a message..."
           autocomplete="off">
 
@@ -962,16 +1998,16 @@ button{
 
 <!-- =====================================================
      BOTTOM NAV
-     ===================================================== -->
+===================================================== -->
 
 <nav class="bottom-nav">
 
   <div class="bottom-inner">
 
     <button
+      id="navHome"
       class="nav-item active"
-      id="homeNav"
-      onclick="showHome()">
+      onclick="showPage('home')">
 
       <span class="nav-icon">⌂</span>
       Home
@@ -980,8 +2016,9 @@ button{
 
 
     <button
+      id="navMarket"
       class="nav-item"
-      onclick="showNotice('Market will be connected in a later step.')">
+      onclick="showPage('market')">
 
       <span class="nav-icon">🛍️</span>
       Market
@@ -990,8 +2027,8 @@ button{
 
 
     <button
-      class="nav-item go-btn"
-      onclick="openPostNotice()">
+      class="nav-item"
+      onclick="openCreatePost()">
 
       <span class="go-circle">＋</span>
       Go
@@ -1000,8 +2037,8 @@ button{
 
 
     <button
+      id="navMessages"
       class="nav-item"
-      id="messagesNav"
       onclick="openMessages()">
 
       <span class="nav-icon">💬</span>
@@ -1011,8 +2048,9 @@ button{
 
 
     <button
+      id="navProfile"
       class="nav-item"
-      onclick="openProfileNotice()">
+      onclick="showProfile()">
 
       <span class="nav-icon">👤</span>
       Profile
@@ -1026,9 +2064,11 @@ button{
 
 <!-- =====================================================
      AUTH MODAL
-     ===================================================== -->
+===================================================== -->
 
-<div class="modal-bg" id="authModal">
+<div
+  id="authModal"
+  class="modal-bg">
 
   <div class="modal">
 
@@ -1050,15 +2090,15 @@ button{
     <form id="authForm">
 
       <div
-        class="form-group"
         id="nameGroup"
+        class="form-group"
         style="display:none;">
 
         <label>Your name</label>
 
         <input
           id="authName"
-          type="text"
+          class="input"
           placeholder="Your full name">
 
       </div>
@@ -1070,6 +2110,7 @@ button{
 
         <input
           id="authEmail"
+          class="input"
           type="email"
           placeholder="you@example.com"
           required>
@@ -1083,6 +2124,7 @@ button{
 
         <input
           id="authPassword"
+          class="input"
           type="password"
           placeholder="Password"
           required>
@@ -1091,12 +2133,10 @@ button{
 
 
       <button
+        id="authSubmit"
         class="form-submit"
-        type="submit"
-        id="authSubmit">
-
+        type="submit">
         Log in
-
       </button>
 
     </form>
@@ -1109,11 +2149,9 @@ button{
       </span>
 
       <button
-        onclick="toggleAuthMode()"
-        id="switchButton">
-
+        id="switchButton"
+        onclick="toggleAuthMode()">
         Sign up
-
       </button>
 
     </div>
@@ -1123,14 +2161,280 @@ button{
 </div>
 
 
-<div class="toast" id="toast"></div>
+<!-- =====================================================
+     CREATE POST MODAL
+===================================================== -->
+
+<div
+  id="createModal"
+  class="modal-bg">
+
+  <div class="modal">
+
+    <div class="modal-top">
+
+      <h2>Create on ZEEPY</h2>
+
+      <button
+        class="close"
+        onclick="closeModal('createModal')">
+        ✕
+      </button>
+
+    </div>
+
+
+    <form id="postForm">
+
+      <div class="form-group">
+
+        <label>
+          What do you want to share?
+        </label>
+
+        <textarea
+          id="postContent"
+          class="input"
+          placeholder="Share something with your community..."></textarea>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Community area
+        </label>
+
+        <select
+          id="postCategory"
+          class="input">
+
+          <option value="">
+            General Community
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Media URL — optional
+        </label>
+
+        <input
+          id="postMediaUrl"
+          class="input"
+          type="url"
+          placeholder="https://...">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Media type
+        </label>
+
+        <select
+          id="postMediaType"
+          class="input">
+
+          <option value="">
+            No media
+          </option>
+
+          <option value="image">
+            Image
+          </option>
+
+          <option value="video">
+            Video
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Or choose a file
+        </label>
+
+        <input
+          id="postFile"
+          class="input"
+          type="file"
+          accept="image/*,video/*">
+
+        <small style="display:block;color:#777;margin-top:6px;">
+          If your Supabase Storage bucket is configured,
+          ZEEPY will upload the file automatically.
+        </small>
+
+      </div>
+
+
+      <button
+        id="publishButton"
+        class="form-submit"
+        type="submit">
+        Publish to ZEEPY
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     COMMENTS MODAL
+===================================================== -->
+
+<div
+  id="commentsModal"
+  class="modal-bg">
+
+  <div class="modal">
+
+    <div class="modal-top">
+
+      <h2>Comments</h2>
+
+      <button
+        class="close"
+        onclick="closeModal('commentsModal')">
+        ✕
+      </button>
+
+    </div>
+
+    <div
+      id="commentsList">
+
+      <div class="loading">
+        Loading comments...
+      </div>
+
+    </div>
+
+
+    <form
+      id="commentForm"
+      style="display:flex;gap:8px;margin-top:14px;">
+
+      <input
+        id="commentInput"
+        class="input"
+        placeholder="Write a comment..."
+        required>
+
+      <button
+        class="primary"
+        type="submit">
+        Send
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     SEARCH MODAL
+===================================================== -->
+
+<div
+  id="searchModal"
+  class="modal-bg">
+
+  <div class="modal">
+
+    <div class="modal-top">
+
+      <h2>Search ZEEPY</h2>
+
+      <button
+        class="close"
+        onclick="closeModal('searchModal')">
+        ✕
+      </button>
+
+    </div>
+
+    <input
+      id="globalSearch"
+      class="input"
+      placeholder="Search people, communities..."
+      autofocus>
+
+    <div
+      id="searchResults"
+      style="margin-top:15px;">
+
+      <div class="empty">
+        Start typing to search.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     NOTIFICATIONS MODAL
+===================================================== -->
+
+<div
+  id="notificationsModal"
+  class="modal-bg">
+
+  <div class="modal">
+
+    <div class="modal-top">
+
+      <h2>🔔 Notifications</h2>
+
+      <button
+        class="close"
+        onclick="closeModal('notificationsModal')">
+        ✕
+      </button>
+
+    </div>
+
+    <div class="empty">
+      Your ZEEPY notifications will appear here.
+    </div>
+
+  </div>
+
+</div>
+
+
+<div
+  id="toast"
+  class="toast">
+</div>
 
 
 <script>
 
-/* =========================================================
+/* =====================================================
    SUPABASE
-   ========================================================= */
+===================================================== */
 
 const SUPABASE_URL =
   "https://rolcuhrubqryfkaziacr.supabase.co";
@@ -1145,22 +2449,21 @@ const supabaseClient =
   );
 
 
-/* =========================================================
+/* =====================================================
    STATE
-   ========================================================= */
+===================================================== */
 
 let currentUser = null;
-
 let authMode = "login";
-
 let selectedPerson = null;
-
+let selectedPostId = null;
 let messagesChannel = null;
+let globalSearchTimer = null;
 
 
-/* =========================================================
+/* =====================================================
    START
-   ========================================================= */
+===================================================== */
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -1172,13 +2475,17 @@ document.addEventListener(
 
     await loadPosts();
 
+    await loadMarketplace();
+
+    setupEvents();
+
   }
 );
 
 
-/* =========================================================
+/* =====================================================
    AUTH
-   ========================================================= */
+===================================================== */
 
 async function checkUser(){
 
@@ -1254,21 +2561,9 @@ function updateAuthButton(){
 
 async function logout(){
 
-  const {
-    error
-  } =
-    await supabaseClient.auth.signOut();
-
-  if(error){
-
-    showNotice(error.message);
-    return;
-
-  }
+  await supabaseClient.auth.signOut();
 
   currentUser = null;
-
-  selectedPerson = null;
 
   closeMessages();
 
@@ -1292,9 +2587,7 @@ function openAuth(){
 
 function closeAuth(){
 
-  document
-    .getElementById("authModal")
-    .classList.remove("show");
+  closeModal("authModal");
 
 }
 
@@ -1306,68 +2599,43 @@ function toggleAuthMode(){
       ? "signup"
       : "login";
 
+  const signup =
+    authMode === "signup";
 
-  const title =
-    document.getElementById(
-      "authTitle"
-    );
+  document.getElementById(
+    "authTitle"
+  ).textContent =
+    signup
+      ? "Create your ZEEPY account"
+      : "Log in to ZEEPY";
 
-  const nameGroup =
-    document.getElementById(
-      "nameGroup"
-    );
+  document.getElementById(
+    "nameGroup"
+  ).style.display =
+    signup
+      ? "block"
+      : "none";
 
-  const submit =
-    document.getElementById(
-      "authSubmit"
-    );
+  document.getElementById(
+    "authSubmit"
+  ).textContent =
+    signup
+      ? "Create account"
+      : "Log in";
 
-  const switchText =
-    document.getElementById(
-      "switchText"
-    );
+  document.getElementById(
+    "switchText"
+  ).textContent =
+    signup
+      ? "Already have an account?"
+      : "Don't have an account?";
 
-  const switchButton =
-    document.getElementById(
-      "switchButton"
-    );
-
-
-  if(authMode === "signup"){
-
-    title.textContent =
-      "Create your ZEEPY account";
-
-    nameGroup.style.display =
-      "block";
-
-    submit.textContent =
-      "Create account";
-
-    switchText.textContent =
-      "Already have an account?";
-
-    switchButton.textContent =
-      "Log in";
-
-  }else{
-
-    title.textContent =
-      "Log in to ZEEPY";
-
-    nameGroup.style.display =
-      "none";
-
-    submit.textContent =
-      "Log in";
-
-    switchText.textContent =
-      "Don't have an account?";
-
-    switchButton.textContent =
-      "Sign up";
-
-  }
+  document.getElementById(
+    "switchButton"
+  ).textContent =
+    signup
+      ? "Log in"
+      : "Sign up";
 
 }
 
@@ -1397,15 +2665,12 @@ document
           .value
           .trim();
 
-      const submit =
+      const button =
         document
           .getElementById("authSubmit");
 
-      submit.disabled = true;
-
-      submit.textContent =
-        "Please wait...";
-
+      button.disabled = true;
+      button.textContent = "Please wait...";
 
       try{
 
@@ -1418,7 +2683,6 @@ document
             );
 
           }
-
 
           const {
             data,
@@ -1437,9 +2701,7 @@ document
 
             });
 
-
           if(error) throw error;
-
 
           if(data.user){
 
@@ -1453,19 +2715,18 @@ document
 
           }
 
-
           if(data.session){
+
+            closeAuth();
 
             showNotice(
               "Welcome to ZEEPY!"
             );
 
-            closeAuth();
-
           }else{
 
             showNotice(
-              "Account created. Check your email if confirmation is required."
+              "Account created. If confirmation is enabled, check your email."
             );
 
           }
@@ -1478,12 +2739,9 @@ document
           } =
             await supabaseClient.auth
               .signInWithPassword({
-
                 email,
                 password
-
               });
-
 
           if(error) throw error;
 
@@ -1497,8 +2755,6 @@ document
             email.split("@")[0]
           );
 
-          updateAuthButton();
-
           closeAuth();
 
           showNotice(
@@ -1506,6 +2762,8 @@ document
           );
 
         }
+
+        updateAuthButton();
 
       }catch(error){
 
@@ -1515,21 +2773,20 @@ document
 
       }
 
+      button.disabled = false;
 
-      submit.disabled = false;
-
-      submit.textContent =
-        authMode === "login"
-          ? "Log in"
-          : "Create account";
+      button.textContent =
+        authMode === "signup"
+          ? "Create account"
+          : "Log in";
 
     }
   );
 
 
-/* =========================================================
-   CREATE / UPDATE PROFILE
-   ========================================================= */
+/* =====================================================
+   PROFILE
+===================================================== */
 
 async function ensureProfile(
   user,
@@ -1538,101 +2795,63 @@ async function ensureProfile(
 
   if(!user) return;
 
-  try{
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id,display_name,username,avatar_url"
+      )
+      .eq("id",user.id)
+      .maybeSingle();
 
-    const {
-      data:existing,
-      error:findError
-    } =
-      await supabaseClient
-
-        .from("profiles")
-
-        .select(
-          "id,display_name,username,avatar_url"
-        )
-
-        .eq("id",user.id)
-
-        .maybeSingle();
-
-
-    if(findError){
-
-      console.error(
-        "Profile lookup:",
-        findError
-      );
-
-      return;
-
-    }
-
-
-    if(existing){
-
-      return;
-
-    }
-
-
-    const cleanName =
-      (displayName || "ZEEPY User")
-        .trim();
-
-
-    const baseUsername =
-      cleanName
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g,"")
-        .slice(0,18) ||
-      "zeepyuser";
-
-
-    const username =
-      baseUsername +
-      Math.floor(
-        1000 + Math.random() * 9000
-      );
-
-
-    const {
-      error
-    } =
-      await supabaseClient
-
-        .from("profiles")
-
-        .insert({
-
-          id:user.id,
-
-          display_name:
-            cleanName,
-
-          username:
-            username,
-
-          avatar_url:
-            null
-
-        });
-
-
-    if(error){
-
-      console.error(
-        "Profile creation:",
-        error
-      );
-
-    }
-
-  }catch(error){
+  if(error){
 
     console.error(
-      "ensureProfile:",
+      "Profile lookup:",
       error
+    );
+
+    return;
+
+  }
+
+  if(data) return;
+
+  const cleanName =
+    (displayName || "ZEEPY User")
+      .trim();
+
+  const baseUsername =
+    cleanName
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g,"")
+      .slice(0,18) ||
+    "zeepyuser";
+
+  const username =
+    baseUsername +
+    Math.floor(
+      1000 + Math.random() * 9000
+    );
+
+  const result =
+    await supabaseClient
+      .from("profiles")
+      .insert({
+        id:user.id,
+        display_name:cleanName,
+        username:username,
+        avatar_url:null
+      });
+
+  if(result.error){
+
+    console.error(
+      "Profile creation:",
+      result.error
     );
 
   }
@@ -1640,9 +2859,406 @@ async function ensureProfile(
 }
 
 
-/* =========================================================
-   COMMUNITY CATEGORIES
-   ========================================================= */
+async function showProfile(){
+
+  if(!currentUser){
+
+    openAuth();
+    return;
+
+  }
+
+  showPage("profile");
+
+  await loadProfile();
+
+}
+
+
+async function loadProfile(){
+
+  const box =
+    document.getElementById(
+      "profileBox"
+    );
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id,display_name,username,avatar_url"
+        )
+        .eq(
+          "id",
+          currentUser.id
+        )
+        .maybeSingle();
+
+    if(error) throw error;
+
+    const profile =
+      data || {};
+
+    const name =
+      profile.display_name ||
+      currentUser.email ||
+      "ZEEPY Member";
+
+    const initial =
+      name
+        .trim()
+        .charAt(0)
+        .toUpperCase();
+
+    box.innerHTML = `
+
+      <div class="profile-main">
+
+        <div class="profile-avatar">
+
+          ${
+            profile.avatar_url
+              ? `<img src="${escapeHtml(profile.avatar_url)}">`
+              : initial
+          }
+
+        </div>
+
+        <div>
+
+          <div class="profile-name">
+            ${escapeHtml(name)}
+          </div>
+
+          <div class="profile-username">
+            @${escapeHtml(
+              profile.username || ""
+            )}
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="profile-bio">
+        Welcome to your ZEEPY profile.
+        Build your community identity,
+        connect with people and share your world.
+      </div>
+
+      <div class="profile-actions">
+
+        <button
+          class="primary"
+          onclick="openCreatePost()">
+          ＋ Create Post
+        </button>
+
+        <button
+          class="secondary"
+          onclick="editProfile()">
+          Edit Profile
+        </button>
+
+      </div>
+
+      <div class="stat-row">
+
+        <div class="stat">
+          <strong id="profilePostCount">0</strong>
+          <span>Posts</span>
+        </div>
+
+        <div class="stat">
+          <strong>0</strong>
+          <span>Followers</span>
+        </div>
+
+        <div class="stat">
+          <strong>0</strong>
+          <span>Following</span>
+        </div>
+
+      </div>
+
+    `;
+
+    await loadProfilePosts();
+
+  }catch(error){
+
+    box.innerHTML = `
+      <div class="empty">
+        ${escapeHtml(error.message)}
+      </div>
+    `;
+
+  }
+
+}
+
+
+async function loadProfilePosts(){
+
+  const container =
+    document.getElementById(
+      "profilePosts"
+    );
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("posts")
+        .select(`
+          id,
+          content,
+          media_url,
+          media_type,
+          created_at
+        `)
+        .eq(
+          "author_id",
+          currentUser.id
+        )
+        .order(
+          "created_at",
+          {ascending:false}
+        )
+        .limit(30);
+
+    if(error) throw error;
+
+    document.getElementById(
+      "profilePostCount"
+    ).textContent =
+      data?.length || 0;
+
+    if(!data?.length){
+
+      container.innerHTML = `
+        <div class="empty">
+          You haven't created a post yet.
+        </div>
+      `;
+
+      return;
+
+    }
+
+    container.innerHTML =
+      data.map(
+        post =>
+          renderSimplePost(post)
+      ).join("");
+
+  }catch(error){
+
+    console.error(error);
+
+    container.innerHTML = `
+      <div class="empty">
+        ${escapeHtml(error.message)}
+      </div>
+    `;
+
+  }
+
+}
+
+
+function renderSimplePost(post){
+
+  return `
+
+    <article class="post">
+
+      ${
+        post.content
+          ? `
+            <div class="post-body">
+              ${escapeHtml(post.content)}
+            </div>
+          `
+          : ""
+      }
+
+      ${
+        post.media_url
+          ? `
+            <div class="post-media">
+
+              ${
+                post.media_type === "video"
+                  ? `
+                    <video
+                      src="${escapeHtml(post.media_url)}"
+                      controls>
+                    </video>
+                  `
+                  : `
+                    <img
+                      src="${escapeHtml(post.media_url)}">
+                  `
+              }
+
+            </div>
+          `
+          : ""
+      }
+
+      <div class="post-meta"
+           style="margin-top:10px;">
+        ${formatDate(post.created_at)}
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+function editProfile(){
+
+  if(!currentUser){
+
+    openAuth();
+    return;
+
+  }
+
+  showNotice(
+    "Profile editing is ready for the next profile-management step."
+  );
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showPage(
+  page
+){
+
+  closeMessages();
+
+  document
+    .querySelectorAll(".page")
+    .forEach(
+      element =>
+        element.classList.remove(
+          "active"
+        )
+    );
+
+  const target =
+    document.getElementById(
+      "page-" + page
+    );
+
+  if(target){
+
+    target.classList.add(
+      "active"
+    );
+
+  }
+
+  document
+    .querySelectorAll(
+      ".nav-item"
+    )
+    .forEach(
+      item =>
+        item.classList.remove(
+          "active"
+        )
+    );
+
+  document
+    .querySelectorAll(
+      ".desktop-nav button"
+    )
+    .forEach(
+      item =>
+        item.classList.remove(
+          "active"
+        )
+    );
+
+  const mobileMap = {
+    home:"navHome",
+    market:"navMarket",
+    profile:"navProfile"
+  };
+
+  if(mobileMap[page]){
+
+    document
+      .getElementById(
+        mobileMap[page]
+      )
+      ?.classList.add(
+        "active"
+      );
+
+  }
+
+  const desktopMap = {
+    home:"dHome",
+    market:"dMarket",
+    media:"dMedia",
+    nearby:"dNearby",
+    groups:"dGroups",
+    education:"dEducation",
+    meetings:"dMeetings",
+    wallet:"dWallet",
+    profile:"dProfile"
+  };
+
+  if(desktopMap[page]){
+
+    document
+      .getElementById(
+        desktopMap[page]
+      )
+      ?.classList.add(
+        "active"
+      );
+
+  }
+
+  if(page === "media")
+    loadMedia();
+
+  if(page === "market")
+    loadMarketplace();
+
+  if(page === "profile")
+    loadProfile();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =====================================================
+   CATEGORIES
+===================================================== */
 
 async function loadCategories(){
 
@@ -1658,33 +3274,22 @@ async function loadCategories(){
       error
     } =
       await supabaseClient
-
-        .from(
-          "community_categories"
-        )
-
+        .from("community_categories")
         .select(
           "id,name,slug,description,icon,sort_order"
         )
-
         .eq(
           "is_active",
           true
         )
-
         .order(
           "sort_order",
-          {
-            ascending:true
-          }
+          {ascending:true}
         );
-
 
     if(error) throw error;
 
-
-    if(!data ||
-       data.length === 0){
+    if(!data?.length){
 
       grid.innerHTML = `
         <div class="empty">
@@ -1696,37 +3301,62 @@ async function loadCategories(){
 
     }
 
+    const select =
+      document.getElementById(
+        "postCategory"
+      );
+
+    select.innerHTML =
+      `<option value="">General Community</option>`;
+
+    data.forEach(
+      category => {
+
+        const option =
+          document.createElement(
+            "option"
+          );
+
+        option.value =
+          category.id;
+
+        option.textContent =
+          category.name;
+
+        select.appendChild(
+          option
+        );
+
+      }
+    );
 
     grid.innerHTML =
       data.map(
         category => `
 
-        <button
-          class="category"
-          onclick="openCategory('${escapeJs(category.name)}')">
+          <button
+            class="category"
+            onclick="openCategory('${escapeJs(category.name)}')">
 
-          <span class="emoji">
-            ${category.icon || "🌍"}
-          </span>
+            <span class="emoji">
+              ${category.icon || "🌍"}
+            </span>
 
-          <strong>
-            ${escapeHtml(
-              category.name
-            )}
-          </strong>
+            <strong>
+              ${escapeHtml(category.name)}
+            </strong>
 
-          <small>
-            ${escapeHtml(
-              category.description ||
-              "Explore this area"
-            )}
-          </small>
+            <small>
+              ${escapeHtml(
+                category.description ||
+                "Explore this area"
+              )}
+            </small>
 
-        </button>
+          </button>
 
-      `
+        `
       ).join("");
-
 
   }catch(error){
 
@@ -1734,7 +3364,7 @@ async function loadCategories(){
 
     grid.innerHTML = `
       <div class="empty">
-        We couldn't load the community areas.
+        Community areas could not be loaded.
       </div>
     `;
 
@@ -1743,9 +3373,19 @@ async function loadCategories(){
 }
 
 
-/* =========================================================
-   COMMUNITY POSTS
-   ========================================================= */
+function openCategory(name){
+
+  showNotice(
+    name +
+    " community area selected."
+  );
+
+}
+
+
+/* =====================================================
+   POSTS
+===================================================== */
 
 async function loadPosts(){
 
@@ -1761,11 +3401,10 @@ async function loadPosts(){
       error
     } =
       await supabaseClient
-
         .from("posts")
-
         .select(`
           id,
+          author_id,
           content,
           media_url,
           media_type,
@@ -1784,32 +3423,24 @@ async function loadPosts(){
             icon
           )
         `)
-
         .eq(
           "visibility",
           "public"
         )
-
         .order(
           "created_at",
-          {
-            ascending:false
-          }
+          {ascending:false}
         )
-
-        .limit(20);
-
+        .limit(30);
 
     if(error) throw error;
 
-
-    if(!data ||
-       data.length === 0){
+    if(!data?.length){
 
       feed.innerHTML = `
         <div class="empty">
 
-          <div style="font-size:30px;margin-bottom:10px;">
+          <div style="font-size:35px;">
             🏙️
           </div>
 
@@ -1818,7 +3449,7 @@ async function loadPosts(){
           </strong>
 
           <p style="margin-top:7px;">
-            Public community posts will appear here.
+            Be one of the first to share something.
           </p>
 
         </div>
@@ -1828,188 +3459,18 @@ async function loadPosts(){
 
     }
 
-
     feed.innerHTML =
       data.map(
-        post => {
-
-          const profile =
-            post.profiles || {};
-
-          const category =
-            post.community_categories ||
-            {};
-
-          const name =
-            profile.display_name ||
-            profile.username ||
-            "ZEEPY Member";
-
-          const avatar =
-            profile.avatar_url;
-
-          const initials =
-            name
-              .trim()
-              .charAt(0)
-              .toUpperCase();
-
-
-          return `
-
-            <article class="post">
-
-              <div class="post-head">
-
-                <div class="avatar">
-
-                  ${
-                    avatar
-                      ? `<img src="${escapeHtml(avatar)}" alt="">`
-                      : initials
-                  }
-
-                </div>
-
-                <div>
-
-                  <div class="post-name">
-                    ${escapeHtml(name)}
-                  </div>
-
-                  <div class="post-meta">
-
-                    ${
-                      category.icon ||
-                      "🌍"
-                    }
-
-                    ${
-                      escapeHtml(
-                        category.name ||
-                        "Community"
-                      )
-                    }
-
-                    ·
-
-                    ${
-                      formatDate(
-                        post.created_at
-                      )
-                    }
-
-                  </div>
-
-                </div>
-
-              </div>
-
-
-              ${
-                post.content
-                  ? `
-                    <div class="post-body">
-                      ${escapeHtml(
-                        post.content
-                      )}
-                    </div>
-                  `
-                  : ""
-              }
-
-
-              ${
-                post.media_url
-                  ? `
-                    <div style="
-                      margin-top:12px;
-                      border-radius:14px;
-                      overflow:hidden;
-                      background:#0c0c0c;
-                    ">
-
-                      ${
-                        post.media_type ===
-                        "video"
-
-                          ? `
-                            <video
-                              src="${escapeHtml(post.media_url)}"
-                              controls
-                              style="
-                                width:100%;
-                                display:block;
-                                max-height:500px;
-                              "
-                            ></video>
-                          `
-
-                          : `
-                            <img
-                              src="${escapeHtml(post.media_url)}"
-                              alt=""
-                              style="
-                                width:100%;
-                                display:block;
-                                max-height:500px;
-                                object-fit:cover;
-                              "
-                            >
-                          `
-                      }
-
-                    </div>
-                  `
-                  : ""
-              }
-
-
-              <div class="post-actions">
-
-                <button
-                  class="post-action"
-                  onclick="showNotice('Likes will be connected in the next interaction step.')">
-
-                  ❤️ ${
-                    post.likes_count || 0
-                  }
-
-                </button>
-
-                <button
-                  class="post-action"
-                  onclick="showNotice('Comments will be connected in the next interaction step.')">
-
-                  💬 ${
-                    post.comments_count || 0
-                  }
-
-                </button>
-
-                <button
-                  class="post-action"
-                  onclick="showNotice('Sharing will be connected in the next interaction step.')">
-
-                  🔄 ${
-                    post.shares_count || 0
-                  }
-
-                </button>
-
-              </div>
-
-            </article>
-
-          `;
-
-        }
+        post =>
+          renderPost(post)
       ).join("");
-
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Posts:",
+      error
+    );
 
     feed.innerHTML = `
       <div class="empty">
@@ -2019,9 +3480,7 @@ async function loadPosts(){
         </strong>
 
         <p style="margin-top:7px;">
-          ${escapeHtml(
-            error.message
-          )}
+          ${escapeHtml(error.message)}
         </p>
 
       </div>
@@ -2032,16 +3491,167 @@ async function loadPosts(){
 }
 
 
-/* =========================================================
-   OPEN MESSAGES
-   ========================================================= */
+function renderPost(post){
 
-async function openMessages(){
+  const profile =
+    post.profiles || {};
+
+  const category =
+    post.community_categories || {};
+
+  const name =
+    profile.display_name ||
+    profile.username ||
+    "ZEEPY Member";
+
+  const initial =
+    name
+      .trim()
+      .charAt(0)
+      .toUpperCase();
+
+  const liked =
+    false;
+
+  return `
+
+    <article
+      class="post"
+      id="post-${post.id}">
+
+      <div class="post-head">
+
+        <div class="avatar">
+
+          ${
+            profile.avatar_url
+              ? `<img src="${escapeHtml(profile.avatar_url)}">`
+              : initial
+          }
+
+        </div>
+
+        <div>
+
+          <div class="post-name">
+            ${escapeHtml(name)}
+          </div>
+
+          <div class="post-meta">
+
+            ${category.icon || "🌍"}
+
+            ${escapeHtml(
+              category.name ||
+              "Community"
+            )}
+
+            ·
+
+            ${formatDate(
+              post.created_at
+            )}
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      ${
+        post.content
+          ? `
+            <div class="post-body">
+              ${escapeHtml(post.content)}
+            </div>
+          `
+          : ""
+      }
+
+
+      ${
+        post.media_url
+          ? `
+            <div class="post-media">
+
+              ${
+                post.media_type === "video"
+                  ? `
+                    <video
+                      src="${escapeHtml(post.media_url)}"
+                      controls>
+                    </video>
+                  `
+                  : `
+                    <img
+                      src="${escapeHtml(post.media_url)}"
+                      alt="">
+                  `
+              }
+
+            </div>
+          `
+          : ""
+      }
+
+
+      <div class="post-actions">
+
+        <button
+          class="post-action ${liked ? "liked" : ""}"
+          onclick="toggleLike('${post.id}',this)">
+
+          ❤️
+          <span class="like-count">
+            ${post.likes_count || 0}
+          </span>
+
+        </button>
+
+
+        <button
+          class="post-action"
+          onclick="openComments('${post.id}')">
+
+          💬
+          <span>
+            ${post.comments_count || 0}
+          </span>
+
+        </button>
+
+
+        <button
+          class="post-action"
+          onclick="sharePost('${post.id}')">
+
+          🔄
+          <span>
+            ${post.shares_count || 0}
+          </span>
+
+        </button>
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* =====================================================
+   CREATE POST
+===================================================== */
+
+function openCreatePost(){
 
   if(!currentUser){
 
     showNotice(
-      "Please log in first to use Messages."
+      "Please log in first to create."
     );
 
     openAuth();
@@ -2050,27 +3660,991 @@ async function openMessages(){
 
   }
 
+  document
+    .getElementById("createModal")
+    .classList.add("show");
+
+}
+
+
+document
+  .getElementById("postForm")
+  .addEventListener(
+    "submit",
+    async event => {
+
+      event.preventDefault();
+
+      if(!currentUser){
+
+        openAuth();
+        return;
+
+      }
+
+      const button =
+        document.getElementById(
+          "publishButton"
+        );
+
+      button.disabled = true;
+      button.textContent =
+        "Publishing...";
+
+      try{
+
+        const content =
+          document
+            .getElementById("postContent")
+            .value
+            .trim();
+
+        let mediaUrl =
+          document
+            .getElementById("postMediaUrl")
+            .value
+            .trim();
+
+        let mediaType =
+          document
+            .getElementById("postMediaType")
+            .value;
+
+        const categoryId =
+          document
+            .getElementById("postCategory")
+            .value || null;
+
+        const file =
+          document
+            .getElementById("postFile")
+            .files[0];
+
+
+        if(!content && !mediaUrl && !file){
+
+          throw new Error(
+            "Write something or add media."
+          );
+
+        }
+
+
+        if(file){
+
+          button.textContent =
+            "Uploading media...";
+
+          const uploaded =
+            await uploadMedia(file);
+
+          mediaUrl =
+            uploaded.url;
+
+          mediaType =
+            uploaded.type;
+
+        }
+
+
+        const postData = {
+          author_id:currentUser.id,
+          content:content || null,
+          media_url:mediaUrl || null,
+          media_type:mediaType || null,
+          visibility:"public"
+        };
+
+
+        /*
+          category_id is added only when the
+          database accepts it.
+        */
+
+        if(categoryId){
+
+          postData.category_id =
+            categoryId;
+
+        }
+
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .from("posts")
+            .insert(
+              postData
+            );
+
+        if(error) throw error;
+
+        closeModal("createModal");
+
+        document
+          .getElementById("postForm")
+          .reset();
+
+        showPage("home");
+
+        await loadPosts();
+
+        showNotice(
+          "Your post is now on ZEEPY."
+        );
+
+      }catch(error){
+
+        console.error(
+          "Create post:",
+          error
+        );
+
+        showNotice(
+          error.message
+        );
+
+      }
+
+      button.disabled = false;
+      button.textContent =
+        "Publish to ZEEPY";
+
+    }
+  );
+
+
+async function uploadMedia(file){
+
+  /*
+    Expected Supabase Storage bucket:
+    media
+
+    If the bucket does not yet exist,
+    the post can still be created using
+    a public media URL.
+  */
+
+  const extension =
+    file.name
+      .split(".")
+      .pop();
+
+  const path =
+    currentUser.id +
+    "/" +
+    Date.now() +
+    "-" +
+    Math.random()
+      .toString(36)
+      .slice(2) +
+    "." +
+    extension;
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .storage
+      .from("media")
+      .upload(
+        path,
+        file,
+        {
+          cacheControl:"3600",
+          upsert:false
+        }
+      );
+
+  if(error){
+
+    throw new Error(
+      "Media upload failed: " +
+      error.message +
+      ". You can still use a public image/video URL."
+    );
+
+  }
+
+  const {
+    data
+  } =
+    supabaseClient
+      .storage
+      .from("media")
+      .getPublicUrl(path);
+
+  return {
+    url:data.publicUrl,
+    type:file.type.startsWith("video")
+      ? "video"
+      : "image"
+  };
+
+}
+
+
+/* =====================================================
+   LIKES
+===================================================== */
+
+async function toggleLike(
+  postId,
+  button
+){
+
+  if(!currentUser){
+
+    openAuth();
+    return;
+
+  }
+
+  try{
+
+    const {
+      data:existing,
+      error:checkError
+    } =
+      await supabaseClient
+        .from("post_likes")
+        .select("id")
+        .eq(
+          "post_id",
+          postId
+        )
+        .eq(
+          "user_id",
+          currentUser.id
+        )
+        .maybeSingle();
+
+    if(checkError) throw checkError;
+
+
+    if(existing){
+
+      const {
+        error
+      } =
+        await supabaseClient
+          .from("post_likes")
+          .delete()
+          .eq(
+            "id",
+            existing.id
+          );
+
+      if(error) throw error;
+
+      button.classList.remove(
+        "liked"
+      );
+
+    }else{
+
+      const {
+        error
+      } =
+        await supabaseClient
+          .from("post_likes")
+          .insert({
+            post_id:postId,
+            user_id:currentUser.id
+          });
+
+      if(error) throw error;
+
+      button.classList.add(
+        "liked"
+      );
+
+    }
+
+    await refreshPostCounts(
+      postId,
+      button
+    );
+
+  }catch(error){
+
+    showNotice(
+      error.message
+    );
+
+  }
+
+}
+
+
+async function refreshPostCounts(
+  postId,
+  button
+){
+
+  try{
+
+    const {
+      count,
+      error
+    } =
+      await supabaseClient
+        .from("post_likes")
+        .select(
+          "id",
+          {
+            count:"exact",
+            head:true
+          }
+        )
+        .eq(
+          "post_id",
+          postId
+        );
+
+    if(error) throw error;
+
+    const span =
+      button.querySelector(
+        ".like-count"
+      );
+
+    if(span)
+      span.textContent =
+        count || 0;
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
+
+/* =====================================================
+   COMMENTS
+===================================================== */
+
+async function openComments(
+  postId
+){
+
+  selectedPostId =
+    postId;
 
   document
     .getElementById(
-      "homePage"
+      "commentsModal"
     )
-    .style.display = "none";
+    .classList.add("show");
 
+  await loadComments();
+
+}
+
+
+async function loadComments(){
+
+  const list =
+    document.getElementById(
+      "commentsList"
+    );
+
+  list.innerHTML =
+    `<div class="loading">Loading comments...</div>`;
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("post_comments")
+        .select(`
+          id,
+          content,
+          created_at,
+          profiles(
+            display_name,
+            username,
+            avatar_url
+          )
+        `)
+        .eq(
+          "post_id",
+          selectedPostId
+        )
+        .order(
+          "created_at",
+          {ascending:true}
+        );
+
+    if(error) throw error;
+
+    if(!data?.length){
+
+      list.innerHTML = `
+        <div class="empty">
+          No comments yet.
+        </div>
+      `;
+
+      return;
+
+    }
+
+    list.innerHTML =
+      data.map(
+        comment => {
+
+          const profile =
+            comment.profiles || {};
+
+          const name =
+            profile.display_name ||
+            profile.username ||
+            "ZEEPY Member";
+
+          return `
+
+            <div class="comment">
+
+              <div class="avatar"
+                   style="width:34px;height:34px;min-width:34px;">
+
+                ${
+                  profile.avatar_url
+                    ? `<img src="${escapeHtml(profile.avatar_url)}">`
+                    : escapeHtml(
+                        name
+                          .charAt(0)
+                          .toUpperCase()
+                      )
+                }
+
+              </div>
+
+              <div class="comment-body">
+
+                <div class="comment-name">
+                  ${escapeHtml(name)}
+                </div>
+
+                <div class="comment-text">
+                  ${escapeHtml(comment.content)}
+                </div>
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+      ).join("");
+
+  }catch(error){
+
+    list.innerHTML = `
+      <div class="empty">
+        ${escapeHtml(error.message)}
+      </div>
+    `;
+
+  }
+
+}
+
+
+document
+  .getElementById("commentForm")
+  .addEventListener(
+    "submit",
+    async event => {
+
+      event.preventDefault();
+
+      if(!currentUser){
+
+        openAuth();
+        return;
+
+      }
+
+      const input =
+        document.getElementById(
+          "commentInput"
+        );
+
+      const content =
+        input.value.trim();
+
+      if(!content ||
+         !selectedPostId)
+        return;
+
+      try{
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .from("post_comments")
+            .insert({
+              post_id:selectedPostId,
+              user_id:currentUser.id,
+              content:content
+            });
+
+        if(error) throw error;
+
+        input.value = "";
+
+        await loadComments();
+
+        await loadPosts();
+
+      }catch(error){
+
+        showNotice(
+          error.message
+        );
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   SHARES
+===================================================== */
+
+async function sharePost(
+  postId
+){
+
+  if(!currentUser){
+
+    openAuth();
+    return;
+
+  }
+
+  try{
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("post_shares")
+        .insert({
+          post_id:postId,
+          user_id:currentUser.id
+        });
+
+    if(error) throw error;
+
+    const url =
+      window.location.href
+      .split("#")[0] +
+      "?post=" +
+      postId;
+
+    if(
+      navigator.share
+    ){
+
+      await navigator.share({
+        title:"ZEEPY",
+        text:"Check this out on ZEEPY.",
+        url:url
+      });
+
+    }else if(
+      navigator.clipboard
+    ){
+
+      await navigator.clipboard.writeText(
+        url
+      );
+
+      showNotice(
+        "ZEEPY post link copied."
+      );
+
+    }else{
+
+      showNotice(
+        "Post shared."
+      );
+
+    }
+
+    await loadPosts();
+
+  }catch(error){
+
+    showNotice(
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   MEDIA
+===================================================== */
+
+async function loadMedia(){
+
+  const container =
+    document.getElementById(
+      "mediaFeed"
+    );
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("posts")
+        .select(`
+          id,
+          content,
+          media_url,
+          media_type,
+          created_at,
+          profiles(
+            display_name,
+            username,
+            avatar_url
+          )
+        `)
+        .not(
+          "media_url",
+          "is",
+          null
+        )
+        .order(
+          "created_at",
+          {ascending:false}
+        )
+        .limit(30);
+
+    if(error) throw error;
+
+    if(!data?.length){
+
+      container.innerHTML = `
+        <div class="empty">
+          No community media yet.
+        </div>
+      `;
+
+      return;
+
+    }
+
+    container.innerHTML =
+      data.map(
+        post => `
+
+          <article class="post">
+
+            <div class="post-head">
+
+              <div class="avatar">
+
+                ${
+                  post.profiles?.avatar_url
+                    ? `<img src="${escapeHtml(post.profiles.avatar_url)}">`
+                    : (
+                      post.profiles?.display_name ||
+                      "Z"
+                    )
+                    .charAt(0)
+                    .toUpperCase()
+                }
+
+              </div>
+
+              <div>
+
+                <div class="post-name">
+                  ${escapeHtml(
+                    post.profiles?.display_name ||
+                    "ZEEPY Member"
+                  )}
+                </div>
+
+                <div class="post-meta">
+                  ${formatDate(post.created_at)}
+                </div>
+
+              </div>
+
+            </div>
+
+            ${
+              post.content
+                ? `
+                  <div class="post-body">
+                    ${escapeHtml(post.content)}
+                  </div>
+                `
+                : ""
+            }
+
+            <div class="post-media">
+
+              ${
+                post.media_type === "video"
+                  ? `
+                    <video
+                      src="${escapeHtml(post.media_url)}"
+                      controls>
+                    </video>
+                  `
+                  : `
+                    <img
+                      src="${escapeHtml(post.media_url)}">
+                  `
+              }
+
+            </div>
+
+          </article>
+
+        `
+      ).join("");
+
+  }catch(error){
+
+    container.innerHTML = `
+      <div class="empty">
+        ${escapeHtml(error.message)}
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   MARKETPLACE
+===================================================== */
+
+async function loadMarketplace(){
+
+  const grid =
+    document.getElementById(
+      "marketGrid"
+    );
+
+  if(!grid) return;
+
+  const search =
+    document.getElementById(
+      "marketSearch"
+    )?.value
+    .trim();
+
+  try{
+
+    let query =
+      supabaseClient
+        .from("products")
+        .select("*")
+        .limit(30);
+
+    if(search){
+
+      query =
+        query.ilike(
+          "name",
+          "%" + search + "%"
+        );
+
+    }
+
+    const {
+      data,
+      error
+    } =
+      await query;
+
+    if(error) throw error;
+
+    if(!data?.length){
+
+      grid.innerHTML = `
+        <div class="empty">
+          No products found yet.
+          Create your shop and add products.
+        </div>
+      `;
+
+      return;
+
+    }
+
+    grid.innerHTML =
+      data.map(
+        product => `
+
+          <div class="shop-card">
+
+            <div class="shop-icon">
+              🛍️
+            </div>
+
+            <h3>
+              ${escapeHtml(
+                product.name ||
+                "ZEEPY Product"
+              )}
+            </h3>
+
+            <p style="color:#888;margin-top:6px;">
+              ${escapeHtml(
+                product.description ||
+                "Marketplace product"
+              )}
+            </p>
+
+            <div class="price">
+              ${product.price != null
+                ? "GH₵ " +
+                  Number(product.price)
+                    .toFixed(2)
+                : "Contact seller"}
+            </div>
+
+            <button
+              class="secondary"
+              style="margin-top:12px;width:100%;"
+              onclick="messageSeller('${product.id}')">
+
+              Message Seller
+
+            </button>
+
+          </div>
+
+        `
+      ).join("");
+
+  }catch(error){
+
+    console.error(
+      "Marketplace:",
+      error
+    );
+
+    grid.innerHTML = `
+      <div class="empty">
+
+        <strong>
+          Market is ready for products.
+        </strong>
+
+        <p style="margin-top:7px;">
+          ${escapeHtml(error.message)}
+        </p>
+
+      </div>
+    `;
+
+  }
+
+}
+
+
+function createShop(){
+
+  if(!currentUser){
+
+    openAuth();
+    return;
+
+  }
+
+  showNotice(
+    "Your shop creation system is ready to be connected to the shops database."
+  );
+
+}
+
+
+function messageSeller(
+  productId
+){
+
+  if(!currentUser){
+
+    openAuth();
+    return;
+
+  }
+
+  showNotice(
+    "Select a seller from the marketplace when seller profiles are available."
+  );
+
+}
+
+
+/* =====================================================
+   MESSAGES
+===================================================== */
+
+async function openMessages(){
+
+  if(!currentUser){
+
+    openAuth();
+
+    showNotice(
+      "Log in to use Messages."
+    );
+
+    return;
+
+  }
+
+  document
+    .querySelectorAll(".page")
+    .forEach(
+      page =>
+        page.classList.remove(
+          "active"
+        )
+    );
 
   document
     .getElementById(
       "messagesScreen"
     )
-    .classList.add("show");
-
+    .classList.add(
+      "show"
+    );
 
   document
     .getElementById(
-      "messagesNav"
+      "navMessages"
     )
-    .classList.add("active");
-
+    ?.classList.add(
+      "active"
+    );
 
   await loadPeople("");
 
@@ -2079,52 +4653,15 @@ async function openMessages(){
 }
 
 
-/* =========================================================
-   CLOSE MESSAGES
-   ========================================================= */
-
 function closeMessages(){
 
-  const screen =
-    document.getElementById(
+  document
+    .getElementById(
       "messagesScreen"
-    );
-
-  if(screen){
-
-    screen.classList.remove(
+    )
+    ?.classList.remove(
       "show"
     );
-
-  }
-
-
-  const home =
-    document.getElementById(
-      "homePage"
-    );
-
-  if(home){
-
-    home.style.display =
-      "block";
-
-  }
-
-
-  const nav =
-    document.getElementById(
-      "messagesNav"
-    );
-
-  if(nav){
-
-    nav.classList.remove(
-      "active"
-    );
-
-  }
-
 
   if(messagesChannel){
 
@@ -2139,26 +4676,6 @@ function closeMessages(){
 
 }
 
-
-/* =========================================================
-   HOME
-   ========================================================= */
-
-function showHome(){
-
-  closeMessages();
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* =========================================================
-   SEARCH PEOPLE
-   ========================================================= */
 
 document
   .getElementById(
@@ -2185,13 +4702,12 @@ async function loadPeople(
       "peopleList"
     );
 
-
   if(!currentUser){
 
     list.innerHTML = `
       <div class="empty"
            style="margin:15px;">
-        Please log in first.
+        Please log in.
       </div>
     `;
 
@@ -2199,42 +4715,41 @@ async function loadPeople(
 
   }
 
-
   try{
 
     let query =
       supabaseClient
-
         .from("profiles")
-
         .select(
           "id,display_name,username,avatar_url"
         )
-
         .neq(
           "id",
           currentUser.id
         )
-
         .order(
           "display_name",
-          {
-            ascending:true
-          }
+          {ascending:true}
         )
-
         .limit(30);
-
 
     if(searchTerm){
 
+      const safe =
+        escapeFilter(
+          searchTerm
+        );
+
       query =
         query.or(
-          `display_name.ilike.%${escapeFilter(searchTerm)}%,username.ilike.%${escapeFilter(searchTerm)}%`
+          "display_name.ilike.%" +
+          safe +
+          "%,username.ilike.%" +
+          safe +
+          "%"
         );
 
     }
-
 
     const {
       data,
@@ -2242,12 +4757,9 @@ async function loadPeople(
     } =
       await query;
 
-
     if(error) throw error;
 
-
-    if(!data ||
-       data.length === 0){
+    if(!data?.length){
 
       list.innerHTML = `
         <div class="empty"
@@ -2266,7 +4778,6 @@ async function loadPeople(
 
     }
 
-
     list.innerHTML =
       data.map(
         person => {
@@ -2282,14 +4793,11 @@ async function loadPeople(
               .charAt(0)
               .toUpperCase();
 
-
           return `
 
             <button
               class="person ${
-                selectedPerson &&
-                selectedPerson.id ===
-                person.id
+                selectedPerson?.id === person.id
                   ? "selected"
                   : ""
               }"
@@ -2299,7 +4807,7 @@ async function loadPeople(
 
                 ${
                   person.avatar_url
-                    ? `<img src="${escapeHtml(person.avatar_url)}" alt="">`
+                    ? `<img src="${escapeHtml(person.avatar_url)}">`
                     : initial
                 }
 
@@ -2326,11 +4834,10 @@ async function loadPeople(
         }
       ).join("");
 
-
   }catch(error){
 
     console.error(
-      "People search:",
+      "People:",
       error
     );
 
@@ -2343,9 +4850,7 @@ async function loadPeople(
         </strong>
 
         <p style="margin-top:7px;">
-          ${escapeHtml(
-            error.message
-          )}
+          ${escapeHtml(error.message)}
         </p>
 
       </div>
@@ -2356,24 +4861,16 @@ async function loadPeople(
 }
 
 
-/* =========================================================
-   OPEN CHAT
-   ========================================================= */
-
 async function openChat(
   personId
 ){
 
   if(!currentUser){
 
-    showNotice(
-      "Please log in first."
-    );
-
+    openAuth();
     return;
 
   }
-
 
   try{
 
@@ -2382,118 +4879,84 @@ async function openChat(
       error
     } =
       await supabaseClient
-
         .from("profiles")
-
         .select(
           "id,display_name,username,avatar_url"
         )
-
         .eq(
           "id",
           personId
         )
-
         .single();
-
 
     if(error) throw error;
 
-
     selectedPerson =
       person;
-
 
     const name =
       person.display_name ||
       person.username ||
       "ZEEPY Member";
 
-
-    document
-      .getElementById(
-        "chatPersonName"
-      )
-      .textContent =
+    document.getElementById(
+      "chatPersonName"
+    ).textContent =
       name;
 
-
-    document
-      .getElementById(
-        "chatPersonUsername"
-      )
-      .textContent =
+    document.getElementById(
+      "chatPersonUsername"
+    ).textContent =
       person.username
         ? "@" + person.username
         : "";
 
-
-    const chatAvatar =
+    const avatar =
       document.getElementById(
         "chatAvatar"
       );
 
+    avatar.innerHTML =
+      person.avatar_url
+        ? `<img src="${escapeHtml(person.avatar_url)}">`
+        : name
+            .charAt(0)
+            .toUpperCase();
 
-    if(person.avatar_url){
-
-      chatAvatar.innerHTML =
-        `<img src="${escapeHtml(person.avatar_url)}" alt="">`;
-
-    }else{
-
-      chatAvatar.textContent =
-        name
-          .trim()
-          .charAt(0)
-          .toUpperCase();
-
-    }
-
-
-    document
-      .getElementById(
-        "chatEmpty"
-      )
-      .style.display =
+    document.getElementById(
+      "chatEmpty"
+    ).style.display =
       "none";
 
+    document.getElementById(
+      "chatHeader"
+    ).classList.add(
+      "show"
+    );
 
-    document
-      .getElementById(
-        "chatHeader"
-      )
-      .classList.add("show");
+    document.getElementById(
+      "chatInputArea"
+    ).classList.add(
+      "show"
+    );
 
+    document.getElementById(
+      "peoplePanel"
+    ).classList.add(
+      "chat-open"
+    );
 
-    document
-      .getElementById(
-        "chatInputArea"
-      )
-      .classList.add("show");
-
-
-    document
-      .getElementById(
-        "peoplePanel"
-      )
-      .classList.add("chat-open");
-
-
-    document
-      .getElementById(
-        "chatPanel"
-      )
-      .classList.add("mobile-show");
-
+    document.getElementById(
+      "chatPanel"
+    ).classList.add(
+      "mobile-show"
+    );
 
     await loadConversation();
 
     await markConversationRead();
 
-
   }catch(error){
-
-    console.error(error);
 
     showNotice(
       error.message
@@ -2504,32 +4967,18 @@ async function openChat(
 }
 
 
-/* =========================================================
-   LOAD CONVERSATION
-   ========================================================= */
-
 async function loadConversation(){
 
-  if(!currentUser ||
-     !selectedPerson){
-
+  if(
+    !currentUser ||
+    !selectedPerson
+  )
     return;
 
-  }
-
-
-  const container =
+  const box =
     document.getElementById(
       "chatMessages"
     );
-
-
-  container.innerHTML = `
-    <div class="empty">
-      Loading conversation...
-    </div>
-  `;
-
 
   try{
 
@@ -2538,42 +4987,36 @@ async function loadConversation(){
       error
     } =
       await supabaseClient
-
         .from("messages")
-
         .select(
           "id,sender_id,receiver_id,content,is_read,created_at"
         )
-
         .or(
-          `and(sender_id.eq.${currentUser.id},receiver_id.eq.${selectedPerson.id}),and(sender_id.eq.${selectedPerson.id},receiver_id.eq.${currentUser.id})`
+          "and(sender_id.eq." +
+          currentUser.id +
+          ",receiver_id.eq." +
+          selectedPerson.id +
+          "),and(sender_id.eq." +
+          selectedPerson.id +
+          ",receiver_id.eq." +
+          currentUser.id +
+          ")"
         )
-
         .order(
           "created_at",
-          {
-            ascending:true
-          }
+          {ascending:true}
         );
-
 
     if(error) throw error;
 
+    if(!data?.length){
 
-    if(!data ||
-       data.length === 0){
-
-      container.innerHTML = `
+      box.innerHTML = `
         <div class="empty"
              style="margin:auto;">
-
-          <div style="font-size:32px;margin-bottom:8px;">
-            👋
-          </div>
-
+          👋<br>
           No messages yet.<br>
           Say hello!
-
         </div>
       `;
 
@@ -2581,15 +5024,13 @@ async function loadConversation(){
 
     }
 
-
-    container.innerHTML =
+    box.innerHTML =
       data.map(
         message => {
 
           const mine =
             message.sender_id ===
             currentUser.id;
-
 
           return `
 
@@ -2599,11 +5040,9 @@ async function loadConversation(){
 
               <div class="message-bubble">
 
-                <div>
-                  ${escapeHtml(
-                    message.content
-                  )}
-                </div>
+                ${escapeHtml(
+                  message.content
+                )}
 
                 <div class="message-time">
                   ${formatTime(
@@ -2620,28 +5059,16 @@ async function loadConversation(){
         }
       ).join("");
 
-
     scrollChatToBottom();
-
 
   }catch(error){
 
-    console.error(
-      "Conversation:",
-      error
-    );
-
-    container.innerHTML = `
+    box.innerHTML = `
       <div class="empty">
-
         Could not load messages.
-
         <p style="margin-top:7px;">
-          ${escapeHtml(
-            error.message
-          )}
+          ${escapeHtml(error.message)}
         </p>
-
       </div>
     `;
 
@@ -2649,10 +5076,6 @@ async function loadConversation(){
 
 }
 
-
-/* =========================================================
-   SEND MESSAGE
-   ========================================================= */
 
 document
   .getElementById(
@@ -2664,27 +5087,11 @@ document
 
       event.preventDefault();
 
-      if(!currentUser){
-
-        showNotice(
-          "Please log in first."
-        );
-
+      if(
+        !currentUser ||
+        !selectedPerson
+      )
         return;
-
-      }
-
-
-      if(!selectedPerson){
-
-        showNotice(
-          "Select a person first."
-        );
-
-        return;
-
-      }
-
 
       const input =
         document.getElementById(
@@ -2694,26 +5101,10 @@ document
       const content =
         input.value.trim();
 
-
-      if(!content){
-
+      if(!content)
         return;
 
-      }
-
-
-      const button =
-        event.submitter ||
-        document.querySelector(
-          ".send-btn"
-        );
-
-
       input.disabled = true;
-
-      if(button)
-        button.disabled = true;
-
 
       try{
 
@@ -2721,37 +5112,23 @@ document
           error
         } =
           await supabaseClient
-
             .from("messages")
-
             .insert({
-
               sender_id:
                 currentUser.id,
-
               receiver_id:
                 selectedPerson.id,
-
-              content:
-                content,
-
-              is_read:
-                false
-
+              content:content,
+              is_read:false
             });
 
-
         if(error) throw error;
-
 
         input.value = "";
 
         await loadConversation();
 
-
       }catch(error){
-
-        console.error(error);
 
         showNotice(
           error.message
@@ -2759,84 +5136,57 @@ document
 
       }
 
-
       input.disabled = false;
-
-      if(button)
-        button.disabled = false;
-
       input.focus();
 
     }
   );
 
 
-/* =========================================================
-   MARK CONVERSATION READ
-   ========================================================= */
-
 async function markConversationRead(){
 
-  if(!currentUser ||
-     !selectedPerson){
-
+  if(
+    !currentUser ||
+    !selectedPerson
+  )
     return;
 
-  }
-
-
-  try{
-
-    const {
-      error
-    } =
-      await supabaseClient
-
-        .from("messages")
-
-        .update({
-          is_read:true
-        })
-
-        .eq(
-          "receiver_id",
-          currentUser.id
-        )
-
-        .eq(
-          "sender_id",
-          selectedPerson.id
-        )
-
-        .eq(
-          "is_read",
-          false
-        );
-
-
-    if(error){
-
-      console.error(
-        "Mark read:",
-        error
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("messages")
+      .update({
+        is_read:true
+      })
+      .eq(
+        "receiver_id",
+        currentUser.id
+      )
+      .eq(
+        "sender_id",
+        selectedPerson.id
+      )
+      .eq(
+        "is_read",
+        false
       );
 
-    }
-
-  }catch(error){
-
-    console.error(error);
-
-  }
+  if(error)
+    console.error(
+      "Read status:",
+      error
+    );
 
 }
 
 
-/* =========================================================
-   REALTIME MESSAGES
-   ========================================================= */
-
 function startMessagesRealtime(){
+
+  if(
+    !currentUser
+  )
+    return;
 
   if(messagesChannel){
 
@@ -2847,15 +5197,12 @@ function startMessagesRealtime(){
 
   }
 
-
   messagesChannel =
     supabaseClient
-
       .channel(
         "zeepy-messages-" +
         currentUser.id
       )
-
       .on(
         "postgres_changes",
         {
@@ -2868,22 +5215,18 @@ function startMessagesRealtime(){
           const message =
             payload.new;
 
-
-          if(!currentUser)
+          if(
+            !currentUser
+          )
             return;
 
-
-          const belongsToCurrentUser =
-            message.sender_id ===
-              currentUser.id ||
-
-            message.receiver_id ===
-              currentUser.id;
-
-
-          if(!belongsToCurrentUser)
+          if(
+            message.sender_id !==
+              currentUser.id &&
+            message.receiver_id !==
+              currentUser.id
+          )
             return;
-
 
           if(
             selectedPerson &&
@@ -2925,15 +5268,10 @@ function startMessagesRealtime(){
 
         }
       )
-
       .subscribe();
 
 }
 
-
-/* =========================================================
-   MOBILE CHAT
-   ========================================================= */
 
 function closeMobileChat(){
 
@@ -2944,7 +5282,6 @@ function closeMobileChat(){
     .classList.remove(
       "chat-open"
     );
-
 
   document
     .getElementById(
@@ -2957,72 +5294,302 @@ function closeMobileChat(){
 }
 
 
-/* =========================================================
-   UI
-   ========================================================= */
+/* =====================================================
+   GLOBAL SEARCH
+===================================================== */
 
-function openCategory(
-  name
-){
-
-  showNotice(
-    name +
-    " will be connected as its own community area."
-  );
-
-}
-
-
-function openPostNotice(){
-
-  if(!currentUser){
-
-    showNotice(
-      "Please log in first to create community content."
-    );
-
-    openAuth();
-
-    return;
-
-  }
-
-  showNotice(
-    "The full Create/Upload system will be connected next."
-  );
-
-}
-
-
-function openProfileNotice(){
-
-  if(!currentUser){
-
-    openAuth();
-
-    return;
-
-  }
-
-  showNotice(
-    "Your full profile page will be connected next."
-  );
-
-}
-
-
-function scrollToFeed(){
+function openSearch(){
 
   document
     .getElementById(
-      "communityFeed"
+      "searchModal"
     )
-    .scrollIntoView({
-      behavior:"smooth"
-    });
+    .classList.add(
+      "show"
+    );
+
+  setTimeout(
+    () => {
+
+      document
+        .getElementById(
+          "globalSearch"
+        )
+        .focus();
+
+    },
+    100
+  );
 
 }
 
+
+document
+  .getElementById(
+    "globalSearch"
+  )
+  .addEventListener(
+    "input",
+    event => {
+
+      clearTimeout(
+        globalSearchTimer
+      );
+
+      globalSearchTimer =
+        setTimeout(
+          () =>
+            globalSearch(
+              event.target.value.trim()
+            ),
+          250
+        );
+
+    }
+  );
+
+
+async function globalSearch(
+  term
+){
+
+  const results =
+    document.getElementById(
+      "searchResults"
+    );
+
+  if(!term){
+
+    results.innerHTML = `
+      <div class="empty">
+        Start typing to search.
+      </div>
+    `;
+
+    return;
+
+  }
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id,display_name,username,avatar_url"
+        )
+        .or(
+          "display_name.ilike.%" +
+          escapeFilter(term) +
+          "%,username.ilike.%" +
+          escapeFilter(term) +
+          "%"
+        )
+        .limit(20);
+
+    if(error) throw error;
+
+    if(!data?.length){
+
+      results.innerHTML = `
+        <div class="empty">
+          No ZEEPY member found.
+        </div>
+      `;
+
+      return;
+
+    }
+
+    results.innerHTML =
+      data.map(
+        person => `
+
+          <button
+            class="person"
+            onclick="
+              closeModal('searchModal');
+              openMessages();
+              setTimeout(
+                () => openChat('${person.id}'),
+                300
+              );
+            ">
+
+            <div class="avatar">
+
+              ${
+                person.avatar_url
+                  ? `<img src="${escapeHtml(person.avatar_url)}">`
+                  : (
+                    person.display_name ||
+                    "Z"
+                  )
+                  .charAt(0)
+                  .toUpperCase()
+              }
+
+            </div>
+
+            <div>
+
+              <div class="person-name">
+                ${escapeHtml(
+                  person.display_name ||
+                  "ZEEPY Member"
+                )}
+              </div>
+
+              <div class="person-username">
+                @${escapeHtml(
+                  person.username || ""
+                )}
+              </div>
+
+            </div>
+
+          </button>
+
+        `
+      ).join("");
+
+  }catch(error){
+
+    results.innerHTML = `
+      <div class="empty">
+        ${escapeHtml(error.message)}
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   NOTIFICATIONS
+===================================================== */
+
+function openNotifications(){
+
+  document
+    .getElementById(
+      "notificationsModal"
+    )
+    .classList.add(
+      "show"
+    );
+
+}
+
+
+/* =====================================================
+   WALLET
+===================================================== */
+
+function walletAction(
+  action
+){
+
+  if(!currentUser){
+
+    openAuth();
+    return;
+
+  }
+
+  showNotice(
+    action +
+    " is part of the ZEEPY wallet system."
+  );
+
+}
+
+
+/* =====================================================
+   OTHER CITY FEATURES
+===================================================== */
+
+function createGroup(){
+
+  if(!currentUser){
+
+    openAuth();
+    return;
+
+  }
+
+  showNotice(
+    "Group creation is available as the next community-database module."
+  );
+
+}
+
+
+function createMeeting(){
+
+  if(!currentUser){
+
+    openAuth();
+    return;
+
+  }
+
+  showNotice(
+    "Meeting creation is available as the next community-database module."
+  );
+
+}
+
+
+function startLive(){
+
+  if(!currentUser){
+
+    openAuth();
+    return;
+
+  }
+
+  showNotice(
+    "Camera/live broadcasting requires the live service layer. Your ZEEPY Live area is ready."
+  );
+
+}
+
+
+function showLiveRooms(){
+
+  showNotice(
+    "Live rooms will appear here when broadcasters are active."
+  );
+
+}
+
+
+/* =====================================================
+   MODAL HELPERS
+===================================================== */
+
+function closeModal(
+  id
+){
+
+  document
+    .getElementById(id)
+    ?.classList.remove(
+      "show"
+    );
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
 
 function showNotice(
   message
@@ -3053,15 +5620,15 @@ function showNotice(
         );
 
       },
-      3500
+      4000
     );
 
 }
 
 
-/* =========================================================
+/* =====================================================
    HELPERS
-   ========================================================= */
+===================================================== */
 
 function escapeHtml(
   value
@@ -3070,34 +5637,26 @@ function escapeHtml(
   if(
     value === null ||
     value === undefined
-  ){
-
+  )
     return "";
 
-  }
-
   return String(value)
-
     .replace(
       /&/g,
       "&amp;"
     )
-
     .replace(
       /</g,
       "&lt;"
     )
-
     .replace(
       />/g,
       "&gt;"
     )
-
     .replace(
       /"/g,
       "&quot;"
     )
-
     .replace(
       /'/g,
       "&#039;"
@@ -3120,10 +5679,6 @@ function escapeJs(
     .replace(
       /'/g,
       "\\'"
-    )
-    .replace(
-      /"/g,
-      "&quot;"
     );
 
 }
@@ -3156,9 +5711,6 @@ function formatDate(
   value
 ){
 
-  if(!value)
-    return "";
-
   const date =
     new Date(value);
 
@@ -3184,9 +5736,6 @@ function formatDate(
 function formatTime(
   value
 ){
-
-  if(!value)
-    return "";
 
   const date =
     new Date(value);
@@ -3216,8 +5765,94 @@ function scrollChatToBottom(){
       "chatMessages"
     );
 
-  box.scrollTop =
-    box.scrollHeight;
+  if(box){
+
+    box.scrollTop =
+      box.scrollHeight;
+
+  }
+
+}
+
+
+function renderSimplePost(
+  post
+){
+
+  return `
+
+    <article class="post">
+
+      ${
+        post.content
+          ? `
+            <div class="post-body">
+              ${escapeHtml(post.content)}
+            </div>
+          `
+          : ""
+      }
+
+      ${
+        post.media_url
+          ? `
+            <div class="post-media">
+
+              ${
+                post.media_type === "video"
+                  ? `
+                    <video
+                      src="${escapeHtml(post.media_url)}"
+                      controls>
+                    </video>
+                  `
+                  : `
+                    <img
+                      src="${escapeHtml(post.media_url)}">
+                  `
+              }
+
+            </div>
+          `
+          : ""
+      }
+
+      <div class="post-meta">
+        ${formatDate(post.created_at)}
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+function setupEvents(){
+
+  const marketSearch =
+    document.getElementById(
+      "marketSearch"
+    );
+
+  if(marketSearch){
+
+    marketSearch.addEventListener(
+      "keydown",
+      event => {
+
+        if(
+          event.key === "Enter"
+        ){
+
+          loadMarketplace();
+
+        }
+
+      }
+    );
+
+  }
 
 }
 
