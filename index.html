@@ -828,8 +828,10 @@ textarea.form-control{
 
       <div class="section-title">
         <h2>Community Areas</h2>
-        <button class="btn btn-small btn-secondary"
-                onclick="showPage('communities')">
+
+        <button
+          class="btn btn-small btn-secondary"
+          onclick="showPage('communities')">
           View all
         </button>
       </div>
@@ -853,14 +855,21 @@ textarea.form-control{
   <section id="page-communities" class="page">
 
     <div class="section-title">
+
       <div>
         <h2>Communities</h2>
-        <p class="muted">Explore conversations and posts.</p>
+
+        <p class="muted">
+          Explore conversations and posts.
+        </p>
       </div>
 
-      <button class="btn btn-primary" onclick="openCreatePost()">
+      <button
+        class="btn btn-primary"
+        onclick="openCreatePost()">
         + Create Post
       </button>
+
     </div>
 
     <div id="communityCategories" class="category-grid"></div>
@@ -868,44 +877,57 @@ textarea.form-control{
     <div class="section">
 
       <div class="section-title">
-        <h2 id="communityFeedTitle">Community Feed</h2>
+
+        <h2 id="communityFeedTitle">
+          Community Feed
+        </h2>
+
       </div>
 
       <div id="communityFilters" class="filter-row">
 
-        <button class="filter-btn active"
-                onclick="setPostFilter('all',this)">
+        <button
+          class="filter-btn active"
+          onclick="setPostFilter('all',this)">
           All
         </button>
 
-        <button class="filter-btn"
-                onclick="setPostFilter('text',this)">
+        <button
+          class="filter-btn"
+          onclick="setPostFilter('text',this)">
           Text
         </button>
 
-        <button class="filter-btn"
-                onclick="setPostFilter('photo',this)">
+        <button
+          class="filter-btn"
+          onclick="setPostFilter('photo',this)">
           Photos
         </button>
 
-        <button class="filter-btn"
-                onclick="setPostFilter('video',this)">
+        <button
+          class="filter-btn"
+          onclick="setPostFilter('video',this)">
           Videos
         </button>
 
-        <button class="filter-btn"
-                onclick="setPostFilter('file',this)">
+        <button
+          class="filter-btn"
+          onclick="setPostFilter('file',this)">
           Files
         </button>
 
-        <button class="filter-btn"
-                onclick="setPostFilter('poll',this)">
+        <button
+          class="filter-btn"
+          onclick="setPostFilter('poll',this)">
           Polls
         </button>
 
       </div>
 
-      <div id="communityPosts" style="margin-top:12px;"></div>
+      <div
+        id="communityPosts"
+        style="margin-top:12px;">
+      </div>
 
     </div>
 
@@ -914,24 +936,37 @@ textarea.form-control{
   <section id="page-market" class="page">
 
     <div class="section-title">
+
       <div>
         <h2>Marketplace</h2>
-        <p class="muted">Buy and sell on ZEEPY.</p>
+
+        <p class="muted">
+          Buy and sell on ZEEPY.
+        </p>
       </div>
+
     </div>
 
     <div class="hero-actions">
-      <button class="btn btn-primary" onclick="openShopModal()">
+
+      <button
+        class="btn btn-primary"
+        onclick="openShopModal()">
         + Create Shop
       </button>
 
-      <button class="btn btn-secondary" onclick="openProductModal()">
+      <button
+        class="btn btn-secondary"
+        onclick="openProductModal()">
         + Sell Product
       </button>
+
     </div>
 
     <div class="section">
+
       <div id="productsGrid" class="grid"></div>
+
     </div>
 
   </section>
@@ -939,21 +974,27 @@ textarea.form-control{
   <section id="page-people" class="page">
 
     <div class="section-title">
+
       <div>
         <h2>People</h2>
-        <p class="muted">Find people on ZEEPY.</p>
+
+        <p class="muted">
+          Find people on ZEEPY.
+        </p>
       </div>
+
     </div>
 
     <div class="card">
 
       <div class="form-group">
+
         <input
           id="peopleSearch"
           class="form-control"
           placeholder="Search by name or username..."
-          oninput="searchPeople()"
-        >
+          oninput="searchPeople()">
+
       </div>
 
       <div id="peopleResults"></div>
@@ -965,20 +1006,29 @@ textarea.form-control{
   <section id="page-messages" class="page">
 
     <div class="section-title">
+
       <div>
         <h2>Messages</h2>
-        <p class="muted">Connect with people privately.</p>
+
+        <p class="muted">
+          Connect with people privately.
+        </p>
       </div>
+
     </div>
 
     <div class="card">
 
-      <button class="btn btn-secondary"
-              onclick="showPage('people')">
+      <button
+        class="btn btn-secondary"
+        onclick="showPage('people')">
         👥 Find People
       </button>
 
-      <div id="messagesList" style="margin-top:15px;"></div>
+      <div
+        id="messagesList"
+        style="margin-top:15px;">
+      </div>
 
     </div>
 
@@ -988,26 +1038,37 @@ textarea.form-control{
 
     <div class="profile-cover">
 
-      <div class="profile-big-avatar" id="profileAvatar">
-        <span style="font-size:40px;">👤</span>
+      <div
+        class="profile-big-avatar"
+        id="profileAvatar">
+
+        <span style="font-size:40px;">
+          👤
+        </span>
+
       </div>
 
-      <h2 id="profileName">Guest</h2>
+      <h2 id="profileName">
+        Guest
+      </h2>
 
       <p id="profileUsername"></p>
 
       <p id="profileBio"></p>
 
-      <div class="hero-actions"
-           style="justify-content:center;">
+      <div
+        class="hero-actions"
+        style="justify-content:center;">
 
-        <button class="btn btn-primary"
-                onclick="openProfileModal()">
+        <button
+          class="btn btn-primary"
+          onclick="openProfileModal()">
           Edit Profile
         </button>
 
-        <button class="btn btn-secondary"
-                onclick="logout()">
+        <button
+          class="btn btn-secondary"
+          onclick="logout()">
           Log out
         </button>
 
@@ -1030,31 +1091,43 @@ textarea.form-control{
   <section id="page-wallet" class="page">
 
     <div class="section-title">
+
       <div>
         <h2>Wallet</h2>
-        <p class="muted">Your ZEEPY balance and earnings.</p>
+
+        <p class="muted">
+          Your ZEEPY balance and earnings.
+        </p>
       </div>
+
     </div>
 
     <div class="card">
 
-      <p class="muted">Balance</p>
+      <p class="muted">
+        Balance
+      </p>
 
-      <h1 id="walletBalance"
-          style="margin-top:8px;">
+      <h1
+        id="walletBalance"
+        style="margin-top:8px;">
         GH₵ 0.00
       </h1>
 
       <div class="hero-actions">
-        <button class="btn btn-primary"
-                onclick="showToast('Wallet funding will be connected in the payment stage.')">
+
+        <button
+          class="btn btn-primary"
+          onclick="showToast('Wallet funding will be connected in the payment stage.')">
           Add Money
         </button>
 
-        <button class="btn btn-secondary"
-                onclick="showToast('Withdrawals will be connected in the payment stage.')">
+        <button
+          class="btn btn-secondary"
+          onclick="showToast('Withdrawals will be connected in the payment stage.')">
           Withdraw
         </button>
+
       </div>
 
     </div>
@@ -1068,11 +1141,20 @@ textarea.form-control{
     </div>
 
     <div class="card">
-      <h3>ZEEPY Groups</h3>
-      <p class="muted" style="margin-top:8px;">
+
+      <h3>
+        ZEEPY Groups
+      </h3>
+
+      <p
+        class="muted"
+        style="margin-top:8px;">
+
         Group creation, members, group chat and group permissions will be
         connected in the Groups stage.
+
       </p>
+
     </div>
 
   </section>
@@ -1095,9 +1177,10 @@ textarea.form-control{
 
       <div class="hero-actions">
 
-        <button id="startLiveBtn"
-                class="btn btn-primary"
-                onclick="startLivePreview()">
+        <button
+          id="startLiveBtn"
+          class="btn btn-primary"
+          onclick="startLivePreview()">
           Start Live
         </button>
 
@@ -1109,9 +1192,13 @@ textarea.form-control{
 
       </div>
 
-      <p class="muted" style="margin-top:12px;">
+      <p
+        class="muted"
+        style="margin-top:12px;">
+
         Camera preview is connected. Full public streaming will be added
         in the Live stage.
+
       </p>
 
     </div>
@@ -1125,10 +1212,14 @@ textarea.form-control{
     </div>
 
     <div class="card">
+
       <p class="muted">
+
         Your photos and videos will appear here as the ZEEPY media system
         is expanded.
+
       </p>
+
     </div>
 
   </section>
@@ -1140,10 +1231,14 @@ textarea.form-control{
     </div>
 
     <div class="card">
+
       <p class="muted">
+
         Nearby people, businesses, events and community activity will be
         connected in the Nearby stage.
+
       </p>
+
     </div>
 
   </section>
@@ -1156,17 +1251,24 @@ textarea.form-control{
 
     <div class="card">
 
-      <h3>ZEEPY Meetings</h3>
+      <h3>
+        ZEEPY Meetings
+      </h3>
 
-      <p class="muted" style="margin-top:8px;">
+      <p
+        class="muted"
+        style="margin-top:8px;">
+
         Online meetings, invitations, audio/video meetings and meeting
         rooms will be connected in the Meetings stage.
+
       </p>
 
       <div class="hero-actions">
 
-        <button class="btn btn-primary"
-                onclick="showToast('Meeting rooms will be connected in the Meetings stage.')">
+        <button
+          class="btn btn-primary"
+          onclick="showToast('Meeting rooms will be connected in the Meetings stage.')">
           + Create Meeting
         </button>
 
@@ -1182,39 +1284,54 @@ textarea.form-control{
 
   <div class="bottom-nav-inner">
 
-    <button class="nav-btn active"
-            data-page="home"
-            onclick="showPage('home')">
+    <button
+      class="nav-btn active"
+      data-page="home"
+      onclick="showPage('home')">
+
       <span>🏠</span>
       Home
+
     </button>
 
-    <button class="nav-btn"
-            data-page="market"
-            onclick="showPage('market')">
+    <button
+      class="nav-btn"
+      data-page="market"
+      onclick="showPage('market')">
+
       <span>🛒</span>
       Market
+
     </button>
 
-    <button class="nav-btn"
-            data-page="communities"
-            onclick="openCreatePost()">
+    <button
+      class="nav-btn"
+      data-page="communities"
+      onclick="openCreatePost()">
+
       <span>＋</span>
       Create
+
     </button>
 
-    <button class="nav-btn"
-            data-page="messages"
-            onclick="showPage('messages')">
+    <button
+      class="nav-btn"
+      data-page="messages"
+      onclick="showPage('messages')">
+
       <span>💬</span>
       Messages
+
     </button>
 
-    <button class="nav-btn"
-            data-page="profile"
-            onclick="showPage('profile')">
+    <button
+      class="nav-btn"
+      data-page="profile"
+      onclick="showPage('profile')">
+
       <span>👤</span>
       Profile
+
     </button>
 
   </div>
@@ -1226,73 +1343,94 @@ textarea.form-control{
   <div class="modal-box auth-box">
 
     <div class="modal-head">
-      <h2 id="authTitle">Log in</h2>
 
-      <button class="close-btn"
-              onclick="closeModal('authModal')">
+      <h2 id="authTitle">
+        Log in
+      </h2>
+
+      <button
+        class="close-btn"
+        onclick="closeModal('authModal')">
         ×
       </button>
+
     </div>
 
     <div class="auth-tabs">
 
-      <button id="loginTab"
-              class="auth-tab active"
-              onclick="setAuthMode('login')">
+      <button
+        id="loginTab"
+        class="auth-tab active"
+        onclick="setAuthMode('login')">
         Log in
       </button>
 
-      <button id="signupTab"
-              class="auth-tab"
-              onclick="setAuthMode('signup')">
+      <button
+        id="signupTab"
+        class="auth-tab"
+        onclick="setAuthMode('signup')">
         Create account
       </button>
 
     </div>
 
-    <div id="signupNameGroup"
-         class="form-group hidden">
+    <div
+      id="signupNameGroup"
+      class="form-group hidden">
 
-      <label>Display name</label>
+      <label>
+        Display name
+      </label>
 
-      <input id="authName"
-             class="form-control"
-             placeholder="Your name">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Email</label>
-
-      <input id="authEmail"
-             class="form-control"
-             type="email"
-             placeholder="you@example.com">
+      <input
+        id="authName"
+        class="form-control"
+        placeholder="Your name">
 
     </div>
 
     <div class="form-group">
 
-      <label>Password</label>
+      <label>
+        Email
+      </label>
 
-      <input id="authPassword"
-             class="form-control"
-             type="password"
-             placeholder="Password">
+      <input
+        id="authEmail"
+        class="form-control"
+        type="email"
+        placeholder="you@example.com">
 
     </div>
 
-    <button id="authSubmit"
-            class="btn btn-primary"
-            style="width:100%;"
-            onclick="submitAuth()">
+    <div class="form-group">
+
+      <label>
+        Password
+      </label>
+
+      <input
+        id="authPassword"
+        class="form-control"
+        type="password"
+        placeholder="Password">
+
+    </div>
+
+    <button
+      id="authSubmit"
+      class="btn btn-primary"
+      style="width:100%;"
+      onclick="submitAuth()">
+
       Log in
+
     </button>
 
-    <p id="authMessage"
-       class="muted"
-       style="margin-top:12px;text-align:center;">
+    <p
+      id="authMessage"
+      class="muted"
+      style="margin-top:12px;text-align:center;">
     </p>
 
   </div>
@@ -1306,12 +1444,20 @@ textarea.form-control{
     <div class="modal-head">
 
       <div>
-        <h2>Create on ZEEPY</h2>
-        <p class="muted">Share something with your community.</p>
+
+        <h2>
+          Create on ZEEPY
+        </h2>
+
+        <p class="muted">
+          Share something with your community.
+        </p>
+
       </div>
 
-      <button class="close-btn"
-              onclick="closeModal('createPostModal')">
+      <button
+        class="close-btn"
+        onclick="closeModal('createPostModal')">
         ×
       </button>
 
@@ -1319,53 +1465,64 @@ textarea.form-control{
 
     <div class="form-group">
 
-      <label>Community</label>
+      <label>
+        Community
+      </label>
 
-      <select id="postCategory"
-              class="form-control">
+      <select
+        id="postCategory"
+        class="form-control">
       </select>
 
     </div>
 
     <div class="form-group">
 
-      <label>Post type</label>
+      <label>
+        Post type
+      </label>
 
       <div class="type-grid">
 
-        <button class="type-btn active"
-                data-type="text"
-                onclick="selectPostType('text',this)">
+        <button
+          class="type-btn active"
+          data-type="text"
+          onclick="selectPostType('text',this)">
           📝 Text
         </button>
 
-        <button class="type-btn"
-                data-type="photo"
-                onclick="selectPostType('photo',this)">
+        <button
+          class="type-btn"
+          data-type="photo"
+          onclick="selectPostType('photo',this)">
           📷 Photo
         </button>
 
-        <button class="type-btn"
-                data-type="video"
-                onclick="selectPostType('video',this)">
+        <button
+          class="type-btn"
+          data-type="video"
+          onclick="selectPostType('video',this)">
           🎥 Video
         </button>
 
-        <button class="type-btn"
-                data-type="file"
-                onclick="selectPostType('file',this)">
+        <button
+          class="type-btn"
+          data-type="file"
+          onclick="selectPostType('file',this)">
           📁 File
         </button>
 
-        <button class="type-btn"
-                data-type="link"
-                onclick="selectPostType('link',this)">
+        <button
+          class="type-btn"
+          data-type="link"
+          onclick="selectPostType('link',this)">
           🔗 Link
         </button>
 
-        <button class="type-btn"
-                data-type="poll"
-                onclick="selectPostType('poll',this)">
+        <button
+          class="type-btn"
+          data-type="poll"
+          onclick="selectPostType('poll',this)">
           📊 Poll
         </button>
 
@@ -1375,7 +1532,9 @@ textarea.form-control{
 
     <div class="form-group">
 
-      <label>Message</label>
+      <label>
+        Message
+      </label>
 
       <textarea
         id="postContent"
@@ -1385,10 +1544,13 @@ textarea.form-control{
 
     </div>
 
-    <div id="mediaField"
-         class="form-group hidden">
+    <div
+      id="mediaField"
+      class="form-group hidden">
 
-      <label id="mediaLabel">Choose file</label>
+      <label id="mediaLabel">
+        Choose file
+      </label>
 
       <input
         id="postFile"
@@ -1396,17 +1558,23 @@ textarea.form-control{
         type="file"
         accept="image/*">
 
-      <p class="muted"
-         style="margin-top:6px;font-size:12px;">
+      <p
+        class="muted"
+        style="margin-top:6px;font-size:12px;">
+
         Your file will be uploaded securely to ZEEPY.
+
       </p>
 
     </div>
 
-    <div id="linkField"
-         class="form-group hidden">
+    <div
+      id="linkField"
+      class="form-group hidden">
 
-      <label>Link</label>
+      <label>
+        Link
+      </label>
 
       <input
         id="postLink"
@@ -1416,24 +1584,31 @@ textarea.form-control{
 
     </div>
 
-    <div id="pollField"
-         class="form-group hidden">
+    <div
+      id="pollField"
+      class="form-group hidden">
 
-      <label>Poll question</label>
+      <label>
+        Poll question
+      </label>
 
       <input
         id="pollQuestion"
         class="form-control"
         placeholder="Ask your community...">
 
-      <div id="pollOptions"
-           style="margin-top:8px;">
+      <div
+        id="pollOptions"
+        style="margin-top:8px;">
       </div>
 
-      <button class="btn btn-secondary btn-small"
-              style="margin-top:8px;"
-              onclick="addPollOption()">
+      <button
+        class="btn btn-secondary btn-small"
+        style="margin-top:8px;"
+        onclick="addPollOption()">
+
         + Add option
+
       </button>
 
     </div>
@@ -1443,7 +1618,9 @@ textarea.form-control{
       class="btn btn-primary"
       style="width:100%;"
       onclick="createPost()">
+
       Publish
+
     </button>
 
   </div>
@@ -1456,10 +1633,13 @@ textarea.form-control{
 
     <div class="modal-head">
 
-      <h2>Edit Profile</h2>
+      <h2>
+        Edit Profile
+      </h2>
 
-      <button class="close-btn"
-              onclick="closeModal('profileModal')">
+      <button
+        class="close-btn"
+        onclick="closeModal('profileModal')">
         ×
       </button>
 
@@ -1467,56 +1647,74 @@ textarea.form-control{
 
     <div class="form-group">
 
-      <label>Display name</label>
+      <label>
+        Display name
+      </label>
 
-      <input id="editDisplayName"
-             class="form-control">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Username</label>
-
-      <input id="editUsername"
-             class="form-control">
+      <input
+        id="editDisplayName"
+        class="form-control">
 
     </div>
 
     <div class="form-group">
 
-      <label>Bio</label>
+      <label>
+        Username
+      </label>
 
-      <textarea id="editBio"
-                class="form-control">
+      <input
+        id="editUsername"
+        class="form-control">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>
+        Bio
+      </label>
+
+      <textarea
+        id="editBio"
+        class="form-control">
       </textarea>
 
     </div>
 
     <div class="form-group">
 
-      <label>Location</label>
+      <label>
+        Location
+      </label>
 
-      <input id="editLocation"
-             class="form-control">
+      <input
+        id="editLocation"
+        class="form-control">
 
     </div>
 
     <div class="form-group">
 
-      <label>Profile photo</label>
+      <label>
+        Profile photo
+      </label>
 
-      <input id="avatarFile"
-             class="form-control"
-             type="file"
-             accept="image/*">
+      <input
+        id="avatarFile"
+        class="form-control"
+        type="file"
+        accept="image/*">
 
     </div>
 
-    <button class="btn btn-primary"
-            style="width:100%;"
-            onclick="saveProfile()">
+    <button
+      class="btn btn-primary"
+      style="width:100%;"
+      onclick="saveProfile()">
+
       Save Profile
+
     </button>
 
   </div>
@@ -1529,10 +1727,13 @@ textarea.form-control{
 
     <div class="modal-head">
 
-      <h2>Create Shop</h2>
+      <h2>
+        Create Shop
+      </h2>
 
-      <button class="close-btn"
-              onclick="closeModal('shopModal')">
+      <button
+        class="close-btn"
+        onclick="closeModal('shopModal')">
         ×
       </button>
 
@@ -1540,36 +1741,48 @@ textarea.form-control{
 
     <div class="form-group">
 
-      <label>Shop name</label>
+      <label>
+        Shop name
+      </label>
 
-      <input id="shopName"
-             class="form-control">
+      <input
+        id="shopName"
+        class="form-control">
 
     </div>
 
     <div class="form-group">
 
-      <label>Description</label>
+      <label>
+        Description
+      </label>
 
-      <textarea id="shopDescription"
-                class="form-control">
+      <textarea
+        id="shopDescription"
+        class="form-control">
       </textarea>
 
     </div>
 
     <div class="form-group">
 
-      <label>Location</label>
+      <label>
+        Location
+      </label>
 
-      <input id="shopLocation"
-             class="form-control">
+      <input
+        id="shopLocation"
+        class="form-control">
 
     </div>
 
-    <button class="btn btn-primary"
-            style="width:100%;"
-            onclick="createShop()">
+    <button
+      class="btn btn-primary"
+      style="width:100%;"
+      onclick="createShop()">
+
       Create Shop
+
     </button>
 
   </div>
@@ -1582,10 +1795,13 @@ textarea.form-control{
 
     <div class="modal-head">
 
-      <h2>Sell Product</h2>
+      <h2>
+        Sell Product
+      </h2>
 
-      <button class="close-btn"
-              onclick="closeModal('productModal')">
+      <button
+        class="close-btn"
+        onclick="closeModal('productModal')">
         ×
       </button>
 
@@ -1593,38 +1809,67 @@ textarea.form-control{
 
     <div class="form-group">
 
-      <label>Product name</label>
+      <label>
+        Product name
+      </label>
 
-      <input id="productName"
-             class="form-control">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Price</label>
-
-      <input id="productPrice"
-             class="form-control"
-             type="number"
-             step="0.01">
+      <input
+        id="productName"
+        class="form-control">
 
     </div>
 
     <div class="form-group">
 
-      <label>Category</label>
+      <label>
+        Price
+      </label>
 
-      <select id="productCategory"
-              class="form-control">
+      <input
+        id="productPrice"
+        class="form-control"
+        type="number"
+        step="0.01">
 
-        <option>Phones & Tablets</option>
-        <option>Electronics</option>
-        <option>Fashion</option>
-        <option>Beauty</option>
-        <option>Vehicles</option>
-        <option>Food</option>
-        <option>Services</option>
+    </div>
+
+    <div class="form-group">
+
+      <label>
+        Category
+      </label>
+
+      <select
+        id="productCategory"
+        class="form-control">
+
+        <option>
+          Phones & Tablets
+        </option>
+
+        <option>
+          Electronics
+        </option>
+
+        <option>
+          Fashion
+        </option>
+
+        <option>
+          Beauty
+        </option>
+
+        <option>
+          Vehicles
+        </option>
+
+        <option>
+          Food
+        </option>
+
+        <option>
+          Services
+        </option>
 
       </select>
 
@@ -1632,18 +1877,24 @@ textarea.form-control{
 
     <div class="form-group">
 
-      <label>Description</label>
+      <label>
+        Description
+      </label>
 
-      <textarea id="productDescription"
-                class="form-control">
+      <textarea
+        id="productDescription"
+        class="form-control">
       </textarea>
 
     </div>
 
-    <button class="btn btn-primary"
-            style="width:100%;"
-            onclick="createProduct()">
+    <button
+      class="btn btn-primary"
+      style="width:100%;"
+      onclick="createProduct()">
+
       Publish Product
+
     </button>
 
   </div>
@@ -1690,11 +1941,23 @@ function showToast(message){
 }
 
 function closeModal(id){
-  document.getElementById(id).classList.remove("show");
+
+  const modal =
+    document.getElementById(id);
+
+  if(modal){
+    modal.classList.remove("show");
+  }
 }
 
 function openModal(id){
-  document.getElementById(id).classList.add("show");
+
+  const modal =
+    document.getElementById(id);
+
+  if(modal){
+    modal.classList.add("show");
+  }
 }
 
 function escapeHtml(value){
@@ -2258,6 +2521,7 @@ const fallbackCategories = [
 function getCategoryIcon(category){
 
   const map = {
+
     education:"🎓",
     health:"❤️",
     sports:"⚽",
@@ -2266,6 +2530,7 @@ function getCategoryIcon(category){
     technology:"💻",
     agriculture:"🌾",
     entertainment:"🎬"
+
   };
 
   return category.icon ||
@@ -2289,8 +2554,11 @@ async function loadCategories(){
   }else{
 
     categories = data.map(c=>({
+
       ...c,
+
       icon:getCategoryIcon(c)
+
     }));
 
   }
@@ -2319,8 +2587,7 @@ function renderCategories(){
 
         <div
           class="category-card"
-          onclick="selectCategory('${category.id || ""}','${escapeHtml(category.name)}')"
-        >
+          onclick="selectCategory('${category.id || ""}','${escapeHtml(category.name)}')">
 
           <div class="category-icon">
             ${escapeHtml(category.icon)}
@@ -2348,7 +2615,9 @@ function selectCategory(id,name){
 
   document.getElementById("communityFeedTitle")
     .textContent =
-      name ? `${name} Community` : "Community Feed";
+      name
+        ? `${name} Community`
+        : "Community Feed";
 
   showPage("communities");
 
@@ -2409,10 +2678,12 @@ function selectPostType(type,button){
   document
     .querySelectorAll(".type-btn")
     .forEach(btn=>{
+
       btn.classList.toggle(
         "active",
         btn.dataset.type === type
       );
+
     });
 
   const mediaField =
@@ -2505,8 +2776,7 @@ function addPollOption(){
 
     <input
       class="form-control poll-option-field"
-      placeholder="Option ${count}"
-    >
+      placeholder="Option ${count}">
 
     <button
       type="button"
@@ -2537,8 +2807,11 @@ async function uploadCommunityMedia(file){
     await supabaseClient.storage
       .from("community-media")
       .upload(path,file,{
+
         upsert:false,
+
         contentType:file.type
+
       });
 
   if(error) throw error;
@@ -2549,10 +2822,15 @@ async function uploadCommunityMedia(file){
       .getPublicUrl(path);
 
   return {
+
     url:data.publicUrl,
+
     name:file.name,
+
     type:file.type,
+
     size:file.size
+
   };
 }
 
@@ -2607,7 +2885,10 @@ async function createPost(){
         await uploadCommunityMedia(file);
     }
 
-    if(selectedPostType === "link" && !linkUrl){
+    if(
+      selectedPostType === "link" &&
+      !linkUrl
+    ){
 
       throw new Error(
         "Please enter a link."
@@ -2648,12 +2929,6 @@ async function createPost(){
 
       content = question;
     }
-
-    /*
-      IMPORTANT:
-      The real posts table uses user_id,
-      not author_id.
-    */
 
     const insertData = {
 
@@ -2732,9 +3007,12 @@ async function createPost(){
 
     closeModal("createPostModal");
 
-    showToast("Post published successfully.");
+    showToast(
+      "Post published successfully."
+    );
 
     await loadPosts("homePosts");
+
     await loadPosts("communityPosts");
 
     showPage("communities");
@@ -2754,6 +3032,7 @@ async function createPost(){
   }finally{
 
     button.disabled=false;
+
     button.textContent="Publish";
   }
 }
@@ -2797,7 +3076,24 @@ async function loadPosts(containerId){
       .order("created_at",{ascending:false})
       .limit(50);
 
-  if(selectedCategoryId){
+  /*
+    IMPORTANT FEED RULE:
+
+    HOME:
+    Show posts from ALL communities.
+
+    COMMUNITY PAGE:
+    If a community has been selected,
+    show only posts belonging to that community.
+
+    This prevents Home from being accidentally
+    filtered by the last community the user opened.
+  */
+
+  if(
+    containerId === "communityPosts" &&
+    selectedCategoryId
+  ){
 
     query =
       query.eq(
@@ -2806,8 +3102,15 @@ async function loadPosts(containerId){
       );
   }
 
-  if(postFilter !== "all" &&
-     containerId === "communityPosts"){
+  /*
+    Post type filters belong only to the
+    Community page.
+  */
+
+  if(
+    postFilter !== "all" &&
+    containerId === "communityPosts"
+  ){
 
     query =
       query.eq(
@@ -2826,9 +3129,15 @@ async function loadPosts(containerId){
     container.innerHTML = `
 
       <div class="empty">
+
         Could not load community posts.
+
         <br><br>
-        <small>${escapeHtml(error.message)}</small>
+
+        <small>
+          ${escapeHtml(error.message)}
+        </small>
+
       </div>
 
     `;
@@ -2841,9 +3150,13 @@ async function loadPosts(containerId){
     container.innerHTML = `
 
       <div class="empty">
+
         No posts yet.
+
         <br>
+
         Be the first person to share something.
+
       </div>
 
     `;
@@ -2857,6 +3170,7 @@ async function loadPosts(containerId){
   for(const post of data){
 
     await loadPostExtras(post.id);
+
   }
 }
 
@@ -2876,13 +3190,17 @@ function renderPost(post){
 
   const avatar =
     profile.avatar_url
+
       ? `<img src="${escapeHtml(profile.avatar_url)}">`
+
       : "👤";
 
   let mediaHtml = "";
 
-  if(post.post_type === "photo" &&
-     post.media_url){
+  if(
+    post.post_type === "photo" &&
+    post.media_url
+  ){
 
     mediaHtml = `
 
@@ -2898,8 +3216,10 @@ function renderPost(post){
     `;
   }
 
-  if(post.post_type === "video" &&
-     post.media_url){
+  if(
+    post.post_type === "video" &&
+    post.media_url
+  ){
 
     mediaHtml = `
 
@@ -2917,8 +3237,10 @@ function renderPost(post){
     `;
   }
 
-  if(post.post_type === "file" &&
-     post.media_url){
+  if(
+    post.post_type === "file" &&
+    post.media_url
+  ){
 
     mediaHtml = `
 
@@ -2930,15 +3252,23 @@ function renderPost(post){
             📁
           </div>
 
-          <div style="flex:1;min-width:0;">
+          <div
+            style="flex:1;min-width:0;">
 
             <strong>
-              ${escapeHtml(post.media_name || "File")}
+              ${escapeHtml(
+                post.media_name || "File"
+              )}
             </strong>
 
-            <div class="muted"
-                 style="font-size:12px;margin-top:4px;">
-              ${formatFileSize(post.file_size)}
+            <div
+              class="muted"
+              style="font-size:12px;margin-top:4px;">
+
+              ${formatFileSize(
+                post.file_size
+              )}
+
             </div>
 
           </div>
@@ -2948,7 +3278,9 @@ function renderPost(post){
             href="${escapeHtml(post.media_url)}"
             target="_blank"
             rel="noopener">
+
             Open
+
           </a>
 
         </div>
@@ -2958,8 +3290,10 @@ function renderPost(post){
     `;
   }
 
-  if(post.post_type === "link" &&
-     post.link_url){
+  if(
+    post.post_type === "link" &&
+    post.link_url
+  ){
 
     mediaHtml = `
 
@@ -2970,7 +3304,9 @@ function renderPost(post){
           href="${escapeHtml(post.link_url)}"
           target="_blank"
           rel="noopener noreferrer">
+
           🔗 ${escapeHtml(post.link_url)}
+
         </a>
 
       </div>
@@ -3013,13 +3349,23 @@ function renderPost(post){
 
           <div class="post-meta">
 
-            ${profile.username
-              ? "@"+escapeHtml(profile.username)+" · "
-              : ""}
+            ${
+              profile.username
+                ? "@"+escapeHtml(
+                    profile.username
+                  )+" · "
+                : ""
+            }
 
-            ${escapeHtml(category.name || "Community")}
+            ${escapeHtml(
+              category.name || "Community"
+            )}
+
             ·
-            ${formatDate(post.created_at)}
+
+            ${formatDate(
+              post.created_at
+            )}
 
           </div>
 
@@ -3029,9 +3375,11 @@ function renderPost(post){
 
       ${
         post.content
+
           ? `<div class="post-body">
               ${escapeHtml(post.content)}
              </div>`
+
           : ""
       }
 
@@ -3049,19 +3397,25 @@ function renderPost(post){
           class="action-btn"
           id="like-${post.id}"
           onclick="likePost('${post.id}')">
+
           ❤️ Like
+
         </button>
 
         <button
           class="action-btn"
           onclick="toggleComments('${post.id}')">
+
           💬 Comment
+
         </button>
 
         <button
           class="action-btn"
           onclick="sharePost('${post.id}')">
+
           🔄 Share
+
         </button>
 
       </div>
@@ -3080,7 +3434,9 @@ function renderPost(post){
           <button
             class="btn btn-primary btn-small"
             onclick="addComment('${post.id}')">
+
             Send
+
           </button>
 
         </div>
@@ -3112,6 +3468,7 @@ async function loadPostExtras(postId){
   if(poll){
 
     await loadPoll(postId);
+
   }
 }
 
@@ -3155,6 +3512,7 @@ async function updateLikeState(postId){
 
     button.textContent =
       `❤️ ${liked ? "Liked" : "Like"}`;
+
   }
 
   const stats =
@@ -3165,7 +3523,12 @@ async function updateLikeState(postId){
   if(stats){
 
     stats.textContent =
-      `${count} ${count === 1 ? "like" : "likes"}`;
+      `${count} ${
+        count === 1
+          ? "like"
+          : "likes"
+      }`;
+
   }
 }
 
@@ -3214,8 +3577,11 @@ async function likePost(postId){
       await supabaseClient
         .from("post_likes")
         .insert({
+
           post_id:postId,
+
           user_id:currentUser.id
+
         });
 
     if(insertError){
@@ -3245,6 +3611,7 @@ function toggleComments(postId){
   if(!box.classList.contains("hidden")){
 
     loadComments(postId);
+
   }
 }
 
@@ -3255,6 +3622,7 @@ function commentKeydown(event,postId){
     event.preventDefault();
 
     addComment(postId);
+
   }
 }
 
@@ -3288,7 +3656,9 @@ async function loadComments(postId){
     console.error(error);
 
     container.innerHTML =
-      `<p class="muted">Comments could not be loaded.</p>`;
+      `<p class="muted">
+        Comments could not be loaded.
+      </p>`;
 
     return;
   }
@@ -3296,8 +3666,12 @@ async function loadComments(postId){
   if(!data?.length){
 
     container.innerHTML =
-      `<p class="muted" style="margin-top:10px;">
+      `<p
+        class="muted"
+        style="margin-top:10px;">
+
         No comments yet.
+
       </p>`;
 
     return;
@@ -3309,19 +3683,28 @@ async function loadComments(postId){
       <div class="comment">
 
         <strong>
+
           ${escapeHtml(
             comment.profiles?.display_name ||
             "ZEEPY User"
           )}
+
         </strong>
 
         <p>
-          ${escapeHtml(comment.content)}
+          ${escapeHtml(
+            comment.content
+          )}
         </p>
 
-        <div class="muted"
-             style="font-size:11px;margin-top:5px;">
-          ${formatDate(comment.created_at)}
+        <div
+          class="muted"
+          style="font-size:11px;margin-top:5px;">
+
+          ${formatDate(
+            comment.created_at
+          )}
+
         </div>
 
       </div>
@@ -3334,7 +3717,10 @@ async function updateCommentCount(postId){
   const {count,error} =
     await supabaseClient
       .from("post_comments")
-      .select("*",{count:"exact",head:true})
+      .select("*",{
+        count:"exact",
+        head:true
+      })
       .eq("post_id",postId);
 
   if(error) return;
@@ -3350,7 +3736,12 @@ async function updateCommentCount(postId){
       stats.textContent || "";
 
     stats.textContent =
-      `${likeText}${likeText ? " · " : ""}${count || 0} comments`;
+      `${likeText}${
+        likeText ? " · " : ""
+      }${
+        count || 0
+      } comments`;
+
   }
 }
 
@@ -3372,9 +3763,13 @@ async function addComment(postId){
     await supabaseClient
       .from("post_comments")
       .insert({
+
         post_id:postId,
+
         user_id:currentUser.id,
+
         content
+
       });
 
   if(error){
@@ -3409,14 +3804,21 @@ async function loadPoll(postId){
   const {data:options,error} =
     await supabaseClient
       .from("post_poll_options")
-      .select("id,option_text,sort_order")
+      .select(
+        "id,option_text,sort_order"
+      )
       .eq("post_id",postId)
-      .order("sort_order",{ascending:true});
+      .order(
+        "sort_order",
+        {ascending:true}
+      );
 
   if(error){
 
     container.innerHTML =
-      `<p class="muted">Poll could not be loaded.</p>`;
+      `<p class="muted">
+        Poll could not be loaded.
+      </p>`;
 
     return;
   }
@@ -3424,7 +3826,9 @@ async function loadPoll(postId){
   const {data:votes} =
     await supabaseClient
       .from("post_poll_votes")
-      .select("option_id,user_id")
+      .select(
+        "option_id,user_id"
+      )
       .eq("post_id",postId);
 
   const voteList =
@@ -3432,10 +3836,13 @@ async function loadPoll(postId){
 
   const userVote =
     currentUser
+
       ? voteList.find(
           vote =>
-            vote.user_id === currentUser.id
+            vote.user_id ===
+            currentUser.id
         )
+
       : null;
 
   const total =
@@ -3443,7 +3850,9 @@ async function loadPoll(postId){
 
   container.innerHTML = `
 
-    <strong>Poll</strong>
+    <strong>
+      Poll
+    </strong>
 
     ${
       options?.map(option=>{
@@ -3451,32 +3860,42 @@ async function loadPoll(postId){
         const count =
           voteList.filter(
             vote =>
-              vote.option_id === option.id
+              vote.option_id ===
+              option.id
           ).length;
 
         const percent =
           total
-            ? Math.round((count/total)*100)
+            ? Math.round(
+                (count/total)*100
+              )
             : 0;
 
         return `
 
           <button
             class="poll-option ${
-              userVote?.option_id === option.id
+              userVote?.option_id ===
+              option.id
                 ? "selected"
                 : ""
             }"
-            onclick="votePoll('${postId}','${option.id}')">
+            onclick="votePoll(
+              '${postId}',
+              '${option.id}'
+            )">
 
-            <div style="
-              display:flex;
-              justify-content:space-between;
-              gap:10px;
-            ">
+            <div
+              style="
+                display:flex;
+                justify-content:space-between;
+                gap:10px;
+              ">
 
               <span>
-                ${escapeHtml(option.option_text)}
+                ${escapeHtml(
+                  option.option_text
+                )}
               </span>
 
               <span>
@@ -3493,8 +3912,15 @@ async function loadPoll(postId){
     }
 
     <div class="poll-count">
+
       ${total}
-      ${total === 1 ? "vote" : "votes"}
+
+      ${
+        total === 1
+          ? "vote"
+          : "votes"
+      }
+
     </div>
 
   `;
@@ -3514,7 +3940,9 @@ async function votePoll(postId,optionId){
 
   if(existing){
 
-    showToast("You have already voted in this poll.");
+    showToast(
+      "You have already voted in this poll."
+    );
 
     return;
   }
@@ -3523,9 +3951,13 @@ async function votePoll(postId,optionId){
     await supabaseClient
       .from("post_poll_votes")
       .insert({
+
         post_id:postId,
+
         option_id:optionId,
+
         user_id:currentUser.id
+
       });
 
   if(error){
@@ -3561,19 +3993,26 @@ async function sharePost(postId){
 
     if(navigator.share){
 
-      await navigator.share(shareData);
+      await navigator.share(
+        shareData
+      );
 
     }else{
 
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(
+        url
+      );
 
-      showToast("Post link copied.");
+      showToast(
+        "Post link copied."
+      );
 
     }
 
   }catch(error){
 
     console.log(error);
+
   }
 }
 
@@ -3584,7 +4023,9 @@ function setPostFilter(filter,button){
   postFilter = filter;
 
   document
-    .querySelectorAll("#communityFilters .filter-btn")
+    .querySelectorAll(
+      "#communityFilters .filter-btn"
+    )
     .forEach(btn=>{
       btn.classList.remove("active");
     });
@@ -3599,7 +4040,9 @@ function setPostFilter(filter,button){
 async function loadProducts(){
 
   const container =
-    document.getElementById("productsGrid");
+    document.getElementById(
+      "productsGrid"
+    );
 
   if(!container) return;
 
@@ -3607,13 +4050,18 @@ async function loadProducts(){
     await supabaseClient
       .from("products")
       .select("*")
-      .order("created_at",{ascending:false})
+      .order(
+        "created_at",
+        {ascending:false}
+      )
       .limit(30);
 
   if(error){
 
     container.innerHTML =
-      `<div class="empty">Products could not be loaded.</div>`;
+      `<div class="empty">
+        Products could not be loaded.
+      </div>`;
 
     return;
   }
@@ -3621,7 +4069,9 @@ async function loadProducts(){
   if(!data?.length){
 
     container.innerHTML =
-      `<div class="empty">No products yet.</div>`;
+      `<div class="empty">
+        No products yet.
+      </div>`;
 
     return;
   }
@@ -3632,27 +4082,53 @@ async function loadProducts(){
       <div class="card">
 
         <h3>
-          ${escapeHtml(product.name || "Product")}
+          ${escapeHtml(
+            product.name ||
+            "Product"
+          )}
         </h3>
 
-        <h2 style="color:var(--orange);margin-top:8px;">
-          GH₵ ${Number(product.price || 0).toFixed(2)}
+        <h2
+          style="
+            color:var(--orange);
+            margin-top:8px;
+          ">
+
+          GH₵ ${
+            Number(
+              product.price || 0
+            ).toFixed(2)
+          }
+
         </h2>
 
-        <p class="muted"
-           style="margin-top:7px;">
-          ${escapeHtml(product.category || "")}
+        <p
+          class="muted"
+          style="margin-top:7px;">
+
+          ${escapeHtml(
+            product.category || ""
+          )}
+
         </p>
 
         <p style="margin-top:10px;">
-          ${escapeHtml(product.description || "")}
+
+          ${escapeHtml(
+            product.description || ""
+          )}
+
         </p>
 
         <button
           class="btn btn-primary btn-small"
           style="margin-top:12px;"
-          onclick="messageSeller('${product.seller_id || ""}')">
+          onclick="messageSeller(
+            '${product.seller_id || ""}'
+          )">
+
           Message Seller
+
         </button>
 
       </div>
@@ -3672,26 +4148,32 @@ async function createProduct(){
   if(!requireLogin()) return;
 
   const name =
-    document.getElementById("productName")
-      .value.trim();
+    document.getElementById(
+      "productName"
+    ).value.trim();
 
   const price =
     Number(
-      document.getElementById("productPrice")
-        .value
+      document.getElementById(
+        "productPrice"
+      ).value
     );
 
   const category =
-    document.getElementById("productCategory")
-      .value;
+    document.getElementById(
+      "productCategory"
+    ).value;
 
   const description =
-    document.getElementById("productDescription")
-      .value.trim();
+    document.getElementById(
+      "productDescription"
+    ).value.trim();
 
   if(!name || !price){
 
-    showToast("Enter product name and price.");
+    showToast(
+      "Enter product name and price."
+    );
 
     return;
   }
@@ -3724,7 +4206,9 @@ async function createProduct(){
 
   closeModal("productModal");
 
-  showToast("Product published.");
+  showToast(
+    "Product published."
+  );
 
   await loadProducts();
 }
@@ -3735,7 +4219,9 @@ function messageSeller(sellerId){
 
   if(!sellerId){
 
-    showToast("Seller information is unavailable.");
+    showToast(
+      "Seller information is unavailable."
+    );
 
     return;
   }
@@ -3757,20 +4243,25 @@ async function createShop(){
   if(!requireLogin()) return;
 
   const name =
-    document.getElementById("shopName")
-      .value.trim();
+    document.getElementById(
+      "shopName"
+    ).value.trim();
 
   const description =
-    document.getElementById("shopDescription")
-      .value.trim();
+    document.getElementById(
+      "shopDescription"
+    ).value.trim();
 
   const location =
-    document.getElementById("shopLocation")
-      .value.trim();
+    document.getElementById(
+      "shopLocation"
+    ).value.trim();
 
   if(!name){
 
-    showToast("Enter a shop name.");
+    showToast(
+      "Enter a shop name."
+    );
 
     return;
   }
@@ -3801,7 +4292,9 @@ async function createShop(){
 
   closeModal("shopModal");
 
-  showToast("Shop created successfully.");
+  showToast(
+    "Shop created successfully."
+  );
 }
 
 /* PEOPLE */
@@ -3809,12 +4302,16 @@ async function createShop(){
 async function searchPeople(){
 
   const container =
-    document.getElementById("peopleResults");
+    document.getElementById(
+      "peopleResults"
+    );
 
   if(!container) return;
 
   const input =
-    document.getElementById("peopleSearch");
+    document.getElementById(
+      "peopleSearch"
+    );
 
   const search =
     input?.value.trim() || "";
@@ -3846,7 +4343,9 @@ async function searchPeople(){
   if(error){
 
     container.innerHTML =
-      `<p class="muted">People could not be loaded.</p>`;
+      `<p class="muted">
+        People could not be loaded.
+      </p>`;
 
     return;
   }
@@ -3854,7 +4353,9 @@ async function searchPeople(){
   if(!data?.length){
 
     container.innerHTML =
-      `<div class="empty">No people found.</div>`;
+      `<div class="empty">
+        No people found.
+      </div>`;
 
     return;
   }
@@ -3875,7 +4376,11 @@ async function searchPeople(){
 
           ${
             person.avatar_url
-              ? `<img src="${escapeHtml(person.avatar_url)}">`
+
+              ? `<img src="${escapeHtml(
+                  person.avatar_url
+                )}">`
+
               : "👤"
           }
 
@@ -3884,16 +4389,28 @@ async function searchPeople(){
         <div style="flex:1;">
 
           <strong>
-            ${escapeHtml(person.display_name || "ZEEPY User")}
+
+            ${escapeHtml(
+              person.display_name ||
+              "ZEEPY User"
+            )}
+
           </strong>
 
-          <div class="muted"
-               style="font-size:12px;">
+          <div
+            class="muted"
+            style="font-size:12px;">
+
             ${
               person.username
-                ? "@"+escapeHtml(person.username)
+
+                ? "@"+escapeHtml(
+                    person.username
+                  )
+
                 : ""
             }
+
           </div>
 
         </div>
@@ -3901,13 +4418,21 @@ async function searchPeople(){
         ${
           currentUser &&
           person.id !== currentUser.id
+
           ? `
+
             <button
               class="btn btn-secondary btn-small"
-              onclick="openChatWith('${person.id}')">
+              onclick="openChatWith(
+                '${person.id}'
+              )">
+
               Message
+
             </button>
+
           `
+
           : ""
         }
 
@@ -3921,14 +4446,18 @@ async function searchPeople(){
 async function loadMessages(){
 
   const container =
-    document.getElementById("messagesList");
+    document.getElementById(
+      "messagesList"
+    );
 
   if(!container) return;
 
   if(!requireLogin()){
 
     container.innerHTML =
-      `<div class="empty">Log in to view messages.</div>`;
+      `<div class="empty">
+        Log in to view messages.
+      </div>`;
 
     return;
   }
@@ -3947,7 +4476,10 @@ async function loadMessages(){
       .or(
         `sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`
       )
-      .order("created_at",{ascending:false})
+      .order(
+        "created_at",
+        {ascending:false}
+      )
       .limit(50);
 
   if(error){
@@ -3955,7 +4487,9 @@ async function loadMessages(){
     console.error(error);
 
     container.innerHTML =
-      `<div class="empty">Messages could not be loaded.</div>`;
+      `<div class="empty">
+        Messages could not be loaded.
+      </div>`;
 
     return;
   }
@@ -3964,9 +4498,14 @@ async function loadMessages(){
 
     container.innerHTML =
       `<div class="empty">
+
         No messages yet.
+
         <br>
-        Find someone from People to start a conversation.
+
+        Find someone from People
+        to start a conversation.
+
       </div>`;
 
     return;
@@ -3980,12 +4519,19 @@ async function loadMessages(){
         style="margin-top:8px;">
 
         <p>
-          ${escapeHtml(message.content || "")}
+          ${escapeHtml(
+            message.content || ""
+          )}
         </p>
 
-        <div class="muted"
-             style="font-size:11px;margin-top:6px;">
-          ${formatDate(message.created_at)}
+        <div
+          class="muted"
+          style="font-size:11px;margin-top:6px;">
+
+          ${formatDate(
+            message.created_at
+          )}
+
         </div>
 
       </div>
@@ -3999,7 +4545,9 @@ function openChatWith(userId){
 
   if(!userId){
 
-    showToast("Person not found.");
+    showToast(
+      "Person not found."
+    );
 
     return;
   }
@@ -4025,7 +4573,9 @@ async function loadNotifications(){
   if(!currentUser){
 
     container.innerHTML =
-      `<div class="empty">Log in to view notifications.</div>`;
+      `<div class="empty">
+        Log in to view notifications.
+      </div>`;
 
     return;
   }
@@ -4034,14 +4584,22 @@ async function loadNotifications(){
     await supabaseClient
       .from("notifications")
       .select("*")
-      .eq("user_id",currentUser.id)
-      .order("created_at",{ascending:false})
+      .eq(
+        "user_id",
+        currentUser.id
+      )
+      .order(
+        "created_at",
+        {ascending:false}
+      )
       .limit(50);
 
   if(error){
 
     container.innerHTML =
-      `<div class="empty">Notifications could not be loaded.</div>`;
+      `<div class="empty">
+        Notifications could not be loaded.
+      </div>`;
 
     return;
   }
@@ -4049,7 +4607,9 @@ async function loadNotifications(){
   if(!data?.length){
 
     container.innerHTML =
-      `<div class="empty">No notifications yet.</div>`;
+      `<div class="empty">
+        No notifications yet.
+      </div>`;
 
     return;
   }
@@ -4057,20 +4617,37 @@ async function loadNotifications(){
   container.innerHTML =
     data.map(item=>`
 
-      <div class="card"
-           style="margin-bottom:9px;">
+      <div
+        class="card"
+        style="margin-bottom:9px;">
 
         <strong>
-          ${escapeHtml(item.title || "Notification")}
+
+          ${escapeHtml(
+            item.title ||
+            "Notification"
+          )}
+
         </strong>
 
         <p style="margin-top:6px;">
-          ${escapeHtml(item.message || item.content || "")}
+
+          ${escapeHtml(
+            item.message ||
+            item.content ||
+            ""
+          )}
+
         </p>
 
-        <div class="muted"
-             style="font-size:11px;margin-top:6px;">
-          ${formatDate(item.created_at)}
+        <div
+          class="muted"
+          style="font-size:11px;margin-top:6px;">
+
+          ${formatDate(
+            item.created_at
+          )}
+
         </div>
 
       </div>
@@ -4101,7 +4678,10 @@ async function loadWallet(){
     await supabaseClient
       .from("wallets")
       .select("balance")
-      .eq("user_id",currentUser.id)
+      .eq(
+        "user_id",
+        currentUser.id
+      )
       .maybeSingle();
 
   if(error){
@@ -4112,7 +4692,11 @@ async function loadWallet(){
   }
 
   balance.textContent =
-    `GH₵ ${Number(data?.balance || 0).toFixed(2)}`;
+    `GH₵ ${
+      Number(
+        data?.balance || 0
+      ).toFixed(2)
+    }`;
 }
 
 /* LIVE CAMERA PREVIEW */
@@ -4125,8 +4709,11 @@ async function startLivePreview(){
 
     mediaStream =
       await navigator.mediaDevices.getUserMedia({
+
         video:true,
+
         audio:true
+
       });
 
     const video =
@@ -4137,7 +4724,9 @@ async function startLivePreview(){
     video.srcObject =
       mediaStream;
 
-    showToast("Camera and microphone started.");
+    showToast(
+      "Camera and microphone started."
+    );
 
   }catch(error){
 
@@ -4155,7 +4744,9 @@ function stopLivePreview(){
 
     mediaStream
       .getTracks()
-      .forEach(track=>track.stop());
+      .forEach(
+        track=>track.stop()
+      );
 
     mediaStream=null;
   }
@@ -4167,7 +4758,9 @@ function stopLivePreview(){
 
   video.srcObject=null;
 
-  showToast("Live preview stopped.");
+  showToast(
+    "Live preview stopped."
+  );
 }
 
 /* SEARCH */
@@ -4184,7 +4777,9 @@ function handleGlobalSearch(event){
   showPage("people");
 
   const peopleSearch =
-    document.getElementById("peopleSearch");
+    document.getElementById(
+      "peopleSearch"
+    );
 
   peopleSearch.value=value;
 
@@ -4203,14 +4798,22 @@ function formatFileSize(bytes){
   let size = bytes;
   let index = 0;
 
-  while(size >= 1024 &&
-        index < units.length-1){
+  while(
+    size >= 1024 &&
+    index < units.length-1
+  ){
 
     size /= 1024;
+
     index++;
+
   }
 
-  return `${size.toFixed(index ? 1 : 0)} ${units[index]}`;
+  return `${
+    size.toFixed(
+      index ? 1 : 0
+    )
+  } ${units[index]}`;
 }
 
 /* INITIALIZE */
@@ -4221,7 +4824,18 @@ async function initialize(){
 
   await loadCategories();
 
+  /*
+    Home always loads ALL community posts.
+    It is intentionally not filtered by
+    selectedCategoryId.
+  */
+
   await loadPosts("homePosts");
+
+  /*
+    Community page can still use the
+    selected community filter.
+  */
 
   await loadPosts("communityPosts");
 
