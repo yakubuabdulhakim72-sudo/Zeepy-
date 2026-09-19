@@ -19,21 +19,21 @@
 :root{
   --orange:#ff6a00;
   --orange2:#ff8a00;
-  --black:#080808;
-  --dark:#111;
-  --card:#171717;
+  --black:#090909;
+  --dark:#111111;
+  --card:#181818;
   --card2:#202020;
-  --text:#fff;
-  --muted:#aaa;
-  --border:#2d2d2d;
+  --white:#ffffff;
+  --muted:#a7a7a7;
+  --border:#2b2b2b;
+  --danger:#ff3b30;
   --green:#19c37d;
-  --red:#ff4d4d;
 }
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:var(--black);
-  color:var(--text);
+  background:#080808;
+  color:#fff;
   min-height:100vh;
 }
 
@@ -52,28 +52,38 @@ button{
   display:none!important;
 }
 
+.app{
+  min-height:100vh;
+  padding-bottom:78px;
+}
+
 /* HEADER */
 
 header{
   position:sticky;
   top:0;
   z-index:100;
-  background:#080808;
-  border-bottom:1px solid #242424;
-  height:62px;
+  height:64px;
+  background:rgba(9,9,9,.96);
+  border-bottom:1px solid var(--border);
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 14px;
+  backdrop-filter:blur(12px);
 }
 
 .logo{
-  font-size:25px;
+  font-size:23px;
   font-weight:900;
   letter-spacing:-1px;
 }
 
-.logo span{
+.logo .z1{
+  color:#fff;
+}
+
+.logo .z2{
   color:var(--orange);
 }
 
@@ -86,59 +96,60 @@ header{
 .icon-btn{
   width:40px;
   height:40px;
-  border:0;
+  border:1px solid var(--border);
+  background:#151515;
+  color:#fff;
   border-radius:50%;
-  background:#1c1c1c;
-  color:white;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:18px;
+  position:relative;
+  overflow:hidden;
 }
 
-.avatar{
-  width:38px;
-  height:38px;
-  border-radius:50%;
+.icon-btn:hover{
+  border-color:var(--orange);
+}
+
+.icon-btn img{
+  width:100%;
+  height:100%;
   object-fit:cover;
-  background:#292929;
-  border:1px solid #3a3a3a;
 }
 
-.avatar-small{
-  width:34px;
-  height:34px;
-}
-
-.avatar-letter{
+.badge{
+  position:absolute;
+  right:-1px;
+  top:-1px;
+  min-width:17px;
+  height:17px;
+  padding:0 4px;
+  border-radius:20px;
+  background:var(--orange);
+  color:#fff;
+  font-size:10px;
   display:flex;
   align-items:center;
   justify-content:center;
   font-weight:bold;
-  color:white;
-  background:var(--orange);
 }
 
-/* MAIN */
-
-main{
-  max-width:900px;
-  margin:auto;
-  padding-bottom:90px;
-}
+/* PAGE */
 
 .page{
-  padding:15px;
+  max-width:900px;
+  margin:auto;
+  padding:16px;
 }
 
 .hero{
-  background:linear-gradient(135deg,#171717,#0d0d0d);
-  border:1px solid #292929;
-  border-radius:22px;
-  padding:25px 20px;
+  background:linear-gradient(145deg,#171717,#0e0e0e);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:24px;
   margin-bottom:16px;
-  overflow:hidden;
   position:relative;
+  overflow:hidden;
 }
 
 .hero:after{
@@ -146,17 +157,17 @@ main{
   position:absolute;
   width:180px;
   height:180px;
+  background:var(--orange);
+  opacity:.08;
   border-radius:50%;
-  background:rgba(255,106,0,.10);
-  right:-70px;
-  top:-70px;
+  right:-50px;
+  top:-60px;
 }
 
 .hero h1{
   font-size:28px;
-  margin-bottom:8px;
-  position:relative;
-  z-index:1;
+  line-height:1.1;
+  margin-bottom:10px;
 }
 
 .hero h1 span{
@@ -164,40 +175,42 @@ main{
 }
 
 .hero p{
-  color:#bbb;
+  color:var(--muted);
   line-height:1.5;
-  position:relative;
-  z-index:1;
+  margin-bottom:18px;
 }
 
-.hero-buttons{
+.hero-actions{
   display:flex;
-  gap:9px;
-  margin-top:18px;
-  position:relative;
-  z-index:2;
+  flex-wrap:wrap;
+  gap:10px;
 }
 
 .btn{
   border:0;
   border-radius:12px;
-  padding:11px 15px;
-  font-weight:bold;
-}
-
-.btn-orange{
+  padding:12px 16px;
+  font-weight:700;
   background:var(--orange);
-  color:white;
+  color:#fff;
 }
 
-.btn-dark{
-  background:#252525;
-  color:white;
-  border:1px solid #353535;
+.btn:hover{
+  background:var(--orange2);
 }
 
-.btn-full{
-  width:100%;
+.btn.secondary{
+  background:#242424;
+  border:1px solid var(--border);
+}
+
+.btn.danger{
+  background:var(--danger);
+}
+
+.btn.small{
+  padding:8px 12px;
+  font-size:13px;
 }
 
 /* SECTION */
@@ -206,141 +219,398 @@ main{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin:20px 0 11px;
+  margin:22px 0 12px;
 }
 
 .section-title h2{
   font-size:18px;
 }
 
-.section-title button{
-  border:0;
-  background:none;
-  color:var(--orange);
-  font-weight:bold;
+.section-title span{
+  color:var(--muted);
+  font-size:13px;
 }
 
 /* CATEGORIES */
 
-.categories{
+.category-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:9px;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
 
-.category{
+.category-card{
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:15px;
-  padding:14px 8px;
-  text-align:center;
-  min-height:85px;
+  border-radius:16px;
+  padding:16px;
+  min-height:100px;
   transition:.2s;
 }
 
-.category:active{
-  transform:scale(.97);
+.category-card:hover{
+  border-color:var(--orange);
+  transform:translateY(-1px);
 }
 
 .category-icon{
-  font-size:25px;
-  display:block;
-  margin-bottom:6px;
+  font-size:28px;
+  margin-bottom:8px;
 }
 
-.category-name{
+.category-card h3{
+  font-size:15px;
+  margin-bottom:5px;
+}
+
+.category-card p{
+  color:var(--muted);
   font-size:12px;
-  font-weight:bold;
+  line-height:1.35;
 }
 
-/* CARDS */
+/* POSTS */
 
-.card{
+.feed{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.post-card{
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:17px;
+  border-radius:18px;
   padding:15px;
-  margin-bottom:12px;
 }
 
 .post-head{
   display:flex;
   align-items:center;
   gap:10px;
+  margin-bottom:12px;
 }
 
-.user-info{
+.avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:var(--orange);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  flex:none;
+  font-weight:800;
+}
+
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.avatar-small{
+  width:38px;
+  height:38px;
+}
+
+.post-user{
   flex:1;
+  min-width:0;
 }
 
-.user-info strong{
+.post-user strong{
   display:block;
   font-size:14px;
 }
 
-.user-info span{
-  color:#888;
+.post-user small{
+  color:var(--muted);
+}
+
+.post-category{
   font-size:11px;
+  color:var(--orange);
+  border:1px solid rgba(255,106,0,.3);
+  padding:4px 7px;
+  border-radius:20px;
 }
 
 .post-content{
-  margin-top:12px;
   color:#eee;
-  line-height:1.5;
+  line-height:1.55;
   white-space:pre-wrap;
+  word-break:break-word;
 }
 
-.post-image,
-.product-image{
+.post-image{
   width:100%;
-  max-height:380px;
+  max-height:450px;
   object-fit:cover;
-  border-radius:13px;
+  border-radius:14px;
   margin-top:12px;
-  background:#252525;
 }
 
 .post-actions{
   display:flex;
-  gap:6px;
-  border-top:1px solid #292929;
+  gap:8px;
   margin-top:13px;
-  padding-top:10px;
+  border-top:1px solid var(--border);
+  padding-top:11px;
 }
 
-.action{
-  flex:1;
+.action-btn{
   border:0;
-  background:#202020;
-  color:#ccc;
+  background:#222;
+  color:#ddd;
+  padding:8px 11px;
   border-radius:10px;
-  padding:9px 5px;
+  font-size:12px;
 }
 
-.action.active{
+.action-btn:hover{
+  color:#fff;
+  background:#2b2b2b;
+}
+
+/* CARDS */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:14px;
+}
+
+.card h3{
+  font-size:15px;
+  margin-bottom:6px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+}
+
+.price{
   color:var(--orange);
+  font-size:19px;
+  font-weight:800;
+  margin:9px 0;
 }
 
-/* SEARCH */
+/* PROFILE */
 
-.search-box{
+.profile-head{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:20px;
+  text-align:center;
+}
+
+.profile-big{
+  width:100px;
+  height:100px;
+  margin:0 auto 12px;
+  border-radius:50%;
+  background:var(--orange);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  font-size:36px;
+  font-weight:800;
+}
+
+.profile-big img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.profile-head h2{
+  margin-bottom:4px;
+}
+
+.profile-head .username{
+  color:var(--orange);
+  margin-bottom:8px;
+}
+
+.profile-bio{
+  color:var(--muted);
+  line-height:1.5;
+  margin:10px 0;
+}
+
+.profile-meta{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  color:#aaa;
+  font-size:12px;
+}
+
+/* PEOPLE */
+
+.person{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:13px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:15px;
+  margin-bottom:10px;
+}
+
+.person-info{
+  flex:1;
+}
+
+.person-info strong{
+  display:block;
+}
+
+.person-info small{
+  color:var(--muted);
+}
+
+.person button{
+  flex:none;
+}
+
+/* CHAT */
+
+.chat-list{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.chat-person{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:12px;
+}
+
+.chat-person-info{
+  flex:1;
+}
+
+.chat-person-info strong{
+  display:block;
+}
+
+.chat-person-info small{
+  color:var(--muted);
+}
+
+.chat-box{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.chat-header{
+  padding:14px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.chat-messages{
+  height:55vh;
+  min-height:300px;
+  overflow-y:auto;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.message{
+  max-width:78%;
+  padding:10px 12px;
+  border-radius:14px;
+  background:#282828;
+  color:#fff;
+  align-self:flex-start;
+  font-size:13px;
+  line-height:1.4;
+}
+
+.message.mine{
+  background:var(--orange);
+  align-self:flex-end;
+}
+
+.chat-input{
   display:flex;
   gap:8px;
-  margin-bottom:14px;
+  padding:10px;
+  border-top:1px solid var(--border);
 }
 
-.search-box input{
+.chat-input input{
   flex:1;
+}
+
+/* EMPTY */
+
+.empty{
+  background:var(--card);
+  border:1px dashed #333;
+  border-radius:17px;
+  padding:30px 18px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.empty strong{
+  display:block;
+  color:#fff;
+  margin-bottom:7px;
+}
+
+/* FORMS */
+
+.form-group{
+  margin-bottom:13px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:6px;
+  font-size:13px;
+  color:#ddd;
 }
 
 input,
 textarea,
 select{
   width:100%;
-  background:#191919;
+  background:#101010;
+  color:#fff;
   border:1px solid #333;
-  border-radius:12px;
-  color:white;
+  border-radius:11px;
   padding:12px;
   outline:none;
 }
@@ -356,357 +626,156 @@ textarea{
   resize:vertical;
 }
 
-/* BOTTOM NAV */
-
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:68px;
-  background:rgba(10,10,10,.97);
-  border-top:1px solid #292929;
-  z-index:200;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-}
-
-.nav-item{
-  border:0;
-  background:none;
-  color:#888;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:3px;
-  font-size:10px;
-  min-width:55px;
-}
-
-.nav-item .nav-icon{
-  font-size:20px;
-}
-
-.nav-item.active{
-  color:var(--orange);
-}
-
-.go-btn{
-  width:50px;
-  height:50px;
-  margin-top:-23px;
-  border-radius:50%;
-  background:var(--orange);
-  color:white;
-  border:5px solid var(--black);
-  font-size:25px;
-  font-weight:bold;
-}
-
-/* MODALS */
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.75);
-  z-index:500;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-}
-
-.modal-box{
-  width:100%;
-  max-width:600px;
-  max-height:92vh;
-  overflow:auto;
-  background:#111;
-  border:1px solid #333;
-  border-radius:23px 23px 0 0;
-  padding:20px;
-}
-
-.modal-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:18px;
-}
-
-.modal-top h2{
-  font-size:20px;
-}
-
-.close{
-  width:35px;
-  height:35px;
-  border:0;
-  border-radius:50%;
-  background:#262626;
-  color:white;
-  font-size:20px;
-}
-
-.form-group{
-  margin-bottom:13px;
-}
-
-.form-group label{
+small.help{
   display:block;
-  color:#aaa;
-  font-size:12px;
-  margin-bottom:6px;
-}
-
-.form-buttons{
-  display:flex;
-  gap:8px;
-  margin-top:15px;
-}
-
-.form-buttons button{
-  flex:1;
-}
-
-/* PROFILE */
-
-.profile-cover{
-  background:linear-gradient(135deg,#252525,#111);
-  height:120px;
-  border-radius:18px 18px 0 0;
-}
-
-.profile-main{
-  padding:0 15px 15px;
-}
-
-.profile-avatar-wrap{
-  margin-top:-38px;
-  position:relative;
-}
-
-.profile-avatar{
-  width:82px;
-  height:82px;
-  border:4px solid #111;
-  border-radius:50%;
-  object-fit:cover;
-  background:#292929;
-}
-
-.profile-name{
-  margin-top:8px;
-  font-size:22px;
-}
-
-.profile-username{
-  color:#888;
-  margin-top:3px;
-}
-
-.profile-bio{
-  color:#bbb;
-  margin-top:10px;
-  line-height:1.5;
-}
-
-/* PEOPLE */
-
-.person{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:12px 0;
-  border-bottom:1px solid #282828;
-}
-
-.person:last-child{
-  border-bottom:0;
-}
-
-.person-info{
-  flex:1;
-}
-
-.person-info strong{
-  display:block;
-}
-
-.person-info span{
-  color:#888;
-  font-size:12px;
-}
-
-/* MARKET */
-
-.market-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-
-.product-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:15px;
-  overflow:hidden;
-}
-
-.product-card img{
-  width:100%;
-  height:150px;
-  object-fit:cover;
-  background:#252525;
-}
-
-.product-body{
-  padding:11px;
-}
-
-.product-name{
-  font-weight:bold;
-  margin-bottom:5px;
-}
-
-.product-price{
-  color:var(--orange);
-  font-weight:bold;
-  font-size:18px;
-}
-
-.product-seller{
-  color:#888;
+  color:#777;
   font-size:11px;
   margin-top:5px;
 }
 
-/* CHAT */
-
-.chat-list{
-  display:flex;
-  flex-direction:column;
-  gap:5px;
+.file-box{
+  border:1px dashed #444;
+  border-radius:13px;
+  padding:12px;
+  background:#101010;
 }
 
-.chat-person{
+.file-preview{
+  margin-top:10px;
+  display:none;
+  text-align:center;
+}
+
+.file-preview img{
+  max-width:150px;
+  max-height:150px;
+  border-radius:15px;
+  object-fit:cover;
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:500;
+  background:rgba(0,0,0,.78);
   display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:0;
+}
+
+.modal-box{
+  width:100%;
+  max-width:650px;
+  max-height:92vh;
+  overflow-y:auto;
+  background:#151515;
+  border:1px solid var(--border);
+  border-radius:24px 24px 0 0;
+  padding:20px;
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
   align-items:center;
-  gap:11px;
-  padding:12px 4px;
-  border-bottom:1px solid #252525;
-  cursor:pointer;
+  margin-bottom:18px;
 }
 
-.chat-person-info{
-  flex:1;
+.modal-head h2{
+  font-size:19px;
 }
 
-.chat-person-info strong{
-  display:block;
+.close{
+  border:0;
+  background:#292929;
+  color:#fff;
+  width:35px;
+  height:35px;
+  border-radius:50%;
 }
 
-.chat-person-info span{
-  color:#888;
-  font-size:12px;
-}
+/* AUTH */
 
-.chat-window{
-  display:flex;
-  flex-direction:column;
-  height:calc(100vh - 150px);
-}
-
-.chat-messages{
-  flex:1;
-  overflow:auto;
-  padding:10px 0;
-}
-
-.bubble{
-  max-width:78%;
-  padding:10px 12px;
-  margin:6px 0;
-  border-radius:14px;
-  line-height:1.4;
-  font-size:14px;
-}
-
-.bubble.mine{
-  margin-left:auto;
-  background:var(--orange);
-}
-
-.bubble.theirs{
-  background:#242424;
-}
-
-.chat-input{
+.auth-tabs{
   display:flex;
   gap:8px;
-  padding-top:10px;
+  margin-bottom:17px;
 }
 
-.chat-input input{
+.auth-tab{
   flex:1;
+  padding:11px;
+  background:#222;
+  color:#aaa;
+  border:0;
+  border-radius:10px;
 }
 
-/* WALLET */
-
-.wallet{
-  background:linear-gradient(135deg,#ff6a00,#bd4d00);
-  border-radius:20px;
-  padding:22px;
-  margin-bottom:15px;
+.auth-tab.active{
+  background:var(--orange);
+  color:#fff;
 }
 
-.wallet small{
-  color:#ffe2cc;
-}
-
-.wallet-balance{
-  font-size:34px;
-  font-weight:900;
-  margin-top:8px;
-}
-
-.stat-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-
-.stat{
-  background:#191919;
-  border:1px solid #2d2d2d;
-  border-radius:14px;
-  padding:15px;
-}
-
-.stat strong{
-  display:block;
-  font-size:21px;
-}
-
-.stat span{
-  color:#888;
+.auth-note{
+  background:#21160f;
+  border:1px solid #4c2c17;
+  color:#d6a77e;
+  border-radius:11px;
+  padding:10px;
   font-size:12px;
+  line-height:1.4;
+  margin-bottom:13px;
+}
+
+/* LOADING */
+
+.loading{
+  text-align:center;
+  padding:30px;
+  color:var(--muted);
+}
+
+.spinner{
+  width:30px;
+  height:30px;
+  border:3px solid #333;
+  border-top-color:var(--orange);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+  margin:0 auto 10px;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg);}
 }
 
 /* TOAST */
 
 .toast{
   position:fixed;
-  left:15px;
-  right:15px;
-  bottom:82px;
+  left:50%;
+  bottom:90px;
+  transform:translateX(-50%) translateY(20px);
+  z-index:1000;
   background:#242424;
+  color:#fff;
   border:1px solid #444;
-  border-radius:13px;
-  padding:13px;
-  z-index:900;
+  padding:12px 16px;
+  border-radius:12px;
+  font-size:13px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  max-width:90%;
   text-align:center;
-  box-shadow:0 5px 25px #000;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
 }
 
 .toast.success{
@@ -714,43 +783,85 @@ textarea{
 }
 
 .toast.error{
-  border-color:var(--red);
+  border-color:var(--danger);
 }
 
-/* EMPTY */
+/* BOTTOM NAV */
 
-.empty{
-  text-align:center;
-  padding:35px 15px;
-  color:#777;
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:70px;
+  background:rgba(12,12,12,.98);
+  border-top:1px solid var(--border);
+  z-index:200;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  padding:5px 5px;
 }
 
-.loading{
-  text-align:center;
-  padding:25px;
+.nav-item{
+  border:0;
+  background:none;
   color:#888;
+  min-width:60px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+  font-size:10px;
+}
+
+.nav-item.active{
+  color:#fff;
+}
+
+.nav-icon{
+  font-size:20px;
+}
+
+.go-btn{
+  width:52px;
+  height:52px;
+  margin-top:-22px;
+  border-radius:50%;
+  border:4px solid #080808;
+  background:var(--orange);
+  color:#fff;
+  font-size:25px;
+  font-weight:bold;
 }
 
 /* DESKTOP */
 
 @media(min-width:700px){
-  .bottom-nav{
-    left:50%;
-    transform:translateX(-50%);
-    max-width:600px;
-    border-radius:20px 20px 0 0;
-  }
-
   .modal{
     align-items:center;
+    padding:20px;
   }
 
   .modal-box{
-    border-radius:20px;
+    border-radius:22px;
   }
 
-  .categories{
+  .category-grid{
     grid-template-columns:repeat(4,1fr);
+  }
+
+  .grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .bottom-nav{
+    max-width:900px;
+    left:50%;
+    right:auto;
+    width:100%;
+    transform:translateX(-50%);
+    border-radius:18px 18px 0 0;
   }
 }
 </style>
@@ -758,326 +869,84 @@ textarea{
 
 <body>
 
+<div class="app">
+
 <header>
-  <div class="logo">ZEE<span>PY</span></div>
+  <div class="logo">
+    <span class="z1">ZEE</span><span class="z2">PY</span>
+  </div>
 
   <div class="header-actions">
-    <button class="icon-btn" onclick="openPage('people')">🔍</button>
-    <button class="icon-btn" onclick="openPage('notifications')">🔔</button>
-    <button class="icon-btn" onclick="openAuth()" id="headerAvatar">👤</button>
+    <button class="icon-btn" onclick="showPage('people')" title="People">🔎</button>
+
+    <button class="icon-btn" onclick="showPage('notifications')" title="Notifications">
+      🔔
+      <span id="notificationBadge" class="badge hidden">0</span>
+    </button>
+
+    <button id="headerAvatar" class="icon-btn" onclick="showPage('profile')" title="Profile">
+      👤
+    </button>
   </div>
 </header>
 
-<main>
+<main id="pageContent" class="page"></main>
 
-<!-- HOME -->
-<section id="page-home" class="page">
-
-  <div class="hero">
-    <h1>WELCOME TO YOUR <span>COMMUNITY</span></h1>
-    <p>
-      Connect with people, discover communities, share ideas,
-      buy and sell, communicate and build your world with ZEEPY.
-    </p>
-
-    <div class="hero-buttons">
-      <button class="btn btn-orange" onclick="openCreatePost()">Create</button>
-      <button class="btn btn-dark" onclick="openPage('communities')">Explore Community</button>
-    </div>
-  </div>
-
-  <div class="section-title">
-    <h2>Communities</h2>
-    <button onclick="openPage('communities')">See all</button>
-  </div>
-
-  <div id="homeCategories" class="categories">
-    <div class="loading">Loading communities...</div>
-  </div>
-
-  <div class="section-title">
-    <h2>Community Feed</h2>
-    <button onclick="loadPosts()">Refresh</button>
-  </div>
-
-  <div id="feed">
-    <div class="loading">Loading posts...</div>
-  </div>
-
-</section>
-
-
-<!-- COMMUNITIES -->
-<section id="page-communities" class="page hidden">
-
-  <div class="section-title">
-    <h2>Explore Communities</h2>
-  </div>
-
-  <div id="allCategories" class="categories">
-    <div class="loading">Loading...</div>
-  </div>
-
-  <div id="categoryPosts" style="margin-top:20px"></div>
-
-</section>
-
-
-<!-- MARKET -->
-<section id="page-market" class="page hidden">
-
-  <div class="hero">
-    <h1>ZEEPY <span>MARKET</span></h1>
-    <p>Discover products and shops from your community.</p>
-
-    <div class="hero-buttons">
-      <button class="btn btn-orange" onclick="requireLogin(openCreateShop)">Create Shop</button>
-      <button class="btn btn-dark" onclick="requireLogin(openCreateProduct)">Sell Product</button>
-    </div>
-  </div>
-
-  <div class="search-box">
-    <input id="marketSearch" placeholder="Search products..." oninput="filterProducts()">
-  </div>
-
-  <div id="marketGrid" class="market-grid">
-    <div class="loading">Loading market...</div>
-  </div>
-
-</section>
-
-
-<!-- PEOPLE -->
-<section id="page-people" class="page hidden">
-
-  <div class="section-title">
-    <h2>People</h2>
-  </div>
-
-  <div class="search-box">
-    <input id="peopleSearch" placeholder="Search people..." oninput="searchPeople()">
-  </div>
-
-  <div id="peopleList" class="card">
-    <div class="loading">Loading people...</div>
-  </div>
-
-</section>
-
-
-<!-- MESSAGES -->
-<section id="page-messages" class="page hidden">
-
-  <div id="messagesListView">
-
-    <div class="section-title">
-      <h2>Messages</h2>
-    </div>
-
-    <div id="chatPeople" class="card">
-      <div class="loading">Loading people...</div>
-    </div>
-
-  </div>
-
-  <div id="chatView" class="hidden">
-
-    <div class="section-title">
-      <button onclick="closeChat()">← Back</button>
-      <h2 id="chatTitle">Chat</h2>
-      <span></span>
-    </div>
-
-    <div class="chat-window">
-      <div id="chatMessages" class="chat-messages"></div>
-
-      <div class="chat-input">
-        <input id="messageInput" placeholder="Write a message..."
-               onkeydown="if(event.key==='Enter')sendMessage()">
-        <button class="btn btn-orange" onclick="sendMessage()">Send</button>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- PROFILE -->
-<section id="page-profile" class="page hidden">
-
-  <div id="profileArea">
-    <div class="loading">Loading profile...</div>
-  </div>
-
-</section>
-
-
-<!-- NOTIFICATIONS -->
-<section id="page-notifications" class="page hidden">
-
-  <div class="section-title">
-    <h2>Notifications</h2>
-  </div>
-
-  <div id="notificationsList" class="card">
-    <div class="loading">Loading notifications...</div>
-  </div>
-
-</section>
-
-
-<!-- WALLET -->
-<section id="page-wallet" class="page hidden">
-
-  <div class="section-title">
-    <h2>Wallet & Earnings</h2>
-  </div>
-
-  <div id="walletArea">
-    <div class="loading">Loading wallet...</div>
-  </div>
-
-</section>
-
-
-<!-- GROUPS -->
-<section id="page-groups" class="page hidden">
-
-  <div class="hero">
-    <h1>ZEEPY <span>GROUPS</span></h1>
-    <p>Create and join communities around your interests.</p>
-  </div>
-
-  <div class="card">
-    <div class="empty">
-      👥<br><br>
-      Groups are part of the next ZEEPY development stage.
-    </div>
-  </div>
-
-</section>
-
-
-<!-- LIVE -->
-<section id="page-live" class="page hidden">
-
-  <div class="hero">
-    <h1>ZEEPY <span>LIVE</span></h1>
-    <p>Go live, connect with your community and prepare for Live Shopping.</p>
-  </div>
-
-  <div class="card">
-    <div class="empty">
-      🔴<br><br>
-      Live Studio will be connected in the next development stage.
-    </div>
-  </div>
-
-</section>
-
-
-<!-- MEDIA -->
-<section id="page-media" class="page hidden">
-
-  <div class="hero">
-    <h1>ZEEPY <span>MEDIA</span></h1>
-    <p>Photos, videos and community stories.</p>
-  </div>
-
-  <div class="card">
-    <div class="empty">
-      🎬<br><br>
-      Media publishing will be connected to ZEEPY storage next.
-    </div>
-  </div>
-
-</section>
-
-
-<!-- NEARBY -->
-<section id="page-nearby" class="page hidden">
-
-  <div class="hero">
-    <h1>PEOPLE <span>NEARBY</span></h1>
-    <p>Discover people and activities around your community.</p>
-  </div>
-
-  <div class="card">
-    <div class="empty">
-      📍<br><br>
-      Nearby discovery will be connected when location features are enabled.
-    </div>
-  </div>
-
-</section>
-
-
-<!-- MEET -->
-<section id="page-meet" class="page hidden">
-
-  <div class="hero">
-    <h1>ZEEPY <span>MEET</span></h1>
-    <p>Meet people and organize community activities.</p>
-  </div>
-
-  <div class="card">
-    <div class="empty">
-      🤝<br><br>
-      Meet and events will be connected in the next stage.
-    </div>
-  </div>
-
-</section>
-
-</main>
-
-
-<!-- BOTTOM NAV -->
+</div>
 
 <nav class="bottom-nav">
 
-  <button class="nav-item active" data-page="home" onclick="openPage('home')">
+  <button id="navHome" class="nav-item active" onclick="showPage('home')">
     <span class="nav-icon">⌂</span>
     <span>Home</span>
   </button>
 
-  <button class="nav-item" data-page="market" onclick="openPage('market')">
-    <span class="nav-icon">🛒</span>
+  <button id="navMarket" class="nav-item" onclick="showPage('market')">
+    <span class="nav-icon">🛍️</span>
     <span>Market</span>
   </button>
 
-  <button class="go-btn" onclick="openCreatePost()">+</button>
+  <button class="nav-item" onclick="openCreatePost()">
+    <span class="go-btn">+</span>
+    <span>Create</span>
+  </button>
 
-  <button class="nav-item" data-page="messages" onclick="openPage('messages')">
+  <button id="navMessages" class="nav-item" onclick="showPage('messages')">
     <span class="nav-icon">💬</span>
     <span>Messages</span>
   </button>
 
-  <button class="nav-item" data-page="profile" onclick="openPage('profile')">
+  <button id="navProfile" class="nav-item" onclick="showPage('profile')">
     <span class="nav-icon">👤</span>
     <span>Profile</span>
   </button>
 
 </nav>
 
-
 <!-- AUTH MODAL -->
 
 <div id="authModal" class="modal hidden">
-
   <div class="modal-box">
 
-    <div class="modal-top">
-      <h2 id="authTitle">Login to ZEEPY</h2>
+    <div class="modal-head">
+      <h2>Welcome to ZEEPY</h2>
       <button class="close" onclick="closeModal('authModal')">×</button>
+    </div>
+
+    <div class="auth-tabs">
+      <button id="loginTab" class="auth-tab active" onclick="switchAuth('login')">Log in</button>
+      <button id="signupTab" class="auth-tab" onclick="switchAuth('signup')">Create account</button>
     </div>
 
     <div id="loginForm">
 
+      <div class="auth-note">
+        Log in to access your community, messages, marketplace and profile.
+      </div>
+
       <div class="form-group">
         <label>Email</label>
-        <input id="loginEmail" type="email" placeholder="Your email">
+        <input id="loginEmail" type="email" placeholder="you@example.com">
       </div>
 
       <div class="form-group">
@@ -1085,32 +954,24 @@ textarea{
         <input id="loginPassword" type="password" placeholder="Your password">
       </div>
 
-      <button class="btn btn-orange btn-full" onclick="login()">Login</button>
-
-      <p style="text-align:center;color:#888;margin-top:15px">
-        Don't have an account?
-        <button style="background:none;border:0;color:var(--orange)"
-                onclick="showSignup()">Create account</button>
-      </p>
-
+      <button class="btn" style="width:100%" onclick="login()">Log in</button>
     </div>
-
 
     <div id="signupForm" class="hidden">
 
       <div class="form-group">
         <label>Display name</label>
-        <input id="signupName" placeholder="Your name">
+        <input id="signupName" type="text" placeholder="Your name">
       </div>
 
       <div class="form-group">
         <label>Username</label>
-        <input id="signupUsername" placeholder="username">
+        <input id="signupUsername" type="text" placeholder="username">
       </div>
 
       <div class="form-group">
         <label>Email</label>
-        <input id="signupEmail" type="email" placeholder="Your email">
+        <input id="signupEmail" type="email" placeholder="you@example.com">
       </div>
 
       <div class="form-group">
@@ -1118,29 +979,19 @@ textarea{
         <input id="signupPassword" type="password" placeholder="At least 6 characters">
       </div>
 
-      <button class="btn btn-orange btn-full" onclick="signup()">Create Account</button>
-
-      <p style="text-align:center;color:#888;margin-top:15px">
-        Already have an account?
-        <button style="background:none;border:0;color:var(--orange)"
-                onclick="showLogin()">Login</button>
-      </p>
-
+      <button class="btn" style="width:100%" onclick="signup()">Create account</button>
     </div>
 
   </div>
-
 </div>
-
 
 <!-- CREATE POST -->
 
 <div id="postModal" class="modal hidden">
-
   <div class="modal-box">
 
-    <div class="modal-top">
-      <h2>Create Post</h2>
+    <div class="modal-head">
+      <h2>Create a Post</h2>
       <button class="close" onclick="closeModal('postModal')">×</button>
     </div>
 
@@ -1150,411 +1001,353 @@ textarea{
     </div>
 
     <div class="form-group">
-      <label>What's happening?</label>
-      <textarea id="postContent"
-                placeholder="Share something with your community..."></textarea>
+      <label>What's on your mind?</label>
+      <textarea id="postContent" placeholder="Share something with your community..."></textarea>
     </div>
 
     <div class="form-group">
       <label>Image URL (optional)</label>
-      <input id="postImage" placeholder="https://...">
+      <input id="postImage" type="url" placeholder="https://...">
+      <small class="help">Image uploading for posts can be connected to the posts bucket next.</small>
     </div>
 
-    <button class="btn btn-orange btn-full" onclick="createPost()">
-      Publish Post
-    </button>
+    <button class="btn" style="width:100%" onclick="createPost()">Publish Post</button>
 
   </div>
-
 </div>
-
 
 <!-- CREATE SHOP -->
 
 <div id="shopModal" class="modal hidden">
-
   <div class="modal-box">
 
-    <div class="modal-top">
+    <div class="modal-head">
       <h2>Create Your Shop</h2>
       <button class="close" onclick="closeModal('shopModal')">×</button>
     </div>
 
     <div class="form-group">
       <label>Shop name</label>
-      <input id="shopName" placeholder="My ZEEPY Shop">
+      <input id="shopName" type="text" placeholder="My Shop">
     </div>
 
     <div class="form-group">
       <label>Description</label>
-      <textarea id="shopDescription"
-                placeholder="Tell people about your shop"></textarea>
+      <textarea id="shopDescription" placeholder="Tell people about your shop"></textarea>
     </div>
 
     <div class="form-group">
       <label>Location</label>
-      <input id="shopLocation" placeholder="Your location">
+      <input id="shopLocation" type="text" placeholder="e.g. Accra">
     </div>
 
-    <div class="form-group">
-      <label>Logo URL (optional)</label>
-      <input id="shopLogo" placeholder="https://...">
-    </div>
-
-    <button class="btn btn-orange btn-full" onclick="createShop()">
-      Create Shop
-    </button>
+    <button class="btn" style="width:100%" onclick="createShop()">Create Shop</button>
 
   </div>
-
 </div>
-
 
 <!-- CREATE PRODUCT -->
 
 <div id="productModal" class="modal hidden">
-
   <div class="modal-box">
 
-    <div class="modal-top">
-      <h2>Add Product</h2>
+    <div class="modal-head">
+      <h2>Sell a Product</h2>
       <button class="close" onclick="closeModal('productModal')">×</button>
     </div>
 
-    <div id="shopSelectorArea">
-
-      <div class="form-group">
-        <label>Your Shop</label>
-        <select id="productShop"></select>
-      </div>
-
+    <div class="form-group">
+      <label>Shop</label>
+      <select id="productShop"></select>
     </div>
 
     <div class="form-group">
       <label>Product name</label>
-      <input id="productName" placeholder="Product name">
+      <input id="productName" type="text" placeholder="Product name">
     </div>
 
     <div class="form-group">
       <label>Description</label>
-      <textarea id="productDescription"
-                placeholder="Product description"></textarea>
+      <textarea id="productDescription" placeholder="Product description"></textarea>
     </div>
 
     <div class="form-group">
-      <label>Price (GH₵)</label>
-      <input id="productPrice" type="number" placeholder="0">
+      <label>Price</label>
+      <input id="productPrice" type="number" min="0" step="0.01" placeholder="0.00">
     </div>
 
     <div class="form-group">
       <label>Stock</label>
-      <input id="productStock" type="number" value="1">
+      <input id="productStock" type="number" min="0" value="1">
     </div>
 
     <div class="form-group">
       <label>Category</label>
-      <input id="productCategory" placeholder="Phones, Fashion, Food...">
+      <select id="productCategory">
+        <option>Phones & Tablets</option>
+        <option>Electronics</option>
+        <option>Fashion</option>
+        <option>Beauty</option>
+        <option>Vehicles</option>
+        <option>Food</option>
+        <option>Services</option>
+      </select>
     </div>
 
     <div class="form-group">
-      <label>Image URL</label>
-      <input id="productImage" placeholder="https://...">
+      <label>Product image URL (optional)</label>
+      <input id="productImage" type="url" placeholder="https://...">
+      <small class="help">Product image uploading can be connected to the products bucket next.</small>
     </div>
 
-    <button class="btn btn-orange btn-full" onclick="createProduct()">
-      Publish Product
-    </button>
+    <button class="btn" style="width:100%" onclick="createProduct()">Publish Product</button>
 
   </div>
-
 </div>
 
+<!-- EDIT PROFILE -->
 
-<!-- PROFILE EDIT -->
-
-<div id="editProfileModal" class="modal hidden">
-
+<div id="profileModal" class="modal hidden">
   <div class="modal-box">
 
-    <div class="modal-top">
+    <div class="modal-head">
       <h2>Edit Profile</h2>
-      <button class="close" onclick="closeModal('editProfileModal')">×</button>
+      <button class="close" onclick="closeModal('profileModal')">×</button>
     </div>
 
     <div class="form-group">
       <label>Display name</label>
-      <input id="editName">
+      <input id="editDisplayName" type="text">
     </div>
 
     <div class="form-group">
       <label>Username</label>
-      <input id="editUsername">
+      <input id="editUsername" type="text">
     </div>
 
     <div class="form-group">
       <label>Bio</label>
-      <textarea id="editBio"></textarea>
+      <textarea id="editBio" placeholder="Tell people about yourself"></textarea>
     </div>
 
     <div class="form-group">
       <label>Location</label>
-      <input id="editLocation">
+      <input id="editLocation" type="text" placeholder="Your location">
     </div>
 
     <div class="form-group">
-      <label>Profile photo URL</label>
-      <input id="editAvatar" placeholder="https://...">
+      <label>Profile photo</label>
+
+      <div class="file-box">
+        <input
+          id="editAvatarFile"
+          type="file"
+          accept="image/png,image/jpeg,image/webp,image/gif"
+          onchange="previewAvatarFile()"
+        >
+
+        <small class="help">
+          Choose a JPG, PNG, WebP or GIF image. Maximum 5MB.
+        </small>
+
+        <div id="avatarPreview" class="file-preview">
+          <img id="avatarPreviewImage" src="" alt="Preview">
+        </div>
+      </div>
     </div>
 
-    <button class="btn btn-orange btn-full" onclick="saveProfile()">
-      Save Profile
-    </button>
+    <div class="form-group">
+      <label>Current profile photo URL</label>
+      <input id="editAvatar" type="url" placeholder="Existing avatar URL">
+      <small class="help">
+        You normally do not need to change this. Selecting a new photo will upload it automatically.
+      </small>
+    </div>
+
+    <button class="btn" style="width:100%" onclick="saveProfile()">Save Profile</button>
 
   </div>
-
 </div>
 
-
-<div id="toast" class="toast hidden"></div>
-
+<div id="toast" class="toast"></div>
 
 <script>
+/* =========================================================
+   SUPABASE
+========================================================= */
 
-/* ============================================================
-   ZEEPY SUPABASE CONNECTION
-   ============================================================ */
+const SUPABASE_URL = "https://iswicrdfsqwalwisxbdm.supabase.co";
 
-const SUPABASE_URL =
-  "https://iswicrdfsqwalwisxbdm.supabase.co";
+const SUPABASE_KEY = "sb_publishable_8CT66JSnwPYN_Khkb7a6WA_1kmrlTL9";
 
-const SUPABASE_KEY =
-  "sb_publishable_8CT66JSnwPYN_Khkb7a6WA_1kmrlTL9";
-
-const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
 
-/* ============================================================
+/* =========================================================
    GLOBAL STATE
-   ============================================================ */
+========================================================= */
 
 let currentUser = null;
 let currentProfile = null;
-let categories = [];
-let products = [];
-let currentChatUser = null;
-let peopleCache = [];
+let currentPage = "home";
+let selectedCategory = null;
+let activeChatUser = null;
+let categoriesCache = [];
+let notificationTimer = null;
 
 
-/* ============================================================
-   START
-   ============================================================ */
+/* =========================================================
+   HELPERS
+========================================================= */
 
-document.addEventListener("DOMContentLoaded", async () => {
+function escapeHtml(value){
+  if(value === null || value === undefined) return "";
 
-  await checkSession();
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
 
-  await loadCategories();
+function showToast(message,type=""){
+  const toast = document.getElementById("toast");
 
-  await loadPosts();
+  toast.textContent = message;
+  toast.className = "toast show " + type;
 
-  await loadProducts();
+  clearTimeout(window.toastTimer);
 
-});
+  window.toastTimer = setTimeout(()=>{
+    toast.className = "toast";
+  },3500);
+}
+
+function closeModal(id){
+  document.getElementById(id).classList.add("hidden");
+}
+
+function openModal(id){
+  document.getElementById(id).classList.remove("hidden");
+}
+
+function avatarHtml(profile,name="",size=""){
+  const displayName =
+    profile?.display_name ||
+    profile?.username ||
+    name ||
+    "?";
+
+  const letter =
+    displayName.trim().charAt(0).toUpperCase() || "?";
+
+  const cls = size === "small"
+    ? "avatar avatar-small"
+    : "avatar";
+
+  if(profile?.avatar_url){
+    return `
+      <div class="${cls}">
+        <img
+          src="${escapeHtml(profile.avatar_url)}"
+          alt="${escapeHtml(displayName)}"
+          onerror="this.style.display='none'"
+        >
+      </div>
+    `;
+  }
+
+  return `
+    <div class="${cls}">
+      ${escapeHtml(letter)}
+    </div>
+  `;
+}
 
 
-/* ============================================================
+/* =========================================================
    AUTH
-   ============================================================ */
+========================================================= */
 
 async function checkSession(){
 
   const {
-    data:{
-      session
-    }
-  } = await supabaseClient.auth.getSession();
-
-  currentUser =
-    session?.user || null;
-
-  if(currentUser){
-
-    await loadMyProfile();
-
-    updateHeader();
-
-  }else{
-
-    updateHeader();
-
-  }
-
-}
-
-
-supabaseClient.auth.onAuthStateChange(
-  async (_event, session) => {
-
-    currentUser =
-      session?.user || null;
-
-    if(currentUser){
-
-      setTimeout(async()=>{
-        await loadMyProfile();
-        updateHeader();
-      },0);
-
-    }else{
-
-      currentProfile = null;
-      updateHeader();
-
-    }
-
-  }
-);
-
-
-function openAuth(){
-
-  if(currentUser){
-
-    openPage("profile");
-
-  }else{
-
-    showLogin();
-
-    document
-      .getElementById("authModal")
-      .classList.remove("hidden");
-
-  }
-
-}
-
-
-function showLogin(){
-
-  document
-    .getElementById("loginForm")
-    .classList.remove("hidden");
-
-  document
-    .getElementById("signupForm")
-    .classList.add("hidden");
-
-  document
-    .getElementById("authTitle")
-    .textContent =
-    "Login to ZEEPY";
-
-}
-
-
-function showSignup(){
-
-  document
-    .getElementById("loginForm")
-    .classList.add("hidden");
-
-  document
-    .getElementById("signupForm")
-    .classList.remove("hidden");
-
-  document
-    .getElementById("authTitle")
-    .textContent =
-    "Create your ZEEPY account";
-
-}
-
-
-async function signup(){
-
-  const name =
-    document.getElementById("signupName").value.trim();
-
-  const username =
-    document.getElementById("signupUsername").value
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9_]/g,"");
-
-  const email =
-    document.getElementById("signupEmail").value.trim();
-
-  const password =
-    document.getElementById("signupPassword").value;
-
-  if(!name || !email || !password){
-
-    toast("Please complete the required fields.","error");
-    return;
-
-  }
-
-  if(password.length < 6){
-
-    toast("Password must be at least 6 characters.","error");
-    return;
-
-  }
-
-  toast("Creating your account...");
-
-  const {
     data,
     error
-  } =
-  await supabaseClient.auth.signUp({
-
-    email,
-    password,
-
-    options:{
-      data:{
-        display_name:name,
-        username:username || null
-      }
-    }
-
-  });
-
+  } = await supabaseClient.auth.getSession();
 
   if(error){
-
-    toast(error.message,"error");
+    console.error(error);
     return;
-
   }
 
-  currentUser =
-    data.user || null;
+  currentUser = data.session?.user || null;
 
-  closeModal("authModal");
+  if(currentUser){
+    await loadMyProfile();
+  }
 
-  toast("Account created successfully!","success");
+  updateHeader();
 
-  setTimeout(async()=>{
+  await showPage("home");
+}
 
-    if(currentUser){
+supabaseClient.auth.onAuthStateChange(async(event,session)=>{
 
-      await loadMyProfile();
+  currentUser = session?.user || null;
 
-      updateHeader();
+  if(currentUser){
+    await loadMyProfile();
+  }else{
+    currentProfile = null;
+  }
 
-      openPage("home");
+  updateHeader();
 
-    }
+  if(currentUser){
+    await loadNotifications();
+  }
 
-  },500);
+});
 
+
+function switchAuth(type){
+
+  const loginTab = document.getElementById("loginTab");
+  const signupTab = document.getElementById("signupTab");
+
+  const loginForm = document.getElementById("loginForm");
+  const signupForm = document.getElementById("signupForm");
+
+  if(type === "login"){
+
+    loginTab.classList.add("active");
+    signupTab.classList.remove("active");
+
+    loginForm.classList.remove("hidden");
+    signupForm.classList.add("hidden");
+
+  }else{
+
+    signupTab.classList.remove("active");
+    loginTab.classList.remove("active");
+
+    signupTab.classList.add("active");
+
+    signupForm.classList.remove("hidden");
+    loginForm.classList.add("hidden");
+
+  }
+}
+
+
+function openLogin(){
+  switchAuth("login");
+  openModal("authModal");
 }
 
 
@@ -1567,35 +1360,23 @@ async function login(){
     document.getElementById("loginPassword").value;
 
   if(!email || !password){
-
-    toast("Enter your email and password.","error");
+    showToast("Enter your email and password.","error");
     return;
-
   }
 
-  toast("Logging in...");
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient.auth.signInWithPassword({
-
-    email,
-    password
-
-  });
-
+  const {data,error} =
+    await supabaseClient.auth.signInWithPassword({
+      email,
+      password
+    });
 
   if(error){
-
-    toast(error.message,"error");
+    console.error(error);
+    showToast(error.message,"error");
     return;
-
   }
 
-  currentUser =
-    data.user;
+  currentUser = data.user;
 
   await loadMyProfile();
 
@@ -1603,565 +1384,1022 @@ async function login(){
 
   updateHeader();
 
-  openPage("home");
+  showToast("Login successful.","success");
 
-  toast("Welcome back to ZEEPY!","success");
+  await showPage("home");
+}
 
+
+async function signup(){
+
+  const display_name =
+    document.getElementById("signupName").value.trim();
+
+  const username =
+    document.getElementById("signupUsername").value.trim();
+
+  const email =
+    document.getElementById("signupEmail").value.trim();
+
+  const password =
+    document.getElementById("signupPassword").value;
+
+  if(!display_name || !email || !password){
+    showToast("Please fill in your name, email and password.","error");
+    return;
+  }
+
+  if(password.length < 6){
+    showToast("Password must be at least 6 characters.","error");
+    return;
+  }
+
+  const {data,error} =
+    await supabaseClient.auth.signUp({
+
+      email,
+      password,
+
+      options:{
+        data:{
+          display_name,
+          username
+        }
+      }
+
+    });
+
+  if(error){
+    console.error(error);
+    showToast(error.message,"error");
+    return;
+  }
+
+  if(data.session){
+
+    currentUser = data.user;
+
+    await loadMyProfile();
+
+    closeModal("authModal");
+
+    showToast("Account created successfully.","success");
+
+    await showPage("home");
+
+  }else{
+
+    showToast(
+      "Account created. You can now log in.",
+      "success"
+    );
+
+    switchAuth("login");
+  }
 }
 
 
 async function logout(){
 
-  await supabaseClient.auth.signOut();
+  const {error} =
+    await supabaseClient.auth.signOut();
+
+  if(error){
+    showToast(error.message,"error");
+    return;
+  }
 
   currentUser = null;
-
   currentProfile = null;
 
   updateHeader();
 
-  openPage("home");
+  showToast("You have logged out.","success");
 
-  toast("You have logged out.");
-
+  showPage("home");
 }
 
 
-function requireLogin(callback){
+function requireLogin(action){
 
   if(!currentUser){
-
-    toast("Please login to use this feature.","error");
-
-    openAuth();
-
-    return;
-
+    openLogin();
+    return false;
   }
 
-  callback();
+  if(typeof action === "function"){
+    action();
+  }
 
+  return true;
 }
 
 
-function updateHeader(){
-
-  const el =
-    document.getElementById("headerAvatar");
-
-  if(currentUser && currentProfile){
-
-    const letter =
-      (currentProfile.display_name ||
-       currentProfile.username ||
-       "U")
-      .charAt(0)
-      .toUpperCase();
-
-    el.textContent = letter;
-
-  }else{
-
-    el.textContent = "👤";
-
-  }
-
-}
-
-
-/* ============================================================
+/* =========================================================
    PROFILE
-   ============================================================ */
+========================================================= */
 
 async function loadMyProfile(){
 
   if(!currentUser) return;
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select("*")
-    .eq("id",currentUser.id)
-    .maybeSingle();
-
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select("*")
+      .eq("id",currentUser.id)
+      .maybeSingle();
 
   if(error){
-
-    console.error(error);
+    console.error("Profile load:",error);
     return;
-
   }
 
-  currentProfile = data;
+  if(data){
 
-  if(!currentProfile){
+    currentProfile = data;
 
-    const displayName =
+  }else{
+
+    const fallbackName =
       currentUser.user_metadata?.display_name ||
       currentUser.email?.split("@")[0] ||
       "ZEEPY User";
 
-    const username =
+    const fallbackUsername =
       currentUser.user_metadata?.username ||
-      currentUser.email?.split("@")[0];
+      "";
 
-    const result =
+    const {data:newProfile,error:createError} =
       await supabaseClient
         .from("profiles")
-        .upsert({
-
+        .insert({
           id:currentUser.id,
-          display_name:displayName,
-          username:username
-
+          display_name:fallbackName,
+          username:fallbackUsername,
+          email:currentUser.email || ""
         })
         .select()
         .single();
 
-    currentProfile =
-      result.data;
-
+    if(createError){
+      console.error("Profile create:",createError);
+    }else{
+      currentProfile = newProfile;
+    }
   }
 
+  updateHeader();
+}
+
+
+function updateHeader(){
+
+  const avatarButton =
+    document.getElementById("headerAvatar");
+
+  if(!avatarButton) return;
+
+  if(currentUser){
+
+    if(currentProfile?.avatar_url){
+
+      avatarButton.innerHTML = `
+        <img
+          src="${escapeHtml(currentProfile.avatar_url)}"
+          alt="Profile"
+          onerror="this.style.display='none'"
+        >
+      `;
+
+    }else{
+
+      const name =
+        currentProfile?.display_name ||
+        currentProfile?.username ||
+        currentUser.email ||
+        "U";
+
+      avatarButton.textContent =
+        name.charAt(0).toUpperCase();
+    }
+
+  }else{
+
+    avatarButton.textContent = "👤";
+  }
+}
+
+
+async function openEditProfile(){
+
+  if(!currentUser){
+    openLogin();
+    return;
+  }
+
+  await loadMyProfile();
+
+  document.getElementById("editDisplayName").value =
+    currentProfile?.display_name || "";
+
+  document.getElementById("editUsername").value =
+    currentProfile?.username || "";
+
+  document.getElementById("editBio").value =
+    currentProfile?.bio || "";
+
+  document.getElementById("editLocation").value =
+    currentProfile?.location || "";
+
+  document.getElementById("editAvatar").value =
+    currentProfile?.avatar_url || "";
+
+  document.getElementById("editAvatarFile").value = "";
+
+  document.getElementById("avatarPreview").style.display = "none";
+
+  openModal("profileModal");
+}
+
+
+/* =========================================================
+   AVATAR STORAGE UPLOAD
+========================================================= */
+
+function previewAvatarFile(){
+
+  const fileInput =
+    document.getElementById("editAvatarFile");
+
+  const preview =
+    document.getElementById("avatarPreview");
+
+  const image =
+    document.getElementById("avatarPreviewImage");
+
+  const file = fileInput.files?.[0];
+
+  if(!file){
+    preview.style.display = "none";
+    return;
+  }
+
+  if(!file.type.startsWith("image/")){
+    showToast("Please select an image file.","error");
+    fileInput.value = "";
+    preview.style.display = "none";
+    return;
+  }
+
+  if(file.size > 5 * 1024 * 1024){
+    showToast("Profile photo must be 5MB or smaller.","error");
+    fileInput.value = "";
+    preview.style.display = "none";
+    return;
+  }
+
+  const objectUrl =
+    URL.createObjectURL(file);
+
+  image.src = objectUrl;
+
+  preview.style.display = "block";
+}
+
+
+async function uploadAvatar(file){
+
+  if(!currentUser){
+    throw new Error("You must be logged in.");
+  }
+
+  if(!file){
+    return null;
+  }
+
+  if(!file.type.startsWith("image/")){
+    throw new Error("Please choose an image file.");
+  }
+
+  if(file.size > 5 * 1024 * 1024){
+    throw new Error("Profile photo must be 5MB or smaller.");
+  }
+
+  let extension =
+    file.name
+      .split(".")
+      .pop()
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g,"");
+
+  if(!extension){
+    extension = "jpg";
+  }
+
+  const filePath =
+    currentUser.id +
+    "/" +
+    Date.now() +
+    "." +
+    extension;
+
+  const {error:uploadError} =
+    await supabaseClient
+      .storage
+      .from("avatars")
+      .upload(
+        filePath,
+        file,
+        {
+          cacheControl:"3600",
+          upsert:false,
+          contentType:file.type
+        }
+      );
+
+  if(uploadError){
+    console.error("Avatar upload:",uploadError);
+    throw uploadError;
+  }
+
+  const {data:urlData} =
+    supabaseClient
+      .storage
+      .from("avatars")
+      .getPublicUrl(filePath);
+
+  if(!urlData?.publicUrl){
+    throw new Error("Could not create avatar URL.");
+  }
+
+  return urlData.publicUrl;
+}
+
+
+async function saveProfile(){
+
+  if(!currentUser){
+    openLogin();
+    return;
+  }
+
+  const display_name =
+    document.getElementById("editDisplayName")
+      .value.trim();
+
+  const username =
+    document.getElementById("editUsername")
+      .value.trim();
+
+  const bio =
+    document.getElementById("editBio")
+      .value.trim();
+
+  const location =
+    document.getElementById("editLocation")
+      .value.trim();
+
+  let avatar_url =
+    document.getElementById("editAvatar")
+      .value.trim();
+
+  const avatarFile =
+    document.getElementById("editAvatarFile")
+      .files?.[0];
+
+  try{
+
+    if(avatarFile){
+
+      showToast("Uploading profile photo...");
+
+      const uploadedUrl =
+        await uploadAvatar(avatarFile);
+
+      avatar_url = uploadedUrl;
+    }
+
+    const {data,error} =
+      await supabaseClient
+        .from("profiles")
+        .update({
+          display_name,
+          username,
+          bio,
+          location,
+          avatar_url,
+          updated_at:new Date().toISOString()
+        })
+        .eq("id",currentUser.id)
+        .select()
+        .single();
+
+    if(error){
+      console.error("Save profile:",error);
+      throw error;
+    }
+
+    currentProfile = data;
+
+    updateHeader();
+
+    closeModal("profileModal");
+
+    showToast("Profile updated successfully.","success");
+
+    if(currentPage === "profile"){
+      await loadProfilePage();
+    }
+
+  }catch(error){
+
+    console.error(error);
+
+    showToast(
+      error.message || "Could not save profile.",
+      "error"
+    );
+  }
 }
 
 
 async function loadProfilePage(){
 
+  const page =
+    document.getElementById("pageContent");
+
   if(!currentUser){
 
-    document.getElementById("profileArea").innerHTML = `
-
+    page.innerHTML = `
       <div class="hero">
-        <h1>YOUR <span>PROFILE</span></h1>
-        <p>Login to create and manage your ZEEPY profile.</p>
-        <button class="btn btn-orange"
-                onclick="openAuth()"
-                style="margin-top:15px">
-          Login / Sign Up
-        </button>
+        <h1>Your <span>ZEEPY</span> Profile</h1>
+        <p>Log in to create your profile and connect with your community.</p>
+        <button class="btn" onclick="openLogin()">Log in</button>
       </div>
-
     `;
 
     return;
-
   }
 
   await loadMyProfile();
 
   const p = currentProfile || {};
 
-  const letter =
-    (p.display_name || "U")
-    .charAt(0)
-    .toUpperCase();
+  page.innerHTML = `
 
-  const avatar =
-    p.avatar_url
-    ? `<img class="profile-avatar" src="${escapeHtml(p.avatar_url)}">`
-    : `<div class="profile-avatar avatar-letter">${letter}</div>`;
+    <div class="profile-head">
+
+      <div class="profile-big">
+
+        ${
+          p.avatar_url
+          ? `<img src="${escapeHtml(p.avatar_url)}" alt="Profile">`
+          : escapeHtml(
+              (p.display_name || p.username || "U")
+                .charAt(0)
+                .toUpperCase()
+            )
+        }
+
+      </div>
+
+      <h2>${escapeHtml(p.display_name || "ZEEPY User")}</h2>
+
+      ${
+        p.username
+        ? `<div class="username">@${escapeHtml(p.username)}</div>`
+        : ""
+      }
+
+      ${
+        p.bio
+        ? `<div class="profile-bio">${escapeHtml(p.bio)}</div>`
+        : `<div class="profile-bio">Welcome to my ZEEPY community.</div>`
+      }
+
+      <div class="profile-meta">
+
+        ${
+          p.location
+          ? `<span>📍 ${escapeHtml(p.location)}</span>`
+          : ""
+        }
+
+        <span>📅 ZEEPY member</span>
+
+      </div>
+
+      <div style="margin-top:17px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+
+        <button class="btn" onclick="openEditProfile()">
+          Edit Profile
+        </button>
+
+        <button class="btn secondary" onclick="logout()">
+          Log out
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="section-title">
+      <h2>My ZEEPY</h2>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>🏘️ Community</h3>
+        <p>Connect with people and communities around you.</p>
+      </div>
+
+      <div class="card">
+        <h3>🛍️ Marketplace</h3>
+        <p>Create a shop and sell products on ZEEPY.</p>
+      </div>
+
+      <div class="card">
+        <h3>💬 Messages</h3>
+        <p>Chat with people and sellers.</p>
+      </div>
+
+      <div class="card">
+        <h3>💰 Wallet</h3>
+        <p>View your ZEEPY wallet and transactions.</p>
+      </div>
+
+    </div>
+  `;
+}
 
 
-  const {count:followers} =
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+async function showPage(page){
+
+  currentPage = page;
+
+  document.querySelectorAll(".nav-item")
+    .forEach(x => x.classList.remove("active"));
+
+  if(page === "home"){
+    document.getElementById("navHome")?.classList.add("active");
+  }
+
+  if(page === "market"){
+    document.getElementById("navMarket")?.classList.add("active");
+  }
+
+  if(page === "messages"){
+    document.getElementById("navMessages")?.classList.add("active");
+  }
+
+  if(page === "profile"){
+    document.getElementById("navProfile")?.classList.add("active");
+  }
+
+  const content =
+    document.getElementById("pageContent");
+
+  content.innerHTML = `
+    <div class="loading">
+      <div class="spinner"></div>
+      Loading...
+    </div>
+  `;
+
+  if(page === "home"){
+    await loadHome();
+    return;
+  }
+
+  if(page === "communities"){
+    await loadCommunities();
+    return;
+  }
+
+  if(page === "market"){
+    await loadMarket();
+    return;
+  }
+
+  if(page === "people"){
+    await loadPeople();
+    return;
+  }
+
+  if(page === "messages"){
+    await loadMessages();
+    return;
+  }
+
+  if(page === "profile"){
+    await loadProfilePage();
+    return;
+  }
+
+  if(page === "notifications"){
+    await loadNotificationsPage();
+    return;
+  }
+
+  if(page === "wallet"){
+    await loadWallet();
+    return;
+  }
+
+  if(page === "groups"){
+    loadPlaceholder("Groups","Create and join communities, clubs and groups.");
+    return;
+  }
+
+  if(page === "live"){
+    loadPlaceholder("Live","Live video and Live Shopping will be connected here.");
+    return;
+  }
+
+  if(page === "media"){
+    loadPlaceholder("Media","Photos and videos from your ZEEPY community will appear here.");
+    return;
+  }
+
+  if(page === "nearby"){
+    loadPlaceholder("Nearby","Discover people, shops and activities around you.");
+    return;
+  }
+
+  if(page === "meet"){
+    loadPlaceholder("Meet","Create and discover community meetings and events.");
+    return;
+  }
+}
+
+
+function loadPlaceholder(title,description){
+
+  document.getElementById("pageContent").innerHTML = `
+
+    <div class="hero">
+
+      <h1>${escapeHtml(title)}</h1>
+
+      <p>${escapeHtml(description)}</p>
+
+      ${
+        currentUser
+        ? `<button class="btn" onclick="showToast('This section is ready for the next development step.')">
+             Explore
+           </button>`
+        : `<button class="btn" onclick="openLogin()">Log in</button>`
+      }
+
+    </div>
+
+  `;
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+async function loadHome(){
+
+  const page =
+    document.getElementById("pageContent");
+
+  page.innerHTML = `
+
+    <div class="hero">
+
+      <h1>
+        WELCOME TO YOUR
+        <span>COMMUNITY</span>
+      </h1>
+
+      <p>
+        ZEEPY brings people, communities, conversations,
+        shops and opportunities together in one place.
+      </p>
+
+      <div class="hero-actions">
+
+        <button class="btn" onclick="openCreatePost()">
+          + Create
+        </button>
+
+        <button class="btn secondary" onclick="showPage('communities')">
+          Explore Community
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="section-title">
+      <h2>Community Areas</h2>
+      <span>Explore</span>
+    </div>
+
+    <div id="categoryContainer" class="category-grid">
+      <div class="loading">
+        <div class="spinner"></div>
+        Loading communities...
+      </div>
+    </div>
+
+    <div class="section-title">
+      <h2>Community Feed</h2>
+      <span>Latest</span>
+    </div>
+
+    <div id="postContainer" class="feed">
+      <div class="loading">
+        <div class="spinner"></div>
+        Loading posts...
+      </div>
+    </div>
+
+  `;
+
+  await loadCategories();
+  await loadPosts();
+}
+
+
+/* =========================================================
+   CATEGORIES
+========================================================= */
+
+async function loadCategories(){
+
+  const {data,error} =
     await supabaseClient
-      .from("follows")
-      .select("*",{count:"exact",head:true})
-      .eq("following_id",currentUser.id);
+      .from("community_categories")
+      .select("*")
+      .eq("is_active",true)
+      .order("sort_order",{ascending:true});
 
-  const {count:following} =
-    await supabaseClient
-      .from("follows")
-      .select("*",{count:"exact",head:true})
-      .eq("follower_id",currentUser.id);
+  if(error){
+
+    console.error("Categories:",error);
+
+    const box =
+      document.getElementById("categoryContainer");
+
+    if(box){
+      box.innerHTML = `
+        <div class="empty">
+          <strong>Community areas could not be loaded</strong>
+          ${escapeHtml(error.message)}
+        </div>
+      `;
+    }
+
+    return;
+  }
+
+  categoriesCache = data || [];
+
+  renderCategories(
+    document.getElementById("categoryContainer")
+  );
+}
 
 
-  document.getElementById("profileArea").innerHTML = `
+function renderCategories(container){
 
-    <div class="card" style="padding:0;overflow:hidden">
+  if(!container) return;
 
-      <div class="profile-cover"></div>
+  if(!categoriesCache.length){
 
-      <div class="profile-main">
+    container.innerHTML = `
+      <div class="empty">
+        <strong>No communities yet</strong>
+        Community areas will appear here.
+      </div>
+    `;
 
-        <div class="profile-avatar-wrap">
-          ${avatar}
+    return;
+  }
+
+  container.innerHTML =
+    categoriesCache.map(c=>`
+
+      <div
+        class="category-card"
+        onclick="selectCategory(${JSON.stringify(String(c.id))})"
+      >
+
+        <div class="category-icon">
+          ${escapeHtml(c.icon || "🌍")}
         </div>
 
-        <div class="profile-name">
-          ${escapeHtml(p.display_name || "ZEEPY User")}
-        </div>
+        <h3>${escapeHtml(c.name)}</h3>
 
-        <div class="profile-username">
-          @${escapeHtml(p.username || "user")}
-        </div>
+        <p>
+          ${escapeHtml(c.description || "Explore this community area.")}
+        </p>
 
-        <div class="profile-bio">
-          ${escapeHtml(p.bio || "Welcome to my ZEEPY community profile.")}
-        </div>
+      </div>
 
-        <div style="color:#888;margin-top:8px">
-          ${p.location ? "📍 " + escapeHtml(p.location) : ""}
-        </div>
+    `).join("");
+}
 
-        <div class="stat-grid" style="margin-top:15px">
 
-          <div class="stat">
-            <strong>${followers || 0}</strong>
-            <span>Followers</span>
-          </div>
+async function loadCommunities(){
 
-          <div class="stat">
-            <strong>${following || 0}</strong>
-            <span>Following</span>
-          </div>
+  const page =
+    document.getElementById("pageContent");
 
-        </div>
+  page.innerHTML = `
 
-        <div class="form-buttons">
+    <div class="hero">
 
-          <button class="btn btn-orange"
-                  onclick="openEditProfile()">
-            Edit Profile
-          </button>
+      <h1>Your <span>Communities</span></h1>
 
-          <button class="btn btn-dark"
-                  onclick="logout()">
-            Log out
-          </button>
+      <p>
+        Explore Education, Health, Sports, Life and other
+        community areas.
+      </p>
 
-        </div>
+    </div>
 
+    <div id="allCategories" class="category-grid">
+      <div class="loading">
+        <div class="spinner"></div>
+        Loading...
+      </div>
+    </div>
+
+    <div class="section-title">
+      <h2>Community Posts</h2>
+    </div>
+
+    <div id="communityPosts" class="feed"></div>
+
+  `;
+
+  await loadCategories();
+
+  const categoryBox =
+    document.getElementById("allCategories");
+
+  renderCategories(categoryBox);
+
+  await loadPosts(
+    document.getElementById("communityPosts")
+  );
+}
+
+
+async function selectCategory(categoryId){
+
+  selectedCategory = categoryId;
+
+  const page =
+    document.getElementById("pageContent");
+
+  page.innerHTML = `
+
+    <button
+      class="btn secondary small"
+      onclick="showPage('communities')"
+      style="margin-bottom:12px"
+    >
+      ← Communities
+    </button>
+
+    <div class="hero">
+
+      <h1>Community</h1>
+
+      <p>Posts from this community area.</p>
+
+    </div>
+
+    <div id="categoryPosts" class="feed">
+
+      <div class="loading">
+        <div class="spinner"></div>
+        Loading...
       </div>
 
     </div>
 
   `;
 
-}
+  const {data,error} =
+    await supabaseClient
+      .from("posts")
+      .select(`
+        *,
+        profiles:user_id(
+          id,
+          display_name,
+          username,
+          avatar_url
+        ),
+        community_categories(
+          id,
+          name,
+          icon
+        )
+      `)
+      .eq("category_id",categoryId)
+      .order("created_at",{ascending:false});
 
-
-function openEditProfile(){
-
-  if(!currentProfile) return;
-
-  document.getElementById("editName").value =
-    currentProfile.display_name || "";
-
-  document.getElementById("editUsername").value =
-    currentProfile.username || "";
-
-  document.getElementById("editBio").value =
-    currentProfile.bio || "";
-
-  document.getElementById("editLocation").value =
-    currentProfile.location || "";
-
-  document.getElementById("editAvatar").value =
-    currentProfile.avatar_url || "";
-
-  document
-    .getElementById("editProfileModal")
-    .classList.remove("hidden");
-
-}
-
-
-async function saveProfile(){
-
-  if(!currentUser) return;
-
-  const display_name =
-    document.getElementById("editName").value.trim();
-
-  const username =
-    document.getElementById("editUsername").value
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9_]/g,"");
-
-  const bio =
-    document.getElementById("editBio").value.trim();
-
-  const location =
-    document.getElementById("editLocation").value.trim();
-
-  const avatar_url =
-    document.getElementById("editAvatar").value.trim();
-
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .update({
-
-      display_name,
-      username,
-      bio,
-      location,
-      avatar_url,
-      updated_at:new Date().toISOString()
-
-    })
-    .eq("id",currentUser.id)
-    .select()
-    .single();
-
-
-  if(error){
-
-    toast(error.message,"error");
-    return;
-
-  }
-
-  currentProfile = data;
-
-  closeModal("editProfileModal");
-
-  await loadProfilePage();
-
-  updateHeader();
-
-  toast("Profile updated.","success");
-
-}
-
-
-/* ============================================================
-   COMMUNITIES
-   ============================================================ */
-
-async function loadCategories(){
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("community_categories")
-    .select("*")
-    .eq("is_active",true)
-    .order("sort_order",{ascending:true});
-
+  const container =
+    document.getElementById("categoryPosts");
 
   if(error){
 
     console.error(error);
 
-    document.getElementById("homeCategories").innerHTML =
-      `<div class="empty">Unable to load communities.</div>`;
+    container.innerHTML = `
+      <div class="empty">
+        <strong>Posts could not be loaded</strong>
+        ${escapeHtml(error.message)}
+      </div>
+    `;
 
     return;
-
   }
 
-  categories = data || [];
-
-  renderCategories(
-    document.getElementById("homeCategories"),
-    categories.slice(0,9)
-  );
-
-  renderCategories(
-    document.getElementById("allCategories"),
-    categories
-  );
-
-  populatePostCategories();
-
+  renderPostsInto(container,data || []);
 }
 
 
-function renderCategories(container,list){
+/* =========================================================
+   POSTS
+========================================================= */
 
-  if(!list.length){
+async function loadPosts(target){
 
-    container.innerHTML =
-      `<div class="empty">No communities yet.</div>`;
+  const container =
+    target ||
+    document.getElementById("postContainer");
+
+  if(!container) return;
+
+  const {data,error} =
+    await supabaseClient
+      .from("posts")
+      .select(`
+        *,
+        profiles:user_id(
+          id,
+          display_name,
+          username,
+          avatar_url
+        ),
+        community_categories(
+          id,
+          name,
+          icon
+        )
+      `)
+      .order("created_at",{ascending:false})
+      .limit(50);
+
+  if(error){
+
+    console.error("Posts:",error);
+
+    container.innerHTML = `
+      <div class="empty">
+        <strong>Posts could not be loaded</strong>
+        ${escapeHtml(error.message)}
+      </div>
+    `;
 
     return;
+  }
 
+  renderPostsInto(container,data || []);
+}
+
+
+function renderPostsInto(container,posts){
+
+  if(!posts.length){
+
+    container.innerHTML = `
+      <div class="empty">
+        <strong>No posts yet</strong>
+        Be the first person to share something with the community.
+      </div>
+    `;
+
+    return;
   }
 
   container.innerHTML =
-    list.map(c=>`
-
-      <button class="category"
-              onclick="selectCategory(${c.id})">
-
-        <span class="category-icon">
-          ${escapeHtml(c.icon || "🌍")}
-        </span>
-
-        <span class="category-name">
-          ${escapeHtml(c.name)}
-        </span>
-
-      </button>
-
-    `).join("");
-
-}
-
-
-function populatePostCategories(){
-
-  const select =
-    document.getElementById("postCategory");
-
-  select.innerHTML =
-    `<option value="">Choose a community</option>` +
-    categories.map(c=>`
-      <option value="${c.id}">
-        ${escapeHtml(c.name)}
-      </option>
-    `).join("");
-
-}
-
-
-async function selectCategory(id){
-
-  openPage("communities");
-
-  const category =
-    categories.find(c=>String(c.id)===String(id));
-
-  if(!category) return;
-
-  const box =
-    document.getElementById("categoryPosts");
-
-  box.innerHTML =
-    `<div class="section-title">
-       <h2>${escapeHtml(category.icon || "🌍")} ${escapeHtml(category.name)}</h2>
-     </div>
-     <div class="loading">Loading...</div>`;
-
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("posts")
-    .select(`
-      *,
-      profiles(
-        display_name,
-        username,
-        avatar_url
-      )
-    `)
-    .eq("category_id",id)
-    .order("created_at",{ascending:false});
-
-
-  if(error){
-
-    box.innerHTML =
-      `<div class="empty">${escapeHtml(error.message)}</div>`;
-
-    return;
-
-  }
-
-  if(!data?.length){
-
-    box.innerHTML =
-      `<div class="empty">
-        No posts in this community yet.<br><br>
-        <button class="btn btn-orange"
-                onclick="openCreatePost()">
-          Create the first post
-        </button>
-      </div>`;
-
-    return;
-
-  }
-
-  box.innerHTML =
-    data.map(renderPost).join("");
-
-}
-
-
-/* ============================================================
-   POSTS
-   ============================================================ */
-
-async function loadPosts(){
-
-  const feed =
-    document.getElementById("feed");
-
-  if(!feed) return;
-
-  feed.innerHTML =
-    `<div class="loading">Loading community feed...</div>`;
-
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("posts")
-    .select(`
-      *,
-      profiles(
-        display_name,
-        username,
-        avatar_url
-      ),
-      community_categories(
-        name,
-        icon
-      )
-    `)
-    .order("created_at",{ascending:false})
-    .limit(30);
-
-
-  if(error){
-
-    console.error(error);
-
-    feed.innerHTML =
-      `<div class="empty">
-        ${escapeHtml(error.message)}
-      </div>`;
-
-    return;
-
-  }
-
-
-  if(!data?.length){
-
-    feed.innerHTML =
-      `<div class="empty">
-        🌍<br><br>
-        Your community feed is empty.<br><br>
-        Be the first person to post.
-      </div>`;
-
-    return;
-
-  }
-
-
-  feed.innerHTML =
-    data.map(renderPost).join("");
-
+    posts.map(renderPost).join("");
 }
 
 
@@ -2178,167 +2416,189 @@ function renderPost(post){
     profile.username ||
     "ZEEPY User";
 
-  const letter =
-    name.charAt(0).toUpperCase();
-
-  const avatar =
-    profile.avatar_url
-    ? `<img class="avatar" src="${escapeHtml(profile.avatar_url)}">`
-    : `<div class="avatar avatar-letter">${escapeHtml(letter)}</div>`;
+  const date =
+    post.created_at
+    ? new Date(post.created_at).toLocaleString()
+    : "";
 
   const image =
     post.image_url
-    ? `<img class="post-image"
-            src="${escapeHtml(post.image_url)}"
-            onerror="this.style.display='none'">`
+    ? `
+      <img
+        class="post-image"
+        src="${escapeHtml(post.image_url)}"
+        alt="Post image"
+        onerror="this.style.display='none'"
+      >
+    `
     : "";
-
 
   return `
 
-    <article class="card">
+    <article class="post-card">
 
       <div class="post-head">
 
-        ${avatar}
+        ${avatarHtml(profile,name)}
 
-        <div class="user-info">
+        <div class="post-user">
+
           <strong>${escapeHtml(name)}</strong>
-          <span>
-            @${escapeHtml(profile.username || "user")}
-            ${category.name
-              ? " · " + escapeHtml(category.icon || "") +
-                " " + escapeHtml(category.name)
-              : ""}
-          </span>
+
+          <small>
+            ${profile.username ? "@"+escapeHtml(profile.username)+" · " : ""}
+            ${escapeHtml(date)}
+          </small>
+
         </div>
+
+        ${
+          category.name
+          ? `<span class="post-category">
+               ${escapeHtml(category.icon || "🌍")}
+               ${escapeHtml(category.name)}
+             </span>`
+          : ""
+        }
 
       </div>
 
-      ${post.content
-        ? `<div class="post-content">
-             ${escapeHtml(post.content)}
-           </div>`
-        : ""}
+      <div class="post-content">
+        ${escapeHtml(post.content || "")}
+      </div>
 
       ${image}
 
       <div class="post-actions">
 
-        <button class="action"
-                onclick="likePost('${post.id}',this)">
+        <button
+          class="action-btn"
+          onclick="likePost('${escapeHtml(post.id)}')"
+        >
           ❤️ Like
         </button>
 
-        <button class="action"
-                onclick="toast('Comments will open here in the next update.')">
+        <button
+          class="action-btn"
+          onclick="showToast('Comments are coming into this feed next.')"
+        >
           💬 Comment
         </button>
 
-        <button class="action"
-                onclick="sharePost('${post.id}')">
+        <button
+          class="action-btn"
+          onclick="sharePost('${escapeHtml(post.id)}')"
+        >
           ↗ Share
         </button>
 
       </div>
 
     </article>
-
   `;
-
 }
 
 
-function openCreatePost(){
+async function openCreatePost(){
 
-  requireLogin(()=>{
+  if(!currentUser){
+    openLogin();
+    return;
+  }
 
-    document
-      .getElementById("postModal")
-      .classList.remove("hidden");
+  await loadCategories();
 
-  });
+  const select =
+    document.getElementById("postCategory");
 
+  select.innerHTML =
+    categoriesCache.map(c=>`
+      <option value="${escapeHtml(c.id)}">
+        ${escapeHtml(c.icon || "")}
+        ${escapeHtml(c.name)}
+      </option>
+    `).join("");
+
+  if(!categoriesCache.length){
+    select.innerHTML =
+      `<option value="">No communities available</option>`;
+  }
+
+  document.getElementById("postContent").value = "";
+  document.getElementById("postImage").value = "";
+
+  openModal("postModal");
 }
 
 
 async function createPost(){
 
-  if(!currentUser) return;
+  if(!currentUser){
+    openLogin();
+    return;
+  }
 
   const category_id =
-    document.getElementById("postCategory").value || null;
+    document.getElementById("postCategory").value;
 
   const content =
     document.getElementById("postContent").value.trim();
 
   const image_url =
-    document.getElementById("postImage").value.trim() || null;
+    document.getElementById("postImage").value.trim();
 
-
-  if(!content && !image_url){
-
-    toast("Write something or add an image.","error");
+  if(!content){
+    showToast("Write something before publishing.","error");
     return;
-
   }
 
-
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("posts")
-    .insert({
-
-      user_id:currentUser.id,
-      category_id,
-      content:content || null,
-      image_url
-
-    });
-
+  const {error} =
+    await supabaseClient
+      .from("posts")
+      .insert({
+        user_id:currentUser.id,
+        category_id:category_id || null,
+        content,
+        image_url:image_url || null
+      });
 
   if(error){
 
-    toast(error.message,"error");
+    console.error(error);
+
+    showToast(error.message,"error");
+
     return;
-
   }
-
-
-  document.getElementById("postContent").value = "";
-  document.getElementById("postImage").value = "";
 
   closeModal("postModal");
 
-  await loadPosts();
+  showToast("Post published.","success");
 
-  toast("Post published!","success");
-
+  await showPage("home");
 }
 
 
-async function likePost(postId,button){
+async function likePost(postId){
 
   if(!currentUser){
-
-    openAuth();
+    openLogin();
     return;
-
   }
 
+  const {data:existing,error:checkError} =
+    await supabaseClient
+      .from("post_likes")
+      .select("id")
+      .eq("post_id",postId)
+      .eq("user_id",currentUser.id)
+      .maybeSingle();
 
-  const {
-    data:existing
-  } =
-  await supabaseClient
-    .from("post_likes")
-    .select("id")
-    .eq("post_id",postId)
-    .eq("user_id",currentUser.id)
-    .maybeSingle();
-
+  if(checkError){
+    console.error(checkError);
+    showToast(checkError.message,"error");
+    return;
+  }
 
   if(existing){
 
@@ -2347,627 +2607,240 @@ async function likePost(postId,button){
       .delete()
       .eq("id",existing.id);
 
-    button.classList.remove("active");
+    showToast("Like removed.");
 
   }else{
 
-    const {
-      error
-    } =
-    await supabaseClient
-      .from("post_likes")
-      .insert({
-
-        post_id:postId,
-        user_id:currentUser.id
-
-      });
+    const {error} =
+      await supabaseClient
+        .from("post_likes")
+        .insert({
+          post_id:postId,
+          user_id:currentUser.id
+        });
 
     if(error){
-
-      toast(error.message,"error");
+      showToast(error.message,"error");
       return;
-
     }
 
-    button.classList.add("active");
-
+    showToast("Post liked.","success");
   }
-
 }
 
 
-async function sharePost(id){
+async function sharePost(postId){
 
   const url =
-    window.location.href.split("#")[0] +
-    "#post-" + id;
+    window.location.origin +
+    window.location.pathname +
+    "?post=" +
+    encodeURIComponent(postId);
 
-  if(navigator.share){
+  try{
 
-    try{
+    if(navigator.share){
 
       await navigator.share({
         title:"ZEEPY Community",
-        text:"Check out this post on ZEEPY",
-        url:url
+        text:"Check this post on ZEEPY",
+        url
       });
 
-    }catch(e){}
-
-  }else{
-
-    try{
+    }else if(navigator.clipboard){
 
       await navigator.clipboard.writeText(url);
 
-      toast("Post link copied.","success");
+      showToast("Post link copied.","success");
 
-    }catch(e){
+    }else{
 
-      toast("Share link: " + url);
+      showToast(url);
 
     }
 
-  }
+  }catch(error){
 
+    console.log(error);
+
+  }
 }
 
 
-/* ============================================================
-   PEOPLE
-   ============================================================ */
+/* =========================================================
+   MARKET
+========================================================= */
 
-async function loadPeople(search=""){
+async function loadMarket(){
 
-  const box =
-    document.getElementById("peopleList");
+  const page =
+    document.getElementById("pageContent");
 
-  if(!box) return;
+  page.innerHTML = `
 
-  let query =
-    supabaseClient
-      .from("profiles")
-      .select("*")
-      .order("display_name",{ascending:true})
-      .limit(50);
+    <div class="hero">
 
+      <h1>ZEEPY <span>Market</span></h1>
 
-  if(search){
+      <p>
+        Buy and sell products from shops and people in the community.
+      </p>
 
-    query =
-      query.or(
-        `display_name.ilike.%${search}%,username.ilike.%${search}%`
-      );
+      <div class="hero-actions">
 
-  }
+        <button class="btn" onclick="openCreateShop()">
+          + Create Your Shop
+        </button>
 
+        <button class="btn secondary" onclick="openCreateProduct()">
+          Sell Product
+        </button>
 
-  const {
-    data,
-    error
-  } =
-  await query;
-
-
-  if(error){
-
-    box.innerHTML =
-      `<div class="empty">${escapeHtml(error.message)}</div>`;
-
-    return;
-
-  }
-
-  peopleCache = data || [];
-
-  if(!peopleCache.length){
-
-    box.innerHTML =
-      `<div class="empty">No people found.</div>`;
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    peopleCache
-      .filter(p=>!currentUser || p.id !== currentUser.id)
-      .map(renderPerson)
-      .join("");
-
-}
-
-
-function renderPerson(p){
-
-  const name =
-    p.display_name ||
-    p.username ||
-    "ZEEPY User";
-
-  const letter =
-    name.charAt(0).toUpperCase();
-
-  const avatar =
-    p.avatar_url
-    ? `<img class="avatar" src="${escapeHtml(p.avatar_url)}">`
-    : `<div class="avatar avatar-letter">${letter}</div>`;
-
-
-  return `
-
-    <div class="person">
-
-      ${avatar}
-
-      <div class="person-info">
-        <strong>${escapeHtml(name)}</strong>
-        <span>
-          @${escapeHtml(p.username || "user")}
-        </span>
       </div>
 
-      <button class="btn btn-orange"
-              onclick="startChat('${p.id}')">
-        Message
-      </button>
+    </div>
+
+    <div class="section-title">
+      <h2>Marketplace</h2>
+    </div>
+
+    <div id="marketContainer" class="grid">
+
+      <div class="loading">
+        <div class="spinner"></div>
+        Loading products...
+      </div>
 
     </div>
 
   `;
 
-}
-
-
-function searchPeople(){
-
-  const value =
-    document.getElementById("peopleSearch").value.trim();
-
-  loadPeople(value);
-
-}
-
-
-/* ============================================================
-   MESSAGES
-   ============================================================ */
-
-async function loadChatPeople(){
-
-  if(!currentUser){
-
-    document.getElementById("chatPeople").innerHTML = `
-      <div class="empty">
-        💬<br><br>
-        Login to use ZEEPY Messages.<br><br>
-        <button class="btn btn-orange" onclick="openAuth()">
-          Login
-        </button>
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select("*")
-    .neq("id",currentUser.id)
-    .order("display_name",{ascending:true})
-    .limit(50);
-
-
-  if(error){
-
-    document.getElementById("chatPeople").innerHTML =
-      `<div class="empty">${escapeHtml(error.message)}</div>`;
-
-    return;
-
-  }
-
-
-  if(!data?.length){
-
-    document.getElementById("chatPeople").innerHTML =
-      `<div class="empty">
-        No other ZEEPY users yet.<br><br>
-        Invite people to join your community.
-      </div>`;
-
-    return;
-
-  }
-
-
-  document.getElementById("chatPeople").innerHTML =
-    `<div class="chat-list">` +
-    data.map(p=>{
-
-      const name =
-        p.display_name ||
-        p.username ||
-        "ZEEPY User";
-
-      const letter =
-        name.charAt(0).toUpperCase();
-
-      const avatar =
-        p.avatar_url
-        ? `<img class="avatar" src="${escapeHtml(p.avatar_url)}">`
-        : `<div class="avatar avatar-letter">${letter}</div>`;
-
-      return `
-
-        <div class="chat-person"
-             onclick="startChat('${p.id}')">
-
-          ${avatar}
-
-          <div class="chat-person-info">
-            <strong>${escapeHtml(name)}</strong>
-            <span>@${escapeHtml(p.username || "user")}</span>
-          </div>
-
-          <span>›</span>
-
-        </div>
-
-      `;
-
-    }).join("") +
-    `</div>`;
-
-}
-
-
-async function startChat(userId){
-
-  requireLogin(async()=>{
-
-    const {
-      data,
-      error
-    } =
+  const {data,error} =
     await supabaseClient
-      .from("profiles")
-      .select("*")
-      .eq("id",userId)
-      .single();
-
-
-    if(error){
-
-      toast(error.message,"error");
-      return;
-
-    }
-
-    currentChatUser = data;
-
-    document
-      .getElementById("messagesListView")
-      .classList.add("hidden");
-
-    document
-      .getElementById("chatView")
-      .classList.remove("hidden");
-
-    document
-      .getElementById("chatTitle")
-      .textContent =
-      data.display_name ||
-      data.username ||
-      "Chat";
-
-    await loadMessages();
-
-  });
-
-}
-
-
-function closeChat(){
-
-  currentChatUser = null;
-
-  document
-    .getElementById("chatView")
-    .classList.add("hidden");
-
-  document
-    .getElementById("messagesListView")
-    .classList.remove("hidden");
-
-}
-
-
-async function loadMessages(){
-
-  if(!currentUser || !currentChatUser) return;
-
-  const box =
-    document.getElementById("chatMessages");
-
-  box.innerHTML =
-    `<div class="loading">Loading messages...</div>`;
-
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("messages")
-    .select("*")
-    .or(
-      `and(sender_id.eq.${currentUser.id},receiver_id.eq.${currentChatUser.id}),and(sender_id.eq.${currentChatUser.id},receiver_id.eq.${currentUser.id})`
-    )
-    .order("created_at",{ascending:true});
-
-
-  if(error){
-
-    box.innerHTML =
-      `<div class="empty">${escapeHtml(error.message)}</div>`;
-
-    return;
-
-  }
-
-
-  if(!data?.length){
-
-    box.innerHTML =
-      `<div class="empty">
-        Start the conversation 👋
-      </div>`;
-
-  }else{
-
-    box.innerHTML =
-      data.map(m=>`
-
-        <div class="bubble ${
-          m.sender_id === currentUser.id
-          ? "mine"
-          : "theirs"
-        }">
-
-          ${escapeHtml(m.content)}
-
-        </div>
-
-      `).join("");
-
-  }
-
-
-  box.scrollTop = box.scrollHeight;
-
-
-  await supabaseClient
-    .from("messages")
-    .update({is_read:true})
-    .eq("receiver_id",currentUser.id)
-    .eq("sender_id",currentChatUser.id);
-
-}
-
-
-async function sendMessage(){
-
-  if(!currentUser || !currentChatUser) return;
-
-  const input =
-    document.getElementById("messageInput");
-
-  const content =
-    input.value.trim();
-
-  if(!content) return;
-
-
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("messages")
-    .insert({
-
-      sender_id:currentUser.id,
-      receiver_id:currentChatUser.id,
-      content
-
-    });
-
-
-  if(error){
-
-    toast(error.message,"error");
-    return;
-
-  }
-
-  input.value = "";
-
-  await loadMessages();
-
-}
-
-
-/* ============================================================
-   MARKET
-   ============================================================ */
-
-async function loadProducts(){
-
-  const grid =
-    document.getElementById("marketGrid");
-
-  if(!grid) return;
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("products")
-    .select(`
-      *,
-      shops(
-        name
-      ),
-      profiles:seller_id(
-        display_name,
-        username
-      )
-    `)
-    .eq("is_active",true)
-    .order("created_at",{ascending:false})
-    .limit(50);
-
+      .from("products")
+      .select(`
+        *,
+        shops(name),
+        profiles:seller_id(
+          display_name,
+          username,
+          avatar_url
+        )
+      `)
+      .order("created_at",{ascending:false})
+      .limit(50);
+
+  const container =
+    document.getElementById("marketContainer");
 
   if(error){
 
     console.error(error);
 
-    grid.innerHTML =
-      `<div class="empty">${escapeHtml(error.message)}</div>`;
+    container.innerHTML = `
+      <div class="empty">
+        <strong>Marketplace could not be loaded</strong>
+        ${escapeHtml(error.message)}
+      </div>
+    `;
 
     return;
-
   }
 
-  products = data || [];
+  if(!data?.length){
 
-  renderProducts(products);
-
-}
-
-
-function renderProducts(list){
-
-  const grid =
-    document.getElementById("marketGrid");
-
-  if(!list.length){
-
-    grid.innerHTML =
-      `<div class="empty">
-        🛒<br><br>
-        No products yet.<br><br>
+    container.innerHTML = `
+      <div class="empty">
+        <strong>No products yet</strong>
         Be the first seller on ZEEPY.
-      </div>`;
+      </div>
+    `;
 
     return;
-
   }
 
-
-  grid.innerHTML =
-    list.map(p=>{
-
-      const seller =
-        p.profiles?.display_name ||
-        p.profiles?.username ||
-        "Seller";
-
-      const shop =
-        p.shops?.name ||
-        "ZEEPY Shop";
-
-      const image =
-        p.image_url ||
-        "https://via.placeholder.com/500x400?text=ZEEPY";
-
-
-      return `
-
-        <div class="product-card">
-
-          <img src="${escapeHtml(image)}"
-               onerror="this.src='https://via.placeholder.com/500x400?text=ZEEPY'">
-
-          <div class="product-body">
-
-            <div class="product-name">
-              ${escapeHtml(p.name)}
-            </div>
-
-            <div class="product-price">
-              GH₵ ${Number(p.price || 0).toLocaleString()}
-            </div>
-
-            <div class="product-seller">
-              ${escapeHtml(shop)} · ${escapeHtml(seller)}
-            </div>
-
-            <button class="btn btn-orange btn-full"
-                    style="margin-top:9px"
-                    onclick="messageSeller('${p.seller_id}','${p.id}')">
-              Message Seller
-            </button>
-
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
-
+  container.innerHTML =
+    data.map(renderProduct).join("");
 }
 
 
-function filterProducts(){
+function renderProduct(product){
 
-  const value =
-    document
-      .getElementById("marketSearch")
-      .value
-      .toLowerCase()
-      .trim();
+  const seller =
+    product.profiles || {};
 
-  if(!value){
+  const image =
+    product.image_url
+    ? `
+      <img
+        src="${escapeHtml(product.image_url)}"
+        alt="${escapeHtml(product.name)}"
+        style="width:100%;height:170px;object-fit:cover;border-radius:12px;margin-bottom:10px"
+        onerror="this.style.display='none'"
+      >
+    `
+    : "";
 
-    renderProducts(products);
-    return;
+  return `
 
-  }
+    <div class="card">
 
-  renderProducts(
-    products.filter(p=>
-      (p.name || "").toLowerCase().includes(value) ||
-      (p.category || "").toLowerCase().includes(value) ||
-      (p.shops?.name || "").toLowerCase().includes(value)
-    )
-  );
+      ${image}
 
+      <h3>${escapeHtml(product.name || "Product")}</h3>
+
+      <div class="price">
+        GH₵ ${Number(product.price || 0).toLocaleString()}
+      </div>
+
+      <p>
+        ${escapeHtml(product.description || "")}
+      </p>
+
+      ${
+        product.shops?.name
+        ? `<p style="margin-top:7px">🏪 ${escapeHtml(product.shops.name)}</p>`
+        : ""
+      }
+
+      <p style="margin-top:5px">
+        ${escapeHtml(product.category || "General")}
+      </p>
+
+      <button
+        class="btn small"
+        style="margin-top:11px;width:100%"
+        onclick="messageSeller('${escapeHtml(product.seller_id)}')"
+      >
+        💬 Message Seller
+      </button>
+
+    </div>
+  `;
 }
 
 
 async function openCreateShop(){
 
-  document
-    .getElementById("shopModal")
-    .classList.remove("hidden");
+  if(!currentUser){
+    openLogin();
+    return;
+  }
 
+  document.getElementById("shopName").value = "";
+  document.getElementById("shopDescription").value = "";
+  document.getElementById("shopLocation").value = "";
+
+  openModal("shopModal");
 }
 
 
 async function createShop(){
 
-  if(!currentUser) return;
+  if(!currentUser){
+    openLogin();
+    return;
+  }
 
   const name =
     document.getElementById("shopName").value.trim();
@@ -2978,108 +2851,91 @@ async function createShop(){
   const location =
     document.getElementById("shopLocation").value.trim();
 
-  const logo_url =
-    document.getElementById("shopLogo").value.trim() || null;
-
-
   if(!name){
-
-    toast("Enter a shop name.","error");
+    showToast("Enter your shop name.","error");
     return;
-
   }
 
-
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("shops")
-    .insert({
-
-      owner_id:currentUser.id,
-      name,
-      description,
-      location,
-      logo_url
-
-    });
-
+  const {error} =
+    await supabaseClient
+      .from("shops")
+      .insert({
+        owner_id:currentUser.id,
+        name,
+        description,
+        location
+      });
 
   if(error){
 
-    toast(error.message,"error");
+    console.error(error);
+    showToast(error.message,"error");
     return;
-
   }
-
-
-  document.getElementById("shopName").value="";
-  document.getElementById("shopDescription").value="";
-  document.getElementById("shopLocation").value="";
-  document.getElementById("shopLogo").value="";
 
   closeModal("shopModal");
 
-  toast("Your shop has been created!","success");
+  showToast("Your shop has been created.","success");
 
+  await showPage("market");
 }
 
 
 async function openCreateProduct(){
 
-  if(!currentUser) return;
+  if(!currentUser){
+    openLogin();
+    return;
+  }
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("shops")
-    .select("*")
-    .eq("owner_id",currentUser.id)
-    .order("created_at",{ascending:false});
-
+  const {data,error} =
+    await supabaseClient
+      .from("shops")
+      .select("id,name")
+      .eq("owner_id",currentUser.id)
+      .order("created_at",{ascending:false});
 
   if(error){
 
-    toast(error.message,"error");
+    showToast(error.message,"error");
     return;
-
   }
 
+  const select =
+    document.getElementById("productShop");
 
   if(!data?.length){
 
-    toast("Create your shop first.","error");
+    showToast("Create your shop first.","error");
 
     openCreateShop();
 
     return;
-
   }
 
-
-  document.getElementById("productShop").innerHTML =
-    data.map(s=>`
-
-      <option value="${s.id}">
-        ${escapeHtml(s.name)}
+  select.innerHTML =
+    data.map(shop=>`
+      <option value="${escapeHtml(shop.id)}">
+        ${escapeHtml(shop.name)}
       </option>
-
     `).join("");
 
+  document.getElementById("productName").value = "";
+  document.getElementById("productDescription").value = "";
+  document.getElementById("productPrice").value = "";
+  document.getElementById("productStock").value = "1";
+  document.getElementById("productImage").value = "";
 
-  document
-    .getElementById("productModal")
-    .classList.remove("hidden");
-
+  openModal("productModal");
 }
 
 
 async function createProduct(){
 
-  if(!currentUser) return;
+  if(!currentUser){
+    openLogin();
+    return;
+  }
 
   const shop_id =
     document.getElementById("productShop").value;
@@ -3091,487 +2947,840 @@ async function createProduct(){
     document.getElementById("productDescription").value.trim();
 
   const price =
-    Number(document.getElementById("productPrice").value || 0);
+    Number(document.getElementById("productPrice").value);
 
   const stock =
-    Number(document.getElementById("productStock").value || 0);
+    Number(document.getElementById("productStock").value);
 
   const category =
-    document.getElementById("productCategory").value.trim();
+    document.getElementById("productCategory").value;
 
   const image_url =
-    document.getElementById("productImage").value.trim() || null;
-
+    document.getElementById("productImage").value.trim();
 
   if(!shop_id || !name){
-
-    toast("Select a shop and enter a product name.","error");
+    showToast("Select a shop and enter a product name.","error");
     return;
-
   }
 
+  if(!Number.isFinite(price) || price < 0){
+    showToast("Enter a valid price.","error");
+    return;
+  }
 
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("products")
-    .insert({
-
-      shop_id,
-      seller_id:currentUser.id,
-      name,
-      description,
-      price,
-      stock,
-      category,
-      image_url
-
-    });
-
+  const {error} =
+    await supabaseClient
+      .from("products")
+      .insert({
+        shop_id,
+        seller_id:currentUser.id,
+        name,
+        description,
+        price,
+        stock,
+        category,
+        image_url:image_url || null
+      });
 
   if(error){
 
-    toast(error.message,"error");
+    console.error(error);
+    showToast(error.message,"error");
     return;
-
   }
-
-
-  [
-    "productName",
-    "productDescription",
-    "productPrice",
-    "productCategory",
-    "productImage"
-  ].forEach(id=>{
-    document.getElementById(id).value="";
-  });
-
-  document.getElementById("productStock").value="1";
 
   closeModal("productModal");
 
-  await loadProducts();
+  showToast("Product published.","success");
 
-  toast("Product published to ZEEPY Market!","success");
-
+  await showPage("market");
 }
 
 
-async function messageSeller(sellerId,productId){
+/* =========================================================
+   PEOPLE
+========================================================= */
 
-  requireLogin(async()=>{
+async function loadPeople(){
 
-    if(sellerId === currentUser.id){
+  const page =
+    document.getElementById("pageContent");
 
-      toast("This is your own product.");
-      return;
+  page.innerHTML = `
 
-    }
+    <div class="hero">
 
-    await startChat(sellerId);
+      <h1>Find <span>People</span></h1>
 
-    document.getElementById("messageInput").focus();
+      <p>
+        Discover people and connect with your community.
+      </p>
 
-  });
+      <input
+        id="peopleSearch"
+        type="search"
+        placeholder="Search people..."
+        oninput="filterPeople()"
+      >
 
-}
+    </div>
 
+    <div id="peopleContainer">
+      <div class="loading">
+        <div class="spinner"></div>
+        Loading people...
+      </div>
+    </div>
 
-/* ============================================================
-   NOTIFICATIONS
-   ============================================================ */
+  `;
 
-async function loadNotifications(){
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select("*")
+      .order("display_name",{ascending:true})
+      .limit(100);
 
-  const box =
-    document.getElementById("notificationsList");
+  if(error){
 
-  if(!currentUser){
+    console.error(error);
 
-    box.innerHTML = `
+    document.getElementById("peopleContainer").innerHTML = `
       <div class="empty">
-        🔔<br><br>
-        Login to see your notifications.
-        <br><br>
-        <button class="btn btn-orange"
-                onclick="openAuth()">
-          Login
-        </button>
+        <strong>People could not be loaded</strong>
+        ${escapeHtml(error.message)}
       </div>
     `;
 
     return;
-
   }
 
+  window.peopleCache = data || [];
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("notifications")
-    .select(`
-      *,
-      profiles:actor_id(
-        display_name,
-        username
-      )
-    `)
-    .eq("user_id",currentUser.id)
-    .order("created_at",{ascending:false})
-    .limit(50);
+  renderPeople(window.peopleCache);
+}
 
 
-  if(error){
+function renderPeople(people){
 
-    box.innerHTML =
-      `<div class="empty">${escapeHtml(error.message)}</div>`;
+  const container =
+    document.getElementById("peopleContainer");
+
+  if(!container) return;
+
+  if(!people.length){
+
+    container.innerHTML = `
+      <div class="empty">
+        <strong>No people found</strong>
+      </div>
+    `;
 
     return;
-
   }
 
-
-  if(!data?.length){
-
-    box.innerHTML =
-      `<div class="empty">
-        🔔<br><br>
-        No notifications yet.
-      </div>`;
-
-    return;
-
-  }
+  container.innerHTML =
+    people.map(renderPerson).join("");
+}
 
 
-  box.innerHTML =
-    data.map(n=>`
+function renderPerson(p){
 
-      <div style="
-        padding:13px 0;
-        border-bottom:1px solid #292929;
-      ">
+  const name =
+    p.display_name ||
+    p.username ||
+    "ZEEPY User";
 
-        <strong>
-          ${escapeHtml(
-            n.profiles?.display_name ||
-            "ZEEPY"
-          )}
-        </strong>
+  const isMe =
+    currentUser &&
+    p.id === currentUser.id;
 
-        <div style="color:#bbb;margin-top:4px">
-          ${escapeHtml(n.message || n.type)}
-        </div>
+  return `
 
-        <small style="color:#777">
-          ${formatDate(n.created_at)}
+    <div class="person">
+
+      ${avatarHtml(p,name)}
+
+      <div class="person-info">
+
+        <strong>${escapeHtml(name)}</strong>
+
+        <small>
+          ${p.username ? "@"+escapeHtml(p.username) : "ZEEPY member"}
         </small>
 
       </div>
 
-    `).join("");
+      ${
+        !isMe
+        ? `
+          <button
+            class="btn small"
+            onclick="startChat('${escapeHtml(p.id)}')"
+          >
+            Message
+          </button>
+        `
+        : `<span style="color:#777;font-size:12px">You</span>`
+      }
 
+    </div>
+  `;
 }
 
 
-/* ============================================================
-   WALLET
-   ============================================================ */
+function filterPeople(){
 
-async function loadWallet(){
+  const input =
+    document.getElementById("peopleSearch");
 
-  const box =
-    document.getElementById("walletArea");
+  if(!input) return;
+
+  const term =
+    input.value.trim().toLowerCase();
+
+  const filtered =
+    (window.peopleCache || [])
+      .filter(p=>{
+
+        const text =
+          (
+            (p.display_name || "") +
+            " " +
+            (p.username || "") +
+            " " +
+            (p.location || "")
+          ).toLowerCase();
+
+        return text.includes(term);
+      });
+
+  renderPeople(filtered);
+}
+
+
+/* =========================================================
+   MESSAGES
+========================================================= */
+
+async function loadMessages(){
 
   if(!currentUser){
 
-    box.innerHTML = `
-      <div class="empty">
-        💰<br><br>
-        Login to access your wallet.
-        <br><br>
-        <button class="btn btn-orange"
-                onclick="openAuth()">
-          Login
+    document.getElementById("pageContent").innerHTML = `
+
+      <div class="hero">
+
+        <h1>Your <span>Messages</span></h1>
+
+        <p>Log in to chat with people and sellers.</p>
+
+        <button class="btn" onclick="openLogin()">
+          Log in
         </button>
+
+      </div>
+
+    `;
+
+    return;
+  }
+
+  const page =
+    document.getElementById("pageContent");
+
+  page.innerHTML = `
+
+    <div class="hero">
+
+      <h1>Your <span>Messages</span></h1>
+
+      <p>Chat with people in your ZEEPY community.</p>
+
+      <button
+        class="btn"
+        onclick="showPage('people')"
+      >
+        Find People
+      </button>
+
+    </div>
+
+    <div id="chatArea"></div>
+
+    <div class="section-title">
+      <h2>People</h2>
+    </div>
+
+    <div id="chatPeople">
+      <div class="loading">
+        <div class="spinner"></div>
+        Loading...
+      </div>
+    </div>
+
+  `;
+
+  await loadChatPeople();
+}
+
+
+async function loadChatPeople(){
+
+  const container =
+    document.getElementById("chatPeople");
+
+  if(!container) return;
+
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select("*")
+      .neq("id",currentUser.id)
+      .order("display_name",{ascending:true})
+      .limit(100);
+
+  if(error){
+
+    container.innerHTML = `
+      <div class="empty">
+        <strong>People could not be loaded</strong>
+        ${escapeHtml(error.message)}
       </div>
     `;
 
     return;
-
   }
 
+  if(!data?.length){
 
-  const {
-    data:wallet
-  } =
-  await supabaseClient
-    .from("wallets")
-    .select("*")
-    .eq("user_id",currentUser.id)
-    .maybeSingle();
+    container.innerHTML = `
+      <div class="empty">
+        <strong>No other users yet</strong>
+        Invite people to join ZEEPY.
+      </div>
+    `;
+
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="chat-list">
+      ${data.map(p=>`
+
+        <button
+          class="chat-person"
+          style="width:100%;text-align:left"
+          onclick="startChat('${escapeHtml(p.id)}')"
+        >
+
+          ${avatarHtml(p,p.display_name || p.username)}
+
+          <div class="chat-person-info">
+
+            <strong>
+              ${escapeHtml(p.display_name || p.username || "User")}
+            </strong>
+
+            <small>
+              ${p.username ? "@"+escapeHtml(p.username) : ""}
+            </small>
+
+          </div>
+
+          <span>›</span>
+
+        </button>
+
+      `).join("")}
+    </div>
+  `;
+}
 
 
-  const {
-    data:transactions
-  } =
-  await supabaseClient
-    .from("wallet_transactions")
-    .select("*")
-    .eq("user_id",currentUser.id)
-    .order("created_at",{ascending:false})
-    .limit(10);
+async function startChat(userId){
 
+  if(!currentUser){
+    openLogin();
+    return;
+  }
 
-  box.innerHTML = `
+  if(userId === currentUser.id){
+    return;
+  }
 
-    <div class="wallet">
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select("*")
+      .eq("id",userId)
+      .single();
 
-      <small>Available Balance</small>
+  if(error){
 
-      <div class="wallet-balance">
-        GH₵ ${Number(wallet?.balance || 0).toLocaleString()}
+    showToast(error.message,"error");
+    return;
+  }
+
+  activeChatUser = data;
+
+  const area =
+    document.getElementById("chatArea");
+
+  if(!area){
+
+    await showPage("messages");
+
+    setTimeout(()=>startChat(userId),100);
+
+    return;
+  }
+
+  area.innerHTML = `
+
+    <div class="chat-box">
+
+      <div class="chat-header">
+
+        <button
+          class="action-btn"
+          onclick="activeChatUser=null;loadMessages()"
+        >
+          ←
+        </button>
+
+        ${avatarHtml(data,data.display_name || data.username,"small")}
+
+        <div style="flex:1">
+
+          <strong>
+            ${escapeHtml(data.display_name || data.username || "User")}
+          </strong>
+
+          <small style="display:block;color:#777">
+            ${data.username ? "@"+escapeHtml(data.username) : ""}
+          </small>
+
+        </div>
+
       </div>
 
-    </div>
-
-    <div class="stat-grid">
-
-      <div class="stat">
-        <strong>GH₵ 0</strong>
-        <span>Total Earnings</span>
+      <div id="messagesContainer" class="chat-messages">
+        <div class="loading">
+          <div class="spinner"></div>
+          Loading messages...
+        </div>
       </div>
 
-      <div class="stat">
-        <strong>GH₵ 0</strong>
-        <span>Withdrawn</span>
+      <div class="chat-input">
+
+        <input
+          id="messageInput"
+          type="text"
+          placeholder="Write a message..."
+          onkeydown="if(event.key==='Enter')sendMessage()"
+        >
+
+        <button class="btn" onclick="sendMessage()">
+          Send
+        </button>
+
       </div>
-
-    </div>
-
-    <div class="section-title">
-      <h2>Recent Transactions</h2>
-    </div>
-
-    <div class="card">
-
-      ${
-        transactions?.length
-        ? transactions.map(t=>`
-
-            <div style="
-              padding:11px 0;
-              border-bottom:1px solid #292929;
-            ">
-
-              <strong>
-                GH₵ ${Number(t.amount || 0).toLocaleString()}
-              </strong>
-
-              <div style="color:#aaa">
-                ${escapeHtml(t.description || t.transaction_type)}
-              </div>
-
-              <small style="color:#777">
-                ${formatDate(t.created_at)}
-              </small>
-
-            </div>
-
-          `).join("")
-        : `<div class="empty">
-             No transactions yet.
-           </div>`
-      }
 
     </div>
 
   `;
 
+  await loadChatMessages();
 }
 
 
-/* ============================================================
-   NAVIGATION
-   ============================================================ */
+async function loadChatMessages(){
 
-function openPage(page){
+  if(!currentUser || !activeChatUser) return;
 
-  document
-    .querySelectorAll("main > section")
-    .forEach(section=>{
-      section.classList.add("hidden");
-    });
+  const container =
+    document.getElementById("messagesContainer");
 
+  const {data,error} =
+    await supabaseClient
+      .from("messages")
+      .select("*")
+      .or(
+        `and(sender_id.eq.${currentUser.id},receiver_id.eq.${activeChatUser.id}),and(sender_id.eq.${activeChatUser.id},receiver_id.eq.${currentUser.id})`
+      )
+      .order("created_at",{ascending:true});
 
-  const target =
-    document.getElementById("page-" + page);
+  if(error){
 
-  if(!target) return;
+    console.error(error);
 
-  target.classList.remove("hidden");
+    container.innerHTML = `
+      <div class="empty">
+        <strong>Messages could not be loaded</strong>
+        ${escapeHtml(error.message)}
+      </div>
+    `;
 
-
-  document
-    .querySelectorAll(".nav-item")
-    .forEach(item=>{
-      item.classList.toggle(
-        "active",
-        item.dataset.page === page
-      );
-    });
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-
-  if(page === "home"){
-
-    loadCategories();
-    loadPosts();
-
+    return;
   }
 
-  if(page === "communities"){
+  if(!data?.length){
 
-    loadCategories();
+    container.innerHTML = `
+      <div class="empty">
+        <strong>Start the conversation</strong>
+        Send your first message.
+      </div>
+    `;
 
+    return;
   }
 
-  if(page === "market"){
+  container.innerHTML =
+    data.map(m=>`
 
-    loadProducts();
+      <div class="message ${m.sender_id === currentUser.id ? "mine" : ""}">
+        ${escapeHtml(m.content)}
+      </div>
 
-  }
+    `).join("");
 
-  if(page === "people"){
+  container.scrollTop =
+    container.scrollHeight;
 
-    loadPeople();
-
-  }
-
-  if(page === "messages"){
-
-    closeChat();
-    loadChatPeople();
-
-  }
-
-  if(page === "profile"){
-
-    loadProfilePage();
-
-  }
-
-  if(page === "notifications"){
-
-    loadNotifications();
-
-  }
-
-  if(page === "wallet"){
-
-    loadWallet();
-
-  }
-
+  await supabaseClient
+    .from("messages")
+    .update({is_read:true})
+    .eq("sender_id",activeChatUser.id)
+    .eq("receiver_id",currentUser.id);
 }
 
 
-/* ============================================================
-   MODALS
-   ============================================================ */
+async function sendMessage(){
 
-function closeModal(id){
+  if(!currentUser || !activeChatUser){
+    return;
+  }
 
-  document
-    .getElementById(id)
-    .classList.add("hidden");
+  const input =
+    document.getElementById("messageInput");
 
+  const content =
+    input.value.trim();
+
+  if(!content) return;
+
+  const {error} =
+    await supabaseClient
+      .from("messages")
+      .insert({
+        sender_id:currentUser.id,
+        receiver_id:activeChatUser.id,
+        content,
+        is_read:false
+      });
+
+  if(error){
+
+    console.error(error);
+
+    showToast(error.message,"error");
+
+    return;
+  }
+
+  input.value = "";
+
+  await loadChatMessages();
 }
 
 
-/* ============================================================
-   TOAST
-   ============================================================ */
+async function messageSeller(sellerId){
 
-let toastTimer;
+  if(!currentUser){
+    openLogin();
+    return;
+  }
 
-function toast(message,type=""){
+  if(sellerId === currentUser.id){
 
-  const el =
-    document.getElementById("toast");
+    showToast("This is your own product.");
 
-  el.textContent = message;
+    return;
+  }
 
-  el.className =
-    "toast " + type;
+  await showPage("messages");
 
-  el.classList.remove("hidden");
-
-  clearTimeout(toastTimer);
-
-  toastTimer =
-    setTimeout(()=>{
-
-      el.classList.add("hidden");
-
-    },3500);
-
+  setTimeout(()=>{
+    startChat(sellerId);
+  },100);
 }
 
 
-/* ============================================================
-   UTILITIES
-   ============================================================ */
+/* =========================================================
+   NOTIFICATIONS
+========================================================= */
 
-function escapeHtml(value){
+async function loadNotifications(){
 
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+  if(!currentUser) return;
 
+  const {count,error} =
+    await supabaseClient
+      .from("notifications")
+      .select("*",{count:"exact",head:true})
+      .eq("user_id",currentUser.id)
+      .eq("is_read",false);
+
+  if(error){
+    console.error(error);
+    return;
+  }
+
+  const badge =
+    document.getElementById("notificationBadge");
+
+  if(!badge) return;
+
+  if(count && count > 0){
+
+    badge.textContent =
+      count > 99 ? "99+" : count;
+
+    badge.classList.remove("hidden");
+
+  }else{
+
+    badge.classList.add("hidden");
+  }
 }
 
 
-function formatDate(date){
+async function loadNotificationsPage(){
 
-  if(!date) return "";
+  const page =
+    document.getElementById("pageContent");
 
-  return new Date(date).toLocaleString();
+  if(!currentUser){
 
+    page.innerHTML = `
+      <div class="hero">
+        <h1><span>Notifications</span></h1>
+        <p>Log in to see your notifications.</p>
+        <button class="btn" onclick="openLogin()">Log in</button>
+      </div>
+    `;
+
+    return;
+  }
+
+  const {data,error} =
+    await supabaseClient
+      .from("notifications")
+      .select("*")
+      .eq("user_id",currentUser.id)
+      .order("created_at",{ascending:false})
+      .limit(100);
+
+  if(error){
+
+    page.innerHTML = `
+      <div class="empty">
+        <strong>Notifications could not be loaded</strong>
+        ${escapeHtml(error.message)}
+      </div>
+    `;
+
+    return;
+  }
+
+  if(!data?.length){
+
+    page.innerHTML = `
+      <div class="hero">
+        <h1>Your <span>Notifications</span></h1>
+        <p>You have no notifications yet.</p>
+      </div>
+    `;
+
+    return;
+  }
+
+  page.innerHTML = `
+
+    <div class="hero">
+      <h1>Your <span>Notifications</span></h1>
+      <p>Stay updated with activity on ZEEPY.</p>
+    </div>
+
+    <div class="feed">
+
+      ${data.map(n=>`
+
+        <div class="card">
+
+          <h3>${escapeHtml(n.title || "Notification")}</h3>
+
+          <p>${escapeHtml(n.message || "")}</p>
+
+          <small style="display:block;margin-top:8px;color:#777">
+            ${n.created_at ? new Date(n.created_at).toLocaleString() : ""}
+          </small>
+
+        </div>
+
+      `).join("")}
+
+    </div>
+  `;
+
+  await supabaseClient
+    .from("notifications")
+    .update({is_read:true})
+    .eq("user_id",currentUser.id);
+
+  loadNotifications();
 }
 
 
-/* ============================================================
-   CLOSE MODAL WHEN BACKGROUND IS TOUCHED
-   ============================================================ */
+/* =========================================================
+   WALLET
+========================================================= */
 
-document.querySelectorAll(".modal")
-.forEach(modal=>{
+async function loadWallet(){
 
-  modal.addEventListener("click",e=>{
+  const page =
+    document.getElementById("pageContent");
 
-    if(e.target === modal){
+  if(!currentUser){
 
-      modal.classList.add("hidden");
+    page.innerHTML = `
+      <div class="hero">
+        <h1>ZEEPY <span>Wallet</span></h1>
+        <p>Log in to access your wallet.</p>
+        <button class="btn" onclick="openLogin()">Log in</button>
+      </div>
+    `;
 
+    return;
+  }
+
+  const {data:wallet,error} =
+    await supabaseClient
+      .from("wallets")
+      .select("*")
+      .eq("user_id",currentUser.id)
+      .maybeSingle();
+
+  if(error){
+
+    console.error(error);
+
+    page.innerHTML = `
+      <div class="empty">
+        <strong>Wallet could not be loaded</strong>
+        ${escapeHtml(error.message)}
+      </div>
+    `;
+
+    return;
+  }
+
+  const balance =
+    Number(wallet?.balance || 0);
+
+  const {data:transactions} =
+    await supabaseClient
+      .from("wallet_transactions")
+      .select("*")
+      .eq("user_id",currentUser.id)
+      .order("created_at",{ascending:false})
+      .limit(30);
+
+  page.innerHTML = `
+
+    <div class="hero">
+
+      <h1>Your <span>Wallet</span></h1>
+
+      <p>Manage your ZEEPY earnings and transactions.</p>
+
+      <div style="
+        font-size:34px;
+        font-weight:900;
+        color:var(--orange);
+        margin-top:15px
+      ">
+        GH₵ ${balance.toLocaleString()}
+      </div>
+
+    </div>
+
+    <div class="section-title">
+      <h2>Transactions</h2>
+    </div>
+
+    ${
+      transactions?.length
+      ? `
+        <div class="feed">
+
+          ${transactions.map(t=>`
+
+            <div class="card">
+
+              <h3>
+                ${escapeHtml(t.type || "Transaction")}
+              </h3>
+
+              <div class="price">
+                GH₵ ${Number(t.amount || 0).toLocaleString()}
+              </div>
+
+              <p>
+                ${escapeHtml(t.description || "")}
+              </p>
+
+            </div>
+
+          `).join("")}
+
+        </div>
+      `
+      : `
+        <div class="empty">
+          <strong>No transactions yet</strong>
+          Your future ZEEPY earnings will appear here.
+        </div>
+      `
     }
 
-  });
+  `;
+}
 
-});
 
+/* =========================================================
+   START
+========================================================= */
+
+checkSession();
+
+
+/* =========================================================
+   REFRESH NOTIFICATIONS
+========================================================= */
+
+clearInterval(notificationTimer);
+
+notificationTimer =
+  setInterval(()=>{
+
+    if(currentUser){
+      loadNotifications();
+    }
+
+  },30000);
 
 </script>
 
