@@ -772,7 +772,6 @@ textarea.form-control{
 
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="header-inner">
 
@@ -802,11 +801,8 @@ textarea.form-control{
   </div>
 </header>
 
-
-<!-- MAIN -->
 <main>
 
-  <!-- HOME -->
   <section id="page-home" class="page active">
 
     <div class="hero">
@@ -854,8 +850,6 @@ textarea.form-control{
 
   </section>
 
-
-  <!-- COMMUNITIES -->
   <section id="page-communities" class="page">
 
     <div class="section-title">
@@ -917,8 +911,6 @@ textarea.form-control{
 
   </section>
 
-
-  <!-- MARKET -->
   <section id="page-market" class="page">
 
     <div class="section-title">
@@ -944,8 +936,6 @@ textarea.form-control{
 
   </section>
 
-
-  <!-- PEOPLE -->
   <section id="page-people" class="page">
 
     <div class="section-title">
@@ -972,8 +962,6 @@ textarea.form-control{
 
   </section>
 
-
-  <!-- MESSAGES -->
   <section id="page-messages" class="page">
 
     <div class="section-title">
@@ -996,8 +984,6 @@ textarea.form-control{
 
   </section>
 
-
-  <!-- PROFILE -->
   <section id="page-profile" class="page">
 
     <div class="profile-cover">
@@ -1031,8 +1017,6 @@ textarea.form-control{
 
   </section>
 
-
-  <!-- NOTIFICATIONS -->
   <section id="page-notifications" class="page">
 
     <div class="section-title">
@@ -1043,8 +1027,6 @@ textarea.form-control{
 
   </section>
 
-
-  <!-- WALLET -->
   <section id="page-wallet" class="page">
 
     <div class="section-title">
@@ -1079,8 +1061,6 @@ textarea.form-control{
 
   </section>
 
-
-  <!-- GROUPS -->
   <section id="page-groups" class="page">
 
     <div class="section-title">
@@ -1097,8 +1077,6 @@ textarea.form-control{
 
   </section>
 
-
-  <!-- LIVE -->
   <section id="page-live" class="page">
 
     <div class="section-title">
@@ -1140,8 +1118,6 @@ textarea.form-control{
 
   </section>
 
-
-  <!-- MEDIA -->
   <section id="page-media" class="page">
 
     <div class="section-title">
@@ -1157,8 +1133,6 @@ textarea.form-control{
 
   </section>
 
-
-  <!-- NEARBY -->
   <section id="page-nearby" class="page">
 
     <div class="section-title">
@@ -1174,8 +1148,6 @@ textarea.form-control{
 
   </section>
 
-
-  <!-- MEET -->
   <section id="page-meet" class="page">
 
     <div class="section-title">
@@ -1206,8 +1178,6 @@ textarea.form-control{
 
 </main>
 
-
-<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
 
   <div class="bottom-nav-inner">
@@ -1251,8 +1221,6 @@ textarea.form-control{
 
 </nav>
 
-
-<!-- AUTH MODAL -->
 <div id="authModal" class="modal">
 
   <div class="modal-box auth-box">
@@ -1331,8 +1299,6 @@ textarea.form-control{
 
 </div>
 
-
-<!-- CREATE POST MODAL -->
 <div id="createPostModal" class="modal">
 
   <div class="modal-box">
@@ -1351,7 +1317,6 @@ textarea.form-control{
 
     </div>
 
-
     <div class="form-group">
 
       <label>Community</label>
@@ -1361,7 +1326,6 @@ textarea.form-control{
       </select>
 
     </div>
-
 
     <div class="form-group">
 
@@ -1409,7 +1373,6 @@ textarea.form-control{
 
     </div>
 
-
     <div class="form-group">
 
       <label>Message</label>
@@ -1421,7 +1384,6 @@ textarea.form-control{
       </textarea>
 
     </div>
-
 
     <div id="mediaField"
          class="form-group hidden">
@@ -1441,7 +1403,6 @@ textarea.form-control{
 
     </div>
 
-
     <div id="linkField"
          class="form-group hidden">
 
@@ -1454,7 +1415,6 @@ textarea.form-control{
         placeholder="https://example.com">
 
     </div>
-
 
     <div id="pollField"
          class="form-group hidden">
@@ -1478,7 +1438,6 @@ textarea.form-control{
 
     </div>
 
-
     <button
       id="publishPostBtn"
       class="btn btn-primary"
@@ -1491,8 +1450,6 @@ textarea.form-control{
 
 </div>
 
-
-<!-- PROFILE MODAL -->
 <div id="profileModal" class="modal">
 
   <div class="modal-box">
@@ -1566,8 +1523,6 @@ textarea.form-control{
 
 </div>
 
-
-<!-- SHOP MODAL -->
 <div id="shopModal" class="modal">
 
   <div class="modal-box">
@@ -1621,8 +1576,6 @@ textarea.form-control{
 
 </div>
 
-
-<!-- PRODUCT MODAL -->
 <div id="productModal" class="modal">
 
   <div class="modal-box">
@@ -1697,14 +1650,9 @@ textarea.form-control{
 
 </div>
 
-
 <div id="toast"></div>
 
-
 <script>
-/* =========================================================
-   SUPABASE
-   ========================================================= */
 
 const SUPABASE_URL =
   "https://iswicrdfsqwalwisxbdm.supabase.co";
@@ -1718,11 +1666,6 @@ const supabaseClient =
     SUPABASE_KEY
   );
 
-
-/* =========================================================
-   GLOBAL STATE
-   ========================================================= */
-
 let currentUser = null;
 let currentProfile = null;
 
@@ -1732,11 +1675,6 @@ let postFilter = "all";
 let selectedPostType = "text";
 
 let mediaStream = null;
-
-
-/* =========================================================
-   HELPERS
-   ========================================================= */
 
 function showToast(message){
 
@@ -1751,16 +1689,13 @@ function showToast(message){
   },3000);
 }
 
-
 function closeModal(id){
   document.getElementById(id).classList.remove("show");
 }
 
-
 function openModal(id){
   document.getElementById(id).classList.add("show");
 }
-
 
 function escapeHtml(value){
 
@@ -1776,7 +1711,6 @@ function escapeHtml(value){
     .replace(/'/g,"&#039;");
 }
 
-
 function formatDate(date){
 
   if(!date) return "";
@@ -1790,8 +1724,7 @@ function formatDate(date){
   );
 }
 
-
-function requireLogin(action){
+function requireLogin(){
 
   if(!currentUser){
 
@@ -1805,10 +1738,7 @@ function requireLogin(action){
   return true;
 }
 
-
-/* =========================================================
-   PAGE NAVIGATION
-   ========================================================= */
+/* PAGE NAVIGATION */
 
 async function showPage(page){
 
@@ -1872,13 +1802,9 @@ async function showPage(page){
   }
 }
 
-
-/* =========================================================
-   AUTH
-   ========================================================= */
+/* AUTH */
 
 let authMode = "login";
-
 
 function setAuthMode(mode){
 
@@ -1922,7 +1848,6 @@ function setAuthMode(mode){
 
   document.getElementById("authMessage").textContent="";
 }
-
 
 async function submitAuth(){
 
@@ -2007,7 +1932,6 @@ async function submitAuth(){
   }
 }
 
-
 async function logout(){
 
   await supabaseClient.auth.signOut();
@@ -2022,10 +1946,7 @@ async function logout(){
   showPage("home");
 }
 
-
-/* =========================================================
-   SESSION
-   ========================================================= */
+/* SESSION */
 
 async function checkSession(){
 
@@ -2043,7 +1964,6 @@ async function checkSession(){
 
   updateHeader();
 }
-
 
 supabaseClient.auth.onAuthStateChange(
   async (event,session)=>{
@@ -2067,10 +1987,7 @@ supabaseClient.auth.onAuthStateChange(
   }
 );
 
-
-/* =========================================================
-   HEADER
-   ========================================================= */
+/* HEADER */
 
 function updateHeader(){
 
@@ -2095,10 +2012,7 @@ function updateHeader(){
   }
 }
 
-
-/* =========================================================
-   PROFILE
-   ========================================================= */
+/* PROFILE */
 
 async function loadProfile(){
 
@@ -2156,7 +2070,6 @@ async function loadProfile(){
   updateHeader();
 }
 
-
 function openProfileModal(){
 
   if(!requireLogin()) return;
@@ -2175,7 +2088,6 @@ function openProfileModal(){
 
   openModal("profileModal");
 }
-
 
 async function saveProfile(){
 
@@ -2233,7 +2145,6 @@ async function saveProfile(){
         urlData.publicUrl;
     }
 
-
     const {error} =
       await supabaseClient
         .from("profiles")
@@ -2274,10 +2185,7 @@ async function saveProfile(){
   }
 }
 
-
-/* =========================================================
-   COMMUNITY CATEGORIES
-   ========================================================= */
+/* COMMUNITY CATEGORIES */
 
 const fallbackCategories = [
 
@@ -2347,7 +2255,6 @@ const fallbackCategories = [
 
 ];
 
-
 function getCategoryIcon(category){
 
   const map = {
@@ -2365,7 +2272,6 @@ function getCategoryIcon(category){
     map[category.slug] ||
     "🌍";
 }
-
 
 async function loadCategories(){
 
@@ -2393,7 +2299,6 @@ async function loadCategories(){
 
   fillPostCategorySelect();
 }
-
 
 function renderCategories(){
 
@@ -2436,7 +2341,6 @@ function renderCategories(){
   });
 }
 
-
 function selectCategory(id,name){
 
   selectedCategoryId =
@@ -2450,7 +2354,6 @@ function selectCategory(id,name){
 
   loadPosts("communityPosts");
 }
-
 
 function fillPostCategorySelect(){
 
@@ -2475,10 +2378,7 @@ function fillPostCategorySelect(){
   }
 }
 
-
-/* =========================================================
-   CREATE POST
-   ========================================================= */
+/* CREATE POST */
 
 function openCreatePost(){
 
@@ -2501,7 +2401,6 @@ function openCreatePost(){
 
   openModal("createPostModal");
 }
-
 
 function selectPostType(type,button){
 
@@ -2584,7 +2483,6 @@ function selectPostType(type,button){
   }
 }
 
-
 function addPollOption(){
 
   const container =
@@ -2622,10 +2520,7 @@ function addPollOption(){
   container.appendChild(wrapper);
 }
 
-
-/* =========================================================
-   MEDIA UPLOAD
-   ========================================================= */
+/* MEDIA UPLOAD */
 
 async function uploadCommunityMedia(file){
 
@@ -2661,10 +2556,7 @@ async function uploadCommunityMedia(file){
   };
 }
 
-
-/* =========================================================
-   CREATE POST
-   ========================================================= */
+/* CREATE POST */
 
 async function createPost(){
 
@@ -2709,10 +2601,11 @@ async function createPost(){
         );
       }
 
+      button.textContent="Uploading...";
+
       media =
         await uploadCommunityMedia(file);
     }
-
 
     if(selectedPostType === "link" && !linkUrl){
 
@@ -2721,6 +2614,7 @@ async function createPost(){
       );
     }
 
+    let pollOptions = [];
 
     if(selectedPostType === "poll"){
 
@@ -2733,7 +2627,7 @@ async function createPost(){
           ".poll-option-field"
         );
 
-      const options =
+      pollOptions =
         Array.from(optionFields)
           .map(input=>input.value.trim())
           .filter(Boolean);
@@ -2745,7 +2639,7 @@ async function createPost(){
         );
       }
 
-      if(options.length < 2){
+      if(pollOptions.length < 2){
 
         throw new Error(
           "A poll needs at least two options."
@@ -2755,10 +2649,15 @@ async function createPost(){
       content = question;
     }
 
+    /*
+      IMPORTANT:
+      The real posts table uses user_id,
+      not author_id.
+    */
 
     const insertData = {
 
-      author_id:currentUser.id,
+      user_id:currentUser.id,
 
       category_id:categoryId,
 
@@ -2783,6 +2682,7 @@ async function createPost(){
 
     };
 
+    button.textContent="Saving post...";
 
     const {data:post,error} =
       await supabaseClient
@@ -2791,41 +2691,44 @@ async function createPost(){
         .select("id")
         .single();
 
-    if(error) throw error;
+    if(error){
 
+      console.error(
+        "ZEEPY POST INSERT ERROR:",
+        error
+      );
+
+      throw error;
+    }
 
     if(selectedPostType === "poll"){
 
-      const optionFields =
-        document.querySelectorAll(
-          ".poll-option-field"
+      const rows =
+        pollOptions.map((option,index)=>({
+
+          post_id:post.id,
+
+          option_text:option,
+
+          sort_order:index
+
+        }));
+
+      const {error:pollError} =
+        await supabaseClient
+          .from("post_poll_options")
+          .insert(rows);
+
+      if(pollError){
+
+        console.error(
+          "ZEEPY POLL ERROR:",
+          pollError
         );
 
-      const rows =
-        Array.from(optionFields)
-          .map((input,index)=>({
-
-            post_id:post.id,
-
-            option_text:
-              input.value.trim(),
-
-            sort_order:index
-
-          }))
-          .filter(row=>row.option_text);
-
-      if(rows.length){
-
-        const {error:pollError} =
-          await supabaseClient
-            .from("post_poll_options")
-            .insert(rows);
-
-        if(pollError) throw pollError;
+        throw pollError;
       }
     }
-
 
     closeModal("createPostModal");
 
@@ -2838,7 +2741,10 @@ async function createPost(){
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "ZEEPY CREATE POST ERROR:",
+      error
+    );
 
     showToast(
       error.message ||
@@ -2852,10 +2758,7 @@ async function createPost(){
   }
 }
 
-
-/* =========================================================
-   LOAD POSTS
-   ========================================================= */
+/* LOAD POSTS */
 
 async function loadPosts(containerId){
 
@@ -2869,7 +2772,7 @@ async function loadPosts(containerId){
       .from("posts")
       .select(`
         id,
-        author_id,
+        user_id,
         category_id,
         content,
         created_at,
@@ -2879,7 +2782,7 @@ async function loadPosts(containerId){
         media_name,
         file_size,
         link_url,
-        profiles:author_id (
+        profiles:user_id (
           id,
           display_name,
           username,
@@ -2894,7 +2797,6 @@ async function loadPosts(containerId){
       .order("created_at",{ascending:false})
       .limit(50);
 
-
   if(selectedCategoryId){
 
     query =
@@ -2903,7 +2805,6 @@ async function loadPosts(containerId){
         selectedCategoryId
       );
   }
-
 
   if(postFilter !== "all" &&
      containerId === "communityPosts"){
@@ -2915,10 +2816,8 @@ async function loadPosts(containerId){
       );
   }
 
-
   const {data,error} =
     await query;
-
 
   if(error){
 
@@ -2937,7 +2836,6 @@ async function loadPosts(containerId){
     return;
   }
 
-
   if(!data || !data.length){
 
     container.innerHTML = `
@@ -2953,10 +2851,8 @@ async function loadPosts(containerId){
     return;
   }
 
-
   container.innerHTML =
     data.map(renderPost).join("");
-
 
   for(const post of data){
 
@@ -2964,10 +2860,7 @@ async function loadPosts(containerId){
   }
 }
 
-
-/* =========================================================
-   POST RENDER
-   ========================================================= */
+/* POST RENDER */
 
 function renderPost(post){
 
@@ -2988,7 +2881,6 @@ function renderPost(post){
 
   let mediaHtml = "";
 
-
   if(post.post_type === "photo" &&
      post.media_url){
 
@@ -3005,7 +2897,6 @@ function renderPost(post){
 
     `;
   }
-
 
   if(post.post_type === "video" &&
      post.media_url){
@@ -3025,7 +2916,6 @@ function renderPost(post){
 
     `;
   }
-
 
   if(post.post_type === "file" &&
      post.media_url){
@@ -3068,7 +2958,6 @@ function renderPost(post){
     `;
   }
 
-
   if(post.post_type === "link" &&
      post.link_url){
 
@@ -3089,7 +2978,6 @@ function renderPost(post){
     `;
   }
 
-
   if(post.post_type === "poll"){
 
     mediaHtml = `
@@ -3104,7 +2992,6 @@ function renderPost(post){
 
     `;
   }
-
 
   return `
 
@@ -3140,7 +3027,6 @@ function renderPost(post){
 
       </div>
 
-
       ${
         post.content
           ? `<div class="post-body">
@@ -3149,16 +3035,13 @@ function renderPost(post){
           : ""
       }
 
-
       ${mediaHtml}
-
 
       <div
         class="post-stats"
         id="stats-${post.id}"
         style="margin-top:10px;color:#888;font-size:12px;">
       </div>
-
 
       <div class="post-actions">
 
@@ -3182,7 +3065,6 @@ function renderPost(post){
         </button>
 
       </div>
-
 
       <div
         id="comments-${post.id}"
@@ -3214,10 +3096,7 @@ function renderPost(post){
   `;
 }
 
-
-/* =========================================================
-   POST EXTRAS
-   ========================================================= */
+/* POST EXTRAS */
 
 async function loadPostExtras(postId){
 
@@ -3236,10 +3115,7 @@ async function loadPostExtras(postId){
   }
 }
 
-
-/* =========================================================
-   LIKES
-   ========================================================= */
+/* LIKES */
 
 async function updateLikeState(postId){
 
@@ -3293,7 +3169,6 @@ async function updateLikeState(postId){
   }
 }
 
-
 async function likePost(postId){
 
   if(!requireLogin()) return;
@@ -3316,7 +3191,6 @@ async function likePost(postId){
 
     return;
   }
-
 
   if(data){
 
@@ -3355,10 +3229,7 @@ async function likePost(postId){
   await updateLikeState(postId);
 }
 
-
-/* =========================================================
-   COMMENTS
-   ========================================================= */
+/* COMMENTS */
 
 function toggleComments(postId){
 
@@ -3377,7 +3248,6 @@ function toggleComments(postId){
   }
 }
 
-
 function commentKeydown(event,postId){
 
   if(event.key === "Enter"){
@@ -3387,7 +3257,6 @@ function commentKeydown(event,postId){
     addComment(postId);
   }
 }
-
 
 async function loadComments(postId){
 
@@ -3424,7 +3293,6 @@ async function loadComments(postId){
     return;
   }
 
-
   if(!data?.length){
 
     container.innerHTML =
@@ -3434,7 +3302,6 @@ async function loadComments(postId){
 
     return;
   }
-
 
   container.innerHTML =
     data.map(comment=>`
@@ -3462,7 +3329,6 @@ async function loadComments(postId){
     `).join("");
 }
 
-
 async function updateCommentCount(postId){
 
   const {count,error} =
@@ -3487,7 +3353,6 @@ async function updateCommentCount(postId){
       `${likeText}${likeText ? " · " : ""}${count || 0} comments`;
   }
 }
-
 
 async function addComment(postId){
 
@@ -3530,10 +3395,7 @@ async function addComment(postId){
   showToast("Comment added.");
 }
 
-
-/* =========================================================
-   POLLS
-   ========================================================= */
+/* POLLS */
 
 async function loadPoll(postId){
 
@@ -3559,13 +3421,11 @@ async function loadPoll(postId){
     return;
   }
 
-
   const {data:votes} =
     await supabaseClient
       .from("post_poll_votes")
       .select("option_id,user_id")
       .eq("post_id",postId);
-
 
   const voteList =
     votes || [];
@@ -3578,10 +3438,8 @@ async function loadPoll(postId){
         )
       : null;
 
-
   const total =
     voteList.length;
-
 
   container.innerHTML = `
 
@@ -3642,7 +3500,6 @@ async function loadPoll(postId){
   `;
 }
 
-
 async function votePoll(postId,optionId){
 
   if(!requireLogin()) return;
@@ -3661,7 +3518,6 @@ async function votePoll(postId,optionId){
 
     return;
   }
-
 
   const {error} =
     await supabaseClient
@@ -3684,10 +3540,7 @@ async function votePoll(postId,optionId){
   showToast("Vote recorded.");
 }
 
-
-/* =========================================================
-   SHARE
-   ========================================================= */
+/* SHARE */
 
 async function sharePost(postId){
 
@@ -3703,7 +3556,6 @@ async function sharePost(postId){
     url
 
   };
-
 
   try{
 
@@ -3725,10 +3577,7 @@ async function sharePost(postId){
   }
 }
 
-
-/* =========================================================
-   FILTER
-   ========================================================= */
+/* FILTER */
 
 function setPostFilter(filter,button){
 
@@ -3745,10 +3594,7 @@ function setPostFilter(filter,button){
   loadPosts("communityPosts");
 }
 
-
-/* =========================================================
-   PRODUCTS
-   ========================================================= */
+/* PRODUCTS */
 
 async function loadProducts(){
 
@@ -3772,7 +3618,6 @@ async function loadProducts(){
     return;
   }
 
-
   if(!data?.length){
 
     container.innerHTML =
@@ -3780,7 +3625,6 @@ async function loadProducts(){
 
     return;
   }
-
 
   container.innerHTML =
     data.map(product=>`
@@ -3816,14 +3660,12 @@ async function loadProducts(){
     `).join("");
 }
 
-
 function openProductModal(){
 
   if(!requireLogin()) return;
 
   openModal("productModal");
 }
-
 
 async function createProduct(){
 
@@ -3854,7 +3696,6 @@ async function createProduct(){
     return;
   }
 
-
   const {error} =
     await supabaseClient
       .from("products")
@@ -3881,14 +3722,12 @@ async function createProduct(){
     return;
   }
 
-
   closeModal("productModal");
 
   showToast("Product published.");
 
   await loadProducts();
 }
-
 
 function messageSeller(sellerId){
 
@@ -3904,10 +3743,7 @@ function messageSeller(sellerId){
   openChatWith(sellerId);
 }
 
-
-/* =========================================================
-   SHOPS
-   ========================================================= */
+/* SHOPS */
 
 function openShopModal(){
 
@@ -3915,7 +3751,6 @@ function openShopModal(){
 
   openModal("shopModal");
 }
-
 
 async function createShop(){
 
@@ -3940,7 +3775,6 @@ async function createShop(){
     return;
   }
 
-
   const {error} =
     await supabaseClient
       .from("shops")
@@ -3956,7 +3790,6 @@ async function createShop(){
 
       });
 
-
   if(error){
 
     console.error(error);
@@ -3966,16 +3799,12 @@ async function createShop(){
     return;
   }
 
-
   closeModal("shopModal");
 
   showToast("Shop created successfully.");
 }
 
-
-/* =========================================================
-   PEOPLE
-   ========================================================= */
+/* PEOPLE */
 
 async function searchPeople(){
 
@@ -3990,7 +3819,6 @@ async function searchPeople(){
   const search =
     input?.value.trim() || "";
 
-
   let query =
     supabaseClient
       .from("profiles")
@@ -4003,7 +3831,6 @@ async function searchPeople(){
       `)
       .limit(30);
 
-
   if(search){
 
     query =
@@ -4013,10 +3840,8 @@ async function searchPeople(){
 
   }
 
-
   const {data,error} =
     await query;
-
 
   if(error){
 
@@ -4026,7 +3851,6 @@ async function searchPeople(){
     return;
   }
 
-
   if(!data?.length){
 
     container.innerHTML =
@@ -4034,7 +3858,6 @@ async function searchPeople(){
 
     return;
   }
-
 
   container.innerHTML =
     data.map(person=>`
@@ -4093,10 +3916,7 @@ async function searchPeople(){
     `).join("");
 }
 
-
-/* =========================================================
-   MESSAGES
-   ========================================================= */
+/* MESSAGES */
 
 async function loadMessages(){
 
@@ -4112,7 +3932,6 @@ async function loadMessages(){
 
     return;
   }
-
 
   const {data,error} =
     await supabaseClient
@@ -4131,7 +3950,6 @@ async function loadMessages(){
       .order("created_at",{ascending:false})
       .limit(50);
 
-
   if(error){
 
     console.error(error);
@@ -4141,7 +3959,6 @@ async function loadMessages(){
 
     return;
   }
-
 
   if(!data?.length){
 
@@ -4154,7 +3971,6 @@ async function loadMessages(){
 
     return;
   }
-
 
   container.innerHTML =
     data.map(message=>`
@@ -4177,7 +3993,6 @@ async function loadMessages(){
     `).join("");
 }
 
-
 function openChatWith(userId){
 
   if(!requireLogin()) return;
@@ -4196,10 +4011,7 @@ function openChatWith(userId){
   showPage("messages");
 }
 
-
-/* =========================================================
-   NOTIFICATIONS
-   ========================================================= */
+/* NOTIFICATIONS */
 
 async function loadNotifications(){
 
@@ -4218,7 +4030,6 @@ async function loadNotifications(){
     return;
   }
 
-
   const {data,error} =
     await supabaseClient
       .from("notifications")
@@ -4226,7 +4037,6 @@ async function loadNotifications(){
       .eq("user_id",currentUser.id)
       .order("created_at",{ascending:false})
       .limit(50);
-
 
   if(error){
 
@@ -4236,7 +4046,6 @@ async function loadNotifications(){
     return;
   }
 
-
   if(!data?.length){
 
     container.innerHTML =
@@ -4244,7 +4053,6 @@ async function loadNotifications(){
 
     return;
   }
-
 
   container.innerHTML =
     data.map(item=>`
@@ -4270,10 +4078,7 @@ async function loadNotifications(){
     `).join("");
 }
 
-
-/* =========================================================
-   WALLET
-   ========================================================= */
+/* WALLET */
 
 async function loadWallet(){
 
@@ -4292,14 +4097,12 @@ async function loadWallet(){
     return;
   }
 
-
   const {data,error} =
     await supabaseClient
       .from("wallets")
       .select("balance")
       .eq("user_id",currentUser.id)
       .maybeSingle();
-
 
   if(error){
 
@@ -4308,15 +4111,11 @@ async function loadWallet(){
     return;
   }
 
-
   balance.textContent =
     `GH₵ ${Number(data?.balance || 0).toFixed(2)}`;
 }
 
-
-/* =========================================================
-   LIVE CAMERA PREVIEW
-   ========================================================= */
+/* LIVE CAMERA PREVIEW */
 
 async function startLivePreview(){
 
@@ -4350,7 +4149,6 @@ async function startLivePreview(){
   }
 }
 
-
 function stopLivePreview(){
 
   if(mediaStream){
@@ -4372,10 +4170,7 @@ function stopLivePreview(){
   showToast("Live preview stopped.");
 }
 
-
-/* =========================================================
-   SEARCH
-   ========================================================= */
+/* SEARCH */
 
 function handleGlobalSearch(event){
 
@@ -4396,10 +4191,7 @@ function handleGlobalSearch(event){
   searchPeople();
 }
 
-
-/* =========================================================
-   FILE SIZE
-   ========================================================= */
+/* FILE SIZE */
 
 function formatFileSize(bytes){
 
@@ -4421,10 +4213,7 @@ function formatFileSize(bytes){
   return `${size.toFixed(index ? 1 : 0)} ${units[index]}`;
 }
 
-
-/* =========================================================
-   INITIALIZE
-   ========================================================= */
+/* INITIALIZE */
 
 async function initialize(){
 
@@ -4442,7 +4231,6 @@ async function initialize(){
 
   }
 }
-
 
 initialize();
 
