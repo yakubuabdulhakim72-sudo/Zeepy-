@@ -2,14 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#ff6a00">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
 <title>ZEEPY — Your Community. Your World.</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
 :root{
   --orange:#ff6a00;
   --orange2:#ff8a00;
@@ -17,7 +25,7 @@
   --card:#151515;
   --card2:#1d1d1d;
   --card3:#232323;
-  --text:#fff;
+  --text:#ffffff;
   --muted:#a8a8a8;
   --border:#303030;
   --danger:#ef4444;
@@ -26,20 +34,19 @@
   --max:1500px;
 }
 
-*{
-  box-sizing:border-box;
-}
-
 html{
-  scroll-behavior:smooth;
+  width:100%;
+  min-height:100%;
+  overflow-x:hidden;
 }
 
 body{
-  margin:0;
+  width:100%;
+  min-height:100vh;
   background:var(--bg);
   color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
-  min-height:100vh;
+  overflow-x:hidden;
 }
 
 button,
@@ -53,7 +60,8 @@ button{
   cursor:pointer;
 }
 
-img{
+img,
+video{
   max-width:100%;
 }
 
@@ -62,30 +70,33 @@ a{
   text-decoration:none;
 }
 
-.app{
-  min-height:100vh;
-}
+/* =========================
+   HEADER
+========================= */
 
-.topbar{
+.header{
   position:sticky;
   top:0;
-  z-index:100;
-  background:#0d0d0df2;
-  backdrop-filter:blur(15px);
+  z-index:1000;
+  width:100%;
+  background:rgba(8,8,8,.96);
   border-bottom:1px solid var(--border);
+  backdrop-filter:blur(15px);
 }
 
-.topbar-inner{
-  width:min(var(--max),100%);
+.header-inner{
+  width:100%;
+  max-width:var(--max);
   margin:auto;
   min-height:68px;
+  padding:10px 18px;
   display:flex;
   align-items:center;
   gap:14px;
-  padding:10px 18px;
 }
 
 .logo{
+  flex:0 0 auto;
   font-size:25px;
   font-weight:900;
   letter-spacing:-1px;
@@ -98,76 +109,451 @@ a{
 
 .search-wrap{
   flex:1;
-  max-width:600px;
-  position:relative;
+  min-width:120px;
+  max-width:650px;
   margin:auto;
+  position:relative;
 }
 
-.search-wrap input{
+.search-input{
   width:100%;
-  height:42px;
+  height:43px;
   border:1px solid var(--border);
-  border-radius:24px;
-  background:#151515;
+  background:#111;
   color:#fff;
-  padding:0 45px 0 17px;
+  border-radius:24px;
+  padding:0 18px;
   outline:none;
 }
 
-.search-wrap input:focus{
+.search-input:focus{
   border-color:var(--orange);
 }
 
-.search-icon{
-  position:absolute;
-  right:15px;
-  top:50%;
-  transform:translateY(-50%);
-  color:var(--muted);
-}
-
-.top-actions{
+.header-actions{
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:7px;
 }
 
 .icon-btn{
-  width:40px;
-  height:40px;
-  border:1px solid var(--border);
-  background:var(--card);
-  color:#fff;
+  width:42px;
+  height:42px;
   border-radius:50%;
+  border:1px solid var(--border);
+  background:#141414;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
 }
 
 .icon-btn:hover{
   border-color:var(--orange);
 }
 
-.user-mini{
+.profile-head-btn{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  overflow:hidden;
+  border:2px solid var(--orange);
+  background:#1b1b1b;
+  color:#fff;
   display:flex;
   align-items:center;
-  gap:8px;
+  justify-content:center;
+  font-weight:800;
+}
+
+.profile-head-btn img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* =========================
+   APP LAYOUT
+========================= */
+
+.app{
+  width:100%;
+  max-width:var(--max);
+  margin:auto;
+  padding:22px 18px 100px;
+}
+
+.page{
+  display:none;
+  width:100%;
+  animation:fadeIn .18s ease;
+}
+
+.page.active{
+  display:block;
+}
+
+@keyframes fadeIn{
+  from{opacity:.3;transform:translateY(4px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  width:100%;
   border:1px solid var(--border);
-  background:var(--card);
-  padding:5px 9px 5px 5px;
   border-radius:24px;
+  background:
+    radial-gradient(circle at top right,rgba(255,106,0,.25),transparent 38%),
+    linear-gradient(135deg,#151515,#0d0d0d);
+  padding:clamp(25px,5vw,55px);
+  margin-bottom:22px;
+}
+
+.hero h1{
+  font-size:clamp(30px,5vw,60px);
+  line-height:1.05;
+  margin-bottom:14px;
+}
+
+.hero h1 span{
+  color:var(--orange);
+}
+
+.hero p{
+  color:#c8c8c8;
+  font-size:clamp(15px,2vw,19px);
+  max-width:750px;
+  line-height:1.6;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:22px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+  min-height:42px;
+  border:none;
+  border-radius:12px;
+  padding:10px 17px;
+  background:var(--orange);
   color:#fff;
+  font-weight:800;
+}
+
+.btn:hover{
+  background:var(--orange2);
+}
+
+.btn.secondary{
+  background:#242424;
+  border:1px solid var(--border);
+}
+
+.btn.secondary:hover{
+  border-color:var(--orange);
+}
+
+.btn.danger{
+  background:var(--danger);
+}
+
+.btn.success{
+  background:var(--success);
+}
+
+.btn.small{
+  min-height:36px;
+  padding:7px 12px;
+  font-size:13px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+  margin:24px 0;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:13px;
+}
+
+.section-head h2{
+  font-size:clamp(20px,3vw,28px);
+}
+
+.section-head p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.grid{
+  display:grid;
+  gap:14px;
+}
+
+.community-grid{
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+}
+
+.market-grid{
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+}
+
+.feature-grid{
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+}
+
+.two-col{
+  display:grid;
+  grid-template-columns:minmax(0,1.7fr) minmax(280px,.8fr);
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:17px;
+}
+
+.card:hover{
+  border-color:#444;
+}
+
+.community-card{
+  min-height:150px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.community-icon{
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  background:rgba(255,106,0,.12);
+  border:1px solid rgba(255,106,0,.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+}
+
+.community-card h3{
+  margin-bottom:5px;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+/* =========================
+   COMMUNITY PLATFORM
+========================= */
+
+.community-hero{
+  background:
+    linear-gradient(135deg,rgba(255,106,0,.15),rgba(255,106,0,.02)),
+    var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:28px;
+  margin-bottom:18px;
+}
+
+.community-hero-top{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.big-community-icon{
+  width:65px;
+  height:65px;
+  border-radius:19px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--orange);
+  font-size:31px;
+  flex:0 0 auto;
+}
+
+.community-hero h1{
+  font-size:clamp(28px,4vw,44px);
+}
+
+.community-hero p{
+  color:var(--muted);
+  margin-top:7px;
+  line-height:1.5;
+}
+
+.platform-tabs{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding-bottom:4px;
+  margin-bottom:18px;
+  scrollbar-width:none;
+}
+
+.platform-tabs::-webkit-scrollbar{
+  display:none;
+}
+
+.platform-tab{
+  flex:0 0 auto;
+  border:1px solid var(--border);
+  background:#151515;
+  color:#ddd;
+  border-radius:12px;
+  padding:10px 14px;
+}
+
+.platform-tab.active,
+.platform-tab:hover{
+  background:var(--orange);
+  color:#fff;
+  border-color:var(--orange);
+}
+
+/* =========================
+   EDUCATION
+========================= */
+
+.education-banner{
+  border-radius:22px;
+  padding:28px;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(255,106,0,.3),transparent 35%),
+    #151515;
+  border:1px solid var(--border);
+}
+
+.education-banner h1{
+  font-size:clamp(28px,5vw,48px);
+}
+
+.education-banner p{
+  color:#bbb;
+  margin-top:10px;
+  line-height:1.6;
+  max-width:800px;
+}
+
+.education-sections{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+  margin-top:18px;
+}
+
+.edu-card{
+  min-height:150px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:18px;
+  cursor:pointer;
+}
+
+.edu-card:hover{
+  border-color:var(--orange);
+  transform:translateY(-2px);
+}
+
+.edu-icon{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.edu-card h3{
+  margin-bottom:7px;
+}
+
+.edu-card p{
+  color:var(--muted);
+  line-height:1.4;
+  font-size:14px;
+}
+
+/* =========================
+   POSTS
+========================= */
+
+.feed-filters{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  margin-bottom:15px;
+  scrollbar-width:none;
+}
+
+.feed-filters::-webkit-scrollbar{
+  display:none;
+}
+
+.filter-btn{
+  flex:0 0 auto;
+  background:#171717;
+  color:#ddd;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:8px 14px;
+}
+
+.filter-btn.active{
+  background:var(--orange);
+  border-color:var(--orange);
+}
+
+.post{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:17px;
+  margin-bottom:14px;
+}
+
+.post-head{
+  display:flex;
+  gap:11px;
+  align-items:center;
+  margin-bottom:13px;
 }
 
 .avatar{
-  width:42px;
-  height:42px;
-  min-width:42px;
+  width:43px;
+  height:43px;
   border-radius:50%;
   overflow:hidden;
-  background:linear-gradient(135deg,var(--orange),#ffb000);
+  background:#2b2b2b;
   display:flex;
   align-items:center;
   justify-content:center;
   color:#fff;
   font-weight:800;
+  flex:0 0 auto;
 }
 
 .avatar img{
@@ -176,263 +562,378 @@ a{
   object-fit:cover;
 }
 
-.page{
-  display:none;
-  width:min(var(--max),100%);
-  margin:auto;
-  padding:24px 18px 110px;
+.post-name{
+  font-weight:800;
 }
 
-.page.active{
-  display:block;
-}
-
-.hero{
-  background:
-    radial-gradient(circle at top right,#ff6a0033,transparent 40%),
-    linear-gradient(135deg,#171717,#0e0e0e);
-  border:1px solid var(--border);
-  border-radius:24px;
-  padding:32px;
-  margin-bottom:22px;
-}
-
-.hero h1{
-  margin:0;
-  font-size:clamp(28px,5vw,52px);
-  line-height:1.05;
-}
-
-.hero p{
+.post-meta{
   color:var(--muted);
-  max-width:760px;
-  line-height:1.6;
+  font-size:12px;
+  margin-top:3px;
 }
 
-.hero-actions{
+.post-content{
+  white-space:pre-wrap;
+  line-height:1.55;
+  color:#eee;
+  margin-bottom:13px;
+}
+
+.post-media{
+  width:100%;
+  max-height:650px;
+  object-fit:contain;
+  background:#090909;
+  border-radius:14px;
+  margin-bottom:12px;
+}
+
+.post-actions{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
-  margin-top:20px;
+  gap:7px;
 }
 
-.btn{
-  border:0;
-  border-radius:12px;
-  background:var(--orange);
-  color:#fff;
-  padding:11px 17px;
-  font-weight:700;
-  transition:.2s;
-}
-
-.btn:hover{
-  transform:translateY(-1px);
-  filter:brightness(1.08);
-}
-
-.btn.secondary{
-  background:var(--card3);
+.post-action{
   border:1px solid var(--border);
-}
-
-.btn.danger{
-  background:var(--danger);
-}
-
-.btn.small{
+  background:#1d1d1d;
+  color:#ddd;
+  border-radius:10px;
   padding:8px 12px;
-  font-size:13px;
 }
 
-.section-head{
+/* =========================
+   MARKET
+========================= */
+
+.product-card{
+  overflow:hidden;
+  padding:0;
+}
+
+.product-image{
+  width:100%;
+  aspect-ratio:1/1;
+  background:#101010;
+  object-fit:cover;
+}
+
+.product-body{
+  padding:14px;
+}
+
+.product-price{
+  color:var(--orange);
+  font-size:19px;
+  font-weight:900;
+  margin:8px 0;
+}
+
+.product-actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+/* =========================
+   PEOPLE / MESSAGES
+========================= */
+
+.person-row,
+.message-row{
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  margin:25px 0 14px;
+  gap:12px;
+  padding:13px 0;
+  border-bottom:1px solid #252525;
 }
 
-.section-head h2{
-  margin:0;
+.person-row:last-child,
+.message-row:last-child{
+  border-bottom:0;
 }
 
-.muted{
+.person-info,
+.message-info{
+  flex:1;
+  min-width:0;
+}
+
+.person-name,
+.message-name{
+  font-weight:800;
+}
+
+.person-sub,
+.message-preview{
   color:var(--muted);
+  font-size:13px;
+  margin-top:4px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
-.grid{
+.message-screen{
   display:grid;
+  grid-template-columns:300px minmax(0,1fr);
   gap:15px;
 }
 
-.community-grid{
-  grid-template-columns:repeat(4,minmax(0,1fr));
+.conversations{
+  min-width:0;
 }
 
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:18px;
-}
-
-.card:hover{
-  border-color:#444;
-}
-
-.community-card{
-  min-height:145px;
-  cursor:pointer;
+.chat-window{
+  min-height:550px;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
 }
 
-.community-icon{
-  width:52px;
-  height:52px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#242424;
+.chat-header{
+  padding-bottom:12px;
+  border-bottom:1px solid var(--border);
+}
+
+.chat-body{
+  flex:1;
+  padding:15px 0;
+  overflow:auto;
+  min-height:350px;
+}
+
+.chat-bubble{
+  max-width:75%;
+  width:max-content;
+  padding:10px 13px;
   border-radius:15px;
-  font-size:28px;
+  margin-bottom:8px;
+  background:#252525;
 }
 
-.community-card h3{
-  margin:14px 0 6px;
+.chat-bubble.mine{
+  margin-left:auto;
+  background:var(--orange);
 }
 
-.community-card p{
-  margin:0;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.45;
+.chat-compose{
+  display:flex;
+  gap:8px;
+  border-top:1px solid var(--border);
+  padding-top:12px;
 }
 
-.feed{
+.chat-compose input{
+  flex:1;
+}
+
+/* =========================
+   LIVE
+========================= */
+
+.live-grid{
   display:grid;
-  gap:14px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:15px;
 }
 
-.post{
-  background:var(--card);
+.live-card{
+  background:#111;
   border:1px solid var(--border);
   border-radius:18px;
   overflow:hidden;
 }
 
-.post-head{
+.live-video{
+  width:100%;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  background:#000;
+}
+
+.live-info{
+  padding:13px;
+}
+
+.live-badge{
+  display:inline-flex;
+  padding:5px 9px;
+  border-radius:8px;
+  background:#dc2626;
+  font-size:11px;
+  font-weight:800;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-cover{
+  background:
+    linear-gradient(135deg,#1b1b1b,#0e0e0e);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:25px;
+}
+
+.profile-main{
   display:flex;
   align-items:center;
-  gap:10px;
-  padding:15px;
+  gap:18px;
 }
 
-.post-author{
-  flex:1;
-}
-
-.post-author strong{
-  display:block;
-}
-
-.post-author span{
-  color:var(--muted);
-  font-size:12px;
-}
-
-.post-body{
-  padding:0 15px 15px;
-}
-
-.post-content{
-  line-height:1.6;
-  white-space:pre-wrap;
-}
-
-.post-media{
-  width:100%;
-  max-height:600px;
-  object-fit:contain;
-  background:#050505;
-  display:block;
-}
-
-.post-actions{
-  border-top:1px solid var(--border);
+.profile-avatar{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid var(--orange);
+  background:#222;
   display:flex;
-  gap:8px;
-  padding:10px 15px;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:900;
+  flex:0 0 auto;
 }
 
-.post-action{
-  background:transparent;
+.profile-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.profile-details h1{
+  font-size:clamp(24px,4vw,36px);
+}
+
+.profile-details p{
   color:var(--muted);
-  border:0;
-  padding:7px 10px;
-  border-radius:8px;
+  margin-top:5px;
 }
 
-.post-action:hover{
-  background:var(--card3);
+/* =========================
+   FORMS
+========================= */
+
+.form-group{
+  margin-bottom:14px;
+}
+
+.form-group label{
+  display:block;
+  color:#ccc;
+  margin-bottom:6px;
+  font-size:14px;
+}
+
+.input,
+textarea,
+select{
+  width:100%;
+  min-height:44px;
+  border-radius:11px;
+  border:1px solid var(--border);
+  background:#101010;
+  color:#fff;
+  padding:10px 12px;
+  outline:none;
+}
+
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.input:focus,
+textarea:focus,
+select:focus{
+  border-color:var(--orange);
+}
+
+.form-actions{
+  display:flex;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:16px;
+}
+
+/* =========================
+   MODALS
+========================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  background:rgba(0,0,0,.76);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  overflow:auto;
+}
+
+.modal.open{
+  display:flex;
+}
+
+.modal-box{
+  width:min(620px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:#151515;
+  border:1px solid #383838;
+  border-radius:20px;
+  padding:21px;
+  box-shadow:0 25px 80px rgba(0,0,0,.6);
+}
+
+.modal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:17px;
+}
+
+.close-btn{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  background:#222;
   color:#fff;
 }
 
-.empty{
-  padding:30px;
-  text-align:center;
-  color:var(--muted);
-  background:var(--card);
-  border:1px dashed var(--border);
-  border-radius:16px;
-}
-
-.loading{
-  padding:30px;
-  text-align:center;
-  color:var(--muted);
-}
-
-.spinner{
-  width:18px;
-  height:18px;
-  border:2px solid #555;
-  border-top-color:var(--orange);
-  border-radius:50%;
-  display:inline-block;
-  animation:spin .7s linear infinite;
-  vertical-align:middle;
-  margin-right:7px;
-}
-
-@keyframes spin{
-  to{transform:rotate(360deg)}
-}
+/* =========================
+   BOTTOM NAV
+========================= */
 
 .bottom-nav{
   position:fixed;
-  z-index:120;
-  bottom:0;
+  z-index:1500;
   left:50%;
+  bottom:0;
   transform:translateX(-50%);
   width:min(650px,100%);
-  min-height:68px;
-  background:#101010f5;
-  backdrop-filter:blur(15px);
+  padding:7px max(8px,env(safe-area-inset-left)) max(7px,env(safe-area-inset-bottom));
+  background:rgba(12,12,12,.97);
   border:1px solid var(--border);
   border-bottom:0;
   border-radius:18px 18px 0 0;
   display:grid;
-  grid-template-columns:repeat(5,1fr);
-  padding:7px;
+  grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+  gap:3px;
+  backdrop-filter:blur(15px);
 }
 
 .nav-item{
   border:0;
   background:transparent;
-  color:var(--muted);
+  color:#999;
+  min-height:54px;
   border-radius:12px;
   display:flex;
   flex-direction:column;
@@ -442,468 +943,158 @@ a{
   font-size:11px;
 }
 
+.nav-item span:first-child{
+  font-size:19px;
+}
+
 .nav-item.active{
-  background:#262626;
   color:#fff;
 }
 
-.nav-item.create{
-  color:#fff;
-}
-
-.nav-item.create .nav-icon{
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  background:var(--orange);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:23px;
-  margin-top:-18px;
-  border:4px solid var(--bg);
-}
-
-.nav-icon{
-  font-size:20px;
-}
-
-.filter-row{
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding-bottom:6px;
-}
-
-.filter-btn{
-  white-space:nowrap;
-  background:var(--card);
-  color:var(--muted);
-  border:1px solid var(--border);
-  padding:9px 13px;
-  border-radius:20px;
-}
-
-.filter-btn.active{
-  background:var(--orange);
-  color:#fff;
-  border-color:var(--orange);
-}
-
-.market-grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:15px;
-}
-
-.product-card{
-  padding:0;
-  overflow:hidden;
-}
-
-.product-image{
-  width:100%;
-  height:210px;
-  object-fit:cover;
-  background:#222;
-}
-
-.product-body{
-  padding:16px;
-}
-
-.product-body h3{
-  margin:0 0 8px;
-}
-
-.product-price{
-  color:var(--orange2);
-  font-size:20px;
-  font-weight:800;
-  margin-bottom:8px;
-}
-
-.product-actions{
-  display:flex;
-  gap:8px;
-}
-
-.person-row,
-.message-row{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:12px;
-  margin-bottom:9px;
-}
-
-.person-info,
-.message-info{
-  min-width:0;
-  flex:1;
-}
-
-.person-name,
-.message-name{
-  font-weight:700;
-}
-
-.person-sub,
-.message-preview{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:3px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-.message-layout{
-  display:grid;
-  grid-template-columns:300px minmax(0,1fr);
-  min-height:600px;
-  gap:15px;
-}
-
-.conversation-panel,
-.chat-panel{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  overflow:hidden;
-}
-
-.conversation-list{
-  max-height:550px;
-  overflow-y:auto;
-  padding:10px;
-}
-
-.chat-panel{
-  display:flex;
-  flex-direction:column;
-}
-
-.chat-header{
-  padding:14px;
-  border-bottom:1px solid var(--border);
-}
-
-.chat-body{
-  flex:1;
-  min-height:450px;
-  max-height:550px;
-  overflow-y:auto;
-  padding:18px;
-}
-
-.chat-input-area{
-  display:flex;
-  gap:8px;
-  padding:12px;
-  border-top:1px solid var(--border);
-}
-
-.chat-input-area input{
-  flex:1;
-  min-width:0;
-}
-
-.chat-bubble{
-  width:fit-content;
-  max-width:min(75%,600px);
-  background:#252525;
-  padding:10px 13px;
-  border-radius:15px 15px 15px 3px;
-  margin-bottom:9px;
-  line-height:1.45;
-}
-
-.chat-bubble.mine{
-  margin-left:auto;
-  background:var(--orange);
-  border-radius:15px 15px 3px 15px;
-}
-
-.live-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:15px;
-}
-
-.live-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  overflow:hidden;
-}
-
-.live-video{
-  width:100%;
-  aspect-ratio:16/9;
-  object-fit:cover;
-  background:#050505;
-}
-
-.live-info{
-  padding:14px;
-}
-
-.live-badge{
-  display:inline-block;
-  background:#e11d48;
-  color:#fff;
-  border-radius:6px;
-  padding:4px 7px;
-  font-size:10px;
-  font-weight:800;
-}
-
-.profile-cover{
-  height:180px;
-  border-radius:20px 20px 0 0;
-  background:
-    radial-gradient(circle at 80% 20%,#ff6a0070,transparent 30%),
-    linear-gradient(135deg,#272727,#111);
-}
-
-.profile-main{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-top:0;
-  border-radius:0 0 20px 20px;
-  padding:0 22px 22px;
-}
-
-.profile-avatar{
-  width:110px;
-  height:110px;
-  margin-top:-55px;
-  border:5px solid var(--card);
-  position:relative;
-  z-index:2;
-}
-
-.profile-info{
-  margin-top:12px;
-}
-
-.profile-actions{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:15px;
-}
-
-.wallet-grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:15px;
-}
-
-.wallet-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:20px;
-}
-
-.wallet-number{
-  font-size:26px;
-  font-weight:800;
-  margin-top:10px;
-}
-
-.community-platform{
-  display:grid;
-  gap:18px;
-}
-
-.community-tools{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:12px;
-}
-
-.tool-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:18px;
-  cursor:pointer;
-}
-
-.tool-card:hover{
-  border-color:var(--orange);
-}
-
-input,
-textarea,
-select{
-  width:100%;
-  background:#101010;
-  color:#fff;
-  border:1px solid var(--border);
-  border-radius:11px;
-  padding:11px 12px;
-  outline:none;
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-  border-color:var(--orange);
-}
-
-textarea{
-  resize:vertical;
-  min-height:110px;
-}
-
-.form-group{
-  margin-bottom:13px;
-}
-
-.form-group label{
-  display:block;
-  color:var(--muted);
-  font-size:13px;
-  margin-bottom:6px;
-}
-
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:300;
-  background:#000b;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-}
-
-.modal.open{
-  display:flex;
-}
-
-.modal-box{
-  width:min(600px,100%);
-  max-height:90vh;
-  overflow-y:auto;
-  background:#151515;
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:22px;
-}
-
-.modal-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-bottom:18px;
-}
-
-.modal-head h2{
-  margin:0;
-}
-
-.close-btn{
-  width:36px;
-  height:36px;
-  border:0;
-  border-radius:50%;
-  background:#282828;
-  color:#fff;
-}
-
-.auth-switch{
-  text-align:center;
-  margin-top:15px;
-  color:var(--muted);
-}
-
-.auth-switch button{
-  border:0;
-  background:transparent;
+.nav-item.active span:first-child{
   color:var(--orange);
 }
 
+.create-nav{
+  position:relative;
+}
+
+.create-circle{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:var(--orange);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  margin-top:-20px;
+  border:4px solid var(--bg);
+}
+
+/* =========================
+   TOAST
+========================= */
+
 .toast-container{
   position:fixed;
+  z-index:5000;
+  top:82px;
   right:18px;
-  bottom:85px;
-  z-index:500;
-  display:grid;
-  gap:8px;
+  width:min(370px,calc(100% - 36px));
 }
 
 .toast{
-  max-width:350px;
-  background:#222;
-  color:#fff;
+  background:#1d1d1d;
   border:1px solid var(--border);
   border-left:4px solid var(--orange);
-  padding:12px 15px;
-  border-radius:10px;
-  box-shadow:0 10px 30px #0008;
-}
-
-.toast.success{
-  border-left-color:var(--success);
+  color:#fff;
+  padding:13px;
+  border-radius:12px;
+  margin-bottom:8px;
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
 }
 
 .toast.error{
   border-left-color:var(--danger);
 }
 
-.hidden{
-  display:none!important;
+.toast.success{
+  border-left-color:var(--success);
 }
 
-@media(max-width:1000px){
-  .community-grid{
-    grid-template-columns:repeat(3,minmax(0,1fr));
+/* =========================
+   EMPTY / LOADING
+========================= */
+
+.empty{
+  padding:35px 18px;
+  text-align:center;
+  color:var(--muted);
+  border:1px dashed #333;
+  border-radius:16px;
+}
+
+.loading{
+  padding:25px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.spinner{
+  display:inline-block;
+  width:20px;
+  height:20px;
+  border:2px solid #444;
+  border-top-color:var(--orange);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+  vertical-align:middle;
+  margin-right:7px;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media(min-width:1000px){
+
+  .bottom-nav{
+    width:auto;
+    max-width:760px;
+    left:50%;
+    border:1px solid var(--border);
+    bottom:15px;
+    border-radius:18px;
   }
 
-  .market-grid{
-    grid-template-columns:repeat(3,minmax(0,1fr));
+  .app{
+    padding-bottom:120px;
   }
 
-  .live-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .wallet-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+  .hero{
+    min-height:300px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
   }
 }
+
+/* =========================
+   TABLET
+========================= */
 
 @media(max-width:900px){
-  .message-layout{
+
+  .two-col{
     grid-template-columns:1fr;
   }
 
-  .conversation-list{
-    max-height:280px;
+  .message-screen{
+    grid-template-columns:1fr;
   }
 
-  .chat-body{
-    max-height:none;
-  }
-
-  .community-tools{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+  .conversations{
+    max-height:260px;
+    overflow:auto;
   }
 }
 
+/* =========================
+   PHONE
+========================= */
+
 @media(max-width:650px){
-  .topbar-inner{
-    padding:9px 10px;
-    gap:8px;
+
+  .header-inner{
+    min-height:61px;
+    padding:8px 10px;
+    gap:7px;
   }
 
   .logo{
@@ -911,120 +1102,162 @@ textarea{
   }
 
   .search-wrap{
-    display:none;
+    order:5;
+    flex-basis:100%;
+    max-width:none;
   }
 
-  .user-mini span{
-    display:none;
+  .header-inner{
+    flex-wrap:wrap;
   }
 
-  .page{
-    padding:15px 10px 100px;
+  .header{
+    position:sticky;
+  }
+
+  .header-actions{
+    margin-left:auto;
+  }
+
+  .icon-btn{
+    width:38px;
+    height:38px;
+  }
+
+  .profile-head-btn{
+    width:38px;
+    height:38px;
+  }
+
+  .app{
+    padding:14px 10px 95px;
   }
 
   .hero{
-    padding:22px 17px;
+    border-radius:18px;
+    padding:23px 18px;
+  }
+
+  .community-hero,
+  .education-banner{
+    padding:20px;
     border-radius:18px;
   }
 
-  .community-grid{
+  .community-hero-top{
+    align-items:flex-start;
+  }
+
+  .big-community-icon{
+    width:53px;
+    height:53px;
+    font-size:25px;
+  }
+
+  .community-grid,
+  .market-grid,
+  .feature-grid,
+  .education-sections{
     grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:10px;
+    gap:9px;
   }
 
-  .market-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:10px;
+  .card,
+  .community-card,
+  .edu-card{
+    border-radius:14px;
+    padding:13px;
   }
 
-  .product-image{
-    height:160px;
+  .community-card{
+    min-height:130px;
   }
 
-  .live-grid{
-    grid-template-columns:1fr;
+  .edu-card{
+    min-height:140px;
   }
 
-  .community-tools{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+  .section{
+    margin:18px 0;
   }
 
-  .wallet-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+  .section-head{
+    align-items:flex-start;
   }
 
-  .wallet-card{
-    padding:14px;
-  }
-
-  .profile-cover{
-    height:140px;
+  .profile-main{
+    align-items:flex-start;
   }
 
   .profile-avatar{
-    width:90px;
-    height:90px;
-    margin-top:-45px;
+    width:72px;
+    height:72px;
   }
 
   .modal{
-    padding:0;
     align-items:flex-end;
+    padding:0;
   }
 
   .modal-box{
-    max-height:92vh;
-    border-radius:20px 20px 0 0;
     width:100%;
+    max-height:94vh;
+    border-radius:20px 20px 0 0;
+    padding:18px;
   }
 
   .toast-container{
-    left:10px;
+    top:72px;
     right:10px;
-    bottom:80px;
+    width:calc(100% - 20px);
   }
 
-  .toast{
-    max-width:none;
+  .chat-bubble{
+    max-width:88%;
   }
 }
 
+/* very small phones */
 @media(max-width:390px){
+
   .community-grid,
   .market-grid,
-  .community-tools{
+  .feature-grid,
+  .education-sections{
     grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:31px;
+  }
+
+  .btn{
+    width:100%;
   }
 
   .hero-actions{
     flex-direction:column;
   }
-
-  .hero-actions .btn{
-    width:100%;
-  }
-
-  .wallet-grid{
-    grid-template-columns:1fr;
-  }
-
-  .person-row,
-  .message-row{
-    gap:8px;
-  }
-
-  .person-row .btn{
-    padding:7px 9px;
-  }
 }
 
+/* landscape phone */
 @media(max-height:500px) and (orientation:landscape){
-  .bottom-nav{
-    min-height:58px;
+
+  .modal-box{
+    max-height:96vh;
   }
 
-  .page{
-    padding-bottom:75px;
+  .bottom-nav{
+    padding-top:3px;
+  }
+
+  .nav-item{
+    min-height:43px;
+  }
+
+  .create-circle{
+    width:38px;
+    height:38px;
   }
 }
 </style>
@@ -1032,320 +1265,365 @@ textarea{
 
 <body>
 
-<div class="app">
+<header class="header">
+  <div class="header-inner">
 
-<header class="topbar">
-  <div class="topbar-inner">
-
-    <div class="logo" onclick="showPage('home')" style="cursor:pointer">
+    <div class="logo" onclick="showPage('home')">
       ZEE<span class="orange">PY</span>
     </div>
 
     <div class="search-wrap">
       <input
         id="globalSearch"
+        class="search-input"
         type="search"
-        placeholder="Search people..."
-        onkeydown="if(event.key==='Enter')globalSearch()"
+        placeholder="Search people, communities, products..."
+        onkeydown="if(event.key==='Enter') globalSearch()"
       >
-      <span class="search-icon">⌕</span>
     </div>
 
-    <div class="top-actions">
+    <div class="header-actions">
 
-      <button class="icon-btn"
-        title="People"
-        onclick="showPage('people')">
+      <button class="icon-btn" onclick="showPage('people')" title="People">
         👥
       </button>
 
-      <button class="icon-btn"
-        title="Notifications"
-        onclick="showPage('notifications')">
+      <button class="icon-btn" onclick="showPage('notifications')" title="Notifications">
         🔔
       </button>
 
-      <button class="user-mini"
-        onclick="showPage('profile')">
-
-        <div class="avatar" id="headerAvatar">
-          👤
-        </div>
-
-        <span id="headerName">Login</span>
-
+      <button class="profile-head-btn" id="headerProfileBtn" onclick="showPage('profile')" title="Profile">
+        👤
       </button>
 
     </div>
-
   </div>
 </header>
 
+<main class="app">
 
-<!-- HOME -->
-<section class="page active" id="page-home">
+<!-- ================= HOME ================= -->
+
+<section id="page-home" class="page active">
 
   <div class="hero">
-
-    <h1>WELCOME TO YOUR COMMUNITY</h1>
+    <h1>WELCOME TO YOUR <span>COMMUNITY</span></h1>
 
     <p>
-      ZEEPY brings people, communities, learning, business,
-      entertainment, communication and opportunities together
-      in one place.
+      ZEEPY brings people, communities, education, business,
+      sports, entertainment, marketplace, live experiences and
+      everyday life together in one connected world.
     </p>
 
     <div class="hero-actions">
-
-      <button class="btn"
-        onclick="openCreatePost()">
+      <button class="btn" onclick="openCreatePost()">
         ＋ Create
       </button>
 
-      <button class="btn secondary"
-        onclick="showPage('communities')">
+      <button class="btn secondary" onclick="showPage('communities')">
         Explore Communities
       </button>
 
-      <button class="btn secondary"
-        onclick="showPage('market')">
-        Marketplace
+      <button class="btn secondary" onclick="showPage('market')">
+        🛒 Marketplace
       </button>
-
     </div>
-
   </div>
 
-
-  <div class="section-head">
-    <div>
-      <h2>Your Communities</h2>
-      <div class="muted">
-        Explore the areas that matter to you.
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <h2>Communities</h2>
+        <p>Enter a community and explore its world.</p>
       </div>
+
+      <button class="btn small secondary" onclick="showPage('communities')">
+        View All
+      </button>
     </div>
 
-    <button class="btn small"
-      onclick="showPage('communities')">
-      View All
-    </button>
-  </div>
-
-  <div class="grid community-grid"
-       id="homeCategories">
-    <div class="loading">
-      <span class="spinner"></span>Loading communities...
-    </div>
-  </div>
-
-
-  <div class="section-head">
-    <div>
-      <h2>Community Feed</h2>
-      <div class="muted">
-        What's happening across ZEEPY.
+    <div id="homeCategories" class="grid community-grid">
+      <div class="loading">
+        <span class="spinner"></span>Loading communities...
       </div>
     </div>
   </div>
 
-  <div class="feed" id="homeFeed">
-    <div class="loading">
-      <span class="spinner"></span>Loading feed...
+  <div class="two-col">
+
+    <div>
+      <div class="section-head">
+        <div>
+          <h2>Community Feed</h2>
+          <p>What's happening across ZEEPY</p>
+        </div>
+      </div>
+
+      <div id="homeFeed"></div>
     </div>
+
+    <aside>
+      <div class="card">
+
+        <h3>Quick Access</h3>
+
+        <div class="grid" style="margin-top:12px">
+
+          <button class="btn secondary" onclick="showPage('education')">
+            🎓 Education
+          </button>
+
+          <button class="btn secondary" onclick="showPage('live')">
+            🔴 Live
+          </button>
+
+          <button class="btn secondary" onclick="showPage('market')">
+            🛒 Market
+          </button>
+
+          <button class="btn secondary" onclick="showPage('people')">
+            👥 People
+          </button>
+
+          <button class="btn secondary" onclick="showPage('messages')">
+            💬 Messages
+          </button>
+
+        </div>
+
+      </div>
+    </aside>
+
   </div>
 
 </section>
 
 
-<!-- COMMUNITIES -->
-<section class="page" id="page-communities">
+<!-- ================= COMMUNITIES ================= -->
 
-  <div class="hero">
+<section id="page-communities" class="page">
 
-    <h1>Communities</h1>
+  <div class="community-hero">
+    <div class="community-hero-top">
+      <div class="big-community-icon">🌍</div>
 
-    <p>
-      Every community has its own space for people,
-      discussions, resources, media and activities.
-    </p>
-
-  </div>
-
-  <div class="grid community-grid" id="allCategories">
-    <div class="loading">
-      <span class="spinner"></span>Loading communities...
+      <div>
+        <h1>Communities</h1>
+        <p>
+          Every community is a world of its own inside ZEEPY.
+        </p>
+      </div>
     </div>
   </div>
+
+  <div id="allCategories" class="grid community-grid"></div>
 
 </section>
 
 
-<!-- EDUCATION -->
-<section class="page" id="page-education">
+<!-- ================= EDUCATION ================= -->
 
-  <div class="hero">
+<section id="page-education" class="page">
+
+  <div class="education-banner">
 
     <h1>🎓 Education</h1>
 
     <p>
-      Courses, subjects, notes, questions, study groups,
-      schools, teachers, scholarships, academic discussions,
-      educational media and learning opportunities.
+      A complete academic community for students, teachers,
+      schools, institutions, researchers and everyone interested
+      in learning.
     </p>
 
     <div class="hero-actions">
 
-      <button class="btn"
-        onclick="openCreatePost('education')">
-        ＋ Create Academic Post
+      <button class="btn" onclick="openCreatePost('education')">
+        ＋ Academic Post
       </button>
 
-      <button class="btn secondary"
-        onclick="loadEducationFeed()">
-        Refresh Feed
+      <button class="btn secondary" onclick="openEducationPanel('academic-search')">
+        🔎 Academic Search
+      </button>
+
+      <button class="btn secondary" onclick="openEducationPanel('live-classes')">
+        🔴 Live Classes
       </button>
 
     </div>
 
   </div>
 
+  <div class="section">
 
-  <div class="community-tools">
-
-    <div class="tool-card"
-      onclick="openEducationPanel('courses')">
-      <h3>📚 Courses & Subjects</h3>
-      <p class="muted">Explore courses and subjects.</p>
-    </div>
-
-    <div class="tool-card"
-      onclick="openEducationPanel('materials')">
-      <h3>📄 Notes & Materials</h3>
-      <p class="muted">Study notes and learning resources.</p>
-    </div>
-
-    <div class="tool-card"
-      onclick="openEducationPanel('questions')">
-      <h3>❓ Questions & Answers</h3>
-      <p class="muted">Ask and answer academic questions.</p>
-    </div>
-
-    <div class="tool-card"
-      onclick="openEducationPanel('study-groups')">
-      <h3>👥 Study Groups</h3>
-      <p class="muted">Connect with students.</p>
-    </div>
-
-    <div class="tool-card"
-      onclick="openEducationPanel('schools')">
-      <h3>🏫 Schools & Institutions</h3>
-      <p class="muted">Schools, colleges and institutions.</p>
-    </div>
-
-    <div class="tool-card"
-      onclick="openEducationPanel('teachers')">
-      <h3>👨‍🏫 Teachers & Tutors</h3>
-      <p class="muted">Connect learners and educators.</p>
-    </div>
-
-    <div class="tool-card"
-      onclick="openEducationPanel('meetings')">
-      <h3>📅 Meetings & Events</h3>
-      <p class="muted">Academic events and seminars.</p>
-    </div>
-
-    <div class="tool-card"
-      onclick="openEducationPanel('online-meetings')">
-      <h3>💻 Online Meetings</h3>
-      <p class="muted">Online learning sessions.</p>
-    </div>
-
-    <div class="tool-card"
-      onclick="openEducationPanel('videos')">
-      <h3>🎥 Educational Videos</h3>
-      <p class="muted">Learning videos and media.</p>
-    </div>
-
-    <div class="tool-card"
-      onclick="openEducationPanel('live-classes')">
-      <h3>🔴 Live Classes</h3>
-      <p class="muted">Interactive teaching sessions.</p>
-    </div>
-
-    <div class="tool-card"
-      onclick="openEducationPanel('scholarships')">
-      <h3>🎓 Scholarships & Opportunities</h3>
-      <p class="muted">Educational opportunities.</p>
-    </div>
-
-    <div class="tool-card"
-      onclick="openEducationPanel('news')">
-      <h3>📰 Education News</h3>
-      <p class="muted">Education announcements and news.</p>
-    </div>
-
-    <div class="tool-card"
-      onclick="openEducationPanel('discussions')">
-      <h3>💬 Academic Discussions</h3>
-      <p class="muted">Discuss academic topics.</p>
-    </div>
-
-    <div class="tool-card"
-      onclick="openEducationPanel('academic-search')">
-      <h3>🔎 Academic Search</h3>
-      <p class="muted">Find academic people and content.</p>
-    </div>
-
-  </div>
-
-
-  <div class="section-head">
-    <div>
-      <h2>Education Feed</h2>
-      <div class="muted">
-        Posts from the Education community.
+    <div class="section-head">
+      <div>
+        <h2>Education Platform</h2>
+        <p>Explore everything related to academia.</p>
       </div>
     </div>
-  </div>
 
-  <div class="feed" id="educationFeed">
-    <div class="loading">
-      <span class="spinner"></span>Loading Education...
+    <div class="education-sections">
+
+      <div class="edu-card" onclick="openEducationPanel('courses')">
+        <div class="edu-icon">📚</div>
+        <h3>Courses & Subjects</h3>
+        <p>Explore courses, subjects and areas of study.</p>
+      </div>
+
+      <div class="edu-card" onclick="openEducationPanel('materials')">
+        <div class="edu-icon">📖</div>
+        <h3>Notes & Materials</h3>
+        <p>Study notes, learning materials and resources.</p>
+      </div>
+
+      <div class="edu-card" onclick="openEducationPanel('questions')">
+        <div class="edu-icon">❓</div>
+        <h3>Questions & Answers</h3>
+        <p>Ask academic questions and help other learners.</p>
+      </div>
+
+      <div class="edu-card" onclick="openEducationPanel('study-groups')">
+        <div class="edu-icon">👨‍🎓</div>
+        <h3>Study Groups</h3>
+        <p>Connect with people studying similar subjects.</p>
+      </div>
+
+      <div class="edu-card" onclick="openEducationPanel('schools')">
+        <div class="edu-icon">🏫</div>
+        <h3>Schools & Institutions</h3>
+        <p>Discover schools, colleges and institutions.</p>
+      </div>
+
+      <div class="edu-card" onclick="openEducationPanel('teachers')">
+        <div class="edu-icon">👨‍🏫</div>
+        <h3>Teachers & Tutors</h3>
+        <p>Connect learners with teachers and tutors.</p>
+      </div>
+
+      <div class="edu-card" onclick="openEducationPanel('meetings')">
+        <div class="edu-icon">📅</div>
+        <h3>Meetings & Events</h3>
+        <p>Academic meetings, events and activities.</p>
+      </div>
+
+      <div class="edu-card" onclick="openEducationPanel('online-meetings')">
+        <div class="edu-icon">💻</div>
+        <h3>Online Meetings</h3>
+        <p>Online academic sessions and discussions.</p>
+      </div>
+
+      <div class="edu-card" onclick="openEducationPanel('videos')">
+        <div class="edu-icon">🎥</div>
+        <h3>Educational Videos</h3>
+        <p>Learning videos and educational media.</p>
+      </div>
+
+      <div class="edu-card" onclick="openEducationPanel('live-classes')">
+        <div class="edu-icon">🔴</div>
+        <h3>Live Classes</h3>
+        <p>Live learning sessions and teaching.</p>
+      </div>
+
+      <div class="edu-card" onclick="openEducationPanel('scholarships')">
+        <div class="edu-icon">🎓</div>
+        <h3>Scholarships & Opportunities</h3>
+        <p>Academic opportunities, scholarships and support.</p>
+      </div>
+
+      <div class="edu-card" onclick="openEducationPanel('news')">
+        <div class="edu-icon">📰</div>
+        <h3>Education News</h3>
+        <p>Education updates and important information.</p>
+      </div>
+
+      <div class="edu-card" onclick="openEducationPanel('discussions')">
+        <div class="edu-icon">💬</div>
+        <h3>Academic Discussions</h3>
+        <p>Discuss academic issues and ideas.</p>
+      </div>
+
+      <div class="edu-card" onclick="openEducationPanel('academic-search')">
+        <div class="edu-icon">🔎</div>
+        <h3>Academic Search</h3>
+        <p>Find people, resources and academic content.</p>
+      </div>
+
     </div>
+
+  </div>
+
+  <div class="section">
+
+    <div class="section-head">
+      <div>
+        <h2>Education Feed</h2>
+        <p>Posts from the Education community.</p>
+      </div>
+    </div>
+
+    <div id="educationFeed"></div>
+
   </div>
 
 </section>
 
 
-<!-- GENERIC COMMUNITY -->
-<section class="page" id="page-community">
+<!-- ================= COMMUNITY GENERIC ================= -->
 
-  <div id="genericCommunityContent">
+<section id="page-community" class="page">
+
+  <div id="genericCommunityHeader"></div>
+
+  <div class="platform-tabs">
+    <button class="platform-tab active" onclick="communitySection('feed')">
+      Feed
+    </button>
+
+    <button class="platform-tab" onclick="communitySection('people')">
+      People
+    </button>
+
+    <button class="platform-tab" onclick="communitySection('media')">
+      Media
+    </button>
+
+    <button class="platform-tab" onclick="communitySection('events')">
+      Events
+    </button>
+
+    <button class="platform-tab" onclick="communitySection('discussions')">
+      Discussions
+    </button>
+
+    <button class="platform-tab" onclick="communitySection('live')">
+      Live
+    </button>
   </div>
+
+  <div id="genericCommunityContent"></div>
 
 </section>
 
 
-<!-- MARKET -->
-<section class="page" id="page-market">
+<!-- ================= MARKET ================= -->
 
-  <div class="hero">
+<section id="page-market" class="page">
 
-    <h1>🛒 Marketplace</h1>
+  <div class="hero" style="padding:28px">
+
+    <h1>🛒 ZEEPY <span>Marketplace</span></h1>
 
     <p>
-      Buy and sell products and connect directly with sellers.
+      Buy, sell, discover products and connect directly with sellers.
     </p>
 
     <div class="hero-actions">
 
-      <button class="btn"
-        onclick="openSellProduct()">
+      <button class="btn" onclick="openSellProduct()">
         ＋ Sell Product
       </button>
 
-      <button class="btn secondary"
-        onclick="toast('Shop management will use your shop database when available.')">
+      <button class="btn secondary" onclick="requireLogin(()=>showPage('profile'))">
         My Shop
       </button>
 
@@ -1353,176 +1631,120 @@ textarea{
 
   </div>
 
+  <div class="section">
 
-  <div class="filter-row">
+    <div class="feed-filters">
 
-    <button class="filter-btn active"
-      onclick="filterProducts('all',this)">
-      All
-    </button>
+      <button class="filter-btn active" onclick="filterProducts('all',this)">
+        All
+      </button>
 
-    <button class="filter-btn"
-      onclick="filterProducts('Phones & Tablets',this)">
-      Phones & Tablets
-    </button>
+      <button class="filter-btn" onclick="filterProducts('Phones & Tablets',this)">
+        Phones & Tablets
+      </button>
 
-    <button class="filter-btn"
-      onclick="filterProducts('Electronics',this)">
-      Electronics
-    </button>
+      <button class="filter-btn" onclick="filterProducts('Electronics',this)">
+        Electronics
+      </button>
 
-    <button class="filter-btn"
-      onclick="filterProducts('Fashion',this)">
-      Fashion
-    </button>
+      <button class="filter-btn" onclick="filterProducts('Fashion',this)">
+        Fashion
+      </button>
 
-    <button class="filter-btn"
-      onclick="filterProducts('Beauty',this)">
-      Beauty
-    </button>
+      <button class="filter-btn" onclick="filterProducts('Beauty',this)">
+        Beauty
+      </button>
 
-    <button class="filter-btn"
-      onclick="filterProducts('Vehicles',this)">
-      Vehicles
-    </button>
+      <button class="filter-btn" onclick="filterProducts('Vehicles',this)">
+        Vehicles
+      </button>
 
-    <button class="filter-btn"
-      onclick="filterProducts('Food',this)">
-      Food
-    </button>
+      <button class="filter-btn" onclick="filterProducts('Food',this)">
+        Food
+      </button>
 
-    <button class="filter-btn"
-      onclick="filterProducts('Services',this)">
-      Services
-    </button>
-
-  </div>
-
-
-  <div class="section-head">
-    <h2>Products</h2>
-  </div>
-
-  <div class="market-grid" id="marketProducts">
-    <div class="loading">
-      <span class="spinner"></span>Loading marketplace...
-    </div>
-  </div>
-
-</section>
-
-
-<!-- PEOPLE -->
-<section class="page" id="page-people">
-
-  <div class="hero">
-
-    <h1>People</h1>
-
-    <p>
-      Find people and connect with your community.
-    </p>
-
-    <div style="display:flex;gap:8px;margin-top:15px">
-
-      <input
-        id="peopleSearch"
-        placeholder="Search by name or username..."
-        onkeydown="if(event.key==='Enter')searchPeople()"
-      >
-
-      <button class="btn"
-        onclick="searchPeople()">
-        Search
+      <button class="filter-btn" onclick="filterProducts('Services',this)">
+        Services
       </button>
 
     </div>
 
-  </div>
+    <div id="marketProducts" class="grid market-grid"></div>
 
-  <div id="peopleResults">
-    <div class="empty">
-      Search for people by name or username.
-    </div>
   </div>
 
 </section>
 
 
-<!-- MESSAGES -->
-<section class="page" id="page-messages">
+<!-- ================= PEOPLE ================= -->
+
+<section id="page-people" class="page">
 
   <div class="section-head">
 
     <div>
-      <h1>Messages</h1>
-      <div class="muted">
-        Connect and chat with people on ZEEPY.
-      </div>
+      <h2>👥 People</h2>
+      <p>Find people and connect with the ZEEPY community.</p>
     </div>
-
-    <button class="btn small"
-      onclick="loadMessages()">
-      Refresh
-    </button>
 
   </div>
 
+  <div class="card">
 
-  <div class="message-layout">
+    <input
+      id="peopleSearch"
+      class="input"
+      placeholder="Search by name or username..."
+      oninput="searchPeople()"
+    >
 
-    <div class="conversation-panel">
+    <div id="peopleResults" style="margin-top:12px"></div>
 
-      <div style="padding:14px;border-bottom:1px solid var(--border)">
-        <strong>Conversations</strong>
-      </div>
+  </div>
 
-      <div class="conversation-list"
-           id="conversationList">
+</section>
 
-        <div class="loading">
-          <span class="spinner"></span>Loading messages...
-        </div>
 
-      </div>
+<!-- ================= MESSAGES ================= -->
 
+<section id="page-messages" class="page">
+
+  <div class="section-head">
+    <div>
+      <h2>💬 Messages</h2>
+      <p>Connect and communicate with people.</p>
+    </div>
+  </div>
+
+  <div class="message-screen">
+
+    <div class="card conversations">
+      <h3>Conversations</h3>
+      <div id="conversationList"></div>
     </div>
 
+    <div class="card chat-window">
 
-    <div class="chat-panel">
-
-      <div class="chat-header"
-           id="chatHeader">
-
-        <div class="empty"
-             style="border:0;background:transparent">
-          Select a conversation.
-        </div>
-
+      <div class="chat-header" id="chatHeader">
+        <strong>Select a conversation</strong>
       </div>
 
-
-      <div class="chat-body"
-           id="chatBody">
-
-        <div class="empty"
-             style="border:0;background:transparent">
-          Select a person to start chatting.
+      <div class="chat-body" id="chatBody">
+        <div class="empty">
+          Select someone from your conversations or search People.
         </div>
-
       </div>
 
-
-      <div class="chat-input-area">
+      <div class="chat-compose">
 
         <input
           id="chatInput"
+          class="input"
           placeholder="Write a message..."
-          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage()}"
+          onkeydown="if(event.key==='Enter') sendMessage()"
         >
 
-        <button class="btn"
-          onclick="sendMessage()">
+        <button class="btn" onclick="sendMessage()">
           Send
         </button>
 
@@ -1535,8 +1757,9 @@ textarea{
 </section>
 
 
-<!-- PROFILE -->
-<section class="page" id="page-profile">
+<!-- ================= PROFILE ================= -->
+
+<section id="page-profile" class="page">
 
   <div id="profileContent">
 
@@ -1549,56 +1772,63 @@ textarea{
 </section>
 
 
-<!-- NOTIFICATIONS -->
-<section class="page" id="page-notifications">
+<!-- ================= NOTIFICATIONS ================= -->
 
-  <div class="hero">
-    <h1>🔔 Notifications</h1>
-    <p>
-      Your ZEEPY notifications will appear here.
-    </p>
+<section id="page-notifications" class="page">
+
+  <div class="section-head">
+    <div>
+      <h2>🔔 Notifications</h2>
+      <p>Your ZEEPY notifications.</p>
+    </div>
   </div>
 
-  <div class="empty">
-    No notifications yet.
+  <div class="card">
+
+    <div class="empty">
+      Notifications will appear here.
+    </div>
+
   </div>
 
 </section>
 
 
-<!-- WALLET -->
-<section class="page" id="page-wallet">
+<!-- ================= WALLET ================= -->
 
-  <div class="hero">
+<section id="page-wallet" class="page">
 
-    <h1>💰 Wallet</h1>
+  <div class="hero" style="padding:28px">
+
+    <h1>💰 Your <span>Wallet</span></h1>
 
     <p>
-      Track your ZEEPY earnings and transactions.
+      Manage your ZEEPY earnings, transactions and future creator,
+      seller and referral income.
     </p>
 
   </div>
 
-  <div class="wallet-grid">
+  <div class="grid feature-grid">
 
-    <div class="wallet-card">
-      <div class="muted">Wallet Balance</div>
-      <div class="wallet-number">GH₵ 0.00</div>
+    <div class="card">
+      <div class="muted">Available Balance</div>
+      <h2 style="margin-top:8px">GH₵ 0.00</h2>
     </div>
 
-    <div class="wallet-card">
+    <div class="card">
       <div class="muted">Creator Earnings</div>
-      <div class="wallet-number">GH₵ 0.00</div>
+      <h2 style="margin-top:8px">GH₵ 0.00</h2>
     </div>
 
-    <div class="wallet-card">
+    <div class="card">
       <div class="muted">Seller Earnings</div>
-      <div class="wallet-number">GH₵ 0.00</div>
+      <h2 style="margin-top:8px">GH₵ 0.00</h2>
     </div>
 
-    <div class="wallet-card">
+    <div class="card">
       <div class="muted">Referral Earnings</div>
-      <div class="wallet-number">GH₵ 0.00</div>
+      <h2 style="margin-top:8px">GH₵ 0.00</h2>
     </div>
 
   </div>
@@ -1606,51 +1836,56 @@ textarea{
 </section>
 
 
-<!-- GROUPS -->
-<section class="page" id="page-groups">
+<!-- ================= GROUPS ================= -->
 
-  <div class="hero">
+<section id="page-groups" class="page">
 
-    <h1>👥 Groups</h1>
+  <div class="hero" style="padding:28px">
 
-    <p>
-      Create and join communities around shared interests.
-    </p>
-
-    <button class="btn"
-      onclick="toast('Group creation will be connected to the groups database when the required group fields are available.')">
-      ＋ Create Group
-    </button>
-
-  </div>
-
-  <div class="empty">
-    No groups available yet.
-  </div>
-
-</section>
-
-
-<!-- LIVE -->
-<section class="page" id="page-live">
-
-  <div class="hero">
-
-    <h1>🔴 Live</h1>
+    <h1>👥 Community <span>Groups</span></h1>
 
     <p>
-      See live activity and start a live camera session.
+      Create and join groups around interests, communities,
+      education, business, sports and everyday life.
     </p>
 
     <div class="hero-actions">
 
-      <button class="btn"
-        onclick="startLive()">
-        Start Live
+      <button class="btn" onclick="toast('Group creation will use your ZEEPY group system.')">
+        ＋ Create Group
       </button>
 
-      <button class="btn danger"
-        onclick="stopLive()">
+    </div>
+
+  </div>
+
+  <div class="empty">
+    Groups will appear here as they are created.
+  </div>
+
+</section>
+
+
+<!-- ================= LIVE ================= -->
+
+<section id="page-live" class="page">
+
+  <div class="hero" style="padding:28px">
+
+    <h1>🔴 ZEEPY <span>Live</span></h1>
+
+    <p>
+      See people who are live and share live experiences with
+      your community.
+    </p>
+
+    <div class="hero-actions">
+
+      <button class="btn" onclick="startLive()">
+        🔴 Go Live
+      </button>
+
+      <button class="btn secondary" onclick="stopLive()">
         Stop Live
       </button>
 
@@ -1658,17 +1893,67 @@ textarea{
 
   </div>
 
+  <div class="section">
+
+    <div class="section-head">
+      <div>
+        <h2>People Live Now</h2>
+        <p>Live broadcasts available to the community.</p>
+      </div>
+    </div>
+
+    <div id="liveUsers" class="live-grid"></div>
+
+  </div>
+
   <div id="myLiveArea"></div>
 
-  <div class="section-head">
-    <h2>People Live</h2>
+</section>
+
+
+<!-- ================= MEDIA ================= -->
+
+<section id="page-media" class="page">
+
+  <div class="hero" style="padding:28px">
+
+    <h1>🎥 ZEEPY <span>Media</span></h1>
+
+    <p>
+      Photos, videos and community media from across ZEEPY.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn" onclick="openCreatePost('photo')">
+        ＋ Upload Media
+      </button>
+    </div>
+
   </div>
 
-  <div class="live-grid"
-       id="liveUsers">
+  <div id="mediaFeed"></div>
 
-    <div class="loading">
-      <span class="spinner"></span>Loading live users...
+</section>
+
+
+<!-- ================= NEARBY ================= -->
+
+<section id="page-nearby" class="page">
+
+  <div class="hero" style="padding:28px">
+
+    <h1>📍 People <span>Nearby</span></h1>
+
+    <p>
+      Discover community activity and people around you.
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <div class="empty">
+      Nearby discovery will use location permissions when enabled.
     </div>
 
   </div>
@@ -1676,211 +1961,115 @@ textarea{
 </section>
 
 
-<!-- MEDIA -->
-<section class="page" id="page-media">
+<!-- ================= MEET ================= -->
 
-  <div class="hero">
+<section id="page-meet" class="page">
 
-    <h1>🎥 Media</h1>
+  <div class="hero" style="padding:28px">
+
+    <h1>🤝 ZEEPY <span>Meet</span></h1>
 
     <p>
-      Photos and videos shared by the ZEEPY community.
+      Create and discover meetings, events and community gatherings.
     </p>
 
-    <button class="btn"
-      onclick="openCreatePost('photo')">
-      ＋ Upload Media
-    </button>
+    <div class="hero-actions">
 
-  </div>
+      <button class="btn" onclick="openMeetingModal()">
+        ＋ Create Meeting
+      </button>
 
-  <div class="feed"
-       id="mediaFeed">
-
-    <div class="loading">
-      <span class="spinner"></span>Loading media...
     </div>
 
   </div>
 
-</section>
-
-
-<!-- NEARBY -->
-<section class="page" id="page-nearby">
-
-  <div class="hero">
-
-    <h1>📍 Nearby</h1>
-
-    <p>
-      Discover people, businesses, activities and community
-      opportunities around you.
-    </p>
-
-  </div>
-
   <div class="empty">
-    Nearby services will appear here when location-based
-    community data is available.
+    Meetings and events will appear here.
   </div>
 
 </section>
 
-
-<!-- MEET -->
-<section class="page" id="page-meet">
-
-  <div class="hero">
-
-    <h1>🤝 Meet</h1>
-
-    <p>
-      Create and discover meetings and community events.
-    </p>
-
-    <button class="btn"
-      onclick="openMeetingModal()">
-      ＋ Create Meeting
-    </button>
-
-  </div>
-
-  <div class="empty">
-    No meetings available yet.
-  </div>
-
-</section>
+</main>
 
 
-<!-- BOTTOM NAV -->
+<!-- ================= BOTTOM NAV ================= -->
+
 <nav class="bottom-nav">
 
-  <button class="nav-item active"
-    data-page="home"
-    onclick="showPage('home')">
-    <span class="nav-icon">⌂</span>
-    Home
+  <button class="nav-item active" data-page="home" onclick="showPage('home')">
+    <span>⌂</span>
+    <span>Home</span>
   </button>
 
-  <button class="nav-item"
-    data-page="market"
-    onclick="showPage('market')">
-    <span class="nav-icon">🛒</span>
-    Market
+  <button class="nav-item" data-page="market" onclick="showPage('market')">
+    <span>🛒</span>
+    <span>Market</span>
   </button>
 
-  <button class="nav-item create"
-    onclick="openCreatePost()">
-    <span class="nav-icon">＋</span>
-    Create
+  <button class="nav-item create-nav" onclick="openCreatePost()">
+    <span class="create-circle">＋</span>
+    <span>Create</span>
   </button>
 
-  <button class="nav-item"
-    data-page="messages"
-    onclick="showPage('messages')">
-    <span class="nav-icon">💬</span>
-    Messages
+  <button class="nav-item" data-page="messages" onclick="showPage('messages')">
+    <span>💬</span>
+    <span>Messages</span>
   </button>
 
-  <button class="nav-item"
-    data-page="profile"
-    onclick="showPage('profile')">
-    <span class="nav-icon">👤</span>
-    Profile
+  <button class="nav-item" data-page="profile" onclick="showPage('profile')">
+    <span>👤</span>
+    <span>Profile</span>
   </button>
 
 </nav>
 
 
-<!-- AUTH MODAL -->
-<div class="modal"
-     id="authModal">
+<!-- ================= AUTH MODAL ================= -->
+
+<div id="authModal" class="modal">
 
   <div class="modal-box">
 
     <div class="modal-head">
 
-      <h2 id="authTitle">Login to ZEEPY</h2>
+      <div>
+        <h2 id="authTitle">Login to ZEEPY</h2>
+        <p class="muted" id="authSubtitle">
+          Welcome back to your community.
+        </p>
+      </div>
 
-      <button class="close-btn"
-        onclick="closeModal('authModal')">
+      <button class="close-btn" onclick="closeModal('authModal')">
         ×
       </button>
 
     </div>
 
+    <div id="signupNameGroup" class="form-group" style="display:none">
+      <label>Your Name</label>
+      <input id="authName" class="input" placeholder="Enter your name">
+    </div>
 
-    <form onsubmit="submitAuth(event)">
+    <div class="form-group">
+      <label>Email</label>
+      <input id="authEmail" type="email" class="input" placeholder="you@example.com">
+    </div>
 
-      <div id="signupNameGroup"
-           class="form-group hidden">
+    <div class="form-group">
+      <label>Password</label>
+      <input id="authPassword" type="password" class="input" placeholder="Password">
+    </div>
 
-        <label>Display Name</label>
+    <div id="authError" style="display:none"></div>
 
-        <input
-          id="authName"
-          type="text"
-          placeholder="Your name"
-        >
+    <div class="form-actions">
 
-      </div>
-
-
-      <div class="form-group">
-
-        <label>Email</label>
-
-        <input
-          id="authEmail"
-          type="email"
-          required
-          autocomplete="email"
-          placeholder="you@example.com"
-        >
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>Password</label>
-
-        <input
-          id="authPassword"
-          type="password"
-          required
-          autocomplete="current-password"
-          placeholder="Password"
-        >
-
-      </div>
-
-
-      <div id="authError"
-           class="empty hidden"
-           style="padding:12px;margin-bottom:12px;color:#ff7777">
-      </div>
-
-
-      <button class="btn"
-        style="width:100%"
-        id="authSubmit">
-        Login
+      <button class="btn secondary" onclick="toggleAuthMode()">
+        <span id="authToggleText">Create Account</span>
       </button>
 
-    </form>
-
-
-    <div class="auth-switch">
-
-      <span id="authSwitchText">
-        Don't have an account?
-      </span>
-
-      <button onclick="toggleAuthMode()"
-        id="authSwitchButton">
-        Sign Up
+      <button class="btn" id="authSubmitBtn" onclick="submitAuth()">
+        Login
       </button>
 
     </div>
@@ -1890,39 +2079,37 @@ textarea{
 </div>
 
 
-<!-- CREATE POST MODAL -->
-<div class="modal"
-     id="postModal">
+<!-- ================= CREATE POST MODAL ================= -->
+
+<div id="postModal" class="modal">
 
   <div class="modal-box">
 
     <div class="modal-head">
 
-      <h2>Create Post</h2>
+      <div>
+        <h2>Create Post</h2>
+        <p class="muted">Share something with your community.</p>
+      </div>
 
-      <button class="close-btn"
-        onclick="closeModal('postModal')">
+      <button class="close-btn" onclick="closeModal('postModal')">
         ×
       </button>
 
     </div>
 
-
     <div class="form-group">
-
       <label>Community</label>
 
-      <select id="postCategory">
-      </select>
+      <select id="postCategory" class="input"></select>
 
     </div>
-
 
     <div class="form-group">
 
       <label>Post Type</label>
 
-      <select id="postType">
+      <select id="postType" class="input">
 
         <option value="text">Text</option>
         <option value="photo">Photo</option>
@@ -1934,18 +2121,16 @@ textarea{
 
     </div>
 
-
     <div class="form-group">
 
-      <label>Content</label>
+      <label>What's happening?</label>
 
       <textarea
         id="postContent"
-        placeholder="Share something with your community..."
+        placeholder="Write something..."
       ></textarea>
 
     </div>
-
 
     <div class="form-group">
 
@@ -1954,10 +2139,11 @@ textarea{
       <input
         id="postFile"
         type="file"
+        class="input"
+        accept="image/*,video/*,.pdf,.doc,.docx,.txt"
       >
 
     </div>
-
 
     <div class="form-group">
 
@@ -1965,27 +2151,32 @@ textarea{
 
       <input
         id="postLink"
-        type="url"
+        class="input"
         placeholder="https://..."
       >
 
     </div>
 
+    <div class="form-actions">
 
-    <button class="btn"
-      style="width:100%"
-      onclick="createPost()">
-      Publish Post
-    </button>
+      <button class="btn secondary" onclick="closeModal('postModal')">
+        Cancel
+      </button>
+
+      <button class="btn" onclick="createPost()">
+        Publish
+      </button>
+
+    </div>
 
   </div>
 
 </div>
 
 
-<!-- PROFILE EDIT MODAL -->
-<div class="modal"
-     id="profileModal">
+<!-- ================= PROFILE EDIT MODAL ================= -->
+
+<div id="profileModal" class="modal">
 
   <div class="modal-box">
 
@@ -1993,98 +2184,77 @@ textarea{
 
       <h2>Edit Profile</h2>
 
-      <button class="close-btn"
-        onclick="closeModal('profileModal')">
+      <button class="close-btn" onclick="closeModal('profileModal')">
         ×
       </button>
 
     </div>
 
-
     <div class="form-group">
-
       <label>Display Name</label>
-
-      <input id="profileName">
-
+      <input id="profileName" class="input">
     </div>
 
-
     <div class="form-group">
-
       <label>Username</label>
-
-      <input id="profileUsername">
-
+      <input id="profileUsername" class="input">
     </div>
 
-
     <div class="form-group">
-
       <label>Bio</label>
-
       <textarea id="profileBio"></textarea>
-
     </div>
-
 
     <div class="form-group">
-
       <label>Profile Photo</label>
-
-      <input
-        id="profileAvatar"
-        type="file"
-        accept="image/*"
-      >
-
+      <input id="profileAvatar" type="file" class="input" accept="image/*">
     </div>
 
+    <div class="form-actions">
 
-    <button class="btn"
-      style="width:100%"
-      onclick="saveProfile()">
-      Save Profile
-    </button>
+      <button class="btn secondary" onclick="closeModal('profileModal')">
+        Cancel
+      </button>
+
+      <button class="btn" onclick="saveProfile()">
+        Save Profile
+      </button>
+
+    </div>
 
   </div>
 
 </div>
 
 
-<!-- PRODUCT MODAL -->
-<div class="modal"
-     id="productModal">
+<!-- ================= SELL PRODUCT MODAL ================= -->
+
+<div id="productModal" class="modal">
 
   <div class="modal-box">
 
     <div class="modal-head">
 
-      <h2>Sell Product</h2>
+      <div>
+        <h2>Sell Product</h2>
+        <p class="muted">Create a marketplace listing.</p>
+      </div>
 
-      <button class="close-btn"
-        onclick="closeModal('productModal')">
+      <button class="close-btn" onclick="closeModal('productModal')">
         ×
       </button>
 
     </div>
 
-
     <div class="form-group">
-
       <label>Product Name</label>
-
-      <input id="productName"
-        placeholder="Product name">
-
+      <input id="productName" class="input" placeholder="Product name">
     </div>
 
-
     <div class="form-group">
-
       <label>Category</label>
 
-      <select id="productCategory">
+      <select id="productCategory" class="input">
 
         <option>Phones & Tablets</option>
         <option>Electronics</option>
@@ -2098,59 +2268,41 @@ textarea{
 
     </div>
 
-
     <div class="form-group">
-
       <label>Price (GH₵)</label>
-
-      <input
-        id="productPrice"
-        type="number"
-        min="0"
-        step="0.01"
-      >
-
+      <input id="productPrice" type="number" class="input" placeholder="0">
     </div>
 
-
     <div class="form-group">
-
       <label>Description</label>
-
-      <textarea
-        id="productDescription"
-      ></textarea>
-
+      <textarea id="productDescription"></textarea>
     </div>
-
 
     <div class="form-group">
-
       <label>Product Image</label>
-
-      <input
-        id="productImage"
-        type="file"
-        accept="image/*"
-      >
-
+      <input id="productImage" type="file" class="input" accept="image/*">
     </div>
 
+    <div class="form-actions">
 
-    <button class="btn"
-      style="width:100%"
-      onclick="createProduct()">
-      Publish Product
-    </button>
+      <button class="btn secondary" onclick="closeModal('productModal')">
+        Cancel
+      </button>
+
+      <button class="btn" onclick="createProduct()">
+        Publish Product
+      </button>
+
+    </div>
 
   </div>
 
 </div>
 
 
-<!-- MEETING MODAL -->
-<div class="modal"
-     id="meetingModal">
+<!-- ================= MEETING MODAL ================= -->
+
+<div id="meetingModal" class="modal">
 
   <div class="modal-box">
 
@@ -2158,75 +2310,55 @@ textarea{
 
       <h2>Create Meeting</h2>
 
-      <button class="close-btn"
-        onclick="closeModal('meetingModal')">
+      <button class="close-btn" onclick="closeModal('meetingModal')">
         ×
       </button>
 
     </div>
 
-
     <div class="form-group">
-
-      <label>Title</label>
-
-      <input id="meetingTitle">
-
+      <label>Meeting Title</label>
+      <input id="meetingTitle" class="input">
     </div>
 
-
     <div class="form-group">
-
       <label>Description</label>
-
       <textarea id="meetingDescription"></textarea>
-
     </div>
 
-
     <div class="form-group">
-
       <label>Date</label>
-
-      <input
-        id="meetingDate"
-        type="date"
-      >
-
+      <input id="meetingDate" type="date" class="input">
     </div>
-
 
     <div class="form-group">
-
       <label>Time</label>
-
-      <input
-        id="meetingTime"
-        type="time"
-      >
-
+      <input id="meetingTime" type="time" class="input">
     </div>
 
+    <div class="form-actions">
 
-    <button class="btn"
-      style="width:100%"
-      onclick="createMeeting()">
-      Create Meeting
-    </button>
+      <button class="btn secondary" onclick="closeModal('meetingModal')">
+        Cancel
+      </button>
+
+      <button class="btn" onclick="createMeeting()">
+        Create
+      </button>
+
+    </div>
 
   </div>
 
 </div>
 
 
-<div class="toast-container"
-     id="toastContainer">
-</div>
+<div id="toastContainer" class="toast-container"></div>
 
 
 <script>
 /* =========================================================
-   SUPABASE
+   ZEEPY SUPABASE CONFIGURATION
 ========================================================= */
 
 const SUPABASE_URL =
@@ -2255,26 +2387,36 @@ const supabaseClient =
 
 let currentUser = null;
 let currentProfile = null;
+
 let categories = [];
 let selectedCategoryId = null;
 let selectedCategoryName = "";
+
 let authMode = "login";
+
 let currentChatUser = null;
 let currentChatMessages = [];
+
 let liveStream = null;
+let currentLiveId = null;
+
 let productsCache = [];
 let activeProductCategory = "all";
+
 let educationCategory = null;
-let appInitialized = false;
 
 
 /* =========================================================
-   HELPERS
+   BASIC HELPERS
 ========================================================= */
 
 function escapeHTML(value){
 
-  return String(value ?? "")
+  if(value === null || value === undefined){
+    return "";
+  }
+
+  return String(value)
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
@@ -2283,49 +2425,42 @@ function escapeHTML(value){
 }
 
 
-function initials(name){
+function formatDate(value){
 
-  const value =
-    String(name || "Z");
-
-  const parts =
-    value.trim().split(/\s+/);
-
-  if(parts.length === 1){
-    return parts[0].slice(0,2).toUpperCase();
+  if(!value){
+    return "";
   }
 
-  return (
-    parts[0][0] +
-    parts[parts.length-1][0]
-  ).toUpperCase();
+  const d = new Date(value);
+
+  if(Number.isNaN(d.getTime())){
+    return "";
+  }
+
+  return d.toLocaleString();
 }
 
 
-function formatDate(date){
+function initials(name){
 
-  if(!date){
-    return "";
+  if(!name){
+    return "U";
   }
 
-  try{
-    return new Date(date).toLocaleString();
-  }catch{
-    return "";
-  }
+  return name
+    .trim()
+    .split(/\s+/)
+    .slice(0,2)
+    .map(x=>x[0])
+    .join("")
+    .toUpperCase();
 }
 
 
 function toast(message,type=""){
 
   const container =
-    document.getElementById(
-      "toastContainer"
-    );
-
-  if(!container){
-    return;
-  }
+    document.getElementById("toastContainer");
 
   const item =
     document.createElement("div");
@@ -2340,18 +2475,7 @@ function toast(message,type=""){
 
   setTimeout(()=>{
     item.remove();
-  },4000);
-}
-
-
-function openModal(id){
-
-  const modal =
-    document.getElementById(id);
-
-  if(modal){
-    modal.classList.add("open");
-  }
+  },4500);
 }
 
 
@@ -2366,8 +2490,19 @@ function closeModal(id){
 }
 
 
+function openModal(id){
+
+  const modal =
+    document.getElementById(id);
+
+  if(modal){
+    modal.classList.add("open");
+  }
+}
+
+
 /* =========================================================
-   AUTH
+   LOGIN REQUIREMENT
 ========================================================= */
 
 function requireLogin(callback){
@@ -2377,24 +2512,78 @@ function requireLogin(callback){
     return;
   }
 
-  window.pendingAction =
-    callback;
+  toast("Please login to continue.","error");
 
   openAuth();
+
+  window.pendingAction = callback;
 }
 
 
+/* =========================================================
+   AUTH UI
+========================================================= */
+
 function openAuth(){
 
-  const error =
-    document.getElementById("authError");
+  document.getElementById("authModal")
+    .classList.add("open");
 
-  if(error){
-    error.classList.add("hidden");
-    error.textContent = "";
+  updateAuthUI();
+}
+
+
+function updateAuthUI(){
+
+  const title =
+    document.getElementById("authTitle");
+
+  const subtitle =
+    document.getElementById("authSubtitle");
+
+  const nameGroup =
+    document.getElementById("signupNameGroup");
+
+  const toggle =
+    document.getElementById("authToggleText");
+
+  const submit =
+    document.getElementById("authSubmitBtn");
+
+  if(authMode === "login"){
+
+    title.textContent =
+      "Login to ZEEPY";
+
+    subtitle.textContent =
+      "Welcome back to your community.";
+
+    nameGroup.style.display =
+      "none";
+
+    toggle.textContent =
+      "Create Account";
+
+    submit.textContent =
+      "Login";
+
+  }else{
+
+    title.textContent =
+      "Create your ZEEPY account";
+
+    subtitle.textContent =
+      "Join your community.";
+
+    nameGroup.style.display =
+      "block";
+
+    toggle.textContent =
+      "Already have an account?";
+
+    submit.textContent =
+      "Create Account";
   }
-
-  openModal("authModal");
 }
 
 
@@ -2405,132 +2594,62 @@ function toggleAuthMode(){
       ? "signup"
       : "login";
 
-  const title =
-    document.getElementById(
-      "authTitle"
-    );
+  updateAuthUI();
 
-  const submit =
-    document.getElementById(
-      "authSubmit"
-    );
-
-  const nameGroup =
-    document.getElementById(
-      "signupNameGroup"
-    );
-
-  const switchText =
-    document.getElementById(
-      "authSwitchText"
-    );
-
-  const switchButton =
-    document.getElementById(
-      "authSwitchButton"
-    );
-
-  if(authMode === "signup"){
-
-    title.textContent =
-      "Create ZEEPY Account";
-
-    submit.textContent =
-      "Sign Up";
-
-    nameGroup.classList.remove(
-      "hidden"
-    );
-
-    switchText.textContent =
-      "Already have an account?";
-
-    switchButton.textContent =
-      "Login";
-
-  }else{
-
-    title.textContent =
-      "Login to ZEEPY";
-
-    submit.textContent =
-      "Login";
-
-    nameGroup.classList.add(
-      "hidden"
-    );
-
-    switchText.textContent =
-      "Don't have an account?";
-
-    switchButton.textContent =
-      "Sign Up";
-  }
+  document.getElementById("authError")
+    .style.display = "none";
 }
 
 
-function showAuthError(message){
-
-  const box =
-    document.getElementById(
-      "authError"
-    );
-
-  if(!box){
-    return;
-  }
-
-  box.textContent =
-    message;
-
-  box.classList.remove(
-    "hidden"
-  );
-}
-
-
-async function submitAuth(event){
-
-  event.preventDefault();
+async function submitAuth(){
 
   const email =
-    document.getElementById(
-      "authEmail"
-    ).value.trim();
+    document.getElementById("authEmail")
+      .value.trim();
 
   const password =
-    document.getElementById(
-      "authPassword"
-    ).value;
+    document.getElementById("authPassword")
+      .value;
 
   const name =
-    document.getElementById(
-      "authName"
-    ).value.trim();
+    document.getElementById("authName")
+      .value.trim();
 
-  const submit =
-    document.getElementById(
-      "authSubmit"
-    );
+  const errorBox =
+    document.getElementById("authError");
+
+  const button =
+    document.getElementById("authSubmitBtn");
+
+  errorBox.style.display =
+    "none";
 
   if(!email || !password){
+
+    showAuthError(
+      "Email and password are required."
+    );
+
     return;
   }
 
-  submit.disabled = true;
-  submit.textContent =
-    authMode === "login"
-      ? "Logging in..."
-      : "Creating account...";
+  if(authMode === "signup" && !name){
+
+    showAuthError(
+      "Please enter your name."
+    );
+
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "Please wait...";
 
   try{
 
     if(authMode === "login"){
 
-      const {
-        data,
-        error
-      } =
+      const {data,error} =
         await supabaseClient.auth
           .signInWithPassword({
             email,
@@ -2539,6 +2658,12 @@ async function submitAuth(event){
 
       if(error){
         throw error;
+      }
+
+      if(!data.user){
+        throw new Error(
+          "Login did not return a user."
+        );
       }
 
       currentUser =
@@ -2553,22 +2678,31 @@ async function submitAuth(event){
         "success"
       );
 
+      if(window.pendingAction){
+
+        const action =
+          window.pendingAction;
+
+        window.pendingAction =
+          null;
+
+        setTimeout(()=>{
+          action();
+        },100);
+
+      }
+
     }else{
 
-      const {
-        data,
-        error
-      } =
+      const {data,error} =
         await supabaseClient.auth
           .signUp({
             email,
             password,
             options:{
               data:{
-                display_name:
-                  name || "ZEEPY User",
-                name:
-                  name || "ZEEPY User"
+                display_name:name,
+                name:name
               }
             }
           });
@@ -2577,7 +2711,7 @@ async function submitAuth(event){
         throw error;
       }
 
-      if(data.user){
+      if(data.session && data.user){
 
         currentUser =
           data.user;
@@ -2593,38 +2727,18 @@ async function submitAuth(event){
 
       }else{
 
+        closeModal("authModal");
+
         toast(
-          "Account created. Check your email if confirmation is enabled.",
+          "Account created. If email confirmation is enabled in Supabase, check your email before logging in.",
           "success"
         );
       }
     }
 
-    const action =
-      window.pendingAction;
-
-    window.pendingAction =
-      null;
-
-    if(action){
-      setTimeout(()=>{
-        try{
-          action();
-        }catch(error){
-          console.error(error);
-        }
-      },100);
-    }
-
-    updateHeader();
-    renderProfile();
-
   }catch(error){
 
-    console.error(
-      "Authentication error:",
-      error
-    );
+    console.error("Authentication error:",error);
 
     showAuthError(
       error.message ||
@@ -2633,19 +2747,136 @@ async function submitAuth(event){
 
   }finally{
 
-    submit.disabled = false;
+    button.disabled = false;
 
-    submit.textContent =
+    button.textContent =
       authMode === "login"
         ? "Login"
-        : "Sign Up";
+        : "Create Account";
   }
 }
 
 
+function showAuthError(message){
+
+  const box =
+    document.getElementById("authError");
+
+  box.style.display =
+    "block";
+
+  box.style.background =
+    "rgba(239,68,68,.12)";
+
+  box.style.border =
+    "1px solid rgba(239,68,68,.3)";
+
+  box.style.color =
+    "#ff8b8b";
+
+  box.style.padding =
+    "10px";
+
+  box.style.borderRadius =
+    "10px";
+
+  box.style.marginBottom =
+    "12px";
+
+  box.textContent =
+    message;
+}
+
+
 /* =========================================================
-   USER / PROFILE
+   SESSION
 ========================================================= */
+
+async function checkSession(){
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth
+        .getSession();
+
+    if(error){
+      console.error(error);
+      return;
+    }
+
+    currentUser =
+      data.session
+        ? data.session.user
+        : null;
+
+    if(currentUser){
+
+      await initializeUser();
+
+    }else{
+
+      updateHeader();
+    }
+
+  }catch(error){
+
+    console.error(
+      "Session error:",
+      error
+    );
+
+  }
+}
+
+
+supabaseClient.auth
+  .onAuthStateChange(
+    async(event,session)=>{
+
+      currentUser =
+        session
+          ? session.user
+          : null;
+
+      if(currentUser){
+
+        setTimeout(async()=>{
+          await initializeUser();
+        },0);
+
+      }else{
+
+        currentProfile =
+          null;
+
+        updateHeader();
+      }
+
+    }
+  );
+
+
+/* =========================================================
+   USER PROFILE
+========================================================= */
+
+async function initializeUser(){
+
+  if(!currentUser){
+    return;
+  }
+
+  await ensureProfile();
+
+  await loadProfile();
+
+  updateHeader();
+}
+
 
 async function ensureProfile(){
 
@@ -2666,7 +2897,11 @@ async function ensureProfile(){
         .maybeSingle();
 
     if(error){
-      throw error;
+      console.error(
+        "Profile lookup error:",
+        error
+      );
+      return null;
     }
 
     if(data){
@@ -2677,12 +2912,9 @@ async function ensureProfile(){
       return data;
     }
 
-    const metadata =
-      currentUser.user_metadata || {};
-
     const displayName =
-      metadata.display_name ||
-      metadata.name ||
+      currentUser.user_metadata?.display_name ||
+      currentUser.user_metadata?.name ||
       currentUser.email?.split("@")[0] ||
       "ZEEPY User";
 
@@ -2695,14 +2927,14 @@ async function ensureProfile(){
     const profileData = {
       id:currentUser.id,
       display_name:displayName,
-      username,
+      username:username,
       email:currentUser.email || "",
       bio:""
     };
 
     const {
-      data:newProfile,
-      error:insertError
+      data:created,
+      error:createError
     } =
       await supabaseClient
         .from("profiles")
@@ -2713,24 +2945,30 @@ async function ensureProfile(){
         .select()
         .maybeSingle();
 
-    if(insertError){
+    if(createError){
+
       console.error(
-        "Profile creation:",
-        insertError
+        "Profile creation error:",
+        createError
+      );
+
+      toast(
+        "Login worked, but your profile could not be created. Check profiles RLS.",
+        "error"
       );
 
       return null;
     }
 
     currentProfile =
-      newProfile;
+      created || profileData;
 
-    return newProfile;
+    return currentProfile;
 
   }catch(error){
 
     console.error(
-      "ensureProfile:",
+      "ensureProfile error:",
       error
     );
 
@@ -2742,8 +2980,7 @@ async function ensureProfile(){
 async function loadProfile(){
 
   if(!currentUser){
-    currentProfile = null;
-    return null;
+    return;
   }
 
   try{
@@ -2759,88 +2996,54 @@ async function loadProfile(){
         .maybeSingle();
 
     if(error){
-      throw error;
+      console.error(error);
+      return;
     }
 
     currentProfile =
-      data;
+      data || currentProfile;
 
-    return data;
+    renderProfile();
+
+    updateHeader();
 
   }catch(error){
 
-    console.error(
-      "loadProfile:",
-      error
-    );
-
-    return null;
+    console.error(error);
   }
-}
-
-
-async function initializeUser(){
-
-  if(!currentUser){
-    return;
-  }
-
-  await ensureProfile();
-  await loadProfile();
-  updateHeader();
 }
 
 
 function updateHeader(){
 
-  const avatar =
+  const button =
     document.getElementById(
-      "headerAvatar"
+      "headerProfileBtn"
     );
 
-  const name =
-    document.getElementById(
-      "headerName"
-    );
-
-  if(!avatar || !name){
+  if(!button){
     return;
   }
 
-  if(!currentUser){
+  if(
+    currentProfile &&
+    currentProfile.avatar_url
+  ){
 
-    avatar.innerHTML =
-      "👤";
-
-    name.textContent =
-      "Login";
-
-    return;
-  }
-
-  const profile =
-    currentProfile || {};
-
-  if(profile.avatar_url){
-
-    avatar.innerHTML =
+    button.innerHTML =
       `<img src="${escapeHTML(
-        profile.avatar_url
-      )}" alt="">`;
+        currentProfile.avatar_url
+      )}" alt="Profile">`;
 
   }else{
 
-    avatar.textContent =
-      initials(
-        profile.display_name ||
-        currentUser.email
-      );
+    button.textContent =
+      currentProfile
+        ? initials(
+            currentProfile.display_name
+          )
+        : "👤";
   }
-
-  name.textContent =
-    profile.display_name ||
-    currentUser.email ||
-    "Profile";
 }
 
 
@@ -2858,93 +3061,112 @@ function renderProfile(){
   if(!currentUser){
 
     container.innerHTML = `
-
       <div class="hero">
-
-        <h1>Your ZEEPY Profile</h1>
-
-        <p>
-          Login to create your profile,
-          connect with people and use ZEEPY features.
-        </p>
-
-        <button class="btn"
-          onclick="openAuth()">
-          Login
-        </button>
-
+        <h1>Your <span>Profile</span></h1>
+        <p>Login to create and manage your ZEEPY profile.</p>
+        <div class="hero-actions">
+          <button class="btn" onclick="openAuth()">Login</button>
+        </div>
       </div>
     `;
 
     return;
   }
 
-  const profile =
-    currentProfile || {};
+  const name =
+    currentProfile?.display_name ||
+    currentUser.email?.split("@")[0] ||
+    "ZEEPY User";
+
+  const username =
+    currentProfile?.username ||
+    "";
+
+  const bio =
+    currentProfile?.bio ||
+    "Welcome to my ZEEPY profile.";
+
+  const avatar =
+    currentProfile?.avatar_url;
 
   container.innerHTML = `
 
-    <div class="profile-cover"></div>
+    <div class="profile-cover">
 
-    <div class="profile-main">
+      <div class="profile-main">
 
-      <div class="avatar profile-avatar">
-
-        ${
-          profile.avatar_url
-          ? `<img src="${escapeHTML(
-              profile.avatar_url
-            )}" alt="">`
-          : initials(
-              profile.display_name ||
-              currentUser.email
-            )
-        }
-
-      </div>
-
-      <div class="profile-info">
-
-        <h1>
-          ${escapeHTML(
-            profile.display_name ||
-            "ZEEPY User"
-          )}
-        </h1>
-
-        <div class="muted">
+        <div class="profile-avatar">
 
           ${
-            profile.username
-            ? "@"+escapeHTML(
-                profile.username
-              )
-            : ""
+            avatar
+            ? `<img src="${escapeHTML(avatar)}" alt="Profile">`
+            : initials(name)
           }
 
         </div>
 
-        <p>
-          ${escapeHTML(
-            profile.bio ||
-            "Welcome to my ZEEPY profile."
-          )}
-        </p>
+        <div class="profile-details">
 
-        <div class="profile-actions">
+          <h1>${escapeHTML(name)}</h1>
 
-          <button class="btn"
-            onclick="openProfileEditor()">
-            Edit Profile
-          </button>
+          <p>
+            ${
+              username
+              ? "@"+escapeHTML(username)
+              : escapeHTML(currentUser.email || "")
+            }
+          </p>
 
-          <button class="btn secondary"
-            onclick="logout()">
-            Log out
-          </button>
+          <p style="margin-top:10px">
+            ${escapeHTML(bio)}
+          </p>
 
         </div>
 
+      </div>
+
+      <div class="hero-actions">
+
+        <button class="btn" onclick="openProfileEditor()">
+          Edit Profile
+        </button>
+
+        <button class="btn secondary" onclick="logout()">
+          Logout
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="grid feature-grid" style="margin-top:18px">
+
+      <div class="card">
+        <h3>Community</h3>
+        <p class="muted" style="margin-top:7px">
+          Your ZEEPY community activity.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Marketplace</h3>
+        <p class="muted" style="margin-top:7px">
+          Your products and shop.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Messages</h3>
+        <p class="muted" style="margin-top:7px">
+          Your conversations.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Wallet</h3>
+        <p class="muted" style="margin-top:7px">
+          Your ZEEPY earnings.
+        </p>
       </div>
 
     </div>
@@ -2955,31 +3177,22 @@ function renderProfile(){
 function openProfileEditor(){
 
   if(!currentUser){
+
     openAuth();
     return;
   }
 
-  const profile =
-    currentProfile || {};
+  document.getElementById("profileName")
+    .value =
+      currentProfile?.display_name || "";
 
-  document.getElementById(
-    "profileName"
-  ).value =
-    profile.display_name || "";
+  document.getElementById("profileUsername")
+    .value =
+      currentProfile?.username || "";
 
-  document.getElementById(
-    "profileUsername"
-  ).value =
-    profile.username || "";
-
-  document.getElementById(
-    "profileBio"
-  ).value =
-    profile.bio || "";
-
-  document.getElementById(
-    "profileAvatar"
-  ).value = "";
+  document.getElementById("profileBio")
+    .value =
+      currentProfile?.bio || "";
 
   openModal("profileModal");
 }
@@ -2988,44 +3201,49 @@ function openProfileEditor(){
 async function saveProfile(){
 
   if(!currentUser){
+
     openAuth();
     return;
   }
 
-  const display_name =
-    document.getElementById(
-      "profileName"
-    ).value.trim();
+  const name =
+    document.getElementById("profileName")
+      .value.trim();
 
   const username =
-    document.getElementById(
-      "profileUsername"
-    ).value.trim();
+    document.getElementById("profileUsername")
+      .value.trim();
 
   const bio =
-    document.getElementById(
-      "profileBio"
-    ).value.trim();
+    document.getElementById("profileBio")
+      .value.trim();
 
   const file =
-    document.getElementById(
-      "profileAvatar"
-    ).files[0];
+    document.getElementById("profileAvatar")
+      .files[0];
+
+  if(!name){
+
+    toast(
+      "Display name is required.",
+      "error"
+    );
+
+    return;
+  }
 
   try{
 
-    let avatar_url =
-      currentProfile?.avatar_url ||
-      null;
+    let avatarUrl =
+      currentProfile?.avatar_url || null;
 
     if(file){
 
       const safeName =
-        file.name
-          .replace(
-            /[^a-zA-Z0-9._-]/g,
-            "_"
-          );
+        file.name.replace(
+          /[^a-zA-Z0-9._-]/g,
+          "_"
+        );
 
       const path =
         currentUser.id +
@@ -3037,7 +3255,8 @@ async function saveProfile(){
       const {
         error:uploadError
       } =
-        await supabaseClient.storage
+        await supabaseClient
+          .storage
           .from("avatars")
           .upload(
             path,
@@ -3052,16 +3271,25 @@ async function saveProfile(){
       }
 
       const {
-        data:publicData
+        data:urlData
       } =
-        supabaseClient.storage
+        supabaseClient
+          .storage
           .from("avatars")
           .getPublicUrl(path);
 
-      avatar_url =
-        publicData?.publicUrl ||
-        avatar_url;
+      avatarUrl =
+        urlData.publicUrl;
     }
+
+    const profileData = {
+      id:currentUser.id,
+      display_name:name,
+      username:username || null,
+      bio:bio || "",
+      email:currentUser.email || "",
+      avatar_url:avatarUrl
+    };
 
     const {
       data,
@@ -3070,17 +3298,8 @@ async function saveProfile(){
       await supabaseClient
         .from("profiles")
         .upsert(
-          {
-            id:currentUser.id,
-            display_name,
-            username,
-            email:currentUser.email || "",
-            bio,
-            avatar_url
-          },
-          {
-            onConflict:"id"
-          }
+          profileData,
+          {onConflict:"id"}
         )
         .select()
         .maybeSingle();
@@ -3090,12 +3309,13 @@ async function saveProfile(){
     }
 
     currentProfile =
-      data;
+      data || profileData;
 
     closeModal("profileModal");
 
-    updateHeader();
     renderProfile();
+
+    updateHeader();
 
     toast(
       "Profile updated successfully.",
@@ -3108,7 +3328,7 @@ async function saveProfile(){
 
     toast(
       error.message ||
-      "Could not save profile.",
+      "Could not update profile.",
       "error"
     );
   }
@@ -3121,59 +3341,30 @@ async function logout(){
 
     await supabaseClient.auth.signOut();
 
-  }catch(error){
+    currentUser =
+      null;
 
-    console.error(error);
+    currentProfile =
+      null;
 
-  }finally{
-
-    currentUser = null;
-    currentProfile = null;
-    currentChatUser = null;
-    currentChatMessages = [];
+    currentChatUser =
+      null;
 
     updateHeader();
-    renderProfile();
+
     showPage("home");
 
     toast(
       "You have been logged out.",
       "success"
     );
-  }
-}
-
-
-async function checkSession(){
-
-  try{
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient.auth
-        .getSession();
-
-    if(error){
-      throw error;
-    }
-
-    currentUser =
-      data?.session?.user ||
-      null;
-
-    if(currentUser){
-      await initializeUser();
-    }
-
-    updateHeader();
 
   }catch(error){
 
-    console.error(
-      "Session error:",
-      error
+    toast(
+      error.message ||
+      "Logout failed.",
+      "error"
     );
   }
 }
@@ -3188,9 +3379,7 @@ function showPage(page){
   document
     .querySelectorAll(".page")
     .forEach(item=>{
-      item.classList.remove(
-        "active"
-      );
+      item.classList.remove("active");
     });
 
   const target =
@@ -3198,16 +3387,14 @@ function showPage(page){
       "page-" + page
     );
 
-  if(target){
-    target.classList.add(
-      "active"
-    );
+  if(!target){
+    return;
   }
 
+  target.classList.add("active");
+
   document
-    .querySelectorAll(
-      ".nav-item[data-page]"
-    )
+    .querySelectorAll(".nav-item")
     .forEach(item=>{
       item.classList.toggle(
         "active",
@@ -3219,7 +3406,6 @@ function showPage(page){
     top:0,
     behavior:"smooth"
   });
-
 
   if(page === "home"){
     loadHome();
@@ -3238,15 +3424,7 @@ function showPage(page){
   }
 
   if(page === "people"){
-
-    const input =
-      document.getElementById(
-        "peopleSearch"
-      );
-
-    if(input && input.value.trim()){
-      searchPeople();
-    }
+    searchPeople();
   }
 
   if(page === "messages"){
@@ -3255,10 +3433,7 @@ function showPage(page){
 
   if(page === "profile"){
     renderProfile();
-    loadProfile().then(()=>{
-      renderProfile();
-      updateHeader();
-    });
+    if(currentUser) loadProfile();
   }
 
   if(page === "live"){
@@ -3278,66 +3453,66 @@ function showPage(page){
 const fallbackCategories = [
 
   {
-    id:"education",
+    id:null,
     name:"Education",
     slug:"education",
-    description:"Learning, schools, courses and academic discussions.",
+    description:"Students, teachers, schools and learning.",
     icon:"🎓"
   },
 
   {
-    id:"health",
+    id:null,
     name:"Health",
     slug:"health",
-    description:"Health information, wellness and community support.",
+    description:"Health, wellness and healthy living.",
     icon:"❤️"
   },
 
   {
-    id:"sports",
+    id:null,
     name:"Sports",
     slug:"sports",
-    description:"Sports news, teams, games and discussions.",
+    description:"Sports, teams, players and activities.",
     icon:"⚽"
   },
 
   {
-    id:"life",
+    id:null,
     name:"Life",
     slug:"life",
-    description:"Everyday life, people, relationships and experiences.",
-    icon:"🌍"
-  },
-
-  {
-    id:"business",
-    name:"Business",
-    slug:"business",
-    description:"Business, entrepreneurship and opportunities.",
-    icon:"💼"
-  },
-
-  {
-    id:"technology",
-    name:"Technology",
-    slug:"technology",
-    description:"Technology, digital tools and innovation.",
-    icon:"💻"
-  },
-
-  {
-    id:"agriculture",
-    name:"Agriculture",
-    slug:"agriculture",
-    description:"Farming, food production and agricultural knowledge.",
+    description:"Everyday life, people and experiences.",
     icon:"🌱"
   },
 
   {
-    id:"entertainment",
+    id:null,
+    name:"Business",
+    slug:"business",
+    description:"Entrepreneurs, businesses and opportunities.",
+    icon:"💼"
+  },
+
+  {
+    id:null,
+    name:"Technology",
+    slug:"technology",
+    description:"Technology, innovation and digital life.",
+    icon:"💻"
+  },
+
+  {
+    id:null,
+    name:"Agriculture",
+    slug:"agriculture",
+    description:"Farming, food and agricultural development.",
+    icon:"🌾"
+  },
+
+  {
+    id:null,
     name:"Entertainment",
     slug:"entertainment",
-    description:"Music, movies, culture and entertainment.",
+    description:"Music, movies, creators and entertainment.",
     icon:"🎬"
   }
 
@@ -3356,32 +3531,36 @@ async function loadCategories(){
         .from("community_categories")
         .select("*")
         .eq("is_active",true)
-        .order(
-          "sort_order",
-          {ascending:true}
-        );
+        .order("sort_order",{ascending:true});
 
     if(error){
-      throw error;
-    }
+      console.error(
+        "Category error:",
+        error
+      );
 
-    categories =
-      data?.length
-        ? data
-        : fallbackCategories;
+      categories =
+        fallbackCategories;
+
+    }else{
+
+      categories =
+        data?.length
+          ? data
+          : fallbackCategories;
+    }
 
   }catch(error){
 
-    console.error(
-      "Categories:",
-      error
-    );
+    console.error(error);
 
     categories =
       fallbackCategories;
   }
 
   renderCategories();
+
+  fillPostCategorySelect();
 }
 
 
@@ -3398,49 +3577,52 @@ function renderCategories(){
     );
 
   const html =
-    categories.map(category=>`
+    categories.map(c=>`
 
       <div class="card community-card"
-        onclick="selectCategory(
-          '${escapeHTML(category.id)}',
-          '${escapeHTML(category.name)}'
-        )">
-
-        <div class="community-icon">
-          ${escapeHTML(
-            category.icon || "🌍"
-          )}
-        </div>
+           onclick="selectCategory('${escapeHTML(
+             c.id || ""
+           )}','${escapeHTML(
+             c.name
+           )}')">
 
         <div>
 
-          <h3>
-            ${escapeHTML(
-              category.name
-            )}
+          <div class="community-icon">
+            ${escapeHTML(c.icon || "🌍")}
+          </div>
+
+          <h3 style="margin-top:12px">
+            ${escapeHTML(c.name)}
           </h3>
 
-          <p>
+          <p class="muted" style="margin-top:5px">
             ${escapeHTML(
-              category.description || ""
+              c.description || ""
             )}
           </p>
 
         </div>
+
+        <button class="btn small">
+          Enter Community →
+        </button>
 
       </div>
 
     `).join("");
 
   if(home){
-    home.innerHTML = html;
+    home.innerHTML =
+      html ||
+      `<div class="empty">No communities available.</div>`;
   }
 
   if(all){
-    all.innerHTML = html;
+    all.innerHTML =
+      html ||
+      `<div class="empty">No communities available.</div>`;
   }
-
-  fillPostCategorySelect();
 }
 
 
@@ -3456,190 +3638,106 @@ function fillPostCategorySelect(){
   }
 
   select.innerHTML =
-    categories.map(category=>`
+    categories.map(c=>`
 
-      <option value="${escapeHTML(
-        category.id
-      )}">
-
-        ${escapeHTML(
-          category.name
-        )}
-
+      <option
+        value="${escapeHTML(c.id || "")}"
+      >
+        ${escapeHTML(c.name)}
       </option>
 
     `).join("");
-
-  if(selectedCategoryId){
-    select.value =
-      selectedCategoryId;
-  }
-}
-
-
-function findCategoryByName(name){
-
-  return categories.find(
-    category =>
-      String(
-        category.name || ""
-      ).toLowerCase() ===
-      String(name || "")
-        .toLowerCase()
-  );
 }
 
 
 function selectCategory(id,name){
 
   selectedCategoryId =
-    id;
+    id || null;
 
   selectedCategoryName =
-    name;
+    name || "";
 
   if(
-    String(name).toLowerCase() ===
-    "education"
+    String(name).toLowerCase()
+      === "education"
   ){
 
     showPage("education");
+
     return;
   }
 
   renderGenericCommunity(
-    id,
-    name
+    selectedCategoryId,
+    selectedCategoryName
   );
 
   showPage("community");
 }
 
 
-function renderGenericCommunity(
-  id,
-  name
-){
+/* =========================================================
+   GENERIC COMMUNITY PLATFORM
+========================================================= */
 
-  const container =
-    document.getElementById(
-      "genericCommunityContent"
-    );
-
-  if(!container){
-    return;
-  }
+function renderGenericCommunity(id,name){
 
   const category =
     categories.find(
-      item =>
-        String(item.id) ===
-        String(id)
+      c=>String(c.id) === String(id)
     );
 
-  container.innerHTML = `
+  const icon =
+    category?.icon || "🌍";
 
-    <div class="hero">
+  const description =
+    category?.description ||
+    `Welcome to the ${name} community.`;
 
-      <h1>
-        ${escapeHTML(
-          category?.icon || "🌍"
-        )}
-        ${escapeHTML(name)}
-      </h1>
+  const header =
+    document.getElementById(
+      "genericCommunityHeader"
+    );
 
-      <p>
-        ${escapeHTML(
-          category?.description ||
-          "Explore this ZEEPY community."
-        )}
-      </p>
+  header.innerHTML = `
+
+    <div class="community-hero">
+
+      <div class="community-hero-top">
+
+        <div class="big-community-icon">
+          ${escapeHTML(icon)}
+        </div>
+
+        <div>
+          <h1>${escapeHTML(name)}</h1>
+
+          <p>
+            ${escapeHTML(description)}
+          </p>
+        </div>
+
+      </div>
 
       <div class="hero-actions">
 
         <button class="btn"
-          onclick="openCreatePostForCategory(
-            '${escapeHTML(id)}'
-          )">
+          onclick="openCreatePostForCategory('${escapeHTML(
+            id || ""
+          )}')">
           ＋ Create Post
         </button>
 
         <button class="btn secondary"
-          onclick="loadCommunityFeed(
-            '${escapeHTML(id)}'
-          )">
-          Refresh
+          onclick="showPage('live')">
+          🔴 Live
         </button>
 
-      </div>
-
-    </div>
-
-
-    <div class="community-platform">
-
-      <div class="community-tools">
-
-        <div class="tool-card">
-          <h3>📰 Feed</h3>
-          <p class="muted">
-            Community posts and discussions.
-          </p>
-        </div>
-
-        <div class="tool-card"
+        <button class="btn secondary"
           onclick="showPage('people')">
-          <h3>👥 People</h3>
-          <p class="muted">
-            Connect with community members.
-          </p>
-        </div>
-
-        <div class="tool-card"
-          onclick="showPage('media')">
-          <h3>🎥 Media</h3>
-          <p class="muted">
-            Photos and videos.
-          </p>
-        </div>
-
-        <div class="tool-card"
-          onclick="showPage('meet')">
-          <h3>📅 Events</h3>
-          <p class="muted">
-            Meetings and community activities.
-          </p>
-        </div>
-
-        <div class="tool-card">
-          <h3>💬 Discussions</h3>
-          <p class="muted">
-            Talk about topics in this community.
-          </p>
-        </div>
-
-        <div class="tool-card"
-          onclick="showPage('live')">
-          <h3>🔴 Live</h3>
-          <p class="muted">
-            See live community activity.
-          </p>
-        </div>
-
-      </div>
-
-
-      <div class="section-head">
-        <h2>${escapeHTML(name)} Feed</h2>
-      </div>
-
-      <div class="feed"
-        id="communityFeed">
-
-        <div class="loading">
-          <span class="spinner"></span>
-          Loading community...
-        </div>
+          👥 People
+        </button>
 
       </div>
 
@@ -3652,28 +3750,39 @@ function renderGenericCommunity(
 
 function openCreatePostForCategory(id){
 
-  selectedCategoryId =
-    id;
-
   openCreatePost();
+
+  setTimeout(()=>{
+
+    const select =
+      document.getElementById(
+        "postCategory"
+      );
+
+    if(select){
+      select.value =
+        id || "";
+    }
+
+  },50);
 }
 
 
 async function loadCommunityFeed(categoryId){
 
-  const feed =
+  const content =
     document.getElementById(
-      "communityFeed"
+      "genericCommunityContent"
     );
 
-  if(!feed){
+  if(!content){
     return;
   }
 
-  feed.innerHTML =
+  content.innerHTML =
     `<div class="loading">
       <span class="spinner"></span>
-      Loading posts...
+      Loading community...
     </div>`;
 
   try{
@@ -3713,20 +3822,150 @@ async function loadCommunityFeed(categoryId){
       throw error;
     }
 
-    feed.innerHTML =
+    content.innerHTML =
       renderPostList(data || []);
 
   }catch(error){
 
     console.error(error);
 
-    feed.innerHTML = `
+    content.innerHTML = `
       <div class="empty">
-        Could not load community posts.
+        Could not load this community feed.
         <br><br>
-        ${escapeHTML(
-          error.message || ""
-        )}
+        ${escapeHTML(error.message || "")}
+      </div>
+    `;
+  }
+}
+
+
+function communitySection(section){
+
+  const content =
+    document.getElementById(
+      "genericCommunityContent"
+    );
+
+  if(section === "feed"){
+
+    loadCommunityFeed(
+      selectedCategoryId
+    );
+
+    return;
+  }
+
+  if(section === "people"){
+
+    content.innerHTML = `
+      <div class="card">
+        <h2>People in ${escapeHTML(
+          selectedCategoryName
+        )}</h2>
+        <p class="muted" style="margin-top:8px">
+          Discover people connected with this community.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn"
+            onclick="showPage('people')">
+            Find People
+          </button>
+        </div>
+      </div>
+    `;
+
+    return;
+  }
+
+  if(section === "media"){
+
+    content.innerHTML = `
+      <div class="card">
+        <h2>${escapeHTML(
+          selectedCategoryName
+        )} Media</h2>
+
+        <p class="muted" style="margin-top:8px">
+          Photos and videos from this community.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn"
+            onclick="showPage('media')">
+            Open Media
+          </button>
+        </div>
+      </div>
+    `;
+
+    return;
+  }
+
+  if(section === "events"){
+
+    content.innerHTML = `
+      <div class="card">
+        <h2>${escapeHTML(
+          selectedCategoryName
+        )} Events</h2>
+
+        <p class="muted" style="margin-top:8px">
+          Community events and meetings.
+        </p>
+
+        <button class="btn"
+          style="margin-top:14px"
+          onclick="showPage('meet')">
+          Open Meet
+        </button>
+      </div>
+    `;
+
+    return;
+  }
+
+  if(section === "discussions"){
+
+    content.innerHTML = `
+      <div class="card">
+        <h2>${escapeHTML(
+          selectedCategoryName
+        )} Discussions</h2>
+
+        <p class="muted" style="margin-top:8px">
+          Start a conversation with the community.
+        </p>
+
+        <button class="btn"
+          style="margin-top:14px"
+          onclick="openCreatePost()">
+          Start Discussion
+        </button>
+      </div>
+    `;
+
+    return;
+  }
+
+  if(section === "live"){
+
+    content.innerHTML = `
+      <div class="card">
+        <h2>Live in ${escapeHTML(
+          selectedCategoryName
+        )}</h2>
+
+        <p class="muted" style="margin-top:8px">
+          See live community activity.
+        </p>
+
+        <button class="btn"
+          style="margin-top:14px"
+          onclick="showPage('live')">
+          Open Live
+        </button>
       </div>
     `;
   }
@@ -3750,8 +3989,7 @@ async function loadHome(){
 
   feed.innerHTML =
     `<div class="loading">
-      <span class="spinner"></span>
-      Loading feed...
+      <span class="spinner"></span>Loading feed...
     </div>`;
 
   try{
@@ -3789,11 +4027,7 @@ async function loadHome(){
 
     feed.innerHTML = `
       <div class="empty">
-        Could not load community feed.
-        <br><br>
-        ${escapeHTML(
-          error.message || ""
-        )}
+        No community posts available yet.
       </div>
     `;
   }
@@ -3802,7 +4036,7 @@ async function loadHome(){
 
 function renderPostList(posts){
 
-  if(!posts?.length){
+  if(!posts || !posts.length){
 
     return `
       <div class="empty">
@@ -3824,77 +4058,69 @@ function renderPost(post){
   const profile =
     post.profiles || {};
 
+  const name =
+    profile.display_name ||
+    "ZEEPY User";
+
+  const avatar =
+    profile.avatar_url;
+
   let media = "";
 
   if(
     post.media_url &&
-    post.post_type === "photo"
+    post.media_type?.startsWith("image/")
   ){
 
     media = `
       <img
         class="post-media"
-        src="${escapeHTML(
-          post.media_url
-        )}"
-        alt=""
+        src="${escapeHTML(post.media_url)}"
+        alt="Post image"
         loading="lazy"
       >
     `;
 
   }else if(
     post.media_url &&
-    post.post_type === "video"
+    post.media_type?.startsWith("video/")
   ){
 
     media = `
       <video
         class="post-media"
+        src="${escapeHTML(post.media_url)}"
         controls
-        playsinline
         preload="metadata"
-        src="${escapeHTML(
-          post.media_url
-        )}">
-      </video>
+      ></video>
     `;
 
-  }else if(
-    post.media_url &&
-    post.post_type === "file"
-  ){
+  }else if(post.media_url){
 
     media = `
-      <div style="padding:15px">
-        <a
-          class="btn small"
-          href="${escapeHTML(
-            post.media_url
-          )}"
-          target="_blank"
-          rel="noopener">
-          Open File
-        </a>
-      </div>
+      <a
+        class="btn secondary"
+        href="${escapeHTML(post.media_url)}"
+        target="_blank"
+        rel="noopener"
+      >
+        📎 Open File
+      </a>
     `;
   }
 
-  if(
-    post.link_url
-  ){
+  if(post.link_url){
 
     media += `
-      <div style="padding:0 15px 15px">
-        <a
-          href="${escapeHTML(
-            post.link_url
-          )}"
-          target="_blank"
-          rel="noopener"
-          style="color:var(--orange)">
-          🔗 Open Link
-        </a>
-      </div>
+      <a
+        class="btn secondary"
+        style="margin-bottom:12px"
+        href="${escapeHTML(post.link_url)}"
+        target="_blank"
+        rel="noopener"
+      >
+        🔗 Open Link
+      </a>
     `;
   }
 
@@ -3907,80 +4133,56 @@ function renderPost(post){
         <div class="avatar">
 
           ${
-            profile.avatar_url
-            ? `<img src="${escapeHTML(
-                profile.avatar_url
-              )}" alt="">`
-            : initials(
-                profile.display_name
-              )
+            avatar
+            ? `<img src="${escapeHTML(avatar)}" alt="">`
+            : initials(name)
           }
 
         </div>
 
-        <div class="post-author">
+        <div>
 
-          <strong>
-            ${escapeHTML(
-              profile.display_name ||
-              "ZEEPY User"
-            )}
-          </strong>
+          <div class="post-name">
+            ${escapeHTML(name)}
+          </div>
 
-          <span>
+          <div class="post-meta">
             ${
               profile.username
-              ? "@"+escapeHTML(
-                  profile.username
-                )+" · "
+              ? "@"+escapeHTML(profile.username)
               : ""
             }
-
-            ${formatDate(
-              post.created_at
-            )}
-          </span>
+            ·
+            ${formatDate(post.created_at)}
+          </div>
 
         </div>
 
       </div>
 
-
-      <div class="post-body">
-
-        ${
-          post.content
-          ? `<div class="post-content">
-              ${escapeHTML(
-                post.content
-              )}
-            </div>`
-          : ""
-        }
-
-      </div>
+      ${
+        post.content
+        ? `<div class="post-content">
+            ${escapeHTML(post.content)}
+          </div>`
+        : ""
+      }
 
       ${media}
 
-
       <div class="post-actions">
 
-        <button
-          class="post-action"
-          onclick="toast('Like feature is ready for the reactions table.')">
+        <button class="post-action">
           ♡ Like
         </button>
 
-        <button
-          class="post-action"
-          onclick="toast('Comments will use the comments table when available.')">
+        <button class="post-action">
           💬 Comment
         </button>
 
-        <button
-          class="post-action"
+        <button class="post-action"
           onclick="sharePost('${escapeHTML(
-            post.id
+            post.id || ""
           )}')">
           ↗ Share
         </button>
@@ -3995,41 +4197,33 @@ function renderPost(post){
 async function sharePost(id){
 
   const url =
-    window.location.href;
+    window.location.href
+      .split("#")[0] +
+      "?post=" +
+      encodeURIComponent(id);
 
   try{
 
     if(navigator.share){
 
       await navigator.share({
-        title:"ZEEPY",
-        text:"Check this ZEEPY post.",
+        title:"ZEEPY Post",
         url
       });
 
-    }else if(navigator.clipboard){
-
-      await navigator.clipboard.writeText(
-        url
-      );
-
-      toast(
-        "Link copied.",
-        "success"
-      );
-
     }else{
 
+      await navigator.clipboard.writeText(url);
+
       toast(
-        "Share is not available on this device."
+        "Post link copied.",
+        "success"
       );
     }
 
   }catch(error){
 
-    if(error.name !== "AbortError"){
-      console.error(error);
-    }
+    console.log(error);
   }
 }
 
@@ -4044,54 +4238,24 @@ function openCreatePost(type="text"){
 
     fillPostCategorySelect();
 
-    const content =
-      document.getElementById(
-        "postContent"
-      );
+    document.getElementById(
+      "postType"
+    ).value =
+      type === "education"
+        ? "text"
+        : type;
 
-    const file =
-      document.getElementById(
-        "postFile"
-      );
+    document.getElementById(
+      "postContent"
+    ).value = "";
 
-    const link =
-      document.getElementById(
-        "postLink"
-      );
+    document.getElementById(
+      "postLink"
+    ).value = "";
 
-    if(content) content.value="";
-    if(file) file.value="";
-    if(link) link.value="";
-
-    const postType =
-      document.getElementById(
-        "postType"
-      );
-
-    if(postType){
-      postType.value =
-        ["photo","video","file"]
-          .includes(type)
-          ? type
-          : "text";
-    }
-
-    if(selectedCategoryId){
-
-      const category =
-        categories.find(
-          item =>
-            String(item.id) ===
-            String(selectedCategoryId)
-        );
-
-      if(category){
-        document.getElementById(
-          "postCategory"
-        ).value =
-          category.id;
-      }
-    }
+    document.getElementById(
+      "postFile"
+    ).value = "";
 
     openModal("postModal");
 
@@ -4101,18 +4265,15 @@ function openCreatePost(type="text"){
 
 async function uploadCommunityMedia(file){
 
-  if(!currentUser){
-    throw new Error(
-      "You must be logged in."
-    );
+  if(!file || !currentUser){
+    return null;
   }
 
   const safeName =
-    file.name
-      .replace(
-        /[^a-zA-Z0-9._-]/g,
-        "_"
-      );
+    file.name.replace(
+      /[^a-zA-Z0-9._-]/g,
+      "_"
+    );
 
   const path =
     currentUser.id +
@@ -4124,7 +4285,8 @@ async function uploadCommunityMedia(file){
   const {
     error
   } =
-    await supabaseClient.storage
+    await supabaseClient
+      .storage
       .from("community-media")
       .upload(
         path,
@@ -4141,37 +4303,39 @@ async function uploadCommunityMedia(file){
   const {
     data
   } =
-    supabaseClient.storage
+    supabaseClient
+      .storage
       .from("community-media")
       .getPublicUrl(path);
 
-  return data?.publicUrl || null;
+  return data.publicUrl;
 }
 
 
 async function createPost(){
 
   if(!currentUser){
+
     openAuth();
     return;
   }
 
-  const category_id =
+  const categoryId =
     document.getElementById(
       "postCategory"
-    ).value;
-
-  const post_type =
-    document.getElementById(
-      "postType"
-    ).value;
+    ).value || null;
 
   const content =
     document.getElementById(
       "postContent"
     ).value.trim();
 
-  const link_url =
+  const type =
+    document.getElementById(
+      "postType"
+    ).value;
+
+  const link =
     document.getElementById(
       "postLink"
     ).value.trim();
@@ -4181,14 +4345,10 @@ async function createPost(){
       "postFile"
     ).files[0];
 
-  if(
-    !content &&
-    !file &&
-    !link_url
-  ){
+  if(!content && !file && !link){
 
     toast(
-      "Add some content, media or a link.",
+      "Write something or attach media.",
       "error"
     );
 
@@ -4197,53 +4357,44 @@ async function createPost(){
 
   try{
 
-    let media_url =
-      null;
-
-    let media_type =
-      null;
-
-    let media_name =
-      null;
-
-    let file_size =
-      null;
+    let mediaUrl = null;
+    let mediaType = null;
+    let mediaName = null;
+    let fileSize = null;
 
     if(file){
 
-      media_url =
-        await uploadCommunityMedia(
-          file
-        );
+      mediaUrl =
+        await uploadCommunityMedia(file);
 
-      media_type =
+      mediaType =
         file.type;
 
-      media_name =
+      mediaName =
         file.name;
 
-      file_size =
+      fileSize =
         file.size;
     }
+
+    const postData = {
+      user_id:currentUser.id,
+      category_id:categoryId,
+      content:content || null,
+      post_type:type,
+      media_url:mediaUrl,
+      media_type:mediaType,
+      media_name:mediaName,
+      file_size:fileSize,
+      link_url:link || null
+    };
 
     const {
       error
     } =
       await supabaseClient
         .from("posts")
-        .insert({
-          user_id:currentUser.id,
-          category_id:
-            category_id || null,
-          content,
-          post_type,
-          media_url,
-          media_type,
-          media_name,
-          file_size,
-          link_url:
-            link_url || null
-        });
+        .insert(postData);
 
     if(error){
       throw error;
@@ -4258,22 +4409,18 @@ async function createPost(){
 
     await loadHome();
 
-    if(
-      String(selectedCategoryName)
-        .toLowerCase() ===
-      "education"
-    ){
-      await loadEducationFeed();
-    }
-
-    if(
-      document.getElementById(
-        "communityFeed"
-      )
-    ){
+    if(selectedCategoryId){
       await loadCommunityFeed(
         selectedCategoryId
       );
+    }
+
+    if(
+      String(selectedCategoryName)
+        .toLowerCase() === "education"
+    ){
+
+      await loadEducationFeed();
     }
 
   }catch(error){
@@ -4282,7 +4429,7 @@ async function createPost(){
 
     toast(
       error.message ||
-      "Could not create post.",
+      "Could not publish post.",
       "error"
     );
   }
@@ -4300,8 +4447,10 @@ async function loadEducation(){
   }
 
   educationCategory =
-    findCategoryByName(
-      "Education"
+    categories.find(
+      c =>
+        String(c.name).toLowerCase()
+        === "education"
     );
 
   await loadEducationFeed();
@@ -4322,25 +4471,19 @@ async function loadEducationFeed(){
   feed.innerHTML =
     `<div class="loading">
       <span class="spinner"></span>
-      Loading Education posts...
+      Loading academic feed...
     </div>`;
 
   try{
 
-    if(!categories.length){
-      await loadCategories();
-    }
-
-    educationCategory =
-      findCategoryByName(
-        "Education"
-      );
-
-    if(!educationCategory){
+    if(!educationCategory?.id){
 
       feed.innerHTML = `
         <div class="empty">
-          Education community could not be found.
+          Education is available as a platform.
+          Create or select an Education category in
+          <b>community_categories</b> to connect academic posts
+          to the database.
         </div>
       `;
 
@@ -4376,9 +4519,7 @@ async function loadEducationFeed(){
     }
 
     feed.innerHTML =
-      renderPostList(
-        data || []
-      );
+      renderPostList(data || []);
 
   }catch(error){
 
@@ -4388,9 +4529,7 @@ async function loadEducationFeed(){
       <div class="empty">
         Could not load Education posts.
         <br><br>
-        ${escapeHTML(
-          error.message || ""
-        )}
+        ${escapeHTML(error.message || "")}
       </div>
     `;
   }
@@ -4423,7 +4562,7 @@ function openEducationPanel(section){
 
     schools:[
       "Schools & Institutions",
-      "A directory for schools, colleges and educational institutions."
+      "A future directory for schools, colleges and educational institutions."
     ],
 
     teachers:[
@@ -4491,9 +4630,7 @@ function openEducationPanel(section){
 
       <div class="card">
 
-        <h2>
-          ${escapeHTML(item[0])}
-        </h2>
+        <h2>${escapeHTML(item[0])}</h2>
 
         <p class="muted"
            style="margin-top:10px;line-height:1.6">
@@ -4515,6 +4652,7 @@ function openEducationPanel(section){
         </div>
 
       </div>
+
     `;
 
     content.scrollIntoView({
@@ -4560,8 +4698,7 @@ async function searchPeople(){
 
   results.innerHTML =
     `<div class="loading">
-      <span class="spinner"></span>
-      Searching...
+      <span class="spinner"></span>Searching...
     </div>`;
 
   try{
@@ -4630,7 +4767,6 @@ async function searchPeople(){
             </div>
 
             <div class="person-sub">
-
               ${
                 person.username
                 ? "@"+escapeHTML(
@@ -4638,25 +4774,17 @@ async function searchPeople(){
                   )
                 : ""
               }
-
             </div>
 
           </div>
 
-          ${
-            currentUser &&
-            person.id !== currentUser.id
-            ? `
-              <button
-                class="btn small"
-                onclick="openChatWith('${escapeHTML(
-                  person.id
-                )}')">
-                Message
-              </button>
-            `
-            : ""
-          }
+          <button
+            class="btn small"
+            onclick="openChatWith('${escapeHTML(
+              person.id
+            )}')">
+            Message
+          </button>
 
         </div>
 
@@ -4670,9 +4798,7 @@ async function searchPeople(){
       <div class="empty">
         Search failed.
         <br>
-        ${escapeHTML(
-          error.message || ""
-        )}
+        ${escapeHTML(error.message || "")}
       </div>
     `;
   }
@@ -4699,11 +4825,11 @@ async function openChatWith(userId){
         data,
         error
       } =
-        await supabaseClient
-          .from("profiles")
-          .select("*")
-          .eq("id",userId)
-          .maybeSingle();
+      await supabaseClient
+        .from("profiles")
+        .select("*")
+        .eq("id",userId)
+        .maybeSingle();
 
       if(error){
         throw error;
@@ -4740,23 +4866,8 @@ async function openChatWith(userId){
 
 
 /* =========================================================
-   MESSAGES — FIXED
+   MESSAGES
 ========================================================= */
-
-/*
-  IMPORTANT:
-  This version intentionally does NOT use:
-
-  profiles!messages_sender_id_fkey
-  profiles!messages_receiver_id_fkey
-
-  because those exact relationship names may not exist
-  in the current Supabase schema.
-
-  Messages are first loaded using only the real message
-  columns, then the user profiles are loaded separately.
-*/
-
 
 async function loadMessages(){
 
@@ -4780,11 +4891,69 @@ async function loadMessages(){
     return;
   }
 
-  list.innerHTML =
-    `<div class="loading">
-      <span class="spinner"></span>
-      Loading messages...
-    </div>`;
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("messages")
+        .select(`
+          *,
+          sender:profiles!messages_sender_id_fkey(
+            id,
+            display_name,
+            username,
+            avatar_url
+          ),
+          receiver:profiles!messages_receiver_id_fkey(
+            id,
+            display_name,
+            username,
+            avatar_url
+          )
+        `)
+        .or(
+          `sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`
+        )
+        .order(
+          "created_at",
+          {ascending:false}
+        )
+        .limit(100);
+
+    if(error){
+
+      console.error(
+        "Message relationship query failed:",
+        error
+      );
+
+      await loadMessagesSimple();
+
+      return;
+    }
+
+    renderConversationList(
+      data || []
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    await loadMessagesSimple();
+  }
+}
+
+
+async function loadMessagesSimple(){
+
+  const list =
+    document.getElementById(
+      "conversationList"
+    );
 
   try{
 
@@ -4794,9 +4963,7 @@ async function loadMessages(){
     } =
       await supabaseClient
         .from("messages")
-        .select(
-          "id,sender_id,receiver_id,product_id,content,is_read,created_at"
-        )
+        .select("*")
         .or(
           `sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`
         )
@@ -4810,33 +4977,62 @@ async function loadMessages(){
       throw error;
     }
 
-    await renderConversationListFromMessages(
-      data || []
+    const userIds = [
+      ...new Set(
+        (data || [])
+          .map(m =>
+            m.sender_id === currentUser.id
+              ? m.receiver_id
+              : m.sender_id
+          )
+          .filter(Boolean)
+      )
+    ];
+
+    if(!userIds.length){
+
+      list.innerHTML = `
+        <div class="empty">
+          No conversations yet.
+        </div>
+      `;
+
+      return;
+    }
+
+    const {
+      data:profiles
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select("*")
+        .in("id",userIds);
+
+    const map =
+      Object.fromEntries(
+        (profiles || [])
+          .map(p=>[p.id,p])
+      );
+
+    renderConversationList(
+      data || [],
+      map
     );
 
   }catch(error){
 
-    console.error(
-      "loadMessages:",
-      error
-    );
-
     list.innerHTML = `
       <div class="empty">
         Could not load messages.
-        <br><br>
-        ${escapeHTML(
-          error.message ||
-          ""
-        )}
       </div>
     `;
   }
 }
 
 
-async function renderConversationListFromMessages(
-  messages
+function renderConversationList(
+  messages,
+  profileMap={}
 ){
 
   const list =
@@ -4849,16 +5045,13 @@ async function renderConversationListFromMessages(
     list.innerHTML = `
       <div class="empty">
         No conversations yet.
-        <br><br>
-        Go to People and select someone to start a conversation.
       </div>
     `;
 
     return;
   }
 
-  const latest =
-    new Map();
+  const people = new Map();
 
   messages.forEach(message=>{
 
@@ -4871,89 +5064,48 @@ async function renderConversationListFromMessages(
       return;
     }
 
-    if(!latest.has(otherId)){
-      latest.set(
+    let profile =
+      profileMap[otherId];
+
+    if(!profile){
+
+      profile =
+        message.sender_id === currentUser.id
+          ? message.receiver
+          : message.sender;
+    }
+
+    if(profile){
+      people.set(
         otherId,
-        message
+        {
+          profile,
+          message
+        }
       );
     }
 
   });
 
-  const userIds =
-    [...latest.keys()];
-
-  let profiles = [];
-
-  try{
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .from("profiles")
-        .select(
-          "id,display_name,username,avatar_url"
-        )
-        .in(
-          "id",
-          userIds
-        );
-
-    if(error){
-      throw error;
-    }
-
-    profiles =
-      data || [];
-
-  }catch(error){
-
-    console.error(
-      "Conversation profiles:",
-      error
-    );
-  }
-
-  const profileMap =
-    Object.fromEntries(
-      profiles.map(
-        profile=>[
-          profile.id,
-          profile
-        ]
-      )
-    );
-
   list.innerHTML =
-    userIds.map(id=>{
-
-      const message =
-        latest.get(id);
-
-      const profile =
-        profileMap[id] || {};
-
-      return `
+    [...people.entries()]
+      .map(([id,item])=>`
 
         <div
           class="message-row"
-          onclick="selectConversation('${escapeHTML(
-            id
-          )}')"
-          style="cursor:pointer">
+          onclick="selectConversation('${escapeHTML(id)}')"
+          style="cursor:pointer"
+        >
 
           <div class="avatar">
 
             ${
-              profile.avatar_url
+              item.profile?.avatar_url
               ? `<img src="${escapeHTML(
-                  profile.avatar_url
+                  item.profile.avatar_url
                 )}" alt="">`
               : initials(
-                  profile.display_name ||
-                  "ZEEPY User"
+                  item.profile?.display_name
                 )
             }
 
@@ -4963,48 +5115,26 @@ async function renderConversationListFromMessages(
 
             <div class="message-name">
               ${escapeHTML(
-                profile.display_name ||
+                item.profile?.display_name ||
                 "ZEEPY User"
               )}
             </div>
 
             <div class="message-preview">
               ${escapeHTML(
-                message.content || ""
+                item.message.content || ""
               )}
             </div>
 
           </div>
 
-          ${
-            message.is_read === false &&
-            message.receiver_id === currentUser.id
-            ? `
-              <span
-                style="
-                  width:9px;
-                  height:9px;
-                  background:var(--orange);
-                  border-radius:50%;
-                ">
-              </span>
-            `
-            : ""
-          }
-
         </div>
-      `;
 
-    }).join("");
+      `).join("");
 }
 
 
 async function selectConversation(userId){
-
-  if(!currentUser){
-    openAuth();
-    return;
-  }
 
   try{
 
@@ -5014,27 +5144,12 @@ async function selectConversation(userId){
     } =
       await supabaseClient
         .from("profiles")
-        .select(
-          "id,display_name,username,bio,avatar_url"
-        )
-        .eq(
-          "id",
-          userId
-        )
+        .select("*")
+        .eq("id",userId)
         .maybeSingle();
 
     if(error){
       throw error;
-    }
-
-    if(!data){
-
-      toast(
-        "User profile could not be found.",
-        "error"
-      );
-
-      return;
     }
 
     currentChatUser =
@@ -5043,8 +5158,6 @@ async function selectConversation(userId){
     await loadChat();
 
   }catch(error){
-
-    console.error(error);
 
     toast(
       error.message ||
@@ -5074,12 +5187,7 @@ async function loadChat(){
       "chatBody"
     );
 
-  if(!header || !body){
-    return;
-  }
-
   header.innerHTML = `
-
     <div style="display:flex;align-items:center;gap:10px">
 
       <div class="avatar">
@@ -5097,7 +5205,6 @@ async function loadChat(){
       </div>
 
       <div>
-
         <strong>
           ${escapeHTML(
             currentChatUser.display_name ||
@@ -5105,9 +5212,7 @@ async function loadChat(){
           )}
         </strong>
 
-        <div class="muted"
-             style="font-size:12px">
-
+        <div class="muted" style="font-size:12px">
           ${
             currentChatUser.username
             ? "@"+escapeHTML(
@@ -5115,9 +5220,7 @@ async function loadChat(){
               )
             : ""
           }
-
         </div>
-
       </div>
 
     </div>
@@ -5131,20 +5234,13 @@ async function loadChat(){
 
   try{
 
-    /*
-      Simple query using only the actual message IDs.
-      No foreign-key relationship is required.
-    */
-
     const {
       data,
       error
     } =
       await supabaseClient
         .from("messages")
-        .select(
-          "id,sender_id,receiver_id,product_id,content,is_read,created_at"
-        )
+        .select("*")
         .or(
           `and(sender_id.eq.${currentUser.id},receiver_id.eq.${currentChatUser.id}),and(sender_id.eq.${currentChatUser.id},receiver_id.eq.${currentUser.id})`
         )
@@ -5163,11 +5259,8 @@ async function loadChat(){
     if(!currentChatMessages.length){
 
       body.innerHTML = `
-        <div class="empty"
-             style="border:0;background:transparent">
-          No messages yet.
-          <br>
-          Start the conversation below.
+        <div class="empty">
+          No messages yet. Start the conversation.
         </div>
       `;
 
@@ -5189,21 +5282,15 @@ async function loadChat(){
                 )}
               </div>
 
-              <div style="
-                font-size:10px;
-                opacity:.65;
-                margin-top:4px">
-
+              <div style="font-size:10px;opacity:.65;margin-top:4px">
                 ${formatDate(
                   message.created_at
                 )}
-
               </div>
 
             </div>
 
-          `)
-          .join("");
+          `).join("");
 
       body.scrollTop =
         body.scrollHeight;
@@ -5213,18 +5300,11 @@ async function loadChat(){
 
   }catch(error){
 
-    console.error(
-      "loadChat:",
-      error
-    );
-
     body.innerHTML = `
       <div class="empty">
         Could not load conversation.
-        <br><br>
-        ${escapeHTML(
-          error.message || ""
-        )}
+        <br>
+        ${escapeHTML(error.message || "")}
       </div>
     `;
   }
@@ -5242,33 +5322,23 @@ async function markMessagesRead(){
 
   try{
 
-    const {
-      error
-    } =
-      await supabaseClient
-        .from("messages")
-        .update({
-          is_read:true
-        })
-        .eq(
-          "sender_id",
-          currentChatUser.id
-        )
-        .eq(
-          "receiver_id",
-          currentUser.id
-        );
-
-    if(error){
-      console.warn(
-        "markMessagesRead:",
-        error
+    await supabaseClient
+      .from("messages")
+      .update({
+        is_read:true
+      })
+      .eq(
+        "sender_id",
+        currentChatUser.id
+      )
+      .eq(
+        "receiver_id",
+        currentUser.id
       );
-    }
 
   }catch(error){
 
-    console.warn(
+    console.log(
       "markMessagesRead:",
       error
     );
@@ -5299,10 +5369,6 @@ async function sendMessage(){
       "chatInput"
     );
 
-  if(!input){
-    return;
-  }
-
   const content =
     input.value.trim();
 
@@ -5313,21 +5379,16 @@ async function sendMessage(){
   try{
 
     const {
-      data,
       error
     } =
       await supabaseClient
         .from("messages")
         .insert({
-          sender_id:
-            currentUser.id,
-          receiver_id:
-            currentChatUser.id,
+          sender_id:currentUser.id,
+          receiver_id:currentChatUser.id,
           content,
           is_read:false
-        })
-        .select()
-        .maybeSingle();
+        });
 
     if(error){
       throw error;
@@ -5336,14 +5397,12 @@ async function sendMessage(){
     input.value = "";
 
     await loadChat();
+
     await loadMessages();
 
   }catch(error){
 
-    console.error(
-      "sendMessage:",
-      error
-    );
+    console.error(error);
 
     toast(
       error.message ||
@@ -5371,16 +5430,10 @@ async function loadProducts(){
 
   container.innerHTML =
     `<div class="loading">
-      <span class="spinner"></span>
-      Loading marketplace...
+      <span class="spinner"></span>Loading marketplace...
     </div>`;
 
   try{
-
-    /*
-      Like Messages, marketplace loading does not depend
-      on a manually named foreign-key relationship.
-    */
 
     const {
       data,
@@ -5388,7 +5441,14 @@ async function loadProducts(){
     } =
       await supabaseClient
         .from("products")
-        .select("*")
+        .select(`
+          *,
+          profiles:user_id(
+            display_name,
+            username,
+            avatar_url
+          )
+        `)
         .order(
           "created_at",
           {ascending:false}
@@ -5402,53 +5462,6 @@ async function loadProducts(){
     productsCache =
       data || [];
 
-    /*
-      Load sellers separately.
-    */
-
-    const sellerIds =
-      [
-        ...new Set(
-          productsCache
-            .map(product=>product.user_id)
-            .filter(Boolean)
-        )
-      ];
-
-    if(sellerIds.length){
-
-      const {
-        data:profiles
-      } =
-        await supabaseClient
-          .from("profiles")
-          .select(
-            "id,display_name,username,avatar_url"
-          )
-          .in(
-            "id",
-            sellerIds
-          );
-
-      const profileMap =
-        Object.fromEntries(
-          (profiles || [])
-            .map(profile=>[
-              profile.id,
-              profile
-            ])
-        );
-
-      productsCache =
-        productsCache.map(product=>({
-          ...product,
-          profiles:
-            profileMap[
-              product.user_id
-            ] || null
-        }));
-    }
-
     renderProducts();
 
   }catch(error){
@@ -5459,9 +5472,7 @@ async function loadProducts(){
       <div class="empty">
         Could not load marketplace.
         <br><br>
-        ${escapeHTML(
-          error.message || ""
-        )}
+        ${escapeHTML(error.message || "")}
       </div>
     `;
   }
@@ -5491,7 +5502,8 @@ function renderProducts(){
         product =>
           String(
             product.category || ""
-          ).toLowerCase() ===
+          ).toLowerCase()
+          ===
           activeProductCategory
             .toLowerCase()
       );
@@ -5500,8 +5512,7 @@ function renderProducts(){
   if(!products.length){
 
     container.innerHTML = `
-      <div class="empty"
-           style="grid-column:1/-1">
+      <div class="empty">
         No products found in this category.
       </div>
     `;
@@ -5522,18 +5533,12 @@ function renderProducts(){
                 product.image_url
               )}"
               alt="${escapeHTML(
-                product.name ||
-                "Product"
+                product.name || "Product"
               )}"
               loading="lazy"
             >`
-          : `<div
-              class="product-image"
-              style="
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                font-size:45px">
+          : `<div class="product-image"
+                 style="display:flex;align-items:center;justify-content:center;font-size:45px">
               🛒
             </div>`
         }
@@ -5555,25 +5560,681 @@ function renderProducts(){
 
           <p class="muted"
              style="font-size:13px;line-height:1.4">
-
             ${escapeHTML(
               product.description || ""
             )}
-
           </p>
 
           <div class="muted"
                style="font-size:12px;margin-top:8px">
-
             Seller:
             ${escapeHTML(
               product.profiles?.display_name ||
               "ZEEPY Seller"
             )}
-
           </div>
 
           <div class="product-actions"
                style="margin-top:12px">
 
-           
+            <button class="btn small"
+              onclick="messageSeller('${escapeHTML(
+                product.user_id || ""
+              )}')">
+              Message Seller
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `).join("");
+}
+
+
+function filterProducts(category,button){
+
+  activeProductCategory =
+    category;
+
+  document
+    .querySelectorAll(
+      "#page-market .filter-btn"
+    )
+    .forEach(btn=>{
+      btn.classList.remove("active");
+    });
+
+  if(button){
+    button.classList.add("active");
+  }
+
+  renderProducts();
+}
+
+
+function openSellProduct(){
+
+  requireLogin(()=>{
+
+    document.getElementById(
+      "productName"
+    ).value = "";
+
+    document.getElementById(
+      "productPrice"
+    ).value = "";
+
+    document.getElementById(
+      "productDescription"
+    ).value = "";
+
+    document.getElementById(
+      "productImage"
+    ).value = "";
+
+    openModal("productModal");
+
+  });
+}
+
+
+async function createProduct(){
+
+  if(!currentUser){
+
+    openAuth();
+    return;
+  }
+
+  const name =
+    document.getElementById(
+      "productName"
+    ).value.trim();
+
+  const category =
+    document.getElementById(
+      "productCategory"
+    ).value;
+
+  const price =
+    Number(
+      document.getElementById(
+        "productPrice"
+      ).value
+    );
+
+  const description =
+    document.getElementById(
+      "productDescription"
+    ).value.trim();
+
+  const file =
+    document.getElementById(
+      "productImage"
+    ).files[0];
+
+  if(!name || !price){
+
+    toast(
+      "Product name and price are required.",
+      "error"
+    );
+
+    return;
+  }
+
+  try{
+
+    let imageUrl = null;
+
+    if(file){
+
+      imageUrl =
+        await uploadCommunityMedia(file);
+    }
+
+    const productData = {
+      user_id:currentUser.id,
+      name,
+      price,
+      description,
+      category,
+      image_url:imageUrl
+    };
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("products")
+        .insert(productData);
+
+    if(error){
+      throw error;
+    }
+
+    closeModal("productModal");
+
+    toast(
+      "Product published successfully.",
+      "success"
+    );
+
+    await loadProducts();
+
+  }catch(error){
+
+    console.error(error);
+
+    toast(
+      error.message ||
+      "Could not create product.",
+      "error"
+    );
+  }
+}
+
+
+async function messageSeller(userId){
+
+  if(!userId){
+    toast(
+      "Seller information is unavailable.",
+      "error"
+    );
+    return;
+  }
+
+  await openChatWith(userId);
+}
+
+
+/* =========================================================
+   LIVE
+========================================================= */
+
+async function startLive(){
+
+  requireLogin(async()=>{
+
+    try{
+
+      if(liveStream){
+
+        toast(
+          "You are already live."
+        );
+
+        return;
+      }
+
+      liveStream =
+        await navigator.mediaDevices
+          .getUserMedia({
+            video:true,
+            audio:true
+          });
+
+      const area =
+        document.getElementById(
+          "myLiveArea"
+        );
+
+      area.innerHTML = `
+
+        <div class="card"
+             style="margin-top:18px">
+
+          <div class="section-head">
+
+            <div>
+              <h2>🔴 You are Live</h2>
+              <p>
+                Your camera is active on this device.
+              </p>
+            </div>
+
+            <span class="live-badge">
+              LIVE
+            </span>
+
+          </div>
+
+          <video
+            id="myLiveVideo"
+            class="live-video"
+            autoplay
+            muted
+            playsinline
+          ></video>
+
+          <div class="hero-actions">
+
+            <button class="btn danger"
+              onclick="stopLive()">
+              Stop Live
+            </button>
+
+          </div>
+
+        </div>
+      `;
+
+      document.getElementById(
+        "myLiveVideo"
+      ).srcObject =
+        liveStream;
+
+      /*
+       * The camera preview works locally.
+       * Publishing a real multi-user internet livestream
+       * requires a streaming/WebRTC infrastructure.
+       */
+
+      toast(
+        "Live camera started on this device.",
+        "success"
+      );
+
+    }catch(error){
+
+      console.error(error);
+
+      toast(
+        "Camera/microphone could not be started. Check browser permissions.",
+        "error"
+      );
+    }
+
+  });
+}
+
+
+function stopLive(){
+
+  if(liveStream){
+
+    liveStream
+      .getTracks()
+      .forEach(track=>{
+        track.stop();
+      });
+
+    liveStream =
+      null;
+  }
+
+  const area =
+    document.getElementById(
+      "myLiveArea"
+    );
+
+  if(area){
+    area.innerHTML = "";
+  }
+
+  toast(
+    "Live camera stopped."
+  );
+}
+
+
+async function loadLives(){
+
+  const container =
+    document.getElementById(
+      "liveUsers"
+    );
+
+  if(!container){
+    return;
+  }
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("lives")
+        .select("*")
+        .order(
+          "created_at",
+          {ascending:false}
+        )
+        .limit(30);
+
+    if(error){
+
+      container.innerHTML = `
+        <div class="empty">
+          No live broadcasts are currently available.
+        </div>
+      `;
+
+      return;
+    }
+
+    if(!data?.length){
+
+      container.innerHTML = `
+        <div class="empty">
+          No one is live right now.
+        </div>
+      `;
+
+      return;
+    }
+
+    container.innerHTML =
+      data.map(live=>`
+
+        <div class="live-card">
+
+          <div class="live-video"
+               style="display:flex;align-items:center;justify-content:center">
+            🔴
+          </div>
+
+          <div class="live-info">
+
+            <span class="live-badge">
+              LIVE
+            </span>
+
+            <h3 style="margin-top:9px">
+              ${escapeHTML(
+                live.title ||
+                "ZEEPY Live"
+              )}
+            </h3>
+
+          </div>
+
+        </div>
+
+      `).join("");
+
+  }catch(error){
+
+    container.innerHTML = `
+      <div class="empty">
+        No live broadcasts are currently available.
+      </div>
+    `;
+  }
+}
+
+
+/* =========================================================
+   MEDIA
+========================================================= */
+
+async function loadMedia(){
+
+  const container =
+    document.getElementById(
+      "mediaFeed"
+    );
+
+  if(!container){
+    return;
+  }
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("posts")
+        .select(`
+          *,
+          profiles:user_id(
+            display_name,
+            username,
+            avatar_url
+          )
+        `)
+        .in(
+          "post_type",
+          ["photo","video"]
+        )
+        .order(
+          "created_at",
+          {ascending:false}
+        )
+        .limit(50);
+
+    if(error){
+      throw error;
+    }
+
+    container.innerHTML =
+      renderPostList(data || []);
+
+  }catch(error){
+
+    container.innerHTML = `
+      <div class="empty">
+        No media available.
+      </div>
+    `;
+  }
+}
+
+
+/* =========================================================
+   GLOBAL SEARCH
+========================================================= */
+
+function globalSearch(){
+
+  const input =
+    document.getElementById(
+      "globalSearch"
+    );
+
+  const value =
+    input.value.trim();
+
+  if(!value){
+    return;
+  }
+
+  showPage("people");
+
+  const peopleSearch =
+    document.getElementById(
+      "peopleSearch"
+    );
+
+  if(peopleSearch){
+
+    peopleSearch.value =
+      value;
+
+    searchPeople();
+  }
+}
+
+
+/* =========================================================
+   MEETINGS
+========================================================= */
+
+function openMeetingModal(){
+
+  requireLogin(()=>{
+
+    document.getElementById(
+      "meetingTitle"
+    ).value = "";
+
+    document.getElementById(
+      "meetingDescription"
+    ).value = "";
+
+    document.getElementById(
+      "meetingDate"
+    ).value = "";
+
+    document.getElementById(
+      "meetingTime"
+    ).value = "";
+
+    openModal("meetingModal");
+
+  });
+}
+
+
+async function createMeeting(){
+
+  if(!currentUser){
+
+    openAuth();
+    return;
+  }
+
+  const title =
+    document.getElementById(
+      "meetingTitle"
+    ).value.trim();
+
+  const description =
+    document.getElementById(
+      "meetingDescription"
+    ).value.trim();
+
+  const date =
+    document.getElementById(
+      "meetingDate"
+    ).value;
+
+  const time =
+    document.getElementById(
+      "meetingTime"
+    ).value;
+
+  if(!title || !date){
+
+    toast(
+      "Meeting title and date are required.",
+      "error"
+    );
+
+    return;
+  }
+
+  /*
+   * The current database history does not establish
+   * a confirmed meetings table/schema, so this keeps
+   * the interface ready without inserting into an
+   * unknown table and breaking the application.
+   */
+
+  closeModal("meetingModal");
+
+  toast(
+    "Meeting information prepared. Connect this to your Meetings table when that table is available.",
+    "success"
+  );
+}
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+async function initializeApp(){
+
+  updateHeader();
+
+  await checkSession();
+
+  await loadCategories();
+
+  await loadHome();
+
+  await loadProducts();
+
+  await loadLives();
+
+  if(currentUser){
+
+    await loadMessages();
+
+  }
+
+  renderProfile();
+}
+
+
+document.addEventListener(
+  "DOMContentLoaded",
+  initializeApp
+);
+
+
+/* =========================================================
+   CLOSE MODAL WHEN CLICKING BACKGROUND
+========================================================= */
+
+document
+  .querySelectorAll(".modal")
+  .forEach(modal=>{
+
+    modal.addEventListener(
+      "click",
+      event=>{
+
+        if(
+          event.target === modal
+        ){
+          modal.classList.remove(
+            "open"
+          );
+        }
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   PREVENT ACCIDENTAL FORM SUBMISSION
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  event=>{
+
+    if(
+      event.key === "Escape"
+    ){
+
+      document
+        .querySelectorAll(
+          ".modal.open"
+        )
+        .forEach(modal=>{
+          modal.classList.remove(
+            "open"
+          );
+        });
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>
