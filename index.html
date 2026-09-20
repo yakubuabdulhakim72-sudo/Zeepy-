@@ -1,7 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#ff6a00">
+
+<title>ZEEPY — Your Community. Your World.</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
+  min-width:0;
 }
 
 html,
@@ -30,7 +43,6 @@ body{
   background:var(--bg);
   color:var(--text);
   min-height:100vh;
-  overflow-x:hidden;
 }
 
 button,
@@ -52,31 +64,27 @@ video{
 
 .app{
   width:100%;
-  max-width:100vw;
+  max-width:100%;
   min-height:100vh;
   padding-bottom:75px;
   overflow-x:hidden;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .header{
   position:sticky;
   top:0;
   z-index:100;
   width:100%;
-  max-width:100vw;
   min-width:0;
   height:64px;
   background:#0b0b0b;
   border-bottom:1px solid var(--border);
   display:flex;
   align-items:center;
-  gap:10px;
-  padding:8px 12px;
-  overflow:hidden;
+  gap:12px;
+  padding:10px 14px;
 }
 
 .logo{
@@ -99,7 +107,7 @@ video{
   background:#191919;
   border:1px solid var(--border);
   border-radius:22px;
-  padding:10px 14px;
+  padding:10px 15px;
   color:white;
   outline:none;
 }
@@ -109,18 +117,17 @@ video{
 }
 
 .header-actions{
-  flex:0 0 auto;
   margin-left:auto;
+  flex:0 0 auto;
+  min-width:0;
   display:flex;
   align-items:center;
-  gap:7px;
-  min-width:0;
+  gap:8px;
 }
 
 .icon-btn{
   flex:0 0 40px;
   width:40px;
-  min-width:40px;
   height:40px;
   border-radius:50%;
   border:1px solid var(--border);
@@ -130,7 +137,6 @@ video{
   align-items:center;
   justify-content:center;
   font-size:18px;
-  padding:0;
   overflow:hidden;
 }
 
@@ -139,24 +145,24 @@ video{
 }
 
 .avatar-small{
+  display:block;
   width:34px;
   height:34px;
-  min-width:34px;
+  max-width:34px;
   border-radius:50%;
   object-fit:cover;
   background:#333;
   border:2px solid var(--orange);
 }
 
-/* =========================
-   PAGES
-========================= */
+/* PAGES */
 
 .page{
   display:none;
   width:100%;
   max-width:1150px;
-  margin:0 auto;
+  min-width:0;
+  margin:auto;
   padding:18px;
   overflow-x:hidden;
 }
@@ -165,13 +171,21 @@ video{
   display:block;
 }
 
-/* =========================
-   COMMON
-========================= */
+/* COMMON */
+
+.card,
+.post,
+.product-card,
+.profile-cover,
+.hero,
+.education-hero,
+.edu-section,
+.modal-box{
+  min-width:0;
+  max-width:100%;
+}
 
 .card{
-  width:100%;
-  max-width:100%;
   background:var(--card);
   border:1px solid var(--border);
   border-radius:18px;
@@ -220,15 +234,18 @@ video{
   font-size:27px;
   font-weight:800;
   margin-bottom:7px;
+  overflow-wrap:anywhere;
 }
 
 .subtitle{
   color:var(--muted);
   margin-bottom:18px;
+  overflow-wrap:anywhere;
 }
 
 .grid{
   width:100%;
+  min-width:0;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:14px;
@@ -238,12 +255,9 @@ video{
   display:none!important;
 }
 
-/* =========================
-   HOME
-========================= */
+/* HOME */
 
 .hero{
-  width:100%;
   min-height:300px;
   border-radius:25px;
   padding:30px;
@@ -255,7 +269,6 @@ video{
   flex-direction:column;
   justify-content:center;
   margin-bottom:20px;
-  overflow:hidden;
 }
 
 .hero h1{
@@ -273,6 +286,7 @@ video{
   color:#bbb;
   font-size:17px;
   line-height:1.6;
+  overflow-wrap:anywhere;
 }
 
 .hero-actions{
@@ -282,12 +296,11 @@ video{
   margin-top:22px;
 }
 
-/* =========================
-   COMMUNITY CARDS
-========================= */
+/* COMMUNITY CARDS */
 
 .community-card{
   position:relative;
+  min-width:0;
   overflow:hidden;
   min-height:145px;
   padding:20px;
@@ -317,11 +330,10 @@ video{
   color:var(--muted);
   font-size:13px;
   line-height:1.4;
+  overflow-wrap:anywhere;
 }
 
-/* =========================
-   EDUCATION
-========================= */
+/* EDUCATION */
 
 .education-hero{
   position:relative;
@@ -343,12 +355,14 @@ video{
 .education-hero h1{
   font-size:34px;
   margin-bottom:8px;
+  overflow-wrap:anywhere;
 }
 
 .education-hero p{
   color:#bbb;
   max-width:720px;
   line-height:1.6;
+  overflow-wrap:anywhere;
 }
 
 .education-actions{
@@ -388,10 +402,12 @@ video{
   color:var(--muted);
   font-size:13px;
   line-height:1.45;
+  overflow-wrap:anywhere;
 }
 
 .edu-panel{
   display:none;
+  min-width:0;
 }
 
 .edu-panel.active{
@@ -402,13 +418,9 @@ video{
   margin-bottom:15px;
 }
 
-/* =========================
-   FEED
-========================= */
+/* FEED */
 
 .post{
-  width:100%;
-  max-width:100%;
   background:var(--card);
   border:1px solid var(--border);
   border-radius:17px;
@@ -426,28 +438,27 @@ video{
 }
 
 .post-avatar{
+  flex:0 0 42px;
   width:42px;
   height:42px;
-  min-width:42px;
   border-radius:50%;
   object-fit:cover;
   background:#333;
 }
 
 .post-user{
-  flex:1;
+  flex:1 1 auto;
   min-width:0;
 }
 
 .post-user strong{
   display:block;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+  overflow-wrap:anywhere;
 }
 
 .post-user small{
   color:#888;
+  overflow-wrap:anywhere;
 }
 
 .post-content{
@@ -498,13 +509,10 @@ video{
   border-color:var(--orange);
 }
 
-/* =========================
-   MARKET
-========================= */
+/* MARKET */
 
 .product-card{
   overflow:hidden;
-  min-width:0;
   background:var(--card);
   border:1px solid var(--border);
   border-radius:18px;
@@ -519,23 +527,25 @@ video{
 }
 
 .product-body{
+  min-width:0;
   padding:15px;
-  overflow:hidden;
+}
+
+.product-body h3,
+.product-body p{
+  overflow-wrap:anywhere;
 }
 
 .price{
   color:var(--orange);
   font-size:19px;
   font-weight:800;
+  overflow-wrap:anywhere;
 }
 
-/* =========================
-   PROFILE
-========================= */
+/* PROFILE */
 
 .profile-cover{
-  width:100%;
-  max-width:100%;
   background:linear-gradient(135deg,#21150c,#151515);
   border-radius:20px;
   padding:25px;
@@ -555,9 +565,7 @@ video{
   margin-bottom:12px;
 }
 
-/* =========================
-   BOTTOM NAVIGATION
-========================= */
+/* BOTTOM NAV */
 
 .bottom-nav{
   position:fixed;
@@ -571,15 +579,17 @@ video{
   background:rgba(10,10,10,.97);
   border-top:1px solid var(--border);
   display:grid;
-  grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns:repeat(5,minmax(0,1fr));
   align-items:center;
+  padding:0 4px;
   overflow:hidden;
 }
 
 .nav-item{
   width:100%;
   min-width:0;
-  height:68px;
+  max-width:100%;
+  height:100%;
   background:none;
   border:0;
   color:#888;
@@ -587,7 +597,7 @@ video{
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:3px;
+  gap:4px;
   font-size:11px;
   overflow:hidden;
 }
@@ -606,6 +616,7 @@ video{
   align-self:center;
   width:52px;
   min-width:52px;
+  max-width:52px;
   height:52px;
   border-radius:50%;
   background:var(--orange);
@@ -615,9 +626,7 @@ video{
   margin-top:-22px;
 }
 
-/* =========================
-   MODALS
-========================= */
+/* MODALS */
 
 .modal{
   display:none;
@@ -657,7 +666,6 @@ video{
 }
 
 .modal-head h2{
-  min-width:0;
   overflow-wrap:anywhere;
 }
 
@@ -673,6 +681,7 @@ video{
 
 .form-group{
   margin-bottom:14px;
+  min-width:0;
 }
 
 .form-group label{
@@ -683,8 +692,10 @@ video{
 }
 
 .form-control{
+  display:block;
   width:100%;
   max-width:100%;
+  min-width:0;
   background:#0d0d0d;
   color:white;
   border:1px solid var(--border);
@@ -710,9 +721,7 @@ textarea.form-control{
   margin-top:15px;
 }
 
-/* =========================
-   TOAST
-========================= */
+/* TOAST */
 
 .toast{
   position:fixed;
@@ -729,8 +738,9 @@ textarea.form-control{
   pointer-events:none;
   transition:.25s;
   width:max-content;
-  max-width:90vw;
+  max-width:90%;
   text-align:center;
+  overflow-wrap:anywhere;
 }
 
 .toast.show{
@@ -738,100 +748,89 @@ textarea.form-control{
   transform:translateX(-50%) translateY(0);
 }
 
-/* =========================
-   LOADING
-========================= */
+/* LOADING */
 
 .loading{
   text-align:center;
   padding:30px;
   color:#999;
+  overflow-wrap:anywhere;
 }
 
-/* =========================
-   TABLET
-========================= */
+/* INLINE FLEX SAFETY */
 
-@media(max-width:850px){
-
-  .header{
-    gap:8px;
-    padding-left:10px;
-    padding-right:10px;
-  }
-
-  .logo{
-    font-size:22px;
-  }
-
-  .search{
-    max-width:none;
-  }
-
-  .page{
-    padding:14px;
-  }
-
+[style*="display:flex"]{
+  min-width:0;
 }
 
-/* =========================
-   MOBILE
-========================= */
+[style*="flex:1"]{
+  min-width:0;
+}
+
+/* MOBILE */
 
 @media(max-width:650px){
 
   .header{
     height:58px;
     padding:7px 8px;
-    gap:7px;
+    gap:6px;
   }
 
   .logo{
+    flex:0 0 auto;
     font-size:20px;
-    letter-spacing:-1px;
+    letter-spacing:-.8px;
   }
 
   .search{
+    flex:1 1 auto;
     min-width:0;
-    height:38px;
-    padding:8px 11px;
-    font-size:13px;
+    width:auto;
+    max-width:none;
+    padding:9px 11px;
+    font-size:14px;
   }
 
   .header-actions{
+    flex:0 0 auto;
     gap:5px;
-  }
-
-  .icon-btn{
-    width:36px;
-    min-width:36px;
-    height:36px;
-    font-size:16px;
-  }
-
-  .avatar-small{
-    width:30px;
-    height:30px;
-    min-width:30px;
   }
 
   .header .icon-btn.people{
     display:none;
   }
 
+  .header .icon-btn{
+    flex:0 0 34px;
+    width:34px;
+    height:34px;
+    font-size:16px;
+  }
+
+  .avatar-small{
+    width:30px;
+    height:30px;
+    max-width:30px;
+  }
+
   .page{
-    width:100%;
-    max-width:100vw;
-    padding:12px 10px;
+    padding:12px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
   }
 
   .hero{
-    padding:20px;
+    min-height:280px;
+    padding:22px;
     border-radius:20px;
   }
 
   .hero h1{
-    font-size:clamp(29px,9vw,42px);
+    font-size:clamp(29px,9vw,43px);
   }
 
   .hero p{
@@ -839,8 +838,7 @@ textarea.form-control{
   }
 
   .education-hero{
-    padding:20px;
-    border-radius:20px;
+    padding:21px;
   }
 
   .education-hero h1{
@@ -849,15 +847,6 @@ textarea.form-control{
 
   .title{
     font-size:23px;
-  }
-
-  .subtitle{
-    font-size:14px;
-  }
-
-  .grid{
-    grid-template-columns:1fr 1fr;
-    gap:10px;
   }
 
   .community-card{
@@ -870,8 +859,122 @@ textarea.form-control{
     font-size:30px;
   }
 
+  .edu-section{
+    min-height:135px;
+    padding:15px;
+    border-radius:16px;
+  }
+
+  .edu-icon{
+    font-size:27px;
+  }
+
+  .post{
+    padding:14px;
+  }
+
+  .post-media{
+    max-height:400px;
+  }
+
+  .product-image{
+    height:155px;
+  }
+
+  .profile-cover{
+    padding:20px 14px;
+  }
+
+  .bottom-nav{
+    height:68px;
+    padding:0 2px;
+  }
+
+  .nav-item{
+    font-size:10px;
+    gap:3px;
+  }
+
+  .nav-item span{
+    font-size:20px;
+  }
+
+  .create-nav{
+    width:48px;
+    min-width:48px;
+    max-width:48px;
+    height:48px;
+    font-size:23px;
+  }
+
+  .modal{
+    padding:10px;
+  }
+
+  .modal-box{
+    padding:16px;
+    border-radius:17px;
+  }
+
+  .modal-actions{
+    justify-content:stretch;
+  }
+
+  .modal-actions .btn{
+    flex:1 1 auto;
+  }
+}
+
+/* VERY SMALL PHONES */
+
+@media(max-width:390px){
+
+  .header{
+    padding:7px 6px;
+    gap:5px;
+  }
+
+  .logo{
+    font-size:18px;
+    letter-spacing:-.8px;
+  }
+
+  .search{
+    font-size:13px;
+    padding:8px 10px;
+  }
+
+  .header-actions{
+    gap:4px;
+  }
+
+  .header .icon-btn{
+    flex:0 0 32px;
+    width:32px;
+    height:32px;
+    font-size:15px;
+  }
+
+  .avatar-small{
+    width:28px;
+    height:28px;
+    max-width:28px;
+  }
+
+  .page{
+    padding:10px;
+  }
+
+  .grid{
+    gap:8px;
+  }
+
+  .community-card{
+    padding:13px;
+  }
+
   .community-card h3{
-    font-size:16px;
+    font-size:15px;
   }
 
   .community-card p{
@@ -879,8 +982,7 @@ textarea.form-control{
   }
 
   .edu-section{
-    min-height:135px;
-    padding:15px;
+    padding:13px;
   }
 
   .edu-section h3{
@@ -891,108 +993,6 @@ textarea.form-control{
     font-size:12px;
   }
 
-  .bottom-nav{
-    height:66px;
-  }
-
-  .nav-item{
-    height:66px;
-    font-size:10px;
-  }
-
-  .nav-item span{
-    font-size:19px;
-  }
-
-  .create-nav{
-    width:48px;
-    min-width:48px;
-    height:48px;
-    font-size:23px;
-  }
-
-  .modal{
-    padding:10px;
-  }
-
-  .modal-box{
-    width:100%;
-    max-height:92vh;
-    border-radius:17px;
-    padding:16px;
-  }
-
-  .modal-actions{
-    justify-content:stretch;
-  }
-
-  .modal-actions .btn{
-    flex:1;
-  }
-
-}
-
-/* =========================
-   VERY SMALL PHONES
-========================= */
-
-@media(max-width:390px){
-
-  .header{
-    padding-left:6px;
-    padding-right:6px;
-    gap:5px;
-  }
-
-  .logo{
-    font-size:18px;
-  }
-
-  .search{
-    font-size:12px;
-    padding-left:9px;
-    padding-right:9px;
-  }
-
-  .header-actions{
-    gap:3px;
-  }
-
-  .icon-btn{
-    width:33px;
-    min-width:33px;
-    height:33px;
-    font-size:14px;
-  }
-
-  .avatar-small{
-    width:27px;
-    height:27px;
-    min-width:27px;
-  }
-
-  .page{
-    padding-left:8px;
-    padding-right:8px;
-  }
-
-  .grid{
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-  }
-
-  .community-card{
-    padding:13px;
-  }
-
-  .community-card h3{
-    font-size:14px;
-  }
-
-  .community-card p{
-    font-size:11px;
-  }
-
   .nav-item{
     font-size:9px;
   }
@@ -1001,29 +1001,1511 @@ textarea.form-control{
     font-size:18px;
   }
 
+  .create-nav{
+    width:44px;
+    min-width:44px;
+    max-width:44px;
+    height:44px;
+    font-size:21px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="header">
+
+  <div class="logo">
+    ZEE<span class="py">PY</span>
+  </div>
+
+  <input
+    id="globalSearch"
+    class="search"
+    placeholder="Search ZEEPY..."
+    onkeydown="globalSearch(event)"
+  >
+
+  <div class="header-actions">
+
+    <button class="icon-btn people" onclick="showPage('people')">
+      👥
+    </button>
+
+    <button class="icon-btn" onclick="showPage('notifications')">
+      🔔
+    </button>
+
+    <button class="icon-btn" onclick="showPage('profile')">
+      👤
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- HOME -->
+<section id="page-home" class="page active">
+
+  <div class="hero">
+
+    <h1>
+      WELCOME TO YOUR <span>COMMUNITY</span>
+    </h1>
+
+    <p>
+      ZEEPY brings people, communities, knowledge, business,
+      education, entertainment and opportunities together in one world.
+    </p>
+
+    <div class="hero-actions">
+
+      <button class="btn" onclick="showPage('communities')">
+        🌍 Explore Community
+      </button>
+
+      <button class="btn secondary" onclick="openCreatePost()">
+        ＋ Create
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="title">Community Areas</div>
+
+    <div class="subtitle">
+      Enter a community and explore everything connected to it.
+    </div>
+
+    <div id="homeCategories" class="grid"></div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="title">Community Feed</div>
+
+    <div id="homeFeed">
+      <div class="loading">Loading posts...</div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- COMMUNITIES -->
+<section id="page-communities" class="page">
+
+  <div class="title">Communities</div>
+
+  <div class="subtitle">
+    Choose a community to enter its world.
+  </div>
+
+  <div id="communityCategories" class="grid"></div>
+
+  <div class="card" style="margin-top:20px">
+
+    <div class="title" id="communityFeedTitle">
+      Community Feed
+    </div>
+
+    <div class="feed-tabs">
+
+      <button class="feed-tab active" onclick="setFeedFilter('all',this)">
+        All
+      </button>
+
+      <button class="feed-tab" onclick="setFeedFilter('text',this)">
+        Text
+      </button>
+
+      <button class="feed-tab" onclick="setFeedFilter('photo',this)">
+        Photos
+      </button>
+
+      <button class="feed-tab" onclick="setFeedFilter('video',this)">
+        Videos
+      </button>
+
+      <button class="feed-tab" onclick="setFeedFilter('file',this)">
+        Files
+      </button>
+
+      <button class="feed-tab" onclick="setFeedFilter('poll',this)">
+        Polls
+      </button>
+
+    </div>
+
+    <div id="communityFeed">
+      <div class="loading">Loading...</div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- EDUCATION -->
+<section id="page-education" class="page">
+
+  <button
+    class="btn secondary small edu-back"
+    onclick="showPage('communities')"
+  >
+    ← Back to Communities
+  </button>
+
+
+  <div class="education-hero">
+
+    <div class="education-icon">🎓</div>
+
+    <h1>Education</h1>
+
+    <p>
+      Your complete academic community for learning, teaching,
+      study materials, questions, discussions, schools, tutors,
+      scholarships, events and online meetings.
+    </p>
+
+    <div class="education-actions">
+
+      <button class="btn" onclick="openCreatePost('education')">
+        ＋ Academic Post
+      </button>
+
+      <button class="btn secondary" onclick="openEducationPanel('meetings')">
+        📅 Meetings
+      </button>
+
+      <button class="btn secondary" onclick="openEducationPanel('groups')">
+        👥 Study Groups
+      </button>
+
+      <button class="btn secondary" onclick="openEducationPanel('qa')">
+        ❓ Ask Question
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div id="educationHomePanel" class="edu-panel active">
+
+    <div class="title">Education Platform</div>
+
+    <div class="subtitle">
+      Everything academic, organized in one place.
+    </div>
+
+    <div class="grid">
+
+      <div class="edu-section" onclick="openEducationPanel('courses')">
+        <div class="edu-icon">📚</div>
+        <h3>Courses & Subjects</h3>
+        <p>Discover subjects, courses and learning areas.</p>
+      </div>
+
+      <div class="edu-section" onclick="openEducationPanel('materials')">
+        <div class="edu-icon">📝</div>
+        <h3>Notes & Materials</h3>
+        <p>Share and discover notes, documents, textbooks and study materials.</p>
+      </div>
+
+      <div class="edu-section" onclick="openEducationPanel('qa')">
+        <div class="edu-icon">❓</div>
+        <h3>Questions & Answers</h3>
+        <p>Ask academic questions and discuss solutions.</p>
+      </div>
+
+      <div class="edu-section" onclick="openEducationPanel('groups')">
+        <div class="edu-icon">👥</div>
+        <h3>Study Groups</h3>
+        <p>Build study communities around subjects, schools and courses.</p>
+      </div>
+
+      <div class="edu-section" onclick="openEducationPanel('schools')">
+        <div class="edu-icon">🏫</div>
+        <h3>Schools & Institutions</h3>
+        <p>Connect students, teachers and institutions.</p>
+      </div>
+
+      <div class="edu-section" onclick="openEducationPanel('teachers')">
+        <div class="edu-icon">👨‍🏫</div>
+        <h3>Teachers & Tutors</h3>
+        <p>Discover educators, tutors and academic mentors.</p>
+      </div>
+
+      <div class="edu-section" onclick="openEducationPanel('meetings')">
+        <div class="edu-icon">📅</div>
+        <h3>Meetings & Events</h3>
+        <p>Academic meetings, seminars, workshops and events.</p>
+      </div>
+
+      <div class="edu-section" onclick="openEducationPanel('online')">
+        <div class="edu-icon">💻</div>
+        <h3>Online Meetings</h3>
+        <p>Connect educational communities through online meetings.</p>
+      </div>
+
+      <div class="edu-section" onclick="openEducationPanel('videos')">
+        <div class="edu-icon">🎥</div>
+        <h3>Educational Videos</h3>
+        <p>Educational videos, lessons and tutorials.</p>
+      </div>
+
+      <div class="edu-section" onclick="openEducationPanel('live')">
+        <div class="edu-icon">🔴</div>
+        <h3>Live Classes</h3>
+        <p>Future live teaching and interactive classes.</p>
+      </div>
+
+      <div class="edu-section" onclick="openEducationPanel('scholarships')">
+        <div class="edu-icon">🎓</div>
+        <h3>Scholarships & Opportunities</h3>
+        <p>Academic opportunities, scholarships and announcements.</p>
+      </div>
+
+      <div class="edu-section" onclick="openEducationPanel('news')">
+        <div class="edu-icon">📰</div>
+        <h3>Education News</h3>
+        <p>Education-related news and announcements.</p>
+      </div>
+
+      <div class="edu-section" onclick="openEducationPanel('discussions')">
+        <div class="edu-icon">💬</div>
+        <h3>Academic Discussions</h3>
+        <p>Talk about education, learning and academic life.</p>
+      </div>
+
+      <div class="edu-section" onclick="openEducationPanel('search')">
+        <div class="edu-icon">🔎</div>
+        <h3>Academic Search</h3>
+        <p>Search the Education community for useful content.</p>
+      </div>
+
+    </div>
+
+
+    <div class="card" style="margin-top:18px">
+
+      <div class="title">Education Community Feed</div>
+
+      <div id="educationFeed">
+        <div class="loading">Loading Education posts...</div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div id="educationPanel" class="edu-panel">
+
+    <button
+      class="btn secondary small edu-back"
+      onclick="openEducationPanel('home')"
+    >
+      ← Education Home
+    </button>
+
+    <div id="educationPanelContent"></div>
+
+  </div>
+
+</section>
+
+
+<!-- MARKET -->
+<section id="page-market" class="page">
+
+  <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
+
+    <div>
+      <div class="title">Marketplace</div>
+      <div class="subtitle">
+        Buy and sell products inside ZEEPY.
+      </div>
+    </div>
+
+    <div>
+      <button class="btn small" onclick="requireLogin(openSellProduct)">
+        ＋ Sell Product
+      </button>
+    </div>
+
+  </div>
+
+  <div id="productsGrid" class="grid">
+    <div class="loading">Loading products...</div>
+  </div>
+
+</section>
+
+
+<!-- PEOPLE -->
+<section id="page-people" class="page">
+
+  <div class="title">People</div>
+
+  <div class="subtitle">
+    Find people and connect with your community.
+  </div>
+
+  <div class="card">
+
+    <input
+      id="peopleSearch"
+      class="form-control"
+      placeholder="Search people..."
+      oninput="searchPeople()"
+    >
+
+  </div>
+
+  <div id="peopleResults"></div>
+
+</section>
+
+
+<!-- MESSAGES -->
+<section id="page-messages" class="page">
+
+  <div class="title">Messages</div>
+
+  <div class="subtitle">
+    Your conversations on ZEEPY.
+  </div>
+
+  <div class="card">
+
+    <button class="btn small" onclick="showPage('people')">
+      👥 Find People
+    </button>
+
+  </div>
+
+  <div id="messagesList">
+    <div class="loading">Loading messages...</div>
+  </div>
+
+</section>
+
+
+<!-- PROFILE -->
+<section id="page-profile" class="page">
+
+  <div id="profileContent">
+    <div class="loading">Loading profile...</div>
+  </div>
+
+</section>
+
+
+<!-- NOTIFICATIONS -->
+<section id="page-notifications" class="page">
+
+  <div class="title">Notifications</div>
+
+  <div class="card">
+    <p class="muted">
+      Your ZEEPY notifications will appear here.
+    </p>
+  </div>
+
+</section>
+
+
+<!-- WALLET -->
+<section id="page-wallet" class="page">
+
+  <div class="title">Wallet</div>
+
+  <div class="card">
+
+    <div class="muted">Available Balance</div>
+
+    <div style="font-size:35px;font-weight:900;margin-top:8px">
+      GH₵ 0.00
+    </div>
+
+    <p class="muted" style="margin-top:10px">
+      Earnings, transactions and creator revenue will appear here.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- GROUPS -->
+<section id="page-groups" class="page">
+
+  <div class="title">Groups</div>
+
+  <div class="card">
+
+    <h3>ZEEPY Groups</h3>
+
+    <p class="muted" style="margin-top:8px">
+      Create and join communities around shared interests.
+    </p>
+
+    <button class="btn small" style="margin-top:15px">
+      ＋ Create Group
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- LIVE -->
+<section id="page-live" class="page">
+
+  <div class="title">Live</div>
+
+  <div class="card">
+
+    <video
+      id="liveVideo"
+      autoplay
+      muted
+      playsinline
+      style="display:block;width:100%;border-radius:15px;background:#000;max-height:500px"
+    ></video>
+
+    <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+
+      <button class="btn" onclick="startLive()">
+        🔴 Start Live
+      </button>
+
+      <button class="btn secondary" onclick="stopLive()">
+        Stop
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MEDIA -->
+<section id="page-media" class="page">
+
+  <div class="title">Media</div>
+
+  <div class="card">
+
+    <p class="muted">
+      Your ZEEPY media area for photos, videos and other community content.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- NEARBY -->
+<section id="page-nearby" class="page">
+
+  <div class="title">Nearby</div>
+
+  <div class="card">
+
+    <h3>People & Communities Nearby</h3>
+
+    <p class="muted" style="margin-top:8px">
+      Nearby community discovery will be connected here.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- MEET -->
+<section id="page-meet" class="page">
+
+  <div class="title">Meet</div>
+
+  <div class="card">
+
+    <h3>🤝 ZEEPY Meetings</h3>
+
+    <p class="muted" style="margin-top:8px">
+      Meetings for communities, groups and events.
+    </p>
+
+    <button
+      class="btn"
+      style="margin-top:15px"
+      onclick="openMeetingModal()"
+    >
+      ＋ Create Meeting
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+
+  <button
+    class="nav-item active"
+    data-page="home"
+    onclick="showPage('home')"
+  >
+    <span>🏠</span>
+    Home
+  </button>
+
+  <button
+    class="nav-item"
+    data-page="market"
+    onclick="showPage('market')"
+  >
+    <span>🛒</span>
+    Market
+  </button>
+
+  <button
+    class="nav-item create-nav"
+    onclick="openCreatePost()"
+    aria-label="Create"
+  >
+    ＋
+  </button>
+
+  <button
+    class="nav-item"
+    data-page="messages"
+    onclick="showPage('messages')"
+  >
+    <span>💬</span>
+    Messages
+  </button>
+
+  <button
+    class="nav-item"
+    data-page="profile"
+    onclick="showPage('profile')"
+  >
+    <span>👤</span>
+    Profile
+  </button>
+
+</nav>
+
+</div>
+
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h2 id="authTitle">Log in</h2>
+
+      <button class="close" onclick="closeModal('authModal')">
+        ×
+      </button>
+
+    </div>
+
+    <div id="authError" class="muted" style="margin-bottom:10px"></div>
+
+    <div id="signupNameGroup" class="form-group hidden">
+
+      <label>Display Name</label>
+
+      <input
+        id="authName"
+        class="form-control"
+        placeholder="Your name"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Email</label>
+
+      <input
+        id="authEmail"
+        class="form-control"
+        type="email"
+        placeholder="you@example.com"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Password</label>
+
+      <input
+        id="authPassword"
+        class="form-control"
+        type="password"
+        placeholder="Password"
+      >
+
+    </div>
+
+    <div class="modal-actions">
+
+      <button
+        id="authSwitch"
+        class="btn secondary"
+        onclick="toggleAuthMode()"
+      >
+        Create account
+      </button>
+
+      <button
+        id="authSubmit"
+        class="btn"
+        onclick="submitAuth()"
+      >
+        Log in
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- CREATE POST -->
+<div id="postModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h2>Create Post</h2>
+
+      <button class="close" onclick="closeModal('postModal')">
+        ×
+      </button>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Community</label>
+
+      <select id="postCategory" class="form-control"></select>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Post</label>
+
+      <textarea
+        id="postContent"
+        class="form-control"
+        placeholder="Share something with your community..."
+      ></textarea>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Media</label>
+
+      <input
+        id="postFile"
+        class="form-control"
+        type="file"
+        accept="image/*,video/*,.pdf,.doc,.docx,.ppt,.pptx"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Link (optional)</label>
+
+      <input
+        id="postLink"
+        class="form-control"
+        placeholder="https://..."
+      >
+
+    </div>
+
+    <div class="modal-actions">
+
+      <button class="btn secondary" onclick="closeModal('postModal')">
+        Cancel
+      </button>
+
+      <button class="btn" onclick="createPost()">
+        Publish
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- PROFILE MODAL -->
+<div id="profileModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h2>Edit Profile</h2>
+
+      <button class="close" onclick="closeModal('profileModal')">
+        ×
+      </button>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Display Name</label>
+
+      <input id="profileName" class="form-control">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Username</label>
+
+      <input id="profileUsername" class="form-control">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Bio</label>
+
+      <textarea id="profileBio" class="form-control"></textarea>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Profile Photo</label>
+
+      <input
+        id="profileAvatar"
+        class="form-control"
+        type="file"
+        accept="image/*"
+      >
+
+    </div>
+
+    <div class="modal-actions">
+
+      <button class="btn secondary" onclick="closeModal('profileModal')">
+        Cancel
+      </button>
+
+      <button class="btn" onclick="saveProfile()">
+        Save Profile
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- PRODUCT MODAL -->
+<div id="productModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h2>Sell Product</h2>
+
+      <button class="close" onclick="closeModal('productModal')">
+        ×
+      </button>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Product Name</label>
+
+      <input id="productName" class="form-control">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Price</label>
+
+      <input id="productPrice" class="form-control" type="number">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Description</label>
+
+      <textarea id="productDescription" class="form-control"></textarea>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Product Image</label>
+
+      <input
+        id="productImage"
+        class="form-control"
+        type="file"
+        accept="image/*"
+      >
+
+    </div>
+
+    <div class="modal-actions">
+
+      <button class="btn secondary" onclick="closeModal('productModal')">
+        Cancel
+      </button>
+
+      <button class="btn" onclick="createProduct()">
+        Publish Product
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- MEETING MODAL -->
+<div id="meetingModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h2>Create Meeting</h2>
+
+      <button class="close" onclick="closeModal('meetingModal')">
+        ×
+      </button>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Meeting Title</label>
+
+      <input
+        id="meetingTitle"
+        class="form-control"
+        placeholder="e.g. Mathematics Study Meeting"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Date</label>
+
+      <input id="meetingDate" class="form-control" type="date">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Time</label>
+
+      <input id="meetingTime" class="form-control" type="time">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Meeting Link</label>
+
+      <input
+        id="meetingLink"
+        class="form-control"
+        placeholder="Zoom or Google Meet link"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Description</label>
+
+      <textarea
+        id="meetingDescription"
+        class="form-control"
+        placeholder="What will the meeting be about?"
+      ></textarea>
+
+    </div>
+
+    <div class="modal-actions">
+
+      <button class="btn secondary" onclick="closeModal('meetingModal')">
+        Cancel
+      </button>
+
+      <button class="btn" onclick="createMeeting()">
+        Create Meeting
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script>
+
+/* =========================================================
+   ZEEPY SUPABASE CONNECTION
+========================================================= */
+
+const SUPABASE_URL =
+  "https://iswicrdfsqwalwisxbdm.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_8CT66JSnwPYN_Khkb7a6WA_1kmrlTL9";
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+/* =========================================================
+   GLOBAL STATE
+========================================================= */
+
+let currentUser = null;
+let categories = [];
+let selectedCategoryId = null;
+let selectedCategoryName = "";
+let feedFilter = "all";
+let authMode = "login";
+let educationCategory = null;
+let liveStream = null;
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function toast(message){
+
+  const el =
+    document.getElementById("toast");
+
+  if(!el){
+    return;
+  }
+
+  el.textContent = message;
+
+  el.classList.add("show");
+
+  setTimeout(()=>{
+    el.classList.remove("show");
+  },3000);
 }
 
-/* =========================
-   PREVENT LONG TEXT
-========================= */
 
-h1,
-h2,
-h3,
-h4,
-p,
-div,
-span,
-a{
-  max-width:100%;
+function closeModal(id){
+
+  const modal =
+    document.getElementById(id);
+
+  if(modal){
+    modal.classList.remove("active");
+  }
 }
 
-a{
-  overflow-wrap:anywhere;
+
+function openModal(id){
+
+  const modal =
+    document.getElementById(id);
+
+  if(modal){
+    modal.classList.add("active");
+  }
 }
 
-input,
-textarea,
-select{
-  min-width:0;
+
+function escapeHTML(value){
+
+  if(value === null || value === undefined){
+    return "";
+  }
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
+
+
+function requireLogin(callback){
+
+  if(!currentUser){
+    openAuth("login");
+    return;
+  }
+
+  callback();
+}
+
+
+/* =========================================================
+   AUTH
+========================================================= */
+
+function openAuth(mode="login"){
+
+  authMode = mode;
+
+  document.getElementById("authTitle").textContent =
+    mode === "login"
+      ? "Log in"
+      : "Create account";
+
+  document.getElementById("authSubmit").textContent =
+    mode === "login"
+      ? "Log in"
+      : "Create account";
+
+  document.getElementById("authSwitch").textContent =
+    mode === "login"
+      ? "Create account"
+      : "Log in";
+
+  document
+    .getElementById("signupNameGroup")
+    .classList.toggle(
+      "hidden",
+      mode === "login"
+    );
+
+  document.getElementById("authError").textContent = "";
+
+  openModal("authModal");
+}
+
+
+function toggleAuthMode(){
+
+  authMode =
+    authMode === "login"
+      ? "signup"
+      : "login";
+
+  openAuth(authMode);
+}
+
+
+async function submitAuth(){
+
+  const email =
+    document.getElementById("authEmail")
+      .value.trim();
+
+  const password =
+    document.getElementById("authPassword")
+      .value;
+
+  const name =
+    document.getElementById("authName")
+      .value.trim();
+
+  const error =
+    document.getElementById("authError");
+
+  error.textContent = "";
+
+  if(!email || !password){
+
+    error.textContent =
+      "Enter your email and password.";
+
+    return;
+  }
+
+  try{
+
+    if(authMode === "signup"){
+
+      if(!name){
+
+        error.textContent =
+          "Enter your display name.";
+
+        return;
+      }
+
+      const {
+        data,
+        error:signupError
+      } =
+        await supabaseClient.auth.signUp({
+
+          email,
+          password,
+
+          options:{
+            data:{
+              display_name:name,
+              name:name
+            }
+          }
+
+        });
+
+      if(signupError){
+        throw signupError;
+      }
+
+      if(data.user){
+
+        currentUser = data.user;
+
+        toast(
+          "Account created successfully."
+        );
+
+        await ensureProfile(
+          data.user,
+          name
+        );
+
+        closeModal("authModal");
+
+        await initializeUser();
+
+        showPage("home");
+      }
+
+    }else{
+
+      const {
+        data,
+        error:loginError
+      } =
+        await supabaseClient.auth.signInWithPassword({
+          email,
+          password
+        });
+
+      if(loginError){
+        throw loginError;
+      }
+
+      currentUser =
+        data.user;
+
+      closeModal("authModal");
+
+      toast(
+        "Welcome back to ZEEPY."
+      );
+
+      await initializeUser();
+
+      showPage("home");
+    }
+
+  }catch(err){
+
+    error.textContent =
+      err.message ||
+      "Authentication failed.";
+
+  }
+}
+
+
+async function checkSession(){
+
+  const {data} =
+    await supabaseClient.auth.getSession();
+
+  currentUser =
+    data.session?.user || null;
+
+  if(currentUser){
+    await initializeUser();
+  }
+}
+
+
+supabaseClient.auth.onAuthStateChange(
+  async(event,session)=>{
+
+    currentUser =
+      session?.user || null;
+
+    if(currentUser){
+      await initializeUser();
+    }
+
+    updateHeader();
+  }
+);
+
+
+async function initializeUser(){
+
+  if(!currentUser){
+    return;
+  }
+
+  await ensureProfile(
+    currentUser
+  );
+
+  await loadProfile();
+
+  await loadMessages();
+}
+
+
+async function ensureProfile(
+  user,
+  nameOverride=""
+){
+
+  if(!user){
+    return;
+  }
+
+  const {data} =
+    await supabaseClient
+      .from("profiles")
+      .select("id")
+      .eq("id",user.id)
+      .maybeSingle();
+
+  if(!data){
+
+    const metadata =
+      user.user_metadata || {};
+
+    const displayName =
+      nameOverride ||
+      metadata.display_name ||
+      metadata.name ||
+      user.email?.split("@")[0] ||
+      "ZEEPY User";
+
+    await supabaseClient
+      .from("profiles")
+      .upsert({
+
+        id:user.id,
+
+        display_name:
+          displayName,
+
+        email:user.email
+
+      });
+  }
+}
+
+
+async function logout(){
+
+  await supabaseClient.auth.signOut();
+
+  currentUser = null;
+
+  toast("Logged out.");
+
+  updateHeader();
+
+  showPage("home");
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function showPage(page){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(p =>
+      p.classList.remove("active")
+    );
+
+  const target =
+    document.getElementById(
+      "page-"+page
+    );
+
+  if(target){
+    target.classList.add("active");
+  }
+
+  /*
+    Keep the bottom navigation active
+    when the user changes pages.
+  */
+
+  document
+    .querySelectorAll(
+      ".bottom-nav .nav-item"
+    )
+    .forEach(item =>
+      item.classList.remove("active")
+    );
+
+  const navItem =
+    document.querySelector(
+      `.bottom-nav .nav-item[data-page="${page}"]`
+    );
+
+  if(navItem){
+    navItem.classList.add("active");
+  }
+
+  if(page === "home"){
+    loadHome();
+  }
+
+  if(page === "communities"){
+    loadCommunityFeed();
+  }
+
+  if(page === "education"){
+    loadEducation();
+  }
+
+  if(page === "market"){
+    loadProducts();
+  }
+
+  if(page === "people"){
+    searchPeople();
+  }
+
+  if(page === "messages"){
+    loadMessages();
+  }
+
+  if(page === "profile"){
+    loadProfile();
+  }
+}
+
+
+/* =========================================================
+   CATEGORIES
+========================================================= */
+
+const fallbackCategories = [
+
+  {
+    id:null,
+    name:"Education",
+    slug:"education",
+    description:
+      "Learning, schools, courses, teachers and academic life.",
+    icon:"🎓"
+  },
+
+  {
+    id:null,
+    name:"Health",
+    slug:"health",
+    description:
+      "Health information and community discussions.",
+    icon:"❤️"
+  },
+
+  {
+    id:null,
+    name:"Sports",
+    slug:"sports",
+    description:
+      "Sports, athletes, teams and activities.",
+    icon:"⚽"
+  },
+
+  {
+    id:null,
+    name:"Life",
+    slug:"life",
+    description:
+      "Everyday life and community conversations.",
+    icon:"🌱"
+  },
+
+  {
+    id:null,
+    name:"Business",
+    slug:"business",
+    description:
+      "Business, entrepreneurship and opportunities.",
+    icon:"💼"
+  },
+
+  {
+    id:null,
+    name:"Technology",
+    slug:"technology",
+    description:
+      "Technology, innovation and digital life.",
+    icon:"💻"
+  },
+
+  {
+    id:null,
+   
