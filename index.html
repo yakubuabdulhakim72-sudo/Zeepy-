@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#ff6a00">
-
-<title>ZEEPY — Your Community. Your World.</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<style>
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
+}
+
+html,
+body{
+  width:100%;
+  max-width:100%;
+  min-height:100%;
+  overflow-x:hidden;
 }
 
 :root{
@@ -34,6 +30,7 @@ body{
   background:var(--bg);
   color:var(--text);
   min-height:100vh;
+  overflow-x:hidden;
 }
 
 button,
@@ -41,32 +38,49 @@ input,
 textarea,
 select{
   font:inherit;
+  max-width:100%;
 }
 
 button{
   cursor:pointer;
 }
 
-.app{
-  min-height:100vh;
-  padding-bottom:75px;
+img,
+video{
+  max-width:100%;
 }
 
-/* HEADER */
+.app{
+  width:100%;
+  max-width:100vw;
+  min-height:100vh;
+  padding-bottom:75px;
+  overflow-x:hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
 .header{
   position:sticky;
   top:0;
   z-index:100;
+  width:100%;
+  max-width:100vw;
+  min-width:0;
   height:64px;
   background:#0b0b0b;
   border-bottom:1px solid var(--border);
   display:flex;
   align-items:center;
-  gap:12px;
-  padding:10px 14px;
+  gap:10px;
+  padding:8px 12px;
+  overflow:hidden;
 }
 
 .logo{
+  flex:0 0 auto;
   font-size:25px;
   font-weight:900;
   letter-spacing:-1px;
@@ -78,25 +92,35 @@ button{
 }
 
 .search{
-  flex:1;
+  flex:1 1 auto;
+  min-width:0;
+  width:100%;
   max-width:550px;
   background:#191919;
   border:1px solid var(--border);
   border-radius:22px;
-  padding:10px 15px;
+  padding:10px 14px;
   color:white;
   outline:none;
 }
 
+.search::placeholder{
+  color:#777;
+}
+
 .header-actions{
+  flex:0 0 auto;
   margin-left:auto;
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:7px;
+  min-width:0;
 }
 
 .icon-btn{
+  flex:0 0 40px;
   width:40px;
+  min-width:40px;
   height:40px;
   border-radius:50%;
   border:1px solid var(--border);
@@ -106,6 +130,8 @@ button{
   align-items:center;
   justify-content:center;
   font-size:18px;
+  padding:0;
+  overflow:hidden;
 }
 
 .icon-btn:hover{
@@ -113,33 +139,45 @@ button{
 }
 
 .avatar-small{
-  width:40px;
-  height:40px;
+  width:34px;
+  height:34px;
+  min-width:34px;
   border-radius:50%;
   object-fit:cover;
   background:#333;
   border:2px solid var(--orange);
 }
 
-/* PAGES */
+/* =========================
+   PAGES
+========================= */
+
 .page{
   display:none;
+  width:100%;
   max-width:1150px;
-  margin:auto;
+  margin:0 auto;
   padding:18px;
+  overflow-x:hidden;
 }
 
 .page.active{
   display:block;
 }
 
-/* COMMON */
+/* =========================
+   COMMON
+========================= */
+
 .card{
+  width:100%;
+  max-width:100%;
   background:var(--card);
   border:1px solid var(--border);
   border-radius:18px;
   padding:18px;
   margin-bottom:15px;
+  overflow:hidden;
 }
 
 .btn{
@@ -149,6 +187,7 @@ button{
   font-weight:700;
   background:var(--orange);
   color:#fff;
+  max-width:100%;
 }
 
 .btn:hover{
@@ -189,6 +228,7 @@ button{
 }
 
 .grid{
+  width:100%;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:14px;
@@ -198,8 +238,12 @@ button{
   display:none!important;
 }
 
-/* HOME */
+/* =========================
+   HOME
+========================= */
+
 .hero{
+  width:100%;
   min-height:300px;
   border-radius:25px;
   padding:30px;
@@ -211,11 +255,13 @@ button{
   flex-direction:column;
   justify-content:center;
   margin-bottom:20px;
+  overflow:hidden;
 }
 
 .hero h1{
   font-size:clamp(32px,7vw,58px);
   margin-bottom:12px;
+  overflow-wrap:anywhere;
 }
 
 .hero h1 span{
@@ -236,7 +282,10 @@ button{
   margin-top:22px;
 }
 
-/* COMMUNITY CARDS */
+/* =========================
+   COMMUNITY CARDS
+========================= */
+
 .community-card{
   position:relative;
   overflow:hidden;
@@ -261,6 +310,7 @@ button{
 
 .community-card h3{
   margin-bottom:5px;
+  overflow-wrap:anywhere;
 }
 
 .community-card p{
@@ -269,7 +319,10 @@ button{
   line-height:1.4;
 }
 
-/* EDUCATION */
+/* =========================
+   EDUCATION
+========================= */
+
 .education-hero{
   position:relative;
   overflow:hidden;
@@ -313,6 +366,7 @@ button{
   min-height:145px;
   cursor:pointer;
   transition:.2s;
+  overflow:hidden;
 }
 
 .edu-section:hover{
@@ -327,6 +381,7 @@ button{
 
 .edu-section h3{
   margin-bottom:7px;
+  overflow-wrap:anywhere;
 }
 
 .edu-section p{
@@ -347,13 +402,19 @@ button{
   margin-bottom:15px;
 }
 
-/* FEED */
+/* =========================
+   FEED
+========================= */
+
 .post{
+  width:100%;
+  max-width:100%;
   background:var(--card);
   border:1px solid var(--border);
   border-radius:17px;
   padding:17px;
   margin-bottom:14px;
+  overflow:hidden;
 }
 
 .post-head{
@@ -361,11 +422,13 @@ button{
   align-items:center;
   gap:10px;
   margin-bottom:12px;
+  min-width:0;
 }
 
 .post-avatar{
   width:42px;
   height:42px;
+  min-width:42px;
   border-radius:50%;
   object-fit:cover;
   background:#333;
@@ -373,10 +436,14 @@ button{
 
 .post-user{
   flex:1;
+  min-width:0;
 }
 
 .post-user strong{
   display:block;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
 .post-user small{
@@ -387,10 +454,14 @@ button{
   line-height:1.6;
   white-space:pre-wrap;
   margin-bottom:12px;
+  overflow-wrap:anywhere;
+  word-break:break-word;
 }
 
 .post-media{
+  display:block;
   width:100%;
+  max-width:100%;
   max-height:500px;
   object-fit:contain;
   border-radius:13px;
@@ -403,9 +474,16 @@ button{
   overflow-x:auto;
   margin-bottom:15px;
   padding-bottom:4px;
+  max-width:100%;
+  scrollbar-width:none;
+}
+
+.feed-tabs::-webkit-scrollbar{
+  display:none;
 }
 
 .feed-tab{
+  flex:0 0 auto;
   white-space:nowrap;
   border:1px solid var(--border);
   background:#171717;
@@ -420,15 +498,20 @@ button{
   border-color:var(--orange);
 }
 
-/* MARKET */
+/* =========================
+   MARKET
+========================= */
+
 .product-card{
   overflow:hidden;
+  min-width:0;
   background:var(--card);
   border:1px solid var(--border);
   border-radius:18px;
 }
 
 .product-image{
+  display:block;
   width:100%;
   height:190px;
   object-fit:cover;
@@ -437,6 +520,7 @@ button{
 
 .product-body{
   padding:15px;
+  overflow:hidden;
 }
 
 .price{
@@ -445,18 +529,25 @@ button{
   font-weight:800;
 }
 
-/* PROFILE */
+/* =========================
+   PROFILE
+========================= */
+
 .profile-cover{
+  width:100%;
+  max-width:100%;
   background:linear-gradient(135deg,#21150c,#151515);
   border-radius:20px;
   padding:25px;
   text-align:center;
   border:1px solid var(--border);
+  overflow:hidden;
 }
 
 .profile-avatar{
   width:105px;
   height:105px;
+  max-width:105px;
   object-fit:cover;
   border-radius:50%;
   border:3px solid var(--orange);
@@ -464,34 +555,46 @@ button{
   margin-bottom:12px;
 }
 
-/* BOTTOM NAV */
+/* =========================
+   BOTTOM NAVIGATION
+========================= */
+
 .bottom-nav{
   position:fixed;
   z-index:150;
   bottom:0;
   left:0;
   right:0;
+  width:100%;
+  max-width:100vw;
   height:68px;
   background:rgba(10,10,10,.97);
   border-top:1px solid var(--border);
-  display:flex;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr 1fr;
   align-items:center;
-  justify-content:space-around;
+  overflow:hidden;
 }
 
 .nav-item{
+  width:100%;
+  min-width:0;
+  height:68px;
   background:none;
   border:0;
   color:#888;
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:4px;
+  justify-content:center;
+  gap:3px;
   font-size:11px;
+  overflow:hidden;
 }
 
 .nav-item span{
   font-size:21px;
+  line-height:1;
 }
 
 .nav-item.active{
@@ -499,7 +602,10 @@ button{
 }
 
 .create-nav{
+  justify-self:center;
+  align-self:center;
   width:52px;
+  min-width:52px;
   height:52px;
   border-radius:50%;
   background:var(--orange);
@@ -509,16 +615,22 @@ button{
   margin-top:-22px;
 }
 
-/* MODALS */
+/* =========================
+   MODALS
+========================= */
+
 .modal{
   display:none;
   position:fixed;
   z-index:300;
   inset:0;
+  width:100%;
+  height:100%;
   background:rgba(0,0,0,.75);
   align-items:center;
   justify-content:center;
   padding:15px;
+  overflow:hidden;
 }
 
 .modal.active{
@@ -527,6 +639,7 @@ button{
 
 .modal-box{
   width:min(600px,100%);
+  max-width:100%;
   max-height:90vh;
   overflow:auto;
   background:#151515;
@@ -539,10 +652,17 @@ button{
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:10px;
   margin-bottom:18px;
 }
 
+.modal-head h2{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+
 .close{
+  flex:0 0 35px;
   background:#242424;
   border:0;
   color:#fff;
@@ -564,6 +684,7 @@ button{
 
 .form-control{
   width:100%;
+  max-width:100%;
   background:#0d0d0d;
   color:white;
   border:1px solid var(--border);
@@ -585,10 +706,14 @@ textarea.form-control{
   display:flex;
   gap:9px;
   justify-content:flex-end;
+  flex-wrap:wrap;
   margin-top:15px;
 }
 
-/* TOAST */
+/* =========================
+   TOAST
+========================= */
+
 .toast{
   position:fixed;
   z-index:500;
@@ -603,7 +728,8 @@ textarea.form-control{
   opacity:0;
   pointer-events:none;
   transition:.25s;
-  max-width:90%;
+  width:max-content;
+  max-width:90vw;
   text-align:center;
 }
 
@@ -612,25 +738,81 @@ textarea.form-control{
   transform:translateX(-50%) translateY(0);
 }
 
-/* LOADING */
+/* =========================
+   LOADING
+========================= */
+
 .loading{
   text-align:center;
   padding:30px;
   color:#999;
 }
 
-/* MOBILE */
-@media(max-width:650px){
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:850px){
+
   .header{
-    padding:8px 10px;
+    gap:8px;
+    padding-left:10px;
+    padding-right:10px;
   }
 
   .logo{
-    font-size:21px;
+    font-size:22px;
   }
 
   .search{
     max-width:none;
+  }
+
+  .page{
+    padding:14px;
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:650px){
+
+  .header{
+    height:58px;
+    padding:7px 8px;
+    gap:7px;
+  }
+
+  .logo{
+    font-size:20px;
+    letter-spacing:-1px;
+  }
+
+  .search{
+    min-width:0;
+    height:38px;
+    padding:8px 11px;
+    font-size:13px;
+  }
+
+  .header-actions{
+    gap:5px;
+  }
+
+  .icon-btn{
+    width:36px;
+    min-width:36px;
+    height:36px;
+    font-size:16px;
+  }
+
+  .avatar-small{
+    width:30px;
+    height:30px;
+    min-width:30px;
   }
 
   .header .icon-btn.people{
@@ -638,15 +820,27 @@ textarea.form-control{
   }
 
   .page{
-    padding:12px;
+    width:100%;
+    max-width:100vw;
+    padding:12px 10px;
   }
 
   .hero{
-    padding:22px;
+    padding:20px;
+    border-radius:20px;
+  }
+
+  .hero h1{
+    font-size:clamp(29px,9vw,42px);
+  }
+
+  .hero p{
+    font-size:15px;
   }
 
   .education-hero{
-    padding:21px;
+    padding:20px;
+    border-radius:20px;
   }
 
   .education-hero h1{
@@ -656,3126 +850,180 @@ textarea.form-control{
   .title{
     font-size:23px;
   }
-}
-</style>
-</head>
 
-<body>
-
-<div class="app">
-
-<header class="header">
-
-  <div class="logo">
-    ZEE<span class="py">PY</span>
-  </div>
-
-  <input
-    id="globalSearch"
-    class="search"
-    placeholder="Search ZEEPY..."
-    onkeydown="globalSearch(event)"
-  >
-
-  <div class="header-actions">
-
-    <button class="icon-btn people" onclick="showPage('people')">
-      👥
-    </button>
-
-    <button class="icon-btn" onclick="showPage('notifications')">
-      🔔
-    </button>
-
-    <button class="icon-btn" onclick="showPage('profile')">
-      👤
-    </button>
-
-  </div>
-
-</header>
-
-
-<!-- HOME -->
-<section id="page-home" class="page active">
-
-  <div class="hero">
-
-    <h1>
-      WELCOME TO YOUR <span>COMMUNITY</span>
-    </h1>
-
-    <p>
-      ZEEPY brings people, communities, knowledge, business,
-      education, entertainment and opportunities together in one world.
-    </p>
-
-    <div class="hero-actions">
-
-      <button class="btn" onclick="showPage('communities')">
-        🌍 Explore Community
-      </button>
-
-      <button class="btn secondary" onclick="openCreatePost()">
-        ＋ Create
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="title">Community Areas</div>
-
-    <div class="subtitle">
-      Enter a community and explore everything connected to it.
-    </div>
-
-    <div id="homeCategories" class="grid"></div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="title">Community Feed</div>
-
-    <div id="homeFeed">
-      <div class="loading">Loading posts...</div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- COMMUNITIES -->
-<section id="page-communities" class="page">
-
-  <div class="title">Communities</div>
-
-  <div class="subtitle">
-    Choose a community to enter its world.
-  </div>
-
-  <div id="communityCategories" class="grid"></div>
-
-  <div class="card" style="margin-top:20px">
-
-    <div class="title" id="communityFeedTitle">
-      Community Feed
-    </div>
-
-    <div class="feed-tabs">
-
-      <button class="feed-tab active" onclick="setFeedFilter('all',this)">
-        All
-      </button>
-
-      <button class="feed-tab" onclick="setFeedFilter('text',this)">
-        Text
-      </button>
-
-      <button class="feed-tab" onclick="setFeedFilter('photo',this)">
-        Photos
-      </button>
-
-      <button class="feed-tab" onclick="setFeedFilter('video',this)">
-        Videos
-      </button>
-
-      <button class="feed-tab" onclick="setFeedFilter('file',this)">
-        Files
-      </button>
-
-      <button class="feed-tab" onclick="setFeedFilter('poll',this)">
-        Polls
-      </button>
-
-    </div>
-
-    <div id="communityFeed">
-      <div class="loading">Loading...</div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- EDUCATION -->
-<section id="page-education" class="page">
-
-  <button
-    class="btn secondary small edu-back"
-    onclick="showPage('communities')"
-  >
-    ← Back to Communities
-  </button>
-
-
-  <div class="education-hero">
-
-    <div class="education-icon">🎓</div>
-
-    <h1>Education</h1>
-
-    <p>
-      Your complete academic community for learning, teaching,
-      study materials, questions, discussions, schools, tutors,
-      scholarships, events and online meetings.
-    </p>
-
-    <div class="education-actions">
-
-      <button class="btn" onclick="openCreatePost('education')">
-        ＋ Academic Post
-      </button>
-
-      <button class="btn secondary" onclick="openEducationPanel('meetings')">
-        📅 Meetings
-      </button>
-
-      <button class="btn secondary" onclick="openEducationPanel('groups')">
-        👥 Study Groups
-      </button>
-
-      <button class="btn secondary" onclick="openEducationPanel('qa')">
-        ❓ Ask Question
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- EDUCATION HOME -->
-  <div id="educationHomePanel" class="edu-panel active">
-
-    <div class="title">Education Platform</div>
-
-    <div class="subtitle">
-      Everything academic, organized in one place.
-    </div>
-
-    <div class="grid">
-
-      <div class="edu-section" onclick="openEducationPanel('courses')">
-        <div class="edu-icon">📚</div>
-        <h3>Courses & Subjects</h3>
-        <p>
-          Discover subjects, courses and learning areas.
-        </p>
-      </div>
-
-      <div class="edu-section" onclick="openEducationPanel('materials')">
-        <div class="edu-icon">📝</div>
-        <h3>Notes & Materials</h3>
-        <p>
-          Share and discover notes, documents, textbooks and study materials.
-        </p>
-      </div>
-
-      <div class="edu-section" onclick="openEducationPanel('qa')">
-        <div class="edu-icon">❓</div>
-        <h3>Questions & Answers</h3>
-        <p>
-          Ask academic questions and discuss solutions.
-        </p>
-      </div>
-
-      <div class="edu-section" onclick="openEducationPanel('groups')">
-        <div class="edu-icon">👥</div>
-        <h3>Study Groups</h3>
-        <p>
-          Build study communities around subjects, schools and courses.
-        </p>
-      </div>
-
-      <div class="edu-section" onclick="openEducationPanel('schools')">
-        <div class="edu-icon">🏫</div>
-        <h3>Schools & Institutions</h3>
-        <p>
-          Connect students, teachers and institutions.
-        </p>
-      </div>
-
-      <div class="edu-section" onclick="openEducationPanel('teachers')">
-        <div class="edu-icon">👨‍🏫</div>
-        <h3>Teachers & Tutors</h3>
-        <p>
-          Discover educators, tutors and academic mentors.
-        </p>
-      </div>
-
-      <div class="edu-section" onclick="openEducationPanel('meetings')">
-        <div class="edu-icon">📅</div>
-        <h3>Meetings & Events</h3>
-        <p>
-          Academic meetings, seminars, workshops and events.
-        </p>
-      </div>
-
-      <div class="edu-section" onclick="openEducationPanel('online')">
-        <div class="edu-icon">💻</div>
-        <h3>Online Meetings</h3>
-        <p>
-          Connect educational communities through online meetings.
-        </p>
-      </div>
-
-      <div class="edu-section" onclick="openEducationPanel('videos')">
-        <div class="edu-icon">🎥</div>
-        <h3>Educational Videos</h3>
-        <p>
-          Educational videos, lessons and tutorials.
-        </p>
-      </div>
-
-      <div class="edu-section" onclick="openEducationPanel('live')">
-        <div class="edu-icon">🔴</div>
-        <h3>Live Classes</h3>
-        <p>
-          Future live teaching and interactive classes.
-        </p>
-      </div>
-
-      <div class="edu-section" onclick="openEducationPanel('scholarships')">
-        <div class="edu-icon">🎓</div>
-        <h3>Scholarships & Opportunities</h3>
-        <p>
-          Academic opportunities, scholarships and announcements.
-        </p>
-      </div>
-
-      <div class="edu-section" onclick="openEducationPanel('news')">
-        <div class="edu-icon">📰</div>
-        <h3>Education News</h3>
-        <p>
-          Education-related news and announcements.
-        </p>
-      </div>
-
-      <div class="edu-section" onclick="openEducationPanel('discussions')">
-        <div class="edu-icon">💬</div>
-        <h3>Academic Discussions</h3>
-        <p>
-          Talk about education, learning and academic life.
-        </p>
-      </div>
-
-      <div class="edu-section" onclick="openEducationPanel('search')">
-        <div class="edu-icon">🔎</div>
-        <h3>Academic Search</h3>
-        <p>
-          Search the Education community for useful content.
-        </p>
-      </div>
-
-    </div>
-
-
-    <div class="card" style="margin-top:18px">
-
-      <div class="title">Education Community Feed</div>
-
-      <div id="educationFeed">
-        <div class="loading">Loading Education posts...</div>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- EDUCATION PANELS -->
-
-  <div id="educationPanel" class="edu-panel">
-
-    <button class="btn secondary small edu-back"
-            onclick="openEducationPanel('home')">
-      ← Education Home
-    </button>
-
-    <div id="educationPanelContent"></div>
-
-  </div>
-
-</section>
-
-
-<!-- MARKET -->
-<section id="page-market" class="page">
-
-  <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
-
-    <div>
-      <div class="title">Marketplace</div>
-      <div class="subtitle">
-        Buy and sell products inside ZEEPY.
-      </div>
-    </div>
-
-    <div>
-      <button class="btn small" onclick="requireLogin(openSellProduct)">
-        ＋ Sell Product
-      </button>
-    </div>
-
-  </div>
-
-  <div id="productsGrid" class="grid">
-    <div class="loading">Loading products...</div>
-  </div>
-
-</section>
-
-
-<!-- PEOPLE -->
-<section id="page-people" class="page">
-
-  <div class="title">People</div>
-
-  <div class="subtitle">
-    Find people and connect with your community.
-  </div>
-
-  <div class="card">
-
-    <input
-      id="peopleSearch"
-      class="form-control"
-      placeholder="Search people..."
-      oninput="searchPeople()"
-    >
-
-  </div>
-
-  <div id="peopleResults"></div>
-
-</section>
-
-
-<!-- MESSAGES -->
-<section id="page-messages" class="page">
-
-  <div class="title">Messages</div>
-
-  <div class="subtitle">
-    Your conversations on ZEEPY.
-  </div>
-
-  <div class="card">
-
-    <button class="btn small" onclick="showPage('people')">
-      👥 Find People
-    </button>
-
-  </div>
-
-  <div id="messagesList">
-    <div class="loading">Loading messages...</div>
-  </div>
-
-</section>
-
-
-<!-- PROFILE -->
-<section id="page-profile" class="page">
-
-  <div id="profileContent">
-    <div class="loading">Loading profile...</div>
-  </div>
-
-</section>
-
-
-<!-- NOTIFICATIONS -->
-<section id="page-notifications" class="page">
-
-  <div class="title">Notifications</div>
-
-  <div class="card">
-    <p class="muted">
-      Your ZEEPY notifications will appear here.
-    </p>
-  </div>
-
-</section>
-
-
-<!-- WALLET -->
-<section id="page-wallet" class="page">
-
-  <div class="title">Wallet</div>
-
-  <div class="card">
-
-    <div class="muted">Available Balance</div>
-
-    <div style="font-size:35px;font-weight:900;margin-top:8px">
-      GH₵ 0.00
-    </div>
-
-    <p class="muted" style="margin-top:10px">
-      Earnings, transactions and creator revenue will appear here.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- GROUPS -->
-<section id="page-groups" class="page">
-
-  <div class="title">Groups</div>
-
-  <div class="card">
-
-    <h3>ZEEPY Groups</h3>
-
-    <p class="muted" style="margin-top:8px">
-      Create and join communities around shared interests.
-    </p>
-
-    <button class="btn small" style="margin-top:15px">
-      ＋ Create Group
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- LIVE -->
-<section id="page-live" class="page">
-
-  <div class="title">Live</div>
-
-  <div class="card">
-
-    <video
-      id="liveVideo"
-      autoplay
-      muted
-      playsinline
-      style="width:100%;border-radius:15px;background:#000;max-height:500px"
-    ></video>
-
-    <div style="display:flex;gap:10px;margin-top:14px">
-
-      <button class="btn" onclick="startLive()">
-        🔴 Start Live
-      </button>
-
-      <button class="btn secondary" onclick="stopLive()">
-        Stop
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- MEDIA -->
-<section id="page-media" class="page">
-
-  <div class="title">Media</div>
-
-  <div class="card">
-
-    <p class="muted">
-      Your ZEEPY media area for photos, videos and other community content.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- NEARBY -->
-<section id="page-nearby" class="page">
-
-  <div class="title">Nearby</div>
-
-  <div class="card">
-
-    <h3>People & Communities Nearby</h3>
-
-    <p class="muted" style="margin-top:8px">
-      Nearby community discovery will be connected here.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- MEET -->
-<section id="page-meet" class="page">
-
-  <div class="title">Meet</div>
-
-  <div class="card">
-
-    <h3>🤝 ZEEPY Meetings</h3>
-
-    <p class="muted" style="margin-top:8px">
-      Meetings for communities, groups and events.
-    </p>
-
-    <button
-      class="btn"
-      style="margin-top:15px"
-      onclick="openMeetingModal()"
-    >
-      ＋ Create Meeting
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav">
-
-  <button class="nav-item active" onclick="showPage('home')">
-    <span>🏠</span>
-    Home
-  </button>
-
-  <button class="nav-item" onclick="showPage('market')">
-    <span>🛒</span>
-    Market
-  </button>
-
-  <button class="nav-item create-nav" onclick="openCreatePost()">
-    ＋
-  </button>
-
-  <button class="nav-item" onclick="showPage('messages')">
-    <span>💬</span>
-    Messages
-  </button>
-
-  <button class="nav-item" onclick="showPage('profile')">
-    <span>👤</span>
-    Profile
-  </button>
-
-</nav>
-
-</div>
-
-
-<!-- AUTH MODAL -->
-<div id="authModal" class="modal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h2 id="authTitle">Log in</h2>
-
-      <button class="close" onclick="closeModal('authModal')">
-        ×
-      </button>
-
-    </div>
-
-    <div id="authError" class="muted" style="margin-bottom:10px"></div>
-
-    <div id="signupNameGroup" class="form-group hidden">
-
-      <label>Display Name</label>
-
-      <input
-        id="authName"
-        class="form-control"
-        placeholder="Your name"
-      >
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Email</label>
-
-      <input
-        id="authEmail"
-        class="form-control"
-        type="email"
-        placeholder="you@example.com"
-      >
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Password</label>
-
-      <input
-        id="authPassword"
-        class="form-control"
-        type="password"
-        placeholder="Password"
-      >
-
-    </div>
-
-    <div class="modal-actions">
-
-      <button
-        id="authSwitch"
-        class="btn secondary"
-        onclick="toggleAuthMode()"
-      >
-        Create account
-      </button>
-
-      <button
-        id="authSubmit"
-        class="btn"
-        onclick="submitAuth()"
-      >
-        Log in
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- CREATE POST -->
-<div id="postModal" class="modal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h2>Create Post</h2>
-
-      <button class="close" onclick="closeModal('postModal')">
-        ×
-      </button>
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Community</label>
-
-      <select id="postCategory" class="form-control"></select>
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Post</label>
-
-      <textarea
-        id="postContent"
-        class="form-control"
-        placeholder="Share something with your community..."
-      ></textarea>
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Media</label>
-
-      <input
-        id="postFile"
-        class="form-control"
-        type="file"
-        accept="image/*,video/*,.pdf,.doc,.docx,.ppt,.pptx"
-      >
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Link (optional)</label>
-
-      <input
-        id="postLink"
-        class="form-control"
-        placeholder="https://..."
-      >
-
-    </div>
-
-    <div class="modal-actions">
-
-      <button class="btn secondary" onclick="closeModal('postModal')">
-        Cancel
-      </button>
-
-      <button class="btn" onclick="createPost()">
-        Publish
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- PROFILE MODAL -->
-<div id="profileModal" class="modal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h2>Edit Profile</h2>
-
-      <button class="close" onclick="closeModal('profileModal')">
-        ×
-      </button>
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Display Name</label>
-
-      <input id="profileName" class="form-control">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Username</label>
-
-      <input id="profileUsername" class="form-control">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Bio</label>
-
-      <textarea id="profileBio" class="form-control"></textarea>
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Profile Photo</label>
-
-      <input
-        id="profileAvatar"
-        class="form-control"
-        type="file"
-        accept="image/*"
-      >
-
-    </div>
-
-    <div class="modal-actions">
-
-      <button class="btn secondary" onclick="closeModal('profileModal')">
-        Cancel
-      </button>
-
-      <button class="btn" onclick="saveProfile()">
-        Save Profile
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- PRODUCT MODAL -->
-<div id="productModal" class="modal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h2>Sell Product</h2>
-
-      <button class="close" onclick="closeModal('productModal')">
-        ×
-      </button>
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Product Name</label>
-
-      <input id="productName" class="form-control">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Price</label>
-
-      <input id="productPrice" class="form-control" type="number">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Description</label>
-
-      <textarea id="productDescription" class="form-control"></textarea>
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Product Image</label>
-
-      <input
-        id="productImage"
-        class="form-control"
-        type="file"
-        accept="image/*"
-      >
-
-    </div>
-
-    <div class="modal-actions">
-
-      <button class="btn secondary" onclick="closeModal('productModal')">
-        Cancel
-      </button>
-
-      <button class="btn" onclick="createProduct()">
-        Publish Product
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- MEETING MODAL -->
-<div id="meetingModal" class="modal">
-
-  <div class="modal-box">
-
-    <div class="modal-head">
-
-      <h2>Create Meeting</h2>
-
-      <button class="close" onclick="closeModal('meetingModal')">
-        ×
-      </button>
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Meeting Title</label>
-
-      <input
-        id="meetingTitle"
-        class="form-control"
-        placeholder="e.g. Mathematics Study Meeting"
-      >
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Date</label>
-
-      <input id="meetingDate" class="form-control" type="date">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Time</label>
-
-      <input id="meetingTime" class="form-control" type="time">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Meeting Link</label>
-
-      <input
-        id="meetingLink"
-        class="form-control"
-        placeholder="Zoom or Google Meet link"
-      >
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Description</label>
-
-      <textarea
-        id="meetingDescription"
-        class="form-control"
-        placeholder="What will the meeting be about?"
-      ></textarea>
-
-    </div>
-
-    <div class="modal-actions">
-
-      <button class="btn secondary" onclick="closeModal('meetingModal')">
-        Cancel
-      </button>
-
-      <button class="btn" onclick="createMeeting()">
-        Create Meeting
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<div id="toast" class="toast"></div>
-
-
-<script>
-
-/* =========================================================
-   ZEEPY SUPABASE CONNECTION
-========================================================= */
-
-const SUPABASE_URL =
-  "https://iswicrdfsqwalwisxbdm.supabase.co";
-
-const SUPABASE_KEY =
-  "sb_publishable_8CT66JSnwPYN_Khkb7a6WA_1kmrlTL9";
-
-const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-
-/* =========================================================
-   GLOBAL STATE
-========================================================= */
-
-let currentUser = null;
-let categories = [];
-let selectedCategoryId = null;
-let selectedCategoryName = "";
-let feedFilter = "all";
-let authMode = "login";
-let educationCategory = null;
-let liveStream = null;
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function toast(message){
-
-  const el = document.getElementById("toast");
-
-  el.textContent = message;
-  el.classList.add("show");
-
-  setTimeout(()=>{
-    el.classList.remove("show");
-  },3000);
-}
-
-
-function closeModal(id){
-  document.getElementById(id).classList.remove("active");
-}
-
-
-function openModal(id){
-  document.getElementById(id).classList.add("active");
-}
-
-
-function escapeHTML(value){
-
-  if(value === null || value === undefined){
-    return "";
+  .subtitle{
+    font-size:14px;
   }
 
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-}
-
-
-function requireLogin(callback){
-
-  if(!currentUser){
-    openAuth("login");
-    return;
+  .grid{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
   }
 
-  callback();
-}
-
-
-/* =========================================================
-   AUTH
-========================================================= */
-
-function openAuth(mode="login"){
-
-  authMode = mode;
-
-  document.getElementById("authTitle").textContent =
-    mode === "login" ? "Log in" : "Create account";
-
-  document.getElementById("authSubmit").textContent =
-    mode === "login" ? "Log in" : "Create account";
-
-  document.getElementById("authSwitch").textContent =
-    mode === "login" ? "Create account" : "Log in";
-
-  document
-    .getElementById("signupNameGroup")
-    .classList.toggle("hidden",mode === "login");
-
-  document.getElementById("authError").textContent = "";
-
-  openModal("authModal");
-}
-
-
-function toggleAuthMode(){
-
-  authMode =
-    authMode === "login"
-      ? "signup"
-      : "login";
-
-  openAuth(authMode);
-}
-
-
-async function submitAuth(){
-
-  const email =
-    document.getElementById("authEmail").value.trim();
-
-  const password =
-    document.getElementById("authPassword").value;
-
-  const name =
-    document.getElementById("authName").value.trim();
-
-  const error =
-    document.getElementById("authError");
-
-  error.textContent = "";
-
-  if(!email || !password){
-    error.textContent =
-      "Enter your email and password.";
-    return;
+  .community-card{
+    min-height:135px;
+    padding:15px;
+    border-radius:16px;
   }
 
-  try{
-
-    if(authMode === "signup"){
-
-      if(!name){
-        error.textContent =
-          "Enter your display name.";
-        return;
-      }
-
-      const {data,error:signupError} =
-        await supabaseClient.auth.signUp({
-
-          email,
-          password,
-
-          options:{
-            data:{
-              display_name:name,
-              name:name
-            }
-          }
-
-        });
-
-      if(signupError){
-        throw signupError;
-      }
-
-      if(data.user){
-
-        toast("Account created successfully.");
-
-        await ensureProfile(data.user,name);
-
-        closeModal("authModal");
-
-      }
-
-    }else{
-
-      const {data,error:loginError} =
-        await supabaseClient.auth.signInWithPassword({
-          email,
-          password
-        });
-
-      if(loginError){
-        throw loginError;
-      }
-
-      currentUser = data.user;
-
-      closeModal("authModal");
-
-      toast("Welcome back to ZEEPY.");
-
-      await initializeUser();
-
-      showPage("home");
-    }
-
-  }catch(err){
-
-    error.textContent =
-      err.message || "Authentication failed.";
-
-  }
-}
-
-
-async function checkSession(){
-
-  const {data} =
-    await supabaseClient.auth.getSession();
-
-  currentUser = data.session?.user || null;
-
-  if(currentUser){
-    await initializeUser();
-  }
-}
-
-
-supabaseClient.auth.onAuthStateChange(
-  async(event,session)=>{
-
-    currentUser =
-      session?.user || null;
-
-    if(currentUser){
-      await initializeUser();
-    }
-
-    updateHeader();
-  }
-);
-
-
-async function initializeUser(){
-
-  if(!currentUser){
-    return;
+  .community-icon{
+    font-size:30px;
   }
 
-  await ensureProfile(currentUser);
-
-  await loadProfile();
-
-  await loadMessages();
-}
-
-
-async function ensureProfile(user,nameOverride=""){
-
-  if(!user){
-    return;
+  .community-card h3{
+    font-size:16px;
   }
 
-  const {data} =
-    await supabaseClient
-      .from("profiles")
-      .select("id")
-      .eq("id",user.id)
-      .maybeSingle();
-
-  if(!data){
-
-    const metadata =
-      user.user_metadata || {};
-
-    const displayName =
-      nameOverride ||
-      metadata.display_name ||
-      metadata.name ||
-      user.email?.split("@")[0] ||
-      "ZEEPY User";
-
-    await supabaseClient
-      .from("profiles")
-      .upsert({
-
-        id:user.id,
-        display_name:displayName,
-        email:user.email
-
-      });
-  }
-}
-
-
-async function logout(){
-
-  await supabaseClient.auth.signOut();
-
-  currentUser = null;
-
-  toast("Logged out.");
-
-  showPage("home");
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-function showPage(page){
-
-  document
-    .querySelectorAll(".page")
-    .forEach(p=>p.classList.remove("active"));
-
-  const target =
-    document.getElementById("page-"+page);
-
-  if(target){
-    target.classList.add("active");
+  .community-card p{
+    font-size:12px;
   }
 
-  document
-    .querySelectorAll(".nav-item")
-    .forEach(item=>item.classList.remove("active"));
-
-  if(page === "home"){
-    loadHome();
+  .edu-section{
+    min-height:135px;
+    padding:15px;
   }
 
-  if(page === "communities"){
-    loadCommunityFeed();
+  .edu-section h3{
+    font-size:15px;
   }
 
-  if(page === "education"){
-    loadEducation();
+  .edu-section p{
+    font-size:12px;
   }
 
-  if(page === "market"){
-    loadProducts();
+  .bottom-nav{
+    height:66px;
   }
 
-  if(page === "people"){
-    searchPeople();
+  .nav-item{
+    height:66px;
+    font-size:10px;
   }
 
-  if(page === "messages"){
-    loadMessages();
+  .nav-item span{
+    font-size:19px;
   }
 
-  if(page === "profile"){
-    loadProfile();
-  }
-}
-
-
-/* =========================================================
-   CATEGORIES
-========================================================= */
-
-const fallbackCategories = [
-
-  {
-    id:null,
-    name:"Education",
-    slug:"education",
-    description:"Learning, schools, courses, teachers and academic life.",
-    icon:"🎓"
-  },
-
-  {
-    id:null,
-    name:"Health",
-    slug:"health",
-    description:"Health information and community discussions.",
-    icon:"❤️"
-  },
-
-  {
-    id:null,
-    name:"Sports",
-    slug:"sports",
-    description:"Sports, athletes, teams and activities.",
-    icon:"⚽"
-  },
-
-  {
-    id:null,
-    name:"Life",
-    slug:"life",
-    description:"Everyday life and community conversations.",
-    icon:"🌱"
-  },
-
-  {
-    id:null,
-    name:"Business",
-    slug:"business",
-    description:"Business, entrepreneurship and opportunities.",
-    icon:"💼"
-  },
-
-  {
-    id:null,
-    name:"Technology",
-    slug:"technology",
-    description:"Technology, innovation and digital life.",
-    icon:"💻"
-  },
-
-  {
-    id:null,
-    name:"Agriculture",
-    slug:"agriculture",
-    description:"Farming, food and agricultural communities.",
-    icon:"🌾"
-  },
-
-  {
-    id:null,
-    name:"Entertainment",
-    slug:"entertainment",
-    description:"Music, movies, culture and entertainment.",
-    icon:"🎬"
+  .create-nav{
+    width:48px;
+    min-width:48px;
+    height:48px;
+    font-size:23px;
   }
 
-];
-
-
-async function loadCategories(){
-
-  let loaded = [];
-
-  try{
-
-    const {data,error} =
-      await supabaseClient
-        .from("community_categories")
-        .select("*")
-        .eq("is_active",true)
-        .order("sort_order",{ascending:true});
-
-    if(!error && data && data.length){
-      loaded = data;
-    }
-
-  }catch(err){
-    console.log(err);
+  .modal{
+    padding:10px;
   }
 
-  categories =
-    loaded.length
-      ? loaded
-      : fallbackCategories;
-
-  educationCategory =
-    categories.find(c=>
-      String(c.slug || "").toLowerCase() === "education" ||
-      String(c.name || "").toLowerCase() === "education"
-    ) || fallbackCategories[0];
-
-  renderCategories();
-}
-
-
-function renderCategories(){
-
-  const html =
-    categories.map(c=>`
-
-      <div
-        class="community-card"
-        onclick="selectCategory('${escapeHTML(c.id || "")}','${escapeHTML(c.name)}')"
-      >
-
-        <div class="community-icon">
-          ${c.icon || "🌍"}
-        </div>
-
-        <h3>${escapeHTML(c.name)}</h3>
-
-        <p>
-          ${escapeHTML(
-            c.description ||
-            "Explore this ZEEPY community."
-          )}
-        </p>
-
-      </div>
-
-    `).join("");
-
-  document.getElementById("homeCategories").innerHTML =
-    html;
-
-  document.getElementById("communityCategories").innerHTML =
-    html;
-
-  const select =
-    document.getElementById("postCategory");
-
-  select.innerHTML =
-    categories.map(c=>`
-
-      <option value="${escapeHTML(c.id || "")}">
-        ${escapeHTML(c.name)}
-      </option>
-
-    `).join("");
-}
-
-
-function selectCategory(id,name){
-
-  selectedCategoryId = id || null;
-  selectedCategoryName = name;
-
-  const isEducation =
-    name.toLowerCase() === "education";
-
-  if(isEducation){
-
-    showPage("education");
-    return;
-
+  .modal-box{
+    width:100%;
+    max-height:92vh;
+    border-radius:17px;
+    padding:16px;
   }
 
-  document.getElementById("communityFeedTitle")
-    .textContent =
-      name + " Community";
-
-  showPage("communities");
-
-  loadCommunityFeed();
-}
-
-
-/* =========================================================
-   EDUCATION PLATFORM
-========================================================= */
-
-async function loadEducation(){
-
-  educationCategory =
-    categories.find(c=>
-      String(c.slug || "").toLowerCase() === "education" ||
-      String(c.name || "").toLowerCase() === "education"
-    ) || fallbackCategories[0];
-
-  await loadEducationFeed();
-
-  openEducationPanel("home");
-}
-
-
-function openEducationPanel(panel){
-
-  const home =
-    document.getElementById("educationHomePanel");
-
-  const detail =
-    document.getElementById("educationPanel");
-
-  if(panel === "home"){
-
-    home.classList.add("active");
-    detail.classList.remove("active");
-
-    loadEducationFeed();
-
-    return;
+  .modal-actions{
+    justify-content:stretch;
   }
 
-  home.classList.remove("active");
-  detail.classList.add("active");
-
-  const titles = {
-
-    courses:[
-      "📚 Courses & Subjects",
-      "Explore courses, subjects and learning areas."
-    ],
-
-    materials:[
-      "📝 Notes & Study Materials",
-      "A place for academic notes, documents and study resources."
-    ],
-
-    qa:[
-      "❓ Questions & Answers",
-      "Ask questions and help other learners solve academic problems."
-    ],
-
-    groups:[
-      "👥 Study Groups",
-      "Create study communities around schools, courses and subjects."
-    ],
-
-    schools:[
-      "🏫 Schools & Institutions",
-      "Connect students and educators around educational institutions."
-    ],
-
-    teachers:[
-      "👨‍🏫 Teachers & Tutors",
-      "Find teachers, tutors and academic mentors."
-    ],
-
-    meetings:[
-      "📅 Meetings & Events",
-      "Academic meetings, seminars, workshops, discussions and events."
-    ],
-
-    online:[
-      "💻 Online Meetings",
-      "Online education meetings using services such as Zoom or Google Meet."
-    ],
-
-    videos:[
-      "🎥 Educational Videos",
-      "Educational lessons, tutorials and learning videos."
-    ],
-
-    live:[
-      "🔴 Live Classes",
-      "Interactive live teaching and future ZEEPY classroom experiences."
-    ],
-
-    scholarships:[
-      "🎓 Scholarships & Opportunities",
-      "Academic scholarships, grants, competitions and opportunities."
-    ],
-
-    news:[
-      "📰 Education News",
-      "Education announcements, updates and important information."
-    ],
-
-    discussions:[
-      "💬 Academic Discussions",
-      "Talk about education, learning, school life and academic issues."
-    ],
-
-    search:[
-      "🔎 Academic Search",
-      "Search Education posts and resources."
-    ]
-
-  };
-
-  const item =
-    titles[panel] || titles.courses;
-
-  let action = "";
-
-  if(panel === "meetings" || panel === "online"){
-
-    action = `
-
-      <div class="card">
-
-        <h3>Create an Education Meeting</h3>
-
-        <p class="muted" style="margin-top:7px">
-          Create an academic meeting and add a Zoom or
-          Google Meet link for participants.
-        </p>
-
-        <button
-          class="btn"
-          style="margin-top:15px"
-          onclick="openMeetingModal()"
-        >
-          ＋ Create Meeting
-        </button>
-
-      </div>
-
-    `;
-
-  }else if(panel === "qa"){
-
-    action = `
-
-      <div class="card">
-
-        <h3>Ask an Academic Question</h3>
-
-        <p class="muted" style="margin-top:7px">
-          Publish your question to the Education community.
-        </p>
-
-        <button
-          class="btn"
-          style="margin-top:15px"
-          onclick="openCreatePost('education')"
-        >
-          ＋ Ask Question
-        </button>
-
-      </div>
-
-    `;
-
-  }else if(panel === "materials"){
-
-    action = `
-
-      <div class="card">
-
-        <h3>Share Study Material</h3>
-
-        <p class="muted" style="margin-top:7px">
-          Upload notes, documents, PDFs and other useful
-          academic resources.
-        </p>
-
-        <button
-          class="btn"
-          style="margin-top:15px"
-          onclick="openCreatePost('education')"
-        >
-          ＋ Share Material
-        </button>
-
-      </div>
-
-    `;
-
-  }else if(panel === "groups"){
-
-    action = `
-
-      <div class="card">
-
-        <h3>Study Groups</h3>
-
-        <p class="muted" style="margin-top:7px">
-          Study groups will connect learners around subjects,
-          courses and institutions.
-        </p>
-
-        <button
-          class="btn"
-          style="margin-top:15px"
-          onclick="toast('Study Group system is ready for the next database stage.')"
-        >
-          ＋ Create Study Group
-        </button>
-
-      </div>
-
-    `;
-
-  }else{
-
-    action = `
-
-      <div class="card">
-
-        <h3>${escapeHTML(item[0])}</h3>
-
-        <p class="muted" style="margin-top:8px;line-height:1.6">
-          ${escapeHTML(item[1])}
-        </p>
-
-        <button
-          class="btn"
-          style="margin-top:15px"
-          onclick="openCreatePost('education')"
-        >
-          ＋ Create Education Post
-        </button>
-
-      </div>
-
-    `;
-
+  .modal-actions .btn{
+    flex:1;
   }
-
-  document.getElementById("educationPanelContent").innerHTML =
-    action;
 
 }
 
+/* =========================
+   VERY SMALL PHONES
+========================= */
 
-async function loadEducationFeed(){
+@media(max-width:390px){
 
-  const box =
-    document.getElementById("educationFeed");
-
-  if(!box){
-    return;
+  .header{
+    padding-left:6px;
+    padding-right:6px;
+    gap:5px;
   }
 
-  box.innerHTML =
-    `<div class="loading">Loading Education posts...</div>`;
-
-  if(!educationCategory?.id){
-
-    box.innerHTML = `
-
-      <div class="card">
-
-        <p class="muted">
-          Education is ready. Connect the Education category
-          in community_categories to enable Education post filtering.
-        </p>
-
-      </div>
-
-    `;
-
-    return;
+  .logo{
+    font-size:18px;
   }
 
-  await renderPostsInto(
-    box,
-    educationCategory.id,
-    "all"
-  );
-}
-
-
-/* =========================================================
-   POSTS
-========================================================= */
-
-async function loadHome(){
-
-  await renderPostsInto(
-    document.getElementById("homeFeed"),
-    null,
-    "all"
-  );
-}
-
-
-async function loadCommunityFeed(){
-
-  await renderPostsInto(
-    document.getElementById("communityFeed"),
-    selectedCategoryId,
-    feedFilter
-  );
-}
-
-
-async function renderPostsInto(container,categoryId,filter){
-
-  if(!container){
-    return;
+  .search{
+    font-size:12px;
+    padding-left:9px;
+    padding-right:9px;
   }
 
-  container.innerHTML =
-    `<div class="loading">Loading posts...</div>`;
-
-  try{
-
-    let query =
-      supabaseClient
-        .from("posts")
-        .select(`
-          *,
-          profiles:user_id(
-            display_name,
-            username,
-            avatar_url
-          )
-        `)
-        .order("created_at",{ascending:false})
-        .limit(30);
-
-    if(categoryId){
-      query = query.eq("category_id",categoryId);
-    }
-
-    if(filter !== "all"){
-
-      if(filter === "photo"){
-        query = query.eq("post_type","photo");
-      }
-
-      if(filter === "video"){
-        query = query.eq("post_type","video");
-      }
-
-      if(filter === "file"){
-        query = query.eq("post_type","file");
-      }
-
-      if(filter === "poll"){
-        query = query.eq("post_type","poll");
-      }
-
-      if(filter === "text"){
-        query = query.eq("post_type","text");
-      }
-
-    }
-
-    const {data,error} = await query;
-
-    if(error){
-      throw error;
-    }
-
-    if(!data || !data.length){
-
-      container.innerHTML = `
-
-        <div class="card">
-
-          <p class="muted">
-            No posts yet. Be the first person to post here.
-          </p>
-
-        </div>
-
-      `;
-
-      return;
-    }
-
-    container.innerHTML =
-      data.map(renderPost).join("");
-
-  }catch(error){
-
-    console.error(error);
-
-    container.innerHTML = `
-
-      <div class="card">
-
-        <p>
-          Could not load posts.
-        </p>
-
-        <p class="muted" style="margin-top:7px">
-          ${escapeHTML(error.message)}
-        </p>
-
-      </div>
-
-    `;
-
-  }
-}
-
-
-function renderPost(post){
-
-  const profile =
-    post.profiles || {};
-
-  const name =
-    profile.display_name ||
-    profile.username ||
-    "ZEEPY User";
-
-  const avatar =
-    profile.avatar_url ||
-    "https://placehold.co/100x100/222/fff?text=Z";
-
-  let media = "";
-
-  const mediaUrl =
-    post.media_url ||
-    post.file_url;
-
-  if(mediaUrl){
-
-    const type =
-      String(
-        post.media_type ||
-        post.file_type ||
-        ""
-      ).toLowerCase();
-
-    if(type.startsWith("image")){
-
-      media =
-        `<img class="post-media"
-              src="${escapeHTML(mediaUrl)}"
-              alt="Post image">`;
-
-    }else if(type.startsWith("video")){
-
-      media =
-        `<video class="post-media"
-                controls
-                src="${escapeHTML(mediaUrl)}"></video>`;
-
-    }else{
-
-      media =
-        `<a
-          class="btn secondary"
-          style="display:inline-block;margin-bottom:10px"
-          href="${escapeHTML(mediaUrl)}"
-          target="_blank"
-          rel="noopener"
-        >
-          📎 Open File
-        </a>`;
-
-    }
-
+  .header-actions{
+    gap:3px;
   }
 
-  return `
-
-    <article class="post">
-
-      <div class="post-head">
-
-        <img
-          class="post-avatar"
-          src="${escapeHTML(avatar)}"
-          onerror="this.src='https://placehold.co/100x100/222/fff?text=Z'"
-        >
-
-        <div class="post-user">
-
-          <strong>${escapeHTML(name)}</strong>
-
-          <small>
-            ${post.created_at
-              ? new Date(post.created_at).toLocaleString()
-              : ""}
-          </small>
-
-        </div>
-
-      </div>
-
-      ${
-        post.content
-        ?
-        `<div class="post-content">
-          ${escapeHTML(post.content)}
-        </div>`
-        :
-        ""
-      }
-
-      ${media}
-
-      ${
-        post.link_url
-        ?
-        `<div style="margin-top:10px">
-          <a
-            href="${escapeHTML(post.link_url)}"
-            target="_blank"
-            rel="noopener"
-            class="btn secondary small"
-          >
-            🔗 Open Link
-          </a>
-        </div>`
-        :
-        ""
-      }
-
-    </article>
-
-  `;
-}
-
-
-function setFeedFilter(filter,button){
-
-  feedFilter = filter;
-
-  document
-    .querySelectorAll(".feed-tab")
-    .forEach(b=>b.classList.remove("active"));
-
-  button.classList.add("active");
-
-  loadCommunityFeed();
-}
-
-
-/* =========================================================
-   CREATE POST
-========================================================= */
-
-function openCreatePost(type=""){
-
-  requireLogin(()=>{
-
-    const select =
-      document.getElementById("postCategory");
-
-    if(type === "education"){
-
-      const edu =
-        educationCategory ||
-        categories.find(c=>
-          String(c.name).toLowerCase() === "education"
-        );
-
-      if(edu){
-
-        select.value =
-          edu.id || "";
-
-      }
-
-    }
-
-    document.getElementById("postContent").value = "";
-    document.getElementById("postLink").value = "";
-    document.getElementById("postFile").value = "";
-
-    openModal("postModal");
-
-  });
-}
-
-
-async function uploadCommunityMedia(file){
-
-  if(!file || !currentUser){
-    return null;
+  .icon-btn{
+    width:33px;
+    min-width:33px;
+    height:33px;
+    font-size:14px;
   }
 
-  const safeName =
-    file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
-
-  const path =
-    `${currentUser.id}/${Date.now()}_${safeName}`;
-
-  const {error} =
-    await supabaseClient.storage
-      .from("community-media")
-      .upload(path,file,{
-        upsert:false
-      });
-
-  if(error){
-    throw error;
+  .avatar-small{
+    width:27px;
+    height:27px;
+    min-width:27px;
   }
 
-  const {data} =
-    supabaseClient.storage
-      .from("community-media")
-      .getPublicUrl(path);
-
-  return data.publicUrl;
-}
-
-
-async function createPost(){
-
-  if(!currentUser){
-    openAuth("login");
-    return;
+  .page{
+    padding-left:8px;
+    padding-right:8px;
   }
 
-  const content =
-    document.getElementById("postContent")
-      .value.trim();
-
-  const categoryId =
-    document.getElementById("postCategory").value ||
-    null;
-
-  const link =
-    document.getElementById("postLink")
-      .value.trim();
-
-  const file =
-    document.getElementById("postFile").files[0];
-
-  if(!content && !file && !link){
-
-    toast("Add some content first.");
-    return;
-
+  .grid{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
   }
 
-  try{
-
-    let mediaUrl = null;
-    let mediaType = null;
-    let mediaName = null;
-    let fileSize = null;
-    let postType = "text";
-
-    if(file){
-
-      toast("Uploading media...");
-
-      mediaUrl =
-        await uploadCommunityMedia(file);
-
-      mediaType = file.type;
-      mediaName = file.name;
-      fileSize = file.size;
-
-      if(file.type.startsWith("image")){
-        postType = "photo";
-      }else if(file.type.startsWith("video")){
-        postType = "video";
-      }else{
-        postType = "file";
-      }
-
-    }else if(link){
-
-      postType = "link";
-
-    }
-
-    const {error} =
-      await supabaseClient
-        .from("posts")
-        .insert({
-
-          user_id:currentUser.id,
-
-          category_id:categoryId,
-
-          content:content || null,
-
-          post_type:postType,
-
-          media_url:mediaUrl,
-
-          media_type:mediaType,
-
-          media_name:mediaName,
-
-          file_size:fileSize,
-
-          link_url:link || null
-
-        });
-
-    if(error){
-      throw error;
-    }
-
-    closeModal("postModal");
-
-    toast("Published successfully.");
-
-    await loadHome();
-    await loadCommunityFeed();
-    await loadEducationFeed();
-
-  }catch(error){
-
-    console.error(error);
-
-    toast(
-      "Could not publish: " +
-      error.message
-    );
-
-  }
-}
-
-
-/* =========================================================
-   PROFILE
-========================================================= */
-
-async function loadProfile(){
-
-  const box =
-    document.getElementById("profileContent");
-
-  if(!currentUser){
-
-    box.innerHTML = `
-
-      <div class="card">
-
-        <h3>Log in to view your profile.</h3>
-
-        <button
-          class="btn"
-          style="margin-top:15px"
-          onclick="openAuth('login')"
-        >
-          Log in
-        </button>
-
-      </div>
-
-    `;
-
-    return;
+  .community-card{
+    padding:13px;
   }
 
-  const {data} =
-    await supabaseClient
-      .from("profiles")
-      .select("*")
-      .eq("id",currentUser.id)
-      .maybeSingle();
-
-  const profile = data || {};
-
-  const avatar =
-    profile.avatar_url ||
-    "https://placehold.co/200x200/222/fff?text=Z";
-
-  box.innerHTML = `
-
-    <div class="profile-cover">
-
-      <img
-        class="profile-avatar"
-        src="${escapeHTML(avatar)}"
-        onerror="this.src='https://placehold.co/200x200/222/fff?text=Z'"
-      >
-
-      <h2>
-        ${escapeHTML(
-          profile.display_name ||
-          currentUser.email?.split("@")[0] ||
-          "ZEEPY User"
-        )}
-      </h2>
-
-      <p class="muted" style="margin-top:5px">
-        ${escapeHTML(
-          profile.username
-            ? "@"+profile.username
-            : currentUser.email || ""
-        )}
-      </p>
-
-      <p style="margin-top:13px;color:#bbb">
-        ${escapeHTML(profile.bio || "Welcome to ZEEPY.")}
-      </p>
-
-      <div style="display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:18px">
-
-        <button
-          class="btn"
-          onclick="openProfileEditor()"
-        >
-          Edit Profile
-        </button>
-
-        <button
-          class="btn secondary"
-          onclick="logout()"
-        >
-          Log out
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-
-async function openProfileEditor(){
-
-  if(!currentUser){
-    openAuth("login");
-    return;
+  .community-card h3{
+    font-size:14px;
   }
 
-  const {data} =
-    await supabaseClient
-      .from("profiles")
-      .select("*")
-      .eq("id",currentUser.id)
-      .maybeSingle();
-
-  document.getElementById("profileName").value =
-    data?.display_name || "";
-
-  document.getElementById("profileUsername").value =
-    data?.username || "";
-
-  document.getElementById("profileBio").value =
-    data?.bio || "";
-
-  document.getElementById("profileAvatar").value = "";
-
-  openModal("profileModal");
-}
-
-
-async function saveProfile(){
-
-  if(!currentUser){
-    return;
+  .community-card p{
+    font-size:11px;
   }
 
-  try{
-
-    const name =
-      document.getElementById("profileName")
-        .value.trim();
-
-    const username =
-      document.getElementById("profileUsername")
-        .value.trim();
-
-    const bio =
-      document.getElementById("profileBio")
-        .value.trim();
-
-    const file =
-      document.getElementById("profileAvatar")
-        .files[0];
-
-    let avatarUrl = null;
-
-    if(file){
-
-      const safeName =
-        file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
-
-      const path =
-        `${currentUser.id}/${Date.now()}_${safeName}`;
-
-      const {error} =
-        await supabaseClient.storage
-          .from("avatars")
-          .upload(path,file,{
-            upsert:true
-          });
-
-      if(error){
-        throw error;
-      }
-
-      const {data} =
-        supabaseClient.storage
-          .from("avatars")
-          .getPublicUrl(path);
-
-      avatarUrl = data.publicUrl;
-
-    }
-
-    const update = {
-
-      id:currentUser.id,
-
-      display_name:name || "ZEEPY User",
-
-      username:username || null,
-
-      bio:bio || null
-
-    };
-
-    if(avatarUrl){
-      update.avatar_url = avatarUrl;
-    }
-
-    const {error} =
-      await supabaseClient
-        .from("profiles")
-        .upsert(update);
-
-    if(error){
-      throw error;
-    }
-
-    closeModal("profileModal");
-
-    await loadProfile();
-
-    updateHeader();
-
-    toast("Profile saved.");
-
-  }catch(error){
-
-    toast(
-      "Could not save profile: " +
-      error.message
-    );
-
-  }
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-async function updateHeader(){
-
-  const buttons =
-    document.querySelectorAll(".header .icon-btn");
-
-  if(!currentUser){
-    return;
+  .nav-item{
+    font-size:9px;
   }
 
-  const {data} =
-    await supabaseClient
-      .from("profiles")
-      .select("avatar_url")
-      .eq("id",currentUser.id)
-      .maybeSingle();
-
-  if(data?.avatar_url){
-
-    const profileButton =
-      buttons[buttons.length-1];
-
-    profileButton.innerHTML =
-      `<img
-        class="avatar-small"
-        src="${escapeHTML(data.avatar_url)}"
-      >`;
-
+  .nav-item span{
+    font-size:18px;
   }
-}
-
-
-/* =========================================================
-   PEOPLE
-========================================================= */
-
-async function searchPeople(){
-
-  const box =
-    document.getElementById("peopleResults");
-
-  if(!box){
-    return;
-  }
-
-  const input =
-    document.getElementById("peopleSearch");
-
-  const term =
-    input?.value.trim() || "";
-
-  let query =
-    supabaseClient
-      .from("profiles")
-      .select("id,display_name,username,bio,avatar_url")
-      .limit(30);
-
-  if(term){
-
-    query =
-      query.or(
-        `display_name.ilike.%${term}%,username.ilike.%${term}%`
-      );
-
-  }
-
-  const {data,error} =
-    await query;
-
-  if(error){
-
-    box.innerHTML =
-      `<div class="card">Could not load people.</div>`;
-
-    return;
-  }
-
-  if(!data?.length){
-
-    box.innerHTML =
-      `<div class="card">
-        <p class="muted">No people found.</p>
-      </div>`;
-
-    return;
-  }
-
-  box.innerHTML =
-    data.map(person=>`
-
-      <div class="card">
-
-        <div style="display:flex;align-items:center;gap:12px">
-
-          <img
-            src="${escapeHTML(
-              person.avatar_url ||
-              "https://placehold.co/100x100/222/fff?text=Z"
-            )}"
-            style="width:50px;height:50px;border-radius:50%;object-fit:cover"
-          >
-
-          <div style="flex:1">
-
-            <strong>
-              ${escapeHTML(
-                person.display_name ||
-                person.username ||
-                "ZEEPY User"
-              )}
-            </strong>
-
-            <div class="muted">
-              ${person.username
-                ? "@"+escapeHTML(person.username)
-                : ""}
-            </div>
-
-          </div>
-
-          <button
-            class="btn small"
-            onclick="openChatWith('${escapeHTML(person.id)}')"
-          >
-            Message
-          </button>
-
-        </div>
-
-      </div>
-
-    `).join("");
-}
-
-
-function openChatWith(userId){
-
-  if(!currentUser){
-
-    openAuth("login");
-    return;
-
-  }
-
-  showPage("messages");
-
-  toast(
-    "Chat selected. The conversation system will use this person."
-  );
-}
-
-
-/* =========================================================
-   MESSAGES
-========================================================= */
-
-async function loadMessages(){
-
-  const box =
-    document.getElementById("messagesList");
-
-  if(!box || !currentUser){
-    return;
-  }
-
-  try{
-
-    const {data,error} =
-      await supabaseClient
-        .from("messages")
-        .select("*")
-        .or(
-          `sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`
-        )
-        .order("created_at",{ascending:false})
-        .limit(50);
-
-    if(error){
-      throw error;
-    }
-
-    if(!data?.length){
-
-      box.innerHTML = `
-
-        <div class="card">
-
-          <p class="muted">
-            No messages yet.
-          </p>
-
-          <button
-            class="btn small"
-            style="margin-top:12px"
-            onclick="showPage('people')"
-          >
-            Find People
-          </button>
-
-        </div>
-
-      `;
-
-      return;
-    }
-
-    box.innerHTML =
-      data.map(message=>`
-
-        <div class="card">
-
-          <div>
-            ${escapeHTML(message.content || "")}
-          </div>
-
-          <small class="muted">
-            ${message.created_at
-              ? new Date(message.created_at).toLocaleString()
-              : ""}
-          </small>
-
-        </div>
-
-      `).join("");
-
-  }catch(error){
-
-    box.innerHTML = `
-
-      <div class="card">
-
-        <p>Messages could not be loaded.</p>
-
-        <p class="muted" style="margin-top:6px">
-          ${escapeHTML(error.message)}
-        </p>
-
-      </div>
-
-    `;
-
-  }
-}
-
-
-/* =========================================================
-   MARKET
-========================================================= */
-
-async function loadProducts(){
-
-  const grid =
-    document.getElementById("productsGrid");
-
-  grid.innerHTML =
-    `<div class="loading">Loading products...</div>`;
-
-  const {data,error} =
-    await supabaseClient
-      .from("products")
-      .select("*")
-      .order("created_at",{ascending:false})
-      .limit(50);
-
-  if(error){
-
-    grid.innerHTML = `
-
-      <div class="card">
-
-        <p>Products could not be loaded.</p>
-
-        <p class="muted" style="margin-top:6px">
-          ${escapeHTML(error.message)}
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-  }
-
-  if(!data?.length){
-
-    grid.innerHTML = `
-
-      <div class="card">
-
-        <p class="muted">
-          No products have been listed yet.
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-  }
-
-  grid.innerHTML =
-    data.map(product=>`
-
-      <div class="product-card">
-
-        ${
-          product.image_url
-          ?
-          `<img
-            class="product-image"
-            src="${escapeHTML(product.image_url)}"
-          >`
-          :
-          `<div class="product-image"></div>`
-        }
-
-        <div class="product-body">
-
-          <h3>
-            ${escapeHTML(product.name || "Product")}
-          </h3>
-
-          <div class="price" style="margin-top:7px">
-            GH₵ ${escapeHTML(product.price || "0")}
-          </div>
-
-          <p class="muted" style="margin-top:8px">
-            ${escapeHTML(product.description || "")}
-          </p>
-
-          <button
-            class="btn small"
-            style="margin-top:12px"
-            onclick="toast('Seller messaging will open here.')"
-          >
-            Message Seller
-          </button>
-
-        </div>
-
-      </div>
-
-    `).join("");
-}
-
-
-function openSellProduct(){
-
-  document.getElementById("productName").value = "";
-  document.getElementById("productPrice").value = "";
-  document.getElementById("productDescription").value = "";
-  document.getElementById("productImage").value = "";
-
-  openModal("productModal");
-}
-
-
-async function createProduct(){
-
-  if(!currentUser){
-    return;
-  }
-
-  const name =
-    document.getElementById("productName")
-      .value.trim();
-
-  const price =
-    document.getElementById("productPrice")
-      .value;
-
-  const description =
-    document.getElementById("productDescription")
-      .value.trim();
-
-  const file =
-    document.getElementById("productImage")
-      .files[0];
-
-  if(!name || !price){
-
-    toast("Enter product name and price.");
-    return;
-
-  }
-
-  try{
-
-    let imageUrl = null;
-
-    if(file){
-
-      const safeName =
-        file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
-
-      const path =
-        `${currentUser.id}/${Date.now()}_${safeName}`;
-
-      const {error} =
-        await supabaseClient.storage
-          .from("community-media")
-          .upload(path,file,{
-            upsert:false
-          });
-
-      if(error){
-        throw error;
-      }
-
-      const {data} =
-        supabaseClient.storage
-          .from("community-media")
-          .getPublicUrl(path);
-
-      imageUrl = data.publicUrl;
-    }
-
-    const {error} =
-      await supabaseClient
-        .from("products")
-        .insert({
-
-          user_id:currentUser.id,
-
-          name,
-
-          price:Number(price),
-
-          description,
-
-          image_url:imageUrl
-
-        });
-
-    if(error){
-      throw error;
-    }
-
-    closeModal("productModal");
-
-    toast("Product listed successfully.");
-
-    await loadProducts();
-
-  }catch(error){
-
-    toast(
-      "Could not create product: " +
-      error.message
-    );
-
-  }
-}
-
-
-/* =========================================================
-   MEETINGS
-========================================================= */
-
-function openMeetingModal(){
-
-  requireLogin(()=>{
-
-    document.getElementById("meetingTitle").value = "";
-    document.getElementById("meetingDate").value = "";
-    document.getElementById("meetingTime").value = "";
-    document.getElementById("meetingLink").value = "";
-    document.getElementById("meetingDescription").value = "";
-
-    openModal("meetingModal");
-
-  });
-}
-
-
-function createMeeting(){
-
-  const title =
-    document.getElementById("meetingTitle")
-      .value.trim();
-
-  const date =
-    document.getElementById("meetingDate").value;
-
-  const time =
-    document.getElementById("meetingTime").value;
-
-  const link =
-    document.getElementById("meetingLink")
-      .value.trim();
-
-  const description =
-    document.getElementById("meetingDescription")
-      .value.trim();
-
-  if(!title || !date || !time){
-
-    toast("Enter the meeting title, date and time.");
-    return;
-
-  }
-
-  closeModal("meetingModal");
-
-  toast(
-    "Meeting details prepared. Meeting storage will be connected when the Education Meetings table is added."
-  );
-
-  console.log({
-    title,
-    date,
-    time,
-    link,
-    description,
-    community:"Education",
-    created_by:currentUser?.id
-  });
-}
-
-
-/* =========================================================
-   LIVE
-========================================================= */
-
-async function startLive(){
-
-  try{
-
-    liveStream =
-      await navigator.mediaDevices.getUserMedia({
-        video:true,
-        audio:true
-      });
-
-    document.getElementById("liveVideo").srcObject =
-      liveStream;
-
-    toast("Camera and microphone started.");
-
-  }catch(error){
-
-    toast(
-      "Could not start camera: " +
-      error.message
-    );
-
-  }
-}
-
-
-function stopLive(){
-
-  if(liveStream){
-
-    liveStream
-      .getTracks()
-      .forEach(track=>track.stop());
-
-    liveStream = null;
-
-  }
-
-  document.getElementById("liveVideo").srcObject =
-    null;
-
-  toast("Live camera stopped.");
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-function globalSearch(event){
-
-  if(event.key !== "Enter"){
-    return;
-  }
-
-  const value =
-    event.target.value.trim();
-
-  if(!value){
-    return;
-  }
-
-  showPage("people");
-
-  document.getElementById("peopleSearch").value =
-    value;
-
-  searchPeople();
-}
-
-
-/* =========================================================
-   INITIALIZATION
-========================================================= */
-
-async function initialize(){
-
-  await checkSession();
-
-  await loadCategories();
-
-  await loadHome();
-
-  await loadCommunityFeed();
-
-  await loadProducts();
-
-  updateHeader();
 
 }
 
+/* =========================
+   PREVENT LONG TEXT
+========================= */
 
-initialize();
+h1,
+h2,
+h3,
+h4,
+p,
+div,
+span,
+a{
+  max-width:100%;
+}
 
-</script>
+a{
+  overflow-wrap:anywhere;
+}
 
-</body>
-</html>
+input,
+textarea,
+select{
+  min-width:0;
+}
