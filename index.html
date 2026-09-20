@@ -4,12 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#ff6a00">
+
 <title>ZEEPY — Your Community. Your World.</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
 :root{
   --orange:#ff6a00;
   --orange2:#ff8a00;
@@ -20,7 +26,9 @@
   --muted:#aaa;
   --line:#292929;
   --green:#20c77a;
+  --red:#ff4d4d;
 }
+
 html,body{
   width:100%;
   min-height:100%;
@@ -29,9 +37,34 @@ html,body{
   font-family:Arial,Helvetica,sans-serif;
   overflow-x:hidden;
 }
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-.hidden{display:none!important}
+
+body{
+  padding-bottom:75px;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+/* =========================
+   HEADER
+========================= */
 
 header{
   position:sticky;
@@ -40,6 +73,7 @@ header{
   background:#090909;
   border-bottom:1px solid var(--line);
 }
+
 .topbar{
   min-height:64px;
   display:flex;
@@ -47,17 +81,24 @@ header{
   gap:12px;
   padding:10px 15px;
 }
+
 .logo{
   font-size:25px;
   font-weight:900;
   letter-spacing:-1px;
+  white-space:nowrap;
 }
-.logo span{color:var(--orange)}
+
+.logo span{
+  color:var(--orange);
+}
+
 .search{
   flex:1;
   max-width:520px;
   margin:auto;
 }
+
 .search input{
   width:100%;
   border:1px solid var(--line);
@@ -67,11 +108,17 @@ header{
   padding:12px 16px;
   outline:none;
 }
+
+.search input:focus{
+  border-color:var(--orange);
+}
+
 .header-actions{
   display:flex;
   align-items:center;
   gap:8px;
 }
+
 .icon-btn{
   width:42px;
   height:42px;
@@ -80,6 +127,11 @@ header{
   color:white;
   border-radius:50%;
 }
+
+.icon-btn:hover{
+  border-color:var(--orange);
+}
+
 .avatar{
   width:40px;
   height:40px;
@@ -87,7 +139,9 @@ header{
   object-fit:cover;
   background:#333;
 }
-.auth-btn,.primary{
+
+.auth-btn,
+.primary{
   border:0;
   background:var(--orange);
   color:#fff;
@@ -95,7 +149,15 @@ header{
   border-radius:10px;
   padding:11px 16px;
 }
-.auth-btn:hover,.primary:hover{background:var(--orange2)}
+
+.auth-btn:hover,
+.primary:hover{
+  background:var(--orange2);
+}
+
+/* =========================
+   MAIN
+========================= */
 
 main{
   width:100%;
@@ -103,8 +165,18 @@ main{
   margin:auto;
   padding:18px 15px 100px;
 }
-.page{display:none}
-.page.active{display:block}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
   background:linear-gradient(135deg,#191919,#0d0d0d);
@@ -113,8 +185,21 @@ main{
   padding:30px 22px;
   margin-bottom:18px;
 }
-.hero h1{font-size:30px;margin-bottom:8px}
-.hero p{color:var(--muted);line-height:1.6}
+
+.hero h1{
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.hero h2{
+  margin-bottom:8px;
+}
+
+.hero p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
 .hero-actions{
   display:flex;
   gap:10px;
@@ -122,33 +207,61 @@ main{
   margin-top:20px;
 }
 
+/* =========================
+   SECTIONS
+========================= */
+
 .section-title{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:10px;
   margin:24px 0 13px;
 }
-.section-title h2{font-size:20px}
-.muted{color:var(--muted)}
+
+.section-title h2{
+  font-size:20px;
+}
+
+.muted{
+  color:var(--muted);
+}
 
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:14px;
 }
+
 .card{
   background:var(--card);
   border:1px solid var(--line);
   border-radius:16px;
   padding:17px;
 }
-.card h3{margin-bottom:8px}
-.card p{color:var(--muted);line-height:1.5}
-.card.clickable{cursor:pointer;transition:.15s}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.card.clickable{
+  cursor:pointer;
+  transition:.15s;
+}
+
 .card.clickable:hover{
   border-color:var(--orange);
   transform:translateY(-2px);
 }
+
+/* =========================
+   COMMUNITY CARDS
+========================= */
 
 .community-card{
   min-height:180px;
@@ -156,6 +269,7 @@ main{
   flex-direction:column;
   justify-content:space-between;
 }
+
 .community-icon{
   width:54px;
   height:54px;
@@ -166,10 +280,15 @@ main{
   font-size:27px;
   margin-bottom:14px;
 }
+
 .community-card button{
   width:100%;
   margin-top:15px;
 }
+
+/* =========================
+   TABS
+========================= */
 
 .tabs{
   display:flex;
@@ -177,6 +296,7 @@ main{
   overflow:auto;
   padding-bottom:6px;
 }
+
 .tabs button{
   white-space:nowrap;
   background:#171717;
@@ -185,11 +305,20 @@ main{
   padding:10px 14px;
   border-radius:10px;
 }
+
+.tabs button:hover{
+  border-color:var(--orange);
+}
+
 .tabs button.active{
   background:var(--orange);
   color:white;
   border-color:var(--orange);
 }
+
+/* =========================
+   COMMUNITY PLATFORM
+========================= */
 
 .community-head{
   background:linear-gradient(135deg,#20150d,#111);
@@ -198,11 +327,13 @@ main{
   padding:24px;
   margin-bottom:15px;
 }
+
 .community-head-top{
   display:flex;
   gap:15px;
   align-items:center;
 }
+
 .big-icon{
   width:70px;
   height:70px;
@@ -211,9 +342,17 @@ main{
   background:#252525;
   border-radius:18px;
   font-size:36px;
+  flex-shrink:0;
 }
-.community-head h1{margin-bottom:5px}
-.community-head p{color:var(--muted);line-height:1.5}
+
+.community-head h1{
+  margin-bottom:5px;
+}
+
+.community-head p{
+  color:var(--muted);
+  line-height:1.5;
+}
 
 .info-list{
   display:grid;
@@ -221,14 +360,27 @@ main{
   gap:10px;
   margin-top:18px;
 }
+
 .info-item{
   background:#171717;
   border:1px solid var(--line);
   border-radius:12px;
   padding:14px;
 }
-.info-item b{display:block;margin-bottom:5px}
-.info-item span{color:var(--muted);font-size:14px}
+
+.info-item b{
+  display:block;
+  margin-bottom:5px;
+}
+
+.info-item span{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* =========================
+   POSTS
+========================= */
 
 .post-box{
   background:var(--card);
@@ -237,6 +389,7 @@ main{
   padding:15px;
   margin-bottom:15px;
 }
+
 textarea{
   width:100%;
   min-height:100px;
@@ -248,6 +401,11 @@ textarea{
   padding:13px;
   outline:none;
 }
+
+textarea:focus{
+  border-color:var(--orange);
+}
+
 .post-actions{
   display:flex;
   justify-content:flex-end;
@@ -261,22 +419,38 @@ textarea{
   padding:16px;
   margin-bottom:12px;
 }
+
 .post-user{
   display:flex;
   gap:10px;
   align-items:center;
   margin-bottom:12px;
 }
+
 .post-user img{
-  width:42px;height:42px;border-radius:50%;object-fit:cover;background:#333
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#333;
 }
-.post-meta small{color:var(--muted)}
-.post-content{white-space:pre-wrap;line-height:1.6}
+
+.post-meta small{
+  color:var(--muted);
+}
+
+.post-content{
+  white-space:pre-wrap;
+  line-height:1.6;
+}
+
 .post-footer{
   display:flex;
   gap:8px;
   margin-top:14px;
+  flex-wrap:wrap;
 }
+
 .post-footer button{
   background:#202020;
   color:#ddd;
@@ -284,6 +458,14 @@ textarea{
   border-radius:9px;
   padding:8px 12px;
 }
+
+.post-footer button:hover{
+  border-color:var(--orange);
+}
+
+/* =========================
+   MODALS
+========================= */
 
 .modal{
   position:fixed;
@@ -295,7 +477,11 @@ textarea{
   justify-content:center;
   padding:15px;
 }
-.modal.show{display:flex}
+
+.modal.show{
+  display:flex;
+}
+
 .modal-box{
   width:100%;
   max-width:440px;
@@ -306,15 +492,24 @@ textarea{
   max-height:90vh;
   overflow:auto;
 }
-.modal-box h2{margin-bottom:15px}
-.field{margin-bottom:12px}
+
+.modal-box h2{
+  margin-bottom:15px;
+}
+
+.field{
+  margin-bottom:12px;
+}
+
 .field label{
   display:block;
   color:#bbb;
   font-size:13px;
   margin-bottom:6px;
 }
-.field input,.field select{
+
+.field input,
+.field select{
   width:100%;
   background:#0d0d0d;
   color:#fff;
@@ -323,12 +518,25 @@ textarea{
   padding:12px;
   outline:none;
 }
+
+.field input:focus,
+.field select:focus{
+  border-color:var(--orange);
+}
+
 .modal-buttons{
   display:flex;
   gap:10px;
   margin-top:15px;
 }
-.modal-buttons button{flex:1}
+
+.modal-buttons button{
+  flex:1;
+}
+
+/* =========================
+   BOTTOM NAV
+========================= */
 
 .bottom-nav{
   position:fixed;
@@ -341,12 +549,14 @@ textarea{
   display:flex;
   justify-content:center;
 }
+
 .bottom-inner{
   width:100%;
   max-width:700px;
   display:grid;
   grid-template-columns:repeat(5,1fr);
 }
+
 .nav-item{
   border:0;
   background:none;
@@ -354,12 +564,20 @@ textarea{
   padding:10px 3px;
   font-size:11px;
 }
+
 .nav-item span{
   display:block;
   font-size:20px;
   margin-bottom:3px;
 }
-.nav-item.active{color:var(--orange)}
+
+.nav-item.active{
+  color:var(--orange);
+}
+
+/* =========================
+   NOTIFICATIONS
+========================= */
 
 .notice{
   background:#171717;
@@ -368,7 +586,15 @@ textarea{
   border-radius:12px;
   margin-bottom:10px;
 }
-.notice strong{display:block;margin-bottom:5px}
+
+.notice strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+/* =========================
+   MEETINGS
+========================= */
 
 .meeting{
   border:1px solid var(--line);
@@ -377,11 +603,13 @@ textarea{
   padding:16px;
   margin-bottom:10px;
 }
+
 .meeting-top{
   display:flex;
   justify-content:space-between;
   gap:10px;
 }
+
 .badge{
   display:inline-block;
   background:#272727;
@@ -389,8 +617,12 @@ textarea{
   padding:5px 8px;
   border-radius:8px;
   font-size:12px;
+  margin-top:7px;
 }
-.online{color:var(--green)}
+
+.online{
+  color:var(--green);
+}
 
 .empty{
   text-align:center;
@@ -398,15 +630,29 @@ textarea{
   padding:35px 15px;
 }
 
-@media(max-width:700px){
-  .topbar{flex-wrap:wrap}
-  .logo{font-size:22px}
-  .search{order:3;flex-basis:100%;max-width:none}
-  .header-actions{margin-left:auto}
-  main{padding:12px 10px 90px}
-  .hero h1{font-size:25px}
-  .community-head-top{align-items:flex-start}
+/* =========================
+   PROFILE
+========================= */
+
+.profile-large{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#333;
+  border:2px solid var(--orange);
 }
+
+.profile-row{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:20px;
+}
+
+/* =========================
+   TOAST
+========================= */
 
 .toast{
   position:fixed;
@@ -419,108 +665,293 @@ textarea{
   padding:12px 16px;
   border-radius:10px;
   display:none;
+  max-width:90%;
+  text-align:center;
 }
-.toast.show{display:block}
+
+.toast.show{
+  display:block;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+  .topbar{
+    flex-wrap:wrap;
+  }
+
+  .logo{
+    font-size:22px;
+  }
+
+  .search{
+    order:3;
+    flex-basis:100%;
+    max-width:none;
+  }
+
+  .header-actions{
+    margin-left:auto;
+  }
+
+  .header-actions .icon-btn{
+    width:38px;
+    height:38px;
+  }
+
+  .avatar{
+    width:38px;
+    height:38px;
+  }
+
+  main{
+    padding:12px 10px 90px;
+  }
+
+  .hero{
+    padding:24px 18px;
+  }
+
+  .hero h1{
+    font-size:25px;
+  }
+
+  .community-head-top{
+    align-items:flex-start;
+  }
+
+  .big-icon{
+    width:58px;
+    height:58px;
+    font-size:29px;
+  }
+
+  .section-title{
+    align-items:flex-start;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <header>
+
   <div class="topbar">
-    <div class="logo">ZEE<span>PY</span></div>
+
+    <div class="logo">
+      ZEE<span>PY</span>
+    </div>
 
     <div class="search">
-      <input id="globalSearch" placeholder="Search people, communities, market..." onkeydown="globalSearch(event)">
+      <input
+        id="globalSearch"
+        placeholder="Search people, communities, market..."
+        onkeydown="globalSearch(event)"
+      >
     </div>
 
     <div class="header-actions">
-      <button class="icon-btn" onclick="openPage('peoplePage')" title="People">👥</button>
-      <button class="icon-btn" onclick="openPage('notificationsPage')" title="Notifications">🔔</button>
-      <img id="headerAvatar" class="avatar hidden" src="">
-      <button id="authButton" class="auth-btn" onclick="openAuth()">Log in</button>
+
+      <button
+        class="icon-btn"
+        onclick="openPage('peoplePage')"
+        title="People">
+        👥
+      </button>
+
+      <button
+        class="icon-btn"
+        onclick="openPage('notificationsPage')"
+        title="Notifications">
+        🔔
+      </button>
+
+      <img
+        id="headerAvatar"
+        class="avatar hidden"
+        src=""
+        alt="Profile"
+      >
+
+      <button
+        id="authButton"
+        class="auth-btn"
+        onclick="openAuth()">
+        Log in
+      </button>
+
     </div>
+
   </div>
+
 </header>
+
 
 <main>
 
-<!-- HOME -->
+<!-- =========================
+     HOME
+========================= -->
+
 <section id="homePage" class="page active">
 
   <div class="hero">
+
     <h1>WELCOME TO YOUR COMMUNITY</h1>
+
     <p>
       ZEEPY brings people, communities, conversations, learning,
       business, meetings and opportunities together in one world.
     </p>
 
     <div class="hero-actions">
-      <button class="primary" onclick="openPage('communitiesPage')">🌍 Explore Communities</button>
-      <button class="primary" onclick="openCreatePost()">✍️ Create Post</button>
+
+      <button
+        class="primary"
+        onclick="openPage('communitiesPage')">
+        🌍 Explore Communities
+      </button>
+
+      <button
+        class="primary"
+        onclick="openCreatePost()">
+        ✍️ Create Post
+      </button>
+
     </div>
+
   </div>
+
 
   <div class="section-title">
+
     <h2>Explore Communities</h2>
-    <button class="primary" onclick="openPage('communitiesPage')">View All</button>
+
+    <button
+      class="primary"
+      onclick="openPage('communitiesPage')">
+      View All
+    </button>
+
   </div>
 
-  <div id="homeCommunities" class="grid"></div>
+
+  <div
+    id="homeCommunities"
+    class="grid">
+  </div>
+
 
   <div class="section-title">
     <h2>Latest Community Posts</h2>
   </div>
 
-  <div id="homePosts"></div>
+
+  <div id="homePosts">
+    <div class="empty">
+      Loading community posts...
+    </div>
+  </div>
 
 </section>
 
 
-<!-- COMMUNITIES -->
+<!-- =========================
+     COMMUNITIES
+========================= -->
+
 <section id="communitiesPage" class="page">
 
   <div class="hero">
+
     <h1>Communities</h1>
+
     <p>
       Every community has its own space inside ZEEPY.
       Enter a community to discover its people, discussions,
       resources, events and meetings.
     </p>
+
   </div>
 
-  <div id="communitiesGrid" class="grid"></div>
+  <div
+    id="communitiesGrid"
+    class="grid">
+  </div>
 
 </section>
 
 
-<!-- COMMUNITY PLATFORM -->
+<!-- =========================
+     COMMUNITY PLATFORM
+========================= -->
+
 <section id="communityPlatformPage" class="page">
 
-  <button class="primary" onclick="openPage('communitiesPage')">← Communities</button>
+  <button
+    class="primary"
+    onclick="openPage('communitiesPage')">
+    ← Communities
+  </button>
 
-  <div id="communityHeader" style="margin-top:15px"></div>
+  <div
+    id="communityHeader"
+    style="margin-top:15px">
+  </div>
 
-  <div id="communityTabs" class="tabs"></div>
+  <div
+    id="communityTabs"
+    class="tabs">
+  </div>
 
-  <div id="communityContent" style="margin-top:15px"></div>
+  <div
+    id="communityContent"
+    style="margin-top:15px">
+  </div>
 
 </section>
 
 
-<!-- MARKET -->
+<!-- =========================
+     MARKET
+========================= -->
+
 <section id="marketPage" class="page">
 
   <div class="hero">
+
     <h1>Marketplace</h1>
-    <p>Buy, sell and discover products and services from people and shops.</p>
+
+    <p>
+      Buy, sell and discover products and services
+      from people and shops.
+    </p>
+
     <div class="hero-actions">
-      <button class="primary" onclick="requireLogin(openShop)">🏪 Create Your Shop</button>
-      <button class="primary" onclick="requireLogin(openSell)">＋ Sell Product</button>
+
+      <button
+        class="primary"
+        onclick="requireLogin(openShop)">
+        🏪 Create Your Shop
+      </button>
+
+      <button
+        class="primary"
+        onclick="requireLogin(openSell)">
+        ＋ Sell Product
+      </button>
+
     </div>
+
   </div>
 
+
   <div class="tabs">
+
     <button>Phones & Tablets</button>
     <button>Electronics</button>
     <button>Fashion</button>
@@ -528,292 +959,761 @@ textarea{
     <button>Vehicles</button>
     <button>Food</button>
     <button>Services</button>
+
   </div>
 
-  <div id="marketGrid" class="grid" style="margin-top:15px">
+
+  <div
+    id="marketGrid"
+    class="grid"
+    style="margin-top:15px">
+
     <div class="card">
+
       <h3>Marketplace</h3>
-      <p>Products and shops will appear here as sellers publish them.</p>
+
+      <p>
+        Products and shops will appear here
+        as sellers publish them.
+      </p>
+
     </div>
+
   </div>
 
 </section>
 
 
-<!-- PEOPLE -->
+<!-- =========================
+     PEOPLE
+========================= -->
+
 <section id="peoplePage" class="page">
+
   <div class="hero">
+
     <h1>People</h1>
-    <p>Find people and connect with your community.</p>
-  </div>
-  <div class="card">
-    <input id="peopleSearch" class="searchInput"
-      style="width:100%;background:#101010;color:white;border:1px solid #333;border-radius:10px;padding:12px"
-      placeholder="Search people..." oninput="searchPeople()">
-  </div>
-  <div id="peopleResults" style="margin-top:15px"></div>
-</section>
 
-
-<!-- MESSAGES -->
-<section id="messagesPage" class="page">
-  <div class="hero">
-    <h1>Messages</h1>
-    <p>Connect privately with people and sellers.</p>
-  </div>
-  <div class="card">
-    <h3>Your conversations</h3>
-    <p class="muted">Your saved conversations will appear here.</p>
-  </div>
-</section>
-
-
-<!-- NOTIFICATIONS -->
-<section id="notificationsPage" class="page">
-  <div class="hero">
-    <h1>Notifications</h1>
-    <p>Stay updated with activity around your account and communities.</p>
-  </div>
-  <div id="notificationsList">
-    <div class="empty">No notifications yet.</div>
-  </div>
-</section>
-
-
-<!-- WALLET -->
-<section id="walletPage" class="page">
-  <div class="hero">
-    <h1>Wallet</h1>
-    <p>Manage your ZEEPY earnings, transactions and future creator income.</p>
-  </div>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Balance</h3>
-      <p style="font-size:28px;color:var(--orange);margin-top:10px">GH₵ 0.00</p>
-    </div>
-    <div class="card">
-      <h3>Earnings</h3>
-      <p>Creator, seller and community earnings will appear here.</p>
-    </div>
-    <div class="card">
-      <h3>Transactions</h3>
-      <p>Your transaction history will appear here.</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- GROUPS -->
-<section id="groupsPage" class="page">
-  <div class="hero">
-    <h1>Groups</h1>
-    <p>Create and join focused groups inside ZEEPY communities.</p>
-    <button class="primary" onclick="requireLogin(createGroup)">＋ Create Group</button>
-  </div>
-  <div class="grid">
-    <div class="card">
-      <h3>Community Groups</h3>
-      <p>Study groups, business groups, sports groups and other focused communities.</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- LIVE -->
-<section id="livePage" class="page">
-  <div class="hero">
-    <h1>Live</h1>
-    <p>Connect with your community through live video and live discussions.</p>
-    <button class="primary" onclick="requireLogin(startLive)">🔴 Start Live</button>
-  </div>
-
-  <div class="card">
-    <h3>Live Shopping</h3>
-    <p>Future sellers and creators can combine live video with products.</p>
-  </div>
-</section>
-
-
-<!-- MEDIA -->
-<section id="mediaPage" class="page">
-  <div class="hero">
-    <h1>Media</h1>
-    <p>Discover photos, videos and community media.</p>
-  </div>
-  <div class="empty">Community media will appear here.</div>
-</section>
-
-
-<!-- NEARBY -->
-<section id="nearbyPage" class="page">
-  <div class="hero">
-    <h1>Nearby</h1>
-    <p>Discover people, communities, shops, events and activities around you.</p>
-  </div>
-  <div class="card">
-    <h3>Nearby Community</h3>
-    <p>Location-based discovery will appear here.</p>
-  </div>
-</section>
-
-
-<!-- MEET -->
-<section id="meetPage" class="page">
-  <div class="hero">
-    <h1>Meetings</h1>
     <p>
-      Discover online and in-person meetings from communities
-      across ZEEPY.
+      Find people and connect with your community.
     </p>
-    <button class="primary" onclick="requireLogin(createMeeting)">＋ Create Meeting</button>
+
   </div>
+
+
+  <div class="card">
+
+    <input
+      id="peopleSearch"
+      style="
+        width:100%;
+        background:#101010;
+        color:white;
+        border:1px solid #333;
+        border-radius:10px;
+        padding:12px;
+        outline:none;
+      "
+      placeholder="Search people..."
+      oninput="searchPeople()"
+    >
+
+  </div>
+
+
+  <div
+    id="peopleResults"
+    style="margin-top:15px">
+
+    <div class="empty">
+      Search for people.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MESSAGES
+========================= -->
+
+<section id="messagesPage" class="page">
+
+  <div class="hero">
+
+    <h1>Messages</h1>
+
+    <p>
+      Connect privately with people and sellers.
+    </p>
+
+  </div>
+
+
+  <div
+    id="messagesContent">
+
+    <div class="card">
+
+      <h3>Your conversations</h3>
+
+      <p class="muted">
+        Your saved conversations will appear here.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     NOTIFICATIONS
+========================= -->
+
+<section id="notificationsPage" class="page">
+
+  <div class="hero">
+
+    <h1>Notifications</h1>
+
+    <p>
+      Stay updated with activity around your account
+      and communities.
+    </p>
+
+  </div>
+
+  <div id="notificationsList">
+
+    <div class="empty">
+      No notifications yet.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     WALLET
+========================= -->
+
+<section id="walletPage" class="page">
+
+  <div class="hero">
+
+    <h1>Wallet</h1>
+
+    <p>
+      Manage your ZEEPY earnings, transactions
+      and future creator income.
+    </p>
+
+  </div>
+
+
+  <div class="grid">
+
+    <div class="card">
+
+      <h3>Balance</h3>
+
+      <p
+        style="
+          font-size:28px;
+          color:var(--orange);
+          margin-top:10px;
+        ">
+        GH₵ 0.00
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Earnings</h3>
+
+      <p>
+        Creator, seller and community earnings
+        will appear here.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Transactions</h3>
+
+      <p>
+        Your transaction history will appear here.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     GROUPS
+========================= -->
+
+<section id="groupsPage" class="page">
+
+  <div class="hero">
+
+    <h1>Groups</h1>
+
+    <p>
+      Create and join focused groups inside
+      ZEEPY communities.
+    </p>
+
+    <button
+      class="primary"
+      onclick="requireLogin(createGroup)">
+      ＋ Create Group
+    </button>
+
+  </div>
+
+
+  <div class="grid">
+
+    <div class="card">
+
+      <h3>Community Groups</h3>
+
+      <p>
+        Study groups, business groups,
+        sports groups and other focused communities.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     LIVE
+========================= -->
+
+<section id="livePage" class="page">
+
+  <div class="hero">
+
+    <h1>Live</h1>
+
+    <p>
+      Connect with your community through
+      live video and live discussions.
+    </p>
+
+    <button
+      class="primary"
+      onclick="requireLogin(startLive)">
+      🔴 Start Live
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>Live Shopping</h3>
+
+    <p>
+      Future sellers and creators can combine
+      live video with products.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MEDIA
+========================= -->
+
+<section id="mediaPage" class="page">
+
+  <div class="hero">
+
+    <h1>Media</h1>
+
+    <p>
+      Discover photos, videos and community media.
+    </p>
+
+  </div>
+
+
+  <div class="empty">
+    Community media will appear here.
+  </div>
+
+</section>
+
+
+<!-- =========================
+     NEARBY
+========================= -->
+
+<section id="nearbyPage" class="page">
+
+  <div class="hero">
+
+    <h1>Nearby</h1>
+
+    <p>
+      Discover people, communities, shops,
+      events and activities around you.
+    </p>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>Nearby Community</h3>
+
+    <p>
+      Location-based discovery will appear here.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MEET
+========================= -->
+
+<section id="meetPage" class="page">
+
+  <div class="hero">
+
+    <h1>Meetings</h1>
+
+    <p>
+      Discover online and in-person meetings
+      from communities across ZEEPY.
+    </p>
+
+    <button
+      class="primary"
+      onclick="requireLogin(createMeeting)">
+      ＋ Create Meeting
+    </button>
+
+  </div>
+
 
   <div id="globalMeetings">
-    <div class="empty">No meetings available yet.</div>
+
+    <div class="empty">
+      No meetings available yet.
+    </div>
+
   </div>
+
 </section>
 
 
-<!-- PROFILE -->
+<!-- =========================
+     PROFILE
+========================= -->
+
 <section id="profilePage" class="page">
+
   <div class="hero">
+
     <h1>Profile</h1>
-    <p id="profileStatus">Log in to manage your ZEEPY profile.</p>
+
+    <p id="profileStatus">
+      Log in to manage your ZEEPY profile.
+    </p>
+
   </div>
 
-  <div id="profileBox" class="card">
-    <div class="empty">You are not logged in.</div>
+
+  <div
+    id="profileBox"
+    class="card">
+
+    <div class="empty">
+      You are not logged in.
+    </div>
+
   </div>
+
 </section>
 
 </main>
 
 
-<!-- BOTTOM NAV -->
+<!-- =========================
+     BOTTOM NAV
+========================= -->
+
 <nav class="bottom-nav">
+
   <div class="bottom-inner">
-    <button class="nav-item active" onclick="openPage('homePage')">
-      <span>⌂</span>Home
+
+    <button
+      class="nav-item active"
+      onclick="openPage('homePage')">
+
+      <span>⌂</span>
+      Home
+
     </button>
-    <button class="nav-item" onclick="openPage('marketPage')">
-      <span>🛒</span>Market
+
+
+    <button
+      class="nav-item"
+      onclick="openPage('marketPage')">
+
+      <span>🛒</span>
+      Market
+
     </button>
-    <button class="nav-item" onclick="openPage('communitiesPage')">
-      <span>＋</span>Community
+
+
+    <button
+      class="nav-item"
+      onclick="openPage('communitiesPage')">
+
+      <span>＋</span>
+      Community
+
     </button>
-    <button class="nav-item" onclick="openPage('messagesPage')">
-      <span>💬</span>Messages
+
+
+    <button
+      class="nav-item"
+      onclick="openPage('messagesPage')">
+
+      <span>💬</span>
+      Messages
+
     </button>
-    <button class="nav-item" onclick="openPage('profilePage')">
-      <span>👤</span>Profile
+
+
+    <button
+      class="nav-item"
+      onclick="openPage('profilePage')">
+
+      <span>👤</span>
+      Profile
+
     </button>
+
   </div>
+
 </nav>
 
 
-<!-- AUTH MODAL -->
-<div id="authModal" class="modal">
+<!-- =========================
+     AUTH MODAL
+========================= -->
+
+<div
+  id="authModal"
+  class="modal">
+
   <div class="modal-box">
-    <h2 id="authTitle">Log in to ZEEPY</h2>
 
-    <div id="nameField" class="field hidden">
-      <label>Display name</label>
-      <input id="authName" placeholder="Your name">
+    <h2 id="authTitle">
+      Log in to ZEEPY
+    </h2>
+
+
+    <div
+      id="nameField"
+      class="field hidden">
+
+      <label>
+        Display name
+      </label>
+
+      <input
+        id="authName"
+        placeholder="Your name">
+
     </div>
+
 
     <div class="field">
-      <label>Email</label>
-      <input id="authEmail" type="email" placeholder="you@example.com">
+
+      <label>
+        Email
+      </label>
+
+      <input
+        id="authEmail"
+        type="email"
+        autocomplete="email"
+        placeholder="you@example.com">
+
     </div>
 
+
     <div class="field">
-      <label>Password</label>
-      <input id="authPassword" type="password" placeholder="Password">
+
+      <label>
+        Password
+      </label>
+
+      <input
+        id="authPassword"
+        type="password"
+        autocomplete="current-password"
+        placeholder="Password">
+
     </div>
+
 
     <div class="modal-buttons">
-      <button class="primary" onclick="submitAuth()">Continue</button>
-      <button class="icon-btn" onclick="closeModal('authModal')">✕</button>
+
+      <button
+        id="authSubmitButton"
+        class="primary"
+        onclick="submitAuth()">
+        Continue
+      </button>
+
+      <button
+        class="icon-btn"
+        onclick="closeModal('authModal')">
+        ✕
+      </button>
+
     </div>
 
-    <button id="authSwitch" style="margin-top:15px;width:100%;background:none;border:0;color:var(--orange)"
-      onclick="switchAuthMode()">Create an account</button>
+
+    <button
+      id="authSwitch"
+      style="
+        margin-top:15px;
+        width:100%;
+        background:none;
+        border:0;
+        color:var(--orange);
+      "
+      onclick="switchAuthMode()">
+
+      Create an account
+
+    </button>
+
   </div>
+
 </div>
 
 
-<!-- CREATE POST MODAL -->
-<div id="postModal" class="modal">
+<!-- =========================
+     CREATE POST MODAL
+========================= -->
+
+<div
+  id="postModal"
+  class="modal">
+
   <div class="modal-box">
-    <h2>Create Post</h2>
+
+    <h2>
+      Create Post
+    </h2>
+
 
     <div class="field">
-      <label>Community</label>
+
+      <label>
+        Community
+      </label>
+
       <select id="postCommunity"></select>
+
     </div>
+
 
     <div class="field">
-      <label>What's on your mind?</label>
-      <textarea id="postText" placeholder="Share something with your community..."></textarea>
+
+      <label>
+        What's on your mind?
+      </label>
+
+      <textarea
+        id="postText"
+        placeholder="Share something with your community...">
+      </textarea>
+
     </div>
 
+
     <div class="modal-buttons">
-      <button class="primary" onclick="publishPost()">Publish</button>
-      <button class="icon-btn" onclick="closeModal('postModal')">✕</button>
+
+      <button
+        class="primary"
+        onclick="publishPost()">
+        Publish
+      </button>
+
+      <button
+        class="icon-btn"
+        onclick="closeModal('postModal')">
+        ✕
+      </button>
+
     </div>
+
   </div>
+
 </div>
 
 
-<!-- MEETING MODAL -->
-<div id="meetingModal" class="modal">
+<!-- =========================
+     MEETING MODAL
+========================= -->
+
+<div
+  id="meetingModal"
+  class="modal">
+
   <div class="modal-box">
-    <h2>Create Meeting</h2>
+
+    <h2>
+      Create Meeting
+    </h2>
+
 
     <div class="field">
-      <label>Meeting title</label>
-      <input id="meetingTitle" placeholder="e.g. Mathematics Study Group">
+
+      <label>
+        Meeting title
+      </label>
+
+      <input
+        id="meetingTitle"
+        placeholder="e.g. Mathematics Study Group">
+
     </div>
 
+
     <div class="field">
-      <label>Community</label>
+
+      <label>
+        Community
+      </label>
+
       <select id="meetingCommunity"></select>
+
     </div>
 
-    <div class="field">
-      <label>Date</label>
-      <input id="meetingDate" type="date">
-    </div>
 
     <div class="field">
-      <label>Time</label>
-      <input id="meetingTime" type="time">
+
+      <label>
+        Date
+      </label>
+
+      <input
+        id="meetingDate"
+        type="date">
+
     </div>
 
+
     <div class="field">
-      <label>Meeting type</label>
+
+      <label>
+        Time
+      </label>
+
+      <input
+        id="meetingTime"
+        type="time">
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Meeting type
+      </label>
+
       <select id="meetingType">
-        <option value="online">Online Meeting</option>
-        <option value="in_person">In-person Meeting</option>
+
+        <option value="online">
+          Online Meeting
+        </option>
+
+        <option value="in_person">
+          In-person Meeting
+        </option>
+
       </select>
+
     </div>
 
-    <div class="field">
-      <label>Meeting link or location</label>
-      <input id="meetingLocation" placeholder="Zoom link, Google Meet, or location">
-    </div>
 
     <div class="field">
-      <label>Description</label>
-      <textarea id="meetingDescription" placeholder="Tell people what the meeting is about"></textarea>
+
+      <label>
+        Meeting link or location
+      </label>
+
+      <input
+        id="meetingLocation"
+        placeholder="Zoom link, Google Meet, or location">
+
     </div>
+
+
+    <div class="field">
+
+      <label>
+        Description
+      </label>
+
+      <textarea
+        id="meetingDescription"
+        placeholder="Tell people what the meeting is about">
+      </textarea>
+
+    </div>
+
 
     <div class="modal-buttons">
-      <button class="primary" onclick="saveMeeting()">Create</button>
-      <button class="icon-btn" onclick="closeModal('meetingModal')">✕</button>
+
+      <button
+        class="primary"
+        onclick="saveMeeting()">
+        Create
+      </button>
+
+      <button
+        class="icon-btn"
+        onclick="closeModal('meetingModal')">
+        ✕
+      </button>
+
     </div>
+
   </div>
+
 </div>
 
 
@@ -821,43 +1721,68 @@ textarea{
 
 
 <script>
+
 /* =========================================================
-   ZEEPY SUPABASE CONFIGURATION
+   ZEEPY SUPABASE CONNECTION
    ========================================================= */
 
-const SUPABASE_URL = "https://iswicrdfsqwalwisxbdm.supabase.co";
+const SUPABASE_URL =
+  "https://iswicrdfsqwalwisxbdm.supabase.co";
 
-/*
- IMPORTANT:
- Paste your NEW Supabase anon/public key between the quotes below.
- Do NOT use the old project's key.
-*/
-const SUPABASE_ANON_KEY = "PASTE_YOUR_NEW_SUPABASE_ANON_KEY_HERE";
+const SUPABASE_ANON_KEY =
+  "sb_publishable_8CT66JSnwPYN_Khkb7a6WA_1kmrlTL9";
+
 
 let supabaseClient = null;
 
-if(
-  window.supabase &&
-  SUPABASE_ANON_KEY &&
-  !SUPABASE_ANON_KEY.includes("PASTE_YOUR")
-){
-  supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_ANON_KEY
+try{
+
+  if(window.supabase){
+
+    supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+      );
+
+  }
+
+}catch(error){
+
+  console.error(
+    "Supabase initialization error:",
+    error
   );
+
 }
 
 
 /* =========================================================
-   DATA
+   APPLICATION STATE
+   ========================================================= */
+
+let currentUser = null;
+
+let currentCommunity = null;
+
+let authMode = "login";
+
+let currentCommunityTab = "Home";
+
+
+/* =========================================================
+   COMMUNITY DATA
    ========================================================= */
 
 const COMMUNITY_DATA = [
+
   {
     slug:"education",
     name:"Education",
     icon:"📚",
-    description:"Students, teachers, schools, learning, scholarships, careers and educational opportunities.",
+    description:
+      "Students, teachers, schools, learning, scholarships, careers and educational opportunities.",
+
     sections:[
       ["Discussions","Talk about education, learning and academic life."],
       ["Learning Resources","Notes, books, study materials and useful resources."],
@@ -871,11 +1796,14 @@ const COMMUNITY_DATA = [
       ["Meetings","Online and in-person educational meetings."]
     ]
   },
+
   {
     slug:"health",
     name:"Health",
     icon:"❤️",
-    description:"Health education, wellness, healthy living and community health discussions.",
+    description:
+      "Health education, wellness, healthy living and community health discussions.",
+
     sections:[
       ["Health Discussions","General health education and discussions."],
       ["Wellness","Healthy living, exercise and wellbeing."],
@@ -884,11 +1812,14 @@ const COMMUNITY_DATA = [
       ["Meetings","Online health discussions and community meetings."]
     ]
   },
+
   {
     slug:"sports",
     name:"Sports",
     icon:"⚽",
-    description:"Sports fans, athletes, teams, competitions, training and community activities.",
+    description:
+      "Sports fans, athletes, teams, competitions, training and community activities.",
+
     sections:[
       ["Sports Feed","Sports discussions and updates."],
       ["Athletes","Connect athletes and sports communities."],
@@ -898,11 +1829,14 @@ const COMMUNITY_DATA = [
       ["Meetings","Team and sports community meetings."]
     ]
   },
+
   {
     slug:"business",
     name:"Business",
     icon:"💼",
-    description:"Entrepreneurs, businesses, customers, opportunities and professional networking.",
+    description:
+      "Entrepreneurs, businesses, customers, opportunities and professional networking.",
+
     sections:[
       ["Business Discussions","Talk business and entrepreneurship."],
       ["Entrepreneurs","Connect business owners and founders."],
@@ -912,11 +1846,14 @@ const COMMUNITY_DATA = [
       ["Meetings","Business networking and online meetings."]
     ]
   },
+
   {
     slug:"technology",
     name:"Technology",
     icon:"💻",
-    description:"Technology, digital skills, software, innovation and useful tools.",
+    description:
+      "Technology, digital skills, software, innovation and useful tools.",
+
     sections:[
       ["Tech Discussions","Discuss technology and innovation."],
       ["Digital Skills","Learn useful digital skills."],
@@ -925,11 +1862,14 @@ const COMMUNITY_DATA = [
       ["Meetings","Technology talks and online meetings."]
     ]
   },
+
   {
     slug:"agriculture",
     name:"Agriculture",
     icon:"🌱",
-    description:"Farmers, agribusiness, food production, markets and agricultural knowledge.",
+    description:
+      "Farmers, agribusiness, food production, markets and agricultural knowledge.",
+
     sections:[
       ["Farming","Farming discussions and experiences."],
       ["Agribusiness","Business opportunities in agriculture."],
@@ -938,11 +1878,14 @@ const COMMUNITY_DATA = [
       ["Meetings","Farmer and agribusiness meetings."]
     ]
   },
+
   {
     slug:"lifestyle",
     name:"Lifestyle",
     icon:"🌍",
-    description:"Everyday life, interests, experiences, relationships, culture and community.",
+    description:
+      "Everyday life, interests, experiences, relationships, culture and community.",
+
     sections:[
       ["Discussions","Everyday community conversations."],
       ["Culture","Culture and community traditions."],
@@ -951,11 +1894,14 @@ const COMMUNITY_DATA = [
       ["Meetings","Community gatherings and online meetings."]
     ]
   },
+
   {
     slug:"youth",
     name:"Youth",
     icon:"🧑‍🤝‍🧑",
-    description:"Youth development, skills, opportunities, education and community activities.",
+    description:
+      "Youth development, skills, opportunities, education and community activities.",
+
     sections:[
       ["Youth Discussions","Talk about youth issues and ideas."],
       ["Skills","Skills development and learning."],
@@ -964,11 +1910,14 @@ const COMMUNITY_DATA = [
       ["Meetings","Youth meetings and online discussions."]
     ]
   },
+
   {
     slug:"entertainment",
     name:"Entertainment",
     icon:"🎬",
-    description:"Music, movies, creators, culture, events and entertainment discussions.",
+    description:
+      "Music, movies, creators, culture, events and entertainment discussions.",
+
     sections:[
       ["Entertainment Feed","Entertainment discussions."],
       ["Music","Music and artists."],
@@ -978,193 +1927,660 @@ const COMMUNITY_DATA = [
       ["Meetings","Creator and fan meetings."]
     ]
   }
-];
 
-let currentUser = null;
-let currentCommunity = null;
-let authMode = "login";
-let currentCommunityTab = "Home";
+];
 
 
 /* =========================================================
-   GENERAL UI
+   TOAST
    ========================================================= */
 
 function toast(message){
-  const el=document.getElementById("toast");
-  el.textContent=message;
+
+  const el =
+    document.getElementById("toast");
+
+  el.textContent =
+    message;
+
   el.classList.add("show");
-  setTimeout(()=>el.classList.remove("show"),3000);
-}
 
-function closeModal(id){
-  document.getElementById(id).classList.remove("show");
-}
+  clearTimeout(
+    window.zeepyToastTimer
+  );
 
-function openPage(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  const page=document.getElementById(id);
-  if(page) page.classList.add("active");
-
-  document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));
-
-  if(id==="homePage") document.querySelectorAll(".nav-item")[0].classList.add("active");
-  if(id==="marketPage") document.querySelectorAll(".nav-item")[1].classList.add("active");
-  if(id==="communitiesPage") document.querySelectorAll(".nav-item")[2].classList.add("active");
-  if(id==="messagesPage") document.querySelectorAll(".nav-item")[3].classList.add("active");
-  if(id==="profilePage") document.querySelectorAll(".nav-item")[4].classList.add("active");
-
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function requireLogin(callback){
-  if(!currentUser){
-    toast("Please log in first.");
-    openAuth();
-    return;
-  }
-  callback();
+  window.zeepyToastTimer =
+    setTimeout(
+      ()=>{
+        el.classList.remove("show");
+      },
+      3000
+    );
 }
 
 
 /* =========================================================
-   AUTH
+   MODALS
+   ========================================================= */
+
+function closeModal(id){
+
+  const el =
+    document.getElementById(id);
+
+  if(el){
+    el.classList.remove("show");
+  }
+
+}
+
+
+/* =========================================================
+   PAGE NAVIGATION
+   ========================================================= */
+
+function openPage(id){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(
+      p=>p.classList.remove("active")
+    );
+
+  const page =
+    document.getElementById(id);
+
+  if(page){
+    page.classList.add("active");
+  }
+
+
+  document
+    .querySelectorAll(".nav-item")
+    .forEach(
+      n=>n.classList.remove("active")
+    );
+
+
+  const nav =
+    document.querySelectorAll(".nav-item");
+
+
+  if(id==="homePage" && nav[0])
+    nav[0].classList.add("active");
+
+  if(id==="marketPage" && nav[1])
+    nav[1].classList.add("active");
+
+  if(
+    id==="communitiesPage" ||
+    id==="communityPlatformPage"
+  ){
+    if(nav[2])
+      nav[2].classList.add("active");
+  }
+
+  if(id==="messagesPage" && nav[3])
+    nav[3].classList.add("active");
+
+  if(id==="profilePage" && nav[4])
+    nav[4].classList.add("active");
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+
+  if(id==="messagesPage"){
+    loadMessages();
+  }
+
+}
+
+
+/* =========================================================
+   LOGIN REQUIREMENT
+   ========================================================= */
+
+function requireLogin(callback){
+
+  if(!currentUser){
+
+    toast(
+      "Please log in first."
+    );
+
+    openAuth();
+
+    return;
+  }
+
+  callback();
+
+}
+
+
+/* =========================================================
+   AUTH MODAL
    ========================================================= */
 
 function openAuth(){
-  document.getElementById("authModal").classList.add("show");
+
+  document
+    .getElementById("authModal")
+    .classList.add("show");
+
 }
+
 
 function switchAuthMode(){
-  authMode = authMode==="login" ? "signup" : "login";
 
-  document.getElementById("authTitle").textContent =
-    authMode==="login" ? "Log in to ZEEPY" : "Create your ZEEPY account";
-
-  document.getElementById("nameField").classList.toggle(
-    "hidden",
+  authMode =
     authMode==="login"
-  );
+      ? "signup"
+      : "login";
 
-  document.getElementById("authSwitch").textContent =
-    authMode==="login"
-      ? "Create an account"
-      : "Already have an account? Log in";
+
+  document
+    .getElementById("authTitle")
+    .textContent =
+      authMode==="login"
+        ? "Log in to ZEEPY"
+        : "Create your ZEEPY account";
+
+
+  document
+    .getElementById("nameField")
+    .classList.toggle(
+      "hidden",
+      authMode==="login"
+    );
+
+
+  document
+    .getElementById("authSwitch")
+    .textContent =
+      authMode==="login"
+        ? "Create an account"
+        : "Already have an account? Log in";
+
+
+  document
+    .getElementById("authPassword")
+    .autocomplete =
+      authMode==="login"
+        ? "current-password"
+        : "new-password";
+
 }
+
+
+/* =========================================================
+   AUTH SUBMIT
+   ========================================================= */
 
 async function submitAuth(){
 
   if(!supabaseClient){
-    toast("Add your new Supabase anon key in the code first.");
+
+    toast(
+      "ZEEPY could not connect to Supabase."
+    );
+
     return;
   }
 
-  const email=document.getElementById("authEmail").value.trim();
-  const password=document.getElementById("authPassword").value;
-  const name=document.getElementById("authName").value.trim();
+
+  const email =
+    document
+      .getElementById("authEmail")
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  const password =
+    document
+      .getElementById("authPassword")
+      .value;
+
+
+  const name =
+    document
+      .getElementById("authName")
+      .value
+      .trim();
+
 
   if(!email || !password){
-    toast("Email and password are required.");
+
+    toast(
+      "Email and password are required."
+    );
+
     return;
   }
+
+
+  if(password.length < 6){
+
+    toast(
+      "Password must be at least 6 characters."
+    );
+
+    return;
+  }
+
+
+  const button =
+    document
+      .getElementById("authSubmitButton");
+
+
+  button.disabled=true;
+  button.textContent="Please wait...";
+
 
   try{
 
     if(authMode==="signup"){
 
-      const {data,error}=await supabaseClient.auth.signUp({
-        email,
-        password,
-        options:{
-          data:{
-            display_name:name || email.split("@")[0]
-          }
-        }
-      });
+      const displayName =
+        name ||
+        email.split("@")[0];
 
-      if(error) throw error;
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.auth.signUp({
+
+          email,
+          password,
+
+          options:{
+            data:{
+              display_name:
+                displayName
+            }
+          }
+
+        });
+
+
+      if(error)
+        throw error;
+
 
       if(data.user){
-        toast(
-          data.session
-            ? "Account created successfully."
-            : "Account created. Check your email if confirmation is required."
-        );
+
+        currentUser =
+          data.user;
+
+
+        if(data.session){
+
+          toast(
+            "Account created successfully."
+          );
+
+        }else{
+
+          toast(
+            "Account created. Check your email if confirmation is enabled."
+          );
+
+        }
+
+
+        closeModal("authModal");
+
+        await ensureProfile();
+
+        updateAuthUI();
+
       }
 
     }else{
 
-      const {data,error}=await supabaseClient.auth.signInWithPassword({
-        email,
-        password
-      });
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.auth
+          .signInWithPassword({
 
-      if(error) throw error;
+            email,
+            password
 
-      if(data.user){
-        toast("Welcome back to ZEEPY.");
+          });
+
+
+      if(error)
+        throw error;
+
+
+      currentUser =
+        data.user || null;
+
+
+      if(currentUser){
+
+        await ensureProfile();
+
+        updateAuthUI();
+
+        closeModal("authModal");
+
+        toast(
+          "Welcome back to ZEEPY."
+        );
+
       }
+
     }
 
-    closeModal("authModal");
-
   }catch(error){
-    console.error(error);
-    toast(error.message || "Authentication failed.");
+
+    console.error(
+      "Authentication error:",
+      error
+    );
+
+    toast(
+      error.message ||
+      "Authentication failed."
+    );
+
+  }finally{
+
+    button.disabled=false;
+    button.textContent="Continue";
+
   }
+
 }
 
 
-async function logout(){
+/* =========================================================
+   ENSURE USER PROFILE
+   IMPORTANT:
+   profiles.id = auth.users.id
+   ========================================================= */
 
-  if(supabaseClient){
-    await supabaseClient.auth.signOut();
+async function ensureProfile(){
+
+  if(
+    !supabaseClient ||
+    !currentUser
+  ){
+    return;
   }
 
+
+  const userId =
+    currentUser.id;
+
+
+  const metadata =
+    currentUser.user_metadata || {};
+
+
+  const displayName =
+    metadata.display_name ||
+    currentUser.email?.split("@")[0] ||
+    "ZEEPY User";
+
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select("id,display_name,username,avatar_url,email")
+        .eq("id",userId)
+        .maybeSingle();
+
+
+    if(error){
+
+      console.warn(
+        "Profile lookup:",
+        error.message
+      );
+
+      return;
+    }
+
+
+    if(!data){
+
+      /*
+       IMPORTANT:
+
+       The profile ID is the SAME as
+       Supabase Auth user's ID.
+      */
+
+      const {
+        error:insertError
+      } =
+        await supabaseClient
+          .from("profiles")
+          .insert({
+
+            id:userId,
+
+            display_name:
+              displayName,
+
+            email:
+              currentUser.email || null
+
+          });
+
+
+      if(insertError){
+
+        /*
+         A database trigger may already
+         create the profile. Therefore
+         duplicate errors are not fatal.
+        */
+
+        console.warn(
+          "Profile creation:",
+          insertError.message
+        );
+
+      }
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "ensureProfile error:",
+      error
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+async function logout(){
+
+  try{
+
+    if(supabaseClient){
+
+      const {
+        error
+      } =
+        await supabaseClient
+          .auth
+          .signOut();
+
+      if(error)
+        throw error;
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Logout error:",
+      error
+    );
+
+  }
+
+
   currentUser=null;
+
   updateAuthUI();
+
   openPage("homePage");
-  toast("You have logged out.");
+
+  toast(
+    "You have logged out."
+  );
+
+}
+
+
+/* =========================================================
+   AUTH UI
+   ========================================================= */
+
+function getUserDisplayName(){
+
+  if(!currentUser)
+    return "ZEEPY User";
+
+
+  const metadata =
+    currentUser.user_metadata || {};
+
+
+  return (
+    metadata.display_name ||
+    currentUser.email?.split("@")[0] ||
+    "ZEEPY User"
+  );
+
+}
+
+
+function avatarUrl(
+  profile
+){
+
+  if(
+    profile &&
+    profile.avatar_url
+  ){
+    return profile.avatar_url;
+  }
+
+
+  const name =
+    profile?.display_name ||
+    getUserDisplayName();
+
+
+  return (
+    "https://ui-avatars.com/api/"+
+    "?name="+
+    encodeURIComponent(name)+
+    "&background=ff6a00"+
+    "&color=ffffff"
+  );
+
 }
 
 
 function updateAuthUI(){
 
-  const btn=document.getElementById("authButton");
-  const avatar=document.getElementById("headerAvatar");
+  const button =
+    document.getElementById("authButton");
+
+  const avatar =
+    document.getElementById("headerAvatar");
+
 
   if(currentUser){
 
-    btn.textContent="Log out";
-    btn.onclick=logout;
+    button.textContent =
+      "Log out";
 
-    avatar.classList.remove("hidden");
+    button.onclick =
+      logout;
 
-    const meta=currentUser.user_metadata || {};
-    const url=meta.avatar_url || "";
 
-    if(url) avatar.src=url;
-    else{
-      avatar.src =
-        "https://ui-avatars.com/api/?name="+
-        encodeURIComponent(meta.display_name || "ZEEPY")+
-        "&background=ff6a00&color=ffffff";
-    }
+    avatar.classList.remove(
+      "hidden"
+    );
+
+
+    avatar.src =
+      avatarUrl({
+        display_name:
+          getUserDisplayName(),
+
+        avatar_url:
+          currentUser
+            .user_metadata
+            ?.avatar_url || ""
+      });
+
+
+    document
+      .getElementById("profileStatus")
+      .textContent =
+        "Your ZEEPY profile";
+
 
     loadProfile();
 
   }else{
 
-    btn.textContent="Log in";
-    btn.onclick=openAuth;
-    avatar.classList.add("hidden");
+    button.textContent =
+      "Log in";
 
-    document.getElementById("profileStatus").textContent =
-      "Log in to manage your ZEEPY profile.";
+    button.onclick =
+      openAuth;
 
-    document.getElementById("profileBox").innerHTML =
-      '<div class="empty">You are not logged in.</div>';
+
+    avatar.classList.add(
+      "hidden"
+    );
+
+
+    document
+      .getElementById("profileStatus")
+      .textContent =
+        "Log in to manage your ZEEPY profile.";
+
+
+    document
+      .getElementById("profileBox")
+      .innerHTML =
+        '<div class="empty">You are not logged in.</div>';
+
   }
+
 }
 
 
@@ -1175,944 +2591,2405 @@ function updateAuthUI(){
 function renderCommunities(){
 
   const grids=[
-    document.getElementById("communitiesGrid"),
-    document.getElementById("homeCommunities")
+    document.getElementById(
+      "communitiesGrid"
+    ),
+
+    document.getElementById(
+      "homeCommunities"
+    )
   ];
+
 
   grids.forEach(grid=>{
-    if(!grid)return;
 
-    grid.innerHTML=COMMUNITY_DATA.map(c=>`
-      <div class="card community-card clickable"
-           onclick="openCommunity('${c.slug}')">
+    if(!grid)
+      return;
 
-        <div>
-          <div class="community-icon">${c.icon}</div>
-          <h3>${escapeHtml(c.name)}</h3>
-          <p>${escapeHtml(c.description)}</p>
-        </div>
 
-        <button class="primary"
-          onclick="event.stopPropagation();openCommunity('${c.slug}')">
-          Enter ${escapeHtml(c.name)}
-        </button>
+    grid.innerHTML =
+      COMMUNITY_DATA
+        .map(c=>`
 
-      </div>
-    `).join("");
+          <div
+            class="card community-card clickable"
+            onclick="openCommunity('${escapeAttr(c.slug)}')">
+
+            <div>
+
+              <div class="community-icon">
+                ${c.icon}
+              </div>
+
+              <h3>
+                ${escapeHtml(c.name)}
+              </h3>
+
+              <p>
+                ${escapeHtml(c.description)}
+              </p>
+
+            </div>
+
+
+            <button
+              class="primary"
+              onclick="
+                event.stopPropagation();
+                openCommunity('${escapeAttr(c.slug)}')
+              ">
+
+              Enter
+              ${escapeHtml(c.name)}
+
+            </button>
+
+          </div>
+
+        `)
+        .join("");
+
   });
+
 
   const selects=[
-    document.getElementById("postCommunity"),
-    document.getElementById("meetingCommunity")
+    document.getElementById(
+      "postCommunity"
+    ),
+
+    document.getElementById(
+      "meetingCommunity"
+    )
   ];
 
+
   selects.forEach(select=>{
-    if(!select)return;
-    select.innerHTML=COMMUNITY_DATA.map(c=>
-      `<option value="${c.slug}">${escapeHtml(c.name)}</option>`
-    ).join("");
+
+    if(!select)
+      return;
+
+
+    select.innerHTML =
+      COMMUNITY_DATA
+        .map(c=>`
+
+          <option value="${escapeAttr(c.slug)}">
+            ${escapeHtml(c.name)}
+          </option>
+
+        `)
+        .join("");
+
   });
+
 }
 
 
 function getCommunity(slug){
-  return COMMUNITY_DATA.find(c=>c.slug===slug);
+
+  return COMMUNITY_DATA.find(
+    c=>c.slug===slug
+  );
+
 }
 
 
 function openCommunity(slug){
 
-  const community=getCommunity(slug);
-  if(!community)return;
+  const community =
+    getCommunity(slug);
 
-  currentCommunity=community;
-  currentCommunityTab="Home";
+
+  if(!community)
+    return;
+
+
+  currentCommunity =
+    community;
+
+
+  currentCommunityTab =
+    "Home";
+
 
   renderCommunityPlatform();
 
-  openPage("communityPlatformPage");
+  openPage(
+    "communityPlatformPage"
+  );
+
 }
 
 
 function renderCommunityPlatform(){
 
-  const c=currentCommunity;
-  if(!c)return;
+  const c =
+    currentCommunity;
 
-  document.getElementById("communityHeader").innerHTML=`
-    <div class="community-head">
-      <div class="community-head-top">
-        <div class="big-icon">${c.icon}</div>
-        <div>
-          <h1>${escapeHtml(c.name)}</h1>
-          <p>${escapeHtml(c.description)}</p>
+
+  if(!c)
+    return;
+
+
+  document
+    .getElementById(
+      "communityHeader"
+    )
+    .innerHTML = `
+
+      <div class="community-head">
+
+        <div class="community-head-top">
+
+          <div class="big-icon">
+            ${c.icon}
+          </div>
+
+          <div>
+
+            <h1>
+              ${escapeHtml(c.name)}
+            </h1>
+
+            <p>
+              ${escapeHtml(c.description)}
+            </p>
+
+          </div>
+
         </div>
+
+
+        <div class="info-list">
+
+          <div class="info-item">
+            <b>👥 Community</b>
+            <span>
+              People connected to
+              ${escapeHtml(c.name)}
+            </span>
+          </div>
+
+
+          <div class="info-item">
+            <b>💬 Discussions</b>
+            <span>
+              Talk, ask questions and share ideas
+            </span>
+          </div>
+
+
+          <div class="info-item">
+            <b>📅 Meetings</b>
+            <span>
+              Online and in-person meetings
+            </span>
+          </div>
+
+
+          <div class="info-item">
+            <b>📚 Resources</b>
+            <span>
+              Useful information and community resources
+            </span>
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="info-list">
-        <div class="info-item">
-          <b>👥 Community</b>
-          <span>People connected to ${escapeHtml(c.name)}</span>
-        </div>
+    `;
 
-        <div class="info-item">
-          <b>💬 Discussions</b>
-          <span>Talk, ask questions and share ideas</span>
-        </div>
 
-        <div class="info-item">
-          <b>📅 Meetings</b>
-          <span>Online and in-person meetings</span>
-        </div>
+  const tabs=[
+    "Home",
+    ...c.sections.map(
+      x=>x[0]
+    ),
+    "Meetings",
+    "People",
+    "Media"
+  ];
 
-        <div class="info-item">
-          <b>📚 Resources</b>
-          <span>Useful information and community resources</span>
-        </div>
-      </div>
-    </div>
-  `;
 
-  const tabs=["Home",...c.sections.map(x=>x[0]),"Meetings","People","Media"];
+  document
+    .getElementById(
+      "communityTabs"
+    )
+    .innerHTML =
+      [
+        ...new Set(tabs)
+      ]
+      .map(tab=>`
 
-  document.getElementById("communityTabs").innerHTML=
-    [...new Set(tabs)].map(tab=>`
-      <button
-        class="${currentCommunityTab===tab?"active":""}"
-        onclick="communityTab('${escapeAttr(tab)}')">
-        ${escapeHtml(tab)}
-      </button>
-    `).join("");
+        <button
+          class="${
+            currentCommunityTab===tab
+              ? "active"
+              : ""
+          }"
+          onclick="
+            communityTab('${escapeAttr(tab)}')
+          ">
+
+          ${escapeHtml(tab)}
+
+        </button>
+
+      `)
+      .join("");
+
 
   renderCommunityContent();
+
 }
 
 
 function communityTab(tab){
-  currentCommunityTab=tab;
+
+  currentCommunityTab =
+    tab;
+
   renderCommunityPlatform();
-}
 
-
-function renderCommunityContent(){
-
-  const c=currentCommunity;
-  const box=document.getElementById("communityContent");
-
-  if(currentCommunityTab==="Home"){
-
-    box.innerHTML=`
-      <div class="grid">
-
-        <div class="card clickable" onclick="communityTab('Discussions')">
-          <h3>💬 Discussions</h3>
-          <p>Start conversations and connect with members.</p>
-        </div>
-
-        <div class="card clickable" onclick="communityTab('Meetings')">
-          <h3>📅 Meetings</h3>
-          <p>Join online meetings or discover in-person gatherings.</p>
-        </div>
-
-        <div class="card clickable" onclick="communityTab('Resources')">
-          <h3>📚 Resources</h3>
-          <p>Discover useful resources shared by the community.</p>
-        </div>
-
-        <div class="card clickable" onclick="communityTab('Events')">
-          <h3>🎫 Events</h3>
-          <p>Community events, activities and opportunities.</p>
-        </div>
-
-        <div class="card clickable" onclick="communityTab('People')">
-          <h3>👥 People</h3>
-          <p>Meet people interested in ${escapeHtml(c.name)}.</p>
-        </div>
-
-        <div class="card clickable" onclick="communityTab('Media')">
-          <h3>🎬 Media</h3>
-          <p>Photos and videos from the community.</p>
-        </div>
-
-      </div>
-
-      <div class="section-title">
-        <h2>Recent ${escapeHtml(c.name)} Discussions</h2>
-        <button class="primary" onclick="requireLogin(openCreatePost)">
-          Create Post
-        </button>
-      </div>
-
-      <div id="communityPosts"></div>
-    `;
-
-    loadPosts(c.slug);
-    return;
-  }
-
-  if(currentCommunityTab==="Meetings"){
-
-    box.innerHTML=`
-      <div class="hero">
-        <h2>${c.icon} ${escapeHtml(c.name)} Meetings</h2>
-        <p>
-          Meet online or in person with people from the ${escapeHtml(c.name)}
-          community.
-        </p>
-
-        <button class="primary" onclick="requireLogin(createMeeting)">
-          ＋ Create Meeting
-        </button>
-      </div>
-
-      <div id="communityMeetings">
-        <div class="empty">Loading meetings...</div>
-      </div>
-    `;
-
-    loadMeetings(c.slug);
-    return;
-  }
-
-  const section=c.sections.find(x=>x[0]===currentCommunityTab);
-
-  if(section){
-
-    box.innerHTML=`
-      <div class="hero">
-        <h2>${c.icon} ${escapeHtml(section[0])}</h2>
-        <p>${escapeHtml(section[1])}</p>
-      </div>
-
-      <div class="grid">
-
-        <div class="card">
-          <h3>Community Discussions</h3>
-          <p>
-            Members can share questions, experiences, knowledge and
-            useful information related to ${escapeHtml(section[0])}.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Resources</h3>
-          <p>
-            Useful resources, links, documents, videos and information
-            can be shared here.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Opportunities</h3>
-          <p>
-            Community members can share relevant opportunities and events.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="section-title">
-        <h2>Posts</h2>
-        <button class="primary" onclick="requireLogin(openCreatePost)">
-          Create Post
-        </button>
-      </div>
-
-      <div id="communityPosts"></div>
-    `;
-
-    loadPosts(c.slug);
-    return;
-  }
-
-  if(currentCommunityTab==="People"){
-
-    box.innerHTML=`
-      <div class="hero">
-        <h2>People in ${escapeHtml(c.name)}</h2>
-        <p>Connect with people interested in this community.</p>
-      </div>
-      <div id="communityPeople">
-        <div class="empty">Loading people...</div>
-      </div>
-    `;
-
-    searchCommunityPeople();
-    return;
-  }
-
-  if(currentCommunityTab==="Media"){
-
-    box.innerHTML=`
-      <div class="hero">
-        <h2>${escapeHtml(c.name)} Media</h2>
-        <p>Photos, videos and media shared by community members.</p>
-      </div>
-
-      <div class="empty">
-        Community media will appear here as members publish media.
-      </div>
-    `;
-  }
 }
 
 
 /* =========================================================
-   POSTS
+   COMMUNITY CONTENT
    ========================================================= */
+
+function renderCommunityContent(){
+
+  const c =
+    currentCommunity;
+
+
+  const box =
+    document.getElementById(
+      "communityContent"
+    );
+
+
+  if(!c || !box)
+    return;
+
+
+  if(
+    currentCommunityTab==="Home"
+  ){
+
+    box.innerHTML = `
+
+      <div class="grid">
+
+        <div
+          class="card clickable"
+          onclick="communityTab('Discussions')">
+
+          <h3>
+            💬 Discussions
+          </h3>
+
+          <p>
+            Start conversations and connect with members.
+          </p>
+
+        </div>
+
+
+        <div
+          class="card clickable"
+          onclick="communityTab('Meetings')">
+
+          <h3>
+            📅 Meetings
+          </h3>
+
+          <p>
+            Join online meetings or discover
+            in-person gatherings.
+          </p>
+
+        </div>
+
+
+        <div
+          class="card clickable"
+          onclick="communityTab('Resources')">
+
+          <h3>
+            📚 Resources
+          </h3>
+
+          <p>
+            Discover useful resources shared
+            by the community.
+          </p>
+
+        </div>
+
+
+        <div
+          class="card clickable"
+          onclick="communityTab('Events')">
+
+          <h3>
+            🎫 Events
+          </h3>
+
+          <p>
+            Community events, activities
+            and opportunities.
+          </p>
+
+        </div>
+
+
+        <div
+          class="card clickable"
+          onclick="communityTab('People')">
+
+          <h3>
+            👥 People
+          </h3>
+
+          <p>
+            Meet people interested in
+            ${escapeHtml(c.name)}.
+          </p>
+
+        </div>
+
+
+        <div
+          class="card clickable"
+          onclick="communityTab('Media')">
+
+          <h3>
+            🎬 Media
+          </h3>
+
+          <p>
+            Photos and videos from the community.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="section-title">
+
+        <h2>
+          Recent
+          ${escapeHtml(c.name)}
+          Discussions
+        </h2>
+
+        <button
+          class="primary"
+          onclick="requireLogin(openCreatePost)">
+
+          Create Post
+
+        </button>
+
+      </div>
+
+
+      <div id="communityPosts">
+
+        <div class="empty">
+          Loading posts...
+        </div>
+
+      </div>
+
+    `;
+
+
+    loadPosts(
+      c.slug,
+      "communityPosts"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    currentCommunityTab==="Meetings"
+  ){
+
+    box.innerHTML = `
+
+      <div class="hero">
+
+        <h2>
+          ${c.icon}
+          ${escapeHtml(c.name)}
+          Meetings
+        </h2>
+
+        <p>
+          Meet online or in person with people
+          from the ${escapeHtml(c.name)}
+          community.
+        </p>
+
+
+        <button
+          class="primary"
+          onclick="requireLogin(createMeeting)">
+
+          ＋ Create Meeting
+
+        </button>
+
+      </div>
+
+
+      <div id="communityMeetings">
+
+        <div class="empty">
+          Loading meetings...
+        </div>
+
+      </div>
+
+    `;
+
+
+    loadMeetings(
+      c.slug,
+      "communityMeetings"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    currentCommunityTab==="People"
+  ){
+
+    box.innerHTML = `
+
+      <div class="hero">
+
+        <h2>
+          People in
+          ${escapeHtml(c.name)}
+        </h2>
+
+        <p>
+          Connect with people interested
+          in this community.
+        </p>
+
+      </div>
+
+
+      <div id="communityPeople">
+
+        <div class="empty">
+          Loading people...
+        </div>
+
+      </div>
+
+    `;
+
+
+    searchCommunityPeople();
+
+    return;
+
+  }
+
+
+  if(
+    currentCommunityTab==="Media"
+  ){
+
+    box.innerHTML = `
+
+      <div class="hero">
+
+        <h2>
+          ${escapeHtml(c.name)}
+          Media
+        </h2>
+
+        <p>
+          Photos, videos and media shared
+          by community members.
+        </p>
+
+      </div>
+
+
+      <div class="empty">
+
+        Community media will appear here
+        as members publish media.
+
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  const section =
+    c.sections.find(
+      x=>x[0]===currentCommunityTab
+    );
+
+
+  if(section){
+
+    box.innerHTML = `
+
+      <div class="hero">
+
+        <h2>
+          ${c.icon}
+          ${escapeHtml(section[0])}
+        </h2>
+
+        <p>
+          ${escapeHtml(section[1])}
+        </p>
+
+      </div>
+
+
+      <div class="grid">
+
+        <div class="card">
+
+          <h3>
+            Community Discussions
+          </h3>
+
+          <p>
+            Members can share questions,
+            experiences, knowledge and useful
+            information related to
+            ${escapeHtml(section[0])}.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <h3>
+            Resources
+          </h3>
+
+          <p>
+            Useful resources, documents,
+            videos and information can be
+            shared here.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <h3>
+            Opportunities
+          </h3>
+
+          <p>
+            Community members can share
+            relevant opportunities and events.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="section-title">
+
+        <h2>
+          Posts
+        </h2>
+
+        <button
+          class="primary"
+          onclick="requireLogin(openCreatePost)">
+
+          Create Post
+
+        </button>
+
+      </div>
+
+
+      <div id="communityPosts">
+
+        <div class="empty">
+          Loading posts...
+        </div>
+
+      </div>
+
+    `;
+
+
+    loadPosts(
+      c.slug,
+      "communityPosts"
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   CREATE POST
+========================= */
 
 function openCreatePost(){
 
   if(!currentUser){
+
     openAuth();
+
     return;
   }
 
-  document.getElementById("postModal").classList.add("show");
 
-  if(currentCommunity){
-    document.getElementById("postCommunity").value=currentCommunity.slug;
+  const modal =
+    document.getElementById(
+      "postModal"
+    );
+
+
+  if(
+    currentCommunity
+  ){
+
+    document
+      .getElementById(
+        "postCommunity"
+      )
+      .value =
+        currentCommunity.slug;
+
   }
+
+
+  modal.classList.add("show");
+
 }
 
+
+/* =========================================================
+   PUBLISH POST
+   User ID = currentUser.id
+========================= */
 
 async function publishPost(){
 
-  if(!supabaseClient || !currentUser){
-    toast("Please log in first.");
+  if(
+    !supabaseClient ||
+    !currentUser
+  ){
+
+    toast(
+      "Please log in first."
+    );
+
     return;
   }
 
-  const content=document.getElementById("postText").value.trim();
-  const slug=document.getElementById("postCommunity").value;
+
+  const content =
+    document
+      .getElementById(
+        "postText"
+      )
+      .value
+      .trim();
+
+
+  const slug =
+    document
+      .getElementById(
+        "postCommunity"
+      )
+      .value;
+
 
   if(!content){
-    toast("Write something first.");
+
+    toast(
+      "Write something first."
+    );
+
     return;
   }
+
 
   try{
 
-    const {error}=await supabaseClient
-      .from("posts")
-      .insert({
-        author_id:currentUser.id,
-        content:content,
-        community_slug:slug
-      });
+    /*
+      author_id is the USER'S
+      Supabase Auth ID.
 
-    if(error) throw error;
+      There is no separate
+      application user ID.
+    */
 
-    document.getElementById("postText").value="";
-    closeModal("postModal");
-    toast("Post published.");
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("posts")
+        .insert({
 
-    loadPosts(slug);
+          author_id:
+            currentUser.id,
+
+          content:
+            content,
+
+          community_slug:
+            slug
+
+        });
+
+
+    if(error)
+      throw error;
+
+
+    document
+      .getElementById(
+        "postText"
+      )
+      .value="";
+
+
+    closeModal(
+      "postModal"
+    );
+
+
+    toast(
+      "Post published."
+    );
+
+
     loadHomePosts();
 
+
+    if(
+      currentCommunity &&
+      currentCommunity.slug===slug
+    ){
+
+      loadPosts(
+        slug,
+        "communityPosts"
+      );
+
+    }
+
   }catch(error){
-    console.error(error);
-    toast(error.message || "Could not publish post.");
+
+    console.error(
+      "Publish post error:",
+      error
+    );
+
+
+    toast(
+      error.message ||
+      "Could not publish post."
+    );
+
   }
+
 }
 
 
-async function loadPosts(slug){
+/* =========================================================
+   LOAD POSTS
+========================= */
 
-  const containers=[
-    document.getElementById("communityPosts"),
-    document.getElementById("homePosts")
-  ];
+async function loadPosts(
+  slug,
+  targetId
+){
 
-  let target=null;
+  const target =
+    document.getElementById(
+      targetId
+    );
 
-  if(currentCommunity && slug===currentCommunity.slug){
-    target=document.getElementById("communityPosts");
-  }
 
-  if(!target && slug===null){
-    target=document.getElementById("homePosts");
-  }
+  if(!target)
+    return;
 
-  if(!target)return;
 
   if(!supabaseClient){
-    target.innerHTML=
-      '<div class="empty">Connect the new Supabase key to load posts.</div>';
+
+    target.innerHTML =
+      '<div class="empty">Supabase is not connected.</div>';
+
     return;
   }
 
+
   try{
 
-    let query=supabaseClient
-      .from("posts")
-      .select(`
-        id,
-        content,
-        created_at,
-        author_id,
-        community_slug
-      `)
-      .eq("community_slug",slug)
-      .order("created_at",{ascending:false})
-      .limit(30);
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("posts")
+        .select(`
+          id,
+          content,
+          created_at,
+          author_id,
+          community_slug
+        `)
+        .eq(
+          "community_slug",
+          slug
+        )
+        .order(
+          "created_at",
+          {
+            ascending:false
+          }
+        )
+        .limit(30);
 
-    const {data,error}=await query;
 
-    if(error) throw error;
+    if(error)
+      throw error;
 
-    if(!data || !data.length){
-      target.innerHTML=
+
+    if(
+      !data ||
+      !data.length
+    ){
+
+      target.innerHTML =
         '<div class="empty">No posts yet. Be the first to post.</div>';
+
       return;
     }
 
-    target.innerHTML=data.map(post=>`
-      <article class="post">
-        <div class="post-user">
-          <img src="https://ui-avatars.com/api/?name=ZEEPY&background=333&color=fff">
-          <div class="post-meta">
-            <b>ZEEPY Community Member</b><br>
-            <small>${formatDate(post.created_at)}</small>
-          </div>
-        </div>
 
-        <div class="post-content">${escapeHtml(post.content)}</div>
+    const authorIds =
+      [
+        ...new Set(
+          data
+            .map(
+              p=>p.author_id
+            )
+            .filter(Boolean)
+        )
+      ];
 
-        <div class="post-footer">
-          <button>♡ Like</button>
-          <button>💬 Comment</button>
-          <button>↗ Share</button>
-        </div>
-      </article>
-    `).join("");
+
+    let profiles=[];
+
+
+    if(authorIds.length){
+
+      const result =
+        await supabaseClient
+          .from("profiles")
+          .select(
+            "id,display_name,username,avatar_url"
+          )
+          .in(
+            "id",
+            authorIds
+          );
+
+
+      if(
+        !result.error &&
+        result.data
+      ){
+
+        profiles =
+          result.data;
+
+      }
+
+    }
+
+
+    const profileMap =
+      new Map(
+        profiles.map(
+          p=>[p.id,p]
+        )
+      );
+
+
+    target.innerHTML =
+      data.map(post=>{
+
+        const profile =
+          profileMap.get(
+            post.author_id
+          );
+
+
+        const name =
+          profile?.display_name ||
+          "ZEEPY Member";
+
+
+        return `
+
+          <article class="post">
+
+            <div class="post-user">
+
+              <img
+                src="${escapeAttr(
+                  avatarUrl({
+                    display_name:name,
+                    avatar_url:
+                      profile?.avatar_url || ""
+                  })
+                )}"
+                alt="Profile">
+
+              <div class="post-meta">
+
+                <b>
+                  ${escapeHtml(name)}
+                </b>
+
+                ${
+                  profile?.username
+                    ? `
+                      <br>
+                      <small>
+                        @${escapeHtml(
+                          profile.username
+                        )}
+                      </small>
+                    `
+                    : ""
+                }
+
+                <br>
+
+                <small>
+                  ${formatDate(
+                    post.created_at
+                  )}
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div class="post-content">
+              ${escapeHtml(
+                post.content
+              )}
+            </div>
+
+
+            <div class="post-footer">
+
+              <button
+                onclick="event.stopPropagation();toast('Likes will be connected next.')">
+
+                ♡ Like
+
+              </button>
+
+
+              <button
+                onclick="event.stopPropagation();toast('Comments will be connected next.')">
+
+                💬 Comment
+
+              </button>
+
+
+              <button
+                onclick="event.stopPropagation();sharePost('${escapeAttr(post.content)}')">
+
+                ↗ Share
+
+              </button>
+
+            </div>
+
+          </article>
+
+        `;
+
+      })
+      .join("");
+
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Load posts error:",
+      error
+    );
 
-    target.innerHTML=`
+
+    target.innerHTML = `
+
       <div class="notice">
-        <strong>Posts could not be loaded.</strong>
-        <span class="muted">${escapeHtml(error.message || "Database error")}</span>
+
+        <strong>
+          Posts could not be loaded.
+        </strong>
+
+        <span class="muted">
+          ${escapeHtml(
+            error.message ||
+            "Database error"
+          )}
+        </span>
+
       </div>
+
     `;
+
   }
+
 }
 
+
+/* =========================================================
+   HOME POSTS
+========================= */
 
 async function loadHomePosts(){
 
-  const target=document.getElementById("homePosts");
-  if(!target)return;
+  const target =
+    document.getElementById(
+      "homePosts"
+    );
+
+
+  if(!target)
+    return;
+
 
   if(!supabaseClient){
-    target.innerHTML='<div class="empty">Connect Supabase to load posts.</div>';
+
+    target.innerHTML =
+      '<div class="empty">Supabase is not connected.</div>';
+
     return;
   }
 
+
   try{
 
-    const {data,error}=await supabaseClient
-      .from("posts")
-      .select("id,content,created_at,community_slug")
-      .order("created_at",{ascending:false})
-      .limit(10);
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("posts")
+        .select(`
+          id,
+          content,
+          created_at,
+          author_id,
+          community_slug
+        `)
+        .order(
+          "created_at",
+          {
+            ascending:false
+          }
+        )
+        .limit(10);
 
-    if(error)throw error;
 
-    if(!data || !data.length){
-      target.innerHTML='<div class="empty">No community posts yet.</div>';
+    if(error)
+      throw error;
+
+
+    if(
+      !data ||
+      !data.length
+    ){
+
+      target.innerHTML =
+        '<div class="empty">No community posts yet.</div>';
+
       return;
     }
 
-    target.innerHTML=data.map(p=>{
-      const c=getCommunity(p.community_slug);
-      return `
-        <article class="post clickable" onclick="openCommunity('${escapeAttr(p.community_slug)}')">
-          <div class="post-user">
-            <div style="font-size:25px">${c ? c.icon : "🌍"}</div>
-            <div>
-              <b>${c ? escapeHtml(c.name) : "Community"}</b><br>
-              <small>${formatDate(p.created_at)}</small>
+
+    const authorIds =
+      [
+        ...new Set(
+          data
+            .map(
+              p=>p.author_id
+            )
+            .filter(Boolean)
+        )
+      ];
+
+
+    let profiles=[];
+
+
+    if(authorIds.length){
+
+      const result =
+        await supabaseClient
+          .from("profiles")
+          .select(
+            "id,display_name,username,avatar_url"
+          )
+          .in(
+            "id",
+            authorIds
+          );
+
+
+      if(
+        !result.error &&
+        result.data
+      ){
+
+        profiles =
+          result.data;
+
+      }
+
+    }
+
+
+    const profileMap =
+      new Map(
+        profiles.map(
+          p=>[p.id,p]
+        )
+      );
+
+
+    target.innerHTML =
+      data.map(p=>{
+
+        const c =
+          getCommunity(
+            p.community_slug
+          );
+
+
+        const profile =
+          profileMap.get(
+            p.author_id
+          );
+
+
+        const name =
+          profile?.display_name ||
+          "ZEEPY Member";
+
+
+        return `
+
+          <article
+            class="post clickable"
+            onclick="
+              openCommunity(
+                '${escapeAttr(
+                  p.community_slug
+                )}'
+              )
+            ">
+
+            <div class="post-user">
+
+              <img
+                src="${escapeAttr(
+                  avatarUrl({
+                    display_name:name,
+                    avatar_url:
+                      profile?.avatar_url || ""
+                  })
+                )}"
+                alt="Profile">
+
+              <div>
+
+                <b>
+                  ${escapeHtml(name)}
+                </b>
+
+                <br>
+
+                <small class="muted">
+
+                  ${
+                    c
+                      ? escapeHtml(c.name)
+                      : "Community"
+                  }
+
+                  ·
+
+                  ${formatDate(
+                    p.created_at
+                  )}
+
+                </small>
+
+              </div>
+
             </div>
-          </div>
-          <div class="post-content">${escapeHtml(p.content)}</div>
-        </article>
-      `;
-    }).join("");
+
+
+            <div class="post-content">
+
+              ${escapeHtml(
+                p.content
+              )}
+
+            </div>
+
+          </article>
+
+        `;
+
+      })
+      .join("");
+
 
   }catch(error){
-    target.innerHTML=
-      '<div class="empty">Community feed is waiting for database connection.</div>';
+
+    console.error(
+      "Home posts error:",
+      error
+    );
+
+
+    target.innerHTML =
+      '<div class="empty">Community feed is waiting for database access.</div>';
+
   }
+
+}
+
+
+/* =========================================================
+   SHARE POST
+========================= */
+
+async function sharePost(text){
+
+  try{
+
+    if(
+      navigator.share
+    ){
+
+      await navigator.share({
+        title:"ZEEPY",
+        text:text
+      });
+
+      return;
+
+    }
+
+
+    if(
+      navigator.clipboard
+    ){
+
+      await navigator.clipboard.writeText(
+        text
+      );
+
+      toast(
+        "Post copied."
+      );
+
+      return;
+
+    }
+
+
+    toast(
+      "Sharing is not available on this device."
+    );
+
+  }catch(error){
+
+    console.log(
+      "Share cancelled."
+    );
+
+  }
+
 }
 
 
 /* =========================================================
    MEETINGS
-   ========================================================= */
+========================= */
 
 function createMeeting(){
 
   if(!currentUser){
+
     openAuth();
+
     return;
   }
 
-  document.getElementById("meetingModal").classList.add("show");
+
+  const modal =
+    document.getElementById(
+      "meetingModal"
+    );
+
 
   if(currentCommunity){
-    document.getElementById("meetingCommunity").value=currentCommunity.slug;
+
+    document
+      .getElementById(
+        "meetingCommunity"
+      )
+      .value =
+        currentCommunity.slug;
+
   }
+
+
+  modal.classList.add("show");
+
 }
 
 
 async function saveMeeting(){
 
-  if(!supabaseClient || !currentUser){
-    toast("Please log in first.");
+  if(
+    !supabaseClient ||
+    !currentUser
+  ){
+
+    toast(
+      "Please log in first."
+    );
+
     return;
   }
 
-  const title=document.getElementById("meetingTitle").value.trim();
-  const slug=document.getElementById("meetingCommunity").value;
-  const date=document.getElementById("meetingDate").value;
-  const time=document.getElementById("meetingTime").value;
-  const type=document.getElementById("meetingType").value;
-  const location=document.getElementById("meetingLocation").value.trim();
-  const description=document.getElementById("meetingDescription").value.trim();
 
-  if(!title || !date || !time){
-    toast("Meeting title, date and time are required.");
+  const title =
+    document
+      .getElementById(
+        "meetingTitle"
+      )
+      .value
+      .trim();
+
+
+  const slug =
+    document
+      .getElementById(
+        "meetingCommunity"
+      )
+      .value;
+
+
+  const date =
+    document
+      .getElementById(
+        "meetingDate"
+      )
+      .value;
+
+
+  const time =
+    document
+      .getElementById(
+        "meetingTime"
+      )
+      .value;
+
+
+  const type =
+    document
+      .getElementById(
+        "meetingType"
+      )
+      .value;
+
+
+  const location =
+    document
+      .getElementById(
+        "meetingLocation"
+      )
+      .value
+      .trim();
+
+
+  const description =
+    document
+      .getElementById(
+        "meetingDescription"
+      )
+      .value
+      .trim();
+
+
+  if(
+    !title ||
+    !date ||
+    !time
+  ){
+
+    toast(
+      "Meeting title, date and time are required."
+    );
+
     return;
   }
 
-  /*
-    This expects a meetings table with:
-    id, creator_id, community_slug, title, meeting_date,
-    meeting_time, meeting_type, location, description
-  */
 
   try{
 
-    const {error}=await supabaseClient
-      .from("meetings")
-      .insert({
-        creator_id:currentUser.id,
-        community_slug:slug,
-        title,
-        meeting_date:date,
-        meeting_time:time,
-        meeting_type:type,
-        location,
-        description
-      });
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("meetings")
+        .insert({
 
-    if(error)throw error;
+          /*
+            creator_id is the
+            authenticated user's ID.
+          */
 
-    closeModal("meetingModal");
-    toast("Meeting created.");
+          creator_id:
+            currentUser.id,
 
-    if(currentCommunity && currentCommunity.slug===slug){
-      loadMeetings(slug);
+          community_slug:
+            slug,
+
+          title:
+            title,
+
+          meeting_date:
+            date,
+
+          meeting_time:
+            time,
+
+          meeting_type:
+            type,
+
+          location:
+            location,
+
+          description:
+            description
+
+        });
+
+
+    if(error)
+      throw error;
+
+
+    closeModal(
+      "meetingModal"
+    );
+
+
+    toast(
+      "Meeting created."
+    );
+
+
+    if(
+      currentCommunity &&
+      currentCommunity.slug===slug
+    ){
+
+      loadMeetings(
+        slug,
+        "communityMeetings"
+      );
+
     }
+
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Meeting error:",
+      error
+    );
+
 
     toast(
       error.message ||
-      "Meeting could not be created. Make sure the meetings table exists."
+      "Meeting could not be created."
     );
+
   }
+
 }
 
 
-async function loadMeetings(slug){
+async function loadMeetings(
+  slug,
+  targetId
+){
 
-  const target=document.getElementById("communityMeetings");
-  if(!target)return;
+  const target =
+    document.getElementById(
+      targetId
+    );
+
+
+  if(!target)
+    return;
+
 
   if(!supabaseClient){
-    target.innerHTML='<div class="empty">Connect Supabase first.</div>';
+
+    target.innerHTML =
+      '<div class="empty">Supabase is not connected.</div>';
+
     return;
   }
 
+
   try{
 
-    const {data,error}=await supabaseClient
-      .from("meetings")
-      .select("*")
-      .eq("community_slug",slug)
-      .order("meeting_date",{ascending:true})
-      .limit(30);
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("meetings")
+        .select("*")
+        .eq(
+          "community_slug",
+          slug
+        )
+        .order(
+          "meeting_date",
+          {
+            ascending:true
+          }
+        )
+        .limit(30);
 
-    if(error)throw error;
 
-    if(!data || !data.length){
-      target.innerHTML=`
+    if(error)
+      throw error;
+
+
+    if(
+      !data ||
+      !data.length
+    ){
+
+      target.innerHTML = `
+
         <div class="empty">
-          No meetings yet.<br><br>
-          Create the first meeting for this community.
+
+          No meetings yet.
+
+          <br><br>
+
+          Create the first meeting
+          for this community.
+
         </div>
+
       `;
+
       return;
+
     }
 
-    target.innerHTML=data.map(m=>{
 
-      const online=m.meeting_type==="online";
+    target.innerHTML =
+      data.map(m=>{
 
-      return `
-        <div class="meeting">
+        const online =
+          m.meeting_type==="online";
 
-          <div class="meeting-top">
-            <div>
-              <h3>${escapeHtml(m.title || "Community Meeting")}</h3>
-              <span class="badge ${online?"online":""}">
-                ${online ? "💻 Online" : "📍 In person"}
+
+        return `
+
+          <div class="meeting">
+
+            <div class="meeting-top">
+
+              <div>
+
+                <h3>
+                  ${escapeHtml(
+                    m.title ||
+                    "Community Meeting"
+                  )}
+                </h3>
+
+
+                <span
+                  class="badge ${
+                    online
+                      ? "online"
+                      : ""
+                  }">
+
+                  ${
+                    online
+                      ? "💻 Online"
+                      : "📍 In person"
+                  }
+
+                </span>
+
+              </div>
+
+
+              <span class="muted">
+
+                ${escapeHtml(
+                  m.meeting_date || ""
+                )}
+
               </span>
+
             </div>
 
-            <span class="muted">
-              ${escapeHtml(m.meeting_date || "")}
-            </span>
+
+            <p
+              class="muted"
+              style="margin-top:10px">
+
+              ${escapeHtml(
+                m.description ||
+                "Community meeting"
+              )}
+
+            </p>
+
+
+            <p style="margin-top:10px">
+
+              🕒
+              ${escapeHtml(
+                m.meeting_time || ""
+              )}
+
+            </p>
+
+
+            ${
+              m.location
+                ? `
+                  <p
+                    class="muted"
+                    style="margin-top:6px">
+
+                    📍
+                    ${escapeHtml(
+                      m.location
+                    )}
+
+                  </p>
+                `
+                : ""
+            }
+
+
+            <button
+              class="primary"
+              style="margin-top:12px"
+              onclick="
+                joinMeeting(
+                  '${escapeAttr(
+                    m.location || ""
+                  )}',
+                  '${online}'
+                )
+              ">
+
+              ${
+                online
+                  ? "Join Online Meeting"
+                  : "View Meeting"
+              }
+
+            </button>
+
           </div>
 
-          <p class="muted" style="margin-top:10px">
-            ${escapeHtml(m.description || "Community meeting")}
-          </p>
+        `;
 
-          <p style="margin-top:10px">
-            🕒 ${escapeHtml(m.meeting_time || "")}
-          </p>
+      })
+      .join("");
 
-          ${
-            m.location
-              ? `<p class="muted" style="margin-top:6px">📍 ${escapeHtml(m.location)}</p>`
-              : ""
-          }
-
-          <button class="primary" style="margin-top:12px"
-            onclick="joinMeeting('${escapeAttr(m.location || "")}','${online}')">
-            ${online ? "Join Online Meeting" : "View Meeting"}
-          </button>
-
-        </div>
-      `;
-
-    }).join("");
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Meetings error:",
+      error
+    );
 
-    target.innerHTML=`
+
+    target.innerHTML = `
+
       <div class="notice">
-        <strong>Meetings could not be loaded.</strong>
+
+        <strong>
+          Meetings could not be loaded.
+        </strong>
+
         <span class="muted">
-          ${escapeHtml(error.message || "Database error")}
+
+          ${escapeHtml(
+            error.message ||
+            "Database error"
+          )}
+
         </span>
+
       </div>
+
     `;
+
   }
+
 }
 
 
-function joinMeeting(location,online){
+function joinMeeting(
+  location,
+  online
+){
 
-  if(online && location){
+  if(
+    online &&
+    location &&
+    /^https?:\/\//i.test(location)
+  ){
 
-    if(/^https?:\/\//i.test(location)){
-      window.open(location,"_blank");
-      return;
-    }
+    window.open(
+      location,
+      "_blank"
+    );
+
+    return;
+
   }
+
 
   toast(
     online
       ? "The online meeting link is not available yet."
-      : "Meeting details opened."
+      : "Meeting details are available above."
   );
+
 }
 
 
 /* =========================================================
    PROFILE
-   ========================================================= */
+   IMPORTANT:
+   profile.id = currentUser.id
+========================= */
 
 async function loadProfile(){
 
-  const box=document.getElementById("profileBox");
-  if(!currentUser)return;
+  const box =
+    document.getElementById(
+      "profileBox"
+    );
 
-  const meta=currentUser.user_metadata || {};
 
-  document.getElementById("profileStatus").textContent=
-    "Your ZEEPY profile";
+  if(
+    !currentUser ||
+    !box
+  ){
 
-  box.innerHTML=`
-    <div style="display:flex;align-items:center;gap:15px">
-      <img class="avatar"
-        src="${
-          meta.avatar_url ||
-          "https://ui-avatars.com/api/?name="+
-          encodeURIComponent(meta.display_name || "ZEEPY")+
-          "&background=ff6a00&color=fff"
-        }">
+    return;
 
-      <div>
-        <h2>${escapeHtml(meta.display_name || "ZEEPY User")}</h2>
-        <p class="muted">${escapeHtml(currentUser.email || "")}</p>
+  }
+
+
+  const userId =
+    currentUser.id;
+
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id,display_name,username,email,avatar_url"
+        )
+        .eq(
+          "id",
+          userId
+        )
+        .maybeSingle();
+
+
+    if(error)
+      throw error;
+
+
+    const profile =
+      data || {
+
+        id:userId,
+
+        display_name:
+          getUserDisplayName(),
+
+        email:
+          currentUser.email || "",
+
+        username:"",
+
+        avatar_url:""
+
+      };
+
+
+    box.innerHTML = `
+
+      <div class="profile-row">
+
+        <img
+          class="profile-large"
+          src="${escapeAttr(
+            avatarUrl(profile)
+          )}"
+          alt="Profile">
+
+        <div>
+
+          <h2>
+            ${escapeHtml(
+              profile.display_name ||
+              "ZEEPY User"
+            )}
+          </h2>
+
+          ${
+            profile.username
+              ? `
+                <p class="muted">
+                  @${escapeHtml(
+                    profile.username
+                  )}
+                </p>
+              `
+              : ""
+          }
+
+          <p class="muted">
+
+            ${escapeHtml(
+              profile.email ||
+              currentUser.email ||
+              ""
+            )}
+
+          </p>
+
+        </div>
+
       </div>
-    </div>
 
-    <div class="hero-actions">
-      <button class="primary" onclick="toast('Profile editor will be connected here.')">
-        Edit Profile
-      </button>
 
-      <button class="primary" onclick="logout()">
+      <div class="card">
+
+        <h3>
+          ZEEPY User ID
+        </h3>
+
+        <p
+          class="muted"
+          style="
+            word-break:break-all;
+            margin-top:8px;
+          ">
+
+          ${escapeHtml(
+            profile.id ||
+            currentUser.id
+          )}
+
+        </p>
+
+      </div>
+
+
+      <div class="hero-actions">
+
+        <button
+          class="primary"
+          onclick="
+            toast('Profile editor will be connected next.')
+          ">
+
+          Edit Profile
+
+        </button>
+
+
+        <button
+          class="primary"
+          onclick="logout()">
+
+          Log out
+
+        </button>
+
+      </div>
+
+    `;
+
+
+  }catch(error){
+
+    console.error(
+      "Profile error:",
+      error
+    );
+
+
+    /*
+      Even if the profiles table
+      cannot be read, we still show
+      the authenticated user.
+    */
+
+    box.innerHTML = `
+
+      <div class="profile-row">
+
+        <img
+          class="profile-large"
+          src="${escapeAttr(
+            avatarUrl({
+              display_name:
+                getUserDisplayName()
+            })
+          )}"
+          alt="Profile">
+
+        <div>
+
+          <h2>
+            ${escapeHtml(
+              getUserDisplayName()
+            )}
+          </h2>
+
+          <p class="muted">
+            ${escapeHtml(
+              currentUser.email || ""
+            )}
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="notice">
+
+        <strong>
+          Your account is logged in.
+        </strong>
+
+        <span class="muted">
+          The profile record could not
+          be loaded yet.
+        </span>
+
+      </div>
+
+
+      <button
+        class="primary"
+        onclick="logout()">
+
         Log out
+
       </button>
-    </div>
-  `;
+
+    `;
+
+  }
+
 }
 
 
 /* =========================================================
    PEOPLE
-   ========================================================= */
+========================= */
 
 async function searchPeople(){
 
-  const q=document.getElementById("peopleSearch").value.trim();
-  const target=document.getElementById("peopleResults");
+  const q =
+    document
+      .getElementById(
+        "peopleSearch"
+      )
+      .value
+      .trim();
+
+
+  const target =
+    document.getElementById(
+      "peopleResults"
+    );
+
 
   if(!q){
-    target.innerHTML='<div class="empty">Search for people.</div>';
+
+    target.innerHTML =
+      '<div class="empty">Search for people.</div>';
+
     return;
+
   }
 
+
   if(!supabaseClient){
-    target.innerHTML='<div class="empty">Connect Supabase first.</div>';
+
+    target.innerHTML =
+      '<div class="empty">Supabase is not connected.</div>';
+
     return;
+
   }
+
 
   try{
 
-    const {data,error}=await supabaseClient
-      .from("profiles")
-      .select("id,display_name,username,avatar_url")
-      .or(`display_name.ilike.%${q}%,username.ilike.%${q}%`)
-      .limit(30);
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id,display_name,username,avatar_url,email"
+        )
+        .or(
+          `display_name.ilike.%${q}%,username.ilike.%${q}%`
+        )
+        .limit(30);
 
-    if(error)throw error;
 
-    if(!data.length){
-      target.innerHTML='<div class="empty">No people found.</div>';
+    if(error)
+      throw error;
+
+
+    if(
+      !data ||
+      !data.length
+    ){
+
+      target.innerHTML =
+        '<div class="empty">No people found.</div>';
+
       return;
+
     }
 
-    target.innerHTML=data.map(p=>`
-      <div class="card" style="margin-bottom:10px">
-        <div style="display:flex;gap:12px;align-items:center">
-          <img class="avatar"
-            src="${
-              p.avatar_url ||
-              "https://ui-avatars.com/api/?name="+
-              encodeURIComponent(p.display_name || "User")+
-              "&background=333&color=fff"
-            }">
 
-          <div>
-            <h3>${escapeHtml(p.display_name || "User")}</h3>
-            <p class="muted">@${escapeHtml(p.username || "")}</p>
+    target.innerHTML =
+      data.map(p=>`
+
+        <div
+          class="card"
+          style="margin-bottom:10px">
+
+          <div
+            style="
+              display:flex;
+              gap:12px;
+              align-items:center;
+            ">
+
+            <img
+              class="avatar"
+              src="${escapeAttr(
+                avatarUrl(p)
+              )}"
+              alt="Profile">
+
+
+            <div>
+
+              <h3>
+                ${escapeHtml(
+                  p.display_name ||
+                  "User"
+                )}
+              </h3>
+
+              ${
+                p.username
+                  ? `
+                    <p class="muted">
+                      @${escapeHtml(
+                        p.username
+                      )}
+                    </p>
+                  `
+                  : ""
+              }
+
+            </div>
+
           </div>
+
+
+          <button
+            class="primary"
+            style="margin-top:12px"
+            onclick="
+              openConversation(
+                '${escapeAttr(p.id)}'
+              )
+            ">
+
+            💬 Message
+
+          </button>
+
         </div>
-      </div>
-    `).join("");
+
+      `)
+      .join("");
+
 
   }catch(error){
-    target.innerHTML=
+
+    console.error(
+      "People search error:",
+      error
+    );
+
+
+    target.innerHTML =
       '<div class="empty">People could not be loaded.</div>';
+
   }
+
 }
 
+
+/* =========================================================
+   COMMUNITY PEOPLE
+========================= */
 
 async function searchCommunityPeople(){
 
-  const target=document.getElementById("communityPeople");
-  if(!target)return;
-
-  if(!supabaseClient){
-    target.innerHTML='<div class="empty">Connect Supabase first.</div>';
-    return;
-  }
-
-  try{
-
-    const {data,error}=await supabaseClient
-      .from("profiles")
-      .select("id,display_name,username,avatar_url")
-      .limit(30);
-
-    if(error)throw error;
-
-    if(!data.length){
-      target.innerHTML='<div class="empty">No community members found.</div>';
-      return;
-    }
-
-    target.innerHTML=`
-      <div class="grid">
-        ${data.map(p=>`
-          <div class="card">
-            <img class="avatar"
-              src="${
-                p.avatar_url ||
-                "https://ui-avatars.com/api/?name="+
-                encodeURIComponent(p.display_name || "User")+
-                "&background=333&color=fff"
-              }">
-
-            <h3 style="margin-top:10px">
-              ${escapeHtml(p.display_name || "User")}
-            </h3>
-
-            <p class="muted">
-              @${escapeHtml(p.username || "")}
-            </p>
-
-            <button class="primary" style="margin-top:10px"
-              onclick="openPage('messagesPage')">
-              Message
-            </button>
-          </div>
-        `).join("")}
-      </div>
-    `;
-
-  }catch(error){
-    target.innerHTML='<div class="empty">People could not be loaded.</div>';
-  }
-}
-
-
-/* =========================================================
-   OTHER FEATURES
-   ========================================================= */
-
-function openShop(){
-  toast("Shop creation is ready for the next Market database stage.");
-}
-
-function openSell(){
-  toast("Product publishing is ready for the Market database stage.");
-}
-
-function createGroup(){
-  toast("Group creation is ready for the Groups database stage.");
-}
-
-function startLive(){
-  toast("Live creation is ready for the Live database stage.");
-}
-
-function globalSearch(event){
-
-  if(event.key!=="Enter")return;
-
-  const q=event.target.value.trim();
-
-  if(!q)return;
-
-  toast("Searching ZEEPY for: "+q);
-}
-
-
-/* =========================================================
-   UTILITIES
-   ========================================================= */
-
-function formatDate(value){
-
-  if(!value)return "";
-
-  try{
-    return new Date(value).toLocaleString();
-  }catch{
-    return value;
-  }
-}
-
-
-function escapeHtml(value){
-
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-}
-
-
-function escapeAttr(value){
-  return escapeHtml(value);
-}
-
-
-/* =========================================================
-   START ZEEPY
-   ========================================================= */
-
-async function initializeZEEPY(){
-
-  renderCommunities();
-  loadHomePosts();
-  updateAuthUI();
-
-  if(!supabaseClient){
-
-    console.warn(
-      "ZEEPY: Supabase client is waiting for the new anon/public key."
+  const target =
+    document.getElementById(
+      "communityPeople"
     );
 
+
+  if(!target)
     return;
+
+
+  if(!supabaseClient){
+
+    target.innerHTML =
+      '<div class="empty">Supabase is not connected.</div>';
+
+    return;
+
   }
+
 
   try{
 
-    const {data}=await supabaseClient.auth.getSession();
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id,display_name,username,avatar_url"
+        )
+        .limit(30);
 
-    currentUser=data.session?.user || null;
 
-    updateAuthUI();
+    if(error)
+      throw error;
+
+
+    if(
+      !data ||
+      !data.length
+    ){
+
+      target.innerHTML =
+        '<div class="empty">No community members found.</div>';
+
+      return;
+
+    }
+
+
+    target.innerHTML = `
+
+      <div class="grid">
+
+        ${
+          data.map(p=>`
+
+            <div class="card">
+
+              <img
+                class="avatar"
+                src="${escapeAttr(
+                  avatarUrl(p)
+                )}"
+                alt="Profile">
+
+
+              <h3
+                style="margin-top:10px">
+
+                ${escapeHtml(
+                  p.display_name ||
+                  "User"
+                )}
+
+              </h3>
+
+
+              ${
+                p.username
+                  ? `
+                    <p class="muted">
+                      @${escapeHtml(
+                        p.username
+                      )}
+                    </p>
+                  `
+                  : ""
+              }
+
+
+              <button
+                class="primary"
+                style="margin-top:10px"
+                onclick="
+                  openConversation(
+                    '${escapeAttr(p.id)}'
+                  )
+                ">
+
+                Message
+
+              </button>
+
+            </div>
+
+          `)
+          .join("")
+        }
+
+      </div>
+
+    `;
+
 
   }catch(error){
-    console.error("Session error:",error);
+
+    console.error(
+      "Community people error:",
+      error
+    );
+
+
+    target.innerHTML =
+      '<div class="empty">People could not be loaded.</div>';
+
   }
 
-  supabaseClient.auth.onAuthStateChange(
-    async (_event,session)=>{
-
-      currentUser=session?.user || null;
-
-      updateAuthUI();
-
-      if(currentUser){
-        loadHomePosts();
-      }
-    }
-  );
 }
 
-initializeZEEPY();
 
-</script>
+/* =========================================================
+   MESSAGES
+   User IDs:
+   sender_id = authenticated user's ID
+   receiver_id = another authenticated user's ID
+========================= */
 
-</body>
-</html>
+async function loadMessages(){
+
+  const target =
+    document.getElementById(
+      "messagesContent"
+    );
+
+
+  if(!target)
+    return;
+
+
+  if(!currentUser){
+
+    target.innerHTML = `
+
+      <div class="card">
+
+        <div class="empty">
+
+          Please
