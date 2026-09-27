@@ -5136,6 +5136,18 @@ function renderConversationList(
 
 async function selectConversation(userId){
 
+  if(!currentUser){
+    toast(
+      "Please login first.",
+      "error"
+    );
+    return;
+  }
+
+  if(!userId){
+    return;
+  }
+
   try{
 
     const {
@@ -5152,18 +5164,53 @@ async function selectConversation(userId){
       throw error;
     }
 
+    if(!data){
+      toast(
+        "User profile not found.",
+        "error"
+      );
+      return;
+    }
+
     currentChatUser =
       data;
 
+    /*
+     * Make sure the Messages page is open.
+     */
+    showPage("messages");
+
+    /*
+     * Load the selected conversation.
+     */
     await loadChat();
 
+    /*
+     * Focus the message box.
+     */
+    const messageInput =
+      document.getElementById(
+        "messageInput"
+      );
+
+    if(messageInput){
+      messageInput.focus();
+    }
+
   }catch(error){
+
+    console.error(
+      "selectConversation error:",
+      error
+    );
 
     toast(
       error.message ||
       "Could not open chat.",
       "error"
     );
+  }
+}
   }
 }
 
@@ -6033,12 +6080,16 @@ async function loadMedia(){
    GLOBAL SEARCH
 ========================================================= */
 
-function globalSearch(){
+async function globalSearch(){
 
   const input =
     document.getElementById(
       "globalSearch"
     );
+
+  if(!input){
+    return;
+  }
 
   const value =
     input.value.trim();
@@ -6047,20 +6098,28 @@ function globalSearch(){
     return;
   }
 
-  showPage("people");
-
+  /*
+   * Put the search value into the People search
+   * BEFORE opening the People page.
+   */
   const peopleSearch =
     document.getElementById(
       "peopleSearch"
     );
 
-  if(peopleSearch){
-
-    peopleSearch.value =
-      value;
-
-    searchPeople();
+  if(!peopleSearch){
+    return;
   }
+
+  peopleSearch.value =
+    value;
+
+  /*
+   * Open People.
+   * showPage("people") will then run searchPeople()
+   * using the value we just placed in peopleSearch.
+   */
+  showPage("people");
 }
 
 
